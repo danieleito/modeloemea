@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">   
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:fieldset legend="Login do usuário">
+            <h:form>
+                <p:panelGrid columns="2">
+                    <h:outputLabel value="Usuário" />
+                    <p:inputText id="usuario" value="#{login.model.usuario}" />
+                    
+                    <h:outputLabel value="Senha" />
+                    <p:inputText id="senha" value="#{login.model.senha}" />
+                    
+                    
+                    <h:outputLabel value="Confirmar senha" />
+                    <p:inputText id="confirmarNovaSenha"  />
+                    
+                    <p:commandButton onclick="validar()" action="#{login.entrar()}" />
+                </p:panelGrid>
+            </h:form>
+        </p:fieldset>
+    </h:body>
+</html>
+
+<!--<script type="text/javascript">
+    function validar() {
+        var usuario = document.getElementById("usuario").value;
+        if (!usuario) {
+            alert('Campo usuário é obrigatório.');
+            return false;
+        }
+        var senha = document.getElementById("senha").value;
+        if (!senha) {
+            alert('Campo senha é obrigatório.');
+            return false;
+        }
+        var novaSenha = document.getElementById("novaSenha").value;
+        var confirmarNovaSenha = document.getElementById("confirmarNovaSenha").value;
+        if (novaSenha && !confirmarNovaSenha) {
+            alert('Campo confirmar nova senha é obrigatório para alterar senha.');
+            return false;
+        }
+        if (novaSenha && confirmarNovaSenha && novaSenha !== confirmarNovaSenha) {
+            alert('Campo nova senha e confirmar nova senha não conferem.');
+            return false;
+        }
+    }
+</script>-->
