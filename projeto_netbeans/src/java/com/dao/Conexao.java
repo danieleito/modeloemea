@@ -20,7 +20,7 @@ public class Conexao {
 
     private static final String JDBC_URL = "jdbc:sqlserver://localhost:1433;databaseName=Emea";
     private static final String USER = "sa";
-    private static final String PASSWORD = "tblk3856*";
+    private static final String PASSWORD = "adminEMEA";
     private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
     public Conexao() throws SQLException {
