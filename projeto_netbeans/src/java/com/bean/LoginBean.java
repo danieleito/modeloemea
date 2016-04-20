@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author Daniele
  */
-@ManagedBean(name = "usuario")
+@ManagedBean(name = "login")
 @SessionScoped
 public class LoginBean extends ComumBean implements Serializable {
     
@@ -47,20 +47,21 @@ public class LoginBean extends ComumBean implements Serializable {
         database = new UsuarioDAO();
     }
     
-    public String entrar() {
+    public void entrar() {
         try {
             Usuario u = database.buscar(model.getUsuario());
             if (u == null) {
-                adicionarMensagemInfo("Usuário não existe");
+                adicionarMensagemErro("Usuário não existe");
             } else if(!u.getSenha().equals(model.getSenha())) {
-                adicionarMensagemInfo("Senha inválida.");
+                adicionarMensagemErro("Senha inválida.");
             } else {
-                return redirecionar("View/Compartilhado/home.jsf");
+                adicionarMensagemInfo("Usuário logado com sucesso.");
+                redirecionar("View/Compartilhado/home.jsf");
             }
         } catch (SQLException ex) {
-            adicionarMensagemErro(ex.getMessage());
+            adicionarMensagemFatal(ex.getMessage());
             Logger.getLogger(LoginBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "";
+        redirecionar("");
     }
 }
