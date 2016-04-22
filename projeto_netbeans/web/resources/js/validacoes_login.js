@@ -7,18 +7,18 @@
 
 
 function validar() {
-    var usuario = document.getElementById("j_idt9:usuario").value;
+    var usuario = document.getElementById("form:usuario").value;
     if (!usuario) {
         alert('Campo usuário é obrigatório.');
         return false;
     }
-    var senha = document.getElementById("j_idt9:senha").value;
+    var senha = document.getElementById("form:senha").value;
     if (!senha) {
         alert('Campo senha é obrigatório.');
         return false;
     }
-    var novaSenha = document.getElementById("j_idt9:novaSenha").value;
-    var confirmarNovaSenha = document.getElementById("j_idt9:confirmarNovaSenha").value;
+    var novaSenha = document.getElementById("form:novaSenha").value;
+    var confirmarNovaSenha = document.getElementById("form:confirmarNovaSenha").value;
     if (novaSenha && !confirmarNovaSenha) {
         alert('Campo confirmar nova senha é obrigatório para alterar senha.');
         return false;
