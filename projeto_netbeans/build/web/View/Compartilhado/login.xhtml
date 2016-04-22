@@ -5,6 +5,7 @@
       xmlns:p="http://primefaces.org/ui">   
     <h:head>
         <title>Facelet Title</title>
+        <h:outputScript library="js" name="validacoes_login.js" />
     </h:head>
     <h:body style="width: 100%;">
         <div style="margin: auto; width: 600px;">
@@ -19,41 +20,18 @@
                             <p:inputText id="usuario" value="#{login.model.usuario}" />
 
                             <h:outputLabel value="Senha" />
-                            <p:inputText id="senha" value="#{login.model.senha}" />
+                            <p:password id="senha" value="#{login.model.senha}" />
 
+                            <h:outputLabel value="Nova senha" />
+                            <p:password id="novaSenha" value="#{login.novaSenha}"/>
 
                             <h:outputLabel value="Confirmar senha" />
-                            <p:inputText id="confirmarNovaSenha" />
+                            <p:password id="confirmarNovaSenha" />
 
-                            <p:commandButton value="Entrar" onclick="validar()" action="#{login.entrar()}" />
+                            <p:commandButton value="Entrar" onclick="return validar()" action="#{login.entrar()}" />
                         </p:panelGrid>
                     </h:form>
             </p:fieldset>    
         </div>
     </h:body>
 </html>
-
-<!--<script type="text/javascript">
-    function validar() {
-        var usuario = document.getElementById("usuario").value;
-        if (!usuario) {
-            alert('Campo usuário é obrigatório.');
-            return false;
-        }
-        var senha = document.getElementById("senha").value;
-        if (!senha) {
-            alert('Campo senha é obrigatório.');
-            return false;
-        }
-        var novaSenha = document.getElementById("novaSenha").value;
-        var confirmarNovaSenha = document.getElementById("confirmarNovaSenha").value;
-        if (novaSenha && !confirmarNovaSenha) {
-            alert('Campo confirmar nova senha é obrigatório para alterar senha.');
-            return false;
-        }
-        if (novaSenha && confirmarNovaSenha && novaSenha !== confirmarNovaSenha) {
-            alert('Campo nova senha e confirmar nova senha não conferem.');
-            return false;
-        }
-    }
-</script>-->

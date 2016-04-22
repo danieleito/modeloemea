@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Daniele
+ * @author Daniele Harumi Ito
  */
 @ManagedBean(name = "login")
 @SessionScoped
@@ -55,8 +55,13 @@ public class LoginBean extends ComumBean implements Serializable {
             } else if(!u.getSenha().equals(model.getSenha())) {
                 adicionarMensagemErro("Senha inválida.");
             } else {
+                if (novaSenha != null && !novaSenha.isEmpty()) {
+                    u.setSenha(novaSenha);
+                    database.editar(u);
+                    adicionarMensagemInfo("Senha alterada com sucesso.");
+                }
                 adicionarMensagemInfo("Usuário logado com sucesso.");
-                redirecionar("View/Compartilhado/home.jsf");
+                redirecionar("/View/Compartilhado/home.jsf");
             }
         } catch (SQLException ex) {
             adicionarMensagemFatal(ex.getMessage());

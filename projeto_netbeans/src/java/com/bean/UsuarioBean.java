@@ -9,7 +9,7 @@ import javax.faces.bean.ManagedBean;
 
 /**
  *
- * @author Daniele
+ * @author Daniele Harumi Ito
  */
 @ManagedBean(name = "usuario")
 public class UsuarioBean {

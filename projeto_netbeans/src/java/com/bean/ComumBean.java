@@ -15,7 +15,7 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author Daniele
+ * @author Daniele Harumi Ito
  */
 @ManagedBean
 public abstract class ComumBean {
