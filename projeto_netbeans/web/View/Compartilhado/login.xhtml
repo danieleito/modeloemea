@@ -8,29 +8,34 @@
         <h:outputScript library="js" name="validacoes_login.js" />
     </h:head>
     <h:body style="width: 100%;">
-        <div style="margin: auto; width: 600px;">
-            <p:fieldset legend="Login do usuário">
+        <h:outputStylesheet library="css" name="site.css"  />
+        <h:outputStylesheet library="css" name="jquery-ui.css"  />
+        <h:outputStylesheet library="css" name="jquery-ui.min.css"  />
+        <h:outputStylesheet library="css" name="jquery-ui.structure.css"  />
+        <h:outputStylesheet library="css" name="jquery-ui.structure.min.css"  />
+        <h:outputStylesheet library="css" name="jquery-ui.theme.css"  />
+        <h:outputStylesheet library="css" name="jquery-ui.theme.min.css"  />
+        <div style="margin: auto; width: 500px;">
+            <p:fieldset legend="Login do usuário" style="padding: 20px 50px 20px 50px">
                 <h:form>
                     <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                 </h:form>
+                <h:form>
+                    <h:outputLabel value="Usuário" />
+                    <p:inputText id="usuario" value="#{login.model.usuario}" class="" />
 
-                    <h:form>
-                        <p:panelGrid columns="2" style="width: 100%;">
-                            <h:outputLabel value="Usuário" />
-                            <p:inputText id="usuario" value="#{login.model.usuario}" />
+                    <h:outputLabel value="Senha" />
+                    <p:password id="senha" value="#{login.model.senha}" />
 
-                            <h:outputLabel value="Senha" />
-                            <p:password id="senha" value="#{login.model.senha}" />
+                    <h:outputLabel value="Nova senha" />
+                    <p:password id="novaSenha" value="#{login.novaSenha}"/>
 
-                            <h:outputLabel value="Nova senha" />
-                            <p:password id="novaSenha" value="#{login.novaSenha}"/>
+                    <h:outputLabel value="Confirmar senha" />
+                    <p:password id="confirmarNovaSenha" />
 
-                            <h:outputLabel value="Confirmar senha" />
-                            <p:password id="confirmarNovaSenha" />
-
-                            <p:commandButton value="Entrar" onclick="return validar()" action="#{login.entrar()}" />
-                        </p:panelGrid>
-                    </h:form>
+                    <p:commandButton value="Entrar" onclick="return validar()" action="#{login.entrar()}" />
+                    
+                </h:form>
             </p:fieldset>    
         </div>
     </h:body>
