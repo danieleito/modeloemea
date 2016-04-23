@@ -134,7 +134,9 @@ hr {
 }
 
 .info_usuario_logado {
-    float: right;
+    float: left;
+    text-align: right;
     font-size: 14px;
     font-style: italic;
+    width: 100%;
 }

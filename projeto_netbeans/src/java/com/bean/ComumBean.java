@@ -21,14 +21,14 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 public abstract class ComumBean {
     
-    protected Usuario usuarioLogado;
+    public static Usuario usuarioLogado;
 
     public Usuario getUsuarioLogado() {
         return usuarioLogado;
     }
 
     public void setUsuarioLogado(Usuario usuarioLogado) {
-        this.usuarioLogado = usuarioLogado;
+        ComumBean.usuarioLogado = usuarioLogado;
     }
 
     protected void redirecionar(String url) {

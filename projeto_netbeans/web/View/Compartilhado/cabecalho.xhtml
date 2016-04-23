@@ -24,7 +24,9 @@
                 </c:choose>
             </p:menubar>
         </h:form>
-        <h:outputText class="info_usuario_logado" value="Usuário logado: ${login.usuarioLogado.usuario}" />
+        <div class="info_usuario_logado">
+            <h:outputText value="Usuário logado: ${login.usuarioLogado.usuario}" />
+        </div>
     </h:body>
 </html>
 
