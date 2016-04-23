@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import com.model.Usuario;
 import com.dao.UsuarioDAO;
+import com.session.SessionContext;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,6 +61,8 @@ public class LoginBean extends ComumBean implements Serializable {
                     database.editar(u);
                     adicionarMensagemInfo("Senha alterada com sucesso.");
                 }
+                usuarioLogado = u;
+                SessionContext.getInstance().setAttribute("usuarioLogado", u);
                 adicionarMensagemInfo("Usuário logado com sucesso.");
                 redirecionar("/View/Compartilhado/home.jsf");
             }
@@ -68,5 +71,11 @@ public class LoginBean extends ComumBean implements Serializable {
             Logger.getLogger(LoginBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         redirecionar("");
+    }
+    
+    public void sair() {
+        SessionContext.getInstance().encerrarSessao();
+        adicionarMensagemInfo("Usuário deslogado com sucesso.");
+        redirecionar("/View/Compartilhado/login.jsf");
     }
 }

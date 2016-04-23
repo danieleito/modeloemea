@@ -5,6 +5,7 @@
  */
 package com.bean;
 
+import com.model.Usuario;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +20,16 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 public abstract class ComumBean {
+    
+    protected Usuario usuarioLogado;
+
+    public Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
+    public void setUsuarioLogado(Usuario usuarioLogado) {
+        this.usuarioLogado = usuarioLogado;
+    }
 
     protected void redirecionar(String url) {
         ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
