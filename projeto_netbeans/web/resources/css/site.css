@@ -8,6 +8,13 @@ and open the template in the editor.
     Author     : Paulo
 */
 
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #e8e8e8;
+}
+
 input {
     width: 100%;
     margin-top: 10px;
@@ -21,4 +28,106 @@ button {
 label {
     float: left;
     margin-top: 5px;
+}
+
+p {
+    width: 100%;
+}
+
+.page {
+    width: 85%;
+    margin: 0px auto 0 auto;
+    padding: 20px 0 20px 0;
+}
+
+.topo {
+    height: 74px;
+    background-color: white;
+}
+
+.topo2 {
+    height: 70px;
+    background-image: url(#{resource['images/header_bg.jpg']});
+    background-repeat: no-repeat;
+    box-shadow: 0px 2px 3px #cccccc;
+    background-color: white;
+}
+
+.corpo {
+    width: 100%; 
+    background-color: white;
+}
+
+.content {
+}
+
+.row {
+    width: 100%;
+    float: left;
+}
+
+.text_center {
+    text-align: center;
+}
+
+.text_right {
+    text-align: right;
+}
+
+.text_left {
+    text-align: left;
+}
+
+.col-md-1 {
+    width: 10%;
+}
+
+.col-md-2 {
+    width: 20%;
+}
+
+.col-md-3 {
+    width: 30%;
+}
+
+.col-md-4 {
+    width: 40%;
+}
+
+.col-md-5 {
+    width: 50%;
+}
+
+.col-md-6 {
+    width: 60%;
+}
+
+.col-md-7 {
+    width: 70%;
+}
+
+.col-md-8 {
+    width: 80%;
+}
+
+.col-md-9 {
+    width: 90%;
+}
+
+.col-md-10 {
+    width: 100%;
+}
+
+hr {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.footer {
+    width: 100%;
+}
+
+.footer hr {
+    background-color: #666666;
 }
