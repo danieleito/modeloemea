@@ -132,3 +132,9 @@ hr {
 .footer hr {
     background-color: #666666;
 }
+
+.info_usuario_logado {
+    float: right;
+    font-size: 14px;
+    font-style: italic;
+}

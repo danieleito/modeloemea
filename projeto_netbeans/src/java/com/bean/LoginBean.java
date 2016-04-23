@@ -75,6 +75,7 @@ public class LoginBean extends ComumBean implements Serializable {
     
     public void sair() {
         SessionContext.getInstance().encerrarSessao();
+        usuarioLogado = null;
         adicionarMensagemInfo("Usuário deslogado com sucesso.");
         redirecionar("/View/Compartilhado/login.jsf");
     }
