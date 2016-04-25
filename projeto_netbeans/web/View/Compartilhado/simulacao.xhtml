@@ -1,12 +1,45 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Simulação</title>
+        <h:outputScript library="js" name="validacoes.js" />
     </h:head>
     <h:body>
-        Hello from Facelets
+        <ui:composition template="/View/Compartilhado/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <h:outputLabel for="nova_simulacao" value="Nome da simulação" class="col-md-10" />
+                    <p:inputText class="col-md-2" id="nova_simulacao" required="true" value="#{simulacao.novaSimulacao.simulacao}" label="Nome da simulação" />
+                    <p:commandButton style="margin: 0 0 20px 20px;" value="Novo ranking" action="#{simulacao.salvar()}" />
+                    
+                    <p:dataTable var="sim" value="#{simulacao.simulacoes}" paginator="true" rows="8" >
+                        <p:column headerText="Data">
+                            <h:outputText value="#{sim.data}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Inspetor">
+                            <h:outputText value="#{sim.usuario.usuario}" />
+                        </p:column>
+
+                        <p:column headerText="Simulação">
+                            <h:outputText value="#{sim.simulacao}" />
+                        </p:column>
+
+                        <p:column headerText="Ação" style="width: 150px; text-align: center">
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{simulacao.visualizar(sim.id)}"  />
+                            <p:commandButton icon="ui-icon-pencil" title="Ranking" action="#{simulacao.visualizar(sim.id)}"  />
+                            <p:commandButton icon="ui-icon-trash" title="Deletar" action="#{simulacao.deletar(sim.id)}"  />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
-

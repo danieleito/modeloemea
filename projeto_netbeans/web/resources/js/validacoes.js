@@ -6,7 +6,7 @@
 
 
 
-function validar() {
+function validarLogin() {
     var usuario = document.getElementById("form:usuario").value;
     if (!usuario) {
         alert('Campo usuário é obrigatório.');
@@ -27,4 +27,13 @@ function validar() {
         alert('Campo nova senha e confirmar nova senha não conferem.');
         return false;
     }
+}
+
+
+function validarNovaSimulacao() {
+    var novaSimulacao = document.getElementById("form:nova_simulacao").value;
+    if (!novaSimulacao) {
+        alert('Campo ')
+    }
+    
 }

@@ -92,33 +92,36 @@ create table SIMULACAO
 
 insert into SIMULACAO (ID_USUARIO, NM_SIMULACAO) values (1, 'simulacao01');
 ---------------------------------------------------------------------------
+--Ponte
+create table PONTE
+	(
+		ID_PONTE							int				not null identity(1,1),
+		CD_PONTE							varchar(10)		not null,
+		DS_IDENTIFICACAO_OBRA				varchar(60)		not null,
+		DS_VIA								char(6)			not null,
+		DS_UF								varchar(60)		not null,
+		DS_LOCAL_VIA						varchar(6)		not null
+		CONSTRAINT							pk_ponte		PRIMARY KEY(ID_PONTE)
+	);
+insert into ponte ('1111111111', 'Ponte 111', 'BR-116', 'PARANÁ', 'KM-150');
+insert into ponte ('2222222222', 'Ponte 222', 'BR-116', 'PARANÁ', 'KM-590');
+insert into ponte ('3333333333', 'Ponte 333', 'BR-277', 'PARANÁ', 'KM-100');
+insert into ponte ('4444444444', 'Ponte 444', 'BR-277', 'PARANÁ', 'KM-840');
+insert into ponte ('5555555555', 'Ponte 555', 'BR-376', 'PARANÁ', 'KM-233');
+insert into ponte ('6666666666', 'Ponte 666', 'BR-376', 'PARANÁ', 'KM-999');
+---------------------------------------------------------------------------
 --Ranking
 create table RANKING
 	(
 		ID_RANKING							int				not null identity(1,1),
-		CD_RANKING							varchar(20)		not null,
-		DS_IDENTIFICACAO_OBRA				varchar(20)		not null,
-		DS_VIA								varchar(20)		not null,
-		DS_UF								varchar(20)		not null,
-		DS_LOCAL_VIA						varchar(20)		not null,
+		ID_PONTE							int				not null,
+		ID_SIMULACAO						int				not null,
+		DS_CLASSIFICACAO					int				not null,
 		DS_INDICE_PERFORMANCE_RELATIVO		varchar(20)		not null,
-		CONSTRAINT							pk_ranking		PRIMARY KEY(ID_RANKING)
+		CONSTRAINT							pk_ranking		PRIMARY KEY(ID_RANKING),
+		CONSTRAINT							fk_ranking_ponte FOREIGN KEY(ID_PONTE),
+		CONSTRAINT							fk_ranking_simulacao FOREIGN KEY(ID_SIMULACAO)
 	);
-
----------------------------------------------------------------------------
---buscar ponte
---create table BUSCAR_PONTE
---	(
---		ID_BUSCAR_PONTE				int					not null identity(1,1),
---		CD_PONTE					varchar(20)			not null,
---		DS_IDENTIFICACAO_OBRA		varchar(20)			not null,
---		DS_VIA						varchar(20)			not null,
---		DS_UF						varchar(20)			not null,
---		DS_LOCAL_NA_VIA				varchar(20)			not null,
---		CONSTRAINT					pk_buscar_ponte		PRIMARY_KEY(ID_BUSCAR_PONTE)
---	);
-
---inserto into BUSCAR_PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_NA_VIA) values ();
 ---------------------------------------------------------------------------
 --Elemento
 create table ELEMENTO

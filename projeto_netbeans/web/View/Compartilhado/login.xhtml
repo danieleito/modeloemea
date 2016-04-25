@@ -6,7 +6,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">   
     <h:head>
         <title>Facelet Title</title>
-        <h:outputScript library="js" name="validacoes_login.js" />
+        <h:outputScript library="js" name="validacoes.js" />
     </h:head>
     <h:body>
         <ui:composition template="/View/Compartilhado/templateLogin.xhtml">
@@ -15,7 +15,7 @@
                     <p:fieldset legend="Login do usuário" style="padding: 20px 50px 20px 50px">
                         <h:form id="form">
                             <h:outputLabel value="Usuário" />
-                            <p:inputText id="usuario" value="#{login.model.usuario}" class="" />
+                            <p:inputText id="usuario" value="#{login.model.usuario}" />
 
                             <h:outputLabel value="Senha" />
                             <p:password id="senha" value="#{login.model.senha}" />
@@ -26,7 +26,7 @@
                             <h:outputLabel value="Confirmar senha" />
                             <p:password id="confirmarNovaSenha" />
 
-                            <p:commandButton value="Entrar" onclick="return validar()" action="#{login.entrar()}" />
+                            <p:commandButton value="Entrar" onclick="return validarLogin()" action="#{login.entrar()}" />
 
                         </h:form>
                     </p:fieldset>    

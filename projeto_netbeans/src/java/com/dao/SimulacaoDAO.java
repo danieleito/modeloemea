@@ -8,6 +8,7 @@ package com.dao;
 import com.model.Simulacao;
 import com.model.Usuario;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,8 +41,8 @@ public class SimulacaoDAO {
             usuario.setId(rs.getInt("ID_USUARIO"));
             usuario.setNome(rs.getString("DS_USUARIO"));
             usuario.setUsuario(rs.getString("DS_USUARIO"));
-            simulacoes.add(new Simulacao(rs.getInt("ID_SIMULACAO"),
-                    usuario, rs.getString("NM_SIMULACAO")));
+            simulacoes.add(new Simulacao(rs.getInt("ID_SIMULACAO"), 
+                    rs.getDate("DT_DATA"), usuario, rs.getString("NM_SIMULACAO")));
         }
 
         conexao.closeConnection();
@@ -60,20 +61,17 @@ public class SimulacaoDAO {
     }
 
     public void inserir(Simulacao simulacao) throws SQLException {
-//        String query = "insert into SIMULACAO (DT_DATA, NM_INSPETOR, NM_SIMULACAO) "
-//                        + "values(?, ?, ?); ";
-        //deletar a linha de baixo e descomentar a linha de cima, depois que o tipo DATE estiver correto
-        String query = "insert into SIMULACAO (ID_USUARIO, NM_SIMULACAO) "
-                        + "values(?, ?); ";
+        String query = "insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) "
+                        + "values(?, ?, ?); ";
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
-
+        
         PreparedStatement stmt;
         stmt = conn.prepareStatement(query);
-        //stmt.setDate(1, simulacao.getData());
-        stmt.setInt(1, simulacao.getUsuario().getId());
-        stmt.setString(2, simulacao.getSimulacao());
+        stmt.setDate(1, new java.sql.Date(simulacao.getData().getTime()));
+        stmt.setInt(2, simulacao.getUsuario().getId());
+        stmt.setString(3, simulacao.getSimulacao());
         stmt.execute();
     }
     

@@ -63,8 +63,9 @@ public class LoginBean extends ComumBean implements Serializable {
                 }
                 usuarioLogado = u;
                 SessionContext.getInstance().setAttribute("usuarioLogado", u);
+                verificarNovosElementosManifestacoes();
                 adicionarMensagemInfo("Usuário logado com sucesso.");
-                redirecionar("/View/Compartilhado/home.jsf");
+                redirecionar("/View/Compartilhado/simulacao.jsf");
             }
         } catch (SQLException ex) {
             adicionarMensagemFatal(ex.getMessage());
@@ -78,5 +79,15 @@ public class LoginBean extends ComumBean implements Serializable {
         usuarioLogado = null;
         adicionarMensagemInfo("Usuário deslogado com sucesso.");
         redirecionar("/View/Compartilhado/login.jsf");
+    }
+
+    private void verificarNovosElementosManifestacoes() {
+        if (usuarioLogado.getTipoUsuario().getId() == 1) {
+            //int novosElementos = new ElementosDAO().buscarQuantidadeNovos();
+            //int novasManifestacoes = new ManifestacoesDAO().buscarQuantidadeNovas();
+//            if (novosElementos > 0 || novasManifestacoes > 0) {
+//                adicionarMensagemInfo("Existem novos elementos e/ou manifestações cadastrados.");
+//            }
+        }
     }
 }
