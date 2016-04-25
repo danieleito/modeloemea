@@ -60,9 +60,13 @@ public class SimulacaoBean extends ComumBean {
     
     public void salvar() {
         try {
-            database.inserir(novaSimulacao);
-            simulacoes = database.buscar();
-            adicionarMensagemInfo("Simulação cadastrada com sucesso.");
+            if (novaSimulacao.getSimulacao() == null || novaSimulacao.getSimulacao().isEmpty()) {
+                adicionarMensagemErro("Campo 'Nome da simulação' é obrigatório.");
+            } else {
+                database.inserir(novaSimulacao);
+                simulacoes = database.buscar();
+                adicionarMensagemInfo("Simulação cadastrada com sucesso.");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao cadastrar simulação: " + ex.getMessage());
