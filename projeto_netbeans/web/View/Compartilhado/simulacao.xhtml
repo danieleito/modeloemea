@@ -18,6 +18,10 @@
                     <p:commandButton style="margin: 0 0 20px 20px;" value="Novo ranking" action="#{simulacao.salvar()}" />
                     
                     <p:dataTable var="sim" value="#{simulacao.simulacoes}" paginator="true" rows="8" >
+                        <p:column headerText="Simulação">
+                            <h:outputText value="#{sim.simulacao}" />
+                        </p:column>
+                        
                         <p:column headerText="Data">
                             <h:outputText value="#{sim.data}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
@@ -26,10 +30,6 @@
 
                         <p:column headerText="Inspetor">
                             <h:outputText value="#{sim.usuario.usuario}" />
-                        </p:column>
-
-                        <p:column headerText="Simulação">
-                            <h:outputText value="#{sim.simulacao}" />
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center">

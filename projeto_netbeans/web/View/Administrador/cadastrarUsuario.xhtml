@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition template="/View/Compartilhado/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <h:outputLabel for="nome" value="Nome"/>
+                    <p:inputText class="col-md-2" id="nome" required="true" value="" label="Nome"/>
+                    
+                    <h:outputLabel for="usuario" value="Usuário"/>
+                    <p:inputText class="col-md-2" id="usuario" required="true" value="" label="Usuário"/>
+                    
+                    <h:outputLabel for="tipo_usuario" value="Tipo de usuário"/>
+                    <p:inputText class="col-md-2" id="tipo_usuario" required="true" value="" label="Tipo de usuário"/>
+                    
+                    <h:outputLabel for="email" value="Email"/>
+                    <p:inputText class="col-md-2" id="email" required="true" value="" label="Email"/>
+                    
+                    <h:outputLabel for="senha" value="Senha"/>
+                    <p:inputText class="col-md-2" id="senha" required="true" value="" label="Senha"/>
+                    
+                    <h:outputLabel for="confirmar_senha" value="Confirmar senha"/>
+                    <p:inputText class="col-md-2" id="confirmar_senha" required="true" value="" label="Confirmar senha"/>
+                    
+                    <p:commandButton value="Salvar" action="#{usuario.database.inserir(usuario)}"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

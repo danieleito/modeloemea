@@ -11,12 +11,12 @@
         <h:form>
 <!--            <p:growl id="messages_growl"/>-->
             <p:menubar>
-                <p:menuitem value="Home" url="#" />
+                <p:menuitem value="Home" url="/View/Compartilhado/simulacao.jsf" />
                 
                 <c:choose>
                     <c:when test="${login.usuarioLogado.tipoUsuario.id == 1}">
                         <p:submenu label="Administrador" icon="">
-                            <p:menuitem value="Cadastrar usuário" url="#" />
+                            <p:menuitem value="Cadastrar usuário" url="/View/Administrador/cadastrarUsuario.jsf" />
                             <p:menuitem value="Cadastrar engenheiro" url="#" />
                             <p:menuitem value="Cadastrar auxiliar" url="#" />
                             <p:menuitem value="Cadastrar capa elementos" url="/View/Administrador/capaElementos.jsf" />
@@ -24,6 +24,8 @@
                         </p:submenu>
                     </c:when>
                 </c:choose>
+                
+                <p:menuitem value="Sair" action="#{login.sair()}"/>
             </p:menubar>
         </h:form>
         <div class="info_usuario_logado">

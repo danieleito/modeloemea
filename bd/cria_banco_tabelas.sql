@@ -53,6 +53,7 @@ insert into USUARIO (NM_NOME, DS_USUARIO, DS_EMAIL, DS_SENHA, ID_TIPO_USUARIO) v
 insert into USUARIO (NM_NOME, DS_USUARIO, DS_EMAIL, DS_SENHA, ID_TIPO_USUARIO) values ('Daniele', 'daniele', 'ito.dani', '123', 1);
 insert into USUARIO (NM_NOME, DS_USUARIO, DS_EMAIL, DS_SENHA, ID_TIPO_USUARIO) values ('Usu1', 'usu1', 'ito.dani', '123', 1);
 insert into USUARIO (NM_NOME, DS_USUARIO, DS_EMAIL, DS_SENHA, ID_TIPO_USUARIO) values ('Usu2', 'usu2', 'ito.dani', '123', 1);
+insert into USUARIO (NM_NOME, DS_USUARIO, DS_EMAIL, DS_SENHA, ID_TIPO_USUARIO) values ('dhi', 'dhi', 'dhi10@inf.ufpr.br', '123', 2);
 
 create table EQUIPE
 	(
@@ -90,7 +91,6 @@ create table SIMULACAO
 		CONSTRAINT		fk_simulacao_usuario	FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO(ID_USUARIO)
 	);
 
-insert into SIMULACAO (ID_USUARIO, NM_SIMULACAO) values (1, 'simulacao01');
 ---------------------------------------------------------------------------
 --Ponte
 create table PONTE
@@ -129,13 +129,12 @@ create table ELEMENTO
 	(
 		ID_ELEMENTO		int			not null identity(1,1),
 		NM_ELEMENTO		varchar(100)	not null,
-		DS_KAPPA		varchar(10)		not null,
-		--mais alguns itens
+		DS_CAPA			varchar(10)		not null,
 		CONSTRAINT		pk_elemento		PRIMARY KEY(ID_ELEMENTO)
 	);
 GO
-insert into ELEMENTO (NM_ELEMENTO, DS_KAPPA) values ('elemento01', 'k01');
-insert into ELEMENTO (NM_ELEMENTO, DS_KAPPA) values ('elemento02', 'k02');
+insert into ELEMENTO (NM_ELEMENTO, DS_CAPA) values ('elemento01', 'K01');
+insert into ELEMENTO (NM_ELEMENTO, DS_CAPA) values ('elemento02', 'K02');
 
 --Manifestacao
 create table MANIFESTACAO
@@ -143,12 +142,11 @@ create table MANIFESTACAO
 		ID_MANIFESTACAO			int						not null identity(1,1),
 		NM_MANIFESTACAO			varchar(100)			not null,
 		DS_BETA					varchar(10)				not null,
-		--mais alguns itens
 		CONSTRAINT				pk_manifestacao			PRIMARY KEY(ID_MANIFESTACAO)
 	);
 GO
-insert into MANIFESTACAO (NM_MANIFESTACAO, DS_BETA) values ('manifestacao01', 'b01');
-insert into MANIFESTACAO (NM_MANIFESTACAO, DS_BETA) values ('manifestacao02', 'b02');
+insert into MANIFESTACAO (NM_MANIFESTACAO, DS_BETA) values ('manifestacao01', 'B01');
+insert into MANIFESTACAO (NM_MANIFESTACAO, DS_BETA) values ('manifestacao02', 'B02');
 ---------------------------------------------------------------------------
 
 --Documentos

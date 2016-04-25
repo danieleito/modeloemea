@@ -14,8 +14,22 @@ import java.io.Serializable;
 public class Elemento implements Serializable {
     
     private int id;
-    private String nome;
-    private double capa;
+    private String elemento;
+    private String capa;
+
+    public Elemento() {
+    }
+
+    public Elemento(int id, String elemento, String capa) {
+        this.id = id;
+        this.elemento = elemento;
+        this.capa = capa;
+    }
+
+    public Elemento(String elemento, String capa) {
+        this.elemento = elemento;
+        this.capa = capa;
+    }
 
     public int getId() {
         return id;
@@ -25,19 +39,24 @@ public class Elemento implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getElemento() {
+        return elemento;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setElemento(String elemento) {
+        this.elemento = elemento;
     }
 
-    public double getCapa() {
+    public String getCapa() {
         return capa;
     }
 
-    public void setCapa(double capa) {
+    public void setCapa(String capa) {
         this.capa = capa;
+    }
+    
+    @Override
+    public String toString() {
+        return this.elemento;
     }
 }
