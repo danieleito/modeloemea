@@ -98,17 +98,18 @@ create table PONTE
 		ID_PONTE							int				not null identity(1,1),
 		CD_PONTE							varchar(10)		not null,
 		DS_IDENTIFICACAO_OBRA				varchar(60)		not null,
-		DS_VIA								char(6)			not null,
+		DS_VIA								varchar(6)			not null,
 		DS_UF								varchar(60)		not null,
-		DS_LOCAL_VIA						varchar(6)		not null
+		DS_LOCAL_VIA						varchar(6)		not null,
 		CONSTRAINT							pk_ponte		PRIMARY KEY(ID_PONTE)
 	);
-insert into ponte ('1111111111', 'Ponte 111', 'BR-116', 'PARANÁ', 'KM-150');
-insert into ponte ('2222222222', 'Ponte 222', 'BR-116', 'PARANÁ', 'KM-590');
-insert into ponte ('3333333333', 'Ponte 333', 'BR-277', 'PARANÁ', 'KM-100');
-insert into ponte ('4444444444', 'Ponte 444', 'BR-277', 'PARANÁ', 'KM-840');
-insert into ponte ('5555555555', 'Ponte 555', 'BR-376', 'PARANÁ', 'KM-233');
-insert into ponte ('6666666666', 'Ponte 666', 'BR-376', 'PARANÁ', 'KM-999');
+
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA) values ('111111111', 'Ponte 111', 'BR-116', 'PARANÁ', 'KM-150');
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA) values ('2222222222', 'Ponte 222', 'BR-116', 'PARANÁ', 'KM-590');
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA) values ('3333333333', 'Ponte 333', 'BR-277', 'PARANÁ', 'KM-100');
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA) values ('4444444444', 'Ponte 444', 'BR-277', 'PARANÁ', 'KM-840');
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA) values ('5555555555', 'Ponte 555', 'BR-376', 'PARANÁ', 'KM-233');
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA) values ('6666666666', 'Ponte 666', 'BR-376', 'PARANÁ', 'KM-999');
 ---------------------------------------------------------------------------
 --Ranking
 create table RANKING
@@ -119,8 +120,8 @@ create table RANKING
 		DS_CLASSIFICACAO					int				not null,
 		DS_INDICE_PERFORMANCE_RELATIVO		varchar(20)		not null,
 		CONSTRAINT							pk_ranking		PRIMARY KEY(ID_RANKING),
-		CONSTRAINT							fk_ranking_ponte FOREIGN KEY(ID_PONTE),
-		CONSTRAINT							fk_ranking_simulacao FOREIGN KEY(ID_SIMULACAO)
+		CONSTRAINT							fk_ranking_ponte FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
+		CONSTRAINT							fk_ranking_simulacao FOREIGN KEY(ID_SIMULACAO) REFERENCES SIMULACAO (ID_SIMULACAO)
 	);
 ---------------------------------------------------------------------------
 --Elemento
