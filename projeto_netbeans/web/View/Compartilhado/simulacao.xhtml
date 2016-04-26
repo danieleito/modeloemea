@@ -35,12 +35,12 @@
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center">
                             <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{simulacao.visualizar(sim.id)}"  />
-                            <c:choose>
-                                <c:when test="${sim.usuario.id == simulacao.usuarioLogado.id}">
+<!--                            <c:choose>
+                                <c:when test="${sim.usuario.id == simulacao.usuarioLogado.id}">-->
                                     <p:commandButton icon="ui-icon-pencil" title="Ranking" action="#{simulacao.visualizar(sim.id)}"  />
                                     <p:commandButton icon="ui-icon-trash" title="Deletar" action="#{simulacao.deletar(sim.id)}"  />
-                                </c:when>
-                            </c:choose>
+<!--                                </c:when>
+                            </c:choose>-->
                         </p:column>
                     </p:dataTable>
                 </h:form>
