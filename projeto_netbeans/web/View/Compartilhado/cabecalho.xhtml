@@ -16,9 +16,7 @@
                 <c:choose>
                     <c:when test="${login.usuarioLogado.tipoUsuario.id == 1}">
                         <p:submenu label="Administrador" icon="">
-                            <p:menuitem value="Cadastrar usuário" url="/View/Administrador/cadastrarUsuario.jsf" />
-                            <p:menuitem value="Cadastrar engenheiro" url="#" />
-                            <p:menuitem value="Cadastrar auxiliar" url="#" />
+                            <p:menuitem value="Usuário" url="/View/Administrador/Usuario/listar.jsf" />
                             <p:menuitem value="Cadastrar capa elementos" url="/View/Administrador/capaElementos.jsf" />
                             <p:menuitem value="Cadastrar beta manifestações" url="/View/Administrador/betaManifestacoes.jsf" />
                         </p:submenu>

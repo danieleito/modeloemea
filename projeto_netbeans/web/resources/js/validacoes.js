@@ -38,3 +38,36 @@ function validarNovaSimulacao() {
     
 }
 
+function validarCadastrarUsuario() {
+    var nome = document.getElementById("form:nome").value;
+    if (!nome) {
+        alert('Campo nome é obrigatório.');
+        return false;
+    }
+    var usuario = document.getElementById("form:usuario").value;
+    if (!usuario) {
+        alert('Campo usuário é obrigatório.');
+        return false;
+    }
+    var email = document.getElementById("form:email").value;
+    if (!email) {
+        alert('Campo email é obrigatório.');
+        return false;
+    }
+    var senha = document.getElementById("form:senha").value;
+    var confirmarSenha = document.getElementById("form:confirmarSenha").value;
+    if (!senha) {
+        alert('Campo senha é obrigatório.');
+        return false;
+    }
+    if (senha && !confirmarSenha) {
+        alert('Campo confirma senha é obrigatório.');
+        return false;
+    }
+    
+    if (senha && !confirmarSenha) {
+        alert('Campos senha e confirma senha não conferem.');
+        return false;
+    }
+    
+}

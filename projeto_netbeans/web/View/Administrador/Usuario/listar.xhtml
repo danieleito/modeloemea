@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <h:body>
+        <ui:composition template="/View/Compartilhado/template.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <p:commandButton style="margin: 0 0 20px 20px;" value="Novo" action="/View/Administrador/Usuario/cadastrar.jsf" />
+                    
+                    <p:dataTable var="usu" value="#{usuario.usuarios}" paginator="true" rows="8" >
+                        <p:column headerText="Nome" >
+                            <h:outputText value="#{usu.nome}" />
+                        </p:column>
+                        
+                        <p:column headerText="Usuário" >
+                            <h:outputText value="#{usu.usuario}" />
+                        </p:column>
+                        
+                        <p:column headerText="Email" >
+                            <h:outputText value="#{usu.email}" />
+                        </p:column>
+                        
+                        <p:column headerText="Tipo usuário" >
+                            <h:outputText value="#{usu.tipoUsuario}" />
+                        </p:column>
+                        
+                        <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                            <p:commandButton icon="ui-icon-pencil" title="Editar" action="#{usuario.editar(usu.id)}" />
+                            <p:commandButton icon="ui-icon-trash" title="Deletar" action="#{usuario.deletar(usu.id)}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

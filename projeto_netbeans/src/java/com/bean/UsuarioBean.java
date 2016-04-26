@@ -7,6 +7,7 @@ package com.bean;
 
 import com.dao.UsuarioDAO;
 import com.model.Usuario;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -20,17 +21,26 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "usuario")
 @SessionScoped
-public class UsuarioBean {
+public class UsuarioBean extends ComumBean {
+    private Usuario model;
     private UsuarioDAO database;
     private ArrayList<Usuario> usuarios;
 
-    public UsuarioDAO getDatabase() {
-        return database;
+    public Usuario getModel() {
+        return model;
     }
 
-    public void setDatabase(UsuarioDAO database) {
-        this.database = database;
+    public void setModel(Usuario model) {
+        this.model = model;
     }
+
+//    public UsuarioDAO getDatabase() {
+//        return database;
+//    }
+//
+//    public void setDatabase(UsuarioDAO database) {
+//        this.database = database;
+//    }
 
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
@@ -42,18 +52,47 @@ public class UsuarioBean {
     
     public UsuarioBean() {
         database = new UsuarioDAO();
+        model = new Usuario();
         try {
             usuarios = database.buscar();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
+            usuarios = new ArrayList<>();
+            adicionarMensagemErro("Erro ao carregar usuários.");
         }
     }
     
     public void salvar(Usuario usuario) {
         try {
-            database.inserir(usuario);
+//            if (model.getUsuario() == null || model.getUsuario().isEmpty()) {
+//                adicionarMensagemErro("Campo 'Nome' é obrigatório.");
+//            }
+//            else {
+                adicionarMensagemInfo(model.toString());
+                database.inserir(model);
+                usuarios = database.buscar();
+                adicionarMensagemInfo("Usuario cadastrado com sucesso.");
+//            }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao cadastrar usuário." + ex.getMessage());
         }
+        redirecionar("/View/Administrador/Usuario/listar.jsf");        
+    }
+    
+    public void editar(int id) {
+        
+    }
+    
+    public void deletar(int id) {
+        try {
+            database.excluir(id);
+            adicionarMensagemInfo("Usuário removido com sucesso.");
+        usuarios = database.buscar();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao remover usuário: " + ex.getMessage());
+        }
+        redirecionar("/View/Administrador/Usuario/listar.jsf");
     }
 }
