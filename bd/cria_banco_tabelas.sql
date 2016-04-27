@@ -117,7 +117,7 @@ create table RANKING
 		ID_RANKING							int				not null identity(1,1),
 		ID_PONTE							int				not null,
 		ID_SIMULACAO						int				not null,
-		DS_CLASSIFICACAO					int				not null,
+		CS_CLASSIFICACAO					int				not null,
 		DS_INDICE_PERFORMANCE_RELATIVO		varchar(20)		not null,
 		CONSTRAINT							pk_ranking		PRIMARY KEY(ID_RANKING),
 		CONSTRAINT							fk_ranking_ponte FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),

@@ -20,7 +20,7 @@ and open the template in the editor.
                     <h:form id="form" >
                         <h:outputLabel for="nome" value="Nome"/>
 <!--                        <p:inputText id="nome" value="" />-->
-                        <p:inputText id="nome" required="true" label="Nome"/>
+                        <p:inputText id="nome" value="${usuario.model.nome}" required="true" label="Nome"/>
 
                         <h:outputLabel for="usuario" value="Usuário"/>
                         <p:inputText id="usuario" required="true" label="Usuário"/>
@@ -37,7 +37,7 @@ and open the template in the editor.
                         <h:outputLabel for="confirmar_senha" value="Confirmar senha"/>
                         <p:password id="confirmar_senha" required="true" label="Confirmar senha"/>
 
-                        <p:commandButton value="Editar" onclick="return validarCadastrarUsuario()" action="#{usuario.editar()}"/>
+                        <p:commandButton value="Editar" onclick="return validarCadastrarUsuario()" action="#{usuario.editar(usuario.model.id)}"/>
                     </h:form>
                 </div>
             </ui:define>
