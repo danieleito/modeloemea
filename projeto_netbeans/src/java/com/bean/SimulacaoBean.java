@@ -88,6 +88,7 @@ public class SimulacaoBean extends ComumBean {
     
     public void deletar(int id) {
         try {
+            
             database.excluir(id);
             adicionarMensagemInfo("Simulação removida com sucesso.");
             simulacoes = database.buscar();
