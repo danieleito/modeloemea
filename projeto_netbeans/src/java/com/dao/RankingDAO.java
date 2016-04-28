@@ -23,7 +23,7 @@ public class RankingDAO {
     public ArrayList<Ranking> buscar() throws SQLException {
         String query = "SELECT R.ID_RANKING, R.ID_PONTE, R.ID_SIMULCAO, "
                 + "R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
-                + "S.ID_SIMULCAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
+                + "S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
                 + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
                 + "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
                 + "FROM RANKING R, SIMULACAO S, PONTE P "
@@ -43,8 +43,8 @@ public class RankingDAO {
         Ponte ponte;
         while (rs.next()) {
             simulacao = new Simulacao();
-            simulacao.setId(rs.getInt("ID_SIMULCAO"));
-//            simulacao.setData(rs.getDate("DT_DATA"));
+            simulacao.setId(rs.getInt("ID_SIMULACAO"));
+            simulacao.setData(rs.getDate("DT_DATA"));
 //            simulacao.setUsuario(rs.getObject("ID_USUARIO", Usuario));
             simulacao.setSimulacao(rs.getString("NM_SIMULACAO"));
             ponte = new Ponte();

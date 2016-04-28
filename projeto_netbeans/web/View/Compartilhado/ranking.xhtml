@@ -19,31 +19,41 @@ and open the template in the editor.
         <ui:composition template="/View/Compartilhado/template.xhtml">
             <ui:define name="content">
                 <h:form id="form">
-                    <h:outputLabel value="Nome da simulação" class="col-md-10" />
+                    <h:outputLabel value="" class="col-md-10" />
                     
-                    <p:dataTable var="ran" value="#{simulacao.simulacoes}" paginator="true" rows="8" >
-                        <p:column headerText="Simulação">
-                            <h:outputText value="#{sim.simulacao}" />
+                    <p:commandButton style="margin: 0 0 20px 20px;" value="Consultar" action="/View/Compartilhado/buscar.jsf" />
+                    <p:commandButton style="margin: 0 0 20px 20px;" value="Ranquear" action="#{simulacao.salvar()}" />
+                    
+                    <p:dataTable var="ran" value="#{simulacao.rankings}" paginator="true" rows="8" >
+                        <p:column headerText="Código">
+                            <h:outputText value="#{ran.ponte.codigo}" />
                         </p:column>
                         
-                        <p:column headerText="Data">
-                            <h:outputText value="#{sim.data}">
+                        <p:column headerText="Identificação da obra">
+                            <h:outputText value="#{ran.ponte.identificaoObra}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:outputText>
                         </p:column>
 
-                        <p:column headerText="Inspetor">
-                            <h:outputText value="#{sim.usuario.usuario}" />
+                        <p:column headerText="Via">
+                            <h:outputText value="#{ran.ponte.via}" />
+                        </p:column>
+                        
+                        <p:column headerText="UF">
+                            <h:outputText value="#{ran.ponte.uf}" />
+                        </p:column>
+                        
+                        <p:column headerText="Local na via">
+                            <h:outputText value="#{ran.ponte.localVia}" />
+                        </p:column>
+                        
+                        <p:column headerText="Ind. performance relativo">
+                            <h:outputText value="#{ran.indicePerformanceRelativo}" />
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center">
-                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{simulacao.visualizar(sim.id)}"  />
-<!--                            <c:choose>
-                                <c:when test="${sim.usuario.id == simulacao.usuarioLogado.id}">-->
-                                    <p:commandButton icon="ui-icon-pencil" title="Ranking" action="#{simulacao.visualizar(sim.id)}"  />
-                                    <p:commandButton icon="ui-icon-trash" title="Deletar" action="#{simulacao.deletar(sim.id)}"  />
-<!--                                </c:when>
-                            </c:choose>-->
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{simulacao.visualizar(sim.id)}" />
+                            <p:commandButton icon="ui-icon-cancel" title="Deletar" action="#{simulacao.deletar(sim.id)}" />
                         </p:column>
                     </p:dataTable>
                 </h:form>

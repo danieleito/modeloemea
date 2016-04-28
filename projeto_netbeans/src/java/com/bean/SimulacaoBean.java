@@ -5,7 +5,9 @@
  */
 package com.bean;
 
+import com.dao.RankingDAO;
 import com.dao.SimulacaoDAO;
+import com.model.Ranking;
 import com.model.Simulacao;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,7 +27,9 @@ public class SimulacaoBean extends ComumBean {
     
     private Simulacao novaSimulacao;
     private SimulacaoDAO database;
+    private RankingDAO databaseR;
     private ArrayList<Simulacao> simulacoes;
+    private ArrayList<Ranking> rankings;
 
     public Simulacao getNovaSimulacao() {
         return novaSimulacao;
@@ -42,6 +46,14 @@ public class SimulacaoBean extends ComumBean {
     public void setSimulacoes(ArrayList<Simulacao> simulacoes) {
         this.simulacoes = simulacoes;
     }
+
+    public ArrayList<Ranking> getRankings() {
+        return rankings;
+    }
+
+    public void setRankings(ArrayList<Ranking> rankings) {
+        this.rankings = rankings;
+    }
     
     public SimulacaoBean() {
         novaSimulacao = new Simulacao();
@@ -49,8 +61,10 @@ public class SimulacaoBean extends ComumBean {
         novaSimulacao.setData(new Date());
         
         database = new SimulacaoDAO();
+        databaseR = new RankingDAO();
         try {
             simulacoes = database.buscar();
+            rankings = databaseR.buscar();
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             simulacoes = new ArrayList<>();
@@ -98,5 +112,4 @@ public class SimulacaoBean extends ComumBean {
         }
         redirecionar("/View/Compartilhado/simulacao.jsf");
     }
-    
 }
