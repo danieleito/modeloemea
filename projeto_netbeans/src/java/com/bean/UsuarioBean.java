@@ -21,7 +21,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "usuario")
 @SessionScoped
-public class UsuarioBean extends ComumBean {
+public class UsuarioBean extends ComumBean implements Serializable {
     private Usuario model;
     private UsuarioDAO database;
     private ArrayList<Usuario> usuarios;
@@ -62,7 +62,7 @@ public class UsuarioBean extends ComumBean {
         }
     }
     
-    public void salvar(Usuario usuario) {
+    public void salvar() {
         try {
 //            if (model.getUsuario() == null || model.getUsuario().isEmpty()) {
 //                adicionarMensagemErro("Campo 'Nome' é obrigatório.");
@@ -71,7 +71,7 @@ public class UsuarioBean extends ComumBean {
                 adicionarMensagemInfo(model.toString());
                 database.inserir(model);
                 usuarios = database.buscar();
-                adicionarMensagemInfo("Usuario cadastrado com sucesso.");
+                adicionarMensagemInfo("Usuário cadastrado com sucesso.");
 //            }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
