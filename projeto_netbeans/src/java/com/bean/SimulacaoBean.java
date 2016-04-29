@@ -78,11 +78,17 @@ public class SimulacaoBean extends ComumBean {
                 adicionarMensagemErro("Campo 'Nome da simulação' é obrigatório.");
             } 
             //verificar se ja existe uma simulacao com esse nome
-            else {
+            for (int i = 0; i < simulacoes.size(); i++) {
+                if (novaSimulacao.getSimulacao().equals(simulacoes.get(i).toString())) {
+                    adicionarMensagemErro("Nome de simulação já existe.");
+                    return;
+                }
+            }
+//            else {
                 database.inserir(novaSimulacao);
                 simulacoes = database.buscar();
                 adicionarMensagemInfo("Simulação cadastrada com sucesso.");
-            }
+//            }
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao cadastrar simulação: " + ex.getMessage());
