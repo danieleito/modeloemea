@@ -64,7 +64,7 @@ public class SimulacaoBean extends ComumBean {
         databaseR = new RankingDAO();
         try {
             simulacoes = database.buscar();
-            rankings = databaseR.buscar();
+//            rankings = databaseR.buscar();
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             simulacoes = new ArrayList<>();
@@ -79,7 +79,7 @@ public class SimulacaoBean extends ComumBean {
             } 
             //verificar se ja existe uma simulacao com esse nome
             for (int i = 0; i < simulacoes.size(); i++) {
-                if (novaSimulacao.getSimulacao().equals(simulacoes.get(i).toString())) {
+                if (novaSimulacao.getSimulacao().equals(simulacoes.get(i).getSimulacao())) {
                     adicionarMensagemErro("Nome de simulação já existe.");
                     return;
                 }

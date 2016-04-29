@@ -17,7 +17,7 @@
                     <p:breadCrumb>
                         <p:menuitem value="Categories" url="#" />
                         <p:menuitem value="Simulação" url="/View/Compartilhado/simulacao.jsf" />
-                        <p:menuitem value="Ranking" url="/View/Compartilhado/ranking.jsf" />
+                        <p:menuitem value="Ranking" url="/View/Compartilhado/Ranking/editar.jsf" />
                         <p:menuitem value="Buscar" url="#" />
                         <p:menuitem value="Teams" url="#" />
                         <p:menuitem value="L.A. Lakers" url="#" />
@@ -44,10 +44,10 @@
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center">
-                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{simulacao.visualizar(sim.id)}"  />
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="/View/Compartilhado/Ranking/visualizar.jsf?id=sim.id"  />
 <!--                            <c:choose>
                                 <c:when test="${sim.usuario.id == simulacao.usuarioLogado.id}">-->
-                                    <p:commandButton icon="ui-icon-pencil" title="Ranking" action="#{simulacao.visualizar(sim.id)}"  />
+                                    <p:commandButton icon="ui-icon-pencil" title="Ranking" action="/View/Compartilhado/Ranking/editar.jsf?id=sim.id" />
                                     <p:commandButton icon="ui-icon-trash" title="Deletar" action="#{simulacao.deletar(sim.id)}"  />
 <!--                                </c:when>
                             </c:choose>-->

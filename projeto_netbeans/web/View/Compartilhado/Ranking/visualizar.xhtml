@@ -9,8 +9,7 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -21,10 +20,7 @@ and open the template in the editor.
                 <h:form id="form">
                     <h:outputLabel value="" class="col-md-10" />
                     
-                    <p:commandButton style="margin: 0 0 20px 20px;" value="Consultar" action="/View/Compartilhado/buscar.jsf" />
-                    <p:commandButton style="margin: 0 0 20px 20px;" value="Ranquear" action="#{simulacao.salvar()}" />
-                    
-                    <p:dataTable var="ran" value="#{simulacao.rankings}" paginator="true" rows="8" >
+                    <p:dataTable var="ran" value="#{ranking.rankings}" paginator="true" rows="8" >
                         <p:column headerText="Código">
                             <h:outputText value="#{ran.ponte.codigo}" />
                         </p:column>
@@ -51,10 +47,6 @@ and open the template in the editor.
                             <h:outputText value="#{ran.indicePerformanceRelativo}" />
                         </p:column>
 
-                        <p:column headerText="Ação" style="width: 150px; text-align: center">
-                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{simulacao.visualizar(sim.id)}" />
-                            <p:commandButton icon="ui-icon-cancel" title="Deletar" action="#{simulacao.deletar(sim.id)}" />
-                        </p:column>
                     </p:dataTable>
                 </h:form>
             </ui:define>
