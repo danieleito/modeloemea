@@ -76,6 +76,7 @@ public class SimulacaoBean extends ComumBean {
         try {
             if (novaSimulacao.getSimulacao() == null || novaSimulacao.getSimulacao().isEmpty()) {
                 adicionarMensagemErro("Campo 'Nome da simulação' é obrigatório.");
+                return;
             } 
             //verificar se ja existe uma simulacao com esse nome
             for (int i = 0; i < simulacoes.size(); i++) {
