@@ -44,6 +44,11 @@ public class CapaElementosBean extends ComumBean {
         database = new ElementoDAO();
         try {
             elementos = database.buscar();
+            for (int i = 0; i < elementos.size(); i++) {
+                if (elementos.get(i).getCapa().equals("0")) {
+                    adicionarMensagemInfo("elemento adicionado recentemente");
+                }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(CapaElementosBean.class.getName()).log(Level.SEVERE, null, ex);
         }

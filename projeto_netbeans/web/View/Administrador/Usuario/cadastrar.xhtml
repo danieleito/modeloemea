@@ -20,7 +20,6 @@ and open the template in the editor.
                 <div style="margin: auto; width: 500px;">
                     <h:form id="form">
                         <h:outputLabel for="nome" value="Nome"/>
-<!--                        <p:inputText id="nome" value="" />-->
                         <p:inputText id="nome" value="#{usuario.model.nome}" />
 
                         <h:outputLabel for="usuario" value="Usuário"/>
@@ -28,6 +27,7 @@ and open the template in the editor.
 
                         <h:outputLabel for="tipo_usuario" value="Tipo de usuário"/>
                         <p:inputText id="tipo_usuario" value="#{usuario.model.tipoUsuario}" />
+<!--                        <p:autoComplete id="tipo_usuario" dropdown="true" value="#{usuario.model.tipoUsuario}" completeMethod="#{usuario.model.tipoUsuario}" />-->
 
                         <h:outputLabel for="email" value="Email"/>
                         <p:inputText id="email" value="#{usuario.model.email}" />

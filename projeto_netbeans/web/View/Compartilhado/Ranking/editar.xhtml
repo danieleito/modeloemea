@@ -19,6 +19,11 @@ and open the template in the editor.
         <ui:composition template="/View/Compartilhado/template.xhtml">
             <ui:define name="content">
                 <h:form id="form">
+                    <p:breadCrumb>
+                        <p:menuitem value="Categories" url="#" />
+                        <p:menuitem value="Simulação" url="/View/Compartilhado/simulacao.jsf" />
+                        <p:menuitem value="Ranking" url="/View/Compartilhado/Ranking/editar.jsf" />
+                    </p:breadCrumb>
                     <h:outputLabel value="" class="col-md-10" />
                     
                     <p:commandButton style="margin: 0 0 20px 20px;" value="Consultar" action="/View/Compartilhado/buscarPonte.jsf" />
