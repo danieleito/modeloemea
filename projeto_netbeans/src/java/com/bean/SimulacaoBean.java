@@ -104,7 +104,7 @@ public class SimulacaoBean extends ComumBean {
     }
     
     public void ranking(int id) {
-        
+        redirecionar("/View/Compartilhado/Ranking/editar.jsf?id=sim.id");
     }
     
     public void deletar(int id) {

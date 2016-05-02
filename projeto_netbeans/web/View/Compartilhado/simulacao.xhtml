@@ -41,7 +41,8 @@
                             <p:commandButton icon="ui-icon-search" title="Visualizar" action="/View/Compartilhado/Ranking/visualizar.jsf?id=sim.id"  />
 <!--                            <c:choose>
                                 <c:when test="${sim.usuario.id == simulacao.usuarioLogado.id}">-->
-                                    <p:commandButton icon="ui-icon-pencil" title="Ranking" action="/View/Compartilhado/Ranking/editar.jsf?id=sim.id" />
+                                    
+                                    <p:commandButton icon="ui-icon-pencil" title="Ranking" action="#{simulacao.ranking(sim.id)}" />
                                     
                                     <p:growl id="message" showDetail="true" />
                                     <p:commandButton icon="ui-icon-trash" title="Deletar" actionListener="#{simulacao.deletar(sim.id)}" update="message">
