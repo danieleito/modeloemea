@@ -125,6 +125,12 @@ hr {
     padding: 0;
 }
 
+table th,
+table td.th {
+	width: 20%;
+	font-weight: bold;
+}
+
 .footer {
     width: 100%;
 }

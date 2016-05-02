@@ -21,11 +21,9 @@ import java.util.ArrayList;
  */
 public class RankingDAO {
     public ArrayList<Ranking> buscar() throws SQLException {
-        String query = "SELECT R.ID_RANKING, R.ID_PONTE, R.ID_SIMULCAO, "
-                + "R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
+        String query = "SELECT R.ID_RANKING, R.ID_PONTE, R.ID_SIMULACAO, "+ "R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
                 + "S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
-                + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
-                + "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
+                + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "+ "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
                 + "FROM RANKING R, SIMULACAO S, PONTE P "
                 + "WHERE R.ID_SIMULACAO = S.ID_SIMULACAO "
                 + "AND R.ID_PONTE = P.ID_PONTE;";
@@ -105,14 +103,15 @@ public class RankingDAO {
     }
 
     public Ranking buscar(int id) throws SQLException {
-        String query = "SELECT R.ID_RANKING, R.ID_PONTE, R.ID_SIMULCAO, "
+        String query = "SELECT R.ID_RANKING, R.ID_PONTE, R.ID_SIMULACAO, "
                 + "R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
-                + "S.ID_SIMULCAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
+                + "S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
                 + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
                 + "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
                 + "FROM RANKING R, SIMULACAO S, PONTE P "
                 + "WHERE R.ID_SIMULACAO = S.ID_SIMULACAO "
-                + "AND R.ID_PONTE = P.ID_PONTE;";
+                + "AND R.ID_PONTE = P.ID_PONTE "
+                + "AND R.ID_RANKING = '" + id + "';";
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -122,7 +121,7 @@ public class RankingDAO {
         Ranking ranking = null;
         if (rs.next()) {
             Simulacao simulacao = new Simulacao();
-            simulacao.setId(rs.getInt("ID_SIMULCAO"));
+            simulacao.setId(rs.getInt("ID_SIMULACAO"));
 //            simulacao.setData(rs.getDate("DT_DATA"));
 //            simulacao.setUsuario(rs.getObject("ID_USUARIO", Usuario));
             simulacao.setSimulacao(rs.getString("NM_SIMULACAO"));

@@ -6,6 +6,7 @@
 package com.bean;
 import com.dao.RankingDAO;
 import com.model.Ranking;
+import com.model.Simulacao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -65,5 +66,11 @@ public class RankingBean extends ComumBean {
             adicionarMensagemErro("Erro ao remover ponte da simulação: " + ex.getMessage());
         }
         redirecionar("/View/Compatilhado/Ranking/editar.jsf");
+    }
+    
+    public Simulacao nomeSimulacao() {
+        Simulacao simulacao = new Simulacao();
+        simulacao.getSimulacao();
+        return simulacao;
     }
 }
