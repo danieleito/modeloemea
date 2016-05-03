@@ -100,7 +100,7 @@ create table PONTE
 		ID_PONTE							int				not null identity(1,1),
 		CD_PONTE							varchar(10)		not null,
 		DS_IDENTIFICACAO_OBRA				varchar(60)		not null,
-		DS_VIA								varchar(6)			not null,
+		DS_VIA								varchar(6)		not null,
 		DS_UF								varchar(60)		not null,
 		DS_LOCAL_VIA						varchar(6)		not null,
 		CONSTRAINT							pk_ponte		PRIMARY KEY(ID_PONTE)
@@ -132,6 +132,7 @@ insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORM
 insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (4, 4, 4, '4');
 insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (5, 5, 5, '5');
 ---------------------------------------------------------------------------
+
 --Elemento
 create table ELEMENTO
 	(

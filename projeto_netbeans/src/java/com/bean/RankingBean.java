@@ -65,7 +65,7 @@ public class RankingBean extends ComumBean {
             Logger.getLogger(RankingBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao remover ponte da simulação: " + ex.getMessage());
         }
-        redirecionar("/View/Compatilhado/Ranking/editar.jsf");
+        redirecionar("/View/Compatilhado/Ranking/editar.jsf?id=sim.id");
     }
     
     public Simulacao nomeSimulacao() {

@@ -17,21 +17,29 @@ and open the template in the editor.
         <ui:composition template="/View/Compartilhado/template.xhtml">
             <ui:define name="content">
                 <h:form id="form">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td class="th">
-                                    <label for="codigo">Código</label>
-                                </td>
-                                <td>
-                                    <input id="codigo" name="codigo" type="text">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                    
-                    
+                    <h1>AQUI É O BUSCAR PONTE</h1>
+                    <p:dataTable var="pon" value="#{ponte.pontes}" paginator="true" rows="8">
+                        <p:column style="text-align: center" >
+                            <h:outputText value="Código" />
+                            <h:outputText value="Código de integração" />
+                            <h:outputText value="Identificação" />
+                            <h:outputText value="UF" />
+                            <h:outputText value="Via" />
+                            <h:outputText value="Local na via (km)" />
+                            <h:outputText value="Superintendência" />
+                            <h:outputText value="Unidade local" />
+                        </p:column>
+                        
+                        <p:column style="text-align: center" >
+                            <p:inputText id="codigo" value="#{login.model.usuario}" />
+                            <p:password id="codigoIntegracao" value="#{login.model.senha}" />
+                            <p:password id="identificacao" value="#{login.novaSenha}" />
+                            <p:password id="uf" />
+                            <p:inputText id="via" value="#{login.model.usuario}" />
+                            
+                        </p:column>
+                        
+                    </p:dataTable>
                     
                     
                     

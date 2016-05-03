@@ -23,27 +23,27 @@
                     <p:commandButton style="margin: 0 0 20px 20px;" value="Novo ranking" action="#{simulacao.salvar()}" />
                     
                     <p:dataTable var="sim" value="#{simulacao.simulacoes}" paginator="true" rows="8" >
-                        <p:column headerText="Simulação">
+                        <p:column headerText="Simulação" style="text-align: center" >
                             <h:outputText value="#{sim.simulacao}" />
                         </p:column>
                         
-                        <p:column headerText="Data">
+                        <p:column headerText="Data" style="width: 150px; text-align: center" >
                             <h:outputText value="#{sim.data}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:outputText>
                         </p:column>
 
-                        <p:column headerText="Inspetor">
+                        <p:column headerText="Inspetor" style="width: 150px; text-align: center" >
                             <h:outputText value="#{sim.usuario.usuario}" />
                         </p:column>
 
-                        <p:column headerText="Ação" style="width: 150px; text-align: center">
-                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="/View/Compartilhado/Ranking/visualizar.jsf?id=sim.id"  />
+                        <p:column headerText="Ação" style="width: 100px; text-align: center" >
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{simulacao.visualizar(sim.id)}"  />
 <!--                            <c:choose>
                                 <c:when test="${sim.usuario.id == simulacao.usuarioLogado.id}">-->
-                                    
+
                                     <p:commandButton icon="ui-icon-pencil" title="Ranking" action="#{simulacao.ranking(sim.id)}" />
-                                    
+
                                     <p:growl id="message" showDetail="true" />
                                     <p:commandButton icon="ui-icon-trash" title="Deletar" actionListener="#{simulacao.deletar(sim.id)}" update="message">
                                         <p:confirm header="Confirmation" message="Tem certeza que deseja excluir a simulação permanentemente?" icon="ui-icon-alert" />
@@ -52,7 +52,7 @@
                                         <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                                         <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                                     </p:confirmDialog>
-                                    
+
 <!--                                </c:when>
                             </c:choose>-->
                         </p:column>

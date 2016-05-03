@@ -91,7 +91,7 @@ public class SimulacaoDAO {
                 + "S.NM_SIMULACAO, U.NM_NOME, U.DS_USUARIO "
                 + "FROM SIMULACAO S, USUARIO U " 
                 + "WHERE S.ID_USUARIO = U.ID_USUARIO "
-                + "AND SIM.ID_SIMULACAO = " + id + ";";
+                + "AND S.ID_SIMULACAO = " + id + ";";
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();

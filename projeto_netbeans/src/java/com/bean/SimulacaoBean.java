@@ -101,10 +101,18 @@ public class SimulacaoBean extends ComumBean {
         String x = String.valueOf(id);
         int i = id;
         x = "";
+        
+        redirecionar("/View/Compartilhado/Ranking/visualizar.jsf?id=sim.id");
     }
     
     public void ranking(int id) {
-        redirecionar("/View/Compartilhado/Ranking/editar.jsf?id=sim.id");
+        Simulacao simulacao;
+        try {
+            simulacao = database.buscar(id);
+            redirecionar("/View/Compartilhado/Ranking/editar.jsf?id=sim.id");
+        } catch (SQLException ex) {
+            Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void deletar(int id) {
