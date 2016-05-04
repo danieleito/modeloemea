@@ -41,7 +41,7 @@ public class SimulacaoDAO {
             usuario.setNome(rs.getString("DS_USUARIO"));
             usuario.setUsuario(rs.getString("DS_USUARIO"));
             simulacoes.add(new Simulacao(rs.getInt("ID_SIMULACAO"), 
-                    rs.getDate("DT_DATA"), usuario, rs.getString("NM_SIMULACAO")));
+                    rs.getDate("DT_DATA"), usuario, rs.getString("NM_SIMULACAO"), ));
         }
 
         conexao.closeConnection();

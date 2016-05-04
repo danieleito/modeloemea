@@ -29,36 +29,36 @@ and open the template in the editor.
                     <p:commandButton style="margin: 0 0 20px 20px;" value="Consultar" action="/View/Compartilhado/buscarPonte.jsf" />
                     <p:commandButton style="margin: 0 0 20px 20px;" value="Ranquear" action="#{simulacao.salvar()}" />
 
-                    <p:dataTable var="ran" value="#{ranking.rankings}" paginator="true" rows="8" >
+                    <p:dataTable var="sim" value="#{simulacao.simulacoes}" paginator="true" rows="8" >
                         <p:column headerText="Código" style="text-align: center" >
-                            <h:outputText value="#{ran.ponte.codigo}" />
+                            <h:outputText value="#{sim.ponte.codigo}" />
                         </p:column>
 
                         <p:column headerText="Identificação da obra" style="text-align: center" >
-                            <h:outputText value="#{ran.ponte.identificaoObra}">
+                            <h:outputText value="#{sim.ponte.identificaoObra}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:outputText>
                         </p:column>
 
                         <p:column headerText="Via" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{ran.ponte.via}" />
+                            <h:outputText value="#{sim.ponte.via}" />
                         </p:column>
 
                         <p:column headerText="UF" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{ran.ponte.uf}" />
+                            <h:outputText value="#{sim.ponte.uf}" />
                         </p:column>
 
                         <p:column headerText="Local na via" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{ran.ponte.localVia}" />
+                            <h:outputText value="#{sim.ponte.localVia}" />
                         </p:column>
 
                         <p:column headerText="Ind. performance relativo" style="width: 200px; text-align: center" >
-                            <h:outputText value="#{ran.indicePerformanceRelativo}" />
+                            <h:outputText value="#{sim.indicePerformanceRelativo}" />
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ranking.visualizar(ran.id)}" />
-                            <p:commandButton icon="ui-icon-closethick" title="Deletar" action="#{ranking.retirar(ran.id)}" />
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{simulacao.visualizarRanking(sim.id)}" />
+                            <p:commandButton icon="ui-icon-closethick" title="Deletar" action="#{simulacao.retirar(sim.id)}" />
                         </p:column>
                     </p:dataTable>
                 </h:form>

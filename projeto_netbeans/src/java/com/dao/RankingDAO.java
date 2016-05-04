@@ -21,9 +21,11 @@ import java.util.ArrayList;
  */
 public class RankingDAO {
     public ArrayList<Ranking> buscar() throws SQLException {
-        String query = "SELECT R.ID_RANKING, R.ID_PONTE, R.ID_SIMULACAO, "+ "R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
+        String query = "SELECT R.ID_RANKING, R.ID_PONTE, R.ID_SIMULACAO, "
+                + ""+ "R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
                 + "S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
-                + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "+ "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
+                + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
+                + "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
                 + "FROM RANKING R, SIMULACAO S, PONTE P "
                 + "WHERE R.ID_SIMULACAO = S.ID_SIMULACAO "
                 + "AND R.ID_PONTE = P.ID_PONTE;";
@@ -37,14 +39,14 @@ public class RankingDAO {
 
         ArrayList<Ranking> ranking = new ArrayList<>();
 
-        Simulacao simulacao;
+//        Simulacao simulacao;
         Ponte ponte;
         while (rs.next()) {
-            simulacao = new Simulacao();
-            simulacao.setId(rs.getInt("ID_SIMULACAO"));
-            simulacao.setData(rs.getDate("DT_DATA"));
+//            simulacao = new Simulacao();
+//            simulacao.setId(rs.getInt("ID_SIMULACAO"));
+//            simulacao.setData(rs.getDate("DT_DATA"));
 //            simulacao.setUsuario(rs.getObject("ID_USUARIO", Usuario));
-            simulacao.setSimulacao(rs.getString("NM_SIMULACAO"));
+//            simulacao.setNomeSimulacao(rs.getString("NM_SIMULACAO"));
             ponte = new Ponte();
             ponte.setId(rs.getInt("ID_PONTE"));
             ponte.setCodigo(rs.getString("CD_PONTE"));;
@@ -53,8 +55,7 @@ public class RankingDAO {
             ponte.setUf(rs.getString("DS_UF"));
             ponte.setLocalVia(rs.getString("DS_LOCAL_VIA"));
 
-            ranking.add(new Ranking(rs.getInt("ID_RANKING"), ponte, simulacao, 
-                    rs.getInt("CS_CLASSIFICACAO"), rs.getString("DS_INDICE_PERFORMANCE_RELATIVO")));
+            ranking.add(new Ranking(rs.getInt("ID_RANKING"), ponte, rs.getInt("CS_CLASSIFICACAO"), rs.getString("DS_INDICE_PERFORMANCE_RELATIVO")));
         }
 
         conexao.closeConnection();
@@ -82,16 +83,14 @@ public class RankingDAO {
         PreparedStatement stmt;
         stmt = conn.prepareStatement(query);
         stmt.setInt(1, ranking.getPonte().getId());
-        stmt.setInt(2, ranking.getSimulacao().getId());
-        stmt.setInt(3, ranking.getClassificacao());
-        stmt.setString(4, ranking.getIndicePerformanceRelativo());
+        stmt.setInt(2, ranking.getClassificacao());
+        stmt.setString(3, ranking.getIndicePerformanceRelativo());
         stmt.execute();
     }
     
     public void editar(Ranking ranking) throws SQLException {
         String query = "update RANKING ";
         query += "set ID_PONTE = '" + ranking.getPonte()+ "', ";
-        query += "ID_SIMULACAO = '" + ranking.getSimulacao()+ "', ";
         query += "CS_CLASSIFICACAO = '" + ranking.getClassificacao()+ "', ";
         query += "DS_INDICE_PERFORMANCE_RELATIVO = '" + ranking.getIndicePerformanceRelativo() + "'";
 
@@ -120,11 +119,11 @@ public class RankingDAO {
         ResultSet rs = stmt.executeQuery(query);
         Ranking ranking = null;
         if (rs.next()) {
-            Simulacao simulacao = new Simulacao();
-            simulacao.setId(rs.getInt("ID_SIMULACAO"));
+//            Simulacao simulacao = new Simulacao();
+//            simulacao.setId(rs.getInt("ID_SIMULACAO"));
 //            simulacao.setData(rs.getDate("DT_DATA"));
 //            simulacao.setUsuario(rs.getObject("ID_USUARIO", Usuario));
-            simulacao.setSimulacao(rs.getString("NM_SIMULACAO"));
+//            simulacao.setNomeSimulacao(rs.getString("NM_SIMULACAO"));
             Ponte ponte = new Ponte();
             ponte.setId(rs.getInt("ID_PONTE"));
             ponte.setCodigo(rs.getString("CD_PONTE"));;
@@ -133,7 +132,7 @@ public class RankingDAO {
             ponte.setUf(rs.getString("DS_UF"));
             ponte.setLocalVia(rs.getString("DS_LOCAL_VIA"));
              
-            ranking = new Ranking(ponte, simulacao, rs.getInt("CS_CLASSIFICACAO"), 
+            ranking = new Ranking(ponte, rs.getInt("CS_CLASSIFICACAO"), 
                     rs.getString("DS_INDICE_PERFORMANCE_RELATIVO"));           
         }
 

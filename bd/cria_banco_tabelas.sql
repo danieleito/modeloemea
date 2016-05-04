@@ -81,19 +81,6 @@ insert into EQUIPE (DT_DATA, ID_ENGENHEIRO_UM, ID_ENGENHEIRO_DOIS, ID_AUXILIAR_U
 insert into EQUIPE (DT_DATA, ID_ENGENHEIRO_UM, ID_ENGENHEIRO_DOIS, ID_AUXILIAR_UM, ID_AUXILIAR_DOIS, ID_AUXILIAR_TRES, ID_AUXILIAR_QUATRO, ID_AUXILIAR_CINCO) values ('05/02/2016', 2, 2, 2, 2, 2, 2, 2);
 
 ---------------------------------------------------------------------------
---Simulação
-create table SIMULACAO
-	(
-		ID_SIMULACAO	int						not null identity(1,1),
-		DT_DATA			date					null,
-		ID_USUARIO		int						not null,
-		NM_SIMULACAO	varchar(20)				not null,
-		CONSTRAINT		pk_simulacao			PRIMARY KEY(ID_SIMULACAO),
-		CONSTRAINT		fk_simulacao_usuario	FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO(ID_USUARIO)
-	);
-
-insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) values ('28/04/2016', 1, 'simulação 10');
----------------------------------------------------------------------------
 --Ponte
 create table PONTE
 	(
@@ -112,7 +99,24 @@ insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA)
 insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA) values ('4444444444', 'Ponte 444', 'BR-277', 'PARANÁ', 'KM-840');
 insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA) values ('5555555555', 'Ponte 555', 'BR-376', 'PARANÁ', 'KM-233');
 insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA) values ('6666666666', 'Ponte 666', 'BR-376', 'PARANÁ', 'KM-999');
+
 ---------------------------------------------------------------------------
+--Simulação
+create table SIMULACAO
+	(
+		ID_SIMULACAO	int						not null identity(1,1),
+		DT_DATA			date					not null,
+		ID_USUARIO		int						not null,
+		NM_SIMULACAO	varchar(20)				not null,
+		--ID_RANKING		int						not null,
+		CONSTRAINT		pk_simulacao			PRIMARY KEY(ID_SIMULACAO),
+		CONSTRAINT		fk_simulacao_usuario	FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO(ID_USUARIO)
+		--CONSTRAINT		fk_simulacao_ranking	FOREIGN KEY (ID_RANKING) REFERENCES RANKING(ID_RANKING)
+	);
+
+insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) values ('28/04/2016', 1, 'simulação 10');
+---------------------------------------------------------------------------
+
 --Ranking
 create table RANKING
 	(
@@ -131,6 +135,7 @@ insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORM
 insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (3, 3, 3, '3');
 insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (4, 4, 4, '4');
 insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (5, 5, 5, '5');
+
 ---------------------------------------------------------------------------
 
 --Elemento

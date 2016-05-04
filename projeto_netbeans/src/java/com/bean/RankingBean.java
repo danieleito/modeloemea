@@ -70,7 +70,7 @@ public class RankingBean extends ComumBean {
     
     public Simulacao nomeSimulacao() {
         Simulacao simulacao = new Simulacao();
-        simulacao.getSimulacao();
+        simulacao.getNomeSimulacao();
         return simulacao;
     }
 }

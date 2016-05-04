@@ -5,6 +5,7 @@
  */
 package com.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -16,34 +17,25 @@ public class Simulacao {
     private int id;
     private Date data;
     private Usuario usuario;
-    private String simulacao;
+    private String nomeSimulacao;
+    private ArrayList<Ranking> rankings;
 
     public Simulacao() {
     }
 
-     //apagar depois que o tipo Date estiver correto
-    public Simulacao(Usuario usuario, String simulacao) {
-        this.usuario = usuario;
-        this.simulacao = simulacao;
-    }
-    //apagar depois que o tipo Date estiver correto
-    public Simulacao(int id, Usuario usuario, String simulacao) {
-        this.id = id;
-        this.usuario = usuario;
-        this.simulacao = simulacao;
-    }
-
-    public Simulacao(int id, Date data, Usuario usuario, String simulacao) {
+    public Simulacao(int id, Date data, Usuario usuario, String nomeSimulacao, ArrayList<Ranking> rankings) {
         this.id = id;
         this.data = data;
         this.usuario = usuario;
-        this.simulacao = simulacao;
+        this.nomeSimulacao = nomeSimulacao;
+        this.rankings = rankings;
     }
 
-    public Simulacao(Date data, Usuario usuario, String simulacao) {
+    public Simulacao(Date data, Usuario usuario, String nomeSimulacao, ArrayList<Ranking> rankings) {
         this.data = data;
         this.usuario = usuario;
-        this.simulacao = simulacao;
+        this.nomeSimulacao = nomeSimulacao;
+        this.rankings = rankings;
     }
 
     public int getId() {
@@ -70,11 +62,19 @@ public class Simulacao {
         this.usuario = usuario;
     }
 
-    public String getSimulacao() {
-        return simulacao;
+    public String getNomeSimulacao() {
+        return nomeSimulacao;
     }
 
-    public void setSimulacao(String simulacao) {
-        this.simulacao = simulacao;
+    public void setNomeSimulacao(String nomeSimulacao) {
+        this.nomeSimulacao = nomeSimulacao;
+    }
+
+    public ArrayList<Ranking> getRankings() {
+        return rankings;
+    }
+
+    public void setRankings(ArrayList<Ranking> rankings) {
+        this.rankings = rankings;
     }
 }

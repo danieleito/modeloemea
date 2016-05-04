@@ -54,6 +54,22 @@ public class SimulacaoBean extends ComumBean {
     public void setRankings(ArrayList<Ranking> rankings) {
         this.rankings = rankings;
     }
+
+    public SimulacaoDAO getDatabase() {
+        return database;
+    }
+
+    public void setDatabase(SimulacaoDAO database) {
+        this.database = database;
+    }
+
+    public RankingDAO getDatabaseR() {
+        return databaseR;
+    }
+
+    public void setDatabaseR(RankingDAO databaseR) {
+        this.databaseR = databaseR;
+    }
     
     public SimulacaoBean() {
         novaSimulacao = new Simulacao();
@@ -64,7 +80,14 @@ public class SimulacaoBean extends ComumBean {
         databaseR = new RankingDAO();
         try {
             simulacoes = database.buscar();
-//            rankings = databaseR.buscar();
+        } catch (SQLException ex) {
+            Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
+            simulacoes = new ArrayList<>();
+            adicionarMensagemErro("Erro ao carregar simulações.");
+        }
+        
+        try {
+            rankings = databaseR.buscar();
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             simulacoes = new ArrayList<>();
@@ -126,5 +149,27 @@ public class SimulacaoBean extends ComumBean {
             adicionarMensagemErro("Erro ao remover simulação: " + ex.getMessage());
         }
         redirecionar("/View/Compartilhado/simulacao.jsf");
+    }
+    public void visualizarRanking(int id){
+        
+    }
+    
+    //retira ponte da simulação
+    public void retirar(int id) {
+        try {
+            database.excluir(id);
+            adicionarMensagemInfo("Ponte removida da simulação com sucesso.");
+            rankings = databaseR.buscar();
+        } catch (SQLException ex) {
+            Logger.getLogger(RankingBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao remover ponte da simulação: " + ex.getMessage());
+        }
+        redirecionar("/View/Compatilhado/Ranking/editar.jsf?id=sim.id");
+    }
+    
+    public Simulacao nomeSimulacao() {
+        Simulacao simulacao = new Simulacao();
+        simulacao.getSimulacao();
+        return simulacao;
     }
 }

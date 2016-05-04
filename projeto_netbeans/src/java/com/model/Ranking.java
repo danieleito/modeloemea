@@ -12,24 +12,22 @@ package com.model;
 public class Ranking {
     private int id;
     private Ponte ponte;
-    private Simulacao simulacao;
+    //private Simulacao simulacao;
     private int classificacao;
     private String indicePerformanceRelativo;
 
     public Ranking() {
     }
 
-    public Ranking(int id, Ponte ponte, Simulacao simulacao, int classificacao, String indicePerformanceRelativo) {
+    public Ranking(int id, Ponte ponte, int classificacao, String indicePerformanceRelativo) {
         this.id = id;
         this.ponte = ponte;
-        this.simulacao = simulacao;
         this.classificacao = classificacao;
         this.indicePerformanceRelativo = indicePerformanceRelativo;
     }
 
-    public Ranking(Ponte ponte, Simulacao simulacao, int classificacao, String indicePerformanceRelativo) {
+    public Ranking(Ponte ponte, int classificacao, String indicePerformanceRelativo) {
         this.ponte = ponte;
-        this.simulacao = simulacao;
         this.classificacao = classificacao;
         this.indicePerformanceRelativo = indicePerformanceRelativo;
     }
@@ -38,36 +36,28 @@ public class Ranking {
         return id;
     }
 
-    public Ponte getPonte() {
-        return ponte;
-    }
-
-    public Simulacao getSimulacao() {
-        return simulacao;
-    }
-
-    public int getClassificacao() {
-        return classificacao;
-    }
-
-    public String getIndicePerformanceRelativo() {
-        return indicePerformanceRelativo;
-    }
-
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Ponte getPonte() {
+        return ponte;
     }
 
     public void setPonte(Ponte ponte) {
         this.ponte = ponte;
     }
 
-    public void setSimulacao(Simulacao simulacao) {
-        this.simulacao = simulacao;
+    public int getClassificacao() {
+        return classificacao;
     }
 
     public void setClassificacao(int classificacao) {
         this.classificacao = classificacao;
+    }
+
+    public String getIndicePerformanceRelativo() {
+        return indicePerformanceRelativo;
     }
 
     public void setIndicePerformanceRelativo(String indicePerformanceRelativo) {
