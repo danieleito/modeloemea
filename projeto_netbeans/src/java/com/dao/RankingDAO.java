@@ -49,13 +49,14 @@ public class RankingDAO {
 //            simulacao.setNomeSimulacao(rs.getString("NM_SIMULACAO"));
             ponte = new Ponte();
             ponte.setId(rs.getInt("ID_PONTE"));
-            ponte.setCodigo(rs.getString("CD_PONTE"));;
+            ponte.setCodigo(rs.getString("CD_PONTE"));
             ponte.setIdentificaoObra(rs.getString("DS_IDENTIFICACAO_OBRA"));
             ponte.setVia(rs.getString("DS_VIA"));
             ponte.setUf(rs.getString("DS_UF"));
             ponte.setLocalVia(rs.getString("DS_LOCAL_VIA"));
 
-            ranking.add(new Ranking(rs.getInt("ID_RANKING"), ponte, rs.getInt("CS_CLASSIFICACAO"), rs.getString("DS_INDICE_PERFORMANCE_RELATIVO")));
+            ranking.add(new Ranking(rs.getInt("ID_RANKING"), ponte, rs.getInt("CS_CLASSIFICACAO"), 
+                    rs.getString("DS_INDICE_PERFORMANCE_RELATIVO")));
         }
 
         conexao.closeConnection();

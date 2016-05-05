@@ -97,13 +97,13 @@ public class SimulacaoBean extends ComumBean {
     
     public void salvar() {
         try {
-            if (novaSimulacao.getSimulacao() == null || novaSimulacao.getSimulacao().isEmpty()) {
+            if (novaSimulacao.getNomeSimulacao() == null || novaSimulacao.getNomeSimulacao().isEmpty()) {
                 adicionarMensagemErro("Campo 'Nome da simulação' é obrigatório.");
                 return;
             } 
             //verificar se ja existe uma simulacao com esse nome
             for (int i = 0; i < simulacoes.size(); i++) {
-                if (novaSimulacao.getSimulacao().equals(simulacoes.get(i).getSimulacao())) {
+                if (novaSimulacao.getNomeSimulacao().equals(simulacoes.get(i).getNomeSimulacao())) {
                     adicionarMensagemErro("Nome de simulação já existe.");
                     return;
                 }
@@ -169,7 +169,7 @@ public class SimulacaoBean extends ComumBean {
     
     public Simulacao nomeSimulacao() {
         Simulacao simulacao = new Simulacao();
-        simulacao.getSimulacao();
+        simulacao.getNomeSimulacao();
         return simulacao;
     }
 }
