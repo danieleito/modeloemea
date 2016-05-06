@@ -83,6 +83,7 @@ public class SimulacaoBean extends ComumBean {
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             simulacoes = new ArrayList<>();
+            System.out.println(ex.getMessage());
             adicionarMensagemErro("Erro ao carregar simulações.");
         }
         
@@ -131,7 +132,9 @@ public class SimulacaoBean extends ComumBean {
     public void ranking(int id) {
         Simulacao simulacao;
         try {
-            simulacao = database.buscar(id);
+            //depois é bom mudar o nome disso, mas a ideia é essa:
+            novaSimulacao = database.buscar(id);
+            //tem que usar essa simulação que buscou, e mostrar a lista de rankings
             redirecionar("/View/Compartilhado/Ranking/editar.jsf?id=sim.id");
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -151,7 +154,7 @@ public class SimulacaoBean extends ComumBean {
         redirecionar("/View/Compartilhado/simulacao.jsf");
     }
     public void visualizarRanking(int id){
-        
+        redirecionar("/View/Compartilhado/exibir.jsf?id=sim.id");
     }
     
     //retira ponte da simulação

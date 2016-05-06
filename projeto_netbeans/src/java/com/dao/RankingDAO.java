@@ -140,4 +140,5 @@ public class RankingDAO {
         conexao.closeConnection();
         return ranking;
     }
+
 }

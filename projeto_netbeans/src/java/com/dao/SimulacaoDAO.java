@@ -21,43 +21,6 @@ import java.util.ArrayList;
  * @author Daniele Harumi Ito
  */
 public class SimulacaoDAO {
-    public ArrayList<Simulacao> buscar() throws SQLException {
-        String query = "SELECT S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, "
-                + "S.NM_SIMULACAO, "
-                + "U.ID_USUARIO, U.NM_NOME, U.DS_USUARIO, "
-                + "R.ID_RANKING, R.ID_PONTE, R.ID_SIMULACAO, R.CS_CLASSIFICACAO, "
-                + "R.DS_INDICE_PERFORMANCE_RELATIVO, "
-                + "FROM SIMULACAO S, USUARIO U, RANKING R, PONTE P " 
-                + "WHERE S.ID_USUARIO = U.ID_USUARIO "
-                + "AND S.ID_SIMULACAO = R.ID_SIMULACAO;";
-
-        Conexao conexao = new Conexao();
-        Connection conn = conexao.getConnection();
-
-        Statement stmt;
-        stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(query);
-
-        ArrayList<Simulacao> simulacoes = new ArrayList<>();
-
-        while (rs.next()) {
-            Usuario usuario = new Usuario();
-            usuario.setId(rs.getInt("ID_USUARIO"));
-            usuario.setNome(rs.getString("DS_USUARIO"));
-            usuario.setUsuario(rs.getString("DS_USUARIO"));
-            
-            ArrayList<Ranking> rankings = buscarRankings(rs.getInt("ID_RANKING"));
-            Simulacao simulacao = new Simulacao(rs.getInt("ID_SIMULACAO"), 
-                    rs.getDate("DT_DATA"), usuario, rs.getString("NM_SIMULACAO"), rankings);
-            simulacoes.add(simulacao);
-//            simulacoes.add(new Simulacao(rs.getInt("ID_SIMULACAO"), 
-//                    rs.getDate("DT_DATA"), usuario, rs.getString("NM_SIMULACAO"), rankings));
-        }
-
-        conexao.closeConnection();
-        return simulacoes;
-    }
-
     public void excluir(int id) throws SQLException {
         String query = "delete from SIMULACAO where ID_SIMULACAO = " + id;
 
@@ -96,18 +59,45 @@ public class SimulacaoDAO {
         stmt.executeUpdate(query);
     }
 
+    public ArrayList<Simulacao> buscar() throws SQLException {
+        String query = "SELECT S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, "
+                + "S.NM_SIMULACAO, "
+                + "U.ID_USUARIO, U.NM_NOME, U.DS_USUARIO "
+                + "FROM SIMULACAO S, USUARIO U " 
+                + "WHERE S.ID_USUARIO = U.ID_USUARIO;";
+
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        ArrayList<Simulacao> simulacoes = new ArrayList<>();
+
+        while (rs.next()) {
+            Usuario usuario = new Usuario();
+            usuario.setId(rs.getInt("ID_USUARIO"));
+            usuario.setNome(rs.getString("NM_NOME"));
+            usuario.setUsuario(rs.getString("DS_USUARIO"));
+            
+            ArrayList<Ranking> rankings = buscarRankings(rs.getInt("ID_SIMULACAO"));
+            Simulacao simulacao = new Simulacao(rs.getInt("ID_SIMULACAO"), 
+                    rs.getDate("DT_DATA"), usuario, rs.getString("NM_SIMULACAO"), rankings);
+            simulacoes.add(simulacao);
+//            simulacoes.add(new Simulacao(rs.getInt("ID_SIMULACAO"), 
+//                    rs.getDate("DT_DATA"), usuario, rs.getString("NM_SIMULACAO"), rankings));
+        }
+
+        conexao.closeConnection();
+        return simulacoes;
+    }
     public Simulacao buscar(int id) throws SQLException {
         String query = "SELECT S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, "
                 + "S.NM_SIMULACAO, "
-                + "U.ID_USUARIO, U.NM_NOME, U.DS_USUARIO, "
-                + "R.ID_RANKING, R.ID_PONTE, R.ID_SIMULACAO, R.CS_CLASSIFICACAO, "
-                + "R.DS_INDICE_PERFORMANCE_RELATIVO, "
-                + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, P.DS_VIA, "
-                + "P.DS_UF, P.DS_LOCAL_VIA "
-                + "FROM SIMULACAO S, USUARIO U, RANKING R, PONTE P " 
+                + "U.ID_USUARIO, U.NM_NOME, U.DS_USUARIO "
+                + "FROM SIMULACAO S, USUARIO U " 
                 + "WHERE S.ID_USUARIO = U.ID_USUARIO "
-                + "AND S.ID_SIMULACAO = R.ID_SIMULACAO "
-                + "AND R.ID_PONTE = P.ID_PONTE "
                 + "AND S.ID_SIMULACAO = " + id + ";";
 
         Conexao conexao = new Conexao();
@@ -119,11 +109,12 @@ public class SimulacaoDAO {
         if (rs.next()) {
             Usuario usuario = new Usuario();
             usuario.setId(rs.getInt("ID_USUARIO"));
-            usuario.setNome(rs.getString("DS_USUARIO"));
+            usuario.setNome(rs.getString("NM_NOME"));
             usuario.setUsuario(rs.getString("DS_USUARIO"));
             
-            ArrayList<Ranking> rankings = buscarRankings(rs.getInt("ID_RANKING"));
-            simulacao = new Simulacao(rs.getInt("ID_SIMULACAO"), rs.getDate("DT_DATA"), usuario, rs.getString("NM_SIMULACAO"), rankings);
+            ArrayList<Ranking> rankings = buscarRankings(rs.getInt("ID_SIMULACAO"));
+            simulacao = new Simulacao(rs.getInt("ID_SIMULACAO"), rs.getDate("DT_DATA"), 
+                    usuario, rs.getString("NM_SIMULACAO"), rankings);
         }
 
         conexao.closeConnection();
@@ -134,11 +125,11 @@ public class SimulacaoDAO {
         String query = "SELECT R.ID_RANKING, R.ID_PONTE, R.ID_SIMULACAO, "
                 + "R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
                 + "S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
-                + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
-                + "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
+                + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, P.DS_VIA, "
+                + "P.DS_UF, P.DS_LOCAL_VIA "
                 + "FROM RANKING R, SIMULACAO S, PONTE P "
                 + "WHERE R.ID_SIMULACAO = S.ID_SIMULACAO "
-                + "AND R.ID_PONTE = P.ID_PONTE "
+                + "AND P.ID_PONTE = R.ID_PONTE "
                 + "AND S.ID_SIMULACAO = " + idSimulacao + ";";
 
         Conexao conexao = new Conexao();
@@ -154,7 +145,7 @@ public class SimulacaoDAO {
         while (rs.next()) {
             ponte = new Ponte();
             ponte.setId(rs.getInt("ID_PONTE"));
-            ponte.setCodigo(rs.getString("CD_PONTE"));;
+            ponte.setCodigo(rs.getString("CD_PONTE"));
             ponte.setIdentificaoObra(rs.getString("DS_IDENTIFICACAO_OBRA"));
             ponte.setVia(rs.getString("DS_VIA"));
             ponte.setUf(rs.getString("DS_UF"));

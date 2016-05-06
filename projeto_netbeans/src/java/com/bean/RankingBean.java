@@ -73,4 +73,5 @@ public class RankingBean extends ComumBean {
         simulacao.getNomeSimulacao();
         return simulacao;
     }
+    
 }
