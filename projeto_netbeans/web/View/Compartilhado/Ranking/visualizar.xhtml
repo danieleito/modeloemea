@@ -25,33 +25,32 @@ and open the template in the editor.
                     </p:breadCrumb>
                     <h:outputLabel value="" class="col-md-10" />
                     
-                    <p:dataTable var="ran" value="#{ranking.rankings}" paginator="true" rows="8" >
-                        <p:column headerText="Código">
-                            <h:outputText value="#{ran.ponte.codigo}" />
+                    <p:dataTable var="r" value="#{simulacao.novaSimulacao.rankings}" paginator="true" rows="8" >
+                        <p:column headerText="Código" style="text-align: center" >
+                            <h:outputText value="#{r.ponte.codigo}" />
                         </p:column>
-                        
-                        <p:column headerText="Identificação da obra">
-                            <h:outputText value="#{ran.ponte.identificaoObra}">
+
+                        <p:column headerText="Identificação da obra" style="text-align: center" >
+                            <h:outputText value="#{r.ponte.identificaoObra}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:outputText>
                         </p:column>
 
-                        <p:column headerText="Via">
-                            <h:outputText value="#{ran.ponte.via}" />
-                        </p:column>
-                        
-                        <p:column headerText="UF">
-                            <h:outputText value="#{ran.ponte.uf}" />
-                        </p:column>
-                        
-                        <p:column headerText="Local na via">
-                            <h:outputText value="#{ran.ponte.localVia}" />
-                        </p:column>
-                        
-                        <p:column headerText="Ind. performance relativo">
-                            <h:outputText value="#{ran.indicePerformanceRelativo}" />
+                        <p:column headerText="Via" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{r.ponte.via}" />
                         </p:column>
 
+                        <p:column headerText="UF" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{r.ponte.uf}" />
+                        </p:column>
+
+                        <p:column headerText="Local na via" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{r.ponte.localVia}" />
+                        </p:column>
+
+                        <p:column headerText="Ind. performance relativo" style="width: 200px; text-align: center" >
+                            <h:outputText value="#{r.indicePerformanceRelativo}" />
+                        </p:column>
                     </p:dataTable>
                 </h:form>
             </ui:define>

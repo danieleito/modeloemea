@@ -164,10 +164,10 @@ public class SimulacaoBean extends ComumBean {
             adicionarMensagemInfo("Ponte removida da simulação com sucesso.");
             rankings = databaseR.buscar();
         } catch (SQLException ex) {
-            Logger.getLogger(RankingBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao remover ponte da simulação: " + ex.getMessage());
         }
-        redirecionar("/View/Compatilhado/Ranking/editar.jsf?id=sim.id");
+        redirecionar("/View/Compatilhado/Ranking/editar.jsf");
     }
     
     public Simulacao nomeSimulacao() {
