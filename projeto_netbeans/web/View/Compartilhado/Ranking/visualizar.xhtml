@@ -24,7 +24,7 @@ and open the template in the editor.
                         <p:menuitem value="Ranking" url="/View/Compartilhado/Ranking/visualizar.jsf" />
                     </p:breadCrumb>
                     <h:outputLabel value="" class="col-md-10" />
-                    
+
                     <p:dataTable var="r" value="#{simulacao.novaSimulacao.rankings}" paginator="true" rows="8" >
                         <p:column headerText="Código" style="text-align: center" >
                             <h:outputText value="#{r.ponte.codigo}" />
@@ -51,6 +51,7 @@ and open the template in the editor.
                         <p:column headerText="Ind. performance relativo" style="width: 200px; text-align: center" >
                             <h:outputText value="#{r.indicePerformanceRelativo}" />
                         </p:column>
+
                     </p:dataTable>
                 </h:form>
             </ui:define>

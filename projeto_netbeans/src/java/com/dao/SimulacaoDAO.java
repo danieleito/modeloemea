@@ -34,7 +34,7 @@ public class SimulacaoDAO {
 
     public void inserir(Simulacao simulacao) throws SQLException {
         String query = "insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) "
-                        + "values(?, ?, ?); ";
+                        + "values (?, ?, ?); ";
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();

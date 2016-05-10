@@ -29,18 +29,94 @@ and open the template in the editor.
                     <p:tabView>
                         <p:tab title="Dados Cadastrais">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <h:outputText
-                                    value="The story begins as Don Vito Corleone..." />
+                                
                             </h:panelGrid>
                         </p:tab>
                         <p:tab title="Arquivos anexos">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <h:outputText value="Francis Ford Coppola's legendary..." />
+                                <p:dataTable var="i" value="#{inspecao.inspecoes}" paginator="true" rows="8" >
+                                    <p:column headerText="Arquivo" style="text-align: center" >
+                                        <h:outputText value="#{i.data}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+
+                                    <p:column headerText="Tipo arquivo" style="text-align: center" >
+                                        <h:outputText value="#{i.usuario.usuario}" />
+                                    </p:column>
+
+                                    <p:column headerText="Número" style="width: 150px; text-align: center" >
+                                        <h:outputText value="#{i.condicaoEstabilidade}" />
+                                    </p:column>
+
+                                    <p:column headerText="Descrição" style="width: 150px; text-align: center" >
+                                        <h:outputText value="#{i.condicaoConservacao}" />
+                                    </p:column>
+                                    
+                                    <p:column headerText="Registro" style="text-align: center" >
+                                        <h:outputText value="#{i.usuario.usuario}" />
+                                    </p:column>
+
+                                    <p:column headerText="Data anexação" style="width: 150px; text-align: center" >
+                                        <h:outputText value="#{i.data}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
+
+                                    <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
+                                        <h:outputText value="#{i.condicaoConservacao}" />
+                                    </p:column>
+
+                                    <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                                        <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{inspecao.visualizar(i.id)}" />
+                                    </p:column>
+                                </p:dataTable>
                             </h:panelGrid>
                         </p:tab>
+                        
+                        
+                        
                         <p:tab title="Inspeções">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <h:outputText value="After a break of more than 15 years..." />
+                                <p:tabView>
+                                    <p:tab title="Resumo">
+                                        <h:panelGrid columns="2" cellpadding="10">
+                                            <p:dataTable var="i" value="#{inspecao.inspecoes}" paginator="true" rows="8" >
+                                                <p:column headerText="Data" style="text-align: center" >
+                                                    <h:outputText value="#{i.data}">
+                                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                    </h:outputText>
+                                                </p:column>
+
+                                                <p:column headerText="Inspetor" style="text-align: center" >
+                                                    <h:outputText value="#{i.usuario.usuario}" />
+                                                </p:column>
+
+                                                <p:column headerText="Cond. de estabilidade" style="width: 150px; text-align: center" >
+                                                    <h:outputText value="#{i.condicaoEstabilidade}" />
+                                                </p:column>
+
+                                                <p:column headerText="Cond. conservação" style="width: 150px; text-align: center" >
+                                                    <h:outputText value="#{i.condicaoConservacao}" />
+                                                </p:column>
+
+                                                <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                                                    <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{inspecao.visualizar(i.id)}" />
+                                                </p:column>
+                                            </p:dataTable>
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Modelo EMEA">
+                                        <h:panelGrid columns="2" cellpadding="10">
+                                            
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Arquivos anexos">
+                                        <h:panelGrid columns="2" cellpadding="10">
+                                            
+                                        </h:panelGrid>
+                                    </p:tab>
+                                </p:tabView>                                
                             </h:panelGrid>
                         </p:tab>
                     </p:tabView>

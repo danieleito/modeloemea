@@ -92,7 +92,7 @@ public class SimulacaoBean extends ComumBean {
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             simulacoes = new ArrayList<>();
-            adicionarMensagemErro("Erro ao carregar simulações.");
+            adicionarMensagemErro("Erro ao carregar Ranking.");
         }
     }
     
@@ -113,6 +113,7 @@ public class SimulacaoBean extends ComumBean {
                 database.inserir(novaSimulacao);
                 simulacoes = database.buscar();
                 adicionarMensagemInfo("Simulação cadastrada com sucesso.");
+                novaSimulacao.setNomeSimulacao("");//
 //            }
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -125,7 +126,7 @@ public class SimulacaoBean extends ComumBean {
         String x = String.valueOf(id);
         int i = id;
         x = "";
-        
+        novaSimulacao.setNomeSimulacao("");//
         redirecionar("/View/Compartilhado/Ranking/visualizar.jsf?id=sim.id");
     }
     
@@ -135,6 +136,7 @@ public class SimulacaoBean extends ComumBean {
             //depois é bom mudar o nome disso, mas a ideia é essa:
             novaSimulacao = database.buscar(id);
             //tem que usar essa simulação que buscou, e mostrar a lista de rankings
+            novaSimulacao.setNomeSimulacao("");//
             redirecionar("/View/Compartilhado/Ranking/editar.jsf?id=sim.id");
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -143,7 +145,6 @@ public class SimulacaoBean extends ComumBean {
     
     public void deletar(int id) {
         try {
-            
             database.excluir(id);
             adicionarMensagemInfo("Simulação removida com sucesso.");
             simulacoes = database.buscar();
@@ -153,23 +154,24 @@ public class SimulacaoBean extends ComumBean {
         }
         redirecionar("/View/Compartilhado/simulacao.jsf");
     }
+
     public void visualizarRanking(int id){
         redirecionar("/View/Compartilhado/exibir.jsf?id=sim.id");
     }
-    
+
     //retira ponte da simulação
     public void retirar(int id) {
         try {
             database.excluir(id);
             adicionarMensagemInfo("Ponte removida da simulação com sucesso.");
-            rankings = databaseR.buscar();
+            simulacoes = database.buscar();
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao remover ponte da simulação: " + ex.getMessage());
         }
-        redirecionar("/View/Compatilhado/Ranking/editar.jsf");
+        redirecionar("/View/Compartilhado/Ranking/editar.jsf");
     }
-    
+
     public Simulacao nomeSimulacao() {
         Simulacao simulacao = new Simulacao();
         simulacao.getNomeSimulacao();
