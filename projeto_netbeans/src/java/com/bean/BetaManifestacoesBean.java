@@ -58,5 +58,4 @@ public class BetaManifestacoesBean extends ComumBean {
             }
         }
     }
-    
 }
