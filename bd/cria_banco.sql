@@ -137,7 +137,7 @@ insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO
 --Arquivos anexos cadastro
 create table ARQUIVO_ANEXO_CADASTRO
 	(
-		ARQUIVO_ANEXO_CADASTRO		int				not null identity(1,1),
+		ID_ARQUIVO_ANEXO_CADASTRO		int				not null identity(1,1),
 		DS_ARQUIVO				varchar(20)		not null,
 		DS_TIPO_ARQUIVO			varchar(10)		not null,
 		NR_NUMERO				varchar(3)		not null,
@@ -145,7 +145,7 @@ create table ARQUIVO_ANEXO_CADASTRO
 		DS_REGISTRO				varchar(10)		not null,
 		DT_DATA_ANEXACAO		date			not null,
 		--DS_MINIATURA			
-		CONSTRAINT				pk_arquivoanexocadastro	PRIMARY KEY(ARQUIVO_ANEXO_CADASTRO)
+		CONSTRAINT				pk_arquivoanexocadastro	PRIMARY KEY(ID_ARQUIVO_ANEXO_CADASTRO)
 	);
 GO
 insert into ARQUIVO_ANEXO_CADASTRO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values ('01.jpg', 'Foto', '01', 'Vista geral', 'OAE', '10/05/2016');
@@ -156,7 +156,7 @@ insert into ARQUIVO_ANEXO_CADASTRO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_D
 --Arquivos anexos inspecao
 create table ARQUIVO_ANEXO_INSPECAO
 	(
-		ARQUIVO_ANEXO_INSPECAO		int				not null identity(1,1),
+		ID_ARQUIVO_ANEXO_INSPECAO		int				not null identity(1,1),
 		DS_ARQUIVO				varchar(20)		not null,
 		DS_TIPO_ARQUIVO			varchar(10)		not null,
 		NR_NUMERO				varchar(3)		not null,
@@ -164,9 +164,11 @@ create table ARQUIVO_ANEXO_INSPECAO
 		DS_REGISTRO				varchar(10)		not null,
 		DT_DATA_ANEXACAO		date			not null,
 		--DS_MINIATURA			
-		CONSTRAINT				pk_arquivoanexoinspecao	PRIMARY KEY(ARQUIVO_ANEXO_INSPECAO)
+		CONSTRAINT				pk_arquivoanexoinspecao	PRIMARY KEY(ID_ARQUIVO_ANEXO_INSPECAO)
 	);
 GO
 insert into ARQUIVO_ANEXO_INSPECAO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values ('01.jpg', 'Foto', '01', 'Vista geral', 'INS', '13/05/2016');
 insert into ARQUIVO_ANEXO_INSPECAO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values ('02.jpg', 'Foto', '02', 'Pista rolamento', 'INS', '14/05/2016');
 insert into ARQUIVO_ANEXO_INSPECAO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values ('03.jpg', 'Foto', '03', 'Vista geral', 'INS', '15/05/2016');
+---------------------------------------------------------------------------
+
