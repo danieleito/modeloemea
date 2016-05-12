@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -18,7 +17,6 @@ import javax.faces.context.FacesContext;
  *
  * @author Daniele Harumi Ito
  */
-@ManagedBean
 public abstract class ComumBean {
     
     public static Usuario usuarioLogado;

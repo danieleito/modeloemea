@@ -41,6 +41,7 @@ public class Usuario implements Serializable {
      * Constructor padrão.
      */
     public Usuario() {
+        tipoUsuario = new TipoUsuario();
     }
 
      /**
