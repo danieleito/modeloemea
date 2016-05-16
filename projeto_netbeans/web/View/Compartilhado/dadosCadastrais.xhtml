@@ -8,6 +8,7 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>TODO supply a title</title>
@@ -22,9 +23,68 @@ and open the template in the editor.
                 </p:breadCrumb>
 
                 <h:outputLabel value="DADOS CADASTRAIS DE OBRA DE ARTE ESPECIAL" class="col-md-10" />
-                <h:outputLabel value="1. Identificação da obra" class="col-md-10" />
-                <hr/>
                 
+                <h:form id="form">
+                    <h:panelGrid columns="2" style="width:40%" columnClasses="logo,detail">
+                        <p:outputPanel>
+                            <h:outputText value="1. Identificação da obra" style="font-weight: bold" />
+                            <hr/>
+                            <h:outputText value="Dados Básicos" style="font-weight: bold" />
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputText value="Código:" style="font-weight: bold" />
+                                <h:outputText value="codigo" />
+
+                                <h:outputText value="Identificação:" style="font-weight: bold" />
+                                <h:outputText value="#{car.year}" />
+
+                                <h:outputText value="Últ. Atualização:" style="font-weight: bold" />
+                                <h:outputText value="#{car.color}" />
+                                
+                                <h:outputText value="Nat. Transposição:" style="font-weight: bold" />
+                                <h:outputText value="#{car.id}" />
+
+                                <h:outputText value="Tipo Estrutura:" style="font-weight: bold" />
+                                <h:outputText value="#{car.year}" />
+
+                                <h:outputText value="Sist. Construtivo:" style="font-weight: bold" />
+                                <h:outputText value="#{car.color}" />
+                                
+                                <h:outputText value="Comp/Larg(m):" style="font-weight: bold" />
+                                <h:outputText value="#{car.id}" />
+
+                                <h:outputText value="Trem-Tipo:" style="font-weight: bold" />
+                                <h:outputText value="#{car.year}" />
+                                
+                                <h:outputText value="Construçao:" style="font-weight: bold" />
+                                <h:outputText value="#{car.id}" />
+                            </h:panelGrid>
+                        </p:outputPanel>
+                    </h:panelGrid>
+                    
+                    <h:panelGrid columns="2" style="width:50%" columnClasses="logo,detail">
+                        <p:outputPanel>
+                            <hr/>
+                            <h:outputText value="Localização" style="font-weight: bold" />
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputText value="Via/UF/Km:" style="font-weight: bold" />
+                                <h:outputText value="codigo" />
+
+                                <h:outputText value="Trecho:" style="font-weight: bold" />
+                                <h:outputText value="#{car.year}" />
+
+                                <h:outputText value="Cidade próx.:" style="font-weight: bold" />
+                                <h:outputText value="#{car.color}" />
+                                
+                                <h:outputText value="Alt./Lat./Long.:" style="font-weight: bold" />
+                                <h:outputText value="#{car.id}" />
+
+                                
+                            </h:panelGrid>
+                        </p:outputPanel>
+                        
+                    </h:panelGrid>
+                    <hr />
+                </h:form>
             </ui:define>
         </ui:composition>
     </h:body>

@@ -40,14 +40,14 @@ public class UsuarioBean extends ComumBean implements Serializable {
             Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Redireciona para a tela de cadastro de usuário.
      */
     public void cadastrarGet() {
         redirecionar("/View/Administrador/Usuario/cadastrar.jsf");
     }
-    
+
     /**
      * Realiza cadastro de um usuário.
      */
@@ -60,12 +60,13 @@ public class UsuarioBean extends ComumBean implements Serializable {
             database.inserir(model);
             listaUsuarios = database.buscar();
             adicionarMensagemInfo("Usuário cadastrado com sucesso!");
+            apagarCampos();
             redirecionar("/View/Administrador/Usuario/listar.jsf");
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Redireciona para a tela de edição de usuário.
      * @param id Identificador do usuário que deve ser preenchido na tela.
@@ -99,6 +100,7 @@ public class UsuarioBean extends ComumBean implements Serializable {
             database.editar(model);
             listaUsuarios = database.buscar();
             adicionarMensagemInfo("Usuário atualizado com sucesso!");
+            apagarCampos();
             redirecionar("/View/Administrador/Usuario/listar.jsf");
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -156,7 +158,7 @@ public class UsuarioBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Campo Usuário é obrigatório!");
             return false;
         }
-        
+
         if (model.getEmail().isEmpty()) {
             adicionarMensagemErro("Campo Email é obrigatório!");
             return false;
@@ -172,6 +174,12 @@ public class UsuarioBean extends ComumBean implements Serializable {
             return false;
         }
         
+        for (int i = 0; i < listaUsuarios.size(); i++) {
+            if (model.getUsuario().equals(listaUsuarios.get(i).getUsuario())) {
+                adicionarMensagemErro("Usuário já existe, tente outro nome de usuário.");
+                return false;
+            }
+        }
         return dadosObrigatoriosPreenchidos();
     }
     
@@ -199,6 +207,12 @@ public class UsuarioBean extends ComumBean implements Serializable {
         return true;
     }
 
+    private void apagarCampos() {
+        model.setNome("");
+        model.setUsuario("");
+        model.setEmail("");
+    }
+    
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public Usuario getModel() {
         return model;
@@ -240,4 +254,5 @@ public class UsuarioBean extends ComumBean implements Serializable {
         this.novaSenha = novaSenha;
     }
     // </editor-fold>
+
 }
