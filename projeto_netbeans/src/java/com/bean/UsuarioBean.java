@@ -133,7 +133,6 @@ public class UsuarioBean extends ComumBean implements Serializable {
      *         e retorna false caso contrário.
      */
     private boolean dadosObrigatoriosPreenchidosEditar() {
-        
         if (!novaSenha.equals(confirmarSenha)) {
             adicionarMensagemErro("Campos Nova Senha e Confirmar Senha devem ser iguais!");
             return false;
@@ -148,7 +147,21 @@ public class UsuarioBean extends ComumBean implements Serializable {
      *         e retorna false caso contrário.
      */
     private boolean dadosObrigatoriosPreenchidosCadastrar() {
+        if (model.getNome().isEmpty()) {
+            adicionarMensagemErro("Campo Nome é obrigatório!");
+            return false;
+        }
         
+        if (model.getUsuario().isEmpty()) {
+            adicionarMensagemErro("Campo Usuário é obrigatório!");
+            return false;
+        }
+        
+        if (model.getEmail().isEmpty()) {
+            adicionarMensagemErro("Campo Email é obrigatório!");
+            return false;
+        }
+
         if (model.getSenha().isEmpty()) {
             adicionarMensagemErro("Campo Senha é obrigatório!");
             return false;
