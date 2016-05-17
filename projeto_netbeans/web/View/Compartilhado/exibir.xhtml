@@ -30,6 +30,251 @@ and open the template in the editor.
                         <p:tab title="Dados Cadastrais">
                             <h:panelGrid columns="2" cellpadding="10">
                                 
+                                
+                                <h:outputLabel value="DADOS CADASTRAIS DE OBRA DE ARTE ESPECIAL" class="col-md-10" />
+
+                                <h:form id="form" style="width: 50%; height: 350px; float: left;" >
+                                    <h:panelGrid columns="2" columnClasses="logo,detail" >
+                                        <p:outputPanel>
+                                            <h:outputText value="1. Identificação da obra" style="font-weight: bold" />
+                                            <hr style="width: 900px;"/>
+                                            <h:outputText value="Dados Básicos" style="font-weight: bold" />
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <h:outputText value="Código:" style="font-weight: bold" />
+                                                <h:outputText value="codigo" />
+
+                                                <h:outputText value="Identificação:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.year}" />
+
+                                                <h:outputText value="Últ. Atualização:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.color}" />
+
+                                                <h:outputText value="Nat. Transposição:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.id}" />
+
+                                                <h:outputText value="Tipo Estrutura:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.year}" />
+
+                                                <h:outputText value="Sist. Construtivo:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.color}" />
+
+                                                <h:outputText value="Comp/Larg(m):" style="font-weight: bold" />
+                                                <h:outputText value="#{car.id}" />
+
+                                                <h:outputText value="Trem-Tipo:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.year}" />
+
+                                                <h:outputText value="Construçao:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.id}" />
+                                            </h:panelGrid>
+                                        </p:outputPanel>
+                                    </h:panelGrid>
+                                </h:form>
+
+                                <h:form id="form2" style="width: 50%; height: 350px; float: right;" >
+                                    <h:panelGrid columns="2" columnClasses="logo,detail" >
+                                        <p:outputPanel>
+                                            <br/>
+                                            <hr/>
+                                            <h:outputText value="Localização" style="font-weight: bold" />
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <h:outputText value="Via/UF/Km:" style="font-weight: bold" />
+                                                <h:outputText value="via/uf/km" />
+
+                                                <h:outputText value="Trecho:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.year}" />
+
+                                                <h:outputText value="Cidade próx.:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.color}" />
+
+                                                <h:outputText value="Alt./Lat./Long.:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.id}" />
+                                            </h:panelGrid>
+
+                                            <h:panelGrid columns="2" width="40%" columnClasses="logo,detail" >
+                                                <p:outputPanel>
+                                                    <h:outputText value="Inspeção" style="font-weight: bold" />
+                                                    <h:panelGrid columns="2" cellpadding="5">
+                                                        <h:outputText value="Período(anos):" style="font-weight: bold" />
+                                                        <h:outputText value="periodo" />
+
+                                                        <h:outputText value="Equip. Necessário:" style="font-weight: bold" />
+                                                        <h:outputText value="#{car.year}" />
+
+                                                        <h:outputText value="Melhor época:" style="font-weight: bold" />
+                                                        <h:outputText value="#{car.color}" />                                
+                                                    </h:panelGrid>
+                                                </p:outputPanel>
+                                            </h:panelGrid>
+                                        </p:outputPanel>
+                                    </h:panelGrid>
+                                </h:form>
+
+
+
+                                <h:form id="form3" style="width: 50%; height: 280px; float: left;" >
+                                    <h:panelGrid columns="2" columnClasses="logo,detail" >
+                                        <p:outputPanel>
+                                            <hr />
+                                            <h:outputText value="Responsáveis" style="font-weight: bold" />
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <h:outputText value="Superint. Regional:" style="font-weight: bold" />
+                                                <h:outputText value="superint regional" />
+
+                                                <h:outputText value="Unidade Local:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.year}" />
+
+                                                <h:outputText value="Tp. Administração:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.color}" />
+
+                                                <h:outputText value="Administrador:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.id}" />
+
+                                                <h:outputText value="Projetista:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.year}" />
+
+                                                <h:outputText value="Construtor:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.color}" />
+
+                                                <h:outputText value="Observações:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.id}" />
+                                            </h:panelGrid>
+                                        </p:outputPanel>
+                                    </h:panelGrid>
+                                </h:form>
+
+                                <h:form id="form4" style="width: 50%; height: 280px; float: right;" >
+                                    <h:panelGrid columns="2" columnClasses="logo,detail" >
+                                        <p:outputPanel>
+                                            <hr />
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <h:outputText value="Loc. Projeto:" style="font-weight: bold" />
+                                                <h:outputText value="superint regional" />
+
+                                                <h:outputText value="Loc. Doc. Constr.:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.year}" />
+
+                                                <h:outputText value="Loc. Doc. Diversos:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.color}" />
+                                            </h:panelGrid>
+                                        </p:outputPanel>
+                                    </h:panelGrid>
+                                </h:form>
+
+                                
+                                <h:form id="form5" style="width: 50%; height: 200px; float: left;" >
+                                    <h:panelGrid columns="2" columnClasses="logo,detail" >
+                                        <p:outputPanel>
+                                            <h:outputText value="2. Características Funcionais" style="font-weight: bold" />
+                                            <hr/>
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <h:outputText value="Região:" style="font-weight: bold" />
+                                                <h:outputText value="regiao" />
+
+                                                <h:outputText value="Traçado/Raio(m):" style="font-weight: bold" />
+                                                <h:outputText value="#{car.year}" />
+
+                                                <h:outputText value="Rampa Máxima:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.color}" />
+
+                                                <h:outputText value="VMD:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.id}" />
+
+                                                <h:outputText value="Nº de Vãos:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.year}" />
+
+                                                <h:outputText value="Descr. dos Vãos:" style="font-weight: bold" />
+                                                <h:outputText value="#{car.color}" />
+                                            </h:panelGrid>
+                                        </p:outputPanel>
+                                    </h:panelGrid>
+                                </h:form>
+
+                                <h:form id="form6" style="width: 50%; height: 200px; float: right;" >
+                                    <h:panelGrid columns="2" columnClasses="logo,detail" >
+                                        <p:outputPanel>
+                                            <hr/>
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <h:outputText value="Largura total da pista(m):" style="font-weight: bold" />
+                                                <h:outputText value="largura" />
+
+                                                <h:outputText value="Nº de Faixas/Larg. Faixa(m):" style="font-weight: bold" />
+                                                <h:outputText value="#{car.year}" />
+
+                                                <h:outputText value="Larg. Acost. Dir/Esq(m):" style="font-weight: bold" />
+                                                <h:outputText value="#{car.color}" />
+
+                                                <h:outputText value="Larg. Calçada Dir/Esq(m):" style="font-weight: bold" />
+                                                <h:outputText value="#{car.id}" />
+
+                                                <h:outputText value="Gabarito Horiz./Vertical(m):" style="font-weight: bold" />
+                                                <h:outputText value="#{car.year}" />
+                                            </h:panelGrid>
+                                        </p:outputPanel>
+                                    </h:panelGrid>
+                                </h:form>
+
+
+                                <h:form id="form7" style="width: 100%; height: 200px; float: left;" >
+                                    <h:panelGrid columns="2" columnClasses="logo,detail" >
+                                        <p:outputPanel>
+                                            <br />
+                                            <h:outputText value="3. Elementos Componentes" style="font-weight: bold" />
+                                            <hr/>
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <h:outputText value="Largura total da pista(m):" style="font-weight: bold" />
+                                                <h:outputText value="largura" />
+                                            </h:panelGrid>
+                                        </p:outputPanel>
+                                    </h:panelGrid>
+                                </h:form>
+
+
+                                <h:form id="form8" style="width: 100%; height: 200px; float: left;" >
+                                    <h:panelGrid columns="2" columnClasses="logo,detail" >
+                                        <p:outputPanel>
+                                            <br />
+                                            <h:outputText value="4. Aspectos Especiais" style="font-weight: bold" />
+                                            <hr/>
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <h:outputText value="Largura total da pista(m):" style="font-weight: bold" />
+                                                <h:outputText value="largura" />
+                                            </h:panelGrid>
+                                        </p:outputPanel>
+                                    </h:panelGrid>
+                                </h:form>
+
+                                <h:form id="form9" style="width: 100%; height: 200px; float: left;" >
+                                    <h:panelGrid columns="2" columnClasses="logo,detail" >
+                                        <p:outputPanel>
+                                            <br />
+                                            <h:outputText value="5. Deficiências Especiais" style="font-weight: bold" />
+                                            <hr/>
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <h:outputText value="Largura total da pista(m):" style="font-weight: bold" />
+                                                <h:outputText value="largura" />
+                                            </h:panelGrid>
+                                        </p:outputPanel>
+                                    </h:panelGrid>
+                                </h:form>
+
+                                <h:form id="form10" style="width: 100%; height: 100px; float: left;" >
+                                    <h:panelGrid columns="2" columnClasses="logo,detail" >
+                                        <p:outputPanel>
+                                            <br />
+                                            <h:outputText value="6. Rotas Funcionais" style="font-weight: bold" />
+                                            <hr/>
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <h:outputText value="Rotas:" style="font-weight: bold" />
+                                                <h:outputText value="rota" />
+                                                <h:outputText value="Acréscimo de km:" style="font-weight: bold" />
+                                                <h:outputText value="acrescimo" />
+                                            </h:panelGrid>
+                                        </p:outputPanel>
+                                    </h:panelGrid>
+                                </h:form>
+                                
+                                
                             </h:panelGrid>
                         </p:tab>
                         

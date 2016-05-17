@@ -5,12 +5,12 @@ and open the template in the editor.
 */
 /* 
     Created on : 22/04/2016, 14:16:10
-    Author     : Paulo
+    Author     : Daniele Harumi Ito
 */
 
 body {
     width: 100%;
-    min-width: 600px;
+    min-width: 1200px;
     margin: 0;
     padding: 0;
     background-color: #e8e8e8;
