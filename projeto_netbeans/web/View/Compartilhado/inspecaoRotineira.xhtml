@@ -15,7 +15,7 @@ and open the template in the editor.
     <h:body>
         <h:form id="form" >
             <div class="row">
-                <h:panelGrid columns="2" columnClasses="logo,detail" >
+                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <h:outputText value="1. Identificação da obra" style="font-weight: bold" />
                         <hr/>
@@ -34,7 +34,7 @@ and open the template in the editor.
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
-                <h:panelGrid columns="2" columnClasses="logo,detail" >
+                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <br />
                         <hr/>
@@ -56,7 +56,8 @@ and open the template in the editor.
             </div>
             
             <div class="row">
-                <h:panelGrid columns="2" columnClasses="logo,detail" >
+                <br/>
+                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <h:outputText value="2. Condições" style="font-weight: bold" />
                         <hr/>
@@ -72,7 +73,7 @@ and open the template in the editor.
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
-                <h:panelGrid columns="2" columnClasses="logo,detail" >
+                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <br />
                         <hr/>
@@ -85,7 +86,8 @@ and open the template in the editor.
             </div>
             
             <div class="row">
-                <h:panelGrid columns="2" columnClasses="logo,detail" >
+                <br/>
+                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <h:outputText value="3. Danos nos elementos" style="font-weight: bold" />
                         <hr />
@@ -98,7 +100,8 @@ and open the template in the editor.
             </div>
             
             <div class="row">
-                <h:panelGrid columns="2" columnClasses="logo,detail" >
+                <br/>
+                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <h:outputText value="4. Insuficiências estruturas nos elementos" style="font-weight: bold" />
                         <hr />
@@ -111,7 +114,8 @@ and open the template in the editor.
             </div>
             
             <div class="row">
-                <h:panelGrid columns="2" columnClasses="logo,detail" >
+                <br/>
+                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <h:outputText value="5. Laudo especializado" style="font-weight: bold" />
                         <hr />
@@ -130,7 +134,8 @@ and open the template in the editor.
             </div>
             
             <div class="row">
-                <h:panelGrid columns="2" columnClasses="logo,detail" >
+                <br/>
+                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <h:outputText value="6. Monitoramento" style="font-weight: bold" />
                         <hr />
@@ -146,11 +151,10 @@ and open the template in the editor.
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
-            </div>
-            
-            <div class="row">
-                <h:panelGrid columns="2" columnClasses="logo,detail" >
+                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
+                        <br/>
+                        <hr/>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Tipo de Monitoramento:" style="font-weight: bold" />
                             <h:outputText value="tipo" />
@@ -161,6 +165,17 @@ and open the template in the editor.
                             <h:outputText value="Custo:" style="font-weight: bold" />
                             <h:outputText value="cst" />
                         </h:panelGrid>
+                    </p:outputPanel>
+                </h:panelGrid>
+            </div>
+            
+            <div class="row">
+                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
+                    <p:outputPanel>
+                        <br/>
+                        <hr/>
+                        <h:outputText value="Relatório:" style="font-weight: bold" />
+                            <h:outputText value="Obs:" />
                     </p:outputPanel>
                 </h:panelGrid>
             </div>

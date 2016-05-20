@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -93,6 +94,7 @@ and open the template in the editor.
                 </h:panelGrid>
             </div>
             <div class="row">
+                <br/>
                 <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <hr />
@@ -138,6 +140,7 @@ and open the template in the editor.
                 </h:panelGrid>
             </div>
             <div class="row">
+                <br/>
                 <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <h:outputText value="2. Características Funcionais" style="font-weight: bold" />
@@ -187,45 +190,136 @@ and open the template in the editor.
                 </h:panelGrid>
             </div>
             <div class="row" >
+                <br/>
                 <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <br />
                         <h:outputText value="3. Elementos Componentes" style="font-weight: bold" />
                         <hr/>
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Largura total da pista(m):" style="font-weight: bold" />
-                            <h:outputText value="largura" />
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <p:dataTable var="arq" value="#{arquivoAnexo.arquivosCadastro}" paginator="true" rows="8" >
+                                <p:column headerText="Arquivo" style="text-align: center" >
+                                    <h:outputText value="#{arq.arquivo}" />
+                                </p:column>
+
+                                <p:column headerText="Tipo arquivo" style="text-align: center" >
+                                    <h:outputText value="#{arq.tipoArquivo}" />
+                                </p:column>
+
+                                <p:column headerText="Número" style="width: 150px; text-align: center" >
+                                    <h:outputText value="#{arq.numero}" />
+                                </p:column>
+
+                                <p:column headerText="Descrição" style="width: 150px; text-align: center" >
+                                    <h:outputText value="#{arq.descricao}" />
+                                </p:column>
+
+                                <p:column headerText="Registro" style="text-align: center" >
+                                    <h:outputText value="#{arq.registro}" />
+                                </p:column>
+
+                                <p:column headerText="Data anexação" style="width: 150px; text-align: center" >
+                                    <h:outputText value="#{arq.dataAnexada}">
+                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                    </h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                                    <p:commandButton icon="ui-icon-arrowthickstop-1-s" title="Baixar" action="#{arquivoAnexo.baixar()}" />
+                                </p:column>
+                            </p:dataTable>
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
             </div>
             <div class="row">
+                <br/>
                 <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <br />
                         <h:outputText value="4. Aspectos Especiais" style="font-weight: bold" />
                         <hr />
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Largura total da pista(m):" style="font-weight: bold" />
-                            <h:outputText value="largura" />
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <p:dataTable var="arq" value="#{arquivoAnexo.arquivosCadastro}" paginator="true" rows="8" >
+                                <p:column headerText="Arquivo" style="text-align: center" >
+                                    <h:outputText value="#{arq.arquivo}" />
+                                </p:column>
+
+                                <p:column headerText="Tipo arquivo" style="text-align: center" >
+                                    <h:outputText value="#{arq.tipoArquivo}" />
+                                </p:column>
+
+                                <p:column headerText="Número" style="width: 150px; text-align: center" >
+                                    <h:outputText value="#{arq.numero}" />
+                                </p:column>
+
+                                <p:column headerText="Descrição" style="width: 150px; text-align: center" >
+                                    <h:outputText value="#{arq.descricao}" />
+                                </p:column>
+
+                                <p:column headerText="Registro" style="text-align: center" >
+                                    <h:outputText value="#{arq.registro}" />
+                                </p:column>
+
+                                <p:column headerText="Data anexação" style="width: 150px; text-align: center" >
+                                    <h:outputText value="#{arq.dataAnexada}">
+                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                    </h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                                    <p:commandButton icon="ui-icon-arrowthickstop-1-s" title="Baixar" action="#{arquivoAnexo.baixar()}" />
+                                </p:column>
+                            </p:dataTable>
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
             </div>
             <div class="row">
+                <br/>
                 <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <br />
                         <h:outputText value="5. Deficiências Especiais" style="font-weight: bold" />
                         <hr/>
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Largura total da pista(m):" style="font-weight: bold" />
-                            <h:outputText value="largura" />
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <p:dataTable var="arq" value="#{arquivoAnexo.arquivosCadastro}" paginator="true" rows="8" >
+                                <p:column headerText="Arquivo" style="text-align: center" >
+                                    <h:outputText value="#{arq.arquivo}" />
+                                </p:column>
+
+                                <p:column headerText="Tipo arquivo" style="text-align: center" >
+                                    <h:outputText value="#{arq.tipoArquivo}" />
+                                </p:column>
+
+                                <p:column headerText="Número" style="width: 150px; text-align: center" >
+                                    <h:outputText value="#{arq.numero}" />
+                                </p:column>
+
+                                <p:column headerText="Descrição" style="width: 150px; text-align: center" >
+                                    <h:outputText value="#{arq.descricao}" />
+                                </p:column>
+
+                                <p:column headerText="Registro" style="text-align: center" >
+                                    <h:outputText value="#{arq.registro}" />
+                                </p:column>
+
+                                <p:column headerText="Data anexação" style="width: 150px; text-align: center" >
+                                    <h:outputText value="#{arq.dataAnexada}">
+                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                    </h:outputText>
+                                </p:column>
+
+                                <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                                    <p:commandButton icon="ui-icon-arrowthickstop-1-s" title="Baixar" action="#{arquivoAnexo.baixar()}" />
+                                </p:column>
+                            </p:dataTable>
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
             </div>
             <div class="row">
+                <br/>
                 <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <br />
