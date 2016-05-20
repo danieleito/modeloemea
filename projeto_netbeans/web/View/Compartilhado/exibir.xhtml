@@ -37,41 +37,7 @@ and open the template in the editor.
                         
                         <p:tab title="Arquivos anexos">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <p:dataTable var="arq" value="#{arquivoAnexo.arquivosCadastro}" paginator="true" rows="8" >
-                                    <p:column headerText="Arquivo" style="text-align: center" >
-                                        <h:outputText value="#{arq.arquivo}" />
-                                    </p:column>
-
-                                    <p:column headerText="Tipo arquivo" style="text-align: center" >
-                                        <h:outputText value="#{arq.tipoArquivo}" />
-                                    </p:column>
-
-                                    <p:column headerText="Número" style="width: 150px; text-align: center" >
-                                        <h:outputText value="#{arq.numero}" />
-                                    </p:column>
-
-                                    <p:column headerText="Descrição" style="width: 150px; text-align: center" >
-                                        <h:outputText value="#{arq.descricao}" />
-                                    </p:column>
-                                    
-                                    <p:column headerText="Registro" style="text-align: center" >
-                                        <h:outputText value="#{arq.registro}" />
-                                    </p:column>
-
-                                    <p:column headerText="Data anexação" style="width: 150px; text-align: center" >
-                                        <h:outputText value="#{arq.dataAnexada}">
-                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
-                                        </h:outputText>
-                                    </p:column>
-
-<!--                                    <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
-                                        <h:outputText value="" />
-                                    </p:column>-->
-
-                                    <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                                        <p:commandButton icon="ui-icon-arrowthickstop-1-s" title="Baixar" action="#{arquivoAnexo.baixar()}" />
-                                    </p:column>
-                                </p:dataTable>
+                                <ui:include src="/View/Compartilhado/ArquivosAnexos/cadastro.xhtml" />
                             </h:panelGrid>
                         </p:tab>
                         
@@ -79,8 +45,8 @@ and open the template in the editor.
                         
                         <p:tab title="Inspeções">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <p:tabView>
-                                    <p:tab title="Resumo">
+                                <!--<p:tabView>-->
+                                    <!--<p:tab title="Resumo">-->
                                         <h:panelGrid columns="2" cellpadding="10">
                                             <p:dataTable var="i" value="#{inspecao.inspecoes}" paginator="true" rows="8" >
                                                 <p:column headerText="Data" style="text-align: center" >
@@ -106,11 +72,18 @@ and open the template in the editor.
                                                 </p:column>
                                             </p:dataTable>
                                         </h:panelGrid>
-                                    </p:tab>
-                                    
-                                    
-                                    
-                                    <p:tab title="Modelo EMEA">
+                                    <!--</p:tab>-->
+                                <!--</p:tabView>-->                                
+                            </h:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
+<!--<p:tab title="Modelo EMEA">
                                         <h:panelGrid columns="2" cellpadding="10">
                                             
                                         </h:panelGrid>
@@ -121,48 +94,39 @@ and open the template in the editor.
                                     <p:tab title="Arquivos anexos">
                                         <h:panelGrid columns="2" cellpadding="10">
                                             <p:dataTable var="arq" value="#{arquivoAnexo.arquivosInspecao}" paginator="true" rows="8" >
-                                    <p:column headerText="Arquivo" style="text-align: center" >
-                                        <h:outputText value="#{arq.arquivo}" />
-                                    </p:column>
+                                                <p:column headerText="Arquivo" style="text-align: center" >
+                                                    <h:outputText value="#{arq.arquivo}" />
+                                                </p:column>
 
-                                    <p:column headerText="Tipo arquivo" style="text-align: center" >
-                                        <h:outputText value="#{arq.tipoArquivo}" />
-                                    </p:column>
+                                                <p:column headerText="Tipo arquivo" style="text-align: center" >
+                                                    <h:outputText value="#{arq.tipoArquivo}" />
+                                                </p:column>
 
-                                    <p:column headerText="Número" style="width: 150px; text-align: center" >
-                                        <h:outputText value="#{arq.numero}" />
-                                    </p:column>
+                                                <p:column headerText="Número" style="width: 150px; text-align: center" >
+                                                    <h:outputText value="#{arq.numero}" />
+                                                </p:column>
 
-                                    <p:column headerText="Descrição" style="width: 150px; text-align: center" >
-                                        <h:outputText value="#{arq.descricao}" />
-                                    </p:column>
-                                    
-                                    <p:column headerText="Registro" style="text-align: center" >
-                                        <h:outputText value="#{arq.registro}" />
-                                    </p:column>
+                                                <p:column headerText="Descrição" style="width: 150px; text-align: center" >
+                                                    <h:outputText value="#{arq.descricao}" />
+                                                </p:column>
 
-                                    <p:column headerText="Data anexação" style="width: 150px; text-align: center" >
-                                        <h:outputText value="#{arq.dataAnexada}">
-                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
-                                        </h:outputText>
-                                    </p:column>
+                                                <p:column headerText="Registro" style="text-align: center" >
+                                                    <h:outputText value="#{arq.registro}" />
+                                                </p:column>
 
-<!--                                    <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
-                                        <h:outputText value="" />
-                                    </p:column>-->
+                                                <p:column headerText="Data anexação" style="width: 150px; text-align: center" >
+                                                    <h:outputText value="#{arq.dataAnexada}">
+                                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                    </h:outputText>
+                                                </p:column>
 
-                                    <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                                        <p:commandButton icon="ui-icon-arrowthickstop-1-s" title="Baixar" action="#{arquivoAnexo.baixar()}" />
-                                    </p:column>
-                                </p:dataTable>
+                                                <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
+                                                    <h:outputText value="" />
+                                                </p:column>
+
+                                                <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                                                    <p:commandButton icon="ui-icon-arrowthickstop-1-s" title="Baixar" action="#{arquivoAnexo.baixar()}" />
+                                                </p:column>
+                                            </p:dataTable>
                                         </h:panelGrid>
-                                    </p:tab>
-                                </p:tabView>                                
-                            </h:panelGrid>
-                        </p:tab>
-                    </p:tabView>
-                </h:form>
-            </ui:define>
-        </ui:composition>
-    </h:body>
-</html>
+                                    </p:tab>-->

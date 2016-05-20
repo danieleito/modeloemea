@@ -58,7 +58,7 @@ public class InspecaoBean extends ComumBean {
         Inspecao inspecao;
         try {
             inspecao = database.buscar(id);
-            redirecionar("/View/Compartilhado/inspecaoRotineira.jsf");
+            redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
         } catch (SQLException ex) {
             Logger.getLogger(InspecaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
