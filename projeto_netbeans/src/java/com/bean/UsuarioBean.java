@@ -45,6 +45,7 @@ public class UsuarioBean extends ComumBean implements Serializable {
      * Redireciona para a tela de cadastro de usuário.
      */
     public void cadastrarGet() {
+        model = new Usuario();
         redirecionar("/View/Administrador/Usuario/cadastrar.jsf");
     }
 
