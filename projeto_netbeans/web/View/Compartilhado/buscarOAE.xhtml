@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="/View/Compartilhado/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <div>aqui</div>
+                    <h2>Obras de Arte Especiais</h2>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Código" class="col-md-5" />
+                                </td>
+                                <td>
+                                    <p:inputText value="#{usuarioBean.model.nome}" class="col-md-2" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Código de Integração" class="col-md-5" />
+                                </td>
+                                <td>
+                                    <p:inputText value="#{usuarioBean.model.nome}" class="col-md-3" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Identificação" class="col-md-5" />
+                                </td>
+                                <td>
+                                    <p:inputText value="#{usuarioBean.model.nome}" class="col-md-5" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="UF" class="col-md-3" />
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+                                        <f:selectItems value="#{usuarioBean.tipos}" var="t" itemValue="#{t.id}" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Via" class="col-md-3" />
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+                                        <f:selectItems value="#{usuarioBean.tipos}" var="t" itemValue="#{t.id}" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Local na Via (km)" class="col-md-5" />
+                                </td>
+                                <td>
+                                    <div>
+                                        <p:outputLabel value="do km " class="col-md-1" />
+                                        <p:inputText value="#{usuarioBean.model.nome}" class="col-md-1" />
+                                    
+                                        <p:outputLabel value=" ao km " class="col-md-1" />
+                                        <p:inputText value="#{usuarioBean.model.nome}" class="col-md-1" />
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Superintendência Regional" class="col-md-3" />
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-4">
+                                        <f:selectItems value="#{usuarioBean.tipos}" var="t" itemValue="#{t.id}" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Unidade Local" class="col-md-3" />
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-4">
+                                        <f:selectItems value="#{usuarioBean.tipos}" var="t" itemValue="#{t.id}" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+                            
+                            
+                            
+<!--                            <tr>
+                                <td class="th">
+                                    <label for="codigo">
+                                        Código</label>
+                                </td>
+                                <td>
+                                    <input id="codigo" name="codigo" type="text" maxlength="6" size="6" 
+                                           class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all" 
+                                           role="textbox" aria-disabled="false" aria-readonly="false" 
+                                           aria-multiline="false"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="th">
+                                    <label for="codigoIntegracao">
+                                        Código de Integração</label>
+                                </td>
+                                <td>
+                                    <input id="codigoIntegracao" name="codigoIntegracao" type="text" maxlength="15" size="15" 
+                                           class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all" 
+                                           role="textbox" aria-disabled="false" aria-readonly="false" aria-multiline="false"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="th">
+                                    <label for="identificacao">
+                                        Identificação</label>
+                                </td>
+                                <td>
+                                    <input id="identificacao" name="identificacao" type="text" maxlength="60" size="60" 
+                                            class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" 
+                                            role="textbox" aria-disabled="false" aria-readonly="false" aria-multiline="false"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="th">
+                                    <label for="uf">
+                                        UF</label>
+                                </td>
+                                <td>
+                                   //combo box UF
+                                </td>
+                            </tr> 
+
+                            <tr>
+                                <td class="th">
+                                    <label for="via">
+                                        Via</label>
+                                </td>
+                                <td>
+                                    //combo box Via
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="th">
+                                    <label for="localVia">
+                                        Local na via (km)</label>
+                                </td>
+                                <td>
+                                    <span id="j_idt31">
+                                        <label>do km</label>
+                                            <input id="localDoKM" name="localDoKM" type="text" value="" maxlength="9" size="9" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" role="textbox" aria-disabled="false" aria-readonly="false" aria-multiline="false"/>
+
+                                            <label>ao km</label>
+
+                                            <input id="localAteKM" name="localAteKM" type="text" value="" maxlength="9" size="9" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" role="textbox" aria-disabled="false" aria-readonly="false" aria-multiline="false"/>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="th">
+                                    <label for="superintendenciaRegional">
+                                        Superintendência regional</label>
+                                </td>
+                                <td>
+                                    //combo box Superintendência regional
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="th">
+                                    <label for="unidadeLocal">
+                                        Unidade local</label>
+                                </td>
+                                <td>
+                                    //combo box Unidade local
+                                </td>
+                            </tr>-->
+                        </tbody>
+                    </table>
+                    
+                    <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Consultar" />
+                    <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Cancelar" />
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

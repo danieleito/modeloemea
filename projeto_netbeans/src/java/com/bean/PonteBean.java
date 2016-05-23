@@ -50,4 +50,8 @@ public class PonteBean extends ComumBean {
             adicionarMensagemErro("Erro ao carregar pontes.");
         }
     }
+    
+    public void consultar() {
+        
+    }
 }

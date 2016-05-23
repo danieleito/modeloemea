@@ -177,4 +177,8 @@ public class SimulacaoBean extends ComumBean {
         simulacao.getNomeSimulacao();
         return simulacao;
     }
+    
+    public void consultar() {
+        redirecionar("View/Compartilhado/buscarOAE.jsf");
+    }
 }

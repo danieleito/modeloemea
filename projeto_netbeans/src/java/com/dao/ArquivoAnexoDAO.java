@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class ArquivoAnexoDAO {
     public ArrayList<ArquivoAnexo> buscarCadastro() throws SQLException {
-        String query = "select A.ID_ARQUIVO_ANEXO, A.DS_ARQUIVO, A.DS_TIPO_ARQUIVO, "
+        String query = "select A.ID_ARQUIVO_ANEXO_CADASTRO, A.DS_ARQUIVO, A.DS_TIPO_ARQUIVO, "
                 + "A.NR_NUMERO, A.DS_DESCRICAO, A.DS_REGISTRO, A.DT_DATA_ANEXACAO  "
                 + "from ARQUIVO_ANEXO_CADASTRO A;";
 
@@ -32,7 +32,7 @@ public class ArquivoAnexoDAO {
         ArrayList<ArquivoAnexo> arquivos = new ArrayList<>();
 
         while (rs.next()) {
-            arquivos.add(new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO"), 
+            arquivos.add(new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO_CADASTRO"), 
                     rs.getString("DS_ARQUIVO"), rs.getString("DS_TIPO_ARQUIVO"), 
                     rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), 
                     rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO")));
@@ -43,9 +43,9 @@ public class ArquivoAnexoDAO {
     }
     
     public ArquivoAnexo buscarCadastro(int id) throws SQLException {
-        String query = "select A.ID_ARQUIVO_ANEXO, A.DS_ARQUIVO, A.DS_TIPO_ARQUIVO, "
+        String query = "select A.ID_ARQUIVO_ANEXO_CADASTRO, A.DS_ARQUIVO, A.DS_TIPO_ARQUIVO, "
                 + "A.NR_NUMERO, A.DS_DESCRICAO, A.DS_REGISTRO, A.DT_DATA_ANEXACAO  "
-                + "from ARQUIVO_ANEXO A "
+                + "from ARQUIVO_ANEXO_CADASTRO A "
                 + "and A.ID_ARQUIVO_ANEXO = " + id + ";";
 
         Conexao conexao = new Conexao();
@@ -55,7 +55,7 @@ public class ArquivoAnexoDAO {
         ResultSet rs = stmt.executeQuery(query);
         ArquivoAnexo arquivoAnexo = null;
         if (rs.next()) {
-            arquivoAnexo = new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO"), 
+            arquivoAnexo = new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO_CADASTRO"), 
                     rs.getString("DS_ARQUIVO"), rs.getString("DS_TIPO_ARQUIVO"), 
                     rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), 
                     rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO"));
@@ -66,9 +66,9 @@ public class ArquivoAnexoDAO {
     }
     
     public ArrayList<ArquivoAnexo> buscarInspecao() throws SQLException {
-        String query = "select A.ID_ARQUIVO_ANEXO, A.DS_ARQUIVO, A.DS_TIPO_ARQUIVO, "
+        String query = "select A.ID_ARQUIVO_ANEXO_INSPECAO, A.DS_ARQUIVO, A.DS_TIPO_ARQUIVO, "
                 + "A.NR_NUMERO, A.DS_DESCRICAO, A.DS_REGISTRO, A.DT_DATA_ANEXACAO  "
-                + "from ID_ARQUIVO_ANEXO_INSPECAO A;";
+                + "from ARQUIVO_ANEXO_INSPECAO A;";
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -80,7 +80,7 @@ public class ArquivoAnexoDAO {
         ArrayList<ArquivoAnexo> arquivos = new ArrayList<>();
 
         while (rs.next()) {
-            arquivos.add(new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO"), 
+            arquivos.add(new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO_INSPECAO"), 
                     rs.getString("DS_ARQUIVO"), rs.getString("DS_TIPO_ARQUIVO"), 
                     rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), 
                     rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO")));
@@ -90,10 +90,10 @@ public class ArquivoAnexoDAO {
         return arquivos;
     }
     
-    public ArquivoAnexo buscar(int id) throws SQLException {
-        String query = "select A.ID_ARQUIVO_ANEXO, A.DS_ARQUIVO, A.DS_TIPO_ARQUIVO, "
+    public ArquivoAnexo buscarInspecao(int id) throws SQLException {
+        String query = "select A.ID_ARQUIVO_ANEXO_INSPECAO, A.DS_ARQUIVO, A.DS_TIPO_ARQUIVO, "
                 + "A.NR_NUMERO, A.DS_DESCRICAO, A.DS_REGISTRO, A.DT_DATA_ANEXACAO  "
-                + "from ARQUIVO_ANEXO A "
+                + "from ARQUIVO_ANEXO_INSPECAO A "
                 + "and A.ID_ARQUIVO_ANEXO_INSPECAO = " + id + ";";
 
         Conexao conexao = new Conexao();
@@ -103,7 +103,7 @@ public class ArquivoAnexoDAO {
         ResultSet rs = stmt.executeQuery(query);
         ArquivoAnexo arquivoAnexo = null;
         if (rs.next()) {
-            arquivoAnexo = new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO"), 
+            arquivoAnexo = new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO_INSPECAO"), 
                     rs.getString("DS_ARQUIVO"), rs.getString("DS_TIPO_ARQUIVO"), 
                     rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), 
                     rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO"));
