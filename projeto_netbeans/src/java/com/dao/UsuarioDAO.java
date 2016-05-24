@@ -106,7 +106,6 @@ public class UsuarioDAO {
                     rs.getString("DS_USUARIO"), rs.getString("DS_EMAIL"),rs.getString("DS_SENHA"), 
                     new TipoUsuario(rs.getInt("ID_TIPO_USUARIO"), rs.getString("DS_TIPO")));
         }
-
         conexao.closeConnection();
         return usuario;
     }
