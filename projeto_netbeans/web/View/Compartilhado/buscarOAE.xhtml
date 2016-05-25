@@ -18,7 +18,13 @@ and open the template in the editor.
         <ui:composition template="/View/Compartilhado/template.xhtml">
             <ui:define name="content">
                 <h:form id="form">
-                    <div>aqui</div>
+                    <p:breadCrumb>
+                        <p:menuitem value="Categories" url="#" />
+                        <p:menuitem value="Simulação" url="/View/Compartilhado/simulacao.jsf" />
+                        <p:menuitem value="Ranking" url="/View/Compartilhado/Ranking/editar.jsf" />
+                        <p:menuitem value="Consulta" url="/View/Compartilhado/buscarOAE.jsf" />
+                    </p:breadCrumb>
+
                     <h2>Obras de Arte Especiais</h2>
 <!--                    <hr style="background-color: #05b; background-size: 2px;" />-->
                     <table>
@@ -29,15 +35,6 @@ and open the template in the editor.
                                 </td>
                                 <td>
                                     <p:inputText value="#{usuarioBean.model.nome}" class="col-md-2" />
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td class="th">
-                                    <p:outputLabel value="Código de Integração" class="col-md-5" />
-                                </td>
-                                <td>
-                                    <p:inputText value="#{usuarioBean.model.nome}" class="col-md-3" />
                                 </td>
                             </tr>
                             
@@ -108,106 +105,39 @@ and open the template in the editor.
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
-                            
-                            
-                            
-<!--                            <tr>
-                                <td class="th">
-                                    <label for="codigo">
-                                        Código</label>
-                                </td>
-                                <td>
-                                    <input id="codigo" name="codigo" type="text" maxlength="6" size="6" 
-                                           class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all" 
-                                           role="textbox" aria-disabled="false" aria-readonly="false" 
-                                           aria-multiline="false"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="th">
-                                    <label for="codigoIntegracao">
-                                        Código de Integração</label>
-                                </td>
-                                <td>
-                                    <input id="codigoIntegracao" name="codigoIntegracao" type="text" maxlength="15" size="15" 
-                                           class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all" 
-                                           role="textbox" aria-disabled="false" aria-readonly="false" aria-multiline="false"/>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="th">
-                                    <label for="identificacao">
-                                        Identificação</label>
-                                </td>
-                                <td>
-                                    <input id="identificacao" name="identificacao" type="text" maxlength="60" size="60" 
-                                            class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" 
-                                            role="textbox" aria-disabled="false" aria-readonly="false" aria-multiline="false"/>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="th">
-                                    <label for="uf">
-                                        UF</label>
-                                </td>
-                                <td>
-                                   //combo box UF
-                                </td>
-                            </tr> 
-
-                            <tr>
-                                <td class="th">
-                                    <label for="via">
-                                        Via</label>
-                                </td>
-                                <td>
-                                    //combo box Via
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="th">
-                                    <label for="localVia">
-                                        Local na via (km)</label>
-                                </td>
-                                <td>
-                                    <span id="j_idt31">
-                                        <label>do km</label>
-                                            <input id="localDoKM" name="localDoKM" type="text" value="" maxlength="9" size="9" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" role="textbox" aria-disabled="false" aria-readonly="false" aria-multiline="false"/>
-
-                                            <label>ao km</label>
-
-                                            <input id="localAteKM" name="localAteKM" type="text" value="" maxlength="9" size="9" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" role="textbox" aria-disabled="false" aria-readonly="false" aria-multiline="false"/>
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="th">
-                                    <label for="superintendenciaRegional">
-                                        Superintendência regional</label>
-                                </td>
-                                <td>
-                                    //combo box Superintendência regional
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="th">
-                                    <label for="unidadeLocal">
-                                        Unidade local</label>
-                                </td>
-                                <td>
-                                    //combo box Unidade local
-                                </td>
-                            </tr>-->
                         </tbody>
                     </table>
                     
                     <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Consultar" />
                     <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Cancelar" />
+                    
+                    
+                    <p:dataTable var="p" value="#{ponte.pontes}" paginator="true" rows="8" >                      
+                        <p:column headerText="Código" style="text-align: center" >
+                            <h:outputText value="#{p.codigo}" />
+                        </p:column>
+
+                        <p:column headerText="Identificação da obra" style="text-align: center" >
+                            <h:outputText value="#{p.identificacaoObra}" />
+                        </p:column>
+
+                        <p:column headerText="Via" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{p.via}" />
+                        </p:column>
+
+                        <p:column headerText="UF" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{p.uf}" />
+                        </p:column>
+
+                        <p:column headerText="Local na via" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{p.localVia}" />
+                        </p:column>
+
+                        <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponte.consultar(p.id)}" />
+                            <p:commandButton icon="ui-icon-check" title="Carregar" action="#{ponte.carregar(p.id)}" />
+                        </p:column>
+                    </p:dataTable>
                 </h:form>
             </ui:define>
         </ui:composition>

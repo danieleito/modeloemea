@@ -29,12 +29,18 @@ and open the template in the editor.
                     <p:commandButton style="margin: 0 0 20px 20px;" value="Ranquear" action="#{ranking.raquear()}" />
 
                     <p:dataTable var="r" value="#{simulacao.novaSimulacao.rankings}" paginator="true" rows="8" >
+                        <p:column headerText="Data da última inspeção" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{r.dataUltimaInspecao}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </p:column>
+                        
                         <p:column headerText="Código" style="text-align: center" >
                             <h:outputText value="#{r.ponte.codigo}" />
                         </p:column>
 
                         <p:column headerText="Identificação da obra" style="text-align: center" >
-                            <h:outputText value="#{r.ponte.identificaoObra}">
+                            <h:outputText value="#{r.ponte.identificacaoObra}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:outputText>
                         </p:column>

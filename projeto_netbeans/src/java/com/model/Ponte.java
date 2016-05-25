@@ -12,7 +12,7 @@ package com.model;
 public class Ponte {
     private int id;
     private String codigo;
-    private String identificaoObra;
+    private String identificacaoObra;
     private String via;
     private String uf;
     private String localVia;
@@ -20,18 +20,18 @@ public class Ponte {
     public Ponte() {
     }
 
-    public Ponte(int id, String codigo, String identificaoObra, String via, String uf, String localVia) {
+    public Ponte(int id, String codigo, String identificacaoObra, String via, String uf, String localVia) {
         this.id = id;
         this.codigo = codigo;
-        this.identificaoObra = identificaoObra;
+        this.identificacaoObra = identificacaoObra;
         this.via = via;
         this.uf = uf;
         this.localVia = localVia;
     }
 
-    public Ponte(String codigo, String identificaoObra, String via, String uf, String localVia) {
+    public Ponte(String codigo, String identificacaoObra, String via, String uf, String localVia) {
         this.codigo = codigo;
-        this.identificaoObra = identificaoObra;
+        this.identificacaoObra = identificacaoObra;
         this.via = via;
         this.uf = uf;
         this.localVia = localVia;
@@ -53,12 +53,12 @@ public class Ponte {
         this.codigo = codigo;
     }
 
-    public String getIdentificaoObra() {
-        return identificaoObra;
+    public String getIdentificacaoObra() {
+        return identificacaoObra;
     }
 
-    public void setIdentificaoObra(String identificaoObra) {
-        this.identificaoObra = identificaoObra;
+    public void setIdentificacaoObra(String identificacaoObra) {
+        this.identificacaoObra = identificacaoObra;
     }
 
     public String getVia() {

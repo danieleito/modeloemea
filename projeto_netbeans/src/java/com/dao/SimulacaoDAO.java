@@ -122,8 +122,8 @@ public class SimulacaoDAO {
     }
 
     private ArrayList<Ranking> buscarRankings(int idSimulacao) throws SQLException {
-        String query = "SELECT R.ID_RANKING, R.ID_PONTE, R.ID_SIMULACAO, "
-                + "R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
+        String query = "SELECT R.ID_RANKING, R.DT_DATA_ULTIMA_INSPECAO, R.ID_PONTE, "
+                + "R.ID_SIMULACAO, R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
                 + "S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
                 + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, P.DS_VIA, "
                 + "P.DS_UF, P.DS_LOCAL_VIA "
@@ -146,13 +146,14 @@ public class SimulacaoDAO {
             ponte = new Ponte();
             ponte.setId(rs.getInt("ID_PONTE"));
             ponte.setCodigo(rs.getString("CD_PONTE"));
-            ponte.setIdentificaoObra(rs.getString("DS_IDENTIFICACAO_OBRA"));
+            ponte.setIdentificacaoObra(rs.getString("DS_IDENTIFICACAO_OBRA"));
             ponte.setVia(rs.getString("DS_VIA"));
             ponte.setUf(rs.getString("DS_UF"));
             ponte.setLocalVia(rs.getString("DS_LOCAL_VIA"));
 
             Ranking ranking = new Ranking(rs.getInt("ID_RANKING"), 
-                    ponte, rs.getInt("CS_CLASSIFICACAO"), 
+                    rs.getDate("DT_DATA_ULTIMA_INSPECAO"), ponte, 
+                    rs.getInt("CS_CLASSIFICACAO"), 
                     rs.getString("DS_INDICE_PERFORMANCE_RELATIVO"));
             rankings.add(ranking);
 //            rankings.add(new Ranking(rs.getInt("ID_RANKING"), ponte, rs.getInt("CS_CLASSIFICACAO"), rs.getString("DS_INDICE_PERFORMANCE_RELATIVO")));

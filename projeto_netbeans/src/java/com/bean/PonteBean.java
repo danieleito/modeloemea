@@ -23,6 +23,7 @@ import javax.faces.bean.SessionScoped;
 public class PonteBean extends ComumBean {
     private PonteDAO database;
     private ArrayList<Ponte> pontes;
+//    private ArrayList<Uf> ufs;
 
     public PonteDAO getDatabase() {
         return database;
@@ -51,7 +52,11 @@ public class PonteBean extends ComumBean {
         }
     }
     
-    public void consultar() {
-        
+    public void consultar(int id) {
+        //abre EXIBIR 
+    }
+    
+    public void carregar(int id) {
+        //carregar ponte no ranking
     }
 }

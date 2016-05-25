@@ -34,6 +34,66 @@ insert into USUARIO (NM_NOME, DS_USUARIO, DS_EMAIL, DS_SENHA, ID_TIPO_USUARIO) v
 insert into USUARIO (NM_NOME, DS_USUARIO, DS_EMAIL, DS_SENHA, ID_TIPO_USUARIO) values ('di', 'di', 'di10@inf.ufpr.br', '1', 2);
 ---------------------------------------------------------------------------
 
+--UF
+create table UF
+	(
+		ID_UF				int				not null identity(1,1),
+		DS_UF				varchar(30)		not null,
+		CONSTRAINT			pk_uf			PRIMARY KEY(ID_UF)
+	);
+
+GO
+insert into UF (DS_UF) values ('Acre');
+insert into UF (DS_UF) values ('Alagoas');
+insert into UF (DS_UF) values ('Paraná');
+insert into UF (DS_UF) values ('Santa Catarina');
+insert into UF (DS_UF) values ('São Paulo');
+
+---------------------------------------------------------------------------
+--Via
+create table VIA
+	(
+		ID_VIA			int				not null identity(1,1),
+		DS_VIA			varchar(10)		not null,
+		CONSTRAINT		pk_via			PRIMARY KEY(ID_VIA)
+	);
+
+GO
+insert into VIA (DS_VIA) values ('BR-116');
+insert into VIA (DS_VIA) values ('BR-277');
+insert into VIA (DS_VIA) values ('BR-376');
+---------------------------------------------------------------------------
+
+--Superintendencia Regional
+create table SUPERINTENDENCIA_REGIONAL
+	(
+		ID_SUPERINTENDENCIA_REGIONAL		int								not null identity(1,1),
+		DS_SUPERINTENDENCIA_REGIONAL		varchar(100)					not null,
+		ID_UF								int,
+		CONSTRAINT							pk_superintendenciaregional		PRIMARY KEY(ID_SUPERINTENDENCIA_REGIONAL),
+		CONSTRAINT							fk_superintendenciaregional_uf	FOREIGN KEY(ID_UF) REFERENCES UF(ID_UF)
+	);
+
+GO
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - PR - Superintendência Regional do DNIT do estado do Paraná', 3);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - SC - Superintendência Regional do DNIT do estado do Santa Catarina', 4);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL) values ('S.R.E. - SC - Superintendência Regional do DNIT do estado do Santa Catarina');
+---------------------------------------------------------------------------
+
+--Unidade Local
+create table UNIDADE_LOCAL
+	(
+		ID_UNIDADE_LOCAL				int											not null identity(1,1),
+		DS_UNIDADE_LOCAL				varchar(50)									not null,
+		ID_SUPERINTENDENCIA_REGIONAL	int											not null,
+		CONSTRAINT						pk_unidadelocal								PRIMARY KEY(ID_UNIDADE_LOCAL),
+		CONSTRAINT						fk_unidadelocal_superintendenciaregional	FOREIGN KEY(ID_SUPERINTENDENCIA_REGIONAL) REFERENCES SUPERINTENDENCIA_REGIONAL(ID_SUPERINTENDENCIA_REGIONAL)
+	);
+
+GO
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('São José dos Pinhais', 1);
+---------------------------------------------------------------------------
+
 --Ponte
 create table PONTE
 	(
@@ -76,6 +136,7 @@ insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) values ('01/05/2016', 
 create table RANKING
 	(
 		ID_RANKING							int				not null identity(1,1),
+		DT_DATA_ULTIMA_INSPECAO				date			not null,
 		ID_PONTE							int				not null,
 		ID_SIMULACAO						int				not null,
 		CS_CLASSIFICACAO					int				not null,
@@ -85,17 +146,17 @@ create table RANKING
 		CONSTRAINT							fk_ranking_simulacao FOREIGN KEY(ID_SIMULACAO) REFERENCES SIMULACAO (ID_SIMULACAO)
 	);
 
-insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (1, 1, 1, '1');
-insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (2, 1, 2, '2');
-insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (3, 3, 3, '3');
-insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (4, 1, 4, '4');
-insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (5, 2, 5, '5');
+insert into RANKING (DT_DATA_ULTIMA_INSPECAO, ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('25/05/2016', 1, 1, 1, '1');
+insert into RANKING (DT_DATA_ULTIMA_INSPECAO, ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('25/05/2016', 2, 1, 2, '2');
+insert into RANKING (DT_DATA_ULTIMA_INSPECAO, ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('27/05/2016', 3, 3, 3, '3');
+insert into RANKING (DT_DATA_ULTIMA_INSPECAO, ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('29/05/2016', 4, 1, 4, '4');
+insert into RANKING (DT_DATA_ULTIMA_INSPECAO, ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('30/05/2016', 5, 2, 5, '5');
 ---------------------------------------------------------------------------
 
 --Elemento
 create table ELEMENTO
 	(
-		ID_ELEMENTO		int			not null identity(1,1),
+		ID_ELEMENTO		int				not null identity(1,1),
 		NM_ELEMENTO		varchar(100)	not null,
 		DS_CAPA			varchar(10)		not null,
 		CONSTRAINT		pk_elemento		PRIMARY KEY(ID_ELEMENTO)

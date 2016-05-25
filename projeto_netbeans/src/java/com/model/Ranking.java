@@ -5,12 +5,15 @@
  */
 package com.model;
 
+import java.util.Date;
+
 /**
  *
  * @author Daniele Harumi Ito
  */
 public class Ranking {
     private int id;
+    private Date dataUltimaInspecao;
     private Ponte ponte;
     //private Simulacao simulacao;
     private int classificacao;
@@ -19,14 +22,16 @@ public class Ranking {
     public Ranking() {
     }
 
-    public Ranking(int id, Ponte ponte, int classificacao, String indicePerformanceRelativo) {
+    public Ranking(int id, Date dataUltimaInspecao, Ponte ponte, int classificacao, String indicePerformanceRelativo) {
         this.id = id;
+        this.dataUltimaInspecao = dataUltimaInspecao;
         this.ponte = ponte;
         this.classificacao = classificacao;
         this.indicePerformanceRelativo = indicePerformanceRelativo;
     }
 
-    public Ranking(Ponte ponte, int classificacao, String indicePerformanceRelativo) {
+    public Ranking(Date dataUltimaInspecao, Ponte ponte, int classificacao, String indicePerformanceRelativo) {
+        this.dataUltimaInspecao = dataUltimaInspecao;
         this.ponte = ponte;
         this.classificacao = classificacao;
         this.indicePerformanceRelativo = indicePerformanceRelativo;
@@ -38,6 +43,14 @@ public class Ranking {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Date getDataUltimaInspecao() {
+        return dataUltimaInspecao;
+    }
+
+    public void setDataUltimaInspecao(Date dataUltimaInspecao) {
+        this.dataUltimaInspecao = dataUltimaInspecao;
     }
 
     public Ponte getPonte() {
