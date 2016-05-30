@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="/View/Compartilhado/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:breadCrumb>
+                        <p:menuitem value="Categories" url="#" />
+                        <p:menuitem value="Simulação" url="/View/Compartilhado/simulacao.jsf" />
+                        <p:menuitem value="Ranking" url="/View/Compartilhado/Ranking/editar.jsf" />
+                        <p:menuitem value="Exibir" url="/View/Compartilhado/exibir.jsf" />
+                    </p:breadCrumb>
+
+                    <p:tabView>
+                        <p:tab title="Dados Cadastrais">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <ui:include src="/View/Compartilhado/dadosCadastrais.xhtml" />
+                            </h:panelGrid>
+                        </p:tab>
+                        
+                        
+                        
+                        <p:tab title="Arquivos anexos">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <ui:include src="/View/Compartilhado/ArquivosAnexos/cadastro.xhtml" />
+                            </h:panelGrid>
+                        </p:tab>
+                        
+                        
+                        <p:tab title="Inspeções">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <!--<p:tabView>-->
+                                    <!--<p:tab title="Resumo">-->
+                                        <h:panelGrid columns="2" cellpadding="10">
+                                            <p:dataTable var="i" value="#{inspecao.inspecoes}" paginator="true" rows="8" >
+                                                <p:column headerText="Data" style="text-align: center" >
+                                                    <h:outputText value="#{i.data}">
+                                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                    </h:outputText>
+                                                </p:column>
+
+                                                <p:column headerText="Inspetor" style="text-align: center" >
+                                                    <h:outputText value="#{i.usuario.usuario}" />
+                                                </p:column>
+
+                                                <p:column headerText="Cond. de estabilidade" style="width: 150px; text-align: center" >
+                                                    <h:outputText value="#{i.condicaoEstabilidade}" />
+                                                </p:column>
+
+                                                <p:column headerText="Cond. conservação" style="width: 150px; text-align: center" >
+                                                    <h:outputText value="#{i.condicaoConservacao}" />
+                                                </p:column>
+
+                                                <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                                                    <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{inspecao.visualizar(i.id)}" />
+                                                </p:column>
+                                            </p:dataTable>
+                                        </h:panelGrid>
+                                    <!--</p:tab>-->
+                                <!--</p:tabView>-->                                
+                            </h:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="/View/Compartilhado/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:breadCrumb>
+                        <p:menuitem value="Categories" url="#" />
+                        <p:menuitem value="Cadastro Obras de Arte Especiais" url="/View/Compartilhado/buscarOAEcadastro.jsf" />
+
+                    </p:breadCrumb>
+
+                    <h2>Obras de Arte Especiais</h2>
+<!--                    <hr style="background-color: #05b; background-size: 2px;" />-->
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Código" class="col-md-5" />
+                                </td>
+                                <td>
+                                    <p:inputText value="#{usuarioBean.model.nome}" class="col-md-2" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Identificação" class="col-md-5" />
+                                </td>
+                                <td>
+                                    <p:inputText value="#{usuarioBean.model.nome}" class="col-md-5" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="UF" class="col-md-3" />
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+                                        <f:selectItems value="#{usuarioBean.tipos}" var="t" itemValue="#{t.id}" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Via" class="col-md-3" />
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+                                        <f:selectItems value="#{usuarioBean.tipos}" var="t" itemValue="#{t.id}" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Local na Via (km)" class="col-md-5" />
+                                </td>
+                                <td>
+                                    <div>
+                                        <p:outputLabel value="do km " class="col-md-1" />
+                                        <p:inputText value="#{usuarioBean.model.nome}" class="col-md-1" />
+                                    
+                                        <p:outputLabel value=" ao km " class="col-md-1" />
+                                        <p:inputText value="#{usuarioBean.model.nome}" class="col-md-1" />
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Superintendência Regional" class="col-md-3" />
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-4">
+                                        <f:selectItems value="#{usuarioBean.tipos}" var="t" itemValue="#{t.id}" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Unidade Local" class="col-md-3" />
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-4">
+                                        <f:selectItems value="#{usuarioBean.tipos}" var="t" itemValue="#{t.id}" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Consultar" />
+                     <p:button outcome="/View/Compartilhado/Cadastrar.jsf" value="Novo registro" />
+                    <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Cancelar" />
+                    
+                    
+                    <p:dataTable var="p" value="#{ponte.pontes}" paginator="true" rows="8" >                      
+                        <p:column headerText="Código" style="text-align: center" >
+                            <h:outputText value="#{p.codigo}" />
+                        </p:column>
+
+                        <p:column headerText="Identificação da obra" style="text-align: center" >
+                            <h:outputText value="#{p.identificacaoObra}" />
+                        </p:column>
+
+                        <p:column headerText="Via" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{p.via}" />
+                        </p:column>
+
+                        <p:column headerText="UF" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{p.uf}" />
+                        </p:column>
+
+                        <p:column headerText="Local na via" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{p.localVia}" />
+                        </p:column>
+
+                        <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponte.consultar(p.id)}" />
+                            <p:commandButton icon="ui-icon-check" title="Carregar" action="#{ponte.carregar(p.id)}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

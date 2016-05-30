@@ -12,7 +12,8 @@
 <!--            <p:growl id="messages_growl"/>-->
             <p:menubar>
                 <p:menuitem value="Home" url="/View/Compartilhado/simulacao.jsf" />
-                
+                <p:menuitem value="Cadastro Obras de Arte Especiais" url="/View/Compartilhado/buscarOAEcadastro.jsf" />
+                    
                 <c:choose>
                     <c:when test="${login.usuarioLogado.tipoUsuario.id == 1}">
                         <p:submenu label="Administrador" icon="">
