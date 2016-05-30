@@ -218,14 +218,14 @@ insert into ARQUIVO_ANEXO_CADASTRO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_D
 create table ARQUIVO_ANEXO_INSPECAO
 	(
 		ID_ARQUIVO_ANEXO_INSPECAO		int				not null identity(1,1),
-		DS_ARQUIVO				varchar(20)		not null,
-		DS_TIPO_ARQUIVO			varchar(10)		not null,
-		NR_NUMERO				varchar(3)		not null,
-		DS_DESCRICAO			varchar(20)		not null,
-		DS_REGISTRO				varchar(10)		not null,
-		DT_DATA_ANEXACAO		date			not null,
+		DS_ARQUIVO						varchar(20)		not null,
+		DS_TIPO_ARQUIVO					varchar(10)		not null,
+		NR_NUMERO						varchar(3)		not null,
+		DS_DESCRICAO					varchar(20)		not null,
+		DS_REGISTRO						varchar(10)		not null,
+		DT_DATA_ANEXACAO				date			not null,
 		--DS_MINIATURA			
-		CONSTRAINT				pk_arquivoanexoinspecao	PRIMARY KEY(ID_ARQUIVO_ANEXO_INSPECAO)
+		CONSTRAINT						pk_arquivoanexoinspecao	PRIMARY KEY(ID_ARQUIVO_ANEXO_INSPECAO)
 	);
 GO
 insert into ARQUIVO_ANEXO_INSPECAO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values ('01.jpg', 'Foto', '01', 'Vista geral', 'INS', '13/05/2016');
@@ -233,3 +233,206 @@ insert into ARQUIVO_ANEXO_INSPECAO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_D
 insert into ARQUIVO_ANEXO_INSPECAO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values ('03.jpg', 'Foto', '03', 'Vista geral', 'INS', '15/05/2016');
 ---------------------------------------------------------------------------
 
+
+
+
+
+
+--dados basicos
+create table IDENTIFICACAO_OBRA_DADOS_BASICOS
+	(
+		ID_IDENTIFICACAO_OBRA_DADOS_BASICOS		int										not null identity(1, 1),
+		CD_CODIGO								varchar(20)								not null,
+		CD_CODIGO_INTEGRACAO					varchar(20)								not null,
+		DS_STATUS								varchar(20)								not null,
+		DS_IDENTIFICACAO						varchar(20)								not null,
+		DS_NATUREZA_TRANSPOSICAO				varchar(20)								not null,
+		DS_TIPO_ESTRUTURA						varchar(20)								not null,
+		DS_SISTEMA_CONSTRUTIVO					varchar(20)								not null,
+		DS_COMPRIMENTO							varchar(20)								not null,
+		DS_LARGURA								varchar(20)								not null,
+		DS_TREM_TIPO							varchar(20)								not null,
+		DS_ANO_CONSTRUCAO						varchar(20)								not null,
+		CONSTRAINT								pk_identificacaoobradadosbasicos		PRIMARY KEY(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS)
+	);
+
+--localizacao
+create table IDENTIFICACAO_OBRA_LOCALIZACAO
+	(
+		ID_IDENTIFICACAO_OBRA_LOCALIZACAO		int									not null identity(1,1),
+		DS_UF									varchar(20)							not null,
+		DS_VIA									varchar(20)							not null,
+		DS_LOCAL_VIA							varchar(20)							not null,
+		DS_CIDADE_MAIS_PROXIMA					varchar(20)							not null,
+		DS_PNV_ANO								varchar(20)							not null,
+		DS_PNV_VERSAO							varchar(20)							not null,
+		DS_PNV_CODIGO							varchar(20)							not null,
+		DS_PNV_ALTITUDE							varchar(20)							not null,
+		DS_LATITUDE_GRAU						varchar(20)							not null,
+		DS_LATITUDE_MINUTO						varchar(20)							not null,
+		DS_LONGITUDE_GRAU						varchar(20)							not null,
+		DS_LONGITUDE_MINUTO						varchar(20)							not null,
+		CONSTRAINT								pk_identificacaoobralocalizacao		PRIMARY KEY(ID_IDENTIFICACAO_OBRA_LOCALIZACAO)
+	);
+
+--responsaveis
+create table IDENTIFICACAO_OBRA_RESPONSAVEIS
+	(
+		ID_IDENTIFICACAO_OBRA_RESPONSAVEIS		int										not null identity(1,1),
+		DS_SUPERINTENDENCIA_REGIONAL			varchar(20)								not null,
+		DS_UNIDADE_LOCAL						varchar(20)								not null,
+		DS_TIPO_ADMINISTRACAO					varchar(20)								not null,
+		DS_ADMINISTRADOR						varchar(20)								not null,
+		DS_PROJETISTA_ORIGEM					varchar(20)								not null,
+		DS_PROJETISTA_PROJETISTA				varchar(20)								not null,
+		DS_CONSTRUTOR_ORIGEM					varchar(20)								not null,
+		DS_CONSTRUTOR_CONSTRUTOR				varchar(20)								not null,
+		DS_LOCALIZACAO_PROJETO					varchar(20)								not null,
+		DS_LOCALIZACAO_DOCUMENTOS_CONSTRUCAO	varchar(20)								not null,
+		DS_LOCALIZACAO_DOCUMENTOS_DIVERSOS		varchar(20)								not null,
+		CONSTRAINT								pk_identificacaoobraresponsaveis		PRIMARY KEY(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS)
+	);
+
+--inspecao
+create table IDENTIFICACAO_OBRA_INSPECAO
+	(
+		ID_IDENTIFICACAO_OBRA_INSPECAO		int									not null identity(1,1),
+		DS_PERIODO							varchar(20)							not null,
+		DS_EQUIPAMENTO_NECESSARIO			varchar(20)							not null,
+		DS_MELHOR_EPOCA						varchar(20)							not null,
+		CONSTRAINT							pk_identificacaoobrainspecao		PRIMARY KEY(ID_IDENTIFICACAO_OBRA_INSPECAO)
+	);
+
+--Identificacao da obra
+create table IDENTIFICACAO_OBRA
+	(
+		ID_IDENTIFICACAO_OBRA					int													not null identity(1, 1),
+		ID_IDENTIFICACAO_OBRA_DADOS_BASICOS		int													not null,
+		ID_IDENTIFICACAO_OBRA_LOCALIZACAO		int													not null,
+		ID_IDENTIFICACAO_OBRA_RESPONSAVEIS		int													not null,
+		ID_IDENTIFICACAO_OBRA_INSPECAO			int													not null,
+		CONSTRAINT								pk_identificacaoobra_identificacaoobradadosbasicos	FOREIGN KEY(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS) REFERENCES IDENTIFICACAO_OBRA_DADOS_BASICOS(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS),
+		CONSTRAINT								fk_identificacaoobra_identificacaoobralocalizacao	FOREIGN KEY(ID_IDENTIFICACAO_OBRA_LOCALIZACAO) REFERENCES IDENTIFICACAO_OBRA_LOCALIZACAO(ID_IDENTIFICACAO_OBRA_LOCALIZACAO),
+		CONSTRAINT								fk_identificacaoobra_identificacaoobraresponsaveis	FOREIGN KEY(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS) REFERENCES IDENTIFICACAO_OBRA_RESPONSAVEIS(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS),
+		CONSTRAINT								fk_identificacaoobra_identificacaoobrainspecao		FOREIGN KEY(ID_IDENTIFICACAO_OBRA_INSPECAO) REFERENCES IDENTIFICACAO_OBRA_INSPECAO(ID_IDENTIFICACAO_OBRA_INSPECAO)
+	);
+---------------------------------------------------------------------------
+
+--caracteristicas
+create table CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS
+	(
+		ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS		int												not null identity(1,1),
+		DS_IDENTIFICACAO									varchar(20)										not null,
+		DS_TIPO_REGIAO										varchar(20)										not null,
+		DS_TIPO_TRACADO										varchar(20)										not null,
+		DS_RAMPA_MAXIMA										varchar(20)										not null,
+		DS_RAIO_CURVA										varchar(20)										not null,
+		DS_VMD												varchar(20)										not null,
+		CONSTRAINT											pk_caracteristicasfuncionaiscaracteristicas		PRIMARY KEY(ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS)
+	);
+
+--dimensoes
+create table CARACTERISTICAS_FUNCIONAIS_DIMENSOES
+	(
+		ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES			int											not null identity(1,1),
+		DS_NUMERO_FAIXAS								varchar(20)									not null,
+		DS_LARGURA_FAIXA								varchar(20)									not null,
+		DS_ACOSTAMENTO_DIREITO							varchar(20)									not null,
+		DS_ACOSTAMENTO_ESQUERDO							varchar(20)									not null,
+		DS_CALCADA_DIREITA								varchar(20)									not null,
+		DS_CALCADA_ESQUERDA								varchar(20)									not null,
+		DS_LARGURA_TOTAL_PISTA							varchar(20)									not null,
+		DS_GABARITO_HORIZONTAL							varchar(20)									not null,
+		DS_GABARITO_VERTICAL							varchar(20)									not null,
+		DS_NUMERO_VAOS									varchar(20)									not null,
+		DS_DESCRICAO_VAOS								varchar(20)									not null,
+		CONSTRAINT										pk_caracteristicasfuncionaisdimensoes		PRIMARY KEY(ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES)
+	);
+
+--caracteristicas funcionais
+create table CARACTERISTICAS_FUNCIONAIS
+	(
+		ID_CARACTERISTICAS_FUNCIONAIS						int																		not null identity(1,1),
+		ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS		int																		not null,
+		ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES				int																		not null,
+		CONSTRAINT											pk_caracteristicasfuncionais											PRIMARY KEY(ID_CARACTERISTICAS_FUNCIONAIS),
+		CONSTRAINT											fk_caracteristicasfuncionais_caracteristicasfuncionaiscaracteristicas	FOREIGN KEY(ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS) REFERENCES CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS(ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS),
+		CONSTRAINT											fk_caracteristicasfuncionais_caracteristicasfuncionaisdimensoes			FOREIGN KEY(ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES) REFERENCES CARACTERISTICAS_FUNCIONAIS_DIMENSOES(ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES)
+	);
+---------------------------------------------------------------------------
+
+--elementos componentes
+create table ELEMENTOS_COMPONENTES
+	(
+		ID_ELEMENTOS_COMPONENTES		int							not null identity(1,1),
+		DS_IDENTIFICACAO				varchar(20)					not null,
+		CD_CODIGO						varchar(20)					not null,
+		DS_ELEMENTO						varchar(20)					not null,
+		DS_DETALHE						varchar(20)					not null,
+		CONSTRAINT						pk_elementoscomponentes		PRIMARY KEY(ID_ELEMENTOS_COMPONENTES)
+	);
+---------------------------------------------------------------------------
+
+--aspectos especiais
+create table ASPECTOS_ESPECIAIS
+	(
+		ID_ASPECTOS_ESPECIAIS			int							not null identity(1,1),
+		DS_IDENTIFICACAO				varchar(20)					not null,
+		CD_CODIGO						varchar(20)					not null,
+		DS_DESCRICAO					varchar(20)					not null,
+		DS_SIGLA						varchar(20)					not null,
+		CONSTRAINT						pk_aspectosespeciais		PRIMARY KEY(ID_ASPECTOS_ESPECIAIS)
+	);
+---------------------------------------------------------------------------
+
+--deficiencias funcionais
+create table DEFICIENCIAS_FUNCIONAIS
+	(
+		ID_DEFICIENCIAS_FUNCIONAIS		int							not null identity(1,1),
+		DS_IDENTIFICACAO				varchar(20)					not null,
+		DS_DEFICIENCIA_FUNCIONAL		varchar(20)					not null,
+		DS_UNIDADE_MEDIDA				varchar(20)					not null,
+		CONSTRAINT						pk_deficienciasfuncionais		PRIMARY KEY(ID_DEFICIENCIAS_FUNCIONAIS)
+	);
+---------------------------------------------------------------------------
+
+--rotas alternativas
+create table ROTAS_ALTERNATIVAS
+	(
+		ID_ROTAS_ALTERNATIVAS			int							not null identity(1,1),
+		DS_IDENTIFICACAO				varchar(20)					not null,
+		DS_ROTA_ALTERNATIVA				varchar(20)					not null,
+		DS_ACRESCIMO_KM					varchar(20)					not null,
+		CONSTRAINT						pk_rotasalternativas		PRIMARY KEY(ID_ROTAS_ALTERNATIVAS)
+	);
+---------------------------------------------------------------------------
+
+--substituicao
+create table SUBSTITUICAO
+	(
+		ID_SUBSTITUICAO						int					not null identity(1,1),
+		DS_IDENTIFICACAO					varchar(20)			not null,
+		DS_EXISTE_PROJETO_SUBSTITUICAO		varchar(20)			not null,
+		DS_CUSTO_ESTIMADO					varchar(20)			not null,
+		DS_OBSERVACOES						varchar(20)			not null,
+		CONSTRAINT							pk_substituicao		PRIMARY KEY(ID_SUBSTITUICAO)
+	);
+---------------------------------------------------------------------------
+
+--observacoes
+create table OBSERVACOES
+	(
+		ID_OBSERVACOES						int					not null identity(1,1),
+		DS_IDENTIFICACAO					varchar(20)			not null,
+		DS_OBSERVACOES						varchar(20)			not null,
+		CONSTRAINT							pk_observacoes		PRIMARY KEY(ID_OBSERVACOES)
+	);
+---------------------------------------------------------------------------
+
+--MENSAGENS acho que nao vai ser necessario
+
+-- ARQUIVOS ANEXOS tabela ja existe
+
+-- INSPECOES tabela ja existe
+
+---------------------------------------------------------------------------
