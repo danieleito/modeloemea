@@ -52,8 +52,11 @@ and open the template in the editor.
                                     <p:outputLabel value="UF" class="col-md-3" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-                                        <f:selectItems value="#{usuarioBean.tipos}" var="t" itemValue="#{t.id}" />
+                                    <p:selectOneMenu class="col-md-3">
+                                        <f:selectItem itemLabel="Selecione a UF" itemValue="" />
+                                        <f:selectItem itemLabel="Paraná" itemValue="1" />
+                                        <f:selectItem itemLabel="Santa Catarina" itemValue="2" />
+                                        <f:selectItem itemLabel="São Paulo" itemValue="3" />                                        
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
@@ -63,8 +66,11 @@ and open the template in the editor.
                                     <p:outputLabel value="Via" class="col-md-3" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-                                        <f:selectItems value="#{usuarioBean.tipos}" var="t" itemValue="#{t.id}" />
+                                    <p:selectOneMenu class="col-md-3">
+                                        <f:selectItem itemLabel="Selecione a Via" itemValue="" />
+                                        <f:selectItem itemLabel="BR - 101" itemValue="1" />
+                                        <f:selectItem itemLabel="BR - 116" itemValue="2" />
+                                        <f:selectItem itemLabel="BR - 277" itemValue="3" />  
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
@@ -89,8 +95,11 @@ and open the template in the editor.
                                     <p:outputLabel value="Superintendência Regional" class="col-md-3" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-4">
-                                        <f:selectItems value="#{usuarioBean.tipos}" var="t" itemValue="#{t.id}" />
+                                    <p:selectOneMenu class="col-md-4">
+                                        <f:selectItem itemLabel="Selecione a Superintendência Regional" itemValue="" />
+                                        <f:selectItem itemLabel="S.R.E. - PR - Superintendência Regional do DNIT  no estado do Paraná" itemValue="1" />
+                                        <f:selectItem itemLabel="S.R.E. - SC - Superintendência Regional do DNIT  no estado de Santa Catarina" itemValue="2" />
+                                        <f:selectItem itemLabel="S.R.E. - SP - Superintendência Regional do DNIT  no estado de São Paulo" itemValue="3" /> 
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
@@ -100,8 +109,11 @@ and open the template in the editor.
                                     <p:outputLabel value="Unidade Local" class="col-md-3" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-4">
-                                        <f:selectItems value="#{usuarioBean.tipos}" var="t" itemValue="#{t.id}" />
+                                    <p:selectOneMenu class="col-md-3">
+                                        <f:selectItem itemLabel="Selecione a Unidade Local" itemValue="" />
+                                        <f:selectItem itemLabel="ULSC01 - Tubarão" itemValue="1" />
+                                        <f:selectItem itemLabel="ULSC02 - Joinville" itemValue="2" />
+                                        <f:selectItem itemLabel="ULSC03 - Lajes" itemValue="3" /> 
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
