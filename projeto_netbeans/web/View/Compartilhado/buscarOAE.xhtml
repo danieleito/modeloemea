@@ -120,11 +120,10 @@ and open the template in the editor.
                         </tbody>
                     </table>
                     
-                    <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Consultar" />
+                    <p:commandButton action='#{ponte.consultar()}' value="Consultar" oncomplete="$('.mySelector').show();" />
                     <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Cancelar" />
-                    
-                    
-                    <p:dataTable var="p" value="#{ponte.pontes}" paginator="true" rows="8" >                      
+                                        
+                    <p:dataTable id="tabela" var="p" value="#{ponte.pontes}" paginator="true" rows="8" styleClass="mySelector" style="display: none" >                      
                         <p:column headerText="Código" style="text-align: center" >
                             <h:outputText value="#{p.codigo}" />
                         </p:column>
@@ -146,7 +145,7 @@ and open the template in the editor.
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponte.consultar(p.id)}" />
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponte.visualizar(p.id)}" />
                             <p:commandButton icon="ui-icon-check" title="Carregar" action="#{ponte.carregar(p.id)}" />
                         </p:column>
                     </p:dataTable>

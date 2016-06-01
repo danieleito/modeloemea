@@ -66,33 +66,11 @@ public class PonteDAO {
     }
 
     public Ponte buscar(String str) throws SQLException {
-        String query = null;
-        if (str.equals("codigo")) {
-            query = "select P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
-                    + "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
-                    + "from PONTE P "
-                    + "and P.CD_PONTE = " + str + ";";
-        } else if (str.equals("identificacao")) {
-            query = "select P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
-                    + "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
-                    + "from PONTE P "
-                    + "and P.DS_IDENTIFICACAO_OBRA = " + str + ";";
-        } else if (str.equals("via")) {
-            query = "select P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
-                    + "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
-                    + "from PONTE P "
-                    + "and P.DS_VIA = " + str + ";";
-        } else if (str.equals("uf")) {
-            query = "select P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
-                    + "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
-                    + "from PONTE P "
-                    + "and P.DS_UF = " + str + ";";
-        } else if (str.equals("localVia")) {
-            query = "select P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
-                    + "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
-                    + "from PONTE P "
-                    + "and P.DS_LOCAL_VIA = " + str + ";";
-        }
+        String query = "select P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
+                + "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
+                + "from PONTE P "
+                + "and P.CD_PONTE = " + str + ";";
+        
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
         Statement stmt;
