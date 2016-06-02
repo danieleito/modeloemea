@@ -25,6 +25,14 @@ public class PonteBean extends ComumBean {
     private PonteDAO database;
     private ArrayList<Ponte> pontes;
 
+    public Ponte getModel() {
+        return model;
+    }
+
+    public void setModel(Ponte model) {
+        this.model = model;
+    }
+
     public PonteDAO getDatabase() {
         return database;
     }
@@ -43,6 +51,7 @@ public class PonteBean extends ComumBean {
     
     public PonteBean() {
         database = new PonteDAO();
+        model = new Ponte();
         try {
             pontes = database.buscar();
         } catch (SQLException ex) {
@@ -50,6 +59,10 @@ public class PonteBean extends ComumBean {
             pontes = new ArrayList<>();
             adicionarMensagemErro("Erro ao carregar pontes.");
         }
+    }
+    
+    public void cancelar() {
+        redirecionar("/View/Compartilhado/Ranking/editar.jsf");
     }
     
     public void visualizar(int id) {

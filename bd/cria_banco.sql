@@ -103,6 +103,8 @@ create table PONTE
 		DS_VIA								varchar(6)		not null,
 		DS_UF								varchar(60)		not null,
 		DS_LOCAL_VIA						varchar(6)		not null,
+		ID_SUPERINTENDENCIA_REGIONAL		int,
+		ID_UNIDADE_LOCAL					int,
 		CONSTRAINT							pk_ponte		PRIMARY KEY(ID_PONTE)
 	);
 
@@ -236,7 +238,7 @@ insert into ARQUIVO_ANEXO_INSPECAO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_D
 
 
 
-
+--------------------------------CADASTRO-----------------------------------
 
 --dados basicos
 create table IDENTIFICACAO_OBRA_DADOS_BASICOS
@@ -388,18 +390,27 @@ insert into CARACTERISTICAS_FUNCIONAIS (ID_CARACTERISTICAS_FUNCIONAIS_CARACTERIS
 ---------------------------------------------------------------------------
 
 --elementos componentes
-create table ELEMENTOS_COMPONENTES
+--create table ELEMENTOS_COMPONENTES
+--	(
+--		ID_ELEMENTOS_COMPONENTES		int							not null identity(1,1),
+--		DS_IDENTIFICACAO				varchar(20),
+--		CD_CODIGO						varchar(20),
+--		DS_ELEMENTO						varchar(20),
+--		DS_DETALHE						varchar(20),
+--		CONSTRAINT						pk_elementoscomponentes		PRIMARY KEY(ID_ELEMENTOS_COMPONENTES)
+--	);
+--GO
+--insert into ELEMENTOS_COMPONENTES (DS_IDENTIFICACAO, CD_CODIGO, DS_ELEMENTO, DS_DETALHE) 
+--values ('00', '00', '00', '00');
+
+create table ELEMENTO_COMPONENTES
 	(
-		ID_ELEMENTOS_COMPONENTES		int							not null identity(1,1),
-		DS_IDENTIFICACAO				varchar(20),
-		CD_CODIGO						varchar(20),
-		DS_ELEMENTO						varchar(20),
-		DS_DETALHE						varchar(20),
-		CONSTRAINT						pk_elementoscomponentes		PRIMARY KEY(ID_ELEMENTOS_COMPONENTES)
+		ID_PONTE				int						not null identity(1,1),
+		CD_CODIGO				varchar(20),
+		DS_DETALHE				varchar(20),
+		NR_QUANTIDADE			varchar(10),
+		CONSTRAINT				pk_elementoscomponentes		PRIMARY KEY(ID_PONTE)
 	);
-GO
-insert into ELEMENTOS_COMPONENTES (DS_IDENTIFICACAO, CD_CODIGO, DS_ELEMENTO, DS_DETALHE) 
-values ('00', '00', '00', '00');
 ---------------------------------------------------------------------------
 
 --aspectos especiais

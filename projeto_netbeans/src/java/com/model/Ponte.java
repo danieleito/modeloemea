@@ -84,4 +84,9 @@ public class Ponte {
     public void setLocalVia(String localVia) {
         this.localVia = localVia;
     }
+    
+    @Override
+    public String toString() {
+        return this.codigo;
+    }
 }
