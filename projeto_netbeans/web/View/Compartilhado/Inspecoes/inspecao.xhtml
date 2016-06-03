@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/View/Compartilhado/template.xhtml">
+            <ui:define name="content">
+                  <h:form id="form">
+                 <p:breadCrumb>
+                        <p:menuitem value="Categories" url="#" />
+                        <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
+                        <p:menuitem value="Inspeções Obras de Arte Especiais" url="/View/Compartilhado/Inspecoes/buscarOAEinspecao.jsf" />
+                        <p:menuitem value="Nova Inspeção" url="/View/Compartilhado/Inspecoes/inspecao.jsf" />
+                    </p:breadCrumb>
+
+                
+                 <p:tabView>
+                     <p:tab title="Manifestações">                                                   
+                            <p:panel  header="Cadastro de Manifestações">
+                            <table>
+                            <tbody>
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Elemento:" class="col-md-1" />                                  
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3" style="width: 400px">
+                                    </p:selectOneMenu>
+                                </td>
+                               
+                            </tr>
+                             <tr>
+                               <td class="th">
+                                    <p:outputLabel value="Nº:" class="col-md-1" />  
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3" style="width: 40px">
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr> 
+                                                                
+                            <tr >
+                                <td class="th">
+                                    <p:outputLabel value="Manifestação:" class="col-md-1" />                                  
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3" style="width: 400px">
+                                    </p:selectOneMenu>
+                                </td>
+                                
+                            </tr>
+                            <tr >
+                                <td class="th">
+                                    <p:outputLabel value="Foto:" class="col-md-1" />                                  
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3" style="width: 60px">
+                                    </p:selectOneMenu>
+                                </td>
+                                
+                            </tr>
+                            <tr >
+                                <td class="th">
+                                    <p:outputLabel value="Tamanho:" class="col-md-1" />                                  
+                                </td>
+                                <td>
+                                    <p:inputText value="#{usuarioBean.model.nome}" class="col-md-2 " />
+                                </td>
+                            </tr>
+                            <tr >
+                                <td class="th">
+                                    <p:outputLabel value="Extensão relativa:" class="col-md-1" />                            
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3" style="width: 120px">
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+                             <tr >
+                                <td class="th">
+                                    <p:outputLabel value="Reparo:" class="col-md-1" />                                  
+                                </td>
+                                <td>
+                                    <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3" style="width: 120px">
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>   
+                                
+                             </tbody>
+                             </table>
+                                 <h:outputLabel value="" class="col-md-10" />
+                                 <ui:include src="/View/Compartilhado/Inspecoes/tabelamanifestacoes.xhtml" />
+                          </p:panel> 
+                      </p:tab>
+                        
+                     <p:tab title="Arquivos Anexos">                                                   
+                            <ui:include src="/View/Compartilhado/ArquivosAnexos/inspecao.xhtml" />
+                      </p:tab>
+                     
+                     
+                    </p:tabView>
+                      
+                 </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -25,7 +25,7 @@ input, select, selector {
 }
 
 button {
-    width: 150px;
+    width: 150;
     margin: 15px 15px 15px 0;
 }
 
@@ -474,3 +474,4 @@ ul.form-info,
 #submenu ul {
 	border-color: #05b;
 }*/
+
