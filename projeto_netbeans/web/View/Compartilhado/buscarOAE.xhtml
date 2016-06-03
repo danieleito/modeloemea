@@ -27,7 +27,7 @@ and open the template in the editor.
                     </p:breadCrumb>
 
                     <h2>Obras de Arte Especiais</h2>
-<!--                    <hr style="background-color: #05b; background-size: 2px;" />-->
+                    <!--<hr style="background-color: #05b; background-size: 2px;" />-->
                     <table>
                         <tbody>
                             <tr>
@@ -38,7 +38,7 @@ and open the template in the editor.
                                     <p:inputText value="#{ponte.model.codigo}" class="col-md-2" />
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td class="th">
                                     <p:outputLabel value="Identificação" class="col-md-5" />
@@ -47,7 +47,7 @@ and open the template in the editor.
                                     <p:inputText value="#{ponte.model.identificacaoObra}" class="col-md-5" />
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td class="th">
                                     <p:outputLabel value="UF" class="col-md-3" />
@@ -61,7 +61,7 @@ and open the template in the editor.
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td class="th">
                                     <p:outputLabel value="Via" class="col-md-3" />
@@ -75,22 +75,22 @@ and open the template in the editor.
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td class="th">
                                     <p:outputLabel value="Local na Via (km)" class="col-md-5" />
                                 </td>
                                 <td>
                                     <div>
-                                        <label value="do km " />
+                                        <p:outputLabel value="do km " />
                                         <p:inputText value="#{ponte.model.localVia}" class="col-md-1" />
-                                    
-                                        <label value=" ao km " />
+
+                                        <p:outputLabel value=" ao km " />
                                         <p:inputText value="#{ponte.model.localVia}" class="col-md-1" />
                                     </div>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td class="th">
                                     <p:outputLabel value="Superintendência Regional" class="col-md-3" />
@@ -104,7 +104,7 @@ and open the template in the editor.
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <td class="th">
                                     <p:outputLabel value="Unidade Local" class="col-md-3" />
@@ -120,10 +120,10 @@ and open the template in the editor.
                             </tr>
                         </tbody>
                     </table>
-                    
+
                     <p:commandButton action='#{ponte.consultar()}' value="Consultar" oncomplete="$('.mySelector').show();" />
                     <p:commandButton action="#{ponte.cancelar()}" value="Cancelar" />
-                                        
+
                     <p:dataTable id="tabela" var="p" value="#{ponte.pontes}" paginator="true" rows="8" styleClass="mySelector" style="display: none" >                      
                         <p:column headerText="Código" style="text-align: center" >
                             <h:outputText value="#{p.codigo}" />

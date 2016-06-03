@@ -81,6 +81,7 @@ public class PonteBean extends ComumBean {
         String uf = model.getUf();
         String via = model.getVia();
         
+        
         if (!codigo.isEmpty()) {
             database.buscar(codigo);
             buscarCodigo(codigo);
