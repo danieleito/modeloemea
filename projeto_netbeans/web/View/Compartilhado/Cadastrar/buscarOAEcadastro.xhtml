@@ -20,7 +20,8 @@ and open the template in the editor.
                 <h:form id="form">
                     <p:breadCrumb>
                         <p:menuitem value="Categories" url="#" />
-                        <p:menuitem value="Cadastro Obras de Arte Especiais" url="/View/Compartilhado/buscarOAEcadastro.jsf" />
+                        <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
+                        <p:menuitem value="Cadastro Obras de Arte Especiais" url="/View/Compartilhado/Cadastrar/buscarOAEcadastro.jsf" />
 
                     </p:breadCrumb>
 
@@ -74,10 +75,10 @@ and open the template in the editor.
                                 </td>
                                 <td>
                                     <div>
-                                        <p:outputLabel value="do km " class="col-md-1" />
+                                        <label value="do km " class="col-md-1" />
                                         <p:inputText value="#{usuarioBean.model.nome}" class="col-md-1" />
                                     
-                                        <p:outputLabel value=" ao km " class="col-md-1" />
+                                        <label value=" ao km " class="col-md-1" />
                                         <p:inputText value="#{usuarioBean.model.nome}" class="col-md-1" />
                                     </div>
                                 </td>
@@ -108,7 +109,7 @@ and open the template in the editor.
                     </table>
                     
                     <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Consultar" />
-                     <p:button outcome="/View/Compartilhado/Cadastrar.jsf" value="Novo registro" />
+                     <p:button outcome="/View/Compartilhado/Cadastrar/Cadastrar.jsf" value="Novo registro" />
                     <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Cancelar" />
                     
                     

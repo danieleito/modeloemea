@@ -13,6 +13,7 @@ create table TIPO_USUARIO
 GO
 insert into TIPO_USUARIO (DS_TIPO) values ('Administrador');
 insert into TIPO_USUARIO (DS_TIPO) values ('Usuário comum');
+insert into TIPO_USUARIO (DS_TIPO) values ('Coordenador');
 
 create table USUARIO 
 	(
@@ -45,9 +46,31 @@ create table UF
 GO
 insert into UF (DS_UF) values ('Acre');
 insert into UF (DS_UF) values ('Alagoas');
+insert into UF (DS_UF) values ('Amapá');
+insert into UF (DS_UF) values ('Amazonas');
+insert into UF (DS_UF) values ('Bahia');
+insert into UF (DS_UF) values ('Ceará');
+insert into UF (DS_UF) values ('Distrito Federal');
+insert into UF (DS_UF) values ('Espírito Santo');
+insert into UF (DS_UF) values ('Goiás');
+insert into UF (DS_UF) values ('Maranhão');
+insert into UF (DS_UF) values ('Mato Grosso');
+insert into UF (DS_UF) values ('Mato Grosso do Sul');
+insert into UF (DS_UF) values ('Minas Gerais');
+insert into UF (DS_UF) values ('Pará');
+insert into UF (DS_UF) values ('Paraíba');
 insert into UF (DS_UF) values ('Paraná');
+insert into UF (DS_UF) values ('Pernambuco');
+insert into UF (DS_UF) values ('Piauí');
+insert into UF (DS_UF) values ('Rio de Janeiro');
+insert into UF (DS_UF) values ('Rio Grande do Norte');
+insert into UF (DS_UF) values ('Rio Grande do Sul');
+insert into UF (DS_UF) values ('Rondônia');
+insert into UF (DS_UF) values ('Roraima');
 insert into UF (DS_UF) values ('Santa Catarina');
 insert into UF (DS_UF) values ('São Paulo');
+insert into UF (DS_UF) values ('Sergipe');
+insert into UF (DS_UF) values ('Tocantins');
 
 ---------------------------------------------------------------------------
 --Via
@@ -55,13 +78,38 @@ create table VIA
 	(
 		ID_VIA			int				not null identity(1,1),
 		DS_VIA			varchar(10)		not null,
+		ID_UF			int,
 		CONSTRAINT		pk_via			PRIMARY KEY(ID_VIA)
 	);
 
 GO
+insert into VIA (DS_VIA) values ('BR-101');
 insert into VIA (DS_VIA) values ('BR-116');
+insert into VIA (DS_VIA) values ('BR-153');
+insert into VIA (DS_VIA) values ('BR-158');
+insert into VIA (DS_VIA) values ('BR-163');
+insert into VIA (DS_VIA) values ('BR-272');
 insert into VIA (DS_VIA) values ('BR-277');
+insert into VIA (DS_VIA) values ('BR-280');
+insert into VIA (DS_VIA) values ('BR-282');
+insert into VIA (DS_VIA) values ('BR-283');
+insert into VIA (DS_VIA) values ('BR-285');
+insert into VIA (DS_VIA) values ('BR-369');
+insert into VIA (DS_VIA) values ('BR-373');
 insert into VIA (DS_VIA) values ('BR-376');
+insert into VIA (DS_VIA) values ('BR-386');
+insert into VIA (DS_VIA) values ('BR-466');
+insert into VIA (DS_VIA) values ('BR-467');
+insert into VIA (DS_VIA) values ('BR-469');
+insert into VIA (DS_VIA) values ('BR-470');
+insert into VIA (DS_VIA) values ('BR-471');
+insert into VIA (DS_VIA) values ('BR-475');
+insert into VIA (DS_VIA) values ('BR-476');
+insert into VIA (DS_VIA) values ('BR-477');
+insert into VIA (DS_VIA) values ('BR-480');
+insert into VIA (DS_VIA) values ('BR-486');
+insert into VIA (DS_VIA) values ('BR-487');
+
 ---------------------------------------------------------------------------
 
 --Superintendencia Regional
@@ -75,9 +123,33 @@ create table SUPERINTENDENCIA_REGIONAL
 	);
 
 GO
-insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - PR - Superintendência Regional do DNIT do estado do Paraná', 3);
-insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - SC - Superintendência Regional do DNIT do estado do Santa Catarina', 4);
-insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL) values ('S.R.E. - SC - Superintendência Regional do DNIT do estado do Santa Catarina');
+
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - RR - Superintendência Regional do DNIT no estado de Roraima', 23);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - AL - Superintendência Regional do DNIT no estado de Alagoas', 2);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - AM - Superintendência Regional do DNIT no estado de Amazonas', 4);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - BA - Superintendência Regional do DNIT no estado da Bahia', 5);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - CE - Superintendência Regional do DNIT no estado do Ceará', 6);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - ES - Superintendência Regional do DNIT no estado do Espírito Santo', 8);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - GO - Superintendência Regional do DNIT no estado de Goiás e Distrito Federal', 7);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - MA - Superintendência Regional do DNIT no estado do Maranhão', 10);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - MT - Superintendência Regional do DNIT no estado do Mato Grosso', 11);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - MS - Superintendência Regional do DNIT no estado do Mato Grosso do Sul', 12);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - MG - Superintendência Regional do DNIT no estado de Minas Gerais', 13);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - PA - Superintendência Regional do DNIT no estado do Pará', 14);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - PB - Superintendência Regional do DNIT no estado de Paraíba', 15);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - PR - Superintendência Regional do DNIT no estado do Paraná', 16);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - PE - Superintendência Regional do DNIT no estado de Pernambuco', 17);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - PI - Superintendência Regional do DNIT no estado do Piauí', 18);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - RJ - Superintendência Regional do DNIT no estado do Rio de Janeiro', 19);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - RN - Superintendência Regional do DNIT no estado do Rio Grande do Norte', 20);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - RS - Superintendência Regional do DNIT no estado do Rio Grande do Sul', 21);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - RO - Superintendência Regional do DNIT no estado de Rondônia e Acre', 22);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - SC - Superintendência Regional do DNIT no estado de Santa Catarina', 24);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - SP - Superintendência Regional do DNIT no estado de São Paulo', 25);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - SE - Superintendência Regional do DNIT no estado de Sergipe', 26);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - TO - Superintendência Regional do DNIT no estado do Tocantins', 27);
+insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - AP - Superintendência Regional do DNIT no estado do Amapá', 3);
+
 ---------------------------------------------------------------------------
 
 --Unidade Local
@@ -91,7 +163,27 @@ create table UNIDADE_LOCAL
 	);
 
 GO
-insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('São José dos Pinhais', 1);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULPR01 - Colombo', 14);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULPR02 - Campo Mourão', 14);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULPR03 - Laranjeiras do Sul', 14);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULPR04 - Ponta Grossa', 14);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULPR05 - Foz do Iguaçu', 14);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULPR06 - São José dos Pinhais', 14);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULPR07 - Londrina', 14);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('PROFE-PR Procuradoria Federal Especializada SRE-PR', 14);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('UL P. Branco/PR - Unidade local em Pato Branco/PR', 14);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULSC01 - Tubarão', 21);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULSC02 - Joinville', 21);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULSC03 - Lages', 21);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULSC04 - Joaçaba', 21);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULSC05 - Mafra', 21);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULSC08 - Chapecó', 21);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULSC09 - Florianópolis', 21);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULSC07 - Rio do Sul', 21);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULSC06 - São José', 21);
+insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULSC09 - vago', 21);
+
+
 ---------------------------------------------------------------------------
 
 --Ponte
@@ -319,21 +411,7 @@ create table IDENTIFICACAO_OBRA_INSPECAO
 GO
 insert into IDENTIFICACAO_OBRA_INSPECAO (DS_PERIODO, DS_EQUIPAMENTO_NECESSARIO, DS_MELHOR_EPOCA) values ('00', '00', '00');
 
---Identificacao da obra
-create table IDENTIFICACAO_OBRA
-	(
-		ID_IDENTIFICACAO_OBRA					int													not null identity(1, 1),
-		ID_IDENTIFICACAO_OBRA_DADOS_BASICOS		int													not null,
-		ID_IDENTIFICACAO_OBRA_LOCALIZACAO		int													not null,
-		ID_IDENTIFICACAO_OBRA_RESPONSAVEIS		int													not null,
-		ID_IDENTIFICACAO_OBRA_INSPECAO			int													not null,
-		CONSTRAINT								pk_identificacaoobra_identificacaoobradadosbasicos	FOREIGN KEY(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS) REFERENCES IDENTIFICACAO_OBRA_DADOS_BASICOS(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS),
-		CONSTRAINT								fk_identificacaoobra_identificacaoobralocalizacao	FOREIGN KEY(ID_IDENTIFICACAO_OBRA_LOCALIZACAO) REFERENCES IDENTIFICACAO_OBRA_LOCALIZACAO(ID_IDENTIFICACAO_OBRA_LOCALIZACAO),
-		CONSTRAINT								fk_identificacaoobra_identificacaoobraresponsaveis	FOREIGN KEY(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS) REFERENCES IDENTIFICACAO_OBRA_RESPONSAVEIS(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS),
-		CONSTRAINT								fk_identificacaoobra_identificacaoobrainspecao		FOREIGN KEY(ID_IDENTIFICACAO_OBRA_INSPECAO) REFERENCES IDENTIFICACAO_OBRA_INSPECAO(ID_IDENTIFICACAO_OBRA_INSPECAO)
-	);
-GO
-insert into IDENTIFICACAO_OBRA (ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, ID_IDENTIFICACAO_OBRA_LOCALIZACAO, ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, ID_IDENTIFICACAO_OBRA_INSPECAO) values (1, 1, 1, 1);
+
 ---------------------------------------------------------------------------
 
 --caracteristicas
@@ -374,18 +452,6 @@ insert into CARACTERISTICAS_FUNCIONAIS_DIMENSOES (DS_NUMERO_FAIXAS, DS_LARGURA_F
 DS_CALCADA_DIREITA, DS_CALCADA_ESQUERDA, DS_LARGURA_TOTAL_PISTA, DS_GABARITO_HORIZONTAL, DS_GABARITO_VERTICAL, DS_NUMERO_VAOS, DS_DESCRICAO_VAOS) 
 values ('00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00');
 
---caracteristicas funcionais
-create table CARACTERISTICAS_FUNCIONAIS
-	(
-		ID_CARACTERISTICAS_FUNCIONAIS						int																		not null identity(1,1),
-		ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS		int																		not null,
-		ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES				int																		not null,
-		CONSTRAINT											pk_caracteristicasfuncionais											PRIMARY KEY(ID_CARACTERISTICAS_FUNCIONAIS),
-		CONSTRAINT											fk_caracteristicasfuncionais_caracteristicasfuncionaiscaracteristicas	FOREIGN KEY(ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS) REFERENCES CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS(ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS),
-		CONSTRAINT											fk_caracteristicasfuncionais_caracteristicasfuncionaisdimensoes			FOREIGN KEY(ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES) REFERENCES CARACTERISTICAS_FUNCIONAIS_DIMENSOES(ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES)
-	);
-GO
-insert into CARACTERISTICAS_FUNCIONAIS (ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS, ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES) values (1, 1);
 
 ---------------------------------------------------------------------------
 
@@ -485,6 +551,28 @@ GO
 insert into OBSERVACOES (DS_IDENTIFICACAO, DS_OBSERVACOES) 
 values ('00', '00');
 ---------------------------------------------------------------------------
+
+-- Inspeções
+
+create table INSPECOES_MANIFESTACOES
+	(
+		ID_INSPECOES_MANIFESTACOES				int									not null identity(1,1),
+		DS_ELEMENTO								varchar(20),
+		DS_NUMERO								varchar(20),
+		DS_MANIFESTACAO							varchar(20),
+		DS_FOTO									varchar(20),
+		DS_TAMANHO								varchar(20),
+		DS_EXTENSAO								varchar(20),
+		DS_REPARO								varchar(20),
+		CONSTRAINT								pk_inspecoesmanifestacoes		PRIMARY KEY(ID_INSPECOES_MANIFESTACOES)
+	);
+GO
+insert into INSPECOES_MANIFESTACOES (DS_ELEMENTO, DS_NUMERO, DS_MANIFESTACAO, DS_FOTO, DS_TAMANHO, 
+DS_EXTENSAO, DS_REPARO) 
+values ('00', '00', '00', '00', '00', '00', '00');
+
+
+
 
 --MENSAGENS acho que nao vai ser necessario
 

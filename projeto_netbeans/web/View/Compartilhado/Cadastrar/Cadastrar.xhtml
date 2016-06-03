@@ -14,7 +14,8 @@
                   <h:form id="form">
                  <p:breadCrumb>
                         <p:menuitem value="Categories" url="#" />
-                        <p:menuitem value="Cadastro Obras de Arte Especiais" url="/View/Compartilhado/buscarOAEcadastro.jsf" />
+                        <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
+                        <p:menuitem value="Cadastro Obras de Arte Especiais" url="/View/Compartilhado/Cadastrar/buscarOAEcadastro.jsf" />
                         <p:menuitem value="Novo Registro" url="/View/Compartilhado/Cadastrar.jsf" />
                     </p:breadCrumb>
 
@@ -936,9 +937,7 @@
                         </p:tab>
                      
                      <p:tab title="Arquivos Anexos">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                
-                            </h:panelGrid>
+                            <ui:include src="/View/Compartilhado/ArquivosAnexos/cadastro.xhtml" />
                         </p:tab>
                      
                      <p:tab title="Inspeções">
