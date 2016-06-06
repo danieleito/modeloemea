@@ -38,7 +38,8 @@ public class PonteDAO {
         while (rs.next()) {
             pontes.add(new Ponte(rs.getInt("ID_PONTE"), rs.getString("CD_PONTE"),
                     rs.getString("DS_IDENTIFICACAO_OBRA"), rs.getString("DS_VIA"),
-                    rs.getString("DS_UF"), rs.getString("DS_LOCAL_VIA")));
+                    rs.getString("DS_UF"), rs.getString("DS_LOCAL_VIA"), 
+                    rs.getInt("ID_SUPERINTENDENCIA_REGIONAL"), rs.getInt("ID_UNIDADE_LOCAL")));
         }
 
         conexao.closeConnection();
@@ -60,7 +61,8 @@ public class PonteDAO {
         if (rs.next()) {
             ponte = new Ponte(rs.getInt("ID_PONTE"), rs.getString("CD_PONTE"),
                     rs.getString("DS_IDENTIFICACAO_OBRA"), rs.getString("DS_VIA"),
-                    rs.getString("DS_UF"), rs.getString("DS_LOCAL_VIA"));
+                    rs.getString("DS_UF"), rs.getString("DS_LOCAL_VIA"), 
+                    rs.getInt("ID_SUPERINTENDENCIA_REGIONAL"), rs.getInt("ID_UNIDADE_LOCAL"));
         }
         conexao.closeConnection();
         return ponte;
@@ -129,7 +131,8 @@ public class PonteDAO {
         while (rs.next()) {
             pontes.add(new Ponte(rs.getInt("ID_PONTE"), rs.getString("CD_PONTE"),
                     rs.getString("DS_IDENTIFICACAO_OBRA"), rs.getString("DS_VIA"),
-                    rs.getString("DS_UF"), rs.getString("DS_LOCAL_VIA")));
+                    rs.getString("DS_UF"), rs.getString("DS_LOCAL_VIA"),
+                    rs.getInt("ID_SUPERINTENDENCIA_REGIONAL"), rs.getInt("ID_UNIDADE_LOCAL")));
         }
         conexao.closeConnection();
         return pontes;
@@ -140,7 +143,7 @@ public class PonteDAO {
     
     
     
-    public ArrayList<Ponte> buscar2(String str) throws SQLException {
+    public ArrayList<Ponte> buscar2(String codigo, String identificacao, String uf, String via, String localVia, String superintendenciaRegional, String unidadeLocal) throws SQLException {
         String query;
         
         query = "select P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
@@ -151,20 +154,23 @@ public class PonteDAO {
                 + "where P.ID_UNIDADE_LOCAL = U.ID_UNIDADE_LOCAL "
                 + "and P.ID_SUPERINTENDENCIA_REGIONAL = S.ID_SUPERINTENDENCIA_REGIONAL";
         
-        if (str.equals("codigo")) {
-            query += " and P.CD_PONTE = " + str;
-        } else if (str.equals("identificacao")) {
-            query += " and P.DS_IDENTIFICACAO_OBRA = " + str;
-        } else if (str.equals("uf")) {
-            query += " and P.DS_UF = " + str;
-        } else if (str.equals("via")) {
-            query += " and P.DS_VIA = " + str;
-        } else if (str.equals("localVia")) {
-            query += " and P.DS_LOCAL_VIA = " + str;
-        } else if (str.equals("superintendenciaRegional")) {
-            query += " and P.ID_SUPERINTENDENCIA_REGIONAL = " + str;
-        } else if (str.equals("unidadeLocal")) {
-            query = " and P.ID_UNIDADE_LOCAL = " + str;
+        if (codigo != null && !codigo.isEmpty()) {
+            query += " and P.CD_PONTE like '%" + codigo + "%'";
+        } 
+        if (identificacao != null && !identificacao.isEmpty()) {
+            query += " and P.DS_IDENTIFICACAO_OBRA like '%" + identificacao + "%'";
+        }
+        if (uf != null && !uf.isEmpty()) {
+            query += " and P.DS_UF like '%" + uf + "%' "
+                    + "******************************";
+        } else if (via != null && !via.isEmpty()) {
+            query += " and P.DS_VIA like '%" + via + "%'";
+        } else if (localVia != null && !localVia.isEmpty()) {
+            query += " and P.DS_LOCAL_VIA like '%" + localVia + "%'";
+        } else if (superintendenciaRegional != null && !superintendenciaRegional.isEmpty()) {
+            query += " and P.ID_SUPERINTENDENCIA_REGIONAL like '%" + superintendenciaRegional + "%'";
+        } else if (unidadeLocal != null && !unidadeLocal.isEmpty()) {
+            query += " and P.ID_UNIDADE_LOCAL like '%" + unidadeLocal + "%'";
         }
 
         Conexao conexao = new Conexao();
@@ -176,7 +182,8 @@ public class PonteDAO {
         while (rs.next()) {
             pontes.add(new Ponte(rs.getInt("ID_PONTE"), rs.getString("CD_PONTE"),
                     rs.getString("DS_IDENTIFICACAO_OBRA"), rs.getString("DS_VIA"),
-                    rs.getString("DS_UF"), rs.getString("DS_LOCAL_VIA")));
+                    rs.getString("DS_UF"), rs.getString("DS_LOCAL_VIA"), 
+                    rs.getInt("ID_SUPERINTENDENCIA_REGIONAL"), rs.getInt("ID_UNIDADE_LOCAL")));
         }
         conexao.closeConnection();
         return pontes;

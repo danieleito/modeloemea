@@ -16,25 +16,31 @@ public class Ponte {
     private String via;
     private String uf;
     private String localVia;
+    private int idSuperintendenciaRegional;
+    private int idUnidadeLocal;
 
     public Ponte() {
     }
 
-    public Ponte(int id, String codigo, String identificacaoObra, String via, String uf, String localVia) {
+    public Ponte(int id, String codigo, String identificacaoObra, String via, String uf, String localVia, int idSuperintendenciaRegional, int idUnidadeLocal) {
         this.id = id;
         this.codigo = codigo;
         this.identificacaoObra = identificacaoObra;
         this.via = via;
         this.uf = uf;
         this.localVia = localVia;
+        this.idSuperintendenciaRegional = idSuperintendenciaRegional;
+        this.idUnidadeLocal = idUnidadeLocal;
     }
 
-    public Ponte(String codigo, String identificacaoObra, String via, String uf, String localVia) {
+    public Ponte(String codigo, String identificacaoObra, String via, String uf, String localVia, int idSuperintendenciaRegional, int idUnidadeLocal) {
         this.codigo = codigo;
         this.identificacaoObra = identificacaoObra;
         this.via = via;
         this.uf = uf;
         this.localVia = localVia;
+        this.idSuperintendenciaRegional = idSuperintendenciaRegional;
+        this.idUnidadeLocal = idUnidadeLocal;
     }
 
     public int getId() {
@@ -84,7 +90,23 @@ public class Ponte {
     public void setLocalVia(String localVia) {
         this.localVia = localVia;
     }
-    
+
+    public int getIdSuperintendenciaRegional() {
+        return idSuperintendenciaRegional;
+    }
+
+    public void setIdSuperintendenciaRegional(int idSuperintendenciaRegional) {
+        this.idSuperintendenciaRegional = idSuperintendenciaRegional;
+    }
+
+    public int getIdUnidadeLocal() {
+        return idUnidadeLocal;
+    }
+
+    public void setIdUnidadeLocal(int idUnidadeLocal) {
+        this.idUnidadeLocal = idUnidadeLocal;
+    }
+
     @Override
     public String toString() {
         return this.codigo;

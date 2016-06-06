@@ -121,10 +121,12 @@ and open the template in the editor.
                         </tbody>
                     </table>
 
-                    <p:commandButton action='#{ponte.consultar()}' value="Consultar" oncomplete="$('.mySelector').show();" />
+<!--                    <p:commandButton value="Consultar" oncomplete="$('.mySelector').show();" />-->
+                    <p:commandButton action='#{ponte.consultar()}' value="Consultar" />
                     <p:commandButton action="#{ponte.cancelar()}" value="Cancelar" />
 
-                    <p:dataTable id="tabela" var="p" value="#{ponte.pontes}" paginator="true" rows="8" styleClass="mySelector" style="display: none" >                      
+                    <p:dataTable id="tabela" var="p" value="#{ponte.pontes}" paginator="true" rows="8" >     
+                        <!--styleClass="mySelector" style="display: none"-->
                         <p:column headerText="Código" style="text-align: center" >
                             <h:outputText value="#{p.codigo}" />
                         </p:column>

@@ -80,28 +80,11 @@ public class PonteBean extends ComumBean {
         String localVia = model.getLocalVia();
         String uf = model.getUf();
         String via = model.getVia();
+ 
+        //database.buscar(codigo);
+        pontes = database.buscar2(model.getCodigo(), model.getIdentificacaoObra(), model.getUf(), model.getVia(), model.getLocalVia(), "", "");
         
-        
-        if (!codigo.isEmpty()) {
-            database.buscar(codigo);
-            buscarCodigo(codigo);
-        }
-        if (!identificacao.isEmpty()) {
-            database.buscar(identificacao);
-            buscarIdentificacao(identificacao);
-        }
-        if (!localVia.isEmpty()) {
-            database.buscar(localVia);
-            buscarLocalVia(localVia);
-        }
-        if (!uf.isEmpty()) {
-            database.buscar(uf);
-            buscarUf(uf);
-        }
-        if (!via.isEmpty()) {
-            database.buscar(via);
-            buscarVia(via);
-        }
+        redirecionar("/View/Compartilhado/buscarOAE.jsf");
     }
 
     private void buscarCodigo(String codigo) {
