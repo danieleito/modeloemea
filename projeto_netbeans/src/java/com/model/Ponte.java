@@ -13,8 +13,8 @@ public class Ponte {
     private int id;
     private String codigo;
     private String identificacaoObra;
-    private String via;
-    private String uf;
+    private int idVia;
+    private int idUf;
     private String localVia;
     private int idSuperintendenciaRegional;
     private int idUnidadeLocal;
@@ -22,22 +22,12 @@ public class Ponte {
     public Ponte() {
     }
 
-    public Ponte(int id, String codigo, String identificacaoObra, String via, String uf, String localVia, int idSuperintendenciaRegional, int idUnidadeLocal) {
+    public Ponte(int id, String codigo, String identificacaoObra, int idVia, int idUf, String localVia, int idSuperintendenciaRegional, int idUnidadeLocal) {
         this.id = id;
         this.codigo = codigo;
         this.identificacaoObra = identificacaoObra;
-        this.via = via;
-        this.uf = uf;
-        this.localVia = localVia;
-        this.idSuperintendenciaRegional = idSuperintendenciaRegional;
-        this.idUnidadeLocal = idUnidadeLocal;
-    }
-
-    public Ponte(String codigo, String identificacaoObra, String via, String uf, String localVia, int idSuperintendenciaRegional, int idUnidadeLocal) {
-        this.codigo = codigo;
-        this.identificacaoObra = identificacaoObra;
-        this.via = via;
-        this.uf = uf;
+        this.idVia = idVia;
+        this.idUf = idUf;
         this.localVia = localVia;
         this.idSuperintendenciaRegional = idSuperintendenciaRegional;
         this.idUnidadeLocal = idUnidadeLocal;
@@ -67,20 +57,20 @@ public class Ponte {
         this.identificacaoObra = identificacaoObra;
     }
 
-    public String getVia() {
-        return via;
+    public int getIdVia() {
+        return idVia;
     }
 
-    public void setVia(String via) {
-        this.via = via;
+    public void setIdVia(int idVia) {
+        this.idVia = idVia;
     }
 
-    public String getUf() {
-        return uf;
+    public int getIdUf() {
+        return idUf;
     }
 
-    public void setUf(String uf) {
-        this.uf = uf;
+    public void setIdUf(int idUf) {
+        this.idUf = idUf;
     }
 
     public String getLocalVia() {

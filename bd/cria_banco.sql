@@ -150,7 +150,6 @@ insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) valu
 insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - TO - Superintendência Regional do DNIT no estado do Tocantins', 27);
 insert into SUPERINTENDENCIA_REGIONAL (DS_SUPERINTENDENCIA_REGIONAL, ID_UF) values ('S.R.E. - AP - Superintendência Regional do DNIT no estado do Amapá', 3);
 
-select * from SUPERINTENDENCIA_REGIONAL;
 ---------------------------------------------------------------------------
 
 --Unidade Local
@@ -183,7 +182,7 @@ insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) value
 insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULSC07 - Rio do Sul', 21);
 insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULSC06 - São José', 21);
 insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) values ('ULSC09 - vago', 21);
-select * from UNIDADE_LOCAL;
+
 
 ---------------------------------------------------------------------------
 
@@ -193,20 +192,23 @@ create table PONTE
 		ID_PONTE							int				not null identity(1,1),
 		CD_PONTE							varchar(10)		not null,
 		DS_IDENTIFICACAO_OBRA				varchar(60)		not null,
-		DS_VIA								varchar(6)		not null,
-		DS_UF								varchar(60)		not null,
+		ID_VIA								int				not null,
+		ID_UF								int				not null,
 		DS_LOCAL_VIA						varchar(6)		not null,
 		ID_SUPERINTENDENCIA_REGIONAL		int,
 		ID_UNIDADE_LOCAL					int,
 		CONSTRAINT							pk_ponte		PRIMARY KEY(ID_PONTE)
 	);
 
-insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA, ID_SUPERINTENDENCIA_REGIONAL, ID_UNIDADE_LOCAL) values ('111111111', 'Ponte 111', 'BR-116', 'PARANÁ', 'KM-150', 14, 1);
-insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA, ID_SUPERINTENDENCIA_REGIONAL, ID_UNIDADE_LOCAL) values ('2222222222', 'Ponte 222', 'BR-116', 'PARANÁ', 'KM-590', 21, 1);
-insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA, ID_SUPERINTENDENCIA_REGIONAL, ID_UNIDADE_LOCAL) values ('3333333333', 'Ponte 333', 'BR-277', 'PARANÁ', 'KM-150', 14, 1);
-insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA) values ('4444444444', 'Ponte 444', 'BR-277', 'PARANÁ', 'KM-840');
-insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA) values ('5555555555', 'Ponte 555', 'BR-376', 'PARANÁ', 'KM-233');
-insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, DS_VIA, DS_UF, DS_LOCAL_VIA) values ('6666666666', 'Ponte 666', 'BR-376', 'PARANÁ', 'KM-999');
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA, ID_SUPERINTENDENCIA_REGIONAL, ID_UNIDADE_LOCAL) values ('111111111', 'Ponte 111', 1, 16, 'KM-150', 14, 1);
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA, ID_SUPERINTENDENCIA_REGIONAL, ID_UNIDADE_LOCAL) values ('2222222222', 'Ponte 222', 1, 24, 'KM-590', 21, 1);
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA, ID_SUPERINTENDENCIA_REGIONAL, ID_UNIDADE_LOCAL) values ('3333333333', 'Ponte 333', 1, 16, 'KM-150', 14, 1);
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA) values ('4444444444', 'Ponte 444', 2, 16, 'KM-840');
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA) values ('5555555555', 'Ponte 555', 2, 24, 'KM-233');
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA) values ('6666666666', 'Ponte 666', 3, 24, 'KM-999');
+
+SELECT * FROM VIA;
+SELECT * FROM UF;
 ---------------------------------------------------------------------------
 
 --Simulação
@@ -293,15 +295,15 @@ insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO
 --Arquivos anexos cadastro
 create table ARQUIVO_ANEXO_CADASTRO
 	(
-		ID_ARQUIVO_ANEXO_CADASTRO		int				not null identity(1,1),
-		DS_ARQUIVO				varchar(20)		not null,
-		DS_TIPO_ARQUIVO			varchar(10)		not null,
-		NR_NUMERO				varchar(3)		not null,
-		DS_DESCRICAO			varchar(20)		not null,
-		DS_REGISTRO				varchar(10)		not null,
-		DT_DATA_ANEXACAO		date			not null,
-		--DS_MINIATURA			
-		CONSTRAINT				pk_arquivoanexocadastro	PRIMARY KEY(ID_ARQUIVO_ANEXO_CADASTRO)
+		ID_ARQUIVO_ANEXO_CADASTRO		int						not null identity(1,1),
+		DS_ARQUIVO						varchar(20)				not null,
+		DS_TIPO_ARQUIVO					varchar(10)				not null,
+		NR_NUMERO						varchar(3)				not null,
+		DS_DESCRICAO					varchar(20)				not null,
+		DS_REGISTRO						varchar(10)				not null,
+		DT_DATA_ANEXACAO				date					not null,
+		--DS_MINIATURA					
+		CONSTRAINT						pk_arquivoanexocadastro	PRIMARY KEY(ID_ARQUIVO_ANEXO_CADASTRO)
 	);
 GO
 insert into ARQUIVO_ANEXO_CADASTRO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values ('01.jpg', 'Foto', '01', 'Vista geral', 'OAE', '10/05/2016');
@@ -312,13 +314,13 @@ insert into ARQUIVO_ANEXO_CADASTRO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_D
 --Arquivos anexos inspecao
 create table ARQUIVO_ANEXO_INSPECAO
 	(
-		ID_ARQUIVO_ANEXO_INSPECAO		int				not null identity(1,1),
-		DS_ARQUIVO						varchar(20)		not null,
-		DS_TIPO_ARQUIVO					varchar(10)		not null,
-		NR_NUMERO						varchar(3)		not null,
-		DS_DESCRICAO					varchar(20)		not null,
-		DS_REGISTRO						varchar(10)		not null,
-		DT_DATA_ANEXACAO				date			not null,
+		ID_ARQUIVO_ANEXO_INSPECAO		int						not null identity(1,1),
+		DS_ARQUIVO						varchar(20)				not null,
+		DS_TIPO_ARQUIVO					varchar(10)				not null,
+		NR_NUMERO						varchar(3)				not null,
+		DS_DESCRICAO					varchar(20)				not null,
+		DS_REGISTRO						varchar(10)				not null,
+		DT_DATA_ANEXACAO				date					not null,
 		--DS_MINIATURA			
 		CONSTRAINT						pk_arquivoanexoinspecao	PRIMARY KEY(ID_ARQUIVO_ANEXO_INSPECAO)
 	);

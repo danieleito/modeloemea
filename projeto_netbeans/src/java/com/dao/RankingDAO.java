@@ -25,7 +25,7 @@ public class RankingDAO {
                 + "R.ID_SIMULACAO, R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
                 + "S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
                 + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
-                + "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
+                + "P.ID_VIA, P.ID_UF, P.DS_LOCAL_VIA "
                 + "FROM RANKING R, SIMULACAO S, PONTE P "
                 + "WHERE R.ID_SIMULACAO = S.ID_SIMULACAO "
                 + "AND R.ID_PONTE = P.ID_PONTE;";
@@ -51,8 +51,8 @@ public class RankingDAO {
             ponte.setId(rs.getInt("ID_PONTE"));
             ponte.setCodigo(rs.getString("CD_PONTE"));
             ponte.setIdentificacaoObra(rs.getString("DS_IDENTIFICACAO_OBRA"));
-            ponte.setVia(rs.getString("DS_VIA"));
-            ponte.setUf(rs.getString("DS_UF"));
+            ponte.setIdVia(rs.getInt("ID_VIA"));
+            ponte.setIdUf(rs.getInt("ID_UF"));
             ponte.setLocalVia(rs.getString("DS_LOCAL_VIA"));
 
             ranking.add(new Ranking(rs.getInt("ID_RANKING"), 
@@ -109,7 +109,7 @@ public class RankingDAO {
                 + "R.ID_SIMULACAO, R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
                 + "S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
                 + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
-                + "P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA "
+                + "P.ID_VIA, P.ID_UF, P.DS_LOCAL_VIA "
                 + "FROM RANKING R, SIMULACAO S, PONTE P "
                 + "WHERE R.ID_SIMULACAO = S.ID_SIMULACAO "
                 + "AND R.ID_PONTE = P.ID_PONTE "
@@ -131,8 +131,8 @@ public class RankingDAO {
             ponte.setId(rs.getInt("ID_PONTE"));
             ponte.setCodigo(rs.getString("CD_PONTE"));;
             ponte.setIdentificacaoObra(rs.getString("DS_IDENTIFICACAO_OBRA"));
-            ponte.setVia(rs.getString("DS_VIA"));
-            ponte.setUf(rs.getString("DS_UF"));
+            ponte.setIdVia(rs.getInt("ID_VIA"));
+            ponte.setIdUf(rs.getInt("ID_UF"));
             ponte.setLocalVia(rs.getString("DS_LOCAL_VIA"));
              
             ranking = new Ranking(rs.getDate("DT_DATA_ULTIMA_INSPECAO"), 
