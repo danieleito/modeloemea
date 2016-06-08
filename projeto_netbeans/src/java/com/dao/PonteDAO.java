@@ -6,6 +6,7 @@
 package com.dao;
 
 import com.model.Ponte;
+import com.model.Uf;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,9 +39,9 @@ public class PonteDAO {
         ArrayList<Ponte> pontes = new ArrayList<>();
 
         while (rs.next()) {
-            pontes.add(new Ponte(rs.getInt("ID_PONTE"), rs.getString("CD_PONTE"),
-                    rs.getString("DS_IDENTIFICACAO_OBRA"), rs.getInt("ID_VIA"),
-                    rs.getInt("ID_UF"), rs.getString("DS_LOCAL_VIA"), 
+            pontes.add(new Ponte(rs.getInt("ID_PONTE"), rs.getString("CD_PONTE"), 
+                    rs.getString("DS_IDENTIFICACAO_OBRA"), rs.getInt("ID_VIA"), 
+                    new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF")), rs.getString("DS_LOCAL_VIA"), 
                     rs.getInt("ID_SUPERINTENDENCIA_REGIONAL"), rs.getInt("ID_UNIDADE_LOCAL")));
         }
 
@@ -63,7 +64,7 @@ public class PonteDAO {
         if (rs.next()) {
             ponte = new Ponte(rs.getInt("ID_PONTE"), rs.getString("CD_PONTE"),
                     rs.getString("DS_IDENTIFICACAO_OBRA"), rs.getInt("ID_VIA"),
-                    rs.getInt("ID_UF"), rs.getString("DS_LOCAL_VIA"), 
+                    new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF")), rs.getString("DS_LOCAL_VIA"), 
                     rs.getInt("ID_SUPERINTENDENCIA_REGIONAL"), rs.getInt("ID_UNIDADE_LOCAL"));
         }
         conexao.closeConnection();
@@ -116,9 +117,9 @@ public class PonteDAO {
         ResultSet rs = stmt.executeQuery(query);
         ArrayList<Ponte> pontes = new ArrayList<>();
         while (rs.next()) {
-            pontes.add(new Ponte(rs.getInt("ID_PONTE"), rs.getString("CD_PONTE"),
-                    rs.getString("DS_IDENTIFICACAO_OBRA"), rs.getInt("ID_VIA"),
-                    rs.getInt("ID_UF"), rs.getString("DS_LOCAL_VIA"), 
+            pontes.add(new Ponte(rs.getInt("ID_PONTE"), rs.getString("CD_PONTE"), 
+                    rs.getString("DS_IDENTIFICACAO_OBRA"), rs.getInt("ID_VIA"), 
+                    new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF")), rs.getString("DS_LOCAL_VIA"), 
                     rs.getInt("ID_SUPERINTENDENCIA_REGIONAL"), rs.getInt("ID_UNIDADE_LOCAL")));
         }
         conexao.closeConnection();

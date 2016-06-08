@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Damiele Harumi Ito
+ * @author Daniele Harumi Ito
  */
 public class UfDAO {
     public ArrayList<Uf> buscar() throws SQLException {

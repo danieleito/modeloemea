@@ -52,7 +52,7 @@ public class RankingDAO {
             ponte.setCodigo(rs.getString("CD_PONTE"));
             ponte.setIdentificacaoObra(rs.getString("DS_IDENTIFICACAO_OBRA"));
             ponte.setIdVia(rs.getInt("ID_VIA"));
-            ponte.setIdUf(rs.getInt("ID_UF"));
+            ponte.setId(rs.getInt("ID_UF"));
             ponte.setLocalVia(rs.getString("DS_LOCAL_VIA"));
 
             ranking.add(new Ranking(rs.getInt("ID_RANKING"), 
@@ -132,7 +132,7 @@ public class RankingDAO {
             ponte.setCodigo(rs.getString("CD_PONTE"));;
             ponte.setIdentificacaoObra(rs.getString("DS_IDENTIFICACAO_OBRA"));
             ponte.setIdVia(rs.getInt("ID_VIA"));
-            ponte.setIdUf(rs.getInt("ID_UF"));
+            ponte.setId(rs.getInt("ID_UF"));
             ponte.setLocalVia(rs.getString("DS_LOCAL_VIA"));
              
             ranking = new Ranking(rs.getDate("DT_DATA_ULTIMA_INSPECAO"), 

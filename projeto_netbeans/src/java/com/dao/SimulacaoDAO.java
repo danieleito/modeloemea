@@ -148,7 +148,7 @@ public class SimulacaoDAO {
             ponte.setCodigo(rs.getString("CD_PONTE"));
             ponte.setIdentificacaoObra(rs.getString("DS_IDENTIFICACAO_OBRA"));
             ponte.setIdVia(rs.getInt("ID_VIA"));
-            ponte.setIdUf(rs.getInt("ID_UF"));
+            ponte.setId(rs.getInt("ID_UF"));
             ponte.setLocalVia(rs.getString("DS_LOCAL_VIA"));
 
             Ranking ranking = new Ranking(rs.getInt("ID_RANKING"), 

@@ -53,11 +53,8 @@ and open the template in the editor.
                                     <p:outputLabel value="UF" class="col-md-3" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu class="col-md-3">
-                                        <f:selectItem itemLabel="Selecione a UF" itemValue="" />
-                                        <f:selectItem itemLabel="Paraná" itemValue="1" />
-                                        <f:selectItem itemLabel="Santa Catarina" itemValue="2" />
-                                        <f:selectItem itemLabel="São Paulo" itemValue="3" />                                        
+                                    <p:selectOneMenu value="#{ponte.model.uf.id}" class="col-md-5">
+                                        <f:selectItems value="#{ponte.ufs}" var="t" itemValue="#{t.id}" />
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
@@ -140,7 +137,7 @@ and open the template in the editor.
                         </p:column>
 
                         <p:column headerText="UF" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{p.idUf}" />
+                            <h:outputText value="#{p.uf}" />
                         </p:column>
 
                         <p:column headerText="Local na via" style="width: 150px; text-align: center" >

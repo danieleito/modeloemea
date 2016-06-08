@@ -6,7 +6,9 @@
 package com.bean;
 
 import com.dao.PonteDAO;
+import com.dao.UfDAO;
 import com.model.Ponte;
+import com.model.Uf;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -21,10 +23,13 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "ponte")
 @SessionScoped
 public class PonteBean extends ComumBean {
+
     private Ponte model;
     private PonteDAO database;
     private ArrayList<Ponte> pontes;
+    private ArrayList<Uf> ufs;
 
+    // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Ponte getModel() {
         return model;
     }
@@ -48,11 +53,21 @@ public class PonteBean extends ComumBean {
     public void setPontes(ArrayList<Ponte> pontes) {
         this.pontes = pontes;
     }
-    
+
+    public ArrayList<Uf> getUfs() {
+        return ufs;
+    }
+
+    public void setUfs(ArrayList<Uf> ufs) {
+        this.ufs = ufs;
+    }
+    // </editor-fold>
+
     public PonteBean() {
         database = new PonteDAO();
         model = new Ponte();
         try {
+            ufs = new UfDAO().buscar();
             pontes = database.buscar();
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,7 +75,7 @@ public class PonteBean extends ComumBean {
             adicionarMensagemErro("Erro ao carregar pontes.");
         }
     }
-    
+
     public void cancelar() {
         redirecionar("/View/Compartilhado/Ranking/editar.jsf");
     }
@@ -78,12 +93,12 @@ public class PonteBean extends ComumBean {
         String codigo = model.getCodigo();
         String identificacao = model.getIdentificacaoObra();
         String localVia = model.getLocalVia();
-        int uf = model.getIdUf();
+        Uf uf = model.getUf();
         int via = model.getIdVia();
  
         //database.buscar(codigo);
         pontes = database.buscar2(model.getCodigo(), model.getIdentificacaoObra(), 
-                model.getIdUf(), model.getIdVia(), model.getLocalVia(), 
+                model.getUf().getId(), model.getIdVia(), model.getLocalVia(), 
                 model.getIdSuperintendenciaRegional(), model.getIdUnidadeLocal());
         
         redirecionar("/View/Compartilhado/buscarOAE.jsf");

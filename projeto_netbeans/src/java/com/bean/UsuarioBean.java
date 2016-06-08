@@ -19,7 +19,7 @@ import javax.enterprise.context.SessionScoped;
 @SessionScoped
 @Named("usuarioBean")
 public class UsuarioBean extends ComumBean implements Serializable {
-    
+
     private Usuario model;
     private ArrayList<TipoUsuario> tipos;
     private UsuarioDAO database;
@@ -83,7 +83,7 @@ public class UsuarioBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Administrador/Usuario/editar.jsf");
     }
-    
+
     /**
      * Realiza a atualização do usuário.
      */
@@ -92,12 +92,12 @@ public class UsuarioBean extends ComumBean implements Serializable {
             if (!dadosObrigatoriosPreenchidosEditar()) {
                 return;
             }
-            
+
             //se digitou uma nova senha, então atualiza no model
             if (!novaSenha.isEmpty()) {
                 model.setSenha(novaSenha);
             }
-            
+
             database.editar(model);
             listaUsuarios = database.buscar();
             adicionarMensagemInfo("Usuário atualizado com sucesso!");
@@ -107,7 +107,7 @@ public class UsuarioBean extends ComumBean implements Serializable {
             Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Exclui um usuário.
      * @param id Identificador do usuário que deve ser excluído.

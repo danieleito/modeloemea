@@ -14,20 +14,33 @@ public class Ponte {
     private String codigo;
     private String identificacaoObra;
     private int idVia;
-    private int idUf;
+    private Uf uf;
     private String localVia;
     private int idSuperintendenciaRegional;
     private int idUnidadeLocal;
 
     public Ponte() {
+        this.uf = new Uf();
     }
 
-    public Ponte(int id, String codigo, String identificacaoObra, int idVia, int idUf, String localVia, int idSuperintendenciaRegional, int idUnidadeLocal) {
+    public Ponte(int id, String codigo, String identificacaoObra, int idVia, 
+            Uf uf, String localVia, int idSuperintendenciaRegional, int idUnidadeLocal) {
         this.id = id;
         this.codigo = codigo;
         this.identificacaoObra = identificacaoObra;
         this.idVia = idVia;
-        this.idUf = idUf;
+        this.uf = uf;
+        this.localVia = localVia;
+        this.idSuperintendenciaRegional = idSuperintendenciaRegional;
+        this.idUnidadeLocal = idUnidadeLocal;
+    }
+
+    public Ponte(String codigo, String identificacaoObra, int idVia, Uf uf, 
+            String localVia, int idSuperintendenciaRegional, int idUnidadeLocal) {
+        this.codigo = codigo;
+        this.identificacaoObra = identificacaoObra;
+        this.idVia = idVia;
+        this.uf = uf;
         this.localVia = localVia;
         this.idSuperintendenciaRegional = idSuperintendenciaRegional;
         this.idUnidadeLocal = idUnidadeLocal;
@@ -65,12 +78,12 @@ public class Ponte {
         this.idVia = idVia;
     }
 
-    public int getIdUf() {
-        return idUf;
+    public Uf getUf() {
+        return uf;
     }
 
-    public void setIdUf(int idUf) {
-        this.idUf = idUf;
+    public void setUf(Uf uf) {
+        this.uf = uf;
     }
 
     public String getLocalVia() {
