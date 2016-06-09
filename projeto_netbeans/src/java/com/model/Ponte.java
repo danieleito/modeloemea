@@ -20,7 +20,8 @@ public class Ponte {
     private int idUnidadeLocal;
 
     public Ponte() {
-        this.uf = new Uf();
+        uf = new Uf();
+//        this.uf = new Uf();
     }
 
     public Ponte(int id, String codigo, String identificacaoObra, int idVia, 

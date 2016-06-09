@@ -9,20 +9,23 @@ import com.dao.PonteDAO;
 import com.dao.UfDAO;
 import com.model.Ponte;
 import com.model.Uf;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author Daniele Harumi Ito
  */
-@ManagedBean(name = "ponte")
+@ManagedBean
+@Named("ponte")
 @SessionScoped
-public class PonteBean extends ComumBean {
+public class PonteBean extends ComumBean implements Serializable {
 
     private Ponte model;
     private PonteDAO database;
@@ -63,6 +66,9 @@ public class PonteBean extends ComumBean {
     }
     // </editor-fold>
 
+    /**
+     * Constructor
+     */
     public PonteBean() {
         database = new PonteDAO();
         model = new Ponte();
@@ -90,13 +96,7 @@ public class PonteBean extends ComumBean {
 
     
     public void consultar() throws SQLException {
-        String codigo = model.getCodigo();
-        String identificacao = model.getIdentificacaoObra();
-        String localVia = model.getLocalVia();
-        Uf uf = model.getUf();
-        int via = model.getIdVia();
- 
-        //database.buscar(codigo);
+
         pontes = database.buscar2(model.getCodigo(), model.getIdentificacaoObra(), 
                 model.getUf().getId(), model.getIdVia(), model.getLocalVia(), 
                 model.getIdSuperintendenciaRegional(), model.getIdUnidadeLocal());

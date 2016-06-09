@@ -83,7 +83,7 @@ public class PonteDAO {
                 + "from PONTE P, UNIDADE_LOCAL U, SUPERINTENDENCIA_REGIONAL S "
                 + "where P.ID_UNIDADE_LOCAL = U.ID_UNIDADE_LOCAL "
                 + "and P.ID_SUPERINTENDENCIA_REGIONAL = S.ID_SUPERINTENDENCIA_REGIONAL";
-        
+
         if (codigo != null && !codigo.isEmpty()) {
             query += " and P.CD_PONTE like '%" + codigo + "%'";
         } 
@@ -91,22 +91,22 @@ public class PonteDAO {
             query += " and P.DS_IDENTIFICACAO_OBRA like '%" + identificacao + "%'";
         }
         if (uf != 0) {
-            query += " and P.ID_UF like '%" + uf + "%' "
+            query += " and P.ID_UF = " + uf
                     + " and S.ID_UF = P.ID_UF";
         }
         if (via != 0) {
-            query += " and P.ID_VIA like '%" + via + "%' ";
+            query += " and P.ID_VIA = " + via;
 //                    + " and P.ID_UF = V.ID_UF";
         }
         if (localVia != null && !localVia.isEmpty()) {
             query += " and P.DS_LOCAL_VIA like '%" + localVia + "%'";
         }
         if (superintendenciaRegional != 0) {
-            query += " and P.ID_SUPERINTENDENCIA_REGIONAL like '%" + superintendenciaRegional + "%' "
+            query += " and P.ID_SUPERINTENDENCIA_REGIONAL = " + superintendenciaRegional
                     + " and P.ID_UF = S.ID_UF";
         }
         if (unidadeLocal != 0) {
-            query += " and P.ID_UNIDADE_LOCAL like '%" + unidadeLocal + "%' "
+            query += " and P.ID_UNIDADE_LOCAL = " + unidadeLocal
                     + " and S.ID_UF = P.ID_UF";
         }
 
@@ -125,6 +125,7 @@ public class PonteDAO {
         conexao.closeConnection();
         return pontes;
     }
+
     public void carregar() {
 
     }
