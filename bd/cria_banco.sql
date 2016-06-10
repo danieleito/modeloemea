@@ -611,4 +611,4 @@ and P.DS_IDENTIFICACAO_OBRA like '%1%'
 and P.ID_UF = 14
 and S.ID_UF = P.ID_UF
 
---<!--                                        <f:selectItems value="#{ponte.ufs}" var="t" itemValue="#{t.id}" />-->    value="#{ponte.model.uf.id}"
+--<!--                                        <f:selectItems value="#{ponte.ufs}" var="t" itemValue="#{t.id}" />-->    value="#{ponte.model.uf.id}"			

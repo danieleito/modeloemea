@@ -53,8 +53,13 @@ and open the template in the editor.
                                     <p:outputLabel value="UF" class="col-md-3" />
                                 </td>
                                 <td>
+                                    <p:selectOneMenu id="uf" value="#{ponteBean.model.uf.id}" style="width:150px">
+                                        <p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
+                                        <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
+                                        <f:selectItems value="#{dropdownView.countries}" />
+                                    </p:selectOneMenu>
                                     <p:selectOneMenu class="col-md-5">
-
+                                        
                                         <f:selectItem itemLabel="Selecione a UF" itemValue="" />
                                         <f:selectItem itemLabel="Paraná" itemValue="1" />
                                         <f:selectItem itemLabel="Santa Catarina" itemValue="2" />
@@ -118,9 +123,36 @@ and open the template in the editor.
                                         <f:selectItem itemLabel="ULSC03 - Lajes" itemValue="3" /> 
                                     </p:selectOneMenu>
                                 </td>
-                            </tr>
+                            </tr> 
                         </tbody>
                     </table>
+
+
+
+                    <h:form>
+                        <p:growl id="msgs" showDetail="true" />
+                        <p:panel header="Select a Location" style="margin-bottom:10px;">
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <p:outputLabel for="country" value="Country: " />
+                                <p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
+                                    <p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
+                                    <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{dropdownView.countries}" />
+                                </p:selectOneMenu>
+
+                                <p:outputLabel for="city" value="City: " />
+                                <p:selectOneMenu id="city" value="#{dropdownView.city}" style="width:150px">
+                                    <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
+                                    <f:selectItems value="#{dropdownView.cities}" />
+                                </p:selectOneMenu>
+                            </h:panelGrid>
+
+                            <p:separator />
+
+                            <p:commandButton value="Submit" update="msgs" actionListener="#{dropdownView.displayLocation}" icon="ui-icon-check" />
+                        </p:panel>
+                    </h:form>
+
 
 <!--                    <p:commandButton value="Consultar" oncomplete="$('.mySelector').show();" />-->
                     <p:commandButton action='#{ponte.consultar()}' value="Consultar" />
