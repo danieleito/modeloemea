@@ -18,6 +18,7 @@ public class Ranking {
     //private Simulacao simulacao;
     private int classificacao;
     private String indicePerformanceRelativo;
+    private int idSimulacao;
 
     public Ranking() {
     }
@@ -75,5 +76,13 @@ public class Ranking {
 
     public void setIndicePerformanceRelativo(String indicePerformanceRelativo) {
         this.indicePerformanceRelativo = indicePerformanceRelativo;
+    }
+
+    public int getIdSimulacao() {
+        return idSimulacao;
+    }
+
+    public void setIdSimulacao(int idSimulacao) {
+        this.idSimulacao = idSimulacao;
     }
 }

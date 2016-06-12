@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
@@ -25,18 +26,18 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class SimulacaoBean extends ComumBean {
     
-    private Simulacao novaSimulacao;
+    private Simulacao simulacao;
     private SimulacaoDAO database;
     private RankingDAO databaseR;
     private ArrayList<Simulacao> simulacoes;
     private ArrayList<Ranking> rankings;
 
-    public Simulacao getNovaSimulacao() {
-        return novaSimulacao;
+    public Simulacao getSimulacao() {
+        return simulacao;
     }
 
-    public void setNovaSimulacao(Simulacao novaSimulacao) {
-        this.novaSimulacao = novaSimulacao;
+    public void setSimulacao(Simulacao simulacao) {
+        this.simulacao = simulacao;
     }
 
     public ArrayList<Simulacao> getSimulacoes() {
@@ -72,48 +73,36 @@ public class SimulacaoBean extends ComumBean {
     }
     
     public SimulacaoBean() {
-        novaSimulacao = new Simulacao();
-        novaSimulacao.setUsuario(usuarioLogado);
-        novaSimulacao.setData(new Date());
+        simulacao = new Simulacao();
+        simulacao.setUsuario(usuarioLogado);
+        simulacao.setData(new Date());
         
         database = new SimulacaoDAO();
         databaseR = new RankingDAO();
-        try {
-            simulacoes = database.buscar();
-        } catch (SQLException ex) {
-            Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
-            simulacoes = new ArrayList<>();
-            System.out.println(ex.getMessage());
-            adicionarMensagemErro("Erro ao carregar simulações.");
-        }
-        
-        try {
-            rankings = databaseR.buscar();
-        } catch (SQLException ex) {
-            Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
-            simulacoes = new ArrayList<>();
-            adicionarMensagemErro("Erro ao carregar Ranking.");
-        }
+    }
+    
+    public SimulacaoBean(int idSimulacao) {
+        ranking(idSimulacao);
     }
     
     public void salvar() {
         try {
-            if (novaSimulacao.getNomeSimulacao() == null || novaSimulacao.getNomeSimulacao().isEmpty()) {
+            if (simulacao.getNomeSimulacao() == null || simulacao.getNomeSimulacao().isEmpty()) {
                 adicionarMensagemErro("Campo 'Nome da simulação' é obrigatório.");
                 return;
             } 
             //verificar se ja existe uma simulacao com esse nome
             for (int i = 0; i < simulacoes.size(); i++) {
-                if (novaSimulacao.getNomeSimulacao().equals(simulacoes.get(i).getNomeSimulacao())) {
+                if (simulacao.getNomeSimulacao().equals(simulacoes.get(i).getNomeSimulacao())) {
                     adicionarMensagemErro("Nome de simulação já existe.");
                     return;
                 }
             }
 //            else {
-                database.inserir(novaSimulacao);
+                database.inserir(simulacao);
                 simulacoes = database.buscar();
                 adicionarMensagemInfo("Simulação cadastrada com sucesso.");
-                novaSimulacao.setNomeSimulacao("");//
+                simulacao.setNomeSimulacao("");//
 //            }
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -123,21 +112,20 @@ public class SimulacaoBean extends ComumBean {
     }
     
     public void visualizar(int id) {
-        String x = String.valueOf(id);
-        int i = id;
-        x = "";
-        novaSimulacao.setNomeSimulacao("");//
-        redirecionar("/View/Compartilhado/Ranking/visualizar.jsf?id=sim.id");
+        try {
+            simulacao = database.buscar(id);
+        } catch (SQLException ex) {
+            adicionarMensagemErro("Erro ao carregar simulação. " + ex.getMessage());
+            Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        redirecionar("/View/Compartilhado/Ranking/visualizar.jsf");
     }
     
     public void ranking(int id) {
-        Simulacao simulacao;
         try {
-            //depois é bom mudar o nome disso, mas a ideia é essa:
-            novaSimulacao = database.buscar(id);
-            //tem que usar essa simulação que buscou, e mostrar a lista de rankings
-            novaSimulacao.setNomeSimulacao("");//
-            redirecionar("/View/Compartilhado/Ranking/editar.jsf?id=sim.id");
+            this.simulacao = database.buscar(id);
+            //this.simulacao.setNomeSimulacao("");
+            redirecionar("/View/Compartilhado/Ranking/editar.jsf");
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -162,7 +150,7 @@ public class SimulacaoBean extends ComumBean {
     //retira ponte da simulação
     public void retirar(int id) {
         try {
-            database.excluir(id);
+            databaseR.excluir(id);
             adicionarMensagemInfo("Ponte removida da simulação com sucesso.");
             simulacoes = database.buscar();
         } catch (SQLException ex) {
@@ -180,5 +168,18 @@ public class SimulacaoBean extends ComumBean {
     
     public void consultar() {
         redirecionar("View/Compartilhado/buscarOAE.jsf");
+    }
+    
+    public void listar() {
+        try {
+            simulacoes = database.buscar();
+        } catch (SQLException ex) {
+            Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
+            simulacoes = new ArrayList<>();
+            System.out.println(ex.getMessage());
+            adicionarMensagemErro("Erro ao carregar simulações. " + ex.getMessage());
+        }
+        
+        redirecionar("/View/Compartilhado/simulacao.jsf");
     }
 }

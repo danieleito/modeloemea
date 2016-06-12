@@ -20,14 +20,11 @@ import java.util.ArrayList;
 public class PonteDAO {
 
     public ArrayList<Ponte> buscar() throws SQLException {
-//        ArrayList<Ponte> ponte = null;
-//        return ponte;
-			
-
-
         String query = "select P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
-                + "P.ID_VIA, P.ID_UF, P.DS_LOCAL_VIA "
-                + "from PONTE P;";
+                + "P.ID_VIA, P.ID_UF, P.DS_LOCAL_VIA, P.ID_SUPERINTENDENCIA_REGIONAL, "
+                + "P.ID_UNIDADE_LOCAL, U.ID_UF, U.DS_UF "
+                + "from PONTE P, UF U "
+                + "where P.ID_UF = U.ID_UF;";
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -77,12 +74,14 @@ public class PonteDAO {
         String query;
 
         query = "select P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, P.ID_VIA, "
-                + "P.ID_UF, P.DS_LOCAL_VIA, P.ID_SUPERINTENDENCIA_REGIONAL, P.ID_UNIDADE_LOCAL, "
+                + "P.DS_LOCAL_VIA, P.ID_SUPERINTENDENCIA_REGIONAL, P.ID_UNIDADE_LOCAL, "
                 + "U.ID_UNIDADE_LOCAL, U.DS_UNIDADE_LOCAL, U.ID_SUPERINTENDENCIA_REGIONAL, "
-                + "S.ID_SUPERINTENDENCIA_REGIONAL, S.DS_SUPERINTENDENCIA_REGIONAL, S.ID_UF "
-                + "from PONTE P, UNIDADE_LOCAL U, SUPERINTENDENCIA_REGIONAL S "
+                + "S.ID_SUPERINTENDENCIA_REGIONAL, S.DS_SUPERINTENDENCIA_REGIONAL, "
+                + "UF.ID_UF, UF.DS_UF "
+                + "from PONTE P, UNIDADE_LOCAL U, SUPERINTENDENCIA_REGIONAL S, UF  "
                 + "where P.ID_UNIDADE_LOCAL = U.ID_UNIDADE_LOCAL "
-                + "and P.ID_SUPERINTENDENCIA_REGIONAL = S.ID_SUPERINTENDENCIA_REGIONAL";
+                + "and P.ID_SUPERINTENDENCIA_REGIONAL = S.ID_SUPERINTENDENCIA_REGIONAL "
+                + "and P.ID_UF = UF.ID_UF";
 
         if (codigo != null && !codigo.isEmpty()) {
             query += " and P.CD_PONTE like '%" + codigo + "%'";

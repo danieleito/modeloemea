@@ -207,8 +207,6 @@ insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA)
 insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA) values ('5555555555', 'Ponte 555', 2, 24, 'KM-233');
 insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA) values ('6666666666', 'Ponte 666', 3, 24, 'KM-999');
 
-SELECT * FROM VIA;
-SELECT * FROM UF;
 ---------------------------------------------------------------------------
 
 --Simulação
@@ -233,21 +231,20 @@ insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) values ('01/05/2016', 
 create table RANKING
 	(
 		ID_RANKING							int				not null identity(1,1),
-		DT_DATA_ULTIMA_INSPECAO				date			not null,
 		ID_PONTE							int				not null,
 		ID_SIMULACAO						int				not null,
-		CS_CLASSIFICACAO					int				not null,
-		DS_INDICE_PERFORMANCE_RELATIVO		varchar(20)		not null,
+		CS_CLASSIFICACAO					int				null,
+		DS_INDICE_PERFORMANCE_RELATIVO		varchar(20)		null,
 		CONSTRAINT							pk_ranking		PRIMARY KEY(ID_RANKING),
 		CONSTRAINT							fk_ranking_ponte FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
 		CONSTRAINT							fk_ranking_simulacao FOREIGN KEY(ID_SIMULACAO) REFERENCES SIMULACAO (ID_SIMULACAO)
 	);
 
-insert into RANKING (DT_DATA_ULTIMA_INSPECAO, ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('25/05/2016', 1, 1, 1, '1');
-insert into RANKING (DT_DATA_ULTIMA_INSPECAO, ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('25/05/2016', 2, 1, 2, '2');
-insert into RANKING (DT_DATA_ULTIMA_INSPECAO, ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('27/05/2016', 3, 3, 3, '3');
-insert into RANKING (DT_DATA_ULTIMA_INSPECAO, ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('29/05/2016', 4, 1, 4, '4');
-insert into RANKING (DT_DATA_ULTIMA_INSPECAO, ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('30/05/2016', 5, 2, 5, '5');
+insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (1, 1, 1, '1');
+insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (2, 1, 2, '2');
+insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (3, 3, 3, '3');
+insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (4, 1, 4, '4');
+insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (5, 2, 5, '5');
 ---------------------------------------------------------------------------
 
 --Elemento
@@ -281,15 +278,17 @@ create table INSPECAO
 		ID_INSPECAO					int			not null identity(1,1),
 		DT_DATA						date		not null,
 		ID_USUARIO					int			not null,
+		ID_PONTE					int			not null,
 		DS_CONDICAO_ESTABILIDADE	varchar(30)	not null,
 		DS_CONDICAO_CONSERVACAO		varchar(30)	not null,
 		CONSTRAINT					pk_inspecao	PRIMARY KEY(ID_INSPECAO),
-		CONSTRAINT					pk_inspecao_usuario	FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO)
+		CONSTRAINT					fk_inspecao_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
+		CONSTRAINT					fk_inspecao_usuario	FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO)
 	);
 GO
-insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('05/05/2016', 1, '1-condição estabilidade', '1- condição conservação');
-insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('10/05/2016', 1, '2-condição estabilidade', '2- condição conservação');
-insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('15/05/2016', 1, '3-condição estabilidade', '3- condição conservação');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('05/05/2016', 1, 1, '1-condição estabilidade', '1- condição conservação');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('10/05/2016', 1, 1, '2-condição estabilidade', '2- condição conservação');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('15/05/2016', 1, 1, '3-condição estabilidade', '3- condição conservação');
 ---------------------------------------------------------------------------
 
 --Arquivos anexos cadastro

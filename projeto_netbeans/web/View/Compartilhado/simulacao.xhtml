@@ -20,7 +20,7 @@
                         <p:menuitem value="Simulação" url="/View/Compartilhado/simulacao.jsf" />
                     </p:breadCrumb>
                     <h:outputLabel value="Nome da simulação" class="col-md-10" />
-                    <p:inputText class="col-md-2" id="nova_simulacao" value="#{simulacao.novaSimulacao.nomeSimulacao}" />
+                    <p:inputText class="col-md-2" id="nova_simulacao" value="#{simulacao.simulacao.nomeSimulacao}" />
                     <p:commandButton style="margin: 0 0 20px 20px;" value="Novo ranking" action="#{simulacao.salvar()}" />
                     
                     <p:dataTable var="sim" value="#{simulacao.simulacoes}" paginator="true" rows="8" >

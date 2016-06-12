@@ -6,30 +6,25 @@
 package com.bean;
 
 import com.dao.PonteDAO;
+import com.dao.RankingDAO;
 import com.dao.UfDAO;
 import com.model.Ponte;
+import com.model.Ranking;
 import com.model.Uf;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 /**
  *
  * @author Daniele Harumi Ito
  */
-@ManagedBean
-@Named("ponte")
+@ManagedBean(name="ponteBean")
 @SessionScoped
 public class PonteBean extends ComumBean implements Serializable {
 
@@ -37,29 +32,14 @@ public class PonteBean extends ComumBean implements Serializable {
     private PonteDAO database;
     private ArrayList<Ponte> pontes;
     private ArrayList<Uf> ufs;
-    
-    private Map<String,Map<String,String>> data = new HashMap<String, Map<String,String>>();
-    private String country; 
-    private String city;  
-    private Map<String,String> countries;
-    private Map<String,String> cities;
-    
+    private static int idSimulacao;
 
-    // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Ponte getModel() {
         return model;
     }
 
     public void setModel(Ponte model) {
         this.model = model;
-    }
-
-    public PonteDAO getDatabase() {
-        return database;
-    }
-
-    public void setDatabase(PonteDAO database) {
-        this.database = database;
     }
 
     public ArrayList<Ponte> getPontes() {
@@ -78,86 +58,12 @@ public class PonteBean extends ComumBean implements Serializable {
         this.ufs = ufs;
     }
 
-    public Map<String, Map<String, String>> getData() {
-        return data;
+    public int getIdSimulacao() {
+        return idSimulacao;
     }
 
-    public void setData(Map<String, Map<String, String>> data) {
-        this.data = data;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public Map<String, String> getCountries() {
-        return countries;
-    }
-
-    public void setCountries(Map<String, String> countries) {
-        this.countries = countries;
-    }
-
-    public Map<String, String> getCities() {
-        return cities;
-    }
-
-    public void setCities(Map<String, String> cities) {
-        this.cities = cities;
-    }
-    // </editor-fold>
-
-    @PostConstruct
-    public void init() {
-        countries  = new HashMap<String, String>();
-        countries.put("USA", "USA");
-        countries.put("Germany", "Germany");
-        countries.put("Brazil", "Brazil");
-         
-        Map<String,String> map = new HashMap<String, String>();
-        map.put("New York", "New York");
-        map.put("San Francisco", "San Francisco");
-        map.put("Denver", "Denver");
-        data.put("USA", map);
-         
-        map = new HashMap<String, String>();
-        map.put("Berlin", "Berlin");
-        map.put("Munich", "Munich");
-        map.put("Frankfurt", "Frankfurt");
-        data.put("Germany", map);
-         
-        map = new HashMap<String, String>();
-        map.put("Sao Paolo", "Sao Paolo");
-        map.put("Rio de Janerio", "Rio de Janerio");
-        map.put("Salvador", "Salvador");
-        data.put("Brazil", map);
-    }
-    public void onCountryChange() {
-        if(country !=null && !country.equals(""))
-            cities = data.get(country);
-        else
-            cities = new HashMap<String, String>();
-    }
-    public void displayLocation() {
-        FacesMessage msg;
-        if(city != null && country != null)
-            msg = new FacesMessage("Selected", city + " of " + country);
-        else
-            msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "City is not selected."); 
-             
-        FacesContext.getCurrentInstance().addMessage(null, msg);  
+    public void setIdSimulacao(int idSimulacao) {
+        this.idSimulacao = idSimulacao;
     }
     
     /**
@@ -172,7 +78,7 @@ public class PonteBean extends ComumBean implements Serializable {
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             pontes = new ArrayList<>();
-            adicionarMensagemErro("Erro ao carregar pontes.");
+            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
         }
     }
 
@@ -184,17 +90,39 @@ public class PonteBean extends ComumBean implements Serializable {
         //visualiza ponte do 'id'
     }
     
-    public void carregar(int id) {
-        //carregar ponte na tabela ranking
+    public void carregar(int idPonte, int idSimulacao) {
+        try {            
+            RankingDAO db = new RankingDAO();
+            Ponte ponte = new Ponte();
+            ponte.setId(idPonte);
+            Ranking ranking = new Ranking();
+            ranking.setPonte(ponte);
+            ranking.setIdSimulacao(idSimulacao);
+            db.inserir(ranking);
+            //redirecionar("/View/Compartilhado/Ranking/editar.jsf");
+            SimulacaoBean simulacao = new SimulacaoBean();
+            simulacao.ranking(idSimulacao);
+        } catch (SQLException ex) {
+            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar ponte no ranking." + ex.getMessage());
+        }
     }
-
     
     public void consultar() throws SQLException {
+        try {
+            pontes = database.buscar2(model.getCodigo(), model.getIdentificacaoObra(), 
+                    model.getUf().getId(), model.getIdVia(), model.getLocalVia(), 
+                    model.getIdSuperintendenciaRegional(), model.getIdUnidadeLocal());
 
-        pontes = database.buscar2(model.getCodigo(), model.getIdentificacaoObra(), 
-                model.getUf().getId(), model.getIdVia(), model.getLocalVia(), 
-                model.getIdSuperintendenciaRegional(), model.getIdUnidadeLocal());
-        
+            redirecionar("/View/Compartilhado/buscarOAE.jsf");
+        } catch(Exception ex) {
+            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar pontes." + ex.getMessage());
+        }
+    }
+    
+    public void consultarGet(int idSimulacao) {
+        this.idSimulacao = idSimulacao;
         redirecionar("/View/Compartilhado/buscarOAE.jsf");
     }
 }

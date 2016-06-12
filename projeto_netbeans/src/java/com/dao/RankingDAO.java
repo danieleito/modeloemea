@@ -21,7 +21,8 @@ import java.util.ArrayList;
  */
 public class RankingDAO {
     public ArrayList<Ranking> buscar() throws SQLException {
-        String query = "SELECT R.ID_RANKING, R.DT_DATA_ULTIMA_INSPECAO, R.ID_PONTE, "
+        String query = "SELECT R.ID_RANKING, R.ID_PONTE, "
+                + "(select max(DT_DATA) from inspecao where ID_PONTE = P.ID_PONTE) as DATA, "
                 + "R.ID_SIMULACAO, R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
                 + "S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
                 + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
@@ -56,7 +57,7 @@ public class RankingDAO {
             ponte.setLocalVia(rs.getString("DS_LOCAL_VIA"));
 
             ranking.add(new Ranking(rs.getInt("ID_RANKING"), 
-                    rs.getDate("DT_DATA_ULTIMA_INSPECAO"), ponte, 
+                    rs.getDate("DATA"), ponte, 
                     rs.getInt("CS_CLASSIFICACAO"), 
                     rs.getString("DS_INDICE_PERFORMANCE_RELATIVO")));
         }
@@ -77,8 +78,7 @@ public class RankingDAO {
     }
 
     public void inserir(Ranking ranking) throws SQLException {
-        String query = "insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, "
-                + "DS_INDICE_PERFORMANCE_RELATIVO) values(?, ?, ?, ?); ";
+        String query = "insert into RANKING (ID_PONTE, ID_SIMULACAO) values(?, ?); ";
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -86,8 +86,7 @@ public class RankingDAO {
         PreparedStatement stmt;
         stmt = conn.prepareStatement(query);
         stmt.setInt(1, ranking.getPonte().getId());
-        stmt.setInt(2, ranking.getClassificacao());
-        stmt.setString(3, ranking.getIndicePerformanceRelativo());
+        stmt.setInt(2, ranking.getIdSimulacao());
         stmt.execute();
     }
     
@@ -105,7 +104,8 @@ public class RankingDAO {
     }
 
     public Ranking buscar(int id) throws SQLException {
-        String query = "SELECT R.ID_RANKING, R.DT_DATA_ULTIMA_INSPECAO, R.ID_PONTE, "
+        String query = "SELECT R.ID_RANKING, R.ID_PONTE, "
+                + "(select max(DT_DATA) from inspecao where ID_PONTE = P.ID_PONTE) as DATA, "
                 + "R.ID_SIMULACAO, R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
                 + "S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
                 + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, "
@@ -135,7 +135,7 @@ public class RankingDAO {
             ponte.setId(rs.getInt("ID_UF"));
             ponte.setLocalVia(rs.getString("DS_LOCAL_VIA"));
              
-            ranking = new Ranking(rs.getDate("DT_DATA_ULTIMA_INSPECAO"), 
+            ranking = new Ranking(rs.getDate("DATA"), 
                     ponte, rs.getInt("CS_CLASSIFICACAO"), 
                     rs.getString("DS_INDICE_PERFORMANCE_RELATIVO"));           
         }

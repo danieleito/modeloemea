@@ -26,7 +26,7 @@ and open the template in the editor.
                     </p:breadCrumb>
                     <h:outputLabel value="" class="col-md-10" />
 
-                    <p:dataTable var="r" value="#{simulacao.novaSimulacao.rankings}" paginator="true" rows="8" >
+                    <p:dataTable var="r" value="#{simulacao.simulacao.rankings}" paginator="true" rows="8" >
                         <p:column headerText="Data da última inspeção" style="width: 150px; text-align: center" >
                             <h:outputText value="#{r.dataUltimaInspecao}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
@@ -48,7 +48,7 @@ and open the template in the editor.
                         </p:column>
 
                         <p:column headerText="UF" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{r.ponte.idUf}" />
+                            <h:outputText value="#{r.ponte.uf.uf}" />
                         </p:column>
 
                         <p:column headerText="Local na via" style="width: 150px; text-align: center" >

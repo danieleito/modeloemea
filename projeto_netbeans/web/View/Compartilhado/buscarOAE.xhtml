@@ -35,7 +35,7 @@ and open the template in the editor.
                                     <p:outputLabel value="Código" class="col-md-5" />
                                 </td>
                                 <td>
-                                    <p:inputText value="#{ponte.model.codigo}" class="col-md-2" />
+                                    <p:inputText value="#{ponteBean.model.codigo}" class="col-md-2" />
                                 </td>
                             </tr>
 
@@ -44,7 +44,7 @@ and open the template in the editor.
                                     <p:outputLabel value="Identificação" class="col-md-5" />
                                 </td>
                                 <td>
-                                    <p:inputText value="#{ponte.model.identificacaoObra}" class="col-md-5" />
+                                    <p:inputText value="#{ponteBean.model.identificacaoObra}" class="col-md-5" />
                                 </td>
                             </tr>
 
@@ -54,16 +54,8 @@ and open the template in the editor.
                                 </td>
                                 <td>
                                     <p:selectOneMenu id="uf" value="#{ponteBean.model.uf.id}" style="width:150px">
-                                        <p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
-                                        <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
-                                        <f:selectItems value="#{dropdownView.countries}" />
-                                    </p:selectOneMenu>
-                                    <p:selectOneMenu class="col-md-5">
-                                        
-                                        <f:selectItem itemLabel="Selecione a UF" itemValue="" />
-                                        <f:selectItem itemLabel="Paraná" itemValue="1" />
-                                        <f:selectItem itemLabel="Santa Catarina" itemValue="2" />
-                                        <f:selectItem itemLabel="Sao Paulo" itemValue="3" />
+                                        <f:selectItem itemLabel="Selecione o UF" itemValue="0"/>
+                                        <f:selectItems value="#{ponteBean.ufs}" var="u" itemValue="#{u.id}"/>
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
@@ -89,10 +81,10 @@ and open the template in the editor.
                                 <td>
                                     <div>
                                         <p:outputLabel value="do km " />
-                                        <p:inputText value="#{ponte.model.localVia}" class="col-md-1" />
+                                        <p:inputText value="#{ponteBean.model.localVia}" class="col-md-1" />
 
                                         <p:outputLabel value=" ao km " />
-                                        <p:inputText value="#{ponte.model.localVia}" class="col-md-1" />
+                                        <p:inputText value="#{ponteBean.model.localVia}" class="col-md-1" />
                                     </div>
                                 </td>
                             </tr>
@@ -127,38 +119,11 @@ and open the template in the editor.
                         </tbody>
                     </table>
 
-
-
-                    <h:form>
-                        <p:growl id="msgs" showDetail="true" />
-                        <p:panel header="Select a Location" style="margin-bottom:10px;">
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <p:outputLabel for="country" value="Country: " />
-                                <p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
-                                    <p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
-                                    <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
-                                    <f:selectItems value="#{dropdownView.countries}" />
-                                </p:selectOneMenu>
-
-                                <p:outputLabel for="city" value="City: " />
-                                <p:selectOneMenu id="city" value="#{dropdownView.city}" style="width:150px">
-                                    <f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
-                                    <f:selectItems value="#{dropdownView.cities}" />
-                                </p:selectOneMenu>
-                            </h:panelGrid>
-
-                            <p:separator />
-
-                            <p:commandButton value="Submit" update="msgs" actionListener="#{dropdownView.displayLocation}" icon="ui-icon-check" />
-                        </p:panel>
-                    </h:form>
-
-
 <!--                    <p:commandButton value="Consultar" oncomplete="$('.mySelector').show();" />-->
-                    <p:commandButton action='#{ponte.consultar()}' value="Consultar" />
-                    <p:commandButton action="#{ponte.cancelar()}" value="Cancelar" />
+                    <p:commandButton action='#{ponteBean.consultar()}' value="Consultar" />
+                    <p:commandButton action="#{ponteBean.cancelar()}" value="Cancelar" />
 
-                    <p:dataTable id="tabela" var="p" value="#{ponte.pontes}" paginator="true" rows="8" >     
+                    <p:dataTable id="tabela" var="p" value="#{ponteBean.pontes}" paginator="true" rows="8" >     
                         <!--styleClass="mySelector" style="display: none"-->
                         <p:column headerText="Código" style="text-align: center" >
                             <h:outputText value="#{p.codigo}" />
@@ -173,16 +138,16 @@ and open the template in the editor.
                         </p:column>
 
                         <p:column headerText="UF" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{p.uf}" />
+                            <h:outputText value="#{p.uf.uf}" />
                         </p:column>
 
                         <p:column headerText="Local na via" style="width: 150px; text-align: center" >
                             <h:outputText value="#{p.localVia}" />
                         </p:column>
-
+                        
                         <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponte.visualizar(p.id)}" />
-                            <p:commandButton icon="ui-icon-check" title="Carregar" action="#{ponte.carregar(p.id)}" />
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.visualizar(p.id)}" />
+                            <p:commandButton icon="ui-icon-check" title="Carregar" action="#{ponteBean.carregar(p.id, ponteBean.idSimulacao)}" />
                         </p:column>
                     </p:dataTable>
                 </h:form>

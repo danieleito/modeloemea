@@ -40,4 +40,9 @@ public class Uf {
     public void setUf(String uf) {
         this.uf = uf;
     }
+    
+    @Override
+    public String toString() {
+        return uf;
+    }
 }
