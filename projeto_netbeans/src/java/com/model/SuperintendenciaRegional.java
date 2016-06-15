@@ -11,18 +11,18 @@ package com.model;
  */
 public class SuperintendenciaRegional {
     private int id;
-    private String superintendenciaRegional;
+    private String descricao;
 
     public SuperintendenciaRegional() {
     }
 
-    public SuperintendenciaRegional(int id, String superintendenciaRegional) {
+    public SuperintendenciaRegional(int id, String descricao) {
         this.id = id;
-        this.superintendenciaRegional = superintendenciaRegional;
+        this.descricao = descricao;
     }
 
-    public SuperintendenciaRegional(String superintendenciaRegional) {
-        this.superintendenciaRegional = superintendenciaRegional;
+    public SuperintendenciaRegional(String descricao) {
+        this.descricao = descricao;
     }
 
     public int getId() {
@@ -33,11 +33,11 @@ public class SuperintendenciaRegional {
         this.id = id;
     }
 
-    public String getSuperintendenciaRegional() {
-        return superintendenciaRegional;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setSuperintendenciaRegional(String superintendenciaRegional) {
-        this.superintendenciaRegional = superintendenciaRegional;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

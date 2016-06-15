@@ -78,6 +78,7 @@ create table VIA
 	(
 		ID_VIA			int				not null identity(1,1),
 		DS_VIA			varchar(10)		not null,
+		ID_UF			int,
 		CONSTRAINT		pk_via			PRIMARY KEY(ID_VIA)
 	);
 
@@ -185,6 +186,28 @@ insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) value
 
 ---------------------------------------------------------------------------
 
+--Ponte
+create table PONTE
+	(
+		ID_PONTE							int				not null identity(1,1),
+		CD_PONTE							varchar(10)		not null,
+		DS_IDENTIFICACAO_OBRA				varchar(60)		not null,
+		ID_VIA								int				not null,
+		ID_UF								int				not null,
+		DS_LOCAL_VIA						varchar(6)		not null,
+		ID_SUPERINTENDENCIA_REGIONAL		int,
+		ID_UNIDADE_LOCAL					int,
+		CONSTRAINT							pk_ponte		PRIMARY KEY(ID_PONTE)
+	);
+
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA, ID_SUPERINTENDENCIA_REGIONAL, ID_UNIDADE_LOCAL) values ('111111111', 'Ponte 111', 1, 16, 'KM-150', 14, 1);
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA, ID_SUPERINTENDENCIA_REGIONAL, ID_UNIDADE_LOCAL) values ('2222222222', 'Ponte 222', 1, 24, 'KM-590', 21, 1);
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA, ID_SUPERINTENDENCIA_REGIONAL, ID_UNIDADE_LOCAL) values ('3333333333', 'Ponte 333', 1, 16, 'KM-150', 14, 1);
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA) values ('4444444444', 'Ponte 444', 2, 16, 'KM-840');
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA) values ('5555555555', 'Ponte 555', 2, 24, 'KM-233');
+insert into PONTE (CD_PONTE, DS_IDENTIFICACAO_OBRA, ID_VIA, ID_UF, DS_LOCAL_VIA) values ('6666666666', 'Ponte 666', 3, 24, 'KM-999');
+
+---------------------------------------------------------------------------
 
 --Simulação
 create table SIMULACAO
@@ -208,20 +231,20 @@ insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) values ('01/05/2016', 
 create table RANKING
 	(
 		ID_RANKING							int				not null identity(1,1),
-		DT_DATA_ULTIMA_INSPECAO				date			not null,
-		CD_CODIGO							varchar(20)		not null,
+		ID_PONTE							int				not null,
 		ID_SIMULACAO						int				not null,
-		CS_CLASSIFICACAO					int				not null,
-		DS_INDICE_PERFORMANCE_RELATIVO		varchar(20)		not null,
+		CS_CLASSIFICACAO					int				null,
+		DS_INDICE_PERFORMANCE_RELATIVO		varchar(20)		null,
 		CONSTRAINT							pk_ranking		PRIMARY KEY(ID_RANKING),
+		CONSTRAINT							fk_ranking_ponte FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
 		CONSTRAINT							fk_ranking_simulacao FOREIGN KEY(ID_SIMULACAO) REFERENCES SIMULACAO (ID_SIMULACAO)
 	);
 
-insert into RANKING (DT_DATA_ULTIMA_INSPECAO, CD_CODIGO, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('25/05/2016', 1, 1, 1, '1');
-insert into RANKING (DT_DATA_ULTIMA_INSPECAO, CD_CODIGO, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('25/05/2016', 2, 1, 2, '2');
-insert into RANKING (DT_DATA_ULTIMA_INSPECAO, CD_CODIGO, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('27/05/2016', 3, 3, 3, '3');
-insert into RANKING (DT_DATA_ULTIMA_INSPECAO, CD_CODIGO, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('29/05/2016', 4, 1, 4, '4');
-insert into RANKING (DT_DATA_ULTIMA_INSPECAO, CD_CODIGO, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values ('30/05/2016', 5, 2, 5, '5');
+insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (1, 1, 1, '1');
+insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (2, 1, 2, '2');
+insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (3, 3, 3, '3');
+insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (4, 1, 4, '4');
+insert into RANKING (ID_PONTE, ID_SIMULACAO, CS_CLASSIFICACAO, DS_INDICE_PERFORMANCE_RELATIVO) values (5, 2, 5, '5');
 ---------------------------------------------------------------------------
 
 --Elemento
@@ -252,32 +275,34 @@ insert into MANIFESTACAO (NM_MANIFESTACAO, DS_BETA) values ('manifestacao02', 'B
 --Inspecoes
 create table INSPECAO
 	(
-		ID_INSPECAO					int						not null identity(1,1),
-		DT_DATA						date					not null,
-		ID_USUARIO					int						not null,
-		DS_CONDICAO_ESTABILIDADE	varchar(30)				not null,
-		DS_CONDICAO_CONSERVACAO		varchar(30)				not null,
-		CONSTRAINT					pk_inspecao				PRIMARY KEY(ID_INSPECAO),
-		CONSTRAINT					fk_inspecao_usuario		FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO)
+		ID_INSPECAO					int			not null identity(1,1),
+		DT_DATA						date		not null,
+		ID_USUARIO					int			not null,
+		ID_PONTE					int			not null,
+		DS_CONDICAO_ESTABILIDADE	varchar(30)	not null,
+		DS_CONDICAO_CONSERVACAO		varchar(30)	not null,
+		CONSTRAINT					pk_inspecao	PRIMARY KEY(ID_INSPECAO),
+		CONSTRAINT					fk_inspecao_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
+		CONSTRAINT					fk_inspecao_usuario	FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO)
 	);
 GO
-insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('05/05/2016', 1, '1-condição estabilidade', '1- condição conservação');
-insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('10/05/2016', 1, '2-condição estabilidade', '2- condição conservação');
-insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('15/05/2016', 1, '3-condição estabilidade', '3- condição conservação');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('05/05/2016', 1, 1, '1-condição estabilidade', '1- condição conservação');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('10/05/2016', 1, 1, '2-condição estabilidade', '2- condição conservação');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('15/05/2016', 1, 1, '3-condição estabilidade', '3- condição conservação');
 ---------------------------------------------------------------------------
 
 --Arquivos anexos cadastro
 create table ARQUIVO_ANEXO_CADASTRO
 	(
-		ID_ARQUIVO_ANEXO_CADASTRO		int				not null identity(1,1),
-		DS_ARQUIVO				varchar(20)		not null,
-		DS_TIPO_ARQUIVO			varchar(10)		not null,
-		NR_NUMERO				varchar(3)		not null,
-		DS_DESCRICAO			varchar(20)		not null,
-		DS_REGISTRO				varchar(10)		not null,
-		DT_DATA_ANEXACAO		date			not null,
-		--DS_MINIATURA			
-		CONSTRAINT				pk_arquivoanexocadastro	PRIMARY KEY(ID_ARQUIVO_ANEXO_CADASTRO)
+		ID_ARQUIVO_ANEXO_CADASTRO		int						not null identity(1,1),
+		DS_ARQUIVO						varchar(20)				not null,
+		DS_TIPO_ARQUIVO					varchar(10)				not null,
+		NR_NUMERO						varchar(3)				not null,
+		DS_DESCRICAO					varchar(20)				not null,
+		DS_REGISTRO						varchar(10)				not null,
+		DT_DATA_ANEXACAO				date					not null,
+		--DS_MINIATURA					
+		CONSTRAINT						pk_arquivoanexocadastro	PRIMARY KEY(ID_ARQUIVO_ANEXO_CADASTRO)
 	);
 GO
 insert into ARQUIVO_ANEXO_CADASTRO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values ('01.jpg', 'Foto', '01', 'Vista geral', 'OAE', '10/05/2016');
@@ -288,13 +313,13 @@ insert into ARQUIVO_ANEXO_CADASTRO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_D
 --Arquivos anexos inspecao
 create table ARQUIVO_ANEXO_INSPECAO
 	(
-		ID_ARQUIVO_ANEXO_INSPECAO		int				not null identity(1,1),
-		DS_ARQUIVO						varchar(20)		not null,
-		DS_TIPO_ARQUIVO					varchar(10)		not null,
-		NR_NUMERO						varchar(3)		not null,
-		DS_DESCRICAO					varchar(20)		not null,
-		DS_REGISTRO						varchar(10)		not null,
-		DT_DATA_ANEXACAO				date			not null,
+		ID_ARQUIVO_ANEXO_INSPECAO		int						not null identity(1,1),
+		DS_ARQUIVO						varchar(20)				not null,
+		DS_TIPO_ARQUIVO					varchar(10)				not null,
+		NR_NUMERO						varchar(3)				not null,
+		DS_DESCRICAO					varchar(20)				not null,
+		DS_REGISTRO						varchar(10)				not null,
+		DT_DATA_ANEXACAO				date					not null,
 		--DS_MINIATURA			
 		CONSTRAINT						pk_arquivoanexoinspecao	PRIMARY KEY(ID_ARQUIVO_ANEXO_INSPECAO)
 	);
@@ -307,242 +332,74 @@ insert into ARQUIVO_ANEXO_INSPECAO (DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_D
 
 
 
---------------------------------DADOS PARA PREENCHIMENTO CADASTRO-----------------------------------
---Natureza de transposição
-
-create table NATUREZA_TRANSPOSICAO
-	(
-		ID_NATUREZA_TRANSPOSICAO			int								not null identity(1,1),
-		DS_NATUREZA_TRANSPOSICAO			varchar(50)						not null,
-		CONSTRAINT							pk_naturezatransposicao			PRIMARY KEY(ID_NATUREZA_TRANSPOSICAO)
-	);
-
-GO
-insert into NATUREZA_TRANSPOSICAO (DS_NATUREZA_TRANSPOSICAO) values ('Ponte');
-insert into NATUREZA_TRANSPOSICAO (DS_NATUREZA_TRANSPOSICAO) values ('Pontilhão');
-insert into NATUREZA_TRANSPOSICAO (DS_NATUREZA_TRANSPOSICAO) values ('Viaduto de transposição de rodovia');
-insert into NATUREZA_TRANSPOSICAO (DS_NATUREZA_TRANSPOSICAO) values ('Viaduto sobre ferrovia');
-insert into NATUREZA_TRANSPOSICAO (DS_NATUREZA_TRANSPOSICAO) values ('Viaduto sobre rodovia / rua');
-insert into NATUREZA_TRANSPOSICAO (DS_NATUREZA_TRANSPOSICAO) values ('Viaduto em encosta');
-insert into NATUREZA_TRANSPOSICAO (DS_NATUREZA_TRANSPOSICAO) values ('Passagem inferior');
-insert into NATUREZA_TRANSPOSICAO (DS_NATUREZA_TRANSPOSICAO) values ('Passarela de pedestres');
-insert into NATUREZA_TRANSPOSICAO (DS_NATUREZA_TRANSPOSICAO) values ('Não informado');
-
---Tipo de estrutura
-
-create table TIPO_ESTRUTURA
-	(
-		ID_TIPO_ESTRUTURA			int				not null identity(1,1),
-		DS_TIPO_ESTRUTURA		varchar(50)		not null,
-		CONSTRAINT		pk_tipoestrutura			PRIMARY KEY(ID_TIPO_ESTRUTURA)
-	);
-
-GO
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Viga Caixão Concreto Armado');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Viga Caixão Concreto Protendido');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Viga de concreto armado');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Viga de concreto protendido');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Viga e laje metálicas');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Mista (viga metal e laje concreto)');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Arco inferior de concreto armado');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Arco inferior de concreto protendido');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Arco inferior metálico');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Arco superior de concreto armado');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Arco superior de concreto protendido');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Arco superior metálico');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Arco de alvenaria de pedra');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Treliça metálica');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Laje de concreto armado');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Laje de concreto protendido');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Madeira');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Estaiada com vigamento metálico');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Estaiada com vigamento c. protendido');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Pênsil');
-insert into TIPO_ESTRUTURA (DS_TIPO_ESTRUTURA) values ('Não informado');
-
---Sistema Construtivo
-
-create table SISTEMA_CONSTRUTIVO
-	(
-		ID_SISTEMA_CONSTRUTIVO			int						not null identity(1,1),
-		DS_SISTEMA_CONSTRUTIVO			varchar(50)				not null,
-		CONSTRAINT						pk_sistemaconstrutivo	PRIMARY KEY(ID_SISTEMA_CONSTRUTIVO)
-	);
-
-GO
-insert into SISTEMA_CONSTRUTIVO (DS_SISTEMA_CONSTRUTIVO) values ('Moldado no local');
-insert into SISTEMA_CONSTRUTIVO (DS_SISTEMA_CONSTRUTIVO) values ('Pré-moldado de concreto armado');
-insert into SISTEMA_CONSTRUTIVO (DS_SISTEMA_CONSTRUTIVO) values ('Pré-moldado protendido (pós-tensão)');
-insert into SISTEMA_CONSTRUTIVO (DS_SISTEMA_CONSTRUTIVO) values ('Pré-moldado protendido (pré-tensão)');
-insert into SISTEMA_CONSTRUTIVO (DS_SISTEMA_CONSTRUTIVO) values ('Balanços progressivos c/ continuidade');
-insert into SISTEMA_CONSTRUTIVO (DS_SISTEMA_CONSTRUTIVO) values ('Balanços progressivos c/ articulações');
-insert into SISTEMA_CONSTRUTIVO (DS_SISTEMA_CONSTRUTIVO) values ('Aduelas pré-moldadas');
-insert into SISTEMA_CONSTRUTIVO (DS_SISTEMA_CONSTRUTIVO) values ('Viga calha pré-moldada (Sist protótipo)');
-insert into SISTEMA_CONSTRUTIVO (DS_SISTEMA_CONSTRUTIVO) values ('Ponte empurrada');
-insert into SISTEMA_CONSTRUTIVO (DS_SISTEMA_CONSTRUTIVO) values ('Estaiado em avanços progressivos');
-insert into SISTEMA_CONSTRUTIVO (DS_SISTEMA_CONSTRUTIVO) values ('Não informado');
-insert into SISTEMA_CONSTRUTIVO (DS_SISTEMA_CONSTRUTIVO) values ('Treliça metálica');
-
---Trem-tipo
-
-create table TREM_TIPO
-	(
-		ID_TREM_TIPO			int				not null identity(1,1),
-		DS_TREM_TIPO			varchar(30)		not null,
-		CONSTRAINT				pk_tremtipo		PRIMARY KEY(ID_TREM_TIPO)
-	);
-
-GO
-insert into TREM_TIPO (DS_TREM_TIPO) values ('Classe 0');
-insert into TREM_TIPO (DS_TREM_TIPO) values ('Classe 24');
-insert into TREM_TIPO (DS_TREM_TIPO) values ('Classe 36');
-insert into TREM_TIPO (DS_TREM_TIPO) values ('Classe 45');
-
---Tipo de região
-
-create table TIPO_REGIAO
-	(
-		ID_TIPO_REGIAO			int				not null identity(1,1),
-		DS_TIPO_REGIAO		varchar(30)		not null,
-		CONSTRAINT		pk_tiporegiao			PRIMARY KEY(ID_TIPO_REGIAO)
-	);
-
-GO
-insert into TIPO_REGIAO	 (DS_TIPO_REGIAO) values ('Plana');
-insert into TIPO_REGIAO	 (DS_TIPO_REGIAO) values ('Ondulada');
-insert into TIPO_REGIAO	 (DS_TIPO_REGIAO) values ('Montanhosa');
-insert into TIPO_REGIAO	 (DS_TIPO_REGIAO) values ('Não informado');
-
---Tipo de traçado
-
-create table TIPO_TRACADO
-	(
-		ID_TIPO_TRACADO			int				not null identity(1,1),
-		DS_TIPO_TRACADO		varchar(30)		not null,
-		CONSTRAINT		pk_tipotracado			PRIMARY KEY(ID_TIPO_TRACADO)
-	);
-
-GO
-insert into TIPO_TRACADO	 (DS_TIPO_TRACADO) values ('Tangente');
-insert into TIPO_TRACADO	 (DS_TIPO_TRACADO) values ('Curva');
-insert into TIPO_TRACADO	 (DS_TIPO_TRACADO) values ('Não informado');
-
---Tipo de administração
-
-create table TIPO_ADMINISTRACAO
-	(
-		ID_TIPO_ADMINISTRACAO			int						not null identity(1,1),
-		DS_TIPO_ADMINISTRACAO			varchar(30)				not null,
-		CONSTRAINT						pk_tipoadministracao	PRIMARY KEY(ID_TIPO_ADMINISTRACAO)
-	);
-
-GO
-insert into TIPO_ADMINISTRACAO	 (DS_TIPO_ADMINISTRACAO) values ('Administração Direta');
-
-
-create table ELEMENTOS_UFPR
-	(
-		ID_ELEMENTO_UFPR		int						not null identity(1,1),
-		CD_ELEMENTO				int,
-		DS_ELEMENTO				varchar(50),
-		CONSTRAINT				pk_elementosufpr		PRIMARY KEY(ID_ELEMENTO_UFPR)
-	);
-	GO
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '1', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '2', 'Laje de concreto Protendido');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '3', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '4', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '5', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '6', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '1', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '1', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '1', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '1', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '1', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '1', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '1', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '1', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '1', 'Laje de concreto armado');
-	insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO) values ( '1', 'Laje de concreto armado');
-
-
-
-
 --------------------------------CADASTRO-----------------------------------
+
 --dados basicos
 create table IDENTIFICACAO_OBRA_DADOS_BASICOS
 	(
-		ID_IDENTIFICACAO_OBRA_DADOS_BASICOS		int														not null identity(1, 1),
+		ID_IDENTIFICACAO_OBRA_DADOS_BASICOS		int										not null identity(1, 1),
 		CD_CODIGO								varchar(20),
 		CD_CODIGO_INTEGRACAO					varchar(20),
 		DS_STATUS								varchar(20),
-		DS_IDENTIFICACAO						varchar(50),
-		ID_NATUREZA_TRANSPOSICAO				int,	
-		ID_TIPO_ESTRUTURA						int,
-		ID_SISTEMA_CONSTRUTIVO					int,
+		DS_IDENTIFICACAO						varchar(20),
+		DS_NATUREZA_TRANSPOSICAO				varchar(20),
+		DS_TIPO_ESTRUTURA						varchar(20),
+		DS_SISTEMA_CONSTRUTIVO					varchar(20),
 		DS_COMPRIMENTO							varchar(20),
 		DS_LARGURA								varchar(20),
-		ID_TREM_TIPO							int,
+		DS_TREM_TIPO							varchar(20),
 		DS_ANO_CONSTRUCAO						varchar(20),
-		CONSTRAINT								pk_identificacaoobradadosbasicos						PRIMARY KEY(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS),
-		CONSTRAINT								fk_identificacaoobradadosbasicos_naturezatransposicao	FOREIGN KEY(ID_NATUREZA_TRANSPOSICAO) REFERENCES NATUREZA_TRANSPOSICAO(ID_NATUREZA_TRANSPOSICAO),
-		CONSTRAINT								fk_identificacaoobradadosbasicos_tipoestrutura			FOREIGN KEY(ID_TIPO_ESTRUTURA) REFERENCES TIPO_ESTRUTURA(ID_TIPO_ESTRUTURA),
-		CONSTRAINT								fk_identificacaoobradadosbasicos_sistemaconstrutivo		FOREIGN KEY(ID_SISTEMA_CONSTRUTIVO) REFERENCES SISTEMA_CONSTRUTIVO(ID_SISTEMA_CONSTRUTIVO),
-		CONSTRAINT								fk_identificacaoobradadosbasicos_tremtipo				FOREIGN KEY(ID_TREM_TIPO) REFERENCES TREM_TIPO(ID_TREM_TIPO)
+		CONSTRAINT								pk_identificacaoobradadosbasicos		PRIMARY KEY(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS)
 	);
 GO
-insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, DS_COMPRIMENTO, DS_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
-values ('00', '00', '00', '00', 1, 1, 1, '00', '00', 1, '00');
+insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, DS_NATUREZA_TRANSPOSICAO, 
+DS_TIPO_ESTRUTURA, DS_SISTEMA_CONSTRUTIVO, DS_COMPRIMENTO, DS_LARGURA, DS_TREM_TIPO, DS_ANO_CONSTRUCAO) 
+values ('00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00');
 
 --localizacao
 create table IDENTIFICACAO_OBRA_LOCALIZACAO
 	(
-		ID_IDENTIFICACAO_OBRA_LOCALIZACAO		int										not null identity(1,1),
-		ID_UF									int,
-		ID_VIA									int,
+		ID_IDENTIFICACAO_OBRA_LOCALIZACAO		int									not null identity(1,1),
+		DS_UF									varchar(20),
+		DS_VIA									varchar(20),
 		DS_LOCAL_VIA							varchar(20),
-		DS_CIDADE_MAIS_PROXIMA					varchar(40),
+		DS_CIDADE_MAIS_PROXIMA					varchar(20),
 		DS_PNV_ANO								varchar(20),
 		DS_PNV_VERSAO							varchar(20),
-		DS_PNV_CODIGO							varchar(40),
+		DS_PNV_CODIGO							varchar(20),
 		DS_PNV_ALTITUDE							varchar(20),
 		DS_LATITUDE_GRAU						varchar(20),
 		DS_LATITUDE_MINUTO						varchar(20),
 		DS_LONGITUDE_GRAU						varchar(20),
 		DS_LONGITUDE_MINUTO						varchar(20),
-		CONSTRAINT								pk_identificacaoobralocalizacao			PRIMARY KEY(ID_IDENTIFICACAO_OBRA_LOCALIZACAO),
-		CONSTRAINT								fk_identificacaoobralocalizacao_uf		FOREIGN KEY(ID_UF) REFERENCES UF(ID_UF),
-		CONSTRAINT								fk_identificacaoobralocalizacao_via		FOREIGN KEY(ID_VIA) REFERENCES VIA(ID_VIA)
+		CONSTRAINT								pk_identificacaoobralocalizacao		PRIMARY KEY(ID_IDENTIFICACAO_OBRA_LOCALIZACAO)
 	);
 GO
-insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, DS_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, 
+insert into IDENTIFICACAO_OBRA_LOCALIZACAO (DS_UF, DS_VIA, DS_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, 
 DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
-values (1, 1, '00', '00', '00', '00', '00', '00', '00', '00', '00', '00');
+values ('00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00');
 
 --responsaveis
 create table IDENTIFICACAO_OBRA_RESPONSAVEIS
 	(
-		ID_IDENTIFICACAO_OBRA_RESPONSAVEIS		int															not null identity(1,1),
-		ID_SUPERINTENDENCIA_REGIONAL			int,
-		ID_UNIDADE_LOCAL						int,
-		ID_TIPO_ADMINISTRACAO					int,
-		DS_ADMINISTRADOR						varchar(80),
-		DS_PROJETISTA_ORIGEM					varchar(80),
-		DS_PROJETISTA_PROJETISTA				varchar(80),
-		DS_CONSTRUTOR_ORIGEM					varchar(80),
-		DS_CONSTRUTOR_CONSTRUTOR				varchar(80),
-		DS_LOCALIZACAO_PROJETO					varchar(80),
-		DS_LOCALIZACAO_DOCUMENTOS_CONSTRUCAO	varchar(80),
-		DS_LOCALIZACAO_DOCUMENTOS_DIVERSOS		varchar(80),
-		CONSTRAINT								pk_identificacaoobraresponsaveis								PRIMARY KEY(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS),
-		CONSTRAINT								fk_identificacaoobraresponsaveis_superintendenciaregional		FOREIGN KEY(ID_SUPERINTENDENCIA_REGIONAL) REFERENCES SUPERINTENDENCIA_REGIONAL(ID_SUPERINTENDENCIA_REGIONAL),
-		CONSTRAINT								fk_identificacaoobraresponsaveis_unidadelocal					FOREIGN KEY(ID_UNIDADE_LOCAL) REFERENCES UNIDADE_LOCAL(ID_UNIDADE_LOCAL),
-		CONSTRAINT								fk_identificacaoobraresponsaveis_tipoadministracao				FOREIGN KEY(ID_SUPERINTENDENCIA_REGIONAL) REFERENCES SUPERINTENDENCIA_REGIONAL(ID_SUPERINTENDENCIA_REGIONAL)
+		ID_IDENTIFICACAO_OBRA_RESPONSAVEIS		int										not null identity(1,1),
+		DS_SUPERINTENDENCIA_REGIONAL			varchar(20),
+		DS_UNIDADE_LOCAL						varchar(20),
+		DS_TIPO_ADMINISTRACAO					varchar(20),
+		DS_ADMINISTRADOR						varchar(20),
+		DS_PROJETISTA_ORIGEM					varchar(20),
+		DS_PROJETISTA_PROJETISTA				varchar(20),
+		DS_CONSTRUTOR_ORIGEM					varchar(20),
+		DS_CONSTRUTOR_CONSTRUTOR				varchar(20),
+		DS_LOCALIZACAO_PROJETO					varchar(20),
+		DS_LOCALIZACAO_DOCUMENTOS_CONSTRUCAO	varchar(20),
+		DS_LOCALIZACAO_DOCUMENTOS_DIVERSOS		varchar(20),
+		CONSTRAINT								pk_identificacaoobraresponsaveis		PRIMARY KEY(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS)
 	);
 GO
-insert into IDENTIFICACAO_OBRA_RESPONSAVEIS (ID_SUPERINTENDENCIA_REGIONAL, ID_UNIDADE_LOCAL, ID_TIPO_ADMINISTRACAO, DS_ADMINISTRADOR, 
+insert into IDENTIFICACAO_OBRA_RESPONSAVEIS (DS_SUPERINTENDENCIA_REGIONAL, DS_UNIDADE_LOCAL, DS_TIPO_ADMINISTRACAO, DS_ADMINISTRADOR, 
 DS_PROJETISTA_ORIGEM, DS_PROJETISTA_PROJETISTA, DS_CONSTRUTOR_ORIGEM, DS_CONSTRUTOR_CONSTRUTOR, DS_LOCALIZACAO_PROJETO, 
-DS_LOCALIZACAO_DOCUMENTOS_CONSTRUCAO, DS_LOCALIZACAO_DOCUMENTOS_DIVERSOS) values (1, 1, 1, '00', '00', '00', '00', '00', '00', '00', '00');
+DS_LOCALIZACAO_DOCUMENTOS_CONSTRUCAO, DS_LOCALIZACAO_DOCUMENTOS_DIVERSOS) values ('00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00');
 
 --inspecao
 create table IDENTIFICACAO_OBRA_INSPECAO
@@ -556,38 +413,24 @@ create table IDENTIFICACAO_OBRA_INSPECAO
 GO
 insert into IDENTIFICACAO_OBRA_INSPECAO (DS_PERIODO, DS_EQUIPAMENTO_NECESSARIO, DS_MELHOR_EPOCA) values ('00', '00', '00');
 
--- ponte
-create table PONTE
-	(
-		ID_PONTE								int			not null identity(1,1),
-		ID_IDENTIFICACAO_OBRA_DADOS_BASICOS		int			not null,	
-		ID_IDENTIFICACAO_OBRA_LOCALIZACAO		int			not null,
-		ID_IDENTIFICACAO_OBRA_RESPONSAVEIS		int			not null,
-		ID_IDENTIFICACAO_OBRA_INSPECAO			int			not null,
-		CONSTRAINT								pk_ponte	PRIMARY KEY(ID_PONTE), 
-		CONSTRAINT								fk_ponte_identificacaoobradadosbasicos		FOREIGN KEY(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS) REFERENCES IDENTIFICACAO_OBRA_DADOS_BASICOS(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS),
-		CONSTRAINT								fk_ponte_identificacaoobralocalizacao		FOREIGN KEY(ID_IDENTIFICACAO_OBRA_LOCALIZACAO) REFERENCES IDENTIFICACAO_OBRA_LOCALIZACAO(ID_IDENTIFICACAO_OBRA_LOCALIZACAO),
-		CONSTRAINT								fk_ponte_identificacaoobraresponsaveis		FOREIGN KEY(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS) REFERENCES IDENTIFICACAO_OBRA_RESPONSAVEIS(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS),
-		CONSTRAINT								fk_ponte_identificacaoobrainspecao			FOREIGN KEY(ID_IDENTIFICACAO_OBRA_INSPECAO) REFERENCES IDENTIFICACAO_OBRA_INSPECAO(ID_IDENTIFICACAO_OBRA_INSPECAO)
-	);
+
 ---------------------------------------------------------------------------
 
 --caracteristicas
 create table CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS
 	(
-		ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS		int															not null identity(1,1),
-		ID_TIPO_REGIAO										int,
-		ID_TIPO_TRACADO										int,
+		ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS		int												not null identity(1,1),
+		DS_IDENTIFICACAO									varchar(20),
+		DS_TIPO_REGIAO										varchar(20),
+		DS_TIPO_TRACADO										varchar(20),
 		DS_RAMPA_MAXIMA										varchar(20),
 		DS_RAIO_CURVA										varchar(20),
 		DS_VMD												varchar(20),
-		CONSTRAINT											pk_caracteristicasfuncionaiscaracteristicas					PRIMARY KEY(ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS),
-		CONSTRAINT											fk_caracteristicasfuncionaiscaracteristicas_tiporegiao		FOREIGN KEY(ID_TIPO_REGIAO) REFERENCES TIPO_REGIAO(ID_TIPO_REGIAO),
-		CONSTRAINT											fk_caracteristicasfuncionaiscaracteristicas_tipotracado		FOREIGN KEY(ID_TIPO_TRACADO) REFERENCES TIPO_TRACADO(ID_TIPO_TRACADO)
+		CONSTRAINT											pk_caracteristicasfuncionaiscaracteristicas		PRIMARY KEY(ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS)
 	);
 GO
-insert into CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS (ID_TIPO_REGIAO, ID_TIPO_TRACADO, DS_RAMPA_MAXIMA, DS_RAIO_CURVA, DS_VMD) 
-values (1, 1, '00', '00', '00');
+insert into CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS (DS_IDENTIFICACAO, DS_TIPO_REGIAO, DS_TIPO_TRACADO, DS_RAMPA_MAXIMA, DS_RAIO_CURVA, DS_VMD) 
+values ('00', '00', '00', '00', '00', '00');
 
 --dimensoes
 create table CARACTERISTICAS_FUNCIONAIS_DIMENSOES
@@ -603,7 +446,7 @@ create table CARACTERISTICAS_FUNCIONAIS_DIMENSOES
 		DS_GABARITO_HORIZONTAL							varchar(20),
 		DS_GABARITO_VERTICAL							varchar(20),
 		DS_NUMERO_VAOS									varchar(20),
-		DS_DESCRICAO_VAOS								varchar(80),
+		DS_DESCRICAO_VAOS								varchar(20),
 		CONSTRAINT										pk_caracteristicasfuncionaisdimensoes		PRIMARY KEY(ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES)
 	);
 GO
@@ -614,22 +457,28 @@ values ('00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00');
 
 ---------------------------------------------------------------------------
 
-
+--elementos componentes
+--create table ELEMENTOS_COMPONENTES
+--	(
+--		ID_ELEMENTOS_COMPONENTES		int							not null identity(1,1),
+--		DS_IDENTIFICACAO				varchar(20),
+--		CD_CODIGO						varchar(20),
+--		DS_ELEMENTO						varchar(20),
+--		DS_DETALHE						varchar(20),
+--		CONSTRAINT						pk_elementoscomponentes		PRIMARY KEY(ID_ELEMENTOS_COMPONENTES)
+--	);
+--GO
+--insert into ELEMENTOS_COMPONENTES (DS_IDENTIFICACAO, CD_CODIGO, DS_ELEMENTO, DS_DETALHE) 
+--values ('00', '00', '00', '00');
 
 create table ELEMENTO_COMPONENTES
 	(
-		ID_ELEMENTO_COMPONENTES			int						not null identity(1,1),
+		ID_PONTE				int						not null identity(1,1),
 		CD_CODIGO				varchar(20),
-		CD_ELEMENTO				int,
 		DS_DETALHE				varchar(20),
 		NR_QUANTIDADE			varchar(10),
-		CONSTRAINT				pk_elementoscomponentes		PRIMARY KEY(ID_ELEMENTO_COMPONENTES)
+		CONSTRAINT				pk_elementoscomponentes		PRIMARY KEY(ID_PONTE)
 	);
-	GO
-	insert into ELEMENTO_COMPONENTES (CD_CODIGO, CD_ELEMENTO, DS_DETALHE, NR_QUANTIDADE)
-	values ('00', '00', '00', '00');
-
-
 ---------------------------------------------------------------------------
 
 --aspectos especiais
@@ -721,9 +570,8 @@ create table INSPECOES_MANIFESTACOES
 	);
 GO
 insert into INSPECOES_MANIFESTACOES (DS_ELEMENTO, DS_NUMERO, DS_MANIFESTACAO, DS_FOTO, DS_TAMANHO, 
-DS_EXTENSAO, DS_REPARO) values ('00', '00', '00', '00', '00', '00', '00');
-
-
+DS_EXTENSAO, DS_REPARO) 
+values ('00', '00', '00', '00', '00', '00', '00');
 
 
 
@@ -735,3 +583,31 @@ DS_EXTENSAO, DS_REPARO) values ('00', '00', '00', '00', '00', '00', '00');
 -- INSPECOES tabela ja existe
 
 ---------------------------------------------------------------------------
+
+select P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, P.DS_VIA, P.DS_UF, P.DS_LOCAL_VIA, P.ID_SUPERINTENDENCIA_REGIONAL, P.ID_UNIDADE_LOCAL, 
+U.ID_UNIDADE_LOCAL, U.DS_UNIDADE_LOCAL, U.ID_SUPERINTENDENCIA_REGIONAL,  
+S.ID_SUPERINTENDENCIA_REGIONAL
+from PONTE P, UNIDADE_LOCAL U, SUPERINTENDENCIA_REGIONAL S 
+where P.ID_UNIDADE_LOCAL = U.ID_UNIDADE_LOCAL 
+and P.ID_SUPERINTENDENCIA_REGIONAL = S.ID_SUPERINTENDENCIA_REGIONAL
+and P.ID_SUPERINTENDENCIA_REGIONAL = U.ID_SUPERINTENDENCIA_REGIONAL
+
+and P.CD_PONTE = '111111111'
+and P.DS_IDENTIFICACAO_OBRA = null;
+
+
+select * from SUPERINTENDENCIA_REGIONAL;
+
+select P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, P.ID_VIA,
+P.ID_UF, P.DS_LOCAL_VIA, P.ID_SUPERINTENDENCIA_REGIONAL, P.ID_UNIDADE_LOCAL,
+U.ID_UNIDADE_LOCAL, U.DS_UNIDADE_LOCAL, U.ID_SUPERINTENDENCIA_REGIONAL,
+S.ID_SUPERINTENDENCIA_REGIONAL, S.DS_SUPERINTENDENCIA_REGIONAL, S.ID_UF 
+from PONTE P, UNIDADE_LOCAL U, SUPERINTENDENCIA_REGIONAL S 
+where P.ID_UNIDADE_LOCAL = U.ID_UNIDADE_LOCAL 
+and P.ID_SUPERINTENDENCIA_REGIONAL = S.ID_SUPERINTENDENCIA_REGIONAL
+and P.CD_PONTE like '%111111111%'
+and P.DS_IDENTIFICACAO_OBRA like '%1%'
+and P.ID_UF = 14
+and S.ID_UF = P.ID_UF
+
+--<!--                                        <f:selectItems value="#{ponte.ufs}" var="t" itemValue="#{t.id}" />-->    value="#{ponte.model.uf.id}"			

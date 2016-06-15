@@ -127,11 +127,12 @@ public class SimulacaoDAO {
                 + "(select max(DT_DATA) from inspecao where ID_PONTE = P.ID_PONTE) as DATA, "
                 + "R.ID_SIMULACAO, R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
                 + "S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
-                + "P.ID_PONTE, P.CD_PONTE, P.DS_IDENTIFICACAO_OBRA, P.ID_VIA, "
-                + "P.ID_UF, P.DS_LOCAL_VIA, U.DS_UF "
-                + "FROM RANKING R, SIMULACAO S, PONTE P, UF U "
-                + "WHERE P.ID_UF = U.ID_UF "
-                + "AND P.ID_PONTE = R.ID_PONTE "
+                + "DB.CD_PONTE, DB.DS_IDENTIFICACAO_OBRA, L.ID_VIA, "
+                + "L.ID_UF, L.DS_LOCAL_VIA, U.DS_UF "
+                + "FROM RANKING R, SIMULACAO S, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, "
+                + "IDENTIFICACAO_OBRA_LOCALIZACAO L, UF U "
+                + "WHERE L.ID_UF = U.ID_UF "
+//                + "AND P.ID_PONTE = R.ID_PONTE "
                 + "AND R.ID_SIMULACAO = S.ID_SIMULACAO "
                 + "AND S.ID_SIMULACAO = " + idSimulacao + ";";
 
@@ -147,7 +148,7 @@ public class SimulacaoDAO {
         Ponte ponte;
         while (rs.next()) {
             ponte = new Ponte();
-            ponte.setId(rs.getInt("ID_PONTE"));
+//            ponte.setId(rs.getInt("ID_PONTE"));
             ponte.setCodigo(rs.getString("CD_PONTE"));
             ponte.setIdentificacaoObra(rs.getString("DS_IDENTIFICACAO_OBRA"));
             ponte.setIdVia(rs.getInt("ID_VIA"));

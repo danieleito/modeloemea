@@ -9,20 +9,20 @@ package com.model;
  *
  * @author Daniele Harumi Ito
  */
-public class Via {
+public class TipoEstrutura {
     private int id;
-    private String via;
+    private String descricao;
 
-    public Via() {
+    public TipoEstrutura() {
     }
 
-    public Via(int id, String via) {
+    public TipoEstrutura(int id, String descricao) {
         this.id = id;
-        this.via = via;
+        this.descricao = descricao;
     }
 
-    public Via(String via) {
-        this.via = via;
+    public TipoEstrutura(String descricao) {
+        this.descricao = descricao;
     }
 
     public int getId() {
@@ -33,16 +33,15 @@ public class Via {
         this.id = id;
     }
 
-    public String getVia() {
-        return via;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setVia(String via) {
-        this.via = via;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
-    
     @Override
     public String toString() {
-        return via;
+        return descricao;
     }
 }

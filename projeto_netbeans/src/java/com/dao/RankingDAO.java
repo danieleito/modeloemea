@@ -7,7 +7,6 @@ package com.dao;
 
 import com.model.Ponte;
 import com.model.Ranking;
-import com.model.Simulacao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
