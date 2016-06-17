@@ -14,7 +14,7 @@ import java.util.Date;
 public class Ranking {
     private int id;
     private Date dataUltimaInspecao;
-    private Ponte ponte;
+    private Ponte1 ponte;
     //private Simulacao simulacao;
     private int classificacao;
     private String indicePerformanceRelativo;
@@ -23,7 +23,7 @@ public class Ranking {
     public Ranking() {
     }
 
-    public Ranking(int id, Date dataUltimaInspecao, Ponte ponte, int classificacao, String indicePerformanceRelativo) {
+    public Ranking(int id, Date dataUltimaInspecao, Ponte1 ponte, int classificacao, String indicePerformanceRelativo) {
         this.id = id;
         this.dataUltimaInspecao = dataUltimaInspecao;
         this.ponte = ponte;
@@ -31,7 +31,7 @@ public class Ranking {
         this.indicePerformanceRelativo = indicePerformanceRelativo;
     }
 
-    public Ranking(Date dataUltimaInspecao, Ponte ponte, int classificacao, String indicePerformanceRelativo) {
+    public Ranking(Date dataUltimaInspecao, Ponte1 ponte, int classificacao, String indicePerformanceRelativo) {
         this.dataUltimaInspecao = dataUltimaInspecao;
         this.ponte = ponte;
         this.classificacao = classificacao;
@@ -54,11 +54,11 @@ public class Ranking {
         this.dataUltimaInspecao = dataUltimaInspecao;
     }
 
-    public Ponte getPonte() {
+    public Ponte1 getPonte() {
         return ponte;
     }
 
-    public void setPonte(Ponte ponte) {
+    public void setPonte(Ponte1 ponte) {
         this.ponte = ponte;
     }
 

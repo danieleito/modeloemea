@@ -11,40 +11,33 @@ package com.model;
  */
 public class Ponte {
     private int id;
-    private String codigo;
-    private String identificacaoObra;
-    private int idVia;
-    private Uf uf;
-    private String localVia;
-    private int idSuperintendenciaRegional;
-    private int idUnidadeLocal;
+    private IdentificacaoObraDadosBasicos idIdentificacaoObraDadosBasicos;
+    private IdentificacaoObraLocalizacao idIdentificacaoObraLocalizacao;
+    private IdentificacaoObraResponsaveis idIdentificacaoObraResponsaveis;
+    private IdentificacaoObraInspecao idIdentificacaoObraInspecao;
 
     public Ponte() {
-        uf = new Uf();
-//        this.uf = new Uf();
     }
 
-    public Ponte(int id, String codigo, String identificacaoObra, int idVia, 
-            Uf uf, String localVia, int idSuperintendenciaRegional, int idUnidadeLocal) {
+    public Ponte(int id, IdentificacaoObraDadosBasicos idIdentificacaoObraDadosBasicos, 
+            IdentificacaoObraLocalizacao idIdentificacaoObraLocalizacao, 
+            IdentificacaoObraResponsaveis idIdentificacaoObraResponsaveis, 
+            IdentificacaoObraInspecao idIdentificacaoObraInspecao) {
         this.id = id;
-        this.codigo = codigo;
-        this.identificacaoObra = identificacaoObra;
-        this.idVia = idVia;
-        this.uf = uf;
-        this.localVia = localVia;
-        this.idSuperintendenciaRegional = idSuperintendenciaRegional;
-        this.idUnidadeLocal = idUnidadeLocal;
+        this.idIdentificacaoObraDadosBasicos = idIdentificacaoObraDadosBasicos;
+        this.idIdentificacaoObraLocalizacao = idIdentificacaoObraLocalizacao;
+        this.idIdentificacaoObraResponsaveis = idIdentificacaoObraResponsaveis;
+        this.idIdentificacaoObraInspecao = idIdentificacaoObraInspecao;
     }
 
-    public Ponte(String codigo, String identificacaoObra, int idVia, Uf uf, 
-            String localVia, int idSuperintendenciaRegional, int idUnidadeLocal) {
-        this.codigo = codigo;
-        this.identificacaoObra = identificacaoObra;
-        this.idVia = idVia;
-        this.uf = uf;
-        this.localVia = localVia;
-        this.idSuperintendenciaRegional = idSuperintendenciaRegional;
-        this.idUnidadeLocal = idUnidadeLocal;
+    public Ponte(IdentificacaoObraDadosBasicos idIdentificacaoObraDadosBasicos, 
+            IdentificacaoObraLocalizacao idIdentificacaoObraLocalizacao, 
+            IdentificacaoObraResponsaveis idIdentificacaoObraResponsaveis, 
+            IdentificacaoObraInspecao idIdentificacaoObraInspecao) {
+        this.idIdentificacaoObraDadosBasicos = idIdentificacaoObraDadosBasicos;
+        this.idIdentificacaoObraLocalizacao = idIdentificacaoObraLocalizacao;
+        this.idIdentificacaoObraResponsaveis = idIdentificacaoObraResponsaveis;
+        this.idIdentificacaoObraInspecao = idIdentificacaoObraInspecao;
     }
 
     public int getId() {
@@ -55,64 +48,35 @@ public class Ponte {
         this.id = id;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public IdentificacaoObraDadosBasicos getIdIdentificacaoObraDadosBasicos() {
+        return idIdentificacaoObraDadosBasicos;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setIdIdentificacaoObraDadosBasicos(IdentificacaoObraDadosBasicos idIdentificacaoObraDadosBasicos) {
+        this.idIdentificacaoObraDadosBasicos = idIdentificacaoObraDadosBasicos;
     }
 
-    public String getIdentificacaoObra() {
-        return identificacaoObra;
+    public IdentificacaoObraLocalizacao getIdIdentificacaoObraLocalizacao() {
+        return idIdentificacaoObraLocalizacao;
     }
 
-    public void setIdentificacaoObra(String identificacaoObra) {
-        this.identificacaoObra = identificacaoObra;
+    public void setIdIdentificacaoObraLocalizacao(IdentificacaoObraLocalizacao idIdentificacaoObraLocalizacao) {
+        this.idIdentificacaoObraLocalizacao = idIdentificacaoObraLocalizacao;
     }
 
-    public int getIdVia() {
-        return idVia;
+    public IdentificacaoObraResponsaveis getIdIdentificacaoObraResponsaveis() {
+        return idIdentificacaoObraResponsaveis;
     }
 
-    public void setIdVia(int idVia) {
-        this.idVia = idVia;
+    public void setIdIdentificacaoObraResponsaveis(IdentificacaoObraResponsaveis idIdentificacaoObraResponsaveis) {
+        this.idIdentificacaoObraResponsaveis = idIdentificacaoObraResponsaveis;
     }
 
-    public Uf getUf() {
-        return uf;
+    public IdentificacaoObraInspecao getIdIdentificacaoObraInspecao() {
+        return idIdentificacaoObraInspecao;
     }
 
-    public void setUf(Uf uf) {
-        this.uf = uf;
-    }
-
-    public String getLocalVia() {
-        return localVia;
-    }
-
-    public void setLocalVia(String localVia) {
-        this.localVia = localVia;
-    }
-
-    public int getIdSuperintendenciaRegional() {
-        return idSuperintendenciaRegional;
-    }
-
-    public void setIdSuperintendenciaRegional(int idSuperintendenciaRegional) {
-        this.idSuperintendenciaRegional = idSuperintendenciaRegional;
-    }
-
-    public int getIdUnidadeLocal() {
-        return idUnidadeLocal;
-    }
-
-    public void setIdUnidadeLocal(int idUnidadeLocal) {
-        this.idUnidadeLocal = idUnidadeLocal;
-    }
-
-    @Override
-    public String toString() {
-        return this.codigo;
+    public void setIdIdentificacaoObraInspecao(IdentificacaoObraInspecao idIdentificacaoObraInspecao) {
+        this.idIdentificacaoObraInspecao = idIdentificacaoObraInspecao;
     }
 }

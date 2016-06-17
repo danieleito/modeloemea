@@ -39,7 +39,7 @@ public class SimulacaoDAO {
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
-        
+
         PreparedStatement stmt;
         stmt = conn.prepareStatement(query);
         stmt.setDate(1, new java.sql.Date(simulacao.getData().getTime()));
@@ -47,7 +47,7 @@ public class SimulacaoDAO {
         stmt.setString(3, simulacao.getNomeSimulacao());
         stmt.execute();
     }
-    
+
     public void editar(Simulacao simulacao) throws SQLException {
         String query = "update SIMULACAO ";
         //query += "set DT_DATA = '" + simulacao.getData()+ "', ";
@@ -62,8 +62,7 @@ public class SimulacaoDAO {
 
     public ArrayList<Simulacao> buscar() throws SQLException {
         String query = "SELECT S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, "
-                + "S.NM_SIMULACAO, "
-                + "U.ID_USUARIO, U.NM_NOME, U.DS_USUARIO "
+                + "S.NM_SIMULACAO, U.NM_NOME, U.DS_USUARIO "
                 + "FROM SIMULACAO S, USUARIO U " 
                 + "WHERE S.ID_USUARIO = U.ID_USUARIO;";
 
@@ -123,15 +122,17 @@ public class SimulacaoDAO {
     }
 
     private ArrayList<Ranking> buscarRankings(int idSimulacao) throws SQLException {
-        String query = "SELECT R.ID_RANKING, R.ID_PONTE, "
+        String query = "SELECT R.ID_RANKING, R.CD_CODIGO, "
                 + "(select max(DT_DATA) from inspecao where ID_PONTE = P.ID_PONTE) as DATA, "
-                + "R.ID_SIMULACAO, R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
-                + "S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "
-                + "DB.CD_PONTE, DB.DS_IDENTIFICACAO_OBRA, L.ID_VIA, "
-                + "L.ID_UF, L.DS_LOCAL_VIA, U.DS_UF "
+                + "R.ID_SIMULACAO, S.DT_DATA, R.CS_CLASSIFICACAO, R.DS_INDICE_PERFORMANCE_RELATIVO, "
+                
+                + "DB.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, DB.DS_IDENTIFICACAO, L.ID_VIA, "
+                + "V.DS_VIA, L.ID_UF, U.DS_UF, L.DS_LOCAL_VIA "
+                
                 + "FROM RANKING R, SIMULACAO S, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, "
-                + "IDENTIFICACAO_OBRA_LOCALIZACAO L, UF U "
-                + "WHERE L.ID_UF = U.ID_UF "
+                + "IDENTIFICACAO_OBRA_LOCALIZACAO L, UF U, VIA V "
+                + "WHERE R.ID_SIMULACAO = S.ID_SIMULACAO "
+                + "AND L.ID_UF = U.ID_UF "
 //                + "AND P.ID_PONTE = R.ID_PONTE "
                 + "AND R.ID_SIMULACAO = S.ID_SIMULACAO "
                 + "AND S.ID_SIMULACAO = " + idSimulacao + ";";
@@ -149,6 +150,7 @@ public class SimulacaoDAO {
         while (rs.next()) {
             ponte = new Ponte();
 //            ponte.setId(rs.getInt("ID_PONTE"));
+            ponte.
             ponte.setCodigo(rs.getString("CD_PONTE"));
             ponte.setIdentificacaoObra(rs.getString("DS_IDENTIFICACAO_OBRA"));
             ponte.setIdVia(rs.getInt("ID_VIA"));

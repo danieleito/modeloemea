@@ -249,21 +249,7 @@ insert into MANIFESTACAO (NM_MANIFESTACAO, DS_BETA) values ('manifestacao01', 'B
 insert into MANIFESTACAO (NM_MANIFESTACAO, DS_BETA) values ('manifestacao02', 'B02');
 ---------------------------------------------------------------------------
 
---Inspecoes
-create table INSPECAO
-	(
-		ID_INSPECAO					int						not null identity(1,1),
-		DT_DATA						date					not null,
-		ID_USUARIO					int						not null,
-		DS_CONDICAO_ESTABILIDADE	varchar(30)				not null,
-		DS_CONDICAO_CONSERVACAO		varchar(30)				not null,
-		CONSTRAINT					pk_inspecao				PRIMARY KEY(ID_INSPECAO),
-		CONSTRAINT					fk_inspecao_usuario		FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO)
-	);
-GO
-insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('05/05/2016', 1, '1-condição estabilidade', '1- condição conservação');
-insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('10/05/2016', 1, '2-condição estabilidade', '2- condição conservação');
-insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO) values ('15/05/2016', 1, '3-condição estabilidade', '3- condição conservação');
+
 ---------------------------------------------------------------------------
 
 --Arquivos anexos cadastro
@@ -570,6 +556,28 @@ create table PONTE
 		CONSTRAINT								fk_ponte_identificacaoobraresponsaveis		FOREIGN KEY(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS) REFERENCES IDENTIFICACAO_OBRA_RESPONSAVEIS(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS),
 		CONSTRAINT								fk_ponte_identificacaoobrainspecao			FOREIGN KEY(ID_IDENTIFICACAO_OBRA_INSPECAO) REFERENCES IDENTIFICACAO_OBRA_INSPECAO(ID_IDENTIFICACAO_OBRA_INSPECAO)
 	);
+
+GO
+insert into PONTE (ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, ID_IDENTIFICACAO_OBRA_LOCALIZACAO, ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, ID_IDENTIFICACAO_OBRA_INSPECAO) values (1, 1, 1, 1);
+---------------------------------------------------------------------------
+
+--Inspecoes
+create table INSPECAO
+	(
+		ID_INSPECAO					int						not null identity(1,1),
+		DT_DATA						date					not null,
+		ID_USUARIO					int						not null,
+		DS_CONDICAO_ESTABILIDADE	varchar(30)				not null,
+		DS_CONDICAO_CONSERVACAO		varchar(30)				not null,
+		ID_PONTE					int						not null,
+		CONSTRAINT					pk_inspecao				PRIMARY KEY(ID_INSPECAO),
+		CONSTRAINT					fk_inspecao_usuario		FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO),
+		CONSTRAINT					fk_inspecao_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE)
+	);
+GO
+insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO, ID_PONTE) values ('05/05/2016', 1, '1-condição estabilidade', '1- condição conservação', 1);
+insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO, ID_PONTE) values ('10/05/2016', 1, '2-condição estabilidade', '2- condição conservação', 1);
+insert into INSPECAO (DT_DATA, ID_USUARIO, DS_CONDICAO_ESTABILIDADE, DS_CONDICAO_CONSERVACAO, ID_PONTE) values ('15/05/2016', 1, '3-condição estabilidade', '3- condição conservação', 1);
 ---------------------------------------------------------------------------
 
 --caracteristicas
