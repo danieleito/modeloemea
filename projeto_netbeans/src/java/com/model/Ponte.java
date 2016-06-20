@@ -18,6 +18,9 @@ public class Ponte {
     private IdentificacaoObraLocalizacao identificacaoObraLocalizacao;
     private IdentificacaoObraResponsaveis identificacaoObraResponsaveis;
     private IdentificacaoObraInspecao identificacaoObraInspecao;
+    private CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas;
+    private CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes;
+    private RotasAlternativas rotasAlternativas;
     
     //para exibir na tela que lista o ranking
     private Date dataUltimaInspecao;
@@ -27,31 +30,38 @@ public class Ponte {
         identificacaoObraInspecao = new IdentificacaoObraInspecao();
         identificacaoObraLocalizacao = new IdentificacaoObraLocalizacao();
         identificacaoObraResponsaveis = new IdentificacaoObraResponsaveis();
+        caracteristicasFuncionaisCaracteristicas = new CaracteristicasFuncionaisCaracteristicas();
+        caracteristicasFuncionaisDimensoes = new CaracteristicasFuncionaisDimensoes();
+        rotasAlternativas = new RotasAlternativas();
     }
 
-    public Ponte(int id, IdentificacaoObraDadosBasicos idIdentificacaoObraDadosBasicos, 
-            IdentificacaoObraLocalizacao idIdentificacaoObraLocalizacao, 
-            IdentificacaoObraResponsaveis idIdentificacaoObraResponsaveis, 
-            IdentificacaoObraInspecao idIdentificacaoObraInspecao,
-            String indicePerformanceRelativo) {
+    public Ponte(int id, String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, 
+            IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis, 
+            IdentificacaoObraInspecao identificacaoObraInspecao, CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, 
+            CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, RotasAlternativas rotasAlternativas) {
         this.id = id;
         this.indicePerformanceRelativo = indicePerformanceRelativo;
-        this.identificacaoObraDadosBasicos = idIdentificacaoObraDadosBasicos;
-        this.identificacaoObraLocalizacao = idIdentificacaoObraLocalizacao;
-        this.identificacaoObraResponsaveis = idIdentificacaoObraResponsaveis;
-        this.identificacaoObraInspecao = idIdentificacaoObraInspecao;
+        this.identificacaoObraDadosBasicos = identificacaoObraDadosBasicos;
+        this.identificacaoObraLocalizacao = identificacaoObraLocalizacao;
+        this.identificacaoObraResponsaveis = identificacaoObraResponsaveis;
+        this.identificacaoObraInspecao = identificacaoObraInspecao;
+        this.caracteristicasFuncionaisCaracteristicas = caracteristicasFuncionaisCaracteristicas;
+        this.caracteristicasFuncionaisDimensoes = caracteristicasFuncionaisDimensoes;
+        this.rotasAlternativas = rotasAlternativas;
     }
 
-    public Ponte(IdentificacaoObraDadosBasicos idIdentificacaoObraDadosBasicos, 
-            IdentificacaoObraLocalizacao idIdentificacaoObraLocalizacao, 
-            IdentificacaoObraResponsaveis idIdentificacaoObraResponsaveis, 
-            IdentificacaoObraInspecao idIdentificacaoObraInspecao,
-            String indicePerformanceRelativo) {
+    public Ponte(String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, IdentificacaoObraLocalizacao identificacaoObraLocalizacao, 
+            IdentificacaoObraResponsaveis identificacaoObraResponsaveis, IdentificacaoObraInspecao identificacaoObraInspecao, 
+            CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, 
+            RotasAlternativas rotasAlternativas) {
         this.indicePerformanceRelativo = indicePerformanceRelativo;
-        this.identificacaoObraDadosBasicos = idIdentificacaoObraDadosBasicos;
-        this.identificacaoObraLocalizacao = idIdentificacaoObraLocalizacao;
-        this.identificacaoObraResponsaveis = idIdentificacaoObraResponsaveis;
-        this.identificacaoObraInspecao = idIdentificacaoObraInspecao;
+        this.identificacaoObraDadosBasicos = identificacaoObraDadosBasicos;
+        this.identificacaoObraLocalizacao = identificacaoObraLocalizacao;
+        this.identificacaoObraResponsaveis = identificacaoObraResponsaveis;
+        this.identificacaoObraInspecao = identificacaoObraInspecao;
+        this.caracteristicasFuncionaisCaracteristicas = caracteristicasFuncionaisCaracteristicas;
+        this.caracteristicasFuncionaisDimensoes = caracteristicasFuncionaisDimensoes;
+        this.rotasAlternativas = rotasAlternativas;
     }
 
     public int getId() {
@@ -108,5 +118,29 @@ public class Ponte {
 
     public void setIndicePerformanceRelativo(String indicePerformanceRelativo) {
         this.indicePerformanceRelativo = indicePerformanceRelativo;
+    }
+
+    public CaracteristicasFuncionaisCaracteristicas getCaracteristicasFuncionaisCaracteristicas() {
+        return caracteristicasFuncionaisCaracteristicas;
+    }
+
+    public void setCaracteristicasFuncionaisCaracteristicas(CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas) {
+        this.caracteristicasFuncionaisCaracteristicas = caracteristicasFuncionaisCaracteristicas;
+    }
+
+    public CaracteristicasFuncionaisDimensoes getCaracteristicasFuncionaisDimensoes() {
+        return caracteristicasFuncionaisDimensoes;
+    }
+
+    public void setCaracteristicasFuncionaisDimensoes(CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes) {
+        this.caracteristicasFuncionaisDimensoes = caracteristicasFuncionaisDimensoes;
+    }
+
+    public RotasAlternativas getRotasAlternativas() {
+        return rotasAlternativas;
+    }
+
+    public void setRotasAlternativas(RotasAlternativas rotasAlternativas) {
+        this.rotasAlternativas = rotasAlternativas;
     }
 }

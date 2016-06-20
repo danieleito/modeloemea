@@ -187,6 +187,15 @@ public class PonteBean extends ComumBean implements Serializable {
         redirecionar("/View/Compartilhado/OAE/exibir.jsf");
     }
     
+    public void cadastrar() {
+        try {
+            redirecionar("/View/Compartilhado/OAE/cadastrar.jsf");
+        } catch (Exception ex) {
+            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar. " + ex.getMessage());
+        }
+    }
+    
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
         return filtroCodigo;

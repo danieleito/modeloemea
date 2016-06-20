@@ -32,25 +32,25 @@ and open the template in the editor.
                             <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.identificacao}" />
 
                             <h:outputText value="Últ. Atualização:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="#{ponteBean.model.dataUltimaInspecao}" />
 
                             <h:outputText value="Nat. Transposição:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.naturezaTransposicao.descricao}" />
 
                             <h:outputText value="Tipo Estrutura:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.tipoEstrutura.descricao}" />
 
                             <h:outputText value="Sist. Construtivo:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.sistemaConstrutivo.descricao}" />
 
                             <h:outputText value="Comp/Larg(m):" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.comprimento}/#{ponteBean.model.identificacaoObraDadosBasicos.largura}" />
 
                             <h:outputText value="Trem-Tipo:" style="font-weight: bold" />
                             <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.tremTipo.descricao}" />
 
-                            <h:outputText value="Construçao:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="Construção:" style="font-weight: bold" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.anoConstrucao}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -64,13 +64,14 @@ and open the template in the editor.
                             <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.via.via}/#{ponteBean.model.identificacaoObraLocalizacao.uf.uf}/#{ponteBean.model.identificacaoObraLocalizacao.localVia}" />
 
                             <h:outputText value="Trecho:" style="font-weight: bold" />
-                            <h:outputText value="#{car.year}" />
+                            <h:outputText value="" />
 
                             <h:outputText value="Cidade próx.:" style="font-weight: bold" />
-                            <h:outputText value="#{car.color}" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.cidadeMaisProxima}" />
+                            
 
                             <h:outputText value="Alt./Lat./Long.:" style="font-weight: bold" />
-                            <h:outputText value="#{car.id}" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.pnvAltitude}/#{ponteBean.model.identificacaoObraLocalizacao.latitudeGrau}/#{ponteBean.model.identificacaoObraLocalizacao.longitudeGrau}" />
                         </h:panelGrid>
 
                         <h:panelGrid columns="2" width="40%" columnClasses="logo,detail" >
@@ -80,13 +81,13 @@ and open the template in the editor.
                                 <h:outputText value="Inspeção" style="font-weight: bold" />
                                 <h:panelGrid columns="2" cellpadding="5">
                                     <h:outputText value="Período(anos):" style="font-weight: bold" />
-                                    <h:outputText value="periodo" />
+                                    <h:outputText value="#{ponteBean.model.identificacaoObraInspecao.periodo}" />
 
                                     <h:outputText value="Equip. Necessário:" style="font-weight: bold" />
-                                    <h:outputText value="#{car.year}" />
+                                    <h:outputText value="#{ponteBean.model.identificacaoObraInspecao.equipamentoNecessario}" />
 
                                     <h:outputText value="Melhor época:" style="font-weight: bold" />
-                                    <h:outputText value="#{car.color}" />                                
+                                    <h:outputText value="#{ponteBean.model.identificacaoObraInspecao.melhorEpoca}" />
                                 </h:panelGrid>
                             </p:outputPanel>
                         </h:panelGrid>
@@ -101,7 +102,7 @@ and open the template in the editor.
                         <h:outputText value="Responsáveis" style="font-weight: bold" />
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Superint. Regional:" style="font-weight: bold" />
-                            <h:outputText value="superint regional" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.superintendenciaRegional.descricao}" />
 
                             <h:outputText value="Unidade Local:" style="font-weight: bold" />
                             <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.descricao}" />
@@ -128,13 +129,13 @@ and open the template in the editor.
                         <hr />
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Loc. Projeto:" style="font-weight: bold" />
-                            <h:outputText value="superint regional" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoProjeto}" />
 
                             <h:outputText value="Loc. Doc. Constr.:" style="font-weight: bold" />
-                            <h:outputText value="#{car.year}" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoDocumentosConstrucao}" />
 
                             <h:outputText value="Loc. Doc. Diversos:" style="font-weight: bold" />
-                            <h:outputText value="#{car.color}" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoDocumentosDiversos}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -147,22 +148,22 @@ and open the template in the editor.
                         <hr/>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Região:" style="font-weight: bold" />
-                            <h:outputText value="regiao" />
+                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.tipoRegiao.descricao}" />
 
                             <h:outputText value="Traçado/Raio(m):" style="font-weight: bold" />
-                            <h:outputText value="#{car.year}" />
+                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.tipoTracado.descricao}" />
 
                             <h:outputText value="Rampa Máxima:" style="font-weight: bold" />
-                            <h:outputText value="#{car.color}" />
+                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.rampaMaxima}" />
 
                             <h:outputText value="VMD:" style="font-weight: bold" />
-                            <h:outputText value="#{car.id}" />
+                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.vmd}" />
 
                             <h:outputText value="Nº de Vãos:" style="font-weight: bold" />
-                            <h:outputText value="#{car.year}" />
+                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.numeroVaos}" />
 
                             <h:outputText value="Descr. dos Vãos:" style="font-weight: bold" />
-                            <h:outputText value="#{car.color}" />
+                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.descricaoVaos}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -172,19 +173,19 @@ and open the template in the editor.
                         <hr/>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Largura total da pista(m):" style="font-weight: bold" />
-                            <h:outputText value="largura" />
+                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.larguraTotalPista}" />
 
                             <h:outputText value="Nº de Faixas/Larg. Faixa(m):" style="font-weight: bold" />
-                            <h:outputText value="#{car.year}" />
+                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.numeroFaixas}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.larguraFaixa}" />
 
                             <h:outputText value="Larg. Acost. Dir/Esq(m):" style="font-weight: bold" />
-                            <h:outputText value="#{car.color}" />
+                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoDireito}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoEsquerdo}" />
 
                             <h:outputText value="Larg. Calçada Dir/Esq(m):" style="font-weight: bold" />
-                            <h:outputText value="#{car.id}" />
+                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaDireita}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaEsquerda}" />
 
                             <h:outputText value="Gabarito Horiz./Vertical(m):" style="font-weight: bold" />
-                            <h:outputText value="#{car.year}" />
+                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.gabaritoHorizontal}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.gabaritoVertical}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -327,9 +328,9 @@ and open the template in the editor.
                         <hr/>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Rotas:" style="font-weight: bold" />
-                            <h:outputText value="rota" />
+                            <h:outputText value="#{ponteBean.model.rotasAlternativas.descricao}" />
                             <h:outputText value="Acréscimo de km:" style="font-weight: bold" />
-                            <h:outputText value="acrescimo" />
+                            <h:outputText value="#{ponteBean.model.rotasAlternativas.acrescimoKm}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
