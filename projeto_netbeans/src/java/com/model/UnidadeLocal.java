@@ -11,17 +11,17 @@ package com.model;
  */
 public class UnidadeLocal {
     private int id;
-    private String unidadeLocal;
+    private String descricao;
     private SuperintendenciaRegional superintendenciaRegional;
 
     public UnidadeLocal(int id, String unidadeLocal, SuperintendenciaRegional superintendenciaRegional) {
         this.id = id;
-        this.unidadeLocal = unidadeLocal;
+        this.descricao = unidadeLocal;
         this.superintendenciaRegional = superintendenciaRegional;
     }
 
     public UnidadeLocal(String unidadeLocal, SuperintendenciaRegional superintendenciaRegional) {
-        this.unidadeLocal = unidadeLocal;
+        this.descricao = unidadeLocal;
         this.superintendenciaRegional = superintendenciaRegional;
     }
 
@@ -33,12 +33,12 @@ public class UnidadeLocal {
         this.id = id;
     }
 
-    public String getUnidadeLocal() {
-        return unidadeLocal;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setUnidadeLocal(String unidadeLocal) {
-        this.unidadeLocal = unidadeLocal;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public SuperintendenciaRegional getSuperintendenciaRegional() {

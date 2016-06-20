@@ -65,11 +65,9 @@ and open the template in the editor.
                                     <p:outputLabel value="Via" class="col-md-3" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu class="col-md-3">
-                                        <f:selectItem itemLabel="Selecione a Via" itemValue="" />
-                                        <f:selectItem itemLabel="BR - 101" itemValue="1" />
-                                        <f:selectItem itemLabel="BR - 116" itemValue="2" />
-                                        <f:selectItem itemLabel="BR - 277" itemValue="3" />  
+                                    <p:selectOneMenu id="via" value="#{ponteBean.filtroIdVia}" style="width: 150px">
+                                        <f:selectItem itemLabel="Selecione a Via" itemValue="0" />
+                                        <f:selectItems value="#{ponteBean.vias}" var="v" itemValue="#{v.id}" />
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
@@ -97,11 +95,9 @@ and open the template in the editor.
                                     <p:outputLabel value="Superintendência Regional" class="col-md-3" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu class="col-md-4">
-                                        <f:selectItem itemLabel="Selecione a Superintendência Regional" itemValue="" />
-                                        <f:selectItem itemLabel="S.R.E. - PR - Superintendência Regional do DNIT  no estado do Paraná" itemValue="1" />
-                                        <f:selectItem itemLabel="S.R.E. - SC - Superintendência Regional do DNIT  no estado de Santa Catarina" itemValue="2" />
-                                        <f:selectItem itemLabel="S.R.E. - SP - Superintendência Regional do DNIT  no estado de São Paulo" itemValue="3" /> 
+                                    <p:selectOneMenu id="superintendenciaRegional" value="#{ponteBean.filtroIdSuperintendencia}" style="width: 150px">
+                                        <f:selectItem itemLabel="Selecione a superintendência regional" itemValue="0" />
+                                        <f:selectItems value="#{ponteBean.superintendenciasRegionais}" var="s" itemValue="#{s.id}" />
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
@@ -111,18 +107,16 @@ and open the template in the editor.
                                     <p:outputLabel value="Unidade Local" class="col-md-3" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu class="col-md-3">
-                                        <f:selectItem itemLabel="Selecione a Unidade Local" itemValue="" />
-                                        <f:selectItem itemLabel="ULSC01 - Tubarão" itemValue="1" />
-                                        <f:selectItem itemLabel="ULSC02 - Joinville" itemValue="2" />
-                                        <f:selectItem itemLabel="ULSC03 - Lajes" itemValue="3" /> 
+                                    <p:selectOneMenu id="unidadeLocal" value="#{ponteBean.filtroIdUnidadeLocal}" style="width: 150px">
+                                        <f:selectItem itemLabel="Selecione a unidade local" itemValue="0" />
+                                        <f:selectItems value="#{ponteBean.unidadesLocais}" var="u" itemValue="#{u.id}" />
                                     </p:selectOneMenu>
                                 </td>
                             </tr> 
                         </tbody>
                     </table>
 
-<!--                    <p:commandButton value="Consultar" oncomplete="$('.mySelector').show();" />-->
+                    <!--                    <p:commandButton value="Consultar" oncomplete="$('.mySelector').show();" />-->
                     <p:commandButton action='#{ponteBean.consultarPost()}' value="Consultar" />
                     <p:commandButton action="#{ponteBean.cancelar()}" value="Cancelar" />
 
@@ -147,7 +141,7 @@ and open the template in the editor.
                         <p:column headerText="Local na via" style="width: 150px; text-align: center" >
                             <h:outputText value="#{p.identificacaoObraLocalizacao.localVia}" />
                         </p:column>
-                        
+
                         <p:column headerText="Ação" style="width: 150px; text-align: center" >
                             <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.visualizar(p.id)}" />
                             <p:commandButton icon="ui-icon-check" title="Carregar" action="#{ponteBean.carregar(p.id, simulacaoBean.simulacao.id)}" />
