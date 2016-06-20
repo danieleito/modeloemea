@@ -22,7 +22,7 @@
                              <c:choose>
                                 <c:when test="${login.usuarioLogado.tipoUsuario.id == 1 || login.usuarioLogado.tipoUsuario.id == 3 }" >
                                 <p:submenu label="PLANEJAMENTO" >
-                                    <p:menuitem value="Simulações de ranqueamento" action="#{simulacao.listar()}"   />
+                                    <p:menuitem value="Simulações de ranqueamento" action="#{simulacaoBean.listarGet()}"   />
                                 </p:submenu> 
                                 </c:when>
                              </c:choose>  

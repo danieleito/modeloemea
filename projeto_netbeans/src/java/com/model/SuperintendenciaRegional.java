@@ -12,17 +12,17 @@ package com.model;
 public class SuperintendenciaRegional {
     private int id;
     private String descricao;
+    private Uf uf;
 
-    public SuperintendenciaRegional() {
-    }
-
-    public SuperintendenciaRegional(int id, String descricao) {
+    public SuperintendenciaRegional(int id, String descricao, Uf uf) {
         this.id = id;
         this.descricao = descricao;
+        this.uf = uf;
     }
 
-    public SuperintendenciaRegional(String descricao) {
+    public SuperintendenciaRegional(String descricao, Uf uf) {
         this.descricao = descricao;
+        this.uf = uf;
     }
 
     public int getId() {
@@ -40,4 +40,14 @@ public class SuperintendenciaRegional {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public Uf getUf() {
+        return uf;
+    }
+
+    public void setUf(Uf uf) {
+        this.uf = uf;
+    }
+    
+    
 }

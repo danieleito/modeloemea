@@ -7,7 +7,7 @@ package com.bean;
 
 import com.dao.InspecaoDAO;
 import com.model.Inspecao;
-import com.model.Ponte1;
+import com.model.Ponte;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;

@@ -33,7 +33,7 @@ public abstract class ComumBean {
         ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
         try {
             context.getFlash().setKeepMessages(true);
-            context.redirect(context.getRequestContextPath() + url);
+            context.redirect(context.getRequestContextPath() + url + "?faces-redirect-true");
             //return url + "?faces-redirect-true";
         } catch (IOException ex) {
             Logger.getLogger(ComumBean.class.getName()).log(Level.SEVERE, null, ex);

@@ -9,7 +9,8 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -21,42 +22,45 @@ and open the template in the editor.
                     <p:breadCrumb>
                         <p:menuitem value="Categories" url="#" />
                         <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
-                        <p:menuitem value="Simulação" url="/View/Compartilhado/simulacao.jsf" />
+                        <p:menuitem value="Simulação" action="#{simulacaoBean.listar()}" />
                         <p:menuitem value="Ranking" url="/View/Compartilhado/Ranking/visualizar.jsf" />
                     </p:breadCrumb>
-                    <h:outputLabel value="" class="col-md-10" />
+                    
+                    <div class="row">
+                        <p:outputLabel>Nome da simulação: #{simulacaoBean.simulacao.nomeSimulacao}</p:outputLabel>
+                    </div>
+                    <br/>
+                    <br/>
 
-                    <p:dataTable var="r" value="#{simulacao.simulacao.rankings}" paginator="true" rows="8" >
+                    <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="8" >
                         <p:column headerText="Data da última inspeção" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{r.dataUltimaInspecao}">
+                            <h:outputText value="#{r.ponte.dataUltimaInspecao}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:outputText>
                         </p:column>
-                        
+
                         <p:column headerText="Código" style="text-align: center" >
-                            <h:outputText value="#{r.ponte.codigo}" />
+                            <h:outputText value="#{r.ponte.identificacaoObraDadosBasicos.codigo}" />
                         </p:column>
 
                         <p:column headerText="Identificação da obra" style="text-align: center" >
-                            <h:outputText value="#{r.ponte.identificacaoObra}">
-                                <f:convertDateTime pattern="dd/MM/yyyy"/>
-                            </h:outputText>
+                            <h:outputText value="#{r.ponte.identificacaoObraDadosBasicos.identificacao}" />
                         </p:column>
 
                         <p:column headerText="Via" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{r.ponte.idVia}" />
+                            <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.via.via}" />
                         </p:column>
 
                         <p:column headerText="UF" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{r.ponte.uf.uf}" />
+                            <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.uf.uf}" />
                         </p:column>
 
                         <p:column headerText="Local na via" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{r.ponte.localVia}" />
+                            <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.localVia}" />
                         </p:column>
 
                         <p:column headerText="Ind. performance relativo" style="width: 200px; text-align: center" >
-                            <h:outputText value="#{r.indicePerformanceRelativo}" />
+                            <h:outputText value="#{r.ponte.indicePerformanceRelativo}" />
                         </p:column>
 
                     </p:dataTable>

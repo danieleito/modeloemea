@@ -11,9 +11,9 @@ package com.model;
  */
 public class IdentificacaoObraLocalizacao {
     private int id;
-    private Uf idUf;
-    private Via idVia;
-    private String localVia;
+    private Uf uf;
+    private Via via;
+    private int localVia;
     private String cidadeMaisProxima;
     private String pnvAno;
     private String pnsVersao;
@@ -25,15 +25,17 @@ public class IdentificacaoObraLocalizacao {
     private String longitudeMinuto;
 
     public IdentificacaoObraLocalizacao() {
+        uf = new Uf();
+        via = new Via();
     }
 
-    public IdentificacaoObraLocalizacao(int id, Uf idUf, Via idVia, String localVia, 
+    public IdentificacaoObraLocalizacao(int id, Uf idUf, Via idVia, int localVia, 
             String cidadeMaisProxima, String pnvAno, String pnsVersao, String pnvCodigo, 
             String pnvAltitude, String latitudeGrau, String latitudeMinuto, 
             String longitudeGrau, String longitudeMinuto) {
         this.id = id;
-        this.idUf = idUf;
-        this.idVia = idVia;
+        this.uf = idUf;
+        this.via = idVia;
         this.localVia = localVia;
         this.cidadeMaisProxima = cidadeMaisProxima;
         this.pnvAno = pnvAno;
@@ -46,9 +48,9 @@ public class IdentificacaoObraLocalizacao {
         this.longitudeMinuto = longitudeMinuto;
     }
 
-    public IdentificacaoObraLocalizacao(Uf idUf, Via idVia, String localVia, String cidadeMaisProxima, String pnvAno, String pnsVersao, String pnvCodigo, String pnvAltitude, String latitudeGrau, String latitudeMinuto, String longitudeGrau, String longitudeMinuto) {
-        this.idUf = idUf;
-        this.idVia = idVia;
+    public IdentificacaoObraLocalizacao(Uf idUf, Via idVia, int localVia, String cidadeMaisProxima, String pnvAno, String pnsVersao, String pnvCodigo, String pnvAltitude, String latitudeGrau, String latitudeMinuto, String longitudeGrau, String longitudeMinuto) {
+        this.uf = idUf;
+        this.via = idVia;
         this.localVia = localVia;
         this.cidadeMaisProxima = cidadeMaisProxima;
         this.pnvAno = pnvAno;
@@ -69,27 +71,27 @@ public class IdentificacaoObraLocalizacao {
         this.id = id;
     }
 
-    public Uf getIdUf() {
-        return idUf;
+    public Uf getUf() {
+        return uf;
     }
 
-    public void setIdUf(Uf idUf) {
-        this.idUf = idUf;
+    public void setUf(Uf uf) {
+        this.uf = uf;
     }
 
-    public Via getIdVia() {
-        return idVia;
+    public Via getVia() {
+        return via;
     }
 
-    public void setIdVia(Via idVia) {
-        this.idVia = idVia;
+    public void setVia(Via via) {
+        this.via = via;
     }
 
-    public String getLocalVia() {
+    public int getLocalVia() {
         return localVia;
     }
 
-    public void setLocalVia(String localVia) {
+    public void setLocalVia(int localVia) {
         this.localVia = localVia;
     }
 

@@ -12,17 +12,17 @@ package com.model;
 public class UnidadeLocal {
     private int id;
     private String unidadeLocal;
+    private SuperintendenciaRegional superintendenciaRegional;
 
-    public UnidadeLocal() {
-    }
-
-    public UnidadeLocal(int id, String unidadeLocal) {
+    public UnidadeLocal(int id, String unidadeLocal, SuperintendenciaRegional superintendenciaRegional) {
         this.id = id;
         this.unidadeLocal = unidadeLocal;
+        this.superintendenciaRegional = superintendenciaRegional;
     }
 
-    public UnidadeLocal(String unidadeLocal) {
+    public UnidadeLocal(String unidadeLocal, SuperintendenciaRegional superintendenciaRegional) {
         this.unidadeLocal = unidadeLocal;
+        this.superintendenciaRegional = superintendenciaRegional;
     }
 
     public int getId() {
@@ -40,4 +40,14 @@ public class UnidadeLocal {
     public void setUnidadeLocal(String unidadeLocal) {
         this.unidadeLocal = unidadeLocal;
     }
+
+    public SuperintendenciaRegional getSuperintendenciaRegional() {
+        return superintendenciaRegional;
+    }
+
+    public void setSuperintendenciaRegional(SuperintendenciaRegional superintendenciaRegional) {
+        this.superintendenciaRegional = superintendenciaRegional;
+    }
+    
+    
 }

@@ -21,7 +21,7 @@
                     </p:breadCrumb>
                     <h:outputLabel value="Nome da simulação" class="col-md-10" />
                     <p:inputText class="col-md-2" id="nova_simulacao" value="#{simulacaoBean.simulacao.nomeSimulacao}" />
-                    <p:commandButton style="margin: 0 0 20px 20px;" value="Novo ranking" action="#{simulacaoBean.salvar()}" />
+                    <p:commandButton style="margin: 0 0 20px 20px;" value="Nova simulação" action="#{simulacaoBean.salvar()}" />
                     
                     <p:dataTable var="sim" value="#{simulacaoBean.simulacoes}" paginator="true" rows="8" >
                         <p:column headerText="Simulação" style="text-align: center" >
@@ -43,10 +43,10 @@
 <!--                            <c:choose>
                                 <c:when test="${sim.usuario.id == simulacaoBean.usuarioLogado.id}">-->
 
-                                    <p:commandButton icon="ui-icon-pencil" title="Ranking" action="#{simulacaoBean.ranking(sim.id)}" />
+                                    <p:commandButton icon="ui-icon-pencil" title="Ranking" action="#{simulacaoBean.rankingGet(sim.id)}" />
 
                                     <p:growl id="message" showDetail="true" />
-                                    <p:commandButton icon="ui-icon-trash" title="Deletar" actionListener="#{simulacaoBean.deletar(sim.id)}" update="message">
+                                    <p:commandButton icon="ui-icon-trash" title="Deletar" actionListener="#{simulacaoBean.excluir(sim.id)}" update="message">
                                         <p:confirm header="Confirmation" message="Tem certeza que deseja excluir a simulação permanentemente?" icon="ui-icon-alert" />
                                     </p:commandButton>
                                     <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">

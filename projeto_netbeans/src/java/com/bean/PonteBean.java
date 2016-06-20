@@ -31,7 +31,145 @@ public class PonteBean extends ComumBean implements Serializable {
     private PonteDAO database;
     private ArrayList<Ponte> pontes;
     private ArrayList<Uf> ufs;
-    private static int idSimulacao;
+    
+    // <editor-fold defaultstate="collapsed" desc=" Campos utilizados como filtro na busca por pontes. ">
+    private String filtroCodigo;
+    private String filtroIdentificacao;
+    private int filtroIdUf;
+    private int filtroIdVia;
+    private String filtroKmInicial;
+    private String filtroKmFinal;
+    private int filtroIdSuperintendencia;
+    private int filtroIdUnidadeLocal;
+    // </editor-fold>
+    
+    /**
+     * Constructor
+     */
+    public PonteBean() {
+        database = new PonteDAO();
+        model = new Ponte();
+        try {
+            ufs = new UfDAO().buscar();
+        } catch (SQLException ex) {
+            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void cancelar() {
+        redirecionar("/View/Compartilhado/Simulacao/ranking.jsf");
+    }
+    
+    public void visualizar(int id) {
+        //visualiza ponte do 'id'
+    }
+    
+    public void carregar(int idPonte, int idSimulacao) {
+        try {            
+            RankingDAO db = new RankingDAO();
+            db.inserir(idPonte, idSimulacao);
+            //SimulacaoBean.carregarRanking(idSimulacao);
+            adicionarMensagemInfo("Ponte adicionada com sucesso");
+        } catch (SQLException ex) {
+            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar ponte no ranking." + ex.getMessage());
+        }
+        redirecionar("/View/Compartilhado/Simulacao/ranking.jsf");
+    }
+    
+    public void consultarGet() {
+        try {
+            limparFiltros();
+            pontes = database.buscar();
+        } catch (SQLException ex) {
+            pontes = new ArrayList<>();
+            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
+            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        redirecionar("/View/Compartilhado/buscarOAE.jsf");
+    }
+    
+    public void consultarPost() throws SQLException {
+        try {
+            pontes = database.buscar2(filtroCodigo, filtroIdentificacao,
+                    filtroIdUf, filtroIdVia, 
+                    filtroKmInicial.isEmpty() ? 0 :Integer.parseInt(filtroKmInicial), 
+                    filtroKmFinal.isEmpty() ? 0 : Integer.parseInt(filtroKmFinal), 
+                    filtroIdSuperintendencia, filtroIdUnidadeLocal);
+        } catch(Exception ex) {
+            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar pontes." + ex.getMessage());
+        }
+        redirecionar("/View/Compartilhado/buscarOAE.jsf");
+    }
+    
+    public void limparFiltros() {
+        filtroCodigo = "";
+        filtroIdentificacao = "";
+        filtroIdUf = 0;
+        filtroIdVia = 0;
+        filtroKmInicial = "";
+        filtroKmFinal = "";
+        filtroIdSuperintendencia = 0;
+        filtroIdUnidadeLocal = 0;
+    }
+    
+    // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
+    public String getFiltroCodigo() {
+        return filtroCodigo;
+    }
+
+    public void setFiltroCodigo(String filtroCodigo) {
+        this.filtroCodigo = filtroCodigo;
+    }
+
+    public String getFiltroIdentificacao() {
+        return filtroIdentificacao;
+    }
+
+    public void setFiltroIdentificacao(String filtroIdentificacao) {
+        this.filtroIdentificacao = filtroIdentificacao;
+    }
+
+    public int getFiltroIdUf() {
+        return filtroIdUf;
+    }
+
+    public void setFiltroIdUf(int filtroIdUf) {
+        this.filtroIdUf = filtroIdUf;
+    }
+
+    public int getFiltroIdVia() {
+        return filtroIdVia;
+    }
+
+    public void setFiltroIdVia(int filtroIdVia) {
+        this.filtroIdVia = filtroIdVia;
+    }
+
+    public String getFiltroKmInicial() {
+        return filtroKmInicial;
+    }
+
+    public void setFiltroKmInicial(String filtroKmInicial) {
+        this.filtroKmInicial = filtroKmInicial;
+    }
+
+    public String getFiltroKmFinal() {
+        return filtroKmFinal;
+    }
+
+    public void setFiltroKmFinal(String filtroKmFinal) {
+        this.filtroKmFinal = filtroKmFinal;
+    }
+
+    public int getFiltroIdSuperintendencia() {
+        return filtroIdSuperintendencia;
+    }
+
+    public void setFiltroIdSuperintendencia(int filtroIdSuperintendencia) {
+        this.filtroIdSuperintendencia = filtroIdSuperintendencia;
+    }
 
     public Ponte getModel() {
         return model;
@@ -56,72 +194,12 @@ public class PonteBean extends ComumBean implements Serializable {
     public void setUfs(ArrayList<Uf> ufs) {
         this.ufs = ufs;
     }
-
-    public int getIdSimulacao() {
-        return idSimulacao;
+    public int getFiltroIdUnidadeLocal() {
+        return filtroIdUnidadeLocal;
     }
 
-    public void setIdSimulacao(int idSimulacao) {
-        this.idSimulacao = idSimulacao;
+    public void setFiltroIdUnidadeLocal(int filtroIdUnidadeLocal) {
+        this.filtroIdUnidadeLocal = filtroIdUnidadeLocal;
     }
-    
-    /**
-     * Constructor
-     */
-    public PonteBean() {
-        database = new PonteDAO();
-        model = new Ponte();
-        try {
-            ufs = new UfDAO().buscar();
-            pontes = database.buscar();
-        } catch (SQLException ex) {
-            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
-            pontes = new ArrayList<>();
-            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
-        }
-    }
-
-    public void cancelar() {
-        redirecionar("/View/Compartilhado/Ranking/editar.jsf");
-    }
-    
-    public void visualizar(int id) {
-        //visualiza ponte do 'id'
-    }
-    
-    public void carregar(int idPonte, int idSimulacao) {
-        try {            
-            RankingDAO db = new RankingDAO();
-            Ponte ponte = new Ponte();
-            ponte.setId(idPonte);
-            Ranking ranking = new Ranking();
-            ranking.setPonte(ponte);
-            ranking.setIdSimulacao(idSimulacao);
-            db.inserir(ranking);
-            //redirecionar("/View/Compartilhado/Ranking/editar.jsf");
-            SimulacaoBean simulacao = new SimulacaoBean();
-            simulacao.ranking(idSimulacao);
-        } catch (SQLException ex) {
-            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao carregar ponte no ranking." + ex.getMessage());
-        }
-    }
-    
-    public void consultar() throws SQLException {
-        try {
-            pontes = database.buscar2(model.getCodigo(), model.getIdentificacaoObra(), 
-                    model.getUf().getId(), model.getIdVia(), model.getLocalVia(), 
-                    model.getIdSuperintendenciaRegional(), model.getIdUnidadeLocal());
-
-            redirecionar("/View/Compartilhado/buscarOAE.jsf");
-        } catch(Exception ex) {
-            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao carregar pontes." + ex.getMessage());
-        }
-    }
-    
-    public void consultarGet(int idSimulacao) {
-        this.idSimulacao = idSimulacao;
-        redirecionar("/View/Compartilhado/buscarOAE.jsf");
-    }
+    // </editor-fold>
 }

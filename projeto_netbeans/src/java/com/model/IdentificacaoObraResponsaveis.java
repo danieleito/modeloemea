@@ -11,9 +11,8 @@ package com.model;
  */
 public class IdentificacaoObraResponsaveis {
     private int id;
-    private SuperintendenciaRegional idSuperintendenciaRegional;
-    private UnidadeLocal idUnidadeLocal;
-    private TipoAdministracao idTipoAdministracao;
+    private UnidadeLocal unidadeLocal;
+    private TipoAdministracao tipoAdministracao;
     private String administrador;
     private String projetistaOrigem;
     private String projetistaProjetista;
@@ -26,15 +25,10 @@ public class IdentificacaoObraResponsaveis {
     public IdentificacaoObraResponsaveis() {
     }
 
-    public IdentificacaoObraResponsaveis(int id, SuperintendenciaRegional idSuperintendenciaRegional, 
-            UnidadeLocal idUnidadeLocal, TipoAdministracao idTipoAdministracao, String administrador, 
-            String projetistaOrigem, String projetistaProjetista, String construtorOrigem, 
-            String construtorConstrutor, String localizacaoProjeto, String localizacaoDocumentosConstrucao, 
-            String localizacaoDocumentosDiversos) {
+    public IdentificacaoObraResponsaveis(int id, UnidadeLocal unidadeLocal, TipoAdministracao tipoAdministracao, String administrador, String projetistaOrigem, String projetistaProjetista, String construtorOrigem, String construtorConstrutor, String localizacaoProjeto, String localizacaoDocumentosConstrucao, String localizacaoDocumentosDiversos) {
         this.id = id;
-        this.idSuperintendenciaRegional = idSuperintendenciaRegional;
-        this.idUnidadeLocal = idUnidadeLocal;
-        this.idTipoAdministracao = idTipoAdministracao;
+        this.unidadeLocal = unidadeLocal;
+        this.tipoAdministracao = tipoAdministracao;
         this.administrador = administrador;
         this.projetistaOrigem = projetistaOrigem;
         this.projetistaProjetista = projetistaProjetista;
@@ -45,10 +39,9 @@ public class IdentificacaoObraResponsaveis {
         this.localizacaoDocumentosDiversos = localizacaoDocumentosDiversos;
     }
 
-    public IdentificacaoObraResponsaveis(SuperintendenciaRegional idSuperintendenciaRegional, UnidadeLocal idUnidadeLocal, TipoAdministracao idTipoAdministracao, String administrador, String projetistaOrigem, String projetistaProjetista, String construtorOrigem, String construtorConstrutor, String localizacaoProjeto, String localizacaoDocumentosConstrucao, String localizacaoDocumentosDiversos) {
-        this.idSuperintendenciaRegional = idSuperintendenciaRegional;
-        this.idUnidadeLocal = idUnidadeLocal;
-        this.idTipoAdministracao = idTipoAdministracao;
+    public IdentificacaoObraResponsaveis(UnidadeLocal unidadeLocal, TipoAdministracao tipoAdministracao, String administrador, String projetistaOrigem, String projetistaProjetista, String construtorOrigem, String construtorConstrutor, String localizacaoProjeto, String localizacaoDocumentosConstrucao, String localizacaoDocumentosDiversos) {
+        this.unidadeLocal = unidadeLocal;
+        this.tipoAdministracao = tipoAdministracao;
         this.administrador = administrador;
         this.projetistaOrigem = projetistaOrigem;
         this.projetistaProjetista = projetistaProjetista;
@@ -67,28 +60,20 @@ public class IdentificacaoObraResponsaveis {
         this.id = id;
     }
 
-    public SuperintendenciaRegional getIdSuperintendenciaRegional() {
-        return idSuperintendenciaRegional;
+    public UnidadeLocal getUnidadeLocal() {
+        return unidadeLocal;
     }
 
-    public void setIdSuperintendenciaRegional(SuperintendenciaRegional idSuperintendenciaRegional) {
-        this.idSuperintendenciaRegional = idSuperintendenciaRegional;
+    public void setUnidadeLocal(UnidadeLocal unidadeLocal) {
+        this.unidadeLocal = unidadeLocal;
     }
 
-    public UnidadeLocal getIdUnidadeLocal() {
-        return idUnidadeLocal;
+    public TipoAdministracao getTipoAdministracao() {
+        return tipoAdministracao;
     }
 
-    public void setIdUnidadeLocal(UnidadeLocal idUnidadeLocal) {
-        this.idUnidadeLocal = idUnidadeLocal;
-    }
-
-    public TipoAdministracao getIdTipoAdministracao() {
-        return idTipoAdministracao;
-    }
-
-    public void setIdTipoAdministracao(TipoAdministracao idTipoAdministracao) {
-        this.idTipoAdministracao = idTipoAdministracao;
+    public void setTipoAdministracao(TipoAdministracao tipoAdministracao) {
+        this.tipoAdministracao = tipoAdministracao;
     }
 
     public String getAdministrador() {
@@ -154,4 +139,6 @@ public class IdentificacaoObraResponsaveis {
     public void setLocalizacaoDocumentosDiversos(String localizacaoDocumentosDiversos) {
         this.localizacaoDocumentosDiversos = localizacaoDocumentosDiversos;
     }
+    
+    
 }

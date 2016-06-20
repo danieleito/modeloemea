@@ -65,12 +65,13 @@ public class LoginBean extends ComumBean implements Serializable {
                 SessionContext.getInstance().setAttribute("usuarioLogado", u);
                 verificarNovosElementosManifestacoes();
                 redirecionar("/View/Compartilhado/inicio.jsf");
+                return;
             }
         } catch (SQLException ex) {
             adicionarMensagemFatal(ex.getMessage());
             Logger.getLogger(LoginBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        redirecionar("");
+        redirecionar("/View/Compartilhado/login.jsf");
     }
     
     public void sair() {

@@ -35,7 +35,7 @@ and open the template in the editor.
                                     <p:outputLabel value="Código" class="col-md-5" />
                                 </td>
                                 <td>
-                                    <p:inputText value="#{ponteBean.model.codigo}" class="col-md-2" />
+                                    <p:inputText value="#{ponteBean.filtroCodigo}" class="col-md-2" />
                                 </td>
                             </tr>
 
@@ -44,7 +44,7 @@ and open the template in the editor.
                                     <p:outputLabel value="Identificação" class="col-md-5" />
                                 </td>
                                 <td>
-                                    <p:inputText value="#{ponteBean.model.identificacaoObra}" class="col-md-5" />
+                                    <p:inputText value="#{ponteBean.filtroIdentificacao}" class="col-md-5" />
                                 </td>
                             </tr>
 
@@ -53,7 +53,7 @@ and open the template in the editor.
                                     <p:outputLabel value="UF" class="col-md-3" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu id="uf" value="#{ponteBean.model.uf.id}" style="width:150px">
+                                    <p:selectOneMenu id="uf" value="#{ponteBean.filtroIdUf}" style="width:150px">
                                         <f:selectItem itemLabel="Selecione o UF" itemValue="0"/>
                                         <f:selectItems value="#{ponteBean.ufs}" var="u" itemValue="#{u.id}"/>
                                     </p:selectOneMenu>
@@ -80,11 +80,14 @@ and open the template in the editor.
                                 </td>
                                 <td>
                                     <div>
-                                        <p:outputLabel value="do km " />
-                                        <p:inputText value="#{ponteBean.model.localVia}" class="col-md-1" />
-
-                                        <p:outputLabel value=" ao km " />
-                                        <p:inputText value="#{ponteBean.model.localVia}" class="col-md-1" />
+                                        <div style="float: left; margin: 0; padding: 0; width: 110px" >
+                                            <p:outputLabel value="do km "  />
+                                            <p:inputText value="#{ponteBean.filtroKmInicial}" style="width: 50px; margin-left: 5px" />
+                                        </div>
+                                        <div style="float: left; margin: 0; padding: 0; width: 110px" >
+                                            <p:outputLabel value=" ao km " />
+                                            <p:inputText value="#{ponteBean.filtroKmFinal}" style="width: 50px; margin-left: 5px" />
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -120,34 +123,34 @@ and open the template in the editor.
                     </table>
 
 <!--                    <p:commandButton value="Consultar" oncomplete="$('.mySelector').show();" />-->
-                    <p:commandButton action='#{ponteBean.consultar()}' value="Consultar" />
+                    <p:commandButton action='#{ponteBean.consultarPost()}' value="Consultar" />
                     <p:commandButton action="#{ponteBean.cancelar()}" value="Cancelar" />
 
                     <p:dataTable id="tabela" var="p" value="#{ponteBean.pontes}" paginator="true" rows="8" >     
                         <!--styleClass="mySelector" style="display: none"-->
                         <p:column headerText="Código" style="text-align: center" >
-                            <h:outputText value="#{p.codigo}" />
+                            <h:outputText value="#{p.identificacaoObraDadosBasicos.codigo}" />
                         </p:column>
 
                         <p:column headerText="Identificação da obra" style="text-align: center" >
-                            <h:outputText value="#{p.identificacaoObra}" />
+                            <h:outputText value="#{p.identificacaoObraDadosBasicos.identificacao}" />
                         </p:column>
 
                         <p:column headerText="Via" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{p.idVia}" />
+                            <h:outputText value="#{p.identificacaoObraLocalizacao.via.via}" />
                         </p:column>
 
                         <p:column headerText="UF" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{p.uf.uf}" />
+                            <h:outputText value="#{p.identificacaoObraLocalizacao.uf.uf}" />
                         </p:column>
 
                         <p:column headerText="Local na via" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{p.localVia}" />
+                            <h:outputText value="#{p.identificacaoObraLocalizacao.localVia}" />
                         </p:column>
                         
                         <p:column headerText="Ação" style="width: 150px; text-align: center" >
                             <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.visualizar(p.id)}" />
-                            <p:commandButton icon="ui-icon-check" title="Carregar" action="#{ponteBean.carregar(p.id, ponteBean.idSimulacao)}" />
+                            <p:commandButton icon="ui-icon-check" title="Carregar" action="#{ponteBean.carregar(p.id, simulacaoBean.simulacao.id)}" />
                         </p:column>
                     </p:dataTable>
                 </h:form>

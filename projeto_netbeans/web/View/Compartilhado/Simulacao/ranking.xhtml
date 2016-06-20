@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="/View/Compartilhado/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    
+                    <f:metadata>
+                        <f:event type="preRenderView" listener="#{simulacaoBean.recarregarSimulacao()}"/>
+                    </f:metadata>
+                    
+                    <p:breadCrumb>
+                        <p:menuitem value="Categories" url="#" />
+                        <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
+                        <p:menuitem value="Simulação" action="#{simulacaoBean.listarGet()}" />
+                        <p:menuitem value="Ranking" url="/View/Compartilhado/Ranking/editar.jsf" />
+                    </p:breadCrumb>
+                    
+                    <div class="row">
+                        <p:outputLabel>Nome da simulação: #{simulacaoBean.simulacao.nomeSimulacao}</p:outputLabel>
+                    </div>
+                    <br/>
+                    <br/>
+                    
+                    <p:commandButton value="Consultar" action="#{ponteBean.consultarGet()}" />
+                    <p:commandButton style="margin: 0 0 20px 20px;" value="Ranquear" action="#{ranking}" />
+
+                    <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="8" reflow="true" >
+                        <p:column headerText="Data da última inspeção" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{r.ponte.dataUltimaInspecao}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </p:column>
+                        
+                        <p:column headerText="Código" style="text-align: center" >
+                            <h:outputText value="#{r.ponte.identificacaoObraDadosBasicos.codigo}" />
+                        </p:column>
+
+                        <p:column headerText="Identificação da obra" style="text-align: center" >
+                            <h:outputText value="#{r.ponte.identificacaoObraDadosBasicos.identificacao}"/>
+                        </p:column>
+
+                        <p:column headerText="Via" style="width: 100px; text-align: center" >
+                            <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.via.via}" />
+                        </p:column>
+
+                        <p:column headerText="UF" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.uf.uf}" />
+                        </p:column>
+
+                        <p:column headerText="Local na via" style="width: 100px; text-align: center" >
+                            <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.localVia}" />
+                        </p:column>
+
+                        <p:column headerText="Ind. performance relativo" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{r.ponte.indicePerformanceRelativo}" />
+                        </p:column>
+
+                        <p:column headerText="Ação" style="width: 90px; text-align: center" >
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{simulacaoBean.visualizarRanking(r.id)}" />
+                            <p:commandButton icon="ui-icon-closethick" title="Deletar" action="#{simulacaoBean.excluirRanking(r.id)}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

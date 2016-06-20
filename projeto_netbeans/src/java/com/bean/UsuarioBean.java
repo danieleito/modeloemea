@@ -214,7 +214,7 @@ public class UsuarioBean extends ComumBean implements Serializable {
         model.setEmail("");
     }
     
-    // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
+    // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Usuario getModel() {
         return model;
     }
@@ -255,5 +255,4 @@ public class UsuarioBean extends ComumBean implements Serializable {
         this.novaSenha = novaSenha;
     }
     // </editor-fold>
-
 }

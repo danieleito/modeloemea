@@ -5,37 +5,24 @@
  */
 package com.model;
 
-import java.util.Date;
-
 /**
  *
  * @author Daniele Harumi Ito
  */
 public class Ranking {
     private int id;
-    private Date dataUltimaInspecao;
-    private Ponte1 ponte;
-    //private Simulacao simulacao;
-    private int classificacao;
-    private String indicePerformanceRelativo;
-    private int idSimulacao;
+    private Ponte ponte;
 
     public Ranking() {
     }
 
-    public Ranking(int id, Date dataUltimaInspecao, Ponte1 ponte, int classificacao, String indicePerformanceRelativo) {
+    public Ranking(int id, Ponte ponte) {
         this.id = id;
-        this.dataUltimaInspecao = dataUltimaInspecao;
         this.ponte = ponte;
-        this.classificacao = classificacao;
-        this.indicePerformanceRelativo = indicePerformanceRelativo;
     }
 
-    public Ranking(Date dataUltimaInspecao, Ponte1 ponte, int classificacao, String indicePerformanceRelativo) {
-        this.dataUltimaInspecao = dataUltimaInspecao;
+    public Ranking(Ponte ponte) {
         this.ponte = ponte;
-        this.classificacao = classificacao;
-        this.indicePerformanceRelativo = indicePerformanceRelativo;
     }
 
     public int getId() {
@@ -46,43 +33,11 @@ public class Ranking {
         this.id = id;
     }
 
-    public Date getDataUltimaInspecao() {
-        return dataUltimaInspecao;
-    }
-
-    public void setDataUltimaInspecao(Date dataUltimaInspecao) {
-        this.dataUltimaInspecao = dataUltimaInspecao;
-    }
-
-    public Ponte1 getPonte() {
+    public Ponte getPonte() {
         return ponte;
     }
 
-    public void setPonte(Ponte1 ponte) {
+    public void setPonte(Ponte ponte) {
         this.ponte = ponte;
-    }
-
-    public int getClassificacao() {
-        return classificacao;
-    }
-
-    public void setClassificacao(int classificacao) {
-        this.classificacao = classificacao;
-    }
-
-    public String getIndicePerformanceRelativo() {
-        return indicePerformanceRelativo;
-    }
-
-    public void setIndicePerformanceRelativo(String indicePerformanceRelativo) {
-        this.indicePerformanceRelativo = indicePerformanceRelativo;
-    }
-
-    public int getIdSimulacao() {
-        return idSimulacao;
-    }
-
-    public void setIdSimulacao(int idSimulacao) {
-        this.idSimulacao = idSimulacao;
     }
 }

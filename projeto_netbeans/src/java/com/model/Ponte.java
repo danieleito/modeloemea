@@ -5,39 +5,53 @@
  */
 package com.model;
 
+import java.util.Date;
+
 /**
  *
  * @author Daniele Harumi Ito
  */
 public class Ponte {
     private int id;
-    private IdentificacaoObraDadosBasicos idIdentificacaoObraDadosBasicos;
-    private IdentificacaoObraLocalizacao idIdentificacaoObraLocalizacao;
-    private IdentificacaoObraResponsaveis idIdentificacaoObraResponsaveis;
-    private IdentificacaoObraInspecao idIdentificacaoObraInspecao;
+    private String indicePerformanceRelativo;
+    private IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos;
+    private IdentificacaoObraLocalizacao identificacaoObraLocalizacao;
+    private IdentificacaoObraResponsaveis identificacaoObraResponsaveis;
+    private IdentificacaoObraInspecao identificacaoObraInspecao;
+    
+    //para exibir na tela que lista o ranking
+    private Date dataUltimaInspecao;
 
     public Ponte() {
+        identificacaoObraDadosBasicos = new IdentificacaoObraDadosBasicos();
+        identificacaoObraInspecao = new IdentificacaoObraInspecao();
+        identificacaoObraLocalizacao = new IdentificacaoObraLocalizacao();
+        identificacaoObraResponsaveis = new IdentificacaoObraResponsaveis();
     }
 
     public Ponte(int id, IdentificacaoObraDadosBasicos idIdentificacaoObraDadosBasicos, 
             IdentificacaoObraLocalizacao idIdentificacaoObraLocalizacao, 
             IdentificacaoObraResponsaveis idIdentificacaoObraResponsaveis, 
-            IdentificacaoObraInspecao idIdentificacaoObraInspecao) {
+            IdentificacaoObraInspecao idIdentificacaoObraInspecao,
+            String indicePerformanceRelativo) {
         this.id = id;
-        this.idIdentificacaoObraDadosBasicos = idIdentificacaoObraDadosBasicos;
-        this.idIdentificacaoObraLocalizacao = idIdentificacaoObraLocalizacao;
-        this.idIdentificacaoObraResponsaveis = idIdentificacaoObraResponsaveis;
-        this.idIdentificacaoObraInspecao = idIdentificacaoObraInspecao;
+        this.indicePerformanceRelativo = indicePerformanceRelativo;
+        this.identificacaoObraDadosBasicos = idIdentificacaoObraDadosBasicos;
+        this.identificacaoObraLocalizacao = idIdentificacaoObraLocalizacao;
+        this.identificacaoObraResponsaveis = idIdentificacaoObraResponsaveis;
+        this.identificacaoObraInspecao = idIdentificacaoObraInspecao;
     }
 
     public Ponte(IdentificacaoObraDadosBasicos idIdentificacaoObraDadosBasicos, 
             IdentificacaoObraLocalizacao idIdentificacaoObraLocalizacao, 
             IdentificacaoObraResponsaveis idIdentificacaoObraResponsaveis, 
-            IdentificacaoObraInspecao idIdentificacaoObraInspecao) {
-        this.idIdentificacaoObraDadosBasicos = idIdentificacaoObraDadosBasicos;
-        this.idIdentificacaoObraLocalizacao = idIdentificacaoObraLocalizacao;
-        this.idIdentificacaoObraResponsaveis = idIdentificacaoObraResponsaveis;
-        this.idIdentificacaoObraInspecao = idIdentificacaoObraInspecao;
+            IdentificacaoObraInspecao idIdentificacaoObraInspecao,
+            String indicePerformanceRelativo) {
+        this.indicePerformanceRelativo = indicePerformanceRelativo;
+        this.identificacaoObraDadosBasicos = idIdentificacaoObraDadosBasicos;
+        this.identificacaoObraLocalizacao = idIdentificacaoObraLocalizacao;
+        this.identificacaoObraResponsaveis = idIdentificacaoObraResponsaveis;
+        this.identificacaoObraInspecao = idIdentificacaoObraInspecao;
     }
 
     public int getId() {
@@ -48,35 +62,51 @@ public class Ponte {
         this.id = id;
     }
 
-    public IdentificacaoObraDadosBasicos getIdIdentificacaoObraDadosBasicos() {
-        return idIdentificacaoObraDadosBasicos;
+    public IdentificacaoObraDadosBasicos getIdentificacaoObraDadosBasicos() {
+        return identificacaoObraDadosBasicos;
     }
 
-    public void setIdIdentificacaoObraDadosBasicos(IdentificacaoObraDadosBasicos idIdentificacaoObraDadosBasicos) {
-        this.idIdentificacaoObraDadosBasicos = idIdentificacaoObraDadosBasicos;
+    public void setIdentificacaoObraDadosBasicos(IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos) {
+        this.identificacaoObraDadosBasicos = identificacaoObraDadosBasicos;
     }
 
-    public IdentificacaoObraLocalizacao getIdIdentificacaoObraLocalizacao() {
-        return idIdentificacaoObraLocalizacao;
+    public IdentificacaoObraLocalizacao getIdentificacaoObraLocalizacao() {
+        return identificacaoObraLocalizacao;
     }
 
-    public void setIdIdentificacaoObraLocalizacao(IdentificacaoObraLocalizacao idIdentificacaoObraLocalizacao) {
-        this.idIdentificacaoObraLocalizacao = idIdentificacaoObraLocalizacao;
+    public void setIdentificacaoObraLocalizacao(IdentificacaoObraLocalizacao identificacaoObraLocalizacao) {
+        this.identificacaoObraLocalizacao = identificacaoObraLocalizacao;
     }
 
-    public IdentificacaoObraResponsaveis getIdIdentificacaoObraResponsaveis() {
-        return idIdentificacaoObraResponsaveis;
+    public IdentificacaoObraResponsaveis getIdentificacaoObraResponsaveis() {
+        return identificacaoObraResponsaveis;
     }
 
-    public void setIdIdentificacaoObraResponsaveis(IdentificacaoObraResponsaveis idIdentificacaoObraResponsaveis) {
-        this.idIdentificacaoObraResponsaveis = idIdentificacaoObraResponsaveis;
+    public void setIdentificacaoObraResponsaveis(IdentificacaoObraResponsaveis identificacaoObraResponsaveis) {
+        this.identificacaoObraResponsaveis = identificacaoObraResponsaveis;
     }
 
-    public IdentificacaoObraInspecao getIdIdentificacaoObraInspecao() {
-        return idIdentificacaoObraInspecao;
+    public IdentificacaoObraInspecao getIdentificacaoObraInspecao() {
+        return identificacaoObraInspecao;
     }
 
-    public void setIdIdentificacaoObraInspecao(IdentificacaoObraInspecao idIdentificacaoObraInspecao) {
-        this.idIdentificacaoObraInspecao = idIdentificacaoObraInspecao;
+    public void setIdentificacaoObraInspecao(IdentificacaoObraInspecao identificacaoObraInspecao) {
+        this.identificacaoObraInspecao = identificacaoObraInspecao;
+    }
+
+    public Date getDataUltimaInspecao() {
+        return dataUltimaInspecao;
+    }
+
+    public void setDataUltimaInspecao(Date dataUltimaInspecao) {
+        this.dataUltimaInspecao = dataUltimaInspecao;
+    }
+
+    public String getIndicePerformanceRelativo() {
+        return indicePerformanceRelativo;
+    }
+
+    public void setIndicePerformanceRelativo(String indicePerformanceRelativo) {
+        this.indicePerformanceRelativo = indicePerformanceRelativo;
     }
 }
