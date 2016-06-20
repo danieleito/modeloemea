@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form2">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:dataTable var="i" value="#{inspecao.inspecoes}" paginator="true" rows="8" >
+                    <p:column headerText="Data" style="text-align: center" >
+                        <h:outputText value="#{i.data}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Inspetor" style="text-align: center" >
+                        <h:outputText value="#{i.usuario.usuario}" />
+                    </p:column>
+
+                    <p:column headerText="Cond. de estabilidade" style="width: 150px; text-align: center" >
+                        <h:outputText value="#{i.condicaoEstabilidade}" />
+                    </p:column>
+
+                    <p:column headerText="Cond. conservação" style="width: 150px; text-align: center" >
+                        <h:outputText value="#{i.condicaoConservacao}" />
+                    </p:column>
+
+                    <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                        <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{inspecao.visualizar(i.id)}" />
+                    </p:column>
+                </p:dataTable>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

@@ -9,7 +9,6 @@ import com.dao.PonteDAO;
 import com.dao.RankingDAO;
 import com.dao.UfDAO;
 import com.model.Ponte;
-import com.model.Ranking;
 import com.model.Uf;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -86,7 +85,7 @@ public class PonteBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        redirecionar("/View/Compartilhado/buscarOAE.jsf");
+        redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
     }
     
     public void consultarPost() throws SQLException {
@@ -98,9 +97,9 @@ public class PonteBean extends ComumBean implements Serializable {
                     filtroIdSuperintendencia, filtroIdUnidadeLocal);
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao carregar pontes." + ex.getMessage());
+            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
         }
-        redirecionar("/View/Compartilhado/buscarOAE.jsf");
+        redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
     }
     
     public void limparFiltros() {
@@ -112,6 +111,16 @@ public class PonteBean extends ComumBean implements Serializable {
         filtroKmFinal = "";
         filtroIdSuperintendencia = 0;
         filtroIdUnidadeLocal = 0;
+    }
+    
+    public void exibir(int idPonte) {
+        try {
+            model = database.buscar(idPonte);
+        } catch (Exception ex) {
+            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar ponte. " + ex.getMessage());
+        }
+        redirecionar("/View/Compartilhado/OAE/exibir.jsf");
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    

@@ -26,31 +26,31 @@ and open the template in the editor.
                         <h:outputText value="Dados Básicos" style="font-weight: bold" />
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Código:" style="font-weight: bold" />
-                            <h:outputText value="codigo" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}" />
 
                             <h:outputText value="Identificação:" style="font-weight: bold" />
-                            <h:outputText value="#{car.year}" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.identificacao}" />
 
                             <h:outputText value="Últ. Atualização:" style="font-weight: bold" />
-                            <h:outputText value="#{car.color}" />
+                            <h:outputText value="" />
 
                             <h:outputText value="Nat. Transposição:" style="font-weight: bold" />
-                            <h:outputText value="#{car.id}" />
+                            <h:outputText value="" />
 
                             <h:outputText value="Tipo Estrutura:" style="font-weight: bold" />
-                            <h:outputText value="#{car.year}" />
+                            <h:outputText value="" />
 
                             <h:outputText value="Sist. Construtivo:" style="font-weight: bold" />
-                            <h:outputText value="#{car.color}" />
+                            <h:outputText value="" />
 
                             <h:outputText value="Comp/Larg(m):" style="font-weight: bold" />
-                            <h:outputText value="#{car.id}" />
+                            <h:outputText value="" />
 
                             <h:outputText value="Trem-Tipo:" style="font-weight: bold" />
-                            <h:outputText value="#{car.year}" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.tremTipo.descricao}" />
 
                             <h:outputText value="Construçao:" style="font-weight: bold" />
-                            <h:outputText value="#{car.id}" />
+                            <h:outputText value="" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -61,7 +61,7 @@ and open the template in the editor.
                         <h:outputText value="Localização" style="font-weight: bold" />
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Via/UF/Km:" style="font-weight: bold" />
-                            <h:outputText value="via/uf/km" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.via.via}/#{ponteBean.model.identificacaoObraLocalizacao.uf.uf}/#{ponteBean.model.identificacaoObraLocalizacao.localVia}" />
 
                             <h:outputText value="Trecho:" style="font-weight: bold" />
                             <h:outputText value="#{car.year}" />
@@ -104,22 +104,22 @@ and open the template in the editor.
                             <h:outputText value="superint regional" />
 
                             <h:outputText value="Unidade Local:" style="font-weight: bold" />
-                            <h:outputText value="#{car.year}" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.unidadeLocal}" />
 
                             <h:outputText value="Tp. Administração:" style="font-weight: bold" />
-                            <h:outputText value="#{car.color}" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.tipoAdministracao.descricao}" />
 
                             <h:outputText value="Administrador:" style="font-weight: bold" />
-                            <h:outputText value="#{car.id}" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.administrador}" />
 
                             <h:outputText value="Projetista:" style="font-weight: bold" />
-                            <h:outputText value="#{car.year}" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.projetistaProjetista}" />
 
                             <h:outputText value="Construtor:" style="font-weight: bold" />
-                            <h:outputText value="#{car.color}" />
+                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.construtorConstrutor}" />
 
                             <h:outputText value="Observações:" style="font-weight: bold" />
-                            <h:outputText value="#{car.id}" />
+                            <h:outputText value="" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>

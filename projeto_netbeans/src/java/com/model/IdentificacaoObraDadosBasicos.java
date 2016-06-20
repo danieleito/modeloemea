@@ -15,12 +15,12 @@ public class IdentificacaoObraDadosBasicos {
     private String codigoIntegracao;
     private String status;
     private String identificacao;
-    private NaturezaTransposicao idNaturezaTransposicao;
-    private TipoEstrutura idTipoEstrutura;
-    private SistemaConstrutivo idSistemaConstrutivo;
+    private NaturezaTransposicao naturezaTransposicao;
+    private TipoEstrutura tipoEstrutura;
+    private SistemaConstrutivo sistemaConstrutivo;
     private String comprimento;
     private String largura;
-    private TremTipo idTremTipo;
+    private TremTipo tremTipo;
     private String anoConstrucao;
 
     public IdentificacaoObraDadosBasicos() {
@@ -32,12 +32,12 @@ public class IdentificacaoObraDadosBasicos {
         this.codigoIntegracao = codigoIntegracao;
         this.status = status;
         this.identificacao = identificacao;
-        this.idNaturezaTransposicao = idNaturezaTransposicao;
-        this.idTipoEstrutura = idTipoEstrutura;
-        this.idSistemaConstrutivo = idSistemaConstrutivo;
+        this.naturezaTransposicao = idNaturezaTransposicao;
+        this.tipoEstrutura = idTipoEstrutura;
+        this.sistemaConstrutivo = idSistemaConstrutivo;
         this.comprimento = comprimento;
         this.largura = largura;
-        this.idTremTipo = idTremTipo;
+        this.tremTipo = idTremTipo;
         this.anoConstrucao = anoConstrucao;
     }
 
@@ -46,12 +46,12 @@ public class IdentificacaoObraDadosBasicos {
         this.codigoIntegracao = codigoIntegracao;
         this.status = status;
         this.identificacao = identificacao;
-        this.idNaturezaTransposicao = idNaturezaTransposicao;
-        this.idTipoEstrutura = idTipoEstrutura;
-        this.idSistemaConstrutivo = idSistemaConstrutivo;
+        this.naturezaTransposicao = idNaturezaTransposicao;
+        this.tipoEstrutura = idTipoEstrutura;
+        this.sistemaConstrutivo = idSistemaConstrutivo;
         this.comprimento = comprimento;
         this.largura = largura;
-        this.idTremTipo = idTremTipo;
+        this.tremTipo = idTremTipo;
         this.anoConstrucao = anoConstrucao;
     }
 
@@ -95,28 +95,28 @@ public class IdentificacaoObraDadosBasicos {
         this.identificacao = identificacao;
     }
 
-    public NaturezaTransposicao getIdNaturezaTransposicao() {
-        return idNaturezaTransposicao;
+    public NaturezaTransposicao getNaturezaTransposicao() {
+        return naturezaTransposicao;
     }
 
-    public void setIdNaturezaTransposicao(NaturezaTransposicao idNaturezaTransposicao) {
-        this.idNaturezaTransposicao = idNaturezaTransposicao;
+    public void setNaturezaTransposicao(NaturezaTransposicao naturezaTransposicao) {
+        this.naturezaTransposicao = naturezaTransposicao;
     }
 
-    public TipoEstrutura getIdTipoEstrutura() {
-        return idTipoEstrutura;
+    public TipoEstrutura getTipoEstrutura() {
+        return tipoEstrutura;
     }
 
-    public void setIdTipoEstrutura(TipoEstrutura idTipoEstrutura) {
-        this.idTipoEstrutura = idTipoEstrutura;
+    public void setTipoEstrutura(TipoEstrutura tipoEstrutura) {
+        this.tipoEstrutura = tipoEstrutura;
     }
 
-    public SistemaConstrutivo getIdSistemaConstrutivo() {
-        return idSistemaConstrutivo;
+    public SistemaConstrutivo getSistemaConstrutivo() {
+        return sistemaConstrutivo;
     }
 
-    public void setIdSistemaConstrutivo(SistemaConstrutivo idSistemaConstrutivo) {
-        this.idSistemaConstrutivo = idSistemaConstrutivo;
+    public void setSistemaConstrutivo(SistemaConstrutivo sistemaConstrutivo) {
+        this.sistemaConstrutivo = sistemaConstrutivo;
     }
 
     public String getComprimento() {
@@ -135,12 +135,12 @@ public class IdentificacaoObraDadosBasicos {
         this.largura = largura;
     }
 
-    public TremTipo getIdTremTipo() {
-        return idTremTipo;
+    public TremTipo getTremTipo() {
+        return tremTipo;
     }
 
-    public void setIdTremTipo(TremTipo idTremTipo) {
-        this.idTremTipo = idTremTipo;
+    public void setTremTipo(TremTipo tremTipo) {
+        this.tremTipo = tremTipo;
     }
 
     public String getAnoConstrucao() {
