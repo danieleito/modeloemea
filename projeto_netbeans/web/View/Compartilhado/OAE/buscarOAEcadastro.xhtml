@@ -21,7 +21,7 @@ and open the template in the editor.
                     <p:breadCrumb>
                         <p:menuitem value="Categories" url="#" />
                         <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
-                        <p:menuitem value="Cadastro Obras de Arte Especiais" url="/View/Compartilhado/Cadastrar/buscarOAEcadastro.jsf" />
+                        <p:menuitem value="Cadastro Obras de Arte Especiais" url="/View/Compartilhado/OAE/buscarOAECadastro.jsf" />
 
                     </p:breadCrumb>
 
@@ -34,7 +34,7 @@ and open the template in the editor.
                                     <p:outputLabel value="Código" class="col-md-5" />
                                 </td>
                                 <td>
-                                    <p:inputText value="#{ponte.model.codigo}" class="col-md-2" />
+                                    <p:inputText value="#{ponteBean.filtroCodigo}" class="col-md-2" />
                                 </td>
                             </tr>
 
@@ -43,7 +43,7 @@ and open the template in the editor.
                                     <p:outputLabel value="Identificação" class="col-md-5" />
                                 </td>
                                 <td>
-                                    <p:inputText value="#{ponte.model.identificacaoObra}" class="col-md-5" />
+                                    <p:inputText value="#{ponteBean.filtroIdentificacao}" class="col-md-5" />
                                 </td>
                             </tr>
 
@@ -52,12 +52,10 @@ and open the template in the editor.
                                     <p:outputLabel value="UF" class="col-md-3" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu class="col-md-3">
-                                        <f:selectItem itemLabel="Selecione a UF" itemValue="" />
-                                        <f:selectItem itemLabel="Paraná" itemValue="1" />
-                                        <f:selectItem itemLabel="Santa Catarina" itemValue="2" />
-                                        <f:selectItem itemLabel="São Paulo" itemValue="3" />                                        
-                                    </p:selectOneMenu>
+                                    <p:selectOneMenu id="uf" value="#{ponteBean.filtroIdUf}" style="width:150px">
+                                        <f:selectItem itemLabel="Selecione o UF" itemValue="0"/>
+                                        <f:selectItems value="#{ponteBean.ufs}" var="u" itemValue="#{u.id}"/>
+                                    </p:selectOneMenu>  
                                 </td>
                             </tr>
 
@@ -66,11 +64,9 @@ and open the template in the editor.
                                     <p:outputLabel value="Via" class="col-md-3" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu class="col-md-3">
-                                        <f:selectItem itemLabel="Selecione a Via" itemValue="" />
-                                        <f:selectItem itemLabel="BR - 101" itemValue="1" />
-                                        <f:selectItem itemLabel="BR - 116" itemValue="2" />
-                                        <f:selectItem itemLabel="BR - 277" itemValue="3" />  
+                                    <p:selectOneMenu id="via" value="#{ponteBean.filtroIdVia}" style="width: 150px">
+                                        <f:selectItem itemLabel="Selecione a Via" itemValue="0" />
+                                        <f:selectItems value="#{ponteBean.vias}" var="v" itemValue="#{v.id}" />
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
@@ -81,11 +77,14 @@ and open the template in the editor.
                                 </td>
                                 <td>
                                     <div>
-                                        <p:outputLabel value="do km " />
-                                        <p:inputText value="#{ponte.model.localVia}" class="col-md-1" />
-
-                                        <p:outputLabel value=" ao km " />
-                                        <p:inputText value="#{ponte.model.localVia}" class="col-md-1" />
+                                        <div style="float: left; margin: 0; padding: 0; width: 110px" >
+                                            <p:outputLabel value="do km "  />
+                                            <p:inputText value="#{ponteBean.filtroKmInicial}" style="width: 50px; margin-left: 5px" />
+                                        </div>
+                                        <div style="float: left; margin: 0; padding: 0; width: 110px" >
+                                            <p:outputLabel value=" ao km " />
+                                            <p:inputText value="#{ponteBean.filtroKmFinal}" style="width: 50px; margin-left: 5px" />
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -95,11 +94,9 @@ and open the template in the editor.
                                     <p:outputLabel value="Superintendência Regional" class="col-md-3" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu class="col-md-4">
-                                        <f:selectItem itemLabel="Selecione a Superintendência Regional" itemValue="" />
-                                        <f:selectItem itemLabel="S.R.E. - PR - Superintendência Regional do DNIT  no estado do Paraná" itemValue="1" />
-                                        <f:selectItem itemLabel="S.R.E. - SC - Superintendência Regional do DNIT  no estado de Santa Catarina" itemValue="2" />
-                                        <f:selectItem itemLabel="S.R.E. - SP - Superintendência Regional do DNIT  no estado de São Paulo" itemValue="3" /> 
+                                    <p:selectOneMenu id="superintendenciaRegional" value="#{ponteBean.filtroIdSuperintendencia}" style="width: 150px">
+                                        <f:selectItem itemLabel="Selecione a superintendência regional" itemValue="0" />
+                                        <f:selectItems value="#{ponteBean.superintendenciasRegionais}" var="s" itemValue="#{s.id}" />
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
@@ -109,11 +106,9 @@ and open the template in the editor.
                                     <p:outputLabel value="Unidade Local" class="col-md-3" />
                                 </td>
                                 <td>
-                                    <p:selectOneMenu class="col-md-3">
-                                        <f:selectItem itemLabel="Selecione a Unidade Local" itemValue="" />
-                                        <f:selectItem itemLabel="ULSC01 - Tubarão" itemValue="1" />
-                                        <f:selectItem itemLabel="ULSC02 - Joinville" itemValue="2" />
-                                        <f:selectItem itemLabel="ULSC03 - Lajes" itemValue="3" /> 
+                                    <p:selectOneMenu id="unidadeLocal" value="#{ponteBean.filtroIdUnidadeLocal}" style="width: 150px">
+                                        <f:selectItem itemLabel="Selecione a unidade local" itemValue="0" />
+                                        <f:selectItems value="#{ponteBean.unidadesLocais}" var="u" itemValue="#{u.id}" />
                                     </p:selectOneMenu>
                                 </td>
                             </tr>
@@ -121,34 +116,33 @@ and open the template in the editor.
                     </table>
 
                     <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Consultar" />
-                    <p:button outcome="/View/Compartilhado/Cadastrar/Cadastrar.jsf" value="Novo registro" />
+                    <p:button outcome="/View/Compartilhado/OAE/cadastrar.jsf" value="Novo registro" />
                     <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Cancelar" />
 
 
-                    <p:dataTable var="p" value="#{ponte.pontes}" paginator="true" rows="8" >                      
+                    <p:dataTable var="p" value="#{ponteBean.pontes}" paginator="true" rows="8" >                      
                         <p:column headerText="Código" style="text-align: center" >
-                            <h:outputText value="#{p.codigo}" />
+                            <h:outputText value="#{p.identificacaoObraDadosBasicos.codigo}" />
                         </p:column>
 
                         <p:column headerText="Identificação da obra" style="text-align: center" >
-                            <h:outputText value="#{p.identificacaoObra}" />
+                            <h:outputText value="#{p.identificacaoObraDadosBasicos.identificacao}" />
                         </p:column>
 
                         <p:column headerText="Via" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{p.via}" />
+                            <h:outputText value="#{p.identificacaoObraLocalizacao.via.via}" />
                         </p:column>
 
                         <p:column headerText="UF" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{p.uf}" />
+                            <h:outputText value="#{p.identificacaoObraLocalizacao.uf.uf}" />
                         </p:column>
 
                         <p:column headerText="Local na via" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{p.localVia}" />
+                            <h:outputText value="#{p.identificacaoObraLocalizacao.localVia}" />
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponte.consultar(p.id)}" />
-                            <p:commandButton icon="ui-icon-check" title="Carregar" action="#{ponte.carregar(p.id)}" />
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
                         </p:column>
                     </p:dataTable>
                 </h:form>
