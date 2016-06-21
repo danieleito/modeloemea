@@ -116,10 +116,9 @@ and open the template in the editor.
                         </tbody>
                     </table>
 
-                    <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Consultar" />
+                    <p:commandButton action='#{ponteBean.consultarInspecaoPost()}' value="Consultar" />
                     <p:button outcome="/View/Compartilhado/OAE/cadastrar.jsf" value="Novo registro" />
-                    <p:commandButton action="#{usuarioBean.cadastrarPost()}" value="Cancelar" />
-
+                    <p:commandButton action="#{ponteBean.cancelar()}" value="Cancelar" />
 
                     <p:dataTable var="p" value="#{ponteBean.pontes}" paginator="true" rows="8" >                      
                         <p:column headerText="Código" style="text-align: center" >

@@ -138,7 +138,7 @@ public class PonteBean extends ComumBean implements Serializable {
         redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
     }
     
-    public void consultarCadastrarPost() throws SQLException {
+    public void consultarCadastroPost() throws SQLException {
         try {
             pontes = database.buscar2(filtroCodigo, filtroIdentificacao,
                     filtroIdUf, filtroIdVia, 

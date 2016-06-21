@@ -48,7 +48,33 @@ public class SimulacaoBean extends ComumBean {
 
         redirecionar("/View/Compartilhado/Simulacao/listar.jsf");
     }
-    
+
+    public void salvar() {
+        try {
+            if (simulacao.getNomeSimulacao() == null || simulacao.getNomeSimulacao().isEmpty()) {
+                adicionarMensagemErro("Campo 'Nome da simulação' é obrigatório.");
+                return;
+            } 
+            //verificar se ja existe uma simulacao com esse nome
+            for (int i = 0; i < simulacoes.size(); i++) {
+                if (simulacao.getNomeSimulacao().equals(simulacoes.get(i).getNomeSimulacao())) {
+                    adicionarMensagemErro("Nome de simulação já existe.");
+                    return;
+                }
+            }
+//            else {
+                database.inserir(simulacao);
+                simulacoes = database.buscar();
+                adicionarMensagemInfo("Simulação cadastrada com sucesso.");
+                simulacao.setNomeSimulacao("");//
+//            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao cadastrar simulação: " + ex.getMessage());
+        }
+        redirecionar("/View/Compartilhado/simulacao.jsf");
+    }
+
     public void visualizar(int idSimulacao) {
         try {
             simulacao = database.buscar(idSimulacao);
