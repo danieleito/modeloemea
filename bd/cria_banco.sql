@@ -401,7 +401,7 @@ insert into TIPO_ADMINISTRACAO	 (DS_TIPO_ADMINISTRACAO) values ('Administração I
 
 create table ELEMENTOS_UFPR
 	(
-		ID_ELEMENTOS_UFPR		int						not null identity(1,1),
+		ID_ELEMENTO_UFPR		int						not null identity(1,1),
 		CD_ELEMENTO				int,
 		DS_ELEMENTO				varchar(100),
 		DS_CAPA1				varchar(10)				not null,
@@ -936,14 +936,14 @@ create table INSPECAO
 create table MANIFESTACOES_UFPR
 	(
 		ID_MANIFESTACOES_UFPR						int							not null identity(1,1),
-		ID_ELEMENTOS_UFPR							int,
+		ID_ELEMENTO_UFPR							int,
 		CD_MANIFESTACOES_UFPR						int,
 		DS_MANIFESTACOES_UFPR						varchar(100),
 		DS_UNIDADE									varchar(10),
 		DS_BETA										varchar(10),
 
 		CONSTRAINT									pk_manifestacoesufpr		PRIMARY KEY(ID_MANIFESTACOES_UFPR),
-		CONSTRAINT									fk_manifestacoesufpr_elementosufpr	FOREIGN KEY(ID_ELEMENTOS_UFPR) REFERENCES ELEMENTOS_UFPR(ID_ELEMENTOS_UFPR)
+		CONSTRAINT									fk_manifestacoesufpr_elementosufpr	FOREIGN KEY(ID_ELEMENTO_UFPR) REFERENCES ELEMENTOS_UFPR(ID_ELEMENTO_UFPR)
 	);
 
 --GO
@@ -958,7 +958,7 @@ create table INSPECOES_MANIFESTACOES
 	(
 		ID_INSPECOES_MANIFESTACOES				int									not null identity(1,1),
 		ID_INSPECAO								int,
-		ID_ELEMENTOS_UFPR						int,
+		ID_ELEMENTO_UFPR						int,
 		DS_NUMERO								varchar(20),
 		ID_MANIFESTACOES_UFPR					int,
 		DS_FOTO									varchar(20),
@@ -967,7 +967,7 @@ create table INSPECOES_MANIFESTACOES
 		ID_MANIFESTACOES_URGENCIA				int,
 		CONSTRAINT								pk_inspecoesmanifestacoes		PRIMARY KEY(ID_INSPECOES_MANIFESTACOES),
 		CONSTRAINT								fk_inspecoesmanifestacoes_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO),
-		CONSTRAINT								fk_inspecoesmanifestacoes_elementosufpr	FOREIGN KEY(ID_ELEMENTOS_UFPR) REFERENCES ELEMENTOS_UFPR(ID_ELEMENTOS_UFPR),
+		CONSTRAINT								fk_inspecoesmanifestacoes_elementosufpr	FOREIGN KEY(ID_ELEMENTO_UFPR) REFERENCES ELEMENTOS_UFPR(ID_ELEMENTO_UFPR),
 		CONSTRAINT								fk_inspecoesmanifestacoes_manifestacoesufpr	FOREIGN KEY(ID_MANIFESTACOES_UFPR) REFERENCES MANIFESTACOES_UFPR(ID_MANIFESTACOES_UFPR),
 		CONSTRAINT								fk_inspecoesmanifestacoes_manifestacoesextensao	FOREIGN KEY(ID_MANIFESTACOES_EXTENSAO) REFERENCES MANIFESTACOES_EXTENSAO(ID_MANIFESTACOES_EXTENSAO),
 		CONSTRAINT								fk_inspecoesmanifestacoes_manifestacoesurgencia	FOREIGN KEY(ID_MANIFESTACOES_URGENCIA) REFERENCES MANIFESTACOES_URGENCIA(ID_MANIFESTACOES_URGENCIA)
