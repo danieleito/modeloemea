@@ -675,28 +675,10 @@ values ('00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00');
 
 ---------------------------------------------------------------------------
 
-
-
-create table ELEMENTO_COMPONENTES
-	(
-		ID_ELEMENTO_COMPONENTES			int						not null identity(1,1),
-		CD_CODIGO				varchar(20),
-		CD_ELEMENTO				int,
-		DS_DETALHE				varchar(20),
-		NR_QUANTIDADE			varchar(10),
-		CONSTRAINT				pk_elementoscomponentes		PRIMARY KEY(ID_ELEMENTO_COMPONENTES)
-	);
-	GO
-	insert into ELEMENTO_COMPONENTES (CD_CODIGO, CD_ELEMENTO, DS_DETALHE, NR_QUANTIDADE)
-	values ('00', '00', '00', '00');
-
-
----------------------------------------------------------------------------
-
 --aspectos especiais
 create table ASPECTOS_ESPECIAIS
 	(
-		ID_ASPECTOS_ESPECIAIS			int							not null identity(1,1),
+		ID_ASPECTOS_ESPECIAIS				int							not null identity(1,1),
 		DS_ASPECTOS_ESPECIAIS				varchar(80),
 
 		CONSTRAINT						pk_aspectosespeciais		PRIMARY KEY(ID_ASPECTOS_ESPECIAIS)
@@ -979,6 +961,27 @@ create table INSPECOES_MANIFESTACOES
 --CD_EXTENSAO, CD_REPARO) 
 --values ('00', '00', '00', '00', '00', '00', '00', '00');
 
+
+------------------------------------------------------------------------
+
+create table ELEMENTO_COMPONENTES
+	(
+		ID_ELEMENTO_COMPONENTES			int						not null identity(1,1),
+		ID_PONTE				int  not null,	
+		ID_ELEMENTO_UFPR		int  not null,
+		DS_DETALHE				varchar(20),
+		NR_QUANTIDADE			varchar(10),
+		CONSTRAINT				pk_elementoscomponentes		PRIMARY KEY(ID_ELEMENTO_COMPONENTES),
+		CONSTRAINT				fk_elementoscomponentes_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
+		CONSTRAINT				fk_elementoscomponentes_elementosufpr	FOREIGN KEY(ID_ELEMENTO_UFPR) REFERENCES ELEMENTOS_UFPR(ID_ELEMENTO_UFPR)
+	);
+
+---	GO
+---	insert into ELEMENTO_COMPONENTES (CD_CODIGO, CD_ELEMENTO, DS_DETALHE, NR_QUANTIDADE)
+---	values ('00', '00', '00', '00');
+
+
+---------------------------------------------------------------------------
 
 
 
