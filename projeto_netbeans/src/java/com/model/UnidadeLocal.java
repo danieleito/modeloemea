@@ -49,5 +49,8 @@ public class UnidadeLocal {
         this.superintendenciaRegional = superintendenciaRegional;
     }
     
-    
+    @Override
+    public String toString() {
+        return descricao;
+    }
 }

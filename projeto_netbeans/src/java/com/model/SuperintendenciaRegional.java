@@ -49,5 +49,8 @@ public class SuperintendenciaRegional {
         this.uf = uf;
     }
     
-    
+    @Override
+    public String toString() {
+        return descricao;
+    }
 }
