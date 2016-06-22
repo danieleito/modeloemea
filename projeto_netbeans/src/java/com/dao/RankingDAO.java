@@ -55,7 +55,7 @@ public class RankingDAO {
             ponte.getIdentificacaoObraDadosBasicos().setIdentificacao(rs.getString("DS_IDENTIFICACAO_OBRA"));
             ponte.getIdentificacaoObraLocalizacao().setVia(new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")));
             ponte.getIdentificacaoObraLocalizacao().setUf(new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF")));
-            ponte.getIdentificacaoObraLocalizacao().setLocalVia(rs.getInt("DS_LOCAL_VIA"));
+            ponte.getIdentificacaoObraLocalizacao().setLocalVia(rs.getString("DS_LOCAL_VIA"));
             ranking.add(new Ranking(rs.getInt("ID_RANKING"), ponte));
         }
 
@@ -131,7 +131,7 @@ public class RankingDAO {
             ponte.getIdentificacaoObraDadosBasicos().setIdentificacao(rs.getString("DS_IDENTIFICACAO_OBRA"));
             ponte.getIdentificacaoObraLocalizacao().setVia(new Via(rs.getInt("ID_VIA"), null));
             ponte.getIdentificacaoObraLocalizacao().setUf(new Uf(rs.getInt("ID_UF"), null));
-            ponte.getIdentificacaoObraLocalizacao().setLocalVia(rs.getInt("DS_LOCAL_VIA"));
+            ponte.getIdentificacaoObraLocalizacao().setLocalVia(rs.getString("DS_LOCAL_VIA"));
             ranking = new Ranking(rs.getInt("ID_RANKING"), ponte);
         }
 

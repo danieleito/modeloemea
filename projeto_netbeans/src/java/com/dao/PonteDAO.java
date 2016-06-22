@@ -107,7 +107,7 @@ public class PonteDAO {
                             rs.getString("DS_ANO_CONSTRUCAO")), 
                     new IdentificacaoObraLocalizacao(rs.getInt("ID_IDENTIFICACAO_OBRA_LOCALIZACAO"), 
                             new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF")), 
-                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getInt("DS_LOCAL_VIA"), 
+                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getString("DS_LOCAL_VIA"), 
                             rs.getString("DS_CIDADE_MAIS_PROXIMA"), rs.getString("DS_PNV_ANO"), 
                             rs.getString("DS_PNV_VERSAO"), rs.getString("DS_PNV_CODIGO"), rs.getString("DS_PNV_ALTITUDE"), 
                             rs.getString("DS_LATITUDE_GRAU"), rs.getString("DS_LATITUDE_MINUTO"), 
@@ -163,11 +163,13 @@ public class PonteDAO {
                 + "D.DS_DESCRICAO_VAOS, P.ID_ROTAS_ALTERNATIVAS, RA.DS_IDENTIFICACAO, RA.DS_ROTA_ALTERNATIVA, RA.DS_ACRESCIMO_KM, ";
         query += "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = P.ID_PONTE) as DATA, ";
         query += "P.DS_INDICE_PERFORMANCE_RELATIVO ";
+        
         query += "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, IDENTIFICACAO_OBRA_LOCALIZACAO L,  ";
         query += "IDENTIFICACAO_OBRA_RESPONSAVEIS R, IDENTIFICACAO_OBRA_INSPECAO I, UF U, VIA V, SUPERINTENDENCIA_REGIONAL SR,  ";
         query += "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT,  ";
         query += "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
                 + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA ";
+        
         query += "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS  ";
         query += "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO  ";
         query += "AND P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS = R.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS  ";
@@ -211,7 +213,7 @@ public class PonteDAO {
                             new TremTipo(rs.getInt("ID_TREM_TIPO"), rs.getString("DS_TREM_TIPO")), 
                             rs.getString("DS_ANO_CONSTRUCAO")), 
                     new IdentificacaoObraLocalizacao(rs.getInt("ID_IDENTIFICACAO_OBRA_LOCALIZACAO"), uf, 
-                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getInt("DS_LOCAL_VIA"), 
+                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getString("DS_LOCAL_VIA"), 
                             rs.getString("DS_CIDADE_MAIS_PROXIMA"), rs.getString("DS_PNV_ANO"), 
                             rs.getString("DS_PNV_VERSAO"), rs.getString("DS_PNV_CODIGO"), rs.getString("DS_PNV_ALTITUDE"), 
                             rs.getString("DS_LATITUDE_GRAU"), rs.getString("DS_LATITUDE_MINUTO"), 
@@ -273,6 +275,7 @@ public class PonteDAO {
                 + "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, "
                 + "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
                 + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA "
+                
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
                 + "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
                 + "AND P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS = R.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS "
@@ -342,7 +345,7 @@ public class PonteDAO {
                             rs.getString("DS_ANO_CONSTRUCAO")), 
                     new IdentificacaoObraLocalizacao(rs.getInt("ID_IDENTIFICACAO_OBRA_LOCALIZACAO"), 
                             new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF")), 
-                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getInt("DS_LOCAL_VIA"), 
+                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getString("DS_LOCAL_VIA"), 
                             rs.getString("DS_CIDADE_MAIS_PROXIMA"), rs.getString("DS_PNV_ANO"), 
                             rs.getString("DS_PNV_VERSAO"), rs.getString("DS_PNV_CODIGO"), rs.getString("DS_PNV_ALTITUDE"), 
                             rs.getString("DS_LATITUDE_GRAU"), rs.getString("DS_LATITUDE_MINUTO"), 
