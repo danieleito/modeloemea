@@ -35,6 +35,7 @@ import java.util.ArrayList;
  * @author Daniele Harumi Ito
  */
 public class PonteDAO {
+        
     public ArrayList<Ponte> buscar() throws SQLException {
         String query = "select P.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, DB.CD_CODIGO, DB.CD_CODIGO_INTEGRACAO, "
                 + "DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO, "
@@ -107,7 +108,7 @@ public class PonteDAO {
                             rs.getString("DS_ANO_CONSTRUCAO")), 
                     new IdentificacaoObraLocalizacao(rs.getInt("ID_IDENTIFICACAO_OBRA_LOCALIZACAO"), 
                             new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF")), 
-                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getString("DS_LOCAL_VIA"), 
+                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getDouble("DS_LOCAL_VIA"), 
                             rs.getString("DS_CIDADE_MAIS_PROXIMA"), rs.getString("DS_PNV_ANO"), 
                             rs.getString("DS_PNV_VERSAO"), rs.getString("DS_PNV_CODIGO"), rs.getString("DS_PNV_ALTITUDE"), 
                             rs.getString("DS_LATITUDE_GRAU"), rs.getString("DS_LATITUDE_MINUTO"), 
@@ -213,7 +214,7 @@ public class PonteDAO {
                             new TremTipo(rs.getInt("ID_TREM_TIPO"), rs.getString("DS_TREM_TIPO")), 
                             rs.getString("DS_ANO_CONSTRUCAO")), 
                     new IdentificacaoObraLocalizacao(rs.getInt("ID_IDENTIFICACAO_OBRA_LOCALIZACAO"), uf, 
-                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getString("DS_LOCAL_VIA"), 
+                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getDouble("DS_LOCAL_VIA"), 
                             rs.getString("DS_CIDADE_MAIS_PROXIMA"), rs.getString("DS_PNV_ANO"), 
                             rs.getString("DS_PNV_VERSAO"), rs.getString("DS_PNV_CODIGO"), rs.getString("DS_PNV_ALTITUDE"), 
                             rs.getString("DS_LATITUDE_GRAU"), rs.getString("DS_LATITUDE_MINUTO"), 
@@ -247,7 +248,7 @@ public class PonteDAO {
     }
     
     public ArrayList<Ponte> buscar2(String codigo, String identificacao, int uf, int via, 
-            int kmInicial, int kmFinal, int superintendenciaRegional, int unidadeLocal) throws SQLException {
+            double kmInicial, double kmFinal, int superintendenciaRegional, int unidadeLocal) throws SQLException {
         
         String query = "select P.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, DB.CD_CODIGO, DB.CD_CODIGO_INTEGRACAO, "
                 + "DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO, "
@@ -345,7 +346,7 @@ public class PonteDAO {
                             rs.getString("DS_ANO_CONSTRUCAO")), 
                     new IdentificacaoObraLocalizacao(rs.getInt("ID_IDENTIFICACAO_OBRA_LOCALIZACAO"), 
                             new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF")), 
-                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getString("DS_LOCAL_VIA"), 
+                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getDouble("DS_LOCAL_VIA"), 
                             rs.getString("DS_CIDADE_MAIS_PROXIMA"), rs.getString("DS_PNV_ANO"), 
                             rs.getString("DS_PNV_VERSAO"), rs.getString("DS_PNV_CODIGO"), rs.getString("DS_PNV_ALTITUDE"), 
                             rs.getString("DS_LATITUDE_GRAU"), rs.getString("DS_LATITUDE_MINUTO"), 

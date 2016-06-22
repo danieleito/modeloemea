@@ -128,8 +128,8 @@ public class PonteBean extends ComumBean implements Serializable {
         try {
             pontes = database.buscar2(filtroCodigo, filtroIdentificacao,
                     filtroIdUf, filtroIdVia, 
-                    filtroKmInicial.isEmpty() ? 0 :Integer.parseInt(filtroKmInicial), 
-                    filtroKmFinal.isEmpty() ? 0 : Integer.parseInt(filtroKmFinal), 
+                    filtroKmInicial.isEmpty() ? 0 :Double.parseDouble(filtroKmInicial.replace(",", ".")), 
+                    filtroKmFinal.isEmpty() ? 0 : Double.parseDouble(filtroKmFinal.replace(",", ".")), 
                     filtroIdSuperintendencia, filtroIdUnidadeLocal);
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -142,8 +142,8 @@ public class PonteBean extends ComumBean implements Serializable {
         try {
             pontes = database.buscar2(filtroCodigo, filtroIdentificacao,
                     filtroIdUf, filtroIdVia, 
-                    filtroKmInicial.isEmpty() ? 0 :Integer.parseInt(filtroKmInicial), 
-                    filtroKmFinal.isEmpty() ? 0 : Integer.parseInt(filtroKmFinal), 
+                    filtroKmInicial.isEmpty() ? 0 :Double.parseDouble(filtroKmInicial.replace(",", ".")),
+                    filtroKmFinal.isEmpty() ? 0 : Double.parseDouble(filtroKmFinal.replace(",", ".")), 
                     filtroIdSuperintendencia, filtroIdUnidadeLocal);
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -156,8 +156,8 @@ public class PonteBean extends ComumBean implements Serializable {
         try {
             pontes = database.buscar2(filtroCodigo, filtroIdentificacao,
                     filtroIdUf, filtroIdVia, 
-                    filtroKmInicial.isEmpty() ? 0 :Integer.parseInt(filtroKmInicial), 
-                    filtroKmFinal.isEmpty() ? 0 : Integer.parseInt(filtroKmFinal), 
+                    filtroKmInicial.isEmpty() ? 0 :Double.parseDouble(filtroKmInicial.replace(",", ".")), 
+                    filtroKmFinal.isEmpty() ? 0 : Double.parseDouble(filtroKmFinal.replace(",", ".")), 
                     filtroIdSuperintendencia, filtroIdUnidadeLocal);
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);

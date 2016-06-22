@@ -62,6 +62,9 @@ public class SimulacaoBean extends ComumBean {
                     return;
                 }
             }
+            
+            simulacao.setUsuario(usuarioLogado);
+            simulacao.setData(new Date());
 //            else {
                 database.inserir(simulacao);
                 simulacoes = database.buscar();
@@ -72,7 +75,7 @@ public class SimulacaoBean extends ComumBean {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao cadastrar simulação: " + ex.getMessage());
         }
-        redirecionar("/View/Compartilhado/simulacao.jsf");
+        redirecionar("/View/Compartilhado/Simulacao/listar.jsf");
     }
 
     public void visualizar(int idSimulacao) {

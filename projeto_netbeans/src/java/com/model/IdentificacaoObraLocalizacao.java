@@ -13,7 +13,7 @@ public class IdentificacaoObraLocalizacao {
     private int id;
     private Uf uf;
     private Via via;
-    private String localVia;
+    private double localVia;
     private String cidadeMaisProxima;
     private String pnvAno;
     private String pnsVersao;
@@ -29,7 +29,7 @@ public class IdentificacaoObraLocalizacao {
         via = new Via();
     }
 
-    public IdentificacaoObraLocalizacao(int id, Uf uf, Via via, String localVia, String cidadeMaisProxima, String pnvAno, String pnsVersao, String pnvCodigo, String pnvAltitude, String latitudeGrau, String latitudeMinuto, String longitudeGrau, String longitudeMinuto) {
+    public IdentificacaoObraLocalizacao(int id, Uf uf, Via via, double localVia, String cidadeMaisProxima, String pnvAno, String pnsVersao, String pnvCodigo, String pnvAltitude, String latitudeGrau, String latitudeMinuto, String longitudeGrau, String longitudeMinuto) {
         this.id = id;
         this.uf = uf;
         this.via = via;
@@ -45,7 +45,7 @@ public class IdentificacaoObraLocalizacao {
         this.longitudeMinuto = longitudeMinuto;
     }
 
-    public IdentificacaoObraLocalizacao(Uf uf, Via via, String localVia, String cidadeMaisProxima, String pnvAno, String pnsVersao, String pnvCodigo, String pnvAltitude, String latitudeGrau, String latitudeMinuto, String longitudeGrau, String longitudeMinuto) {
+    public IdentificacaoObraLocalizacao(Uf uf, Via via, double localVia, String cidadeMaisProxima, String pnvAno, String pnsVersao, String pnvCodigo, String pnvAltitude, String latitudeGrau, String latitudeMinuto, String longitudeGrau, String longitudeMinuto) {
         this.uf = uf;
         this.via = via;
         this.localVia = localVia;
@@ -84,11 +84,11 @@ public class IdentificacaoObraLocalizacao {
         this.via = via;
     }
 
-    public String getLocalVia() {
+    public double getLocalVia() {
         return localVia;
     }
 
-    public void setLocalVia(String localVia) {
+    public void setLocalVia(double localVia) {
         this.localVia = localVia;
     }
 
