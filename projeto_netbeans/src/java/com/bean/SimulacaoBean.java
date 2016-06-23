@@ -5,9 +5,7 @@
  */
 package com.bean;
 
-import com.dao.RankingDAO;
 import com.dao.SimulacaoDAO;
-import com.model.Ranking;
 import com.model.Simulacao;
 import java.sql.SQLException;
 import java.util.ArrayList;

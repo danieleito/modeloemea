@@ -198,13 +198,13 @@ and open the template in the editor.
                         <h:outputText value="3. Elementos Componentes" style="font-weight: bold" />
                         <hr/>
                         <h:panelGrid columns="2" cellpadding="10">
-                            <p:dataTable var="ele" value="#{ponteBean.model.elementosUfpr}" >
+                            <p:dataTable var="ele" value="#{ponteBean.model.elementosComponentes}" >
                                 <p:column style="text-align: center" >
-                                    <h:outputText value="#{ele.codigo}" />
+                                    <h:outputText value="#{ele.elementoUfpr.codigo}" />
                                 </p:column>
 
                                 <p:column style="text-align: center" >
-                                    <h:outputText value="#{ele.descricao}" />
+                                    <h:outputText value="#{ele.elementoUfpr.descricao}" />
                                 </p:column>
 
                             </p:dataTable>
@@ -226,7 +226,7 @@ and open the template in the editor.
                                 </p:column>
 
                                 <p:column style="text-align: center" >
-                                    <h:outputText value="#{asp.descricao}" />
+                                    <h:outputText value="" />
                                 </p:column>
                             </p:dataTable>
                         </h:panelGrid>

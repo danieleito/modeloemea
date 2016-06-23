@@ -7,9 +7,11 @@ package com.dao;
 
 import com.model.ArquivoAnexo;
 import com.model.AspectoEspecial;
+import com.model.CadastroAspectoEspecial;
 import com.model.CaracteristicasFuncionaisCaracteristicas;
 import com.model.CaracteristicasFuncionaisDimensoes;
 import com.model.DeficienciaFuncional;
+import com.model.ElementoComponente;
 import com.model.ElementoUfpr;
 import com.model.Ponte;
 import com.model.IdentificacaoObraDadosBasicos;
@@ -142,7 +144,7 @@ public class PonteDAO {
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
             ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
-            ponte.setElementosUfpr(buscarElementosUfpr(ponte.getId()));
+            ponte.setElementosComponentes(buscarElementosComponentes(ponte.getId()));
             pontes.add(ponte);
         }
         conexao.closeConnection();
@@ -250,7 +252,7 @@ public class PonteDAO {
                             rs.getString("DS_ACRESCIMO_KM")));
             ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
-            ponte.setElementosUfpr(buscarElementosUfpr(ponte.getId()));
+            ponte.setElementosComponentes(buscarElementosComponentes(ponte.getId()));
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
         }
         conexao.closeConnection();
@@ -386,7 +388,7 @@ public class PonteDAO {
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
             ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
-            ponte.setElementosUfpr(buscarElementosUfpr(ponte.getId()));
+            ponte.setElementosComponentes(buscarElementosComponentes(ponte.getId()));
             
             pontes.add(ponte);
         }
@@ -420,10 +422,10 @@ public class PonteDAO {
         return deficienciasFuncionais;
     }
     
-    private ArrayList<AspectoEspecial> buscarAspectosEspeciais(int idPonte) throws SQLException {
-        String query = "select ID_ASPECTOS_ESPECIAIS, DS_ASPECTOS_ESPECIAIS, "
-                + "ID_PONTE "
-                + "from ASPECTOS_ESPECIAIS "
+    private ArrayList<CadastroAspectoEspecial> buscarAspectosEspeciais(int idPonte) throws SQLException {
+        String query = "select ID_CADASTRO_ASPECTOS_ESPECIAIS, ID_PONTE, "
+                + "ID_ASPECTOS_ESPECIAIS "
+                + "from CADASTRO_ASPECTOS_ESPECIAIS "
                 + "where ID_PONTE = " + idPonte;
         
         Conexao conexao = new Conexao();
@@ -431,20 +433,21 @@ public class PonteDAO {
         Statement stmt;
         stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
-        ArrayList<AspectoEspecial> aspectosEspeciais = new ArrayList<>();
+        ArrayList<CadastroAspectoEspecial> aspectosEspeciais = new ArrayList<>();
         Ponte ponte;
         while (rs.next()) {
-            aspectosEspeciais.add(new AspectoEspecial(rs.getInt("ID_ASPECTOS_ESPECIAIS"),
-                    rs.getString("DS_ASPECTOS_ESPECIAIS")));
+            aspectosEspeciais.add(new CadastroAspectoEspecial(rs.getInt("ID_CADASTRO_ASPECTOS_ESPECIAIS"),
+                    new AspectoEspecial(rs.getInt("ID_ASPECTOS_ESPECIAIS"), 
+                            rs.getString("DS_ASPECTOS_ESPECIAIS"))));
         }
         
         return aspectosEspeciais;
     }
 
-    private ArrayList<ElementoUfpr> buscarElementosUfpr(int idPonte) throws SQLException {
-        String query = "select ID_ELEMENTO_UFPR, CD_ELEMENTO, "
-                + "DS_ELEMENTO, DS_CAPA1, ID_PONTE "
-                + "from ELEMENTOS_UFPR "
+    private ArrayList<ElementoComponente> buscarElementosComponentes(int idPonte) throws SQLException {
+        String query = "select ID_ELEMENTO_COMPONENTES, ID_PONTE, "
+                + "ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE "
+                + "from ELEMENTO_COMPONENTES "
                 + "where ID_PONTE = " + idPonte;
         
         Conexao conexao = new Conexao();
@@ -452,14 +455,17 @@ public class PonteDAO {
         Statement stmt;
         stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
-        ArrayList<ElementoUfpr> elementosUfpr = new ArrayList<>();
+        ArrayList<ElementoComponente> elementosComponentes = new ArrayList<>();
         Ponte ponte;
         while (rs.next()) {
-            elementosUfpr.add(new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), 
-                    rs.getString("CD_ELEMENTO"), rs.getString("DS_ELEMENTO"), rs.getString("DS_CAPA1")));  
+            elementosComponentes.add(new ElementoComponente(rs.getInt("ID_ELEMENTO_COMPONENTES"), 
+                    new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), rs.getString("CD_ELEMENTO"), 
+                    rs.getString("DS_ELEMENTO"), rs.getString("DS_CAPA1")), 
+                    rs.getString("DS_DETALHE"), rs.getString("NR_QUANTIDADE"))); 
+                    
         }
         
-        return elementosUfpr;
+        return elementosComponentes;
     }
     
     private ArrayList<ArquivoAnexo> buscarArquivosAnexos(int idPonte) throws SQLException {

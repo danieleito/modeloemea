@@ -23,8 +23,8 @@ public class Ponte {
     private CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes;
     private RotasAlternativas rotasAlternativas;
     private ArrayList<DeficienciaFuncional> deficienciasFuncionais;    
-    private ArrayList<AspectoEspecial> aspectosEspeciais;
-    private ArrayList<ElementoUfpr> elementosUfpr;
+    private ArrayList<CadastroAspectoEspecial> aspectosEspeciais;
+    private ArrayList<ElementoComponente> elementosComponentes;
 //    private ArrayList<ArquivoAnexo> arquivosAnexos;
     
     //para exibir na tela que lista o ranking
@@ -40,7 +40,7 @@ public class Ponte {
         rotasAlternativas = new RotasAlternativas();
         deficienciasFuncionais = new ArrayList<>();
         aspectosEspeciais = new ArrayList<>();
-        elementosUfpr = new ArrayList<>();
+        elementosComponentes = new ArrayList<>();
     }
 
     public Ponte(int id, String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, 
@@ -160,22 +160,22 @@ public class Ponte {
         this.deficienciasFuncionais = deficienciasFuncionais;
     }
 
-    public ArrayList<AspectoEspecial> getAspectosEspeciais() {
+    public ArrayList<CadastroAspectoEspecial> getAspectosEspeciais() {
         return aspectosEspeciais;
     }
 
-    public void setAspectosEspeciais(ArrayList<AspectoEspecial> aspectosEspeciais) {
+    public void setAspectosEspeciais(ArrayList<CadastroAspectoEspecial> aspectosEspeciais) {
         this.aspectosEspeciais = aspectosEspeciais;
+    }   
+
+    public ArrayList<ElementoComponente> getElementosComponentes() {
+        return elementosComponentes;
     }
 
-    public ArrayList<ElementoUfpr> getElementosUfpr() {
-        return elementosUfpr;
+    public void setElementosComponentes(ArrayList<ElementoComponente> elementosComponentes) {
+        this.elementosComponentes = elementosComponentes;
     }
-
-    public void setElementosUfpr(ArrayList<ElementoUfpr> elementosUfpr) {
-        this.elementosUfpr = elementosUfpr;
-    }
-
+    
 //    public ArrayList<ArquivoAnexo> getArquivosAnexos() {
 //        return arquivosAnexos;
 //    }

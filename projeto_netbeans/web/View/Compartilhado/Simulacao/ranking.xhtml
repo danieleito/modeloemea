@@ -39,7 +39,7 @@ and open the template in the editor.
                     <p:commandButton value="Consultar" action="#{ponteBean.consultarGet()}" />
 
                     <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="15" reflow="true" >
-                        <p:column headerText="Data da última inspeção" style="width: 150px; text-align: center" >
+                        <p:column headerText="Data da última inspeção" style="width: 100px; text-align: center" >
                             <h:outputText value="#{r.ponte.dataUltimaInspecao}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:outputText>
@@ -65,7 +65,7 @@ and open the template in the editor.
                             <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.localVia}" />
                         </p:column>
 
-                        <p:column headerText="Ind. performance relativo" style="width: 150px; text-align: center" >
+                        <p:column headerText="Ind. performance relativo" style="width: 100px; text-align: center" >
                             <h:outputText value="#{r.ponte.indicePerformanceRelativo}" />
                         </p:column>
 
