@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="/View/Compartilhado/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:breadCrumb>
+                        <p:menuitem value="Categories" url="#" />
+                        <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
+                        <p:menuitem value="Cadastro Obras de Arte Especiais" url="/View/Compartilhado/OAE/buscarOAEInspecao.jsf" />
+
+                    </p:breadCrumb>
+
+                    <h2>Obras de Arte Especiais</h2>
+                    
+                    <!--                    <hr style="background-color: #05b; background-size: 2px;" />-->
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Código" class="col-md-5" />
+                                </td>
+                                <td>
+                                    <p:inputText value="#{ponteBean.filtroCodigo}" class="col-md-2" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Identificação" class="col-md-5" />
+                                </td>
+                                <td>
+                                    <p:inputText value="#{ponteBean.filtroIdentificacao}" class="col-md-5" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="UF" class="col-md-3" />
+                                </td>
+                                <td>
+                                    <p:selectOneMenu id="uf" value="#{ponteBean.filtroIdUf}" style="width:150px">
+                                        <f:selectItem itemLabel="Selecione o UF" itemValue="0"/>
+                                        <f:selectItems value="#{ponteBean.ufs}" var="u" itemValue="#{u.id}"/>
+                                    </p:selectOneMenu>  
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Via" class="col-md-3" />
+                                </td>
+                                <td>
+                                    <p:selectOneMenu id="via" value="#{ponteBean.filtroIdVia}" style="width: 150px">
+                                        <f:selectItem itemLabel="Selecione a Via" itemValue="0" />
+                                        <f:selectItems value="#{ponteBean.vias}" var="v" itemValue="#{v.id}" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Local na Via (km)" class="col-md-5" />
+                                </td>
+                                <td>
+                                    <div>
+                                        <div style="float: left; margin: 0; padding: 0; width: 110px" >
+                                            <p:outputLabel value="do km "  />
+                                            <p:inputText value="#{ponteBean.filtroKmInicial}" style="width: 50px; margin-left: 5px" />
+                                        </div>
+                                        <div style="float: left; margin: 0; padding: 0; width: 110px" >
+                                            <p:outputLabel value=" ao km " />
+                                            <p:inputText value="#{ponteBean.filtroKmFinal}" style="width: 50px; margin-left: 5px" />
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Superintendência Regional" class="col-md-3" />
+                                </td>
+                                <td>
+                                    <p:selectOneMenu id="superintendenciaRegional" value="#{ponteBean.filtroIdSuperintendencia}" style="width: 620px">
+                                        <f:selectItem itemLabel="Selecione a superintendência regional" itemValue="0" />
+                                        <f:selectItems value="#{ponteBean.superintendenciasRegionais}" var="s" itemValue="#{s.id}" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="th">
+                                    <p:outputLabel value="Unidade Local" class="col-md-3" />
+                                </td>
+                                <td>
+                                    <p:selectOneMenu id="unidadeLocal" value="#{ponteBean.filtroIdUnidadeLocal}" style="width: 420px">
+                                        <f:selectItem itemLabel="Selecione a unidade local" itemValue="0" />
+                                        <f:selectItems value="#{ponteBean.unidadesLocais}" var="u" itemValue="#{u.id}" />
+                                    </p:selectOneMenu>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p:commandButton action='#{ponteBean.consultarCadastroPost()}' value="Consultar" />
+                    <p:commandButton action="#{ponteBean.novoRegistro()}" value="Novo registro" />
+                    <p:commandButton action="#{ponteBean.cancelar()}" value="Cancelar" />
+
+
+                    <p:dataTable var="p" value="#{ponteBean.pontes}" paginator="true" rows="15" >                      
+                        <p:column headerText="Código" style="text-align: center" >
+                            <h:outputText value="#{p.identificacaoObraDadosBasicos.codigo}" />
+                        </p:column>
+
+                        <p:column headerText="Identificação da obra" style="text-align: center" >
+                            <h:outputText value="#{p.identificacaoObraDadosBasicos.identificacao}" />
+                        </p:column>
+
+                        <p:column headerText="Via" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{p.identificacaoObraLocalizacao.via.via}" />
+                        </p:column>
+
+                        <p:column headerText="UF" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{p.identificacaoObraLocalizacao.uf.uf}" />
+                        </p:column>
+
+                        <p:column headerText="Local na via" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{p.identificacaoObraLocalizacao.localVia}" />
+                        </p:column>
+
+                        <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.cadastrar()}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
