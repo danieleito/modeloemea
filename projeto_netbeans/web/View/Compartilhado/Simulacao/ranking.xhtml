@@ -37,16 +37,15 @@ and open the template in the editor.
                     <br/>
                     
                     <p:commandButton value="Consultar" action="#{ponteBean.consultarGet()}" />
-                    <p:commandButton style="margin: 0 0 20px 20px;" value="Ranquear" action="#{ranking}" />
 
-                    <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="8" reflow="true" >
+                    <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="15" reflow="true" >
                         <p:column headerText="Data da última inspeção" style="width: 150px; text-align: center" >
                             <h:outputText value="#{r.ponte.dataUltimaInspecao}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:outputText>
                         </p:column>
                         
-                        <p:column headerText="Código" style="text-align: center" >
+                        <p:column headerText="Código" style="width: 100px; text-align: center" >
                             <h:outputText value="#{r.ponte.identificacaoObraDadosBasicos.codigo}" />
                         </p:column>
 
@@ -62,7 +61,7 @@ and open the template in the editor.
                             <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.uf.uf}" />
                         </p:column>
 
-                        <p:column headerText="Local na via" style="width: 100px; text-align: center" >
+                        <p:column headerText="Local na via" style="width: 80px; text-align: center" >
                             <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.localVia}" />
                         </p:column>
 

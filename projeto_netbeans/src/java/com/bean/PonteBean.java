@@ -166,6 +166,15 @@ public class PonteBean extends ComumBean implements Serializable {
         redirecionar("/View/Compartilhado/OAE/buscarOAEInspecao.jsf");
     }
     
+    public void novoRegistro() {
+        try {
+            redirecionar("/View/Compartilhado/OAE/Inspecao/inspecao.jsf");
+        } catch (Exception ex) {
+            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro. " + ex.getMessage());
+        }
+    }
+    
     public void limparFiltros() {
         filtroCodigo = "";
         filtroIdentificacao = "";

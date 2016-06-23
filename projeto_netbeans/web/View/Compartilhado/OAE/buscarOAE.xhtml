@@ -120,7 +120,7 @@ and open the template in the editor.
                     <p:commandButton action='#{ponteBean.consultarPost()}' value="Consultar" />
                     <p:commandButton action="#{ponteBean.cancelar()}" value="Cancelar" />
 
-                    <p:dataTable id="tabela" var="p" value="#{ponteBean.pontes}" paginator="true" rows="8" >     
+                    <p:dataTable id="tabela" var="p" value="#{ponteBean.pontes}" paginator="true" rows="15" >     
                         <!--styleClass="mySelector" style="display: none"-->
                         <p:column headerText="Código" style="text-align: center" >
                             <h:outputText value="#{p.identificacaoObraDadosBasicos.codigo}" />
@@ -143,7 +143,7 @@ and open the template in the editor.
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.visualizar(p.id)}" />
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
                             <p:commandButton icon="ui-icon-check" title="Carregar" action="#{ponteBean.carregar(p.id, simulacaoBean.simulacao.id)}" />
                         </p:column>
                     </p:dataTable>

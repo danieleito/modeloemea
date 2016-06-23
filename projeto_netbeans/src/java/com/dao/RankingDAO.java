@@ -23,11 +23,10 @@ import java.util.ArrayList;
 public class RankingDAO {
     public ArrayList<Ranking> buscar() throws SQLException {
         String query = "SELECT R.ID_RANKING, R.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, "
-                + "DB.CD_CODIGO, DB.DS_IDENTIFICACAO_OBRA, P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, "
+                + "DB.CD_CODIGO, P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, "
                 + "L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, L.DS_LOCAL_VIA, "
                 + "(select max(DT_DATA) from INSPECAO I, PONTE P where I.ID_PONTE = P.ID_PONTE) as DATA, "
-                + "R.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, R.CS_CLASSIFICACAO, "
-                + "P.DS_INDICE_PERFORMANCE_RELATIVO "
+                + "R.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, P.DS_INDICE_PERFORMANCE_RELATIVO "
                 + "FROM RANKING R, PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, "
                 + "IDENTIFICACAO_OBRA_LOCALIZACAO L, VIA V, UF U, SIMULACAO S "
                 + "WHERE R.ID_PONTE = P.ID_PONTE "
@@ -36,7 +35,7 @@ public class RankingDAO {
                 + "AND L.ID_VIA = V.ID_VIA "
                 + "AND L.ID_UF = U.ID_UF "                
                 + "AND R.ID_SIMULACAO = S.ID_SIMULACAO "
-                + "ORDER BY P.DS_INDICE_PERFORMANCE_RELATIVO; ";
+                + "ORDER BY P.DS_INDICE_PERFORMANCE_RELATIVO DESC; ";
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -114,7 +113,7 @@ public class RankingDAO {
                 + "AND L.ID_UF = U.ID_UF "                
                 + "AND R.ID_SIMULACAO = S.ID_SIMULACAO "
                 + "AND R.ID_RANKING = " + id + " " 
-                + "ORDER BY P.DS_INDICE_PERFORMANCE_RELATIVO; ";
+                + "ORDER BY P.DS_INDICE_PERFORMANCE_RELATIVO DESC; ";
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();

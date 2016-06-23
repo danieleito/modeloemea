@@ -5,6 +5,7 @@
  */
 package com.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -21,6 +22,10 @@ public class Ponte {
     private CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas;
     private CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes;
     private RotasAlternativas rotasAlternativas;
+    private ArrayList<DeficienciaFuncional> deficienciasFuncionais;    
+    private ArrayList<AspectoEspecial> aspectosEspeciais;
+    private ArrayList<ElementoUfpr> elementosUfpr;
+//    private ArrayList<ArquivoAnexo> arquivosAnexos;
     
     //para exibir na tela que lista o ranking
     private Date dataUltimaInspecao;
@@ -33,6 +38,9 @@ public class Ponte {
         caracteristicasFuncionaisCaracteristicas = new CaracteristicasFuncionaisCaracteristicas();
         caracteristicasFuncionaisDimensoes = new CaracteristicasFuncionaisDimensoes();
         rotasAlternativas = new RotasAlternativas();
+        deficienciasFuncionais = new ArrayList<>();
+        aspectosEspeciais = new ArrayList<>();
+        elementosUfpr = new ArrayList<>();
     }
 
     public Ponte(int id, String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, 
@@ -143,4 +151,36 @@ public class Ponte {
     public void setRotasAlternativas(RotasAlternativas rotasAlternativas) {
         this.rotasAlternativas = rotasAlternativas;
     }
+
+    public ArrayList<DeficienciaFuncional> getDeficienciasFuncionais() {
+        return deficienciasFuncionais;
+    }
+
+    public void setDeficienciasFuncionais(ArrayList<DeficienciaFuncional> deficienciasFuncionais) {
+        this.deficienciasFuncionais = deficienciasFuncionais;
+    }
+
+    public ArrayList<AspectoEspecial> getAspectosEspeciais() {
+        return aspectosEspeciais;
+    }
+
+    public void setAspectosEspeciais(ArrayList<AspectoEspecial> aspectosEspeciais) {
+        this.aspectosEspeciais = aspectosEspeciais;
+    }
+
+    public ArrayList<ElementoUfpr> getElementosUfpr() {
+        return elementosUfpr;
+    }
+
+    public void setElementosUfpr(ArrayList<ElementoUfpr> elementosUfpr) {
+        this.elementosUfpr = elementosUfpr;
+    }
+
+//    public ArrayList<ArquivoAnexo> getArquivosAnexos() {
+//        return arquivosAnexos;
+//    }
+//
+//    public void setArquivosAnexos(ArrayList<ArquivoAnexo> arquivosAnexos) {
+//        this.arquivosAnexos = arquivosAnexos;
+//    }
 }

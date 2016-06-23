@@ -8,7 +8,7 @@ create table TIPO_USUARIO
 	(
 		ID_TIPO_USUARIO		INT				not null identity(1,1),
 		DS_TIPO				varchar(20)		not null,
-		CONSTRAINT			pk_tipousuario	PRIMARY KEY(ID_TIPO_USUARIO)
+		CONSTRAINT			pk_tipausuario	PRIMARY KEY(ID_TIPO_USUARIO)
 	);
 GO
 insert into TIPO_USUARIO (DS_TIPO) values ('Administrador');
@@ -189,7 +189,7 @@ create table SIMULACAO
 		ID_SIMULACAO	int						not null identity(1,1),
 		DT_DATA			date					not null,
 		ID_USUARIO		int						not null,
-		NM_SIMULACAO	varchar(20)				not null,
+		NM_SIMULACAO	varchar(100)			not null,
 		CONSTRAINT		pk_simulacao			PRIMARY KEY(ID_SIMULACAO),
 		CONSTRAINT		fk_simulacao_usuario	FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO(ID_USUARIO)
 	);
@@ -399,107 +399,6 @@ insert into TIPO_ADMINISTRACAO	 (DS_TIPO_ADMINISTRACAO) values ('Administração D
 insert into TIPO_ADMINISTRACAO	 (DS_TIPO_ADMINISTRACAO) values ('Administração Indireta');
 
 
-create table ELEMENTOS_UFPR
-	(
-		ID_ELEMENTO_UFPR		int						not null identity(1,1),
-		CD_ELEMENTO				int,
-		DS_ELEMENTO				varchar(100),
-		DS_CAPA1				varchar(10)				not null,
-		CONSTRAINT				pk_elementosufpr		PRIMARY KEY(ID_ELEMENTO_UFPR)
-	);
-GO
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '1', 'Laje de concreto armado','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '2', 'Laje de Concreto Protendido','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '3', 'Laje Metálica Ortotrópica','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '4', 'Laje Metálica de Chapa Corrugada','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '7', 'Laje em Pranchão de Madeira','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '5', 'Ponte em Laje de Concreto Armado','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '6', 'Ponte em Laje de Concreto Protendido','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '204', 'Travessa de apoio de concreto armado','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '205', 'Travessa de apoio de concreto protendido','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '104', 'Viga T ou I de concreto armado','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '105', 'Viga T ou I de concreto protendido','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '106', 'Viga I metálica','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '101', 'Viga Caixão de Concreto Armado','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '102', 'Viga Caixão de Concreto Protendido','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '103', 'Viga Caixão Metálica','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '206', 'Viga de contraventamento de pilar de concreto armado','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '109', 'Transversina Portante de Concreto Armado','0,3');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '110', 'Transversina Portante de Concreto Protendido','0,3');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '111', 'Transversina Portante Metálica','0,3');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '112', 'Transversina de Ligação de Concreto Armado','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '113', 'Transversina de Ligação de Concreto Protendido','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '114', 'Transversina de Ligação Metálica','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '202', 'Pilar em Colunas de Concreto Armado','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '201', 'Pilar Parede de Concreto Armado','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '203', 'Pilar Vazado de Concreto Armado','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '200', 'Pilar Parede de Alvenaria de Pedra','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '207', 'Parede de contraventamento de pilar de concreto armado','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '301', 'Aparelho de Apoio de Neoprene Fretado','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '302', 'Aparelho de Apoio de Teflon','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '303', 'Aparelho de Apoio de Rolo Metálico','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '304', 'Aparelho de Apoio de Placa de Chumbo','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '305', 'Aparelho de Apoio Pot Bearing Fixo','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '306', 'Aparelho de Apoio Pot Bearing Directional','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '307', 'Aparelho de Apoio Freyssinet','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '308', 'Aparelho de Apoio Pêndulo','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '309', 'Articulação Metálica','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '107', 'Dente Gerber de Concreto Armado','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '108', 'Dente Gerber de concreto armado com protensão','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '118', 'Dente Gerber Metálico','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '252', 'Encontro de alvenaria de pedra','0,1');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '251', 'Encontro - Parede frontal portante de concreto armado','0,1');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '253', 'Encontro - Parede Lateral e Vigas de Concreto Armado','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '256', 'Encontro - Paredes e Vigas Secundárias de Concreto','0,1');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '254', 'Encontro - Laje de Concreto Armado','0,1');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '255', 'Encontro - Cortina de Concreto Armado','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '816', 'Muro de Arrimo de Concreto','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '818', 'Muro de Terra Armada','0,3');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '817', 'Revestimento de talude em concreto','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '504', 'Estaca de Concreto Armado','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '505', 'Estaca Metálica','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '506', 'Estaca de Madeira','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '501', 'Bloco ou Sapata de concreto armado','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '502', 'Tubulão ou estacão de concreto armado','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '503', 'Camisa Metálica de Revestimento para Estaca','0,3');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '813', 'Junta elastomérica de dilatação','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '815', 'Junta metálica de dilatação','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '801', 'Pavimento Asfáltico','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '802', 'Pavimento de Concreto','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '808', 'Calçada para pedestres de concreto armado','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '809', 'Calçada para pedestres metálica','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '803', 'Barreira new jersey','0,1');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '805', 'Guarda rodas qualquer','0,1');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '806', 'Guarda Corpo de Concreto Armado','0,1');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '807', 'Guarda Corpo Metálico','0,1');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '703', 'Reforço viga I - Encamisamento de viga','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '704', 'Reforço viga II - Armadura principal passiva','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '705', 'Reforço viga III - Cabo de protensão externo','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '706', 'Reforço viga IV - Bloqueio de articulação Gerber','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '701', 'Reforço laje I - Sobrelaje de concreto armado','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '702', 'Reforço de Laje II - Infradorso laje em Concreto Armado','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '707', 'Reforço de pilar - Encamisamento de pilar','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '708', 'Reforço estaca - Encamisamento de trecho livre','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '811', 'Aterro de Acesso','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '810', 'Laje de Aproximação','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '601', 'Torre de Concreto Armado para Estaiamento','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '603', 'Ancoragens de estais','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '451', 'Treliça de Concreto Armado','0,5');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '452', 'Treliça Metálica','0,5');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '401', 'Arco de Concreto Armado','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '402', 'Arco de Concreto Protendido','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '403', 'Arco Metálico','0,6');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '806', 'Guarda rodas antigo do DNER','0,1');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '812', 'Berço para junta de dilatação','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '814', 'Junta de dilatação','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '115', 'Cortina de concreto armado','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '116', 'Longarina de enrigecimento de laje','0,4');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '1000', 'Operação','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '1001', 'Drenagem','0,2');
-insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '1002', 'Sinalização','0,1');
-
-
-
 
 --------------------------------CADASTRO-----------------------------------
 --dados basicos
@@ -675,62 +574,6 @@ values ('00', '00', '00', '00', '00', '00', '00', '00', '00', '00', '00');
 
 ---------------------------------------------------------------------------
 
---aspectos especiais
-create table ASPECTOS_ESPECIAIS
-	(
-		ID_ASPECTOS_ESPECIAIS				int							not null identity(1,1),
-		DS_ASPECTOS_ESPECIAIS				varchar(80),
-
-		CONSTRAINT						pk_aspectosespeciais		PRIMARY KEY(ID_ASPECTOS_ESPECIAIS)
-	);
-GO
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Meio ambiente agressivo');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Nível de vibração elevado');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Leito do rio erodível');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Fundação em solo mole');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Frequência elevada de carga pesada');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Desnível elevado entre greide e terreno');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Rio com lâmina dágua normal profunda');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Grande variação do NA do rio na cheia');
----------------------------------------------------------------------------
-
---deficiencias funcionais
-create table DEFICIENCIAS_FUNCIONAIS
-	(
-		ID_DEFICIENCIAS_FUNCIONAIS		int							not null identity(1,1),
-		CD_DEFICIENCIA_FUNCIONAL		varchar(20),
-		DS_DEFICIENCIA_FUNCIONAL		varchar(80),
-		DS_UNIDADE_MEDIDA				varchar(20),
-		CONSTRAINT						pk_deficienciasfuncionais		PRIMARY KEY(ID_DEFICIENCIAS_FUNCIONAIS)
-	);
-GO
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('1', 'Ponte estreita (larg pista < 7,20m)','m - Metro');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('2', 'Ponte sem acostamento','m - Metro');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('3', 'Calçada para pedestres inexistente','m - Metro');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('4', 'Pingadeira inexistente','m - Metro');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('5', 'Drenagem de pista insuficiente','un - Unidade');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('6', 'Guarda-rodas obsoleto','m - Metro');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('7', 'Seção hidraúlica (greide baixo)','m - Metro');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('8', 'Seção hidraúlica (ponte curta)','m - Metro');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('9', 'Concordância vertical ruim','un - Unidade');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('10', 'Concordância horizontal ruim','un - Unidade');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('11', 'Capacidade de carga limitada','tf');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('12', 'Gabarito vertical sobre via urbana insuficiente','m - Metro');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('13', 'Gabarito vertical sobre rodovia insuficiente','m - Metro');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('14', 'Gabarito horizontal insuficiente','m - Metro');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('15', 'Gabarito vertical de navegação insuficiente','m - Metro');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('16', 'Gabarito vertical sobre ferrovia insuficiente','m - Metro');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('17', 'Pilar em canal de navegação sem proteção','un - Unidade');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('18', 'Alça de acesso inadequada','un - Unidade');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('19', 'Ponte muito estreita (em mão única)','m - Metro');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('22', 'Trem tipo de cálculo TB 24tf','tf');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('23', 'Trem tipo de cálculo TB 36tf','tf');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('24', 'Junta longitudinal de dilatação','un - Unidade');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('25', 'Viga caixão com interior inacessível','un - Unidade');
-insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('26', 'Aparelho de apoio não identificado','kg - Quilograma');
-
----------------------------------------------------------------------------
-
 --rotas alternativas
 create table ROTAS_ALTERNATIVAS
 	(
@@ -855,6 +698,70 @@ insert into PONTE (DS_INDICE_PERFORMANCE_RELATIVO, ID_IDENTIFICACAO_OBRA_DADOS_B
 insert into PONTE (DS_INDICE_PERFORMANCE_RELATIVO, ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, ID_IDENTIFICACAO_OBRA_LOCALIZACAO, ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, ID_IDENTIFICACAO_OBRA_INSPECAO, ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS, ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES, ID_ROTAS_ALTERNATIVAS) values (2, 3, 3, 3, 3, 1, 1, 1);
 insert into PONTE (DS_INDICE_PERFORMANCE_RELATIVO, ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, ID_IDENTIFICACAO_OBRA_LOCALIZACAO, ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, ID_IDENTIFICACAO_OBRA_INSPECAO, ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS, ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES, ID_ROTAS_ALTERNATIVAS) values (5, 4, 4, 4, 4, 1, 1, 1);
 insert into PONTE (DS_INDICE_PERFORMANCE_RELATIVO, ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, ID_IDENTIFICACAO_OBRA_LOCALIZACAO, ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, ID_IDENTIFICACAO_OBRA_INSPECAO, ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS, ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES, ID_ROTAS_ALTERNATIVAS) values (3, 5, 5, 5, 5, 1, 1, 1);
+
+---------------------------------------------------------------------------
+--deficiencias funcionais
+create table DEFICIENCIAS_FUNCIONAIS
+	(
+		ID_DEFICIENCIAS_FUNCIONAIS		int							not null identity(1,1),
+		ID_PONTE						int							not null,
+		CD_DEFICIENCIA_FUNCIONAL		varchar(20),
+		DS_DEFICIENCIA_FUNCIONAL		varchar(80),
+		DS_UNIDADE_MEDIDA				varchar(20),
+		CONSTRAINT						pk_deficienciasfuncionais		PRIMARY KEY(ID_DEFICIENCIAS_FUNCIONAIS),
+		CONSTRAINT						fk_deficienciasfuncionais_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE)
+	);
+	
+GO
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('1', 'Ponte estreita (larg pista < 7,20m)', 'm - Metro', 1);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('2', 'Ponte sem acostamento','m - Metro', 2);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('3', 'Calçada para pedestres inexistente','m - Metro', 3);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('4', 'Pingadeira inexistente','m - Metro', 3);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('5', 'Drenagem de pista insuficiente','un - Unidade', 4);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('6', 'Guarda-rodas obsoleto','m - Metro', 1);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('7', 'Seção hidraúlica (greide baixo)','m - Metro', 2);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('8', 'Seção hidraúlica (ponte curta)','m - Metro', 4);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('9', 'Concordância vertical ruim','un - Unidade', 3);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('10', 'Concordância horizontal ruim','un - Unidade', 5);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('11', 'Capacidade de carga limitada','tf', 3);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('12', 'Gabarito vertical sobre via urbana insuficiente','m - Metro', 1);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('13', 'Gabarito vertical sobre rodovia insuficiente','m - Metro', 4);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('14', 'Gabarito horizontal insuficiente','m - Metro', 5);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('15', 'Gabarito vertical de navegação insuficiente','m - Metro', 1);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('16', 'Gabarito vertical sobre ferrovia insuficiente','m - Metro', 2);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('17', 'Pilar em canal de navegação sem proteção','un - Unidade', 4);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('18', 'Alça de acesso inadequada','un - Unidade', 4);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('19', 'Ponte muito estreita (em mão única)','m - Metro', 5);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('22', 'Trem tipo de cálculo TB 24tf','tf', 2);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('23', 'Trem tipo de cálculo TB 36tf','tf', 5);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('24', 'Junta longitudinal de dilatação','un - Unidade', 1);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('25', 'Viga caixão com interior inacessível','un - Unidade', 3);
+insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE) values ('26', 'Aparelho de apoio não identificado','kg - Quilograma', 2);
+
+
+
+---------------------------------------------------------------------------
+
+--aspectos especiais
+create table ASPECTOS_ESPECIAIS
+	(
+		ID_ASPECTOS_ESPECIAIS				int							not null identity(1,1),
+		DS_ASPECTOS_ESPECIAIS				varchar(80),
+		ID_PONTE							int							not null,
+
+		CONSTRAINT						pk_aspectosespeciais		PRIMARY KEY(ID_ASPECTOS_ESPECIAIS),
+		CONSTRAINT						fk_aspectosespeciais_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE)
+	);
+GO
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS, ID_PONTE) values ('Meio ambiente agressivo', 1);
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS, ID_PONTE) values ('Nível de vibração elevado', 3);
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS, ID_PONTE) values ('Leito do rio erodível', 2);
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS, ID_PONTE) values ('Fundação em solo mole', 1);
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS, ID_PONTE) values ('Frequência elevada de carga pesada', 4);
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS, ID_PONTE) values ('Desnível elevado entre greide e terreno', 2);
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS, ID_PONTE) values ('Rio com lâmina dágua normal profunda', 3);
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS, ID_PONTE) values ('Grande variação do NA do rio na cheia', 5);
+
 ---------------------------------------------------------------------------
 
 create table CADASTRO_ASPECTOS_ESPECIAIS
@@ -912,6 +819,109 @@ create table INSPECAO
 		CONSTRAINT					fk_inspecao_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
 		CONSTRAINT					fk_inspecao_modelo		FOREIGN KEY(ID_MODELO) REFERENCES MODELO(ID_MODELO)
 	);
+
+---------------------------------------------------------------------------
+create table ELEMENTOS_UFPR
+	(
+		ID_ELEMENTO_UFPR		int						not null identity(1,1),
+		CD_ELEMENTO				int,
+		DS_ELEMENTO				varchar(100),
+		DS_CAPA1				varchar(10)				not null,
+		ID_PONTE				int						not null, 
+		CONSTRAINT				pk_elementosufpr		PRIMARY KEY(ID_ELEMENTO_UFPR),
+		CONSTRAINT				fk_elementosufpr_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE)
+	);
+GO
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '1', 'Laje de concreto armado','0,4', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '2', 'Laje de Concreto Protendido','0,4', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '3', 'Laje Metálica Ortotrópica','0,4', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '4', 'Laje Metálica de Chapa Corrugada','0,4', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '7', 'Laje em Pranchão de Madeira','0,4', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '5', 'Ponte em Laje de Concreto Armado','0,6', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '6', 'Ponte em Laje de Concreto Protendido','0,6', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '204', 'Travessa de apoio de concreto armado','0,4', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '205', 'Travessa de apoio de concreto protendido','0,4', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '104', 'Viga T ou I de concreto armado','0,6', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '105', 'Viga T ou I de concreto protendido','0,6', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '106', 'Viga I metálica','0,6', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '101', 'Viga Caixão de Concreto Armado','0,6', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '102', 'Viga Caixão de Concreto Protendido','0,6', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '103', 'Viga Caixão Metálica','0,6', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '206', 'Viga de contraventamento de pilar de concreto armado','0,4', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '109', 'Transversina Portante de Concreto Armado','0,3', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '110', 'Transversina Portante de Concreto Protendido','0,3', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '111', 'Transversina Portante Metálica','0,3', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '112', 'Transversina de Ligação de Concreto Armado','0,2', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '113', 'Transversina de Ligação de Concreto Protendido','0,2', 3);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '114', 'Transversina de Ligação Metálica','0,2', 3);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '202', 'Pilar em Colunas de Concreto Armado','0,4', 3);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '201', 'Pilar Parede de Concreto Armado','0,4', 3);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '203', 'Pilar Vazado de Concreto Armado','0,4', 3);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '200', 'Pilar Parede de Alvenaria de Pedra','0,4', 3);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '207', 'Parede de contraventamento de pilar de concreto armado','0,4', 3);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '301', 'Aparelho de Apoio de Neoprene Fretado','0,4', 3);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '302', 'Aparelho de Apoio de Teflon','0,4', 3);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '303', 'Aparelho de Apoio de Rolo Metálico','0,4', 3);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '304', 'Aparelho de Apoio de Placa de Chumbo','0,4', 3);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '305', 'Aparelho de Apoio Pot Bearing Fixo','0,4', 3);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '306', 'Aparelho de Apoio Pot Bearing Directional','0,4', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '307', 'Aparelho de Apoio Freyssinet','0,4', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '308', 'Aparelho de Apoio Pêndulo','0,4', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '309', 'Articulação Metálica','0,4', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '107', 'Dente Gerber de Concreto Armado','0,6', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '108', 'Dente Gerber de concreto armado com protensão','0,6', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '118', 'Dente Gerber Metálico','0,6', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '252', 'Encontro de alvenaria de pedra','0,1', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '251', 'Encontro - Parede frontal portante de concreto armado','0,1', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '253', 'Encontro - Parede Lateral e Vigas de Concreto Armado','0,2', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '256', 'Encontro - Paredes e Vigas Secundárias de Concreto','0,1', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '254', 'Encontro - Laje de Concreto Armado','0,1', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '255', 'Encontro - Cortina de Concreto Armado','0,2', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '816', 'Muro de Arrimo de Concreto','0,4', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '818', 'Muro de Terra Armada','0,3', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '817', 'Revestimento de talude em concreto','0,4', 4);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '504', 'Estaca de Concreto Armado','0,4', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '505', 'Estaca Metálica','0,4', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '506', 'Estaca de Madeira','0,4', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '501', 'Bloco ou Sapata de concreto armado','0,4', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '502', 'Tubulão ou estacão de concreto armado','0,4', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '503', 'Camisa Metálica de Revestimento para Estaca','0,3', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '813', 'Junta elastomérica de dilatação','0,2', 2);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '815', 'Junta metálica de dilatação','0,2', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '801', 'Pavimento Asfáltico','0,2', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '802', 'Pavimento de Concreto','0,2', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '808', 'Calçada para pedestres de concreto armado','0,2', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '809', 'Calçada para pedestres metálica','0,2', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '803', 'Barreira new jersey','0,1', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '805', 'Guarda rodas qualquer','0,1', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '806', 'Guarda Corpo de Concreto Armado','0,1', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '807', 'Guarda Corpo Metálico','0,1', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '703', 'Reforço viga I - Encamisamento de viga','0,6', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '704', 'Reforço viga II - Armadura principal passiva','0,6', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '705', 'Reforço viga III - Cabo de protensão externo','0,6', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '706', 'Reforço viga IV - Bloqueio de articulação Gerber','0,6', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '701', 'Reforço laje I - Sobrelaje de concreto armado','0,4', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '702', 'Reforço de Laje II - Infradorso laje em Concreto Armado','0,4', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '707', 'Reforço de pilar - Encamisamento de pilar','0,4', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '708', 'Reforço estaca - Encamisamento de trecho livre','0,4', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '811', 'Aterro de Acesso','0,2', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '810', 'Laje de Aproximação','0,2', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '601', 'Torre de Concreto Armado para Estaiamento','0,6', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '603', 'Ancoragens de estais','0,6', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '451', 'Treliça de Concreto Armado','0,5', 5);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '452', 'Treliça Metálica','0,5', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '401', 'Arco de Concreto Armado','0,6', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '402', 'Arco de Concreto Protendido','0,6', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '403', 'Arco Metálico','0,6', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '806', 'Guarda rodas antigo do DNER','0,1', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '812', 'Berço para junta de dilatação','0,2', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '814', 'Junta de dilatação','0,2', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '115', 'Cortina de concreto armado','0,2', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '116', 'Longarina de enrigecimento de laje','0,4', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '1000', 'Operação','0,2', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '1001', 'Drenagem','0,2', 1);
+insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1, ID_PONTE) values ( '1002', 'Sinalização','0,1', 1);
+
 ---------------------------------------------------------------------------
 
 -- Manifestações ufpr
@@ -930,7 +940,6 @@ create table MANIFESTACOES_UFPR
 
 --GO
 --insert into MANIFESTACOES_UFPR (CD_ELEMENTOS_UFPR, CD_MANIFESTACOES_UFPR, DS_MANIFESTACOES_UFPR, DS_UNIDADE, DS_BETA) values ('00','00','00','00','00');
-
 
 ---------------------------------------------------------------------------
 
@@ -962,6 +971,7 @@ create table INSPECOES_MANIFESTACOES
 --values ('00', '00', '00', '00', '00', '00', '00', '00');
 
 
+
 ------------------------------------------------------------------------
 
 create table ELEMENTO_COMPONENTES
@@ -970,7 +980,7 @@ create table ELEMENTO_COMPONENTES
 		ID_PONTE						int										not null,	
 		ID_ELEMENTO_UFPR				int										not null,
 		DS_DETALHE						varchar(20),
-		NR_QUANTIDADE					varchar(10),
+		NR_QUANTIDADE					varchar(10),	
 		CONSTRAINT						pk_elementoscomponentes					PRIMARY KEY(ID_ELEMENTO_COMPONENTES),
 		CONSTRAINT						fk_elementoscomponentes_ponte			FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
 		CONSTRAINT						fk_elementoscomponentes_elementosufpr	FOREIGN KEY(ID_ELEMENTO_UFPR) REFERENCES ELEMENTOS_UFPR(ID_ELEMENTO_UFPR)
@@ -979,13 +989,6 @@ create table ELEMENTO_COMPONENTES
 ---	GO
 ---	insert into ELEMENTO_COMPONENTES (CD_CODIGO, CD_ELEMENTO, DS_DETALHE, NR_QUANTIDADE)
 ---	values ('00', '00', '00', '00');
-
-
----------------------------------------------------------------------------
-
-
-
-
 
 
 

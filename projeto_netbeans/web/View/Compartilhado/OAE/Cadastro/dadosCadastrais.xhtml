@@ -198,36 +198,15 @@ and open the template in the editor.
                         <h:outputText value="3. Elementos Componentes" style="font-weight: bold" />
                         <hr/>
                         <h:panelGrid columns="2" cellpadding="10">
-                            <p:dataTable var="arq" value="#{arquivoAnexo.arquivosCadastro}" paginator="true" rows="8" >
-                                <p:column headerText="Arquivo" style="text-align: center" >
-                                    <h:outputText value="#{arq.arquivo}" />
+                            <p:dataTable var="ele" value="#{ponteBean.model.elementosUfpr}" >
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{ele.codigo}" />
                                 </p:column>
 
-                                <p:column headerText="Tipo arquivo" style="text-align: center" >
-                                    <h:outputText value="#{arq.tipoArquivo}" />
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{ele.descricao}" />
                                 </p:column>
 
-                                <p:column headerText="Número" style="width: 150px; text-align: center" >
-                                    <h:outputText value="#{arq.numero}" />
-                                </p:column>
-
-                                <p:column headerText="Descrição" style="width: 150px; text-align: center" >
-                                    <h:outputText value="#{arq.descricao}" />
-                                </p:column>
-
-                                <p:column headerText="Registro" style="text-align: center" >
-                                    <h:outputText value="#{arq.registro}" />
-                                </p:column>
-
-                                <p:column headerText="Data anexação" style="width: 150px; text-align: center" >
-                                    <h:outputText value="#{arq.dataAnexada}">
-                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
-                                    </h:outputText>
-                                </p:column>
-
-                                <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                                    <p:commandButton icon="ui-icon-arrowthickstop-1-s" title="Baixar" action="#{arquivoAnexo.baixar()}" />
-                                </p:column>
                             </p:dataTable>
                         </h:panelGrid>
                     </p:outputPanel>
@@ -241,35 +220,13 @@ and open the template in the editor.
                         <h:outputText value="4. Aspectos Especiais" style="font-weight: bold" />
                         <hr />
                         <h:panelGrid columns="2" cellpadding="10">
-                            <p:dataTable var="arq" value="#{arquivoAnexo.arquivosCadastro}" paginator="true" rows="8" >
-                                <p:column headerText="Arquivo" style="text-align: center" >
-                                    <h:outputText value="#{arq.arquivo}" />
+                            <p:dataTable var="asp" value="#{ponteBean.model.aspectosEspeciais}" >
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{asp.id}" />
                                 </p:column>
 
-                                <p:column headerText="Tipo arquivo" style="text-align: center" >
-                                    <h:outputText value="#{arq.tipoArquivo}" />
-                                </p:column>
-
-                                <p:column headerText="Número" style="width: 150px; text-align: center" >
-                                    <h:outputText value="#{arq.numero}" />
-                                </p:column>
-
-                                <p:column headerText="Descrição" style="width: 150px; text-align: center" >
-                                    <h:outputText value="#{arq.descricao}" />
-                                </p:column>
-
-                                <p:column headerText="Registro" style="text-align: center" >
-                                    <h:outputText value="#{arq.registro}" />
-                                </p:column>
-
-                                <p:column headerText="Data anexação" style="width: 150px; text-align: center" >
-                                    <h:outputText value="#{arq.dataAnexada}">
-                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
-                                    </h:outputText>
-                                </p:column>
-
-                                <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                                    <p:commandButton icon="ui-icon-arrowthickstop-1-s" title="Baixar" action="#{arquivoAnexo.baixar()}" />
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{asp.descricao}" />
                                 </p:column>
                             </p:dataTable>
                         </h:panelGrid>
@@ -281,38 +238,16 @@ and open the template in the editor.
                 <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
                     <p:outputPanel>
                         <br />
-                        <h:outputText value="5. Deficiências Especiais" style="font-weight: bold" />
+                        <h:outputText value="5. Deficiências Funcionais" style="font-weight: bold" />
                         <hr/>
                         <h:panelGrid columns="2" cellpadding="10">
-                            <p:dataTable var="arq" value="#{arquivoAnexo.arquivosCadastro}" paginator="true" rows="8" >
-                                <p:column headerText="Arquivo" style="text-align: center" >
-                                    <h:outputText value="#{arq.arquivo}" />
+                            <p:dataTable var="def" value="#{ponteBean.model.deficienciasFuncionais}">
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{def.codigo}" />
                                 </p:column>
 
-                                <p:column headerText="Tipo arquivo" style="text-align: center" >
-                                    <h:outputText value="#{arq.tipoArquivo}" />
-                                </p:column>
-
-                                <p:column headerText="Número" style="width: 150px; text-align: center" >
-                                    <h:outputText value="#{arq.numero}" />
-                                </p:column>
-
-                                <p:column headerText="Descrição" style="width: 150px; text-align: center" >
-                                    <h:outputText value="#{arq.descricao}" />
-                                </p:column>
-
-                                <p:column headerText="Registro" style="text-align: center" >
-                                    <h:outputText value="#{arq.registro}" />
-                                </p:column>
-
-                                <p:column headerText="Data anexação" style="width: 150px; text-align: center" >
-                                    <h:outputText value="#{arq.dataAnexada}">
-                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
-                                    </h:outputText>
-                                </p:column>
-
-                                <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                                    <p:commandButton icon="ui-icon-arrowthickstop-1-s" title="Baixar" action="#{arquivoAnexo.baixar()}" />
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{def.descricao}" />
                                 </p:column>
                             </p:dataTable>
                         </h:panelGrid>

@@ -92,6 +92,7 @@ public class SimulacaoBean extends ComumBean {
         try {
             simulacao = database.buscar(idSimulacao);
         } catch (SQLException ex) {
+            adicionarMensagemErro("Erro ao listar rankings: " + ex.getMessage());
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         redirecionar("/View/Compartilhado/Simulacao/ranking.jsf");

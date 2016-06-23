@@ -23,7 +23,7 @@
                     <p:inputText class="col-md-2" id="nova_simulacao" value="#{simulacaoBean.simulacao.nomeSimulacao}" />
                     <p:commandButton style="margin: 0 0 20px 20px;" value="Novo ranking" action="#{simulacaoBean.salvar()}" />
                     
-                    <p:dataTable var="sim" value="#{simulacaoBean.simulacoes}" paginator="true" rows="8" >
+                    <p:dataTable var="sim" value="#{simulacaoBean.simulacoes}" paginator="true" rows="15" >
                         <p:column headerText="Simulação" style="text-align: center" >
                             <h:outputText value="#{sim.nomeSimulacao}" />
                         </p:column>

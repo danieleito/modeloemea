@@ -11,7 +11,7 @@
         <ui:composition template="/View/Compartilhado/template.xhtml">
             <ui:define name="content">
                 <h:form id="form">
-                    <p:dataTable var="elem" value="#{capaElementos.elementos}" paginator="true" rows="8" >
+                    <p:dataTable var="elem" value="#{capaElementos.elementos}" paginator="true" rows="15" >
                         <p:column headerText="Elemento">
                             <h:outputText value="#{elem.elemento}" />
                         </p:column>

@@ -5,8 +5,12 @@
  */
 package com.dao;
 
+import com.model.ArquivoAnexo;
+import com.model.AspectoEspecial;
 import com.model.CaracteristicasFuncionaisCaracteristicas;
 import com.model.CaracteristicasFuncionaisDimensoes;
+import com.model.DeficienciaFuncional;
+import com.model.ElementoUfpr;
 import com.model.Ponte;
 import com.model.IdentificacaoObraDadosBasicos;
 import com.model.IdentificacaoObraInspecao;
@@ -136,6 +140,9 @@ public class PonteDAO {
                     new RotasAlternativas(rs.getInt("ID_ROTAS_ALTERNATIVAS"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_ROTA_ALTERNATIVA"), 
                             rs.getString("DS_ACRESCIMO_KM")));
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
+            ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
+            ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
+            ponte.setElementosUfpr(buscarElementosUfpr(ponte.getId()));
             pontes.add(ponte);
         }
         conexao.closeConnection();
@@ -241,6 +248,9 @@ public class PonteDAO {
                             rs.getString("DS_DESCRICAO_VAOS")), 
                     new RotasAlternativas(rs.getInt("ID_ROTAS_ALTERNATIVAS"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_ROTA_ALTERNATIVA"), 
                             rs.getString("DS_ACRESCIMO_KM")));
+            ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
+            ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
+            ponte.setElementosUfpr(buscarElementosUfpr(ponte.getId()));
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
         }
         conexao.closeConnection();
@@ -374,6 +384,10 @@ public class PonteDAO {
                     new RotasAlternativas(rs.getInt("ID_ROTAS_ALTERNATIVAS"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_ROTA_ALTERNATIVA"), 
                             rs.getString("DS_ACRESCIMO_KM")));
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
+            ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
+            ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
+            ponte.setElementosUfpr(buscarElementosUfpr(ponte.getId()));
+            
             pontes.add(ponte);
         }
         conexao.closeConnection();
@@ -382,5 +396,93 @@ public class PonteDAO {
 
     public void carregar() {
 
+    }
+    
+    private ArrayList<DeficienciaFuncional> buscarDeficienciasFuncionais(int idPonte) throws SQLException {
+        String query = "select ID_DEFICIENCIAS_FUNCIONAIS, CD_DEFICIENCIA_FUNCIONAL, "
+                + "DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE "
+                + "from DEFICIENCIAS_FUNCIONAIS "
+                + "where ID_PONTE = " + idPonte;
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        ArrayList<DeficienciaFuncional> deficienciasFuncionais = new ArrayList<>();
+        Ponte ponte;
+        while (rs.next()) {
+            deficienciasFuncionais.add(new DeficienciaFuncional(rs.getInt("ID_DEFICIENCIAS_FUNCIONAIS"), 
+                    rs.getString("CD_DEFICIENCIA_FUNCIONAL"), rs.getString("DS_DEFICIENCIA_FUNCIONAL"), 
+                    rs.getString("DS_UNIDADE_MEDIDA")));
+        }
+        
+        return deficienciasFuncionais;
+    }
+    
+    private ArrayList<AspectoEspecial> buscarAspectosEspeciais(int idPonte) throws SQLException {
+        String query = "select ID_ASPECTOS_ESPECIAIS, DS_ASPECTOS_ESPECIAIS, "
+                + "ID_PONTE "
+                + "from ASPECTOS_ESPECIAIS "
+                + "where ID_PONTE = " + idPonte;
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        ArrayList<AspectoEspecial> aspectosEspeciais = new ArrayList<>();
+        Ponte ponte;
+        while (rs.next()) {
+            aspectosEspeciais.add(new AspectoEspecial(rs.getInt("ID_ASPECTOS_ESPECIAIS"),
+                    rs.getString("DS_ASPECTOS_ESPECIAIS")));
+        }
+        
+        return aspectosEspeciais;
+    }
+
+    private ArrayList<ElementoUfpr> buscarElementosUfpr(int idPonte) throws SQLException {
+        String query = "select ID_ELEMENTO_UFPR, CD_ELEMENTO, "
+                + "DS_ELEMENTO, DS_CAPA1, ID_PONTE "
+                + "from ELEMENTOS_UFPR "
+                + "where ID_PONTE = " + idPonte;
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        ArrayList<ElementoUfpr> elementosUfpr = new ArrayList<>();
+        Ponte ponte;
+        while (rs.next()) {
+            elementosUfpr.add(new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), 
+                    rs.getString("CD_ELEMENTO"), rs.getString("DS_ELEMENTO"), rs.getString("DS_CAPA1")));  
+        }
+        
+        return elementosUfpr;
+    }
+    
+    private ArrayList<ArquivoAnexo> buscarArquivosAnexos(int idPonte) throws SQLException {
+        String query = "select ID_ARQUIVO_ANEXO_INSPECAO, DS_ARQUIVO, "
+                + "DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, "
+                + "DT_DATA_ANEXACAO, ID_PONTE "
+                + "from ARQUIVO_ANEXO_INSPECAO "
+                + "where ID_PONTE = " + idPonte;
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        ArrayList<ArquivoAnexo> arquivosAnexos = new ArrayList<>();
+        Ponte ponte;
+        while (rs.next()) {
+            arquivosAnexos.add(new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO_INSPECAO"), 
+                    rs.getString("DS_ARQUIVO"), rs.getString("DS_TIPO_ARQUIVO"), 
+                    rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), 
+                    rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO")));  
+        }
+        
+        return arquivosAnexos;
     }
 }

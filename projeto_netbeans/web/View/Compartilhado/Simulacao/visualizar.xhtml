@@ -32,7 +32,7 @@ and open the template in the editor.
                     <br/>
                     <br/>
 
-                    <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="8" >
+                    <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="15" >
                         <p:column headerText="Data da última inspeção" style="width: 150px; text-align: center" >
                             <h:outputText value="#{r.ponte.dataUltimaInspecao}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>

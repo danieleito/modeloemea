@@ -14,7 +14,7 @@
                 <h:form id="form">
                     <p:commandButton value="Novo" action="#{usuarioBean.cadastrarGet()}" />
 
-                    <p:dataTable value="#{usuarioBean.listaUsuarios}" var="u" paginator="true" rows="8">
+                    <p:dataTable value="#{usuarioBean.listaUsuarios}" var="u" paginator="true" rows="15">
                         <p:column headerText="Nome" >
                             <h:outputText value="#{u.nome}" />
                         </p:column>

@@ -10,7 +10,7 @@
     <h:body>
         <h:form id="form2">
             <h:panelGrid columns="2" cellpadding="10">
-                <p:dataTable var="i" value="#{inspecao.inspecoes}" paginator="true" rows="8" >
+                <p:dataTable var="i" value="#{inspecao.inspecoes}" paginator="true" rows="15" >
                     <p:column headerText="Data" style="text-align: center" >
                         <h:outputText value="#{i.data}">
                             <f:convertDateTime pattern="dd/MM/yyyy"/>
