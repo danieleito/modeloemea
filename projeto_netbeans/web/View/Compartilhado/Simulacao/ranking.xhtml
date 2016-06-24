@@ -62,7 +62,9 @@ and open the template in the editor.
                         </p:column>
 
                         <p:column headerText="Local na via" style="width: 80px; text-align: center" >
-                            <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.localVia}" />
+                            <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.localVia}" >
+                                <f:convertNumber pattern="#0.00" />
+                            </h:outputText>
                         </p:column>
 
                         <p:column headerText="Ind. performance relativo" style="width: 100px; text-align: center" >

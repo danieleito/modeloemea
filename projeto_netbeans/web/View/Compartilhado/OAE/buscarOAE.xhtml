@@ -139,7 +139,9 @@ and open the template in the editor.
                         </p:column>
 
                         <p:column headerText="Local na via" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{p.identificacaoObraLocalizacao.localVia}" />
+                            <h:outputText value="#{p.identificacaoObraLocalizacao.localVia}" >
+                                <f:convertNumber pattern="#0.00" />
+                            </h:outputText>
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center" >

@@ -222,11 +222,11 @@ and open the template in the editor.
                         <h:panelGrid columns="2" cellpadding="10">
                             <p:dataTable var="asp" value="#{ponteBean.model.aspectosEspeciais}" >
                                 <p:column style="text-align: center" >
-                                    <h:outputText value="#{asp.id}" />
+                                    <h:outputText value="#{asp.aspectoEspecial.id}" />
                                 </p:column>
 
                                 <p:column style="text-align: center" >
-                                    <h:outputText value="" />
+                                    <h:outputText value="#{asp.aspectoEspecial.descricao}" />
                                 </p:column>
                             </p:dataTable>
                         </h:panelGrid>

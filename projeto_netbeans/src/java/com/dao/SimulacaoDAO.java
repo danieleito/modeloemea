@@ -120,7 +120,7 @@ public class SimulacaoDAO {
                 + "from RANKING R, PONTE P "
                 + "where R.ID_PONTE = P.ID_PONTE "
                 + "and R.ID_SIMULACAO = " + idSimulacao + " "
-                + "ORDER BY P.DS_INDICE_PERFORMANCE_RELATIVO; ";
+                + "ORDER BY P.DS_INDICE_PERFORMANCE_RELATIVO DESC; ";
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
