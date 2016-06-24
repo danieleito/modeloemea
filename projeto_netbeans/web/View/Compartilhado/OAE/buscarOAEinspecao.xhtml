@@ -117,11 +117,11 @@ and open the template in the editor.
                     </table>
 
                     <p:commandButton action='#{ponteBean.consultarCadastroPost()}' value="Consultar" />
-                    <p:button outcome="/View/Compartilhado/OAE/cadastrar.jsf" value="Novo registro" />
+                    <p:commandButton action="#{ponteBean.novoRegistro()}" value="Novo registro" />
                     <p:commandButton action="#{ponteBean.cancelar()}" value="Cancelar" />
 
 
-                    <p:dataTable var="p" value="#{ponteBean.pontes}" paginator="true" rows="8" >                      
+                    <p:dataTable var="p" value="#{ponteBean.pontes}" paginator="true" rows="15" >                      
                         <p:column headerText="Código" style="text-align: center" >
                             <h:outputText value="#{p.identificacaoObraDadosBasicos.codigo}" />
                         </p:column>
@@ -139,7 +139,9 @@ and open the template in the editor.
                         </p:column>
 
                         <p:column headerText="Local na via" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{p.identificacaoObraLocalizacao.localVia}" />
+                            <h:outputText value="#{p.identificacaoObraLocalizacao.localVia}" >
+                                <f:convertNumber pattern="#0.00" />
+                            </h:outputText>
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center" >
