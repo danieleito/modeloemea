@@ -47,7 +47,12 @@ public class Ponte {
         substituicao = new Substituicao();
     }
 
-    public Ponte(int id, String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis, IdentificacaoObraInspecao identificacaoObraInspecao, CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, RotasAlternativas rotasAlternativas, ArrayList<DeficienciaFuncional> deficienciasFuncionais, ArrayList<CadastroAspectoEspecial> aspectosEspeciais, ArrayList<ElementoComponente> elementosComponentes, Observacao observacao, Substituicao substituicao, Date dataUltimaInspecao) {
+    public Ponte(int id, String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, 
+            IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis, 
+            IdentificacaoObraInspecao identificacaoObraInspecao, CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, 
+            CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, RotasAlternativas rotasAlternativas, 
+            ArrayList<DeficienciaFuncional> deficienciasFuncionais, ArrayList<CadastroAspectoEspecial> aspectosEspeciais, 
+            ArrayList<ElementoComponente> elementosComponentes, Observacao observacao, Substituicao substituicao, Date dataUltimaInspecao) {
         this.id = id;
         this.indicePerformanceRelativo = indicePerformanceRelativo;
         this.identificacaoObraDadosBasicos = identificacaoObraDadosBasicos;

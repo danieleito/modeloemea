@@ -140,7 +140,7 @@ public class PonteDAO {
                             rs.getString("DS_GABARITO_HORIZONTAL"), rs.getString("DS_GABARITO_VERTICAL"), rs.getString("DS_NUMERO_VAOS"), 
                             rs.getString("DS_DESCRICAO_VAOS")), 
                     new RotasAlternativas(rs.getInt("ID_ROTAS_ALTERNATIVAS"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_ROTA_ALTERNATIVA"), 
-                            rs.getString("DS_ACRESCIMO_KM")));
+                            rs.getString("DS_ACRESCIMO_KM")), );
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
 //            ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
