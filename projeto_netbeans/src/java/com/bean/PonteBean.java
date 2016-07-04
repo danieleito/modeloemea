@@ -133,7 +133,7 @@ public class PonteBean extends ComumBean implements Serializable {
                     filtroIdSuperintendencia, filtroIdUnidadeLocal);
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
+            adicionarMensagemErro("Erro ao carregar pontess. " + ex.getMessage());
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
     }

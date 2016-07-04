@@ -329,11 +329,11 @@ public class PonteDAO {
         }
         if (superintendenciaRegional != 0) {
             query += " and UL.ID_SUPERINTENDENCIA_REGIONAL = " + superintendenciaRegional
-                    + " and L.ID_UF = S.ID_UF ";
+                    + " and L.ID_UF = U.ID_UF ";
         }
         if (unidadeLocal != 0) {
             query += " and R.ID_UNIDADE_LOCAL = " + unidadeLocal
-                    + " and L.ID_UF = S.ID_UF ";
+                    + " and L.ID_UF = U.ID_UF ";
         }
 
         Conexao conexao = new Conexao();

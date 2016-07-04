@@ -9,7 +9,8 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -92,9 +93,12 @@ and open the template in the editor.
 
                             <tr>
                                 <td class="th">
-                                    <p:outputLabel value="Superintendência Regional" class="col-md-3" />
+                                    <p:outputLabel value="Superintendência Regional" class="col-md-6" />
                                 </td>
                                 <td>
+
+                                    
+                                    
                                     <p:selectOneMenu id="superintendenciaRegional" value="#{ponteBean.filtroIdSuperintendencia}" style="width: 620px">
                                         <f:selectItem itemLabel="Selecione a superintendência regional" itemValue="0" />
                                         <f:selectItems value="#{ponteBean.superintendenciasRegionais}" var="s" itemValue="#{s.id}" />
