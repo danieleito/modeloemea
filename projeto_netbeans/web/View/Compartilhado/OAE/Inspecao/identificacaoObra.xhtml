@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <p:tab title="Identificação da Obra">
+            <p:panel  header="Dados Básicos">
+                <table>
+                    <tbody >
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Identificação*" class="col-md-1" />                                  
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraDadosBasicos.identificacao}" class="col-md-2" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Natureza da Transposição" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Tipo de Estrutura*" class="col-md-3" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Sistema Construtivo*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Comprimento (m)*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <div>                                        
+                                    <p:inputText value="#{ponteBean.model.identificacaoObraDadosBasicos.comprimento}" class="col-md-1" />                                    
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Largura (m)*" class="col-md-3" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraDadosBasicos.largura}" class="col-md-1" />    
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Trem-Tipo" class="col-md-3" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-4">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Ano de Construção" class="col-md-3" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraDadosBasicos.anoConstrucao}" class="col-md-1" />    
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </p:panel> 
+
+            <p:panel  header="Localização">
+                <table>
+                    <tbody >
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="UF*" class="col-md-1" />                                  
+                            </td>
+
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Via*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Local na Via (km)" class="col-md-3" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraLocalizacao.localVia}" class="col-md-2" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Cidade mais próxima*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </p:panel> 
+
+            <p:panel  header="PNV">
+                <table>
+                    <tbody >
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Ano*" class="col-md-1" />                                  
+                            </td>
+
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Versão*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Código*" class="col-md-3" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Altitude*" class="col-md-3" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraLocalizacao.pnvAltitude}" class="col-md-1" />  
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </p:panel>
+
+            <p:panel  header="Latitude">
+                <table>
+                    <tbody >
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Grau*" class="col-md-1" />                                  
+                            </td>
+
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraLocalizacao.latitudeGrau}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Minuto*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraLocalizacao.latitudeMinuto}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </p:panel>
+
+            <p:panel  header="Longitude">
+                <table>
+                    <tbody >
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Grau*" class="col-md-1" />                                  
+                            </td>
+
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraLocalizacao.longitudeGrau}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Minuto*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraLocalizacao.longitudeMinuto}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </p:panel>
+
+            <p:panel  header="Responsáveis">
+                <table>
+                    <tbody >
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Superintendência Regional*" class="col-md-6" />                                  
+                            </td>
+
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Unidade Local*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Tipo de Administração*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Administrador*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraResponsaveis.administrador}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </p:panel>
+
+            <p:panel  header="Projetista">
+                <table>
+                    <tbody >
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Projetista" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraResponsaveis.projetistaProjetista}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </p:panel>
+
+            <p:panel  header="Construtor">
+                <table>
+                    <tbody >
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Construtor" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraResponsaveis.construtorConstrutor}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Localização do Projeto" class="col-md-6" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Localização de Documentos de Construção" class="col-md-6" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Localização de Documentos Diversos" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+            </p:panel>
+
+
+
+            <p:panel  header="Inspeção">
+                <table>
+                    <tbody >
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Período (anos)*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraInspecao.periodo}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Equipamento Necessário" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraInspecao.equipamentoNecessario}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Melhor época" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.identificacaoObraInspecao.melhorEpoca}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </p:panel>
+
+
+        </p:tab>
+    </h:body>
+</html>

@@ -25,6 +25,8 @@ public class Ponte {
     private ArrayList<DeficienciaFuncional> deficienciasFuncionais;    
     private ArrayList<CadastroAspectoEspecial> aspectosEspeciais;
     private ArrayList<ElementoComponente> elementosComponentes;
+    private Observacao observacao;
+    private Substituicao substituicao;
 //    private ArrayList<ArquivoAnexo> arquivosAnexos;
     
     //para exibir na tela que lista o ranking
@@ -41,12 +43,11 @@ public class Ponte {
         deficienciasFuncionais = new ArrayList<>();
         aspectosEspeciais = new ArrayList<>();
         elementosComponentes = new ArrayList<>();
+        observacao = new Observacao();
+        substituicao = new Substituicao();
     }
 
-    public Ponte(int id, String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, 
-            IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis, 
-            IdentificacaoObraInspecao identificacaoObraInspecao, CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, 
-            CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, RotasAlternativas rotasAlternativas) {
+    public Ponte(int id, String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis, IdentificacaoObraInspecao identificacaoObraInspecao, CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, RotasAlternativas rotasAlternativas, ArrayList<DeficienciaFuncional> deficienciasFuncionais, ArrayList<CadastroAspectoEspecial> aspectosEspeciais, ArrayList<ElementoComponente> elementosComponentes, Observacao observacao, Substituicao substituicao, Date dataUltimaInspecao) {
         this.id = id;
         this.indicePerformanceRelativo = indicePerformanceRelativo;
         this.identificacaoObraDadosBasicos = identificacaoObraDadosBasicos;
@@ -56,12 +57,15 @@ public class Ponte {
         this.caracteristicasFuncionaisCaracteristicas = caracteristicasFuncionaisCaracteristicas;
         this.caracteristicasFuncionaisDimensoes = caracteristicasFuncionaisDimensoes;
         this.rotasAlternativas = rotasAlternativas;
+        this.deficienciasFuncionais = deficienciasFuncionais;
+        this.aspectosEspeciais = aspectosEspeciais;
+        this.elementosComponentes = elementosComponentes;
+        this.observacao = observacao;
+        this.substituicao = substituicao;
+        this.dataUltimaInspecao = dataUltimaInspecao;
     }
 
-    public Ponte(String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, IdentificacaoObraLocalizacao identificacaoObraLocalizacao, 
-            IdentificacaoObraResponsaveis identificacaoObraResponsaveis, IdentificacaoObraInspecao identificacaoObraInspecao, 
-            CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, 
-            RotasAlternativas rotasAlternativas) {
+    public Ponte(String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis, IdentificacaoObraInspecao identificacaoObraInspecao, CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, RotasAlternativas rotasAlternativas, ArrayList<DeficienciaFuncional> deficienciasFuncionais, ArrayList<CadastroAspectoEspecial> aspectosEspeciais, ArrayList<ElementoComponente> elementosComponentes, Observacao observacao, Substituicao substituicao, Date dataUltimaInspecao) {
         this.indicePerformanceRelativo = indicePerformanceRelativo;
         this.identificacaoObraDadosBasicos = identificacaoObraDadosBasicos;
         this.identificacaoObraLocalizacao = identificacaoObraLocalizacao;
@@ -70,6 +74,12 @@ public class Ponte {
         this.caracteristicasFuncionaisCaracteristicas = caracteristicasFuncionaisCaracteristicas;
         this.caracteristicasFuncionaisDimensoes = caracteristicasFuncionaisDimensoes;
         this.rotasAlternativas = rotasAlternativas;
+        this.deficienciasFuncionais = deficienciasFuncionais;
+        this.aspectosEspeciais = aspectosEspeciais;
+        this.elementosComponentes = elementosComponentes;
+        this.observacao = observacao;
+        this.substituicao = substituicao;
+        this.dataUltimaInspecao = dataUltimaInspecao;
     }
 
     public int getId() {
@@ -175,7 +185,7 @@ public class Ponte {
     public void setElementosComponentes(ArrayList<ElementoComponente> elementosComponentes) {
         this.elementosComponentes = elementosComponentes;
     }
-    
+
 //    public ArrayList<ArquivoAnexo> getArquivosAnexos() {
 //        return arquivosAnexos;
 //    }
@@ -183,4 +193,20 @@ public class Ponte {
 //    public void setArquivosAnexos(ArrayList<ArquivoAnexo> arquivosAnexos) {
 //        this.arquivosAnexos = arquivosAnexos;
 //    }
+
+    public Observacao getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(Observacao observacao) {
+        this.observacao = observacao;
+    }
+
+    public Substituicao getSubstituicao() {
+        return substituicao;
+    }
+
+    public void setSubstituicao(Substituicao substituicao) {
+        this.substituicao = substituicao;
+    }
 }

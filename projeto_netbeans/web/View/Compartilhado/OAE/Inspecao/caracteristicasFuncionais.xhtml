@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <p:tab title="Características Funcionais">
+
+            <p:panel  header="Características">
+                <table>
+                    <tbody >
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Tipo de Região*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Tipo de Traçado*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Rampa Máxima (º)*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.rampaMaxima}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Raio da Curva (m)*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.raioCurva}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="VMD*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.vmd}" class="col-md-1" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </p:panel>
+
+            <p:panel  header="Dimensões">
+                <table>
+                    <tbody >
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Número de Faixas*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Largura da Faixa (m)*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
+
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Acostamento Direito (m)*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoDireito}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Acostamento Esquerdo (m)*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoEsquerdo}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Calçada Direita (m)*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaDireita}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Calçada Esquerda (m)*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaEsquerda}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Largura Total da Pista (m)*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.larguraTotalPista}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Gabarito Horizontal (m)" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.gabaritoHorizontal}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Gabarito Vertical (m)" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.gabaritoVertical}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Número de Vãos*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.numeroVaos}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="th">
+                                <p:outputLabel value="Descrição dos Vãos*" class="col-md-5" />
+                            </td>
+                            <td>
+                                <p:inputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.descricaoVaos}" class="col-md-1" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </p:panel>
+
+        </p:tab>
+    </h:body>
+</html>
