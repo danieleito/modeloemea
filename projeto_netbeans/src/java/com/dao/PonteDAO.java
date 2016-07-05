@@ -19,8 +19,10 @@ import com.model.IdentificacaoObraInspecao;
 import com.model.IdentificacaoObraLocalizacao;
 import com.model.IdentificacaoObraResponsaveis;
 import com.model.NaturezaTransposicao;
+import com.model.Observacao;
 import com.model.RotasAlternativas;
 import com.model.SistemaConstrutivo;
+import com.model.Substituicao;
 import com.model.SuperintendenciaRegional;
 import com.model.TipoAdministracao;
 import com.model.TipoEstrutura;
@@ -61,6 +63,8 @@ public class PonteDAO {
                 + "D.DS_NUMERO_FAIXAS, D.DS_LARGURA_FAIXA, D.DS_ACOSTAMENTO_DIREITO, D.DS_ACOSTAMENTO_ESQUERDO, D.DS_CALCADA_DIREITA, "
                 + "D.DS_CALCADA_ESQUERDA, D.DS_LARGURA_TOTAL_PISTA, D.DS_GABARITO_HORIZONTAL, D.DS_GABARITO_VERTICAL, D.DS_NUMERO_VAOS, "
                 + "D.DS_DESCRICAO_VAOS, P.ID_ROTAS_ALTERNATIVAS, RA.DS_IDENTIFICACAO, RA.DS_ROTA_ALTERNATIVA, RA.DS_ACRESCIMO_KM, "
+                + "P.ID_OBSERVACOES, O.DS_IDENTIFICACAO, O.DS_OBSERVACOES, P.ID_SUBSTITUICAO, SUB.DS_IDENTIFICACAO, "
+                + "SUB.DS_EXISTE_PROJETO_SUBSTITUICAO, SUB.DS_CUSTO_ESTIMADO, SUB.DS_OBSERVACOES, "
                 + "U2.ID_UF as ID_UF_2, U2.DS_UF as DS_UF_2, "
                 + "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA "
                 
@@ -68,7 +72,7 @@ public class PonteDAO {
                 + "IDENTIFICACAO_OBRA_RESPONSAVEIS R, IDENTIFICACAO_OBRA_INSPECAO I, UF U, UF U2, VIA V, SUPERINTENDENCIA_REGIONAL SR, "
                 + "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, "
                 + "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
-                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA "
+                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB "
                 
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
                 + "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
@@ -77,6 +81,8 @@ public class PonteDAO {
                 + "AND P.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS = C.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS "
                 + "AND P.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES = D.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES "
                 + "AND P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
+                + "AND P.ID_OBSERVACOES = O.ID_OBSERVACOES "
+                + "AND P.ID_SUBSTITUICAO = SUB.ID_SUBSTITUICAO "
                 + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
                 + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
                 + "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
@@ -140,7 +146,10 @@ public class PonteDAO {
                             rs.getString("DS_GABARITO_HORIZONTAL"), rs.getString("DS_GABARITO_VERTICAL"), rs.getString("DS_NUMERO_VAOS"), 
                             rs.getString("DS_DESCRICAO_VAOS")), 
                     new RotasAlternativas(rs.getInt("ID_ROTAS_ALTERNATIVAS"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_ROTA_ALTERNATIVA"), 
-                            rs.getString("DS_ACRESCIMO_KM")), );
+                            rs.getString("DS_ACRESCIMO_KM")), 
+                    new Observacao(rs.getInt("ID_OBSERVACOES"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_OBSERVACOES")), 
+                    new Substituicao(rs.getInt("ID_SUBSTITUICAO"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_EXISTE_PROJETO_SUBSTITUICAO"), 
+                            rs.getString("DS_CUSTO_ESTIMADO"), rs.getString("DS_OBSERVACOES")));
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
 //            ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
@@ -170,7 +179,9 @@ public class PonteDAO {
                 + "T.DS_TIPO_TRACADO, C.DS_RAMPA_MAXIMA, C.DS_RAIO_CURVA, C.DS_VMD, P.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES, "
                 + "D.DS_NUMERO_FAIXAS, D.DS_LARGURA_FAIXA, D.DS_ACOSTAMENTO_DIREITO, D.DS_ACOSTAMENTO_ESQUERDO, D.DS_CALCADA_DIREITA, "
                 + "D.DS_CALCADA_ESQUERDA, D.DS_LARGURA_TOTAL_PISTA, D.DS_GABARITO_HORIZONTAL, D.DS_GABARITO_VERTICAL, D.DS_NUMERO_VAOS, "
-                + "D.DS_DESCRICAO_VAOS, P.ID_ROTAS_ALTERNATIVAS, RA.DS_IDENTIFICACAO, RA.DS_ROTA_ALTERNATIVA, RA.DS_ACRESCIMO_KM, ";
+                + "D.DS_DESCRICAO_VAOS, P.ID_ROTAS_ALTERNATIVAS, RA.DS_IDENTIFICACAO, RA.DS_ROTA_ALTERNATIVA, RA.DS_ACRESCIMO_KM, "
+                + "P.ID_OBSERVACOES, O.DS_IDENTIFICACAO, O.DS_OBSERVACOES, P.ID_SUBSTITUICAO, SUB.DS_IDENTIFICACAO, "
+                + "SUB.DS_EXISTE_PROJETO_SUBSTITUICAO, SUB.DS_CUSTO_ESTIMADO, SUB.DS_OBSERVACOES, ";
         query += "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA, ";
         query += "P.DS_INDICE_PERFORMANCE_RELATIVO ";
         
@@ -178,7 +189,7 @@ public class PonteDAO {
         query += "IDENTIFICACAO_OBRA_RESPONSAVEIS R, IDENTIFICACAO_OBRA_INSPECAO I, UF U, VIA V, SUPERINTENDENCIA_REGIONAL SR,  ";
         query += "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT,  ";
         query += "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
-                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA ";
+                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB ";
         
         query += "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS  ";
         query += "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO  ";
@@ -187,6 +198,8 @@ public class PonteDAO {
             + "AND P.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS = C.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS "
             + "AND P.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES = D.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES "
             + "AND P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
+            + "AND P.ID_OBSERVACOES = O.ID_OBSERVACOES "
+            + "AND P.ID_SUBSTITUICAO = SUB.ID_SUBSTITUICAO "
             + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
             + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO ";
         query += "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO ";
@@ -249,7 +262,10 @@ public class PonteDAO {
                             rs.getString("DS_GABARITO_HORIZONTAL"), rs.getString("DS_GABARITO_VERTICAL"), rs.getString("DS_NUMERO_VAOS"), 
                             rs.getString("DS_DESCRICAO_VAOS")), 
                     new RotasAlternativas(rs.getInt("ID_ROTAS_ALTERNATIVAS"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_ROTA_ALTERNATIVA"), 
-                            rs.getString("DS_ACRESCIMO_KM")));
+                            rs.getString("DS_ACRESCIMO_KM")), 
+                    new Observacao(rs.getInt("ID_OBSERVACOES"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_OBSERVACOES")), 
+                    new Substituicao(rs.getInt("ID_SUBSTITUICAO"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_EXISTE_PROJETO_SUBSTITUICAO"), 
+                            rs.getString("DS_CUSTO_ESTIMADO"), rs.getString("DS_OBSERVACOES")));
 //            ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
             ponte.setElementosComponentes(buscarElementosComponentes(ponte.getId()));
@@ -280,6 +296,8 @@ public class PonteDAO {
                 + "D.DS_NUMERO_FAIXAS, D.DS_LARGURA_FAIXA, D.DS_ACOSTAMENTO_DIREITO, D.DS_ACOSTAMENTO_ESQUERDO, D.DS_CALCADA_DIREITA, "
                 + "D.DS_CALCADA_ESQUERDA, D.DS_LARGURA_TOTAL_PISTA, D.DS_GABARITO_HORIZONTAL, D.DS_GABARITO_VERTICAL, D.DS_NUMERO_VAOS, "
                 + "D.DS_DESCRICAO_VAOS, P.ID_ROTAS_ALTERNATIVAS, RA.DS_IDENTIFICACAO, RA.DS_ROTA_ALTERNATIVA, RA.DS_ACRESCIMO_KM, "
+                + "P.ID_OBSERVACOES, O.DS_IDENTIFICACAO, O.DS_OBSERVACOES, P.ID_SUBSTITUICAO, SUB.DS_IDENTIFICACAO, "
+                + "SUB.DS_EXISTE_PROJETO_SUBSTITUICAO, SUB.DS_CUSTO_ESTIMADO, SUB.DS_OBSERVACOES, "
                 + "U2.ID_UF as ID_UF_2, U2.DS_UF as DS_UF_2, "
                 + "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA "
 
@@ -287,7 +305,7 @@ public class PonteDAO {
                 + "IDENTIFICACAO_OBRA_RESPONSAVEIS R, IDENTIFICACAO_OBRA_INSPECAO I, UF U, UF U2, VIA V, SUPERINTENDENCIA_REGIONAL SR, "
                 + "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, "
                 + "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
-                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA "
+                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB  "
                 
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
                 + "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
@@ -296,6 +314,8 @@ public class PonteDAO {
                 + "AND P.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS = C.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS "
                 + "AND P.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES = D.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES "
                 + "AND P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
+                + "AND P.ID_OBSERVACOES = O.ID_OBSERVACOES "
+                + "AND P.ID_SUBSTITUICAO = SUB.ID_SUBSTITUICAO "
                 + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
                 + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
                 + "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
@@ -384,7 +404,10 @@ public class PonteDAO {
                             rs.getString("DS_GABARITO_HORIZONTAL"), rs.getString("DS_GABARITO_VERTICAL"), rs.getString("DS_NUMERO_VAOS"), 
                             rs.getString("DS_DESCRICAO_VAOS")), 
                     new RotasAlternativas(rs.getInt("ID_ROTAS_ALTERNATIVAS"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_ROTA_ALTERNATIVA"), 
-                            rs.getString("DS_ACRESCIMO_KM")));
+                            rs.getString("DS_ACRESCIMO_KM")), 
+                    new Observacao(rs.getInt("ID_OBSERVACOES"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_OBSERVACOES")), 
+                    new Substituicao(rs.getInt("ID_SUBSTITUICAO"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_EXISTE_PROJETO_SUBSTITUICAO"), 
+                            rs.getString("DS_CUSTO_ESTIMADO"), rs.getString("DS_OBSERVACOES")));
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
 //            ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
