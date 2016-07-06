@@ -5,14 +5,23 @@
  */
 package com.bean;
 
+import com.dao.NaturezaTransposicaoDAO;
 import com.dao.PonteDAO;
 import com.dao.RankingDAO;
+import com.dao.SistemaConstrutivoDAO;
 import com.dao.SuperintendenciaRegionalDAO;
+import com.dao.TipoEstruturaDAO;
+import com.dao.TremTipoDAO;
 import com.dao.UfDAO;
 import com.dao.UnidadeLocalDAO;
 import com.dao.ViaDAO;
+import com.model.NaturezaTransposicao;
 import com.model.Ponte;
+import com.model.SistemaConstrutivo;
 import com.model.SuperintendenciaRegional;
+import com.model.TipoAdministracao;
+import com.model.TipoEstrutura;
+import com.model.TremTipo;
 import com.model.Uf;
 import com.model.UnidadeLocal;
 import com.model.Via;
@@ -40,6 +49,19 @@ public class PonteBean extends ComumBean implements Serializable {
     private ArrayList<SuperintendenciaRegional> superintendenciasRegionais;
     private ArrayList<UnidadeLocal> unidadesLocais;
     
+    private ArrayList<NaturezaTransposicao> naturezasTransposicoes;
+    private ArrayList<TipoEstrutura> tiposEstruturas;
+    private ArrayList<SistemaConstrutivo> sistemasConstrutivos;
+    private ArrayList<TremTipo> tremTipos;
+//    private ArrayList<> cidadeMaisProxima;
+//    private ArrayList<> ano;
+//    private ArrayList<> versao;
+//    private ArrayList<> codigo;
+    private ArrayList<TipoAdministracao> tipoAdministracao;
+//    private ArrayList<> localizacaoProjeto;
+//    private ArrayList<> localizacaoDocumentosConstrucao;
+//    private ArrayList<> localizacaoDocumentos;
+    
     // <editor-fold defaultstate="collapsed" desc=" Campos utilizados como filtro na busca por pontes. ">
     private String filtroCodigo;
     private String filtroIdentificacao;
@@ -62,6 +84,20 @@ public class PonteBean extends ComumBean implements Serializable {
             vias = new ViaDAO().buscar();
             superintendenciasRegionais = new SuperintendenciaRegionalDAO().buscar();
             unidadesLocais = new UnidadeLocalDAO().buscar();
+            
+            naturezasTransposicoes = new NaturezaTransposicaoDAO().buscar();
+            tiposEstruturas = new TipoEstruturaDAO().buscar();
+            sistemasConstrutivos = new SistemaConstrutivoDAO().buscar();
+            tremTipos = new TremTipoDAO().buscar();
+//            cidadeMaisProxima;
+//            ano;
+//            versao;
+//            codigo;
+//            tipoAdministracao = new TipoAdministracaoDAO().buscar();
+//            localizacaoProjeto;
+//            localizacaoDocumentosConstrucao;
+//            localizacaoDocumentos;
+            
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -106,7 +142,7 @@ public class PonteBean extends ComumBean implements Serializable {
             pontes = database.buscar();
         } catch (SQLException ex) {
             pontes = new ArrayList<>();
-            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
+            adicionarMensagemErro("Erro ao carregar pontees. " + ex.getMessage());
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAECadastro.jsf");
@@ -316,6 +352,46 @@ public class PonteBean extends ComumBean implements Serializable {
 
     public void setFiltroIdUnidadeLocal(int filtroIdUnidadeLocal) {
         this.filtroIdUnidadeLocal = filtroIdUnidadeLocal;
+    }
+
+    public ArrayList<NaturezaTransposicao> getNaturezasTransposicoes() {
+        return naturezasTransposicoes;
+    }
+
+    public void setNaturezasTransposicoes(ArrayList<NaturezaTransposicao> naturezasTransposicoes) {
+        this.naturezasTransposicoes = naturezasTransposicoes;
+    }
+
+    public ArrayList<TipoEstrutura> getTiposEstruturas() {
+        return tiposEstruturas;
+    }
+
+    public void setTiposEstruturas(ArrayList<TipoEstrutura> tiposEstruturas) {
+        this.tiposEstruturas = tiposEstruturas;
+    }
+
+    public ArrayList<SistemaConstrutivo> getSistemasConstrutivos() {
+        return sistemasConstrutivos;
+    }
+
+    public void setSistemasConstrutivos(ArrayList<SistemaConstrutivo> sistemasConstrutivos) {
+        this.sistemasConstrutivos = sistemasConstrutivos;
+    }
+
+    public ArrayList<TremTipo> getTremTipos() {
+        return tremTipos;
+    }
+
+    public void setTremTipos(ArrayList<TremTipo> tremTipos) {
+        this.tremTipos = tremTipos;
+    }
+
+    public ArrayList<TipoAdministracao> getTipoAdministracao() {
+        return tipoAdministracao;
+    }
+
+    public void setTipoAdministracao(ArrayList<TipoAdministracao> tipoAdministracao) {
+        this.tipoAdministracao = tipoAdministracao;
     }
     // </editor-fold>
 }

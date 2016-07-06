@@ -63,13 +63,12 @@ public class Ponte {
         this.rotasAlternativas = rotasAlternativas;
         this.observacao = observacao;
         this.substituicao = substituicao;
-        this.dataUltimaInspecao = dataUltimaInspecao;
     }
 
     public Ponte(String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, IdentificacaoObraLocalizacao identificacaoObraLocalizacao, 
             IdentificacaoObraResponsaveis identificacaoObraResponsaveis, IdentificacaoObraInspecao identificacaoObraInspecao, 
             CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, 
-            RotasAlternativas rotasAlternativas, Observacao observacao, Substituicao substituicao, Date dataUltimaInspecao) {
+            RotasAlternativas rotasAlternativas, Observacao observacao, Substituicao substituicao) {
         this.indicePerformanceRelativo = indicePerformanceRelativo;
         this.identificacaoObraDadosBasicos = identificacaoObraDadosBasicos;
         this.identificacaoObraLocalizacao = identificacaoObraLocalizacao;
@@ -80,7 +79,6 @@ public class Ponte {
         this.rotasAlternativas = rotasAlternativas;
         this.observacao = observacao;
         this.substituicao = substituicao;
-        this.dataUltimaInspecao = dataUltimaInspecao;
     }
 
     public int getId() {

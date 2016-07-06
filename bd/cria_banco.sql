@@ -3,7 +3,6 @@ GO
 use EMEA;
 GO
 ---------------------------------------------------------------------------
-
 create table TIPO_USUARIO
 	(
 		ID_TIPO_USUARIO		INT				not null identity(1,1),
