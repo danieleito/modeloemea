@@ -5,22 +5,32 @@
  */
 package com.bean;
 
+import com.dao.AspectoEspecialDAO;
+import com.dao.DeficienciaFuncionalDAO;
+import com.dao.ElementoUfprDAO;
 import com.dao.NaturezaTransposicaoDAO;
 import com.dao.PonteDAO;
 import com.dao.RankingDAO;
 import com.dao.SistemaConstrutivoDAO;
 import com.dao.SuperintendenciaRegionalDAO;
 import com.dao.TipoEstruturaDAO;
+import com.dao.TipoRegiaoDAO;
+import com.dao.TipoTracadoDAO;
 import com.dao.TremTipoDAO;
 import com.dao.UfDAO;
 import com.dao.UnidadeLocalDAO;
 import com.dao.ViaDAO;
+import com.model.AspectoEspecial;
+import com.model.DeficienciaFuncional;
+import com.model.ElementoUfpr;
 import com.model.NaturezaTransposicao;
 import com.model.Ponte;
 import com.model.SistemaConstrutivo;
 import com.model.SuperintendenciaRegional;
 import com.model.TipoAdministracao;
 import com.model.TipoEstrutura;
+import com.model.TipoRegiao;
+import com.model.TipoTracado;
 import com.model.TremTipo;
 import com.model.Uf;
 import com.model.UnidadeLocal;
@@ -49,6 +59,7 @@ public class PonteBean extends ComumBean implements Serializable {
     private ArrayList<SuperintendenciaRegional> superintendenciasRegionais;
     private ArrayList<UnidadeLocal> unidadesLocais;
     
+    //aba identificacao obra
     private ArrayList<NaturezaTransposicao> naturezasTransposicoes;
     private ArrayList<TipoEstrutura> tiposEstruturas;
     private ArrayList<SistemaConstrutivo> sistemasConstrutivos;
@@ -62,6 +73,11 @@ public class PonteBean extends ComumBean implements Serializable {
 //    private ArrayList<> localizacaoDocumentosConstrucao;
 //    private ArrayList<> localizacaoDocumentos;
     
+    //aba caracteristicas funcionais
+    private ArrayList<TipoRegiao> tiposRegioes;
+    private ArrayList<TipoTracado> tiposTracados;
+//    private ArrayList<> numeroFaixas;
+//    private ArrayList<> larguraFaixas;
     // <editor-fold defaultstate="collapsed" desc=" Campos utilizados como filtro na busca por pontes. ">
     private String filtroCodigo;
     private String filtroIdentificacao;
@@ -72,6 +88,16 @@ public class PonteBean extends ComumBean implements Serializable {
     private int filtroIdSuperintendencia;
     private int filtroIdUnidadeLocal;
     // </editor-fold>
+
+    //aba elementos componente
+    private ArrayList<ElementoUfpr> elementosUfpr;
+    
+    //aba aspectos especiais
+    private ArrayList<AspectoEspecial> aspectosEspeciais;
+
+    //aba deficiencias funcionais
+    private ArrayList<DeficienciaFuncional> deficienciasFuncionais;
+
     
     /**
      * Constructor
@@ -84,7 +110,8 @@ public class PonteBean extends ComumBean implements Serializable {
             vias = new ViaDAO().buscar();
             superintendenciasRegionais = new SuperintendenciaRegionalDAO().buscar();
             unidadesLocais = new UnidadeLocalDAO().buscar();
-            
+
+            //aba identificacao obra
             naturezasTransposicoes = new NaturezaTransposicaoDAO().buscar();
             tiposEstruturas = new TipoEstruturaDAO().buscar();
             sistemasConstrutivos = new SistemaConstrutivoDAO().buscar();
@@ -97,6 +124,21 @@ public class PonteBean extends ComumBean implements Serializable {
 //            localizacaoProjeto;
 //            localizacaoDocumentosConstrucao;
 //            localizacaoDocumentos;
+
+            //aba caracteristicas funcionais
+            tiposRegioes = new TipoRegiaoDAO().buscar();
+            tiposTracados = new TipoTracadoDAO().buscar();
+//            numeroFaixas;
+//            LarguraFaixas;
+
+            //aba elementos componentes
+            elementosUfpr = new ElementoUfprDAO().buscar();
+
+            //aba aspectos especiais
+            aspectosEspeciais = new AspectoEspecialDAO().buscar();
+
+            //aba deficiencias funcionais
+            deficienciasFuncionais = new DeficienciaFuncionalDAO().buscar();
             
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -393,5 +435,46 @@ public class PonteBean extends ComumBean implements Serializable {
     public void setTipoAdministracao(ArrayList<TipoAdministracao> tipoAdministracao) {
         this.tipoAdministracao = tipoAdministracao;
     }
+    
+    public ArrayList<TipoRegiao> getTiposRegioes() {
+        return tiposRegioes;
+    }
+
+    public void setTiposRegioes(ArrayList<TipoRegiao> tiposRegioes) {
+        this.tiposRegioes = tiposRegioes;
+    }
+
+    public ArrayList<TipoTracado> getTiposTracados() {
+        return tiposTracados;
+    }
+
+    public void setTiposTracados(ArrayList<TipoTracado> tiposTracados) {
+        this.tiposTracados = tiposTracados;
+    }
+
+    public ArrayList<ElementoUfpr> getElementosUfpr() {
+        return elementosUfpr;
+    }
+
+    public void setElementosUfpr(ArrayList<ElementoUfpr> elementosUfpr) {
+        this.elementosUfpr = elementosUfpr;
+    }
+
+    public ArrayList<AspectoEspecial> getAspectosEspeciais() {
+        return aspectosEspeciais;
+    }
+
+    public void setAspectosEspeciais(ArrayList<AspectoEspecial> aspectosEspeciais) {
+        this.aspectosEspeciais = aspectosEspeciais;
+    }
+    
+    public ArrayList<DeficienciaFuncional> getDeficienciasFuncionais() {
+        return deficienciasFuncionais;
+    }
+
+    public void setDeficienciasFuncionais(ArrayList<DeficienciaFuncional> deficienciasFuncionais) {
+        this.deficienciasFuncionais = deficienciasFuncionais;
+    }
+    
     // </editor-fold>
 }

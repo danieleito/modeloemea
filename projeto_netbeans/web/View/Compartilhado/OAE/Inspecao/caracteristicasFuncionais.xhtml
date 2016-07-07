@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -25,8 +26,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Tipo de Região*" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.tiposRegioes}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione o Tipo Região" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.tiposRegioes}" var="tr" itemValue="#{tr.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -36,8 +38,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Tipo de Traçado*" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.tiposTracados}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione o Tipo Traçado" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.tiposTracados}" var="tt" itemValue="#{tt.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -81,8 +84,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Número de Faixas*" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraLocalizacao.uf}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione o UF" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.ufs}" var="u" itemValue="#{u.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -92,8 +96,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Largura da Faixa (m)*" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraLocalizacao.uf}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione o UF" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.ufs}" var="u" itemValue="#{u.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>

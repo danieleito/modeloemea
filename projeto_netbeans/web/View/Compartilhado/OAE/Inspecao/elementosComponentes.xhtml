@@ -25,8 +25,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Elemento" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.elementosUfpr}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione o Elemento" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.elementosUfpr}" var="e" itemValue="#{e.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>

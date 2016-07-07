@@ -16,7 +16,7 @@ public class IdentificacaoObraLocalizacao {
     private double localVia;
     private String cidadeMaisProxima;
     private String pnvAno;
-    private String pnsVersao;
+    private String pnvVersao;
     private String pnvCodigo;
     private String pnvAltitude;
     private String latitudeGrau;
@@ -29,14 +29,14 @@ public class IdentificacaoObraLocalizacao {
         via = new Via();
     }
 
-    public IdentificacaoObraLocalizacao(int id, Uf uf, Via via, double localVia, String cidadeMaisProxima, String pnvAno, String pnsVersao, String pnvCodigo, String pnvAltitude, String latitudeGrau, String latitudeMinuto, String longitudeGrau, String longitudeMinuto) {
+    public IdentificacaoObraLocalizacao(int id, Uf uf, Via via, double localVia, String cidadeMaisProxima, String pnvAno, String pnvVersao, String pnvCodigo, String pnvAltitude, String latitudeGrau, String latitudeMinuto, String longitudeGrau, String longitudeMinuto) {
         this.id = id;
         this.uf = uf;
         this.via = via;
         this.localVia = localVia;
         this.cidadeMaisProxima = cidadeMaisProxima;
         this.pnvAno = pnvAno;
-        this.pnsVersao = pnsVersao;
+        this.pnvVersao = pnvVersao;
         this.pnvCodigo = pnvCodigo;
         this.pnvAltitude = pnvAltitude;
         this.latitudeGrau = latitudeGrau;
@@ -45,13 +45,13 @@ public class IdentificacaoObraLocalizacao {
         this.longitudeMinuto = longitudeMinuto;
     }
 
-    public IdentificacaoObraLocalizacao(Uf uf, Via via, double localVia, String cidadeMaisProxima, String pnvAno, String pnsVersao, String pnvCodigo, String pnvAltitude, String latitudeGrau, String latitudeMinuto, String longitudeGrau, String longitudeMinuto) {
+    public IdentificacaoObraLocalizacao(Uf uf, Via via, double localVia, String cidadeMaisProxima, String pnvAno, String pnvVersao, String pnvCodigo, String pnvAltitude, String latitudeGrau, String latitudeMinuto, String longitudeGrau, String longitudeMinuto) {
         this.uf = uf;
         this.via = via;
         this.localVia = localVia;
         this.cidadeMaisProxima = cidadeMaisProxima;
         this.pnvAno = pnvAno;
-        this.pnsVersao = pnsVersao;
+        this.pnvVersao = pnvVersao;
         this.pnvCodigo = pnvCodigo;
         this.pnvAltitude = pnvAltitude;
         this.latitudeGrau = latitudeGrau;
@@ -108,12 +108,12 @@ public class IdentificacaoObraLocalizacao {
         this.pnvAno = pnvAno;
     }
 
-    public String getPnsVersao() {
-        return pnsVersao;
+    public String getPnvVersao() {
+        return pnvVersao;
     }
 
-    public void setPnsVersao(String pnsVersao) {
-        this.pnsVersao = pnsVersao;
+    public void setPnvVersao(String pnsVersao) {
+        this.pnvVersao = pnsVersao;
     }
 
     public String getPnvCodigo() {

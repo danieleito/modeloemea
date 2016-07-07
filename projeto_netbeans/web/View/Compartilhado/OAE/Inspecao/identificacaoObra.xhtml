@@ -30,10 +30,11 @@ and open the template in the editor.
                         
                         <tr>
                             <td class="th">
-                                <p:outputLabel value="Natureza da Transposição" class="col-md-5" />
+                                <p:outputLabel value="Natureza da Transposição" class="col-md-3" />
                             </td>
                             <td>
                                 <p:selectOneMenu value="#{ponteBean.model.identificacaoObraDadosBasicos.naturezaTransposicao}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione a Natureza da Transposição" itemValue="0"/>
                                     <f:selectItems value="#{ponteBean.naturezasTransposicoes}" var="nt" itemValue="#{nt.id}" />
                                 </p:selectOneMenu>
                             </td>
@@ -44,8 +45,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Tipo de Estrutura*" class="col-md-3" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraDadosBasicos.tipoEstrutura}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione o Tipo de Estrutura" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.tiposEstruturas}" var="te" itemValue="#{te.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -55,8 +57,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Sistema Construtivo*" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraDadosBasicos.sistemaConstrutivo}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione o Sistema Construtivo" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.sistemasConstrutivos}" var="sc" itemValue="#{sc.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -86,8 +89,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Trem-Tipo" class="col-md-3" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-4">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraDadosBasicos.tremTipo}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione o Trem-Tipo" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.tremTipos}" var="tt" itemValue="#{tt.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -113,8 +117,9 @@ and open the template in the editor.
                             </td>
 
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraLocalizacao.uf}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione o UF" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.ufs}" var="u" itemValue="#{u.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -124,8 +129,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Via*" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraLocalizacao.via}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione a Via" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.vias}" var="v" itemValue="#{v.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -144,8 +150,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Cidade mais próxima*" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraLocalizacao.cidadeMaisProxima}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione a Cidade mais próxima" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.unidadesLocais}" var="ul" itemValue="#{ul.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -164,8 +171,9 @@ and open the template in the editor.
                             </td>
 
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraLocalizacao.pnvAno}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione o Ano" itemValue="0"/>
+                                    <f:selectItems value="" var="u" itemValue="#{u.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -175,8 +183,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Versão*" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraLocalizacao.pnvVersao}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione a Versão" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.ufs}" var="u" itemValue="#{u.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -186,8 +195,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Código*" class="col-md-3" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraLocalizacao.pnvCodigo}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione o Código" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.ufs}" var="u" itemValue="#{u.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -269,8 +279,9 @@ and open the template in the editor.
                             </td>
 
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.superintendenciasRegionais}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione a Superintendência Regional" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.superintendenciasRegionais}" var="sr" itemValue="#{sr.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -280,8 +291,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Unidade Local*" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.unidadesLocais}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione a Unidade Local" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.unidadesLocais}" var="ul" itemValue="#{ul.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -291,8 +303,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Tipo de Administração*" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.tipoAdministracao}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione o Tipo Administração" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.tipoAdministracao}" var="ta" itemValue="#{ta.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -346,8 +359,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Localização do Projeto" class="col-md-6" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoProjeto}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione a Localização do Projeto" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.ufs}" var="u" itemValue="#{u.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -357,8 +371,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Localização de Documentos de Construção" class="col-md-6" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoDocumentosConstrucao}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione a Localização de Documentos de Construção" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.ufs}" var="u" itemValue="#{u.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
@@ -368,8 +383,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Localização de Documentos Diversos" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoDocumentosDiversos}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione a Localizaçao de Documentos Diversos" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.ufs}" var="u" itemValue="#{u.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>

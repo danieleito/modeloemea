@@ -25,8 +25,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Deficiência Funcional" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-3">
-
+                                <p:selectOneMenu value="#{ponteBean.deficienciasFuncionais}" class="col-md-6" >
+                                    <f:selectItem itemLabel="Selecione a Deficiência Funcional" itemValue="0"/>
+                                    <f:selectItems value="#{ponteBean.deficienciasFuncionais}" var="d" itemValue="#{d.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
