@@ -38,9 +38,9 @@ and open the template in the editor.
                                 <p:outputLabel value="Tipo de Traçado*" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{ponteBean.tiposTracados}" class="col-md-6" >
+                                <p:selectOneMenu value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.tipoTracado}" class="col-md-6" >
                                     <f:selectItem itemLabel="Selecione o Tipo Traçado" itemValue="0"/>
-                                    <f:selectItems value="#{ponteBean.tiposTracados}" var="tt" itemValue="#{tt.id}" />
+                                    <f:selectItems value="#{ponteBean.tiposTracados}" var="nt" itemValue="#{nt.id}" />
                                 </p:selectOneMenu>
                             </td>
                         </tr>
