@@ -5,11 +5,13 @@
  */
 package com.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class TipoTracado {
+public class TipoTracado implements Serializable {
     private int id;
     private String descricao;
 
@@ -39,5 +41,10 @@ public class TipoTracado {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+    
+    @Override
+    public String toString() {
+        return descricao;
     }
 }

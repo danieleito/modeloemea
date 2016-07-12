@@ -221,51 +221,6 @@ insert into MANIFESTACAO (NM_MANIFESTACAO, DS_BETA) values ('manifestacao01', 'B
 insert into MANIFESTACAO (NM_MANIFESTACAO, DS_BETA) values ('manifestacao02', 'B02');
 ---------------------------------------------------------------------------
 
---Arquivos anexos cadastro
-create table ARQUIVO_ANEXO_CADASTRO
-	(
-		ID_ARQUIVO_ANEXO_CADASTRO		int				not null identity(1,1),
-		ID_PONTE						int				not null,
-		DS_ARQUIVO						varchar(20)		not null,
-		DS_TIPO_ARQUIVO					varchar(10)		not null,
-		NR_NUMERO						varchar(3)		not null,
-		DS_DESCRICAO					varchar(20)		not null,
-		DS_REGISTRO						varchar(10)		not null,
-		DT_DATA_ANEXACAO				date			not null,
-		--DS_MINIATURA					
-		CONSTRAINT						pk_arquivoanexocadastro	PRIMARY KEY(ID_ARQUIVO_ANEXO_CADASTRO),
-		CONSTRAINT						fk_arquivoanexocadastro_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE)
-	);
-GO
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'OAE', '10/05/2016');
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'OAE', '11/05/2016');
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'OAE', '12/05/2016');
-
-
---Arquivos anexos inspecao
-create table ARQUIVO_ANEXO_INSPECAO
-	(
-		ID_ARQUIVO_ANEXO_INSPECAO		int				not null identity(1,1),
-		ID_INSPECAO						int				not null,
-		DS_ARQUIVO						varchar(20)		not null,
-		DS_TIPO_ARQUIVO					varchar(10)		not null,
-		NR_NUMERO						varchar(3)		not null,
-		DS_DESCRICAO					varchar(20)		not null,
-		DS_REGISTRO						varchar(10)		not null,
-		DT_DATA_ANEXACAO				date			not null,
-		--DS_MINIATURA			
-		CONSTRAINT						pk_arquivoanexoinspecao	PRIMARY KEY(ID_ARQUIVO_ANEXO_INSPECAO),
-		CONSTRAINT						fk_arquivoanexoinspecao_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO)
-	);
-GO
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'INS', '13/05/2016');
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'INS', '14/05/2016');
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'INS', '15/05/2016');
----------------------------------------------------------------------------
-
-
-
-
 --------------------------------DADOS PARA PREENCHIMENTO CADASTRO-----------------------------------
 --Natureza de transposição
 
@@ -361,9 +316,9 @@ insert into TREM_TIPO (DS_TREM_TIPO) values ('Classe 45');
 
 create table TIPO_REGIAO
 	(
-		ID_TIPO_REGIAO			int				not null identity(1,1),
-		DS_TIPO_REGIAO		varchar(30)		not null,
-		CONSTRAINT		pk_tiporegiao			PRIMARY KEY(ID_TIPO_REGIAO)
+		ID_TIPO_REGIAO		int					not null identity(1,1),
+		DS_TIPO_REGIAO		varchar(30)			not null,
+		CONSTRAINT			pk_tiporegiao		PRIMARY KEY(ID_TIPO_REGIAO)
 	);
 
 GO
@@ -626,9 +581,77 @@ create table PONTE
 		CONSTRAINT										fk_ponte_observacoes								FOREIGN KEY(ID_OBSERVACOES) REFERENCES OBSERVACOES(ID_OBSERVACOES),
 		CONSTRAINT										fk_ponte_substituicao								FOREIGN KEY(ID_SUBSTITUICAO) REFERENCES SUBSTITUICAO(ID_SUBSTITUICAO)
 	);
-
-
 ---------------------------------------------------------------------------
+
+--modelo
+create table MODELO
+	(
+		ID_MODELO				int			not null identity(1,1),
+		DS_INDICE_BASE			varchar(20)	not null,
+		DS_INDICE_PERFORMANCE	varchar(20) null,
+		CONSTRAINT				pk_modelo	PRIMARY KEY(ID_MODELO)
+
+	);
+---------------------------------------------------------------------------
+
+--Inspecoes
+create table INSPECAO
+	(
+		ID_INSPECAO					int						not null identity(1,1),
+		DT_DATA						date					not null,
+		ID_USUARIO					int						not null,
+		ID_PONTE					int						not null,
+		ID_MODELO					int						not null,
+		CONSTRAINT					pk_inspecao				PRIMARY KEY(ID_INSPECAO),
+		CONSTRAINT					fk_inspecao_usuario		FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO),
+		CONSTRAINT					fk_inspecao_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
+		CONSTRAINT					fk_inspecao_modelo		FOREIGN KEY(ID_MODELO) REFERENCES MODELO(ID_MODELO)
+	);
+---------------------------------------------------------------------------
+
+
+--Arquivos anexos cadastro
+create table ARQUIVO_ANEXO_CADASTRO
+	(
+		ID_ARQUIVO_ANEXO_CADASTRO		int								not null identity(1,1),
+		ID_PONTE						int								not null,
+		DS_ARQUIVO						varchar(20)						not null,
+		DS_TIPO_ARQUIVO					varchar(10)						not null,
+		NR_NUMERO						varchar(3)						not null,
+		DS_DESCRICAO					varchar(20)						not null,
+		DS_REGISTRO						varchar(10)						not null,
+		DT_DATA_ANEXACAO				date							not null,
+		--DS_MINIATURA					
+		CONSTRAINT						pk_arquivoanexocadastro			PRIMARY KEY(ID_ARQUIVO_ANEXO_CADASTRO),
+		CONSTRAINT						fk_arquivoanexocadastro_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE)
+	);
+GO
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'OAE', '10/05/2016');
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'OAE', '11/05/2016');
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'OAE', '12/05/2016');
+
+
+--Arquivos anexos inspecao
+create table ARQUIVO_ANEXO_INSPECAO
+	(
+		ID_ARQUIVO_ANEXO_INSPECAO		int				not null identity(1,1),
+		ID_INSPECAO						int				not null,
+		DS_ARQUIVO						varchar(20)		not null,
+		DS_TIPO_ARQUIVO					varchar(10)		not null,
+		NR_NUMERO						varchar(3)		not null,
+		DS_DESCRICAO					varchar(20)		not null,
+		DS_REGISTRO						varchar(10)		not null,
+		DT_DATA_ANEXACAO				date			not null,
+		--DS_MINIATURA			
+		CONSTRAINT						pk_arquivoanexoinspecao	PRIMARY KEY(ID_ARQUIVO_ANEXO_INSPECAO),
+		CONSTRAINT						fk_arquivoanexoinspecao_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO)
+	);
+GO
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'INS', '13/05/2016');
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'INS', '14/05/2016');
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'INS', '15/05/2016');
+---------------------------------------------------------------------------
+
 
 --deficiencias funcionais
 create table DEFICIENCIAS_FUNCIONAIS
@@ -708,34 +731,6 @@ create table RANKING
 		CONSTRAINT							pk_ranking				PRIMARY KEY(ID_RANKING),
 		CONSTRAINT							fk_ranking_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE (ID_PONTE),
 		CONSTRAINT							fk_ranking_simulacao	FOREIGN KEY(ID_SIMULACAO) REFERENCES SIMULACAO (ID_SIMULACAO) ON DELETE CASCADE
-	);
-
-
----------------------------------------------------------------------------
-
---modelo
-create table MODELO
-	(
-		ID_MODELO				int			not null identity(1,1),
-		DS_INDICE_BASE			varchar(20)	not null,
-		DS_INDICE_PERFORMANCE	varchar(20) null,
-		CONSTRAINT				pk_modelo	PRIMARY KEY(ID_MODELO)
-
-	);
----------------------------------------------------------------------------
-
---Inspecoes
-create table INSPECAO
-	(
-		ID_INSPECAO					int						not null identity(1,1),
-		DT_DATA						date					not null,
-		ID_USUARIO					int						not null,
-		ID_PONTE					int						not null,
-		ID_MODELO					int						not null,
-		CONSTRAINT					pk_inspecao				PRIMARY KEY(ID_INSPECAO),
-		CONSTRAINT					fk_inspecao_usuario		FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO),
-		CONSTRAINT					fk_inspecao_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
-		CONSTRAINT					fk_inspecao_modelo		FOREIGN KEY(ID_MODELO) REFERENCES MODELO(ID_MODELO)
 	);
 
 ---------------------------------------------------------------------------
