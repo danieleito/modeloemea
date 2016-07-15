@@ -62,4 +62,9 @@ public class DeficienciaFuncional {
     public void setUnidadeMedida(String unidadeMedida) {
         this.unidadeMedida = unidadeMedida;
     }
+    
+    @Override
+    public String toString() {
+        return descricao;
+    }
 }

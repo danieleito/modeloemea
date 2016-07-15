@@ -40,4 +40,9 @@ public class AspectoEspecial {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    
+    @Override
+    public String toString() {
+        return descricao;
+    }
 }

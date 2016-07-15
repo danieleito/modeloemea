@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class TipoRegiaoDAO {
     public ArrayList<TipoRegiao> buscar() throws SQLException {
-        String query = "select ID_TIPO_REGIAO, DS_TIPO_REGIAO from ID_TIPO_REGIAO; ";
+        String query = "select ID_TIPO_REGIAO, DS_TIPO_REGIAO from TIPO_REGIAO; ";
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
         Statement stmt;
