@@ -463,9 +463,41 @@ create table CARACTERISTICAS_FUNCIONAIS_DIMENSOES
 		CONSTRAINT										pk_caracteristicasfuncionaisdimensoes		PRIMARY KEY(ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES)
 	);
 
+---------------------------------------------------------------------------
+-- foto
+create table FOTO
+	(
+		ID_FOTO			int				not null identity(1,1),
+		DS_FOTO			varchar(30)		not null,
+		CONSTRAINT		pk_foto			PRIMARY KEY(ID_FOTO)
+	);
+
+--extensao relativa
+create table EXTENSAO_RELATIVA
+	(
+		ID_EXTENSAO_RELATIVA		int						not null identity(1,1),
+		DS_EXTENSAO_RELATIVA		varchar(30)				not null,
+		CONSTRAINT					pk_extensaorelativa		PRIMARY KEY(ID_EXTENSAO_RELATIVA)
+	);
+
+--reparo
+create table REPARO
+	(
+		ID_REPARO		int				not null identity(1,1),
+		DS_REPARO		varchar(30)		not null,
+		CONTRAINT		pk_reparo		PRIMARY KEY(ID_REPARO)
+	);
+
+-- cadastro manifestacao
+create table CADASTRO_MANIFESTACAO
+	(
+		ID_CADASTRO_MANIFESTACAO
+
+	);
+
+
 
 ---------------------------------------------------------------------------
-
 --rotas alternativas
 create table ROTAS_ALTERNATIVAS
 	(
