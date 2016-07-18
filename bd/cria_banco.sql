@@ -485,18 +485,16 @@ create table REPARO
 	(
 		ID_REPARO		int				not null identity(1,1),
 		DS_REPARO		varchar(30)		not null,
-		CONTRAINT		pk_reparo		PRIMARY KEY(ID_REPARO)
+		CONSTRAINT		pk_reparo		PRIMARY KEY(ID_REPARO)
 	);
 
--- cadastro manifestacao
-create table CADASTRO_MANIFESTACAO
+--numero
+create table NUMERO
 	(
-		ID_CADASTRO_MANIFESTACAO
-
+		ID_NUMERO		int				not null identity(1,1),
+		DS_NUMERO		varchar(10)		not null,
+		CONSTRAINT		pk_numero		PRIMARY KEY(ID_NUMERO)
 	);
-
-
-
 ---------------------------------------------------------------------------
 --rotas alternativas
 create table ROTAS_ALTERNATIVAS
@@ -588,32 +586,6 @@ insert into MANIFESTACOES_REPETICAO (DS_CRITERIO_MANIFESTACOES_REPETICAO, DS_LIM
 insert into MANIFESTACOES_REPETICAO (DS_CRITERIO_MANIFESTACOES_REPETICAO, DS_LIMITESUPERIOR, DS_CAPA3) values ('Dano aparece entre 75% e 100% dos elementos estruturais da OAE','1','2');
 
 ---------------------------------------------------------------------------
--- ponte
-create table PONTE
-	(
-		ID_PONTE										int													not null identity(1,1),
-		DS_INDICE_PERFORMANCE_RELATIVO					varchar(20)											null,
-		ID_IDENTIFICACAO_OBRA_DADOS_BASICOS				int													not null,	
-		ID_IDENTIFICACAO_OBRA_LOCALIZACAO				int													not null,
-		ID_IDENTIFICACAO_OBRA_RESPONSAVEIS				int													not null,
-		ID_IDENTIFICACAO_OBRA_INSPECAO					int													not null,
-		ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS	int													not null,
-		ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES			int													not null,
-		ID_ROTAS_ALTERNATIVAS							int													not null,
-		ID_OBSERVACOES									int													not null,
-		ID_SUBSTITUICAO									int													not null,
-		CONSTRAINT										pk_ponte											PRIMARY KEY(ID_PONTE), 
-		CONSTRAINT										fk_ponte_identificacaoobradadosbasicos				FOREIGN KEY(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS) REFERENCES IDENTIFICACAO_OBRA_DADOS_BASICOS(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS),
-		CONSTRAINT										fk_ponte_identificacaoobralocalizacao				FOREIGN KEY(ID_IDENTIFICACAO_OBRA_LOCALIZACAO) REFERENCES IDENTIFICACAO_OBRA_LOCALIZACAO(ID_IDENTIFICACAO_OBRA_LOCALIZACAO),
-		CONSTRAINT										fk_ponte_identificacaoobraresponsaveis				FOREIGN KEY(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS) REFERENCES IDENTIFICACAO_OBRA_RESPONSAVEIS(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS),
-		CONSTRAINT										fk_ponte_identificacaoobrainspecao					FOREIGN KEY(ID_IDENTIFICACAO_OBRA_INSPECAO) REFERENCES IDENTIFICACAO_OBRA_INSPECAO(ID_IDENTIFICACAO_OBRA_INSPECAO),
-		CONSTRAINT										fk_ponte_caracteristicasfuncionaiscaracteristicas	FOREIGN KEY(ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS) REFERENCES CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS(ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS),
-		CONSTRAINT										fk_ponte_caracteristicasfuncionaisdimensoes			FOREIGN KEY(ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES) REFERENCES CARACTERISTICAS_FUNCIONAIS_DIMENSOES(ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES),
-		CONSTRAINT										fk_ponte_rotasalternativas							FOREIGN KEY(ID_ROTAS_ALTERNATIVAS) REFERENCES ROTAS_ALTERNATIVAS(ID_ROTAS_ALTERNATIVAS),
-		CONSTRAINT										fk_ponte_observacoes								FOREIGN KEY(ID_OBSERVACOES) REFERENCES OBSERVACOES(ID_OBSERVACOES),
-		CONSTRAINT										fk_ponte_substituicao								FOREIGN KEY(ID_SUBSTITUICAO) REFERENCES SUBSTITUICAO(ID_SUBSTITUICAO)
-	);
----------------------------------------------------------------------------
 
 --modelo
 create table MODELO
@@ -625,65 +597,6 @@ create table MODELO
 
 	);
 ---------------------------------------------------------------------------
-
---Inspecoes
-create table INSPECAO
-	(
-		ID_INSPECAO					int						not null identity(1,1),
-		DT_DATA						date					not null,
-		ID_USUARIO					int						not null,
-		ID_PONTE					int						not null,
-		ID_MODELO					int						not null,
-		CONSTRAINT					pk_inspecao				PRIMARY KEY(ID_INSPECAO),
-		CONSTRAINT					fk_inspecao_usuario		FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO),
-		CONSTRAINT					fk_inspecao_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
-		CONSTRAINT					fk_inspecao_modelo		FOREIGN KEY(ID_MODELO) REFERENCES MODELO(ID_MODELO)
-	);
----------------------------------------------------------------------------
-
-
---Arquivos anexos cadastro
-create table ARQUIVO_ANEXO_CADASTRO
-	(
-		ID_ARQUIVO_ANEXO_CADASTRO		int								not null identity(1,1),
-		ID_PONTE						int								not null,
-		DS_ARQUIVO						varchar(20)						not null,
-		DS_TIPO_ARQUIVO					varchar(10)						not null,
-		NR_NUMERO						varchar(3)						not null,
-		DS_DESCRICAO					varchar(20)						not null,
-		DS_REGISTRO						varchar(10)						not null,
-		DT_DATA_ANEXACAO				date							not null,
-		--DS_MINIATURA					
-		CONSTRAINT						pk_arquivoanexocadastro			PRIMARY KEY(ID_ARQUIVO_ANEXO_CADASTRO),
-		CONSTRAINT						fk_arquivoanexocadastro_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE)
-	);
-GO
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'OAE', '10/05/2016');
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'OAE', '11/05/2016');
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'OAE', '12/05/2016');
-
-
---Arquivos anexos inspecao
-create table ARQUIVO_ANEXO_INSPECAO
-	(
-		ID_ARQUIVO_ANEXO_INSPECAO		int				not null identity(1,1),
-		ID_INSPECAO						int				not null,
-		DS_ARQUIVO						varchar(20)		not null,
-		DS_TIPO_ARQUIVO					varchar(10)		not null,
-		NR_NUMERO						varchar(3)		not null,
-		DS_DESCRICAO					varchar(20)		not null,
-		DS_REGISTRO						varchar(10)		not null,
-		DT_DATA_ANEXACAO				date			not null,
-		--DS_MINIATURA			
-		CONSTRAINT						pk_arquivoanexoinspecao	PRIMARY KEY(ID_ARQUIVO_ANEXO_INSPECAO),
-		CONSTRAINT						fk_arquivoanexoinspecao_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO)
-	);
-GO
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'INS', '13/05/2016');
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'INS', '14/05/2016');
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'INS', '15/05/2016');
----------------------------------------------------------------------------
-
 
 --deficiencias funcionais
 create table DEFICIENCIAS_FUNCIONAIS
@@ -720,50 +633,6 @@ insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUN
 insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('25', 'Viga caixão com interior inacessível','un - Unidade');
 insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA) values ('26', 'Aparelho de apoio não identificado','kg - Quilograma');
 
-
----------------------------------------------------------------------------
-
---aspectos especiais
-create table ASPECTOS_ESPECIAIS
-	(
-		ID_ASPECTOS_ESPECIAIS				int							not null identity(1,1),
-		DS_ASPECTOS_ESPECIAIS				varchar(80),
-
-		CONSTRAINT						pk_aspectosespeciais		PRIMARY KEY(ID_ASPECTOS_ESPECIAIS)
-	);
-GO
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Meio ambiente agressivo');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Nível de vibração elevado');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Leito do rio erodível');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Fundação em solo mole');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Frequência elevada de carga pesada');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Desnível elevado entre greide e terreno');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Rio com lâmina dágua normal profunda');
-insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Grande variação do NA do rio na cheia');
----------------------------------------------------------------------------
-
-create table CADASTRO_ASPECTOS_ESPECIAIS
-	(
-		ID_CADASTRO_ASPECTOS_ESPECIAIS			int						not null identity(1,1),
-		ID_PONTE								int,
-		ID_ASPECTOS_ESPECIAIS					int,
-		
-		CONSTRAINT				pk_cadastroaspectosespeciais		PRIMARY KEY(ID_CADASTRO_ASPECTOS_ESPECIAIS),
-		CONSTRAINT				fk_cadastroaspectosespeciais_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
-		CONSTRAINT				fk_cadastroaspectosespeciais_aspectosespeciais	FOREIGN KEY(ID_ASPECTOS_ESPECIAIS) REFERENCES ASPECTOS_ESPECIAIS(ID_ASPECTOS_ESPECIAIS)
-	);
----------------------------------------------------------------------------
-
---Ranking
-create table RANKING
-	(
-		ID_RANKING							int						not null identity(1,1),
-		ID_PONTE							int						not null,
-		ID_SIMULACAO						int						not null,
-		CONSTRAINT							pk_ranking				PRIMARY KEY(ID_RANKING),
-		CONSTRAINT							fk_ranking_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE (ID_PONTE),
-		CONSTRAINT							fk_ranking_simulacao	FOREIGN KEY(ID_SIMULACAO) REFERENCES SIMULACAO (ID_SIMULACAO) ON DELETE CASCADE
-	);
 
 ---------------------------------------------------------------------------
 create table ELEMENTOS_UFPR
@@ -872,15 +741,156 @@ insert into ELEMENTOS_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '819', 
 -- Manifestações ufpr
 create table MANIFESTACOES_UFPR
 	(
-		ID_MANIFESTACOES_UFPR						int							not null identity(1,1),
+		ID_MANIFESTACOES_UFPR						int									not null identity(1,1),
 		ID_ELEMENTO_UFPR							int,
 		CD_MANIFESTACOES_UFPR						int,
 		DS_MANIFESTACOES_UFPR						varchar(100),
 		DS_UNIDADE									varchar(10),
 		DS_BETA										varchar(10),
 
-		CONSTRAINT									pk_manifestacoesufpr		PRIMARY KEY(ID_MANIFESTACOES_UFPR),
+		CONSTRAINT									pk_manifestacoesufpr				PRIMARY KEY(ID_MANIFESTACOES_UFPR),
 		CONSTRAINT									fk_manifestacoesufpr_elementosufpr	FOREIGN KEY(ID_ELEMENTO_UFPR) REFERENCES ELEMENTOS_UFPR(ID_ELEMENTO_UFPR)
+	);
+
+------------------------------------------------------------------------
+-- cadastro manifestacao
+create table CADASTRO_MANIFESTACAO
+	(
+		ID_CADASTRO_MANIFESTACAO		int											not null identity(1,1),
+		ID_NUMERO						int,
+		ID_MANIFESTACOES_UFPR			int,
+		ID_FOTO							int,
+		DS_TAMANHO						varchar(10),
+		ID_EXTENSAO_RELATIVA			int,
+		ID_REPARO						int,
+		CONSTRAINT						pk_cadastromanifestacao						PRIMARY KEY(ID_CADASTRO_MANIFESTACAO),
+		CONSTRAINT						fk_cadastromanifestacao_numero				FOREIGN KEY(ID_NUMERO) REFERENCES NUMERO(ID_NUMERO),
+		CONSTRAINT						fk_cadastromanifestacao_manifestacoesufpr	FOREIGN KEY(ID_MANIFESTACOES_UFPR) REFERENCES MANIFESTACOES_UFPR(ID_MANIFESTACOES_UFPR),
+		CONSTRAINT						fk_cadastromanifestacao_foto				FOREIGN KEY(ID_FOTO) REFERENCES FOTO(ID_FOTO),
+		CONSTRAINT						fk_cadastromanifestacao_extensaorelativa	FOREIGN KEY(ID_EXTENSAO_RELATIVA) REFERENCES EXTENSAO_RELATIVA(ID_EXTENSAO_RELATIVA),
+		CONSTRAINT						fk_cadastromanifestacao_reparo				FOREIGN KEY(ID_REPARO) REFERENCES REPARO(ID_REPARO)
+	);
+------------------------------------------------------------------------
+
+-- ponte
+create table PONTE
+	(
+		ID_PONTE										int													not null identity(1,1),
+		DS_INDICE_PERFORMANCE_RELATIVO					varchar(20)											null,
+		ID_IDENTIFICACAO_OBRA_DADOS_BASICOS				int													not null,	
+		ID_IDENTIFICACAO_OBRA_LOCALIZACAO				int													not null,
+		ID_IDENTIFICACAO_OBRA_RESPONSAVEIS				int													not null,
+		ID_IDENTIFICACAO_OBRA_INSPECAO					int													not null,
+		ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS	int													not null,
+		ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES			int													not null,
+		ID_ROTAS_ALTERNATIVAS							int													not null,
+		ID_OBSERVACOES									int													not null,
+		ID_SUBSTITUICAO									int													not null,
+		ID_CADASTRO_MANIFESTACAO						int													not null
+		CONSTRAINT										pk_ponte											PRIMARY KEY(ID_PONTE), 
+		CONSTRAINT										fk_ponte_identificacaoobradadosbasicos				FOREIGN KEY(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS) REFERENCES IDENTIFICACAO_OBRA_DADOS_BASICOS(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS),
+		CONSTRAINT										fk_ponte_identificacaoobralocalizacao				FOREIGN KEY(ID_IDENTIFICACAO_OBRA_LOCALIZACAO) REFERENCES IDENTIFICACAO_OBRA_LOCALIZACAO(ID_IDENTIFICACAO_OBRA_LOCALIZACAO),
+		CONSTRAINT										fk_ponte_identificacaoobraresponsaveis				FOREIGN KEY(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS) REFERENCES IDENTIFICACAO_OBRA_RESPONSAVEIS(ID_IDENTIFICACAO_OBRA_RESPONSAVEIS),
+		CONSTRAINT										fk_ponte_identificacaoobrainspecao					FOREIGN KEY(ID_IDENTIFICACAO_OBRA_INSPECAO) REFERENCES IDENTIFICACAO_OBRA_INSPECAO(ID_IDENTIFICACAO_OBRA_INSPECAO),
+		CONSTRAINT										fk_ponte_caracteristicasfuncionaiscaracteristicas	FOREIGN KEY(ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS) REFERENCES CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS(ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS),
+		CONSTRAINT										fk_ponte_caracteristicasfuncionaisdimensoes			FOREIGN KEY(ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES) REFERENCES CARACTERISTICAS_FUNCIONAIS_DIMENSOES(ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES),
+		CONSTRAINT										fk_ponte_rotasalternativas							FOREIGN KEY(ID_ROTAS_ALTERNATIVAS) REFERENCES ROTAS_ALTERNATIVAS(ID_ROTAS_ALTERNATIVAS),
+		CONSTRAINT										fk_ponte_observacoes								FOREIGN KEY(ID_OBSERVACOES) REFERENCES OBSERVACOES(ID_OBSERVACOES),
+		CONSTRAINT										fk_ponte_substituicao								FOREIGN KEY(ID_SUBSTITUICAO) REFERENCES SUBSTITUICAO(ID_SUBSTITUICAO),
+		CONSTRAINT										fk_ponte_cadastromanifestacao						FOREIGN KEY(ID_CADASTRO_MANIFESTACAO) REFERENCES CADASTRO_MANIFESTACAO(ID_CADASTRO_MANIFESTACAO)
+	);
+---------------------------------------------------------------------------
+
+--Inspecoes
+create table INSPECAO
+	(
+		ID_INSPECAO					int						not null identity(1,1),
+		DT_DATA						date					not null,
+		ID_USUARIO					int						not null,
+		ID_PONTE					int						not null,
+		ID_MODELO					int						not null,
+		CONSTRAINT					pk_inspecao				PRIMARY KEY(ID_INSPECAO),
+		CONSTRAINT					fk_inspecao_usuario		FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO),
+		CONSTRAINT					fk_inspecao_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
+		CONSTRAINT					fk_inspecao_modelo		FOREIGN KEY(ID_MODELO) REFERENCES MODELO(ID_MODELO)
+	);
+---------------------------------------------------------------------------
+
+
+--Arquivos anexos cadastro
+create table ARQUIVO_ANEXO_CADASTRO
+	(
+		ID_ARQUIVO_ANEXO_CADASTRO		int								not null identity(1,1),
+		ID_PONTE						int								not null,
+		DS_ARQUIVO						varchar(20)						not null,
+		DS_TIPO_ARQUIVO					varchar(10)						not null,
+		NR_NUMERO						varchar(3)						not null,
+		DS_DESCRICAO					varchar(20)						not null,
+		DS_REGISTRO						varchar(10)						not null,
+		DT_DATA_ANEXACAO				date							not null,
+		--DS_MINIATURA					
+		CONSTRAINT						pk_arquivoanexocadastro			PRIMARY KEY(ID_ARQUIVO_ANEXO_CADASTRO),
+		CONSTRAINT						fk_arquivoanexocadastro_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE)
+	);
+
+--Arquivos anexos inspecao
+create table ARQUIVO_ANEXO_INSPECAO
+	(
+		ID_ARQUIVO_ANEXO_INSPECAO		int				not null identity(1,1),
+		ID_INSPECAO						int				not null,
+		DS_ARQUIVO						varchar(20)		not null,
+		DS_TIPO_ARQUIVO					varchar(10)		not null,
+		NR_NUMERO						varchar(3)		not null,
+		DS_DESCRICAO					varchar(20)		not null,
+		DS_REGISTRO						varchar(10)		not null,
+		DT_DATA_ANEXACAO				date			not null,
+		--DS_MINIATURA			
+		CONSTRAINT						pk_arquivoanexoinspecao	PRIMARY KEY(ID_ARQUIVO_ANEXO_INSPECAO),
+		CONSTRAINT						fk_arquivoanexoinspecao_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO)
+	);
+---------------------------------------------------------------------------
+
+
+--aspectos especiais
+create table ASPECTOS_ESPECIAIS
+	(
+		ID_ASPECTOS_ESPECIAIS				int							not null identity(1,1),
+		DS_ASPECTOS_ESPECIAIS				varchar(80),
+
+		CONSTRAINT						pk_aspectosespeciais		PRIMARY KEY(ID_ASPECTOS_ESPECIAIS)
+	);
+GO
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Meio ambiente agressivo');
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Nível de vibração elevado');
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Leito do rio erodível');
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Fundação em solo mole');
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Frequência elevada de carga pesada');
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Desnível elevado entre greide e terreno');
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Rio com lâmina dágua normal profunda');
+insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Grande variação do NA do rio na cheia');
+---------------------------------------------------------------------------
+
+create table CADASTRO_ASPECTOS_ESPECIAIS
+	(
+		ID_CADASTRO_ASPECTOS_ESPECIAIS			int						not null identity(1,1),
+		ID_PONTE								int,
+		ID_ASPECTOS_ESPECIAIS					int,
+		
+		CONSTRAINT				pk_cadastroaspectosespeciais		PRIMARY KEY(ID_CADASTRO_ASPECTOS_ESPECIAIS),
+		CONSTRAINT				fk_cadastroaspectosespeciais_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
+		CONSTRAINT				fk_cadastroaspectosespeciais_aspectosespeciais	FOREIGN KEY(ID_ASPECTOS_ESPECIAIS) REFERENCES ASPECTOS_ESPECIAIS(ID_ASPECTOS_ESPECIAIS)
+	);
+---------------------------------------------------------------------------
+
+--Ranking
+create table RANKING
+	(
+		ID_RANKING							int						not null identity(1,1),
+		ID_PONTE							int						not null,
+		ID_SIMULACAO						int						not null,
+		CONSTRAINT							pk_ranking				PRIMARY KEY(ID_RANKING),
+		CONSTRAINT							fk_ranking_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE (ID_PONTE),
+		CONSTRAINT							fk_ranking_simulacao	FOREIGN KEY(ID_SIMULACAO) REFERENCES SIMULACAO (ID_SIMULACAO) ON DELETE CASCADE
 	);
 
 
@@ -923,11 +933,7 @@ create table ELEMENTO_COMPONENTES
 		CONSTRAINT						fk_elementoscomponentes_ponte			FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
 		CONSTRAINT						fk_elementoscomponentes_elementosufpr	FOREIGN KEY(ID_ELEMENTO_UFPR) REFERENCES ELEMENTOS_UFPR(ID_ELEMENTO_UFPR)
 	);
-
-
-
-
-
+---------------------------------------------------------------------------
 --MENSAGENS acho que nao vai ser necessario
 
 -- ARQUIVOS ANEXOS tabela ja existe

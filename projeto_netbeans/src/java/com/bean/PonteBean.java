@@ -8,9 +8,12 @@ package com.bean;
 import com.dao.AspectoEspecialDAO;
 import com.dao.DeficienciaFuncionalDAO;
 import com.dao.ElementoUfprDAO;
+import com.dao.ExtensaoRelativaDAO;
+import com.dao.ManifestacaoUfprDAO;
 import com.dao.NaturezaTransposicaoDAO;
 import com.dao.PonteDAO;
 import com.dao.RankingDAO;
+import com.dao.ReparoDAO;
 import com.dao.SistemaConstrutivoDAO;
 import com.dao.SuperintendenciaRegionalDAO;
 import com.dao.TipoEstruturaDAO;
@@ -23,8 +26,11 @@ import com.dao.ViaDAO;
 import com.model.AspectoEspecial;
 import com.model.DeficienciaFuncional;
 import com.model.ElementoUfpr;
+import com.model.ExtensaoRelativa;
+import com.model.ManifestacaoUfpr;
 import com.model.NaturezaTransposicao;
 import com.model.Ponte;
+import com.model.Reparo;
 import com.model.SistemaConstrutivo;
 import com.model.SuperintendenciaRegional;
 import com.model.TipoAdministracao;
@@ -98,6 +104,15 @@ public class PonteBean extends ComumBean implements Serializable {
     //aba deficiencias funcionais
     private ArrayList<DeficienciaFuncional> deficienciasFuncionais;
 
+    //inspecao
+    //aba Manifestacoes
+    private ArrayList<ManifestacaoUfpr> manifestacoesUfpr;
+    
+    //extensao relativa
+    private ArrayList<ExtensaoRelativa> extensoesRelativa;
+    
+    //reparo
+    private ArrayList<Reparo> reparos;
     
     /**
      * Constructor
@@ -139,6 +154,16 @@ public class PonteBean extends ComumBean implements Serializable {
 
             //aba deficiencias funcionais
             deficienciasFuncionais = new DeficienciaFuncionalDAO().buscar();
+            
+            //inspecao
+            //aba Manifestacoes
+            manifestacoesUfpr = new ManifestacaoUfprDAO().buscar();
+            
+            //extensao relativa
+            extensoesRelativa = new ExtensaoRelativaDAO().buscar();
+            
+            //reparo
+            reparos = new ReparoDAO().buscar();
             
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -184,7 +209,7 @@ public class PonteBean extends ComumBean implements Serializable {
             pontes = database.buscar();
         } catch (SQLException ex) {
             pontes = new ArrayList<>();
-            adicionarMensagemErro("Erro ao carregar pontees. " + ex.getMessage());
+            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAECadastro.jsf");
@@ -196,7 +221,7 @@ public class PonteBean extends ComumBean implements Serializable {
             pontes = database.buscar();
         } catch (SQLException ex) {
             pontes = new ArrayList<>();
-            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
+            adicionarMensagemErro("Erro ao carregar pontesw. " + ex.getMessage());
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAEInspecao.jsf");
@@ -211,7 +236,7 @@ public class PonteBean extends ComumBean implements Serializable {
                     filtroIdSuperintendencia, filtroIdUnidadeLocal);
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao carregar pontess. " + ex.getMessage());
+            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
     }
@@ -282,7 +307,7 @@ public class PonteBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro ao carregar. " + ex.getMessage());
         }
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
         return filtroCodigo;
@@ -476,5 +501,28 @@ public class PonteBean extends ComumBean implements Serializable {
         this.deficienciasFuncionais = deficienciasFuncionais;
     }
     
+    public ArrayList<ManifestacaoUfpr> getManifestacoesUfpr() {
+        return manifestacoesUfpr;
+    }
+
+    public void setManifestacoesUfpr(ArrayList<ManifestacaoUfpr> manifestacoesUfpr) {
+        this.manifestacoesUfpr = manifestacoesUfpr;
+    }
+
+    public ArrayList<ExtensaoRelativa> getExtensoesRelativa() {
+        return extensoesRelativa;
+    }
+
+    public void setExtensoesRelativa(ArrayList<ExtensaoRelativa> extensoesRelativa) {
+        this.extensoesRelativa = extensoesRelativa;
+    }
+
+    public ArrayList<Reparo> getReparos() {
+        return reparos;
+    }
+
+    public void setReparos(ArrayList<Reparo> reparos) {
+        this.reparos = reparos;
+    }
     // </editor-fold>
 }

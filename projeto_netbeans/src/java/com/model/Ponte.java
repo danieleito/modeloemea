@@ -27,6 +27,7 @@ public class Ponte {
     private ArrayList<ElementoComponente> elementosComponentes;
     private Observacao observacao;
     private Substituicao substituicao;
+    private CadastroManifestacao cadastroManifestacao;
 //    private ArrayList<ArquivoAnexo> arquivosAnexos;
     
     //para exibir na tela que lista o ranking
@@ -45,13 +46,14 @@ public class Ponte {
         elementosComponentes = new ArrayList<>();
         observacao = new Observacao();
         substituicao = new Substituicao();
+        cadastroManifestacao = new CadastroManifestacao();
     }
 
     public Ponte(int id, String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, 
             IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis, 
             IdentificacaoObraInspecao identificacaoObraInspecao, CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, 
             CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, RotasAlternativas rotasAlternativas,
-            Observacao observacao, Substituicao substituicao) {
+            Observacao observacao, Substituicao substituicao, CadastroManifestacao cadastroManifestacao) {
         this.id = id;
         this.indicePerformanceRelativo = indicePerformanceRelativo;
         this.identificacaoObraDadosBasicos = identificacaoObraDadosBasicos;
@@ -63,12 +65,13 @@ public class Ponte {
         this.rotasAlternativas = rotasAlternativas;
         this.observacao = observacao;
         this.substituicao = substituicao;
+        this.cadastroManifestacao = cadastroManifestacao;
     }
 
     public Ponte(String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, IdentificacaoObraLocalizacao identificacaoObraLocalizacao, 
             IdentificacaoObraResponsaveis identificacaoObraResponsaveis, IdentificacaoObraInspecao identificacaoObraInspecao, 
             CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, 
-            RotasAlternativas rotasAlternativas, Observacao observacao, Substituicao substituicao) {
+            RotasAlternativas rotasAlternativas, Observacao observacao, Substituicao substituicao, CadastroManifestacao cadastroManifestacao) {
         this.indicePerformanceRelativo = indicePerformanceRelativo;
         this.identificacaoObraDadosBasicos = identificacaoObraDadosBasicos;
         this.identificacaoObraLocalizacao = identificacaoObraLocalizacao;
@@ -79,6 +82,7 @@ public class Ponte {
         this.rotasAlternativas = rotasAlternativas;
         this.observacao = observacao;
         this.substituicao = substituicao;
+        this.cadastroManifestacao = cadastroManifestacao;
     }
 
     public int getId() {
@@ -207,5 +211,13 @@ public class Ponte {
 
     public void setSubstituicao(Substituicao substituicao) {
         this.substituicao = substituicao;
+    }
+
+    public CadastroManifestacao getCadastroManifestacao() {
+        return cadastroManifestacao;
+    }
+
+    public void setCadastroManifestacao(CadastroManifestacao cadastroManifestacao) {
+        this.cadastroManifestacao = cadastroManifestacao;
     }
 }

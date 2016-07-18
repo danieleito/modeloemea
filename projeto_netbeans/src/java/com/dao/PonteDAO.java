@@ -8,18 +8,24 @@ package com.dao;
 import com.model.ArquivoAnexo;
 import com.model.AspectoEspecial;
 import com.model.CadastroAspectoEspecial;
+import com.model.CadastroManifestacao;
 import com.model.CaracteristicasFuncionaisCaracteristicas;
 import com.model.CaracteristicasFuncionaisDimensoes;
 import com.model.DeficienciaFuncional;
 import com.model.ElementoComponente;
 import com.model.ElementoUfpr;
+import com.model.ExtensaoRelativa;
+import com.model.Foto;
 import com.model.Ponte;
 import com.model.IdentificacaoObraDadosBasicos;
 import com.model.IdentificacaoObraInspecao;
 import com.model.IdentificacaoObraLocalizacao;
 import com.model.IdentificacaoObraResponsaveis;
+import com.model.ManifestacaoUfpr;
 import com.model.NaturezaTransposicao;
+import com.model.Numero;
 import com.model.Observacao;
+import com.model.Reparo;
 import com.model.RotasAlternativas;
 import com.model.SistemaConstrutivo;
 import com.model.Substituicao;
@@ -43,7 +49,7 @@ import java.util.ArrayList;
  * @author Daniele Harumi Ito
  */
 public class PonteDAO {
-        
+
     public ArrayList<Ponte> buscar() throws SQLException {
         String query = "select P.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, DB.CD_CODIGO, DB.CD_CODIGO_INTEGRACAO, "
                 + "DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO, "
@@ -64,16 +70,20 @@ public class PonteDAO {
                 + "D.DS_CALCADA_ESQUERDA, D.DS_LARGURA_TOTAL_PISTA, D.DS_GABARITO_HORIZONTAL, D.DS_GABARITO_VERTICAL, D.DS_NUMERO_VAOS, "
                 + "D.DS_DESCRICAO_VAOS, P.ID_ROTAS_ALTERNATIVAS, RA.DS_IDENTIFICACAO, RA.DS_ROTA_ALTERNATIVA, RA.DS_ACRESCIMO_KM, "
                 + "P.ID_OBSERVACOES, O.DS_IDENTIFICACAO, O.DS_OBSERVACOES, P.ID_SUBSTITUICAO, SUB.DS_IDENTIFICACAO, "
-                + "SUB.DS_EXISTE_PROJETO_SUBSTITUICAO, SUB.DS_CUSTO_ESTIMADO, SUB.DS_OBSERVACOES, "
+                + "SUB.DS_EXISTE_PROJETO_SUBSTITUICAO, SUB.DS_CUSTO_ESTIMADO, SUB.DS_OBSERVACOES, P.ID_CADASTRO_MANIFESTACAO, "
+                + "CM.ID_NUMERO, N.DS_NUMERO, CM.ID_MANIFESTACOES_UFPR, MU.ID_ELEMENTO_UFPR, EU.CD_ELEMENTO, EU.DS_ELEMENTO, "
+                + "EU.DS_CAPA1, MU.CD_MANIFESTACOES_UFPR, MU.DS_MANIFESTACOES_UFPR, MU.DS_UNIDADE, MU.DS_BETA, CM.ID_FOTO, F.DS_FOTO, "
+                + "CM.DS_TAMANHO, CM.ID_EXTENSAO_RELATIVA, ER.DS_EXTENSAO_RELATIVA , CM.ID_REPARO, REP.DS_REPARO, "
                 + "U2.ID_UF as ID_UF_2, U2.DS_UF as DS_UF_2, "
                 + "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA "
-                
+
                 + "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, IDENTIFICACAO_OBRA_LOCALIZACAO L, "
                 + "IDENTIFICACAO_OBRA_RESPONSAVEIS R, IDENTIFICACAO_OBRA_INSPECAO I, UF U, UF U2, VIA V, SUPERINTENDENCIA_REGIONAL SR, "
                 + "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, "
                 + "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
-                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB "
-                
+                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB, "
+                + "CADASTRO_MANIFESTACAO CM, ELEMENTOS_UFPR EU, NUMERO N, MANIFESTACOES_UFPR MU, FOTO F, EXTENSAO_RELATIVA ER, REPARO REP "
+
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
                 + "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
                 + "AND P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS = R.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS "
@@ -83,6 +93,12 @@ public class PonteDAO {
                 + "AND P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
                 + "AND P.ID_OBSERVACOES = O.ID_OBSERVACOES "
                 + "AND P.ID_SUBSTITUICAO = SUB.ID_SUBSTITUICAO "
+                + "AND P.ID_CADASTRO_MANIFESTACAO = CM.ID_CADASTRO_MANIFESTACAO "
+                + "AND CM.ID_NUMERO = N.ID_NUMERO "
+                + "AND CM.ID_MANIFESTACOES_UFPR = MU.ID_MANIFESTACOES_UFPR "
+                + "AND CM.ID_FOTO = F.ID_FOTO "
+                + "AND CM.ID_EXTENSAO_RELATIVA = ER.ID_EXTENSAO_RELATIVA "
+                + "AND CM.ID_REPARO = REP.ID_REPARO "
                 + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
                 + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
                 + "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
@@ -149,14 +165,21 @@ public class PonteDAO {
                             rs.getString("DS_ACRESCIMO_KM")), 
                     new Observacao(rs.getInt("ID_OBSERVACOES"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_OBSERVACOES")), 
                     new Substituicao(rs.getInt("ID_SUBSTITUICAO"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_EXISTE_PROJETO_SUBSTITUICAO"), 
-                            rs.getString("DS_CUSTO_ESTIMADO"), rs.getString("DS_OBSERVACOES")));
+                            rs.getString("DS_CUSTO_ESTIMADO"), rs.getString("DS_OBSERVACOES")), 
+                    new CadastroManifestacao(rs.getInt("ID_CADASTRO_MANIFESTACAO"), new Numero(rs.getInt("ID_NUMERO"), rs.getString("DS_NUMERO")), 
+                            new ManifestacaoUfpr(rs.getInt("ID_MANIFESTACOES_UFPR"), 
+                                    new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), rs.getString("CD_ELEMENTO"), rs.getString("DS_ELEMENTO"), rs.getString("DS_CAPA1")), 
+                                    rs.getString("CD_MANIFESTACOES_UFPR"), rs.getString("DS_MANIFESTACOES_UFPR"), rs.getString("DS_UNIDADE"), rs.getString("DS_BETA")), 
+                            new Foto(rs.getInt("ID_FOTO"), rs.getString("DS_FOTO")), rs.getString("DS_TAMANHO"), 
+                            new ExtensaoRelativa(rs.getInt("ID_EXTENSAO_RELATIVA"), rs.getString("DS_EXTENSAO_RELATIVA")), 
+                            new Reparo(rs.getInt("ID_REPARO"), rs.getString("DS_REPARO"))));
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
 //            ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
             ponte.setElementosComponentes(buscarElementosComponentes(ponte.getId()));
             pontes.add(ponte);
         }
-        conexao.closeConnection();
+        conexao.closeConnection(); 
         return pontes;
     }
 
@@ -181,7 +204,10 @@ public class PonteDAO {
                 + "D.DS_CALCADA_ESQUERDA, D.DS_LARGURA_TOTAL_PISTA, D.DS_GABARITO_HORIZONTAL, D.DS_GABARITO_VERTICAL, D.DS_NUMERO_VAOS, "
                 + "D.DS_DESCRICAO_VAOS, P.ID_ROTAS_ALTERNATIVAS, RA.DS_IDENTIFICACAO, RA.DS_ROTA_ALTERNATIVA, RA.DS_ACRESCIMO_KM, "
                 + "P.ID_OBSERVACOES, O.DS_IDENTIFICACAO, O.DS_OBSERVACOES, P.ID_SUBSTITUICAO, SUB.DS_IDENTIFICACAO, "
-                + "SUB.DS_EXISTE_PROJETO_SUBSTITUICAO, SUB.DS_CUSTO_ESTIMADO, SUB.DS_OBSERVACOES, ";
+                + "SUB.DS_EXISTE_PROJETO_SUBSTITUICAO, SUB.DS_CUSTO_ESTIMADO, SUB.DS_OBSERVACOES, P.ID_CADASTRO_MANIFESTACAO, "
+                + "CM.ID_NUMERO, N.DS_NUMERO, CM.ID_MANIFESTACOES_UFPR, MU.ID_ELEMENTO_UFPR, EU.CD_ELEMENTO, EU.DS_ELEMENTO, "
+                + "EU.DS_CAPA1, MU.CD_MANIFESTACOES_UFPR, MU.DS_MANIFESTACOES_UFPR, MU.DS_UNIDADE, MU.DS_BETA, CM.ID_FOTO, F.DS_FOTO, "
+                + "CM.DS_TAMANHO, CM.ID_EXTENSAO_RELATIVA, ER.DS_EXTENSAO_RELATIVA , CM.ID_REPARO, REP.DS_REPARO, ";
         query += "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA, ";
         query += "P.DS_INDICE_PERFORMANCE_RELATIVO ";
         
@@ -189,7 +215,8 @@ public class PonteDAO {
         query += "IDENTIFICACAO_OBRA_RESPONSAVEIS R, IDENTIFICACAO_OBRA_INSPECAO I, UF U, VIA V, SUPERINTENDENCIA_REGIONAL SR,  ";
         query += "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT,  ";
         query += "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
-                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB ";
+                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB, "
+                + "CADASTRO_MANIFESTACAO CM, ELEMENTOS_UFPR EU, NUMERO N, MANIFESTACOES_UFPR MU, FOTO F, EXTENSAO_RELATIVA ER, REPARO REP ";
         
         query += "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS  ";
         query += "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO  ";
@@ -200,6 +227,12 @@ public class PonteDAO {
             + "AND P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
             + "AND P.ID_OBSERVACOES = O.ID_OBSERVACOES "
             + "AND P.ID_SUBSTITUICAO = SUB.ID_SUBSTITUICAO "
+            + "AND P.ID_CADASTRO_MANIFESTACAO = CM.ID_CADASTRO_MANIFESTACAO "
+            + "AND CM.ID_NUMERO = N.ID_NUMERO "
+            + "AND CM.ID_MANIFESTACOES_UFPR = MU.ID_MANIFESTACOES_UFPR "
+            + "AND CM.ID_FOTO = F.ID_FOTO "
+            + "AND CM.ID_EXTENSAO_RELATIVA = ER.ID_EXTENSAO_RELATIVA "
+            + "AND CM.ID_REPARO = REP.ID_REPARO "
             + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
             + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO ";
         query += "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO ";
@@ -265,7 +298,14 @@ public class PonteDAO {
                             rs.getString("DS_ACRESCIMO_KM")), 
                     new Observacao(rs.getInt("ID_OBSERVACOES"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_OBSERVACOES")), 
                     new Substituicao(rs.getInt("ID_SUBSTITUICAO"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_EXISTE_PROJETO_SUBSTITUICAO"), 
-                            rs.getString("DS_CUSTO_ESTIMADO"), rs.getString("DS_OBSERVACOES")));
+                            rs.getString("DS_CUSTO_ESTIMADO"), rs.getString("DS_OBSERVACOES")),
+                    new CadastroManifestacao(rs.getInt("ID_CADASTRO_MANIFESTACAO"), new Numero(rs.getInt("ID_NUMERO"), rs.getString("DS_NUMERO")), 
+                        new ManifestacaoUfpr(rs.getInt("ID_MANIFESTACOES_UFPR"), 
+                                new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), rs.getString("CD_ELEMENTO"), rs.getString("DS_ELEMENTO"), rs.getString("DS_CAPA1")), 
+                                rs.getString("CD_MANIFESTACOES_UFPR"), rs.getString("DS_MANIFESTACOES_UFPR"), rs.getString("DS_UNIDADE"), rs.getString("DS_BETA")), 
+                        new Foto(rs.getInt("ID_FOTO"), rs.getString("DS_FOTO")), rs.getString("DS_TAMANHO"), 
+                        new ExtensaoRelativa(rs.getInt("ID_EXTENSAO_RELATIVA"), rs.getString("DS_EXTENSAO_RELATIVA")), 
+                        new Reparo(rs.getInt("ID_REPARO"), rs.getString("DS_REPARO"))));
 //            ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
             ponte.setElementosComponentes(buscarElementosComponentes(ponte.getId()));
@@ -297,7 +337,10 @@ public class PonteDAO {
                 + "D.DS_CALCADA_ESQUERDA, D.DS_LARGURA_TOTAL_PISTA, D.DS_GABARITO_HORIZONTAL, D.DS_GABARITO_VERTICAL, D.DS_NUMERO_VAOS, "
                 + "D.DS_DESCRICAO_VAOS, P.ID_ROTAS_ALTERNATIVAS, RA.DS_IDENTIFICACAO, RA.DS_ROTA_ALTERNATIVA, RA.DS_ACRESCIMO_KM, "
                 + "P.ID_OBSERVACOES, O.DS_IDENTIFICACAO, O.DS_OBSERVACOES, P.ID_SUBSTITUICAO, SUB.DS_IDENTIFICACAO, "
-                + "SUB.DS_EXISTE_PROJETO_SUBSTITUICAO, SUB.DS_CUSTO_ESTIMADO, SUB.DS_OBSERVACOES, "
+                + "SUB.DS_EXISTE_PROJETO_SUBSTITUICAO, SUB.DS_CUSTO_ESTIMADO, SUB.DS_OBSERVACOES, P.ID_CADASTRO_MANIFESTACAO, "
+                + "CM.ID_NUMERO, N.DS_NUMERO, CM.ID_MANIFESTACOES_UFPR, MU.ID_ELEMENTO_UFPR, EU.CD_ELEMENTO, EU.DS_ELEMENTO, "
+                + "EU.DS_CAPA1, MU.CD_MANIFESTACOES_UFPR, MU.DS_MANIFESTACOES_UFPR, MU.DS_UNIDADE, MU.DS_BETA, CM.ID_FOTO, F.DS_FOTO, "
+                + "CM.DS_TAMANHO, CM.ID_EXTENSAO_RELATIVA, ER.DS_EXTENSAO_RELATIVA , CM.ID_REPARO, REP.DS_REPARO, "
                 + "U2.ID_UF as ID_UF_2, U2.DS_UF as DS_UF_2, "
                 + "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA "
 
@@ -305,7 +348,8 @@ public class PonteDAO {
                 + "IDENTIFICACAO_OBRA_RESPONSAVEIS R, IDENTIFICACAO_OBRA_INSPECAO I, UF U, UF U2, VIA V, SUPERINTENDENCIA_REGIONAL SR, "
                 + "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, "
                 + "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
-                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB  "
+                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB, "
+                + "CADASTRO_MANIFESTACAO CM, ELEMENTOS_UFPR EU, NUMERO N, MANIFESTACOES_UFPR MU, FOTO F, EXTENSAO_RELATIVA ER, REPARO REP "
                 
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
                 + "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
@@ -316,6 +360,12 @@ public class PonteDAO {
                 + "AND P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
                 + "AND P.ID_OBSERVACOES = O.ID_OBSERVACOES "
                 + "AND P.ID_SUBSTITUICAO = SUB.ID_SUBSTITUICAO "
+                + "AND P.ID_CADASTRO_MANIFESTACAO = CM.ID_CADASTRO_MANIFESTACAO "
+                + "AND CM.ID_NUMERO = N.ID_NUMERO "
+                + "AND CM.ID_MANIFESTACOES_UFPR = MU.ID_MANIFESTACOES_UFPR "
+                + "AND CM.ID_FOTO = F.ID_FOTO "
+                + "AND CM.ID_EXTENSAO_RELATIVA = ER.ID_EXTENSAO_RELATIVA "
+                + "AND CM.ID_REPARO = REP.ID_REPARO "
                 + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
                 + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
                 + "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
@@ -407,7 +457,14 @@ public class PonteDAO {
                             rs.getString("DS_ACRESCIMO_KM")), 
                     new Observacao(rs.getInt("ID_OBSERVACOES"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_OBSERVACOES")), 
                     new Substituicao(rs.getInt("ID_SUBSTITUICAO"), rs.getString("DS_IDENTIFICACAO"), rs.getString("DS_EXISTE_PROJETO_SUBSTITUICAO"), 
-                            rs.getString("DS_CUSTO_ESTIMADO"), rs.getString("DS_OBSERVACOES")));
+                            rs.getString("DS_CUSTO_ESTIMADO"), rs.getString("DS_OBSERVACOES")), 
+                    new CadastroManifestacao(rs.getInt("ID_CADASTRO_MANIFESTACAO"), new Numero(rs.getInt("ID_NUMERO"), rs.getString("DS_NUMERO")), 
+                        new ManifestacaoUfpr(rs.getInt("ID_MANIFESTACOES_UFPR"), 
+                                new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), rs.getString("CD_ELEMENTO"), rs.getString("DS_ELEMENTO"), rs.getString("DS_CAPA1")), 
+                                rs.getString("CD_MANIFESTACOES_UFPR"), rs.getString("DS_MANIFESTACOES_UFPR"), rs.getString("DS_UNIDADE"), rs.getString("DS_BETA")), 
+                        new Foto(rs.getInt("ID_FOTO"), rs.getString("DS_FOTO")), rs.getString("DS_TAMANHO"), 
+                        new ExtensaoRelativa(rs.getInt("ID_EXTENSAO_RELATIVA"), rs.getString("DS_EXTENSAO_RELATIVA")), 
+                        new Reparo(rs.getInt("ID_REPARO"), rs.getString("DS_REPARO"))));
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
 //            ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));

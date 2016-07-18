@@ -19,7 +19,8 @@ import java.util.ArrayList;
  */
 public class ManifestacaoUfprDAO {
     public ArrayList<ManifestacaoUfpr> buscar() throws SQLException {
-        String query = "select ID_MANIFESTACOES_UFPR, ID_ELEMENTO_UFPR, CD_MANIFESTACOES_UFPR, DS_MANIFESTACOES_UFPR, DS_UNIDADE, DS_BETA from MANIFESTACOES_UFPR; ";
+        String query = "select ID_MANIFESTACOES_UFPR, ID_ELEMENTO_UFPR, CD_MANIFESTACOES_UFPR, "
+                + "DS_MANIFESTACOES_UFPR, DS_UNIDADE, DS_BETA from MANIFESTACOES_UFPR; ";
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
         Statement stmt;
