@@ -9,34 +9,31 @@ package com.model;
  *
  * @author Daniele Harumi Ito
  */
-public class cadastroManifestacao {
+public class CadastroManifestacao {
     private int id;
-    private ElementoUfpr elementoUfpr;
     private Numero numero;
-    private ManifestacaoUfpr manifestacao;
+    private ManifestacaoUfpr manifestacaoUfpr;
     private Foto foto;
     private String tamanho;
     private ExtensaoRelativa extensaoRelativa;
     private Reparo reparo;
 
-    public cadastroManifestacao() {
+    public CadastroManifestacao() {
     }
 
-    public cadastroManifestacao(int id, ElementoUfpr elementoUfpr, Numero numero, ManifestacaoUfpr manifestacao, Foto foto, String tamanho, ExtensaoRelativa extensaoRelativa, Reparo reparo) {
+    public CadastroManifestacao(int id, Numero numero, ManifestacaoUfpr manifestacaoUfpr, Foto foto, String tamanho, ExtensaoRelativa extensaoRelativa, Reparo reparo) {
         this.id = id;
-        this.elementoUfpr = elementoUfpr;
         this.numero = numero;
-        this.manifestacao = manifestacao;
+        this.manifestacaoUfpr = manifestacaoUfpr;
         this.foto = foto;
         this.tamanho = tamanho;
         this.extensaoRelativa = extensaoRelativa;
         this.reparo = reparo;
     }
 
-    public cadastroManifestacao(ElementoUfpr elementoUfpr, Numero numero, ManifestacaoUfpr manifestacao, Foto foto, String tamanho, ExtensaoRelativa extensaoRelativa, Reparo reparo) {
-        this.elementoUfpr = elementoUfpr;
+    public CadastroManifestacao(Numero numero, ManifestacaoUfpr manifestacaoUfpr, Foto foto, String tamanho, ExtensaoRelativa extensaoRelativa, Reparo reparo) {
         this.numero = numero;
-        this.manifestacao = manifestacao;
+        this.manifestacaoUfpr = manifestacaoUfpr;
         this.foto = foto;
         this.tamanho = tamanho;
         this.extensaoRelativa = extensaoRelativa;
@@ -51,14 +48,6 @@ public class cadastroManifestacao {
         this.id = id;
     }
 
-    public ElementoUfpr getElementoUfpr() {
-        return elementoUfpr;
-    }
-
-    public void setElementoUfpr(ElementoUfpr elementoUfpr) {
-        this.elementoUfpr = elementoUfpr;
-    }
-
     public Numero getNumero() {
         return numero;
     }
@@ -67,12 +56,12 @@ public class cadastroManifestacao {
         this.numero = numero;
     }
 
-    public ManifestacaoUfpr getManifestacao() {
-        return manifestacao;
+    public ManifestacaoUfpr getManifestacaoUfpr() {
+        return manifestacaoUfpr;
     }
 
-    public void setManifestacao(ManifestacaoUfpr manifestacao) {
-        this.manifestacao = manifestacao;
+    public void setManifestacao(ManifestacaoUfpr manifestacaoUfpr) {
+        this.manifestacaoUfpr = manifestacaoUfpr;
     }
 
     public Foto getFoto() {
