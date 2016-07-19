@@ -19,6 +19,11 @@ public class CadastroManifestacao {
     private Reparo reparo;
 
     public CadastroManifestacao() {
+        numero = new Numero();
+        manifestacaoUfpr = new ManifestacaoUfpr();
+        foto = new Foto();
+        extensaoRelativa = new ExtensaoRelativa();
+        reparo = new Reparo();
     }
 
     public CadastroManifestacao(int id, Numero numero, ManifestacaoUfpr manifestacaoUfpr, Foto foto, String tamanho, ExtensaoRelativa extensaoRelativa, Reparo reparo) {
