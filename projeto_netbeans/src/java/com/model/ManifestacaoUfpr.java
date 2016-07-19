@@ -18,6 +18,7 @@ public class ManifestacaoUfpr {
     private String beta;
 
     public ManifestacaoUfpr() {
+        elementoUfpr = new ElementoUfpr();
     }
 
     public ManifestacaoUfpr(int id, ElementoUfpr elementoUfpr, String codigo, String descricao, String unidade, String beta) {

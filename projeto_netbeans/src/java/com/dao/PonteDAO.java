@@ -99,6 +99,7 @@ public class PonteDAO {
                 + "AND CM.ID_FOTO = F.ID_FOTO "
                 + "AND CM.ID_EXTENSAO_RELATIVA = ER.ID_EXTENSAO_RELATIVA "
                 + "AND CM.ID_REPARO = REP.ID_REPARO "
+                + "AND MU.ID_ELEMENTO_UFPR = EU.ID_ELEMENTO_UFPR "
                 + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
                 + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
                 + "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
@@ -233,6 +234,7 @@ public class PonteDAO {
             + "AND CM.ID_FOTO = F.ID_FOTO "
             + "AND CM.ID_EXTENSAO_RELATIVA = ER.ID_EXTENSAO_RELATIVA "
             + "AND CM.ID_REPARO = REP.ID_REPARO "
+            + "AND MU.ID_ELEMENTO_UFPR = EU.ID_ELEMENTO_UFPR "
             + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
             + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO ";
         query += "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO ";
@@ -366,6 +368,7 @@ public class PonteDAO {
                 + "AND CM.ID_FOTO = F.ID_FOTO "
                 + "AND CM.ID_EXTENSAO_RELATIVA = ER.ID_EXTENSAO_RELATIVA "
                 + "AND CM.ID_REPARO = REP.ID_REPARO "
+                + "AND MU.ID_ELEMENTO_UFPR = EU.ID_ELEMENTO_UFPR "
                 + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
                 + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
                 + "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "

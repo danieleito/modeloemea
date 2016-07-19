@@ -29,7 +29,7 @@
                                                 <p:outputLabel value="Elemento:" class="col-md-1" />                                  
                                             </td>
                                             <td>
-                                                <p:selectOneMenu value="#{ponteBean.elementosUfpr}" class="col-md-3" >
+                                                <p:selectOneMenu value="#{ponteBean.model.cadastroManifestacao.manifestacaoUfpr.elementoUfpr.id}" class="col-md-3" >
                                                     <f:selectItem itemLabel="Selecione o Elemento" itemValue="0"/>
                                                     <f:selectItems value="#{ponteBean.elementosUfpr}" var="e" itemValue="#{e.id}" />
                                                 </p:selectOneMenu>
@@ -41,8 +41,8 @@
                                                 <p:outputLabel value="Nº:" class="col-md-1" />  
                                             </td>
                                             <td>
-                                                <p:selectOneMenu value="#{ponteBean.elementosUfpr}" class="col-md-3" >
-                                                    <f:selectItem itemLabel="Selecione o Elemento" itemValue="0"/>
+                                                <p:selectOneMenu value="#{ponteBean.model.cadastroManifestacao.numero.id}" class="col-md-3" >
+                                                    <f:selectItem itemLabel="Selecione o Número" itemValue="0"/>
                                                     <f:selectItems value="#{ponteBean.elementosUfpr}" var="e" itemValue="#{e.id}" />
                                                 </p:selectOneMenu>
                                             </td>
@@ -53,7 +53,7 @@
                                                 <p:outputLabel value="Manifestação:" class="col-md-1" />                                  
                                             </td>
                                             <td>
-                                                <p:selectOneMenu value="#{ponteBean.manifestacoesUfpr}" class="col-md-3" >
+                                                <p:selectOneMenu value="#{ponteBean.model.cadastroManifestacao.manifestacaoUfpr.id}" class="col-md-3" >
                                                     <f:selectItem itemLabel="Selecione a Manifestação" itemValue="0"/>
                                                     <f:selectItems value="#{ponteBean.manifestacoesUfpr}" var="m" itemValue="#{m.id}" />
                                                 </p:selectOneMenu>
