@@ -9,8 +9,10 @@ import com.dao.AspectoEspecialDAO;
 import com.dao.DeficienciaFuncionalDAO;
 import com.dao.ElementoUfprDAO;
 import com.dao.ExtensaoRelativaDAO;
+import com.dao.FotoDAO;
 import com.dao.ManifestacaoUfprDAO;
 import com.dao.NaturezaTransposicaoDAO;
+import com.dao.NumeroDAO;
 import com.dao.PonteDAO;
 import com.dao.RankingDAO;
 import com.dao.ReparoDAO;
@@ -27,8 +29,10 @@ import com.model.AspectoEspecial;
 import com.model.DeficienciaFuncional;
 import com.model.ElementoUfpr;
 import com.model.ExtensaoRelativa;
+import com.model.Foto;
 import com.model.ManifestacaoUfpr;
 import com.model.NaturezaTransposicao;
+import com.model.Numero;
 import com.model.Ponte;
 import com.model.Reparo;
 import com.model.SistemaConstrutivo;
@@ -104,9 +108,15 @@ public class PonteBean extends ComumBean implements Serializable {
     //aba deficiencias funcionais
     private ArrayList<DeficienciaFuncional> deficienciasFuncionais;
 
-    //inspecao
+    //inspecao  
     //aba Manifestacoes
     private ArrayList<ManifestacaoUfpr> manifestacoesUfpr;
+    
+    //combo numero
+    private ArrayList<Numero> numeros;    
+    
+    //combo foto
+    private ArrayList<Foto> fotos;
     
     //extensao relativa
     private ArrayList<ExtensaoRelativa> extensoesRelativa;
@@ -158,6 +168,12 @@ public class PonteBean extends ComumBean implements Serializable {
             //inspecao
             //aba Manifestacoes
             manifestacoesUfpr = new ManifestacaoUfprDAO().buscar();
+            
+            //combo numero
+            numeros = new NumeroDAO().buscar();
+            
+            //combo foto
+            fotos = new FotoDAO().buscar();
             
             //extensao relativa
             extensoesRelativa = new ExtensaoRelativaDAO().buscar();
@@ -523,6 +539,22 @@ public class PonteBean extends ComumBean implements Serializable {
 
     public void setReparos(ArrayList<Reparo> reparos) {
         this.reparos = reparos;
+    }
+    
+    public ArrayList<Numero> getNumeros() {
+        return numeros;
+    }
+
+    public void setNumeros(ArrayList<Numero> numeros) {
+        this.numeros = numeros;
+    }
+
+    public ArrayList<Foto> getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(ArrayList<Foto> fotos) {
+        this.fotos = fotos;
     }
     // </editor-fold>
 }

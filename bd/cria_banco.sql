@@ -816,6 +816,15 @@ create table INSPECAO
 	);
 ---------------------------------------------------------------------------
 
+CREATE TABLE IMAGEM
+   (
+	   ID_IMAGEM		int				not null identity(1,1), 
+	   NM_NOME			varchar(100)	not null,
+	   TIPO_MIME		varchar(20)		not null,
+	   DS_IMAGEM		varbinary(max),
+	   CONSTRAINT		pk_imagem		PRIMARY KEY(ID_IMAGEM)
+   );
+
 
 --Arquivos anexos cadastro
 create table ARQUIVO_ANEXO_CADASTRO
@@ -828,9 +837,11 @@ create table ARQUIVO_ANEXO_CADASTRO
 		DS_DESCRICAO					varchar(20)						not null,
 		DS_REGISTRO						varchar(10)						not null,
 		DT_DATA_ANEXACAO				date							not null,
-		--DS_MINIATURA					
+		--DS_MINIATURA
+		ID_IMAGEM						int,					
 		CONSTRAINT						pk_arquivoanexocadastro			PRIMARY KEY(ID_ARQUIVO_ANEXO_CADASTRO),
-		CONSTRAINT						fk_arquivoanexocadastro_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE)
+		CONSTRAINT						fk_arquivoanexocadastro_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
+		CONSTRAINT						fk_arquivoanexocadastro_imagem	FOREIGN KEY(ID_IMAGEM) REFERENCES IMAGEM(ID_IMAGEM)
 	);
 
 --Arquivos anexos inspecao
@@ -844,9 +855,11 @@ create table ARQUIVO_ANEXO_INSPECAO
 		DS_DESCRICAO					varchar(20)		not null,
 		DS_REGISTRO						varchar(10)		not null,
 		DT_DATA_ANEXACAO				date			not null,
-		--DS_MINIATURA			
+		--DS_MINIATURA
+		ID_IMAGEM						int,
 		CONSTRAINT						pk_arquivoanexoinspecao	PRIMARY KEY(ID_ARQUIVO_ANEXO_INSPECAO),
-		CONSTRAINT						fk_arquivoanexoinspecao_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO)
+		CONSTRAINT						fk_arquivoanexoinspecao_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO),
+		CONSTRAINT						fk_arquivoanexoinspecao_imagem		FOREIGN KEY(ID_IMAGEM) REFERENCES IMAGEM(ID_IMAGEM)
 	);
 ---------------------------------------------------------------------------
 

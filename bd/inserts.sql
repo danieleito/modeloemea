@@ -85,12 +85,17 @@ insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO) values ('06/07/2
 
 insert into INSPECOES_MANIFESTACOES (ID_INSPECAO, ID_ELEMENTO_UFPR, DS_NUMERO, ID_MANIFESTACOES_UFPR, DS_FOTO, DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA) values (1, 1, '00', 1, '00', '00', 1, 1);
 
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'OAE', '10/05/2016');
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'OAE', '11/05/2016');
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'OAE', '12/05/2016');
+
+insert into IMAGEM values ('Imagem 01', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\Fotos\imagem1.jpg', single_blob) as A))
+insert into IMAGEM values ('Imagem 02', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\Fotos\imagem2.jpg', single_blob) as A))
+insert into IMAGEM values ('Imagem 03', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\Fotos\imagem3.jpg', single_blob) as A))
+
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'OAE', '10/05/2016', 1);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'OAE', '11/05/2016', 2);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'OAE', '12/05/2016', 3);
 
 
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'INS', '13/05/2016');
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'INS', '14/05/2016');
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'INS', '15/05/2016');
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'INS', '13/05/2016', 2);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'INS', '14/05/2016', 3);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'INS', '15/05/2016', 1);
 

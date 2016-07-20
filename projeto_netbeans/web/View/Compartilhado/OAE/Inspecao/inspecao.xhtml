@@ -43,7 +43,7 @@
                                             <td>
                                                 <p:selectOneMenu value="#{ponteBean.model.cadastroManifestacao.numero.id}" class="col-md-3" >
                                                     <f:selectItem itemLabel="Selecione o Número" itemValue="0"/>
-                                                    <f:selectItems value="#{ponteBean.elementosUfpr}" var="e" itemValue="#{e.id}" />
+                                                    <f:selectItems value="#{ponteBean.numeros}" var="n" itemValue="#{n.id}" />
                                                 </p:selectOneMenu>
                                             </td>
                                         </tr> 
@@ -65,9 +65,9 @@
                                                 <p:outputLabel value="Foto:" class="col-md-1" />                                  
                                             </td>
                                             <td>
-                                                <p:selectOneMenu value="#{ponteBean.elementosUfpr}" class="col-md-3" >
-                                                    <f:selectItem itemLabel="Selecione o Elemento" itemValue="0"/>
-                                                    <f:selectItems value="#{ponteBean.elementosUfpr}" var="e" itemValue="#{e.id}" />
+                                                <p:selectOneMenu value="#{ponteBean.model.cadastroManifestacao.numero.id}" class="col-md-3" >
+                                                    <f:selectItem itemLabel="Selecione a Foto" itemValue="0"/>
+                                                    <f:selectItems value="#{ponteBean.fotos}" var="f" itemValue="#{f.id}" />
                                                 </p:selectOneMenu>
                                             </td>
 
@@ -85,7 +85,7 @@
                                                 <p:outputLabel value="Extensão relativa:" class="col-md-4" />                            
                                             </td>
                                             <td>
-                                                <p:selectOneMenu value="#{ponteBean.extensoesRelativa}" class="col-md-3" >
+                                                <p:selectOneMenu value="#{ponteBean.model.cadastroManifestacao.extensaoRelativa.id}" class="col-md-3" >
                                                     <f:selectItem itemLabel="Selecione a Extensão Relativa" itemValue="0"/>
                                                     <f:selectItems value="#{ponteBean.extensoesRelativa}" var="er" itemValue="#{er.id}" />
                                                 </p:selectOneMenu>
@@ -96,9 +96,9 @@
                                                 <p:outputLabel value="Reparo:" class="col-md-1" />                                  
                                             </td>
                                             <td>
-                                                <p:selectOneMenu value="#{ponteBean.reparos}" class="col-md-3" >
-                                                    <f:selectItem itemLabel="Selecione o Elemento" itemValue="0"/>
-                                                    <f:selectItems value="#{ponteBean.elementosUfpr}" var="e" itemValue="#{e.id}" />
+                                                <p:selectOneMenu value="#{ponteBean.model.cadastroManifestacao.reparo.id}" class="col-md-3" >
+                                                    <f:selectItem itemLabel="Selecione o Reparo" itemValue="0"/>
+                                                    <f:selectItems value="#{ponteBean.reparos}" var="r" itemValue="#{r.id}" />
                                                 </p:selectOneMenu>
                                             </td>
                                         </tr>   

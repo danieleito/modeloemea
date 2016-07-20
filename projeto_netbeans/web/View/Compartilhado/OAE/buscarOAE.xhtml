@@ -28,7 +28,9 @@ and open the template in the editor.
                     </p:breadCrumb>
 
                     <h2>Obras de Arte Especiais</h2>
-                    <!--<hr style="background-color: #05b; background-size: 2px;" />-->
+                    <p:separator />
+                    <br/>
+
                     <table>
                         <tbody>
                             <tr>
@@ -123,6 +125,11 @@ and open the template in the editor.
 
                     <p:dataTable id="tabela" var="p" value="#{ponteBean.pontes}" paginator="true" rows="15" >     
                         <!--styleClass="mySelector" style="display: none"-->
+
+<!--                        <p:column headerText="check" style="text-align: center; width: 20px" >
+                            <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
+                        </p:column>-->
+
                         <p:column headerText="Código" style="text-align: center" >
                             <h:outputText value="#{p.identificacaoObraDadosBasicos.codigo}" />
                         </p:column>

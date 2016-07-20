@@ -49,6 +49,10 @@ public class Ponte {
         cadastroManifestacao = new CadastroManifestacao();
     }
 
+    public Ponte(int id) {
+        this.id = id;
+    }
+
     public Ponte(int id, String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, 
             IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis, 
             IdentificacaoObraInspecao identificacaoObraInspecao, CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, 

@@ -13,33 +13,39 @@ import java.util.Date;
  */
 public class ArquivoAnexo {
     private int id;
+    private int ponte;
     private String arquivo;
     private String tipoArquivo;
     private String numero;
     private String descricao;
     private String registro;
     private Date dataAnexada;
+    private Imagem imagem;
 
     public ArquivoAnexo() {
     }
 
-    public ArquivoAnexo(int id, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada) {
+    public ArquivoAnexo(int id, int ponte, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
         this.id = id;
+        this.ponte = ponte;
         this.arquivo = arquivo;
         this.tipoArquivo = tipoArquivo;
         this.numero = numero;
         this.descricao = descricao;
         this.registro = registro;
         this.dataAnexada = dataAnexada;
+        this.imagem = imagem;
     }
 
-    public ArquivoAnexo(String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada) {
+    public ArquivoAnexo(int ponte, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
+        this.ponte = ponte;
         this.arquivo = arquivo;
         this.tipoArquivo = tipoArquivo;
         this.numero = numero;
         this.descricao = descricao;
         this.registro = registro;
         this.dataAnexada = dataAnexada;
+        this.imagem = imagem;
     }
 
     public int getId() {
@@ -48,6 +54,14 @@ public class ArquivoAnexo {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPonte() {
+        return ponte;
+    }
+
+    public void setPonte(int ponte) {
+        this.ponte = ponte;
     }
 
     public String getArquivo() {
@@ -96,5 +110,13 @@ public class ArquivoAnexo {
 
     public void setDataAnexada(Date dataAnexada) {
         this.dataAnexada = dataAnexada;
+    }
+
+    public Imagem getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(Imagem imagem) {
+        this.imagem = imagem;
     }
 }
