@@ -38,7 +38,11 @@ and open the template in the editor.
                     
                     <p:commandButton value="Consultar" action="#{ponteBean.consultarGet()}" />
 
-                    <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="15" reflow="true" >
+                    <p:dataTable id="checkboxDT" var="r" value="#{simulacaoBean.simulacao.rankings}" rowKey="#{r.id}" style="margin-bottom: 0" paginator="true" rows="15" reflow="true" >
+                        <f:facet name="header" >
+                            Simulações
+                        </f:facet>
+                        <!--<p:column selectionMode="multiple" style="width:16px; text-align:center" />-->
                         <p:column headerText="Data da última inspeção" style="width: 100px; text-align: center" >
                             <h:outputText value="#{r.ponte.dataUltimaInspecao}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
@@ -75,6 +79,10 @@ and open the template in the editor.
                             <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(r.ponte.id)}" />
                             <p:commandButton icon="ui-icon-closethick" title="Deletar" action="#{simulacaoBean.excluirRanking(r.id)}" />
                         </p:column>
+                        
+<!--                        <f:facet name="footer" >
+                            <p:commandButton process="checkboxDT" icon="ui-icon-search" value="View" />
+                        </f:facet>-->
                     </p:dataTable>
                 </h:form>
             </ui:define>

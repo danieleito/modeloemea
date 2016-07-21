@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class ArquivoAnexo {
     private int id;
-    private int ponte;
+    private Ponte ponte;
     private String arquivo;
     private String tipoArquivo;
     private String numero;
@@ -25,7 +25,7 @@ public class ArquivoAnexo {
     public ArquivoAnexo() {
     }
 
-    public ArquivoAnexo(int id, int ponte, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
+    public ArquivoAnexo(int id, Ponte ponte, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
         this.id = id;
         this.ponte = ponte;
         this.arquivo = arquivo;
@@ -37,7 +37,7 @@ public class ArquivoAnexo {
         this.imagem = imagem;
     }
 
-    public ArquivoAnexo(int ponte, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
+    public ArquivoAnexo(Ponte ponte, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
         this.ponte = ponte;
         this.arquivo = arquivo;
         this.tipoArquivo = tipoArquivo;
@@ -56,11 +56,11 @@ public class ArquivoAnexo {
         this.id = id;
     }
 
-    public int getPonte() {
+    public Ponte getPonte() {
         return ponte;
     }
 
-    public void setPonte(int ponte) {
+    public void setPonte(Ponte ponte) {
         this.ponte = ponte;
     }
 

@@ -63,7 +63,7 @@ public class ArquivoAnexoBean {
         databaseC = new ArquivoAnexoDAO();
         databaseI = new ArquivoAnexoDAO();
         try {
-            arquivosCadastro = databaseC.buscarCadastro();
+            arquivosCadastro = databaseC.buscarCadastro(0);
         } catch (SQLException ex) {
             Logger.getLogger(ArquivoAnexoBean.class.getName()).log(Level.SEVERE, null, ex);
         }

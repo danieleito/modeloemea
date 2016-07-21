@@ -32,7 +32,11 @@ and open the template in the editor.
                     <br/>
                     <br/>
 
-                    <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="15" >
+                    <p:dataTable id="checkboxDT" var="r" value="#{simulacaoBean.simulacao.rankings}" rowKey="#{r.id}" style="margin-bottom: 0" paginator="true" rows="15" >
+                        <f:facet name="header" >
+                            Simulações
+                        </f:facet>
+                        <!--<p:column selectionMode="multiple" style="width:16px; text-align:center" />-->
                         <p:column headerText="Data da última inspeção" style="width: 150px; text-align: center" >
                             <h:outputText value="#{r.ponte.dataUltimaInspecao}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
@@ -62,7 +66,9 @@ and open the template in the editor.
                         <p:column headerText="Ind. performance relativo" style="width: 200px; text-align: center" >
                             <h:outputText value="#{r.ponte.indicePerformanceRelativo}" />
                         </p:column>
-
+                        <f:facet name="footer" >
+                            <p:commandButton process="checkboxDT" icon="ui-icon-search" value="View" />
+                        </f:facet>
                     </p:dataTable>
                 </h:form>
             </ui:define>
