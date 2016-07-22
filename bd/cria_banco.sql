@@ -551,7 +551,7 @@ insert into MANIFESTACOES_EXTENSAO (DS_MANIFESTACOES_EXTENSAO, DS_CRITERIO_MANIF
 
 ---------------------------------------------------------------------------
 
--- Manifestações extensão
+-- Manifestações urgencia (reparo)
 create table MANIFESTACOES_URGENCIA
 	(
 		ID_MANIFESTACOES_URGENCIA						int							not null identity(1,1),
