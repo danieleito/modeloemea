@@ -123,12 +123,12 @@ and open the template in the editor.
                     <p:commandButton action='#{ponteBean.consultarPost()}' value="Consultar" />
                     <p:commandButton action="#{ponteBean.cancelar()}" value="Cancelar" />
 
-                    <p:dataTable id="checkboxDT" var="p" value="#{ponteBean.pontes}" rowKey="#{r.id}" style="margin-bottom: 0" paginator="true" rows="15" reflow="true" >     
+                    <p:dataTable id="checkboxDT" var="p" value="#{ponteBean.pontes}" rowKey="#{p.id}" selection="#{ponteBean.pontesSelecionadas}" style="margin-bottom: 0" paginator="true" rows="15" reflow="true" >     
                         <f:facet name="header" >
                             Simulações
                         </f:facet>
                         <!--para checkbox em cada uma das linhas da grid-->
-                        <!--<p:column selectionMode="multiple" style="width:16px; text-align:center" />-->
+                        <p:column selectionMode="multiple" style="width:16px; text-align:center" />
                         
                         
                         <!--styleClass="mySelector" style="display: none"-->
@@ -161,10 +161,9 @@ and open the template in the editor.
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center" >
                             <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
-                            <p:commandButton icon="ui-icon-check" title="Carregar" action="#{ponteBean.carregar(p.id, simulacaoBean.simulacao.id)}" />
                         </p:column>
                         <f:facet name="footer" >
-                            <p:commandButton process="checkboxDT" icon="ui-icon-search" value="View" />
+                            <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{ponteBean.carregar(simulacaoBean.simulacao.id)}" />
                          </f:facet>
                     </p:dataTable>
                 </h:form>

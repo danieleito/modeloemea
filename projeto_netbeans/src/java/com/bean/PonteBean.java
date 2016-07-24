@@ -68,6 +68,7 @@ public class PonteBean extends ComumBean implements Serializable {
     private ArrayList<Via> vias;
     private ArrayList<SuperintendenciaRegional> superintendenciasRegionais;
     private ArrayList<UnidadeLocal> unidadesLocais;
+    private ArrayList<Ponte> pontesSelecionadas;
     
     //aba identificacao obra
     private ArrayList<NaturezaTransposicao> naturezasTransposicoes;
@@ -194,11 +195,13 @@ public class PonteBean extends ComumBean implements Serializable {
         //visualiza ponte do 'id'
     }
     
-    public void carregar(int idPonte, int idSimulacao) {
+    public void carregar(int idSimulacao) {
         try {            
             RankingDAO db = new RankingDAO();
-            db.inserir(idPonte, idSimulacao);
-            //SimulacaoBean.carregarRanking(idSimulacao);
+            for (int i = 0; i < pontesSelecionadas.size(); i++) {
+                db.inserir(pontesSelecionadas.get(i).getId(), idSimulacao);
+                //SimulacaoBean.carregarRanking(idSimulacao);
+            }
             adicionarMensagemInfo("Ponte adicionada com sucesso");
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -209,6 +212,7 @@ public class PonteBean extends ComumBean implements Serializable {
     
     public void consultarGet() {
         try {
+            pontesSelecionadas = new ArrayList<>();
             limparFiltros();
             pontes = database.buscar();
         } catch (SQLException ex) {
@@ -556,5 +560,14 @@ public class PonteBean extends ComumBean implements Serializable {
     public void setFotos(ArrayList<Foto> fotos) {
         this.fotos = fotos;
     }
+
+    public ArrayList<Ponte> getPontesSelecionadas() {
+        return pontesSelecionadas;
+    }
+
+    public void setPontesSelecionadas(ArrayList<Ponte> pontesSelecionadas) {
+        this.pontesSelecionadas = pontesSelecionadas;
+    }
     // </editor-fold>
+
 }
