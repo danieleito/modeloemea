@@ -15,7 +15,7 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <h:panelGrid columns="2" cellpadding="10">
-            <p:dataTable var="arq" value="#{arquivoAnexo.arquivosCadastro}" paginator="true" rows="15" >
+            <p:dataTable var="arq" value="#{ponteBean.model.arquivosAnexos}" paginator="true" rows="15" >
                 <p:column headerText="Arquivo" style="text-align: center" >
                     <h:outputText value="#{arq.arquivo}" />
                 </p:column>
@@ -42,22 +42,10 @@ and open the template in the editor.
                     </h:outputText>
                 </p:column>
 
-<!--                <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
-                    <h:outputText value="" />
-                </p:column>-->
-<!--                <p:column style="width:32px;text-align: center">
-                    
-                       update=":form:carDetail"   
-                    <p:commandButton icon="ui-icon-search" title="Visualizar" oncomplete="PF('carOP').show('#{component.clientId}')" >
-                        <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" />
-                    </p:commandButton>
-                </p:column>-->
-
                 <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
                     <p:lightBox styleClass="imagebox" id="lighbox1">
-                        <!--value="../../resources/demo/images/nature/nature1.jpg"-->
-                        <h:outputLink value="#{arq.imagem}" title="Nature 1">
-                            <h:graphicImage name="/demo/images/nature/nature1.jpg" id="nature1" style="height: 77px; width: 100px" />  
+                        <h:outputLink value="#{arq.imagem.imagem}" title="#{arq.imagem.nome}">
+                            <h:graphicImage name="#{arq.imagem.nome}" value="#{arq.imagem.imagem}" style="height: 77px; width: 100px" />  
                         </h:outputLink>
                     </p:lightBox>
                 </p:column>

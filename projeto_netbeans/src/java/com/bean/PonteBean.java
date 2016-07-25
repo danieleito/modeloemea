@@ -30,6 +30,7 @@ import com.model.DeficienciaFuncional;
 import com.model.ElementoUfpr;
 import com.model.ExtensaoRelativa;
 import com.model.Foto;
+import com.model.Imagem;
 import com.model.ManifestacaoUfpr;
 import com.model.NaturezaTransposicao;
 import com.model.Numero;
@@ -45,13 +46,21 @@ import com.model.TremTipo;
 import com.model.Uf;
 import com.model.UnidadeLocal;
 import com.model.Via;
+import java.awt.Image;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseId;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 /**
  *

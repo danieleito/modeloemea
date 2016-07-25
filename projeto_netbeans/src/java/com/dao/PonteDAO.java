@@ -247,8 +247,6 @@ public class PonteDAO {
         query += "AND UL.ID_SUPERINTENDENCIA_REGIONAL = SR.ID_SUPERINTENDENCIA_REGIONAL ";
         query += "AND R.ID_TIPO_ADMINISTRACAO = TA.ID_TIPO_ADMINISTRACAO  ";
         query += "AND P.ID_PONTE = " + id;
-        query += "AND P.ID_PONTE = " + id;
-        query += "AND P.ID_PONTE = " + id;
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -312,6 +310,8 @@ public class PonteDAO {
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
             ponte.setElementosComponentes(buscarElementosComponentes(ponte.getId()));
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
+            ArquivoAnexoDAO arquivoAnexoDAO = new ArquivoAnexoDAO();
+            ponte.setArquivosAnexos(arquivoAnexoDAO.buscarCadastro(ponte.getId()));
         }
         conexao.closeConnection();
         return ponte;
