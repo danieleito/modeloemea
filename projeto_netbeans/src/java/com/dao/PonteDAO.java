@@ -55,7 +55,7 @@ public class PonteDAO {
                 + "DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO, "
                 + "DB.ID_TIPO_ESTRUTURA, TE.DS_TIPO_ESTRUTURA, DB.ID_SISTEMA_CONSTRUTIVO, SC.DS_SISTEMA_CONSTRUTIVO, "
                 + "DB.DS_COMPRIMENTO, DB.DS_LARGURA, DB.ID_TREM_TIPO, TT.DS_TREM_TIPO, DB.DS_ANO_CONSTRUCAO, "
-                + "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, L.DS_LOCAL_VIA, "
+                + "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, U.SG_UF, L.DS_LOCAL_VIA, "
                 + "L.DS_CIDADE_MAIS_PROXIMA, L.DS_PNV_ANO, L.DS_PNV_VERSAO, L.DS_PNV_CODIGO, L.DS_PNV_ALTITUDE, "
                 + "L.DS_LATITUDE_GRAU, L.DS_LATITUDE_MINUTO, L.DS_LONGITUDE_GRAU, L.DS_LONGITUDE_MINUTO, "
                 + "P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, UL.ID_SUPERINTENDENCIA_REGIONAL, SR.DS_SUPERINTENDENCIA_REGIONAL, "
@@ -74,7 +74,7 @@ public class PonteDAO {
                 + "CM.ID_NUMERO, N.DS_NUMERO, CM.ID_MANIFESTACOES_UFPR, MU.ID_ELEMENTO_UFPR, EU.CD_ELEMENTO, EU.DS_ELEMENTO, "
                 + "EU.DS_CAPA1, MU.CD_MANIFESTACOES_UFPR, MU.DS_MANIFESTACOES_UFPR, MU.DS_UNIDADE, MU.DS_BETA, CM.ID_FOTO, F.DS_FOTO, "
                 + "CM.DS_TAMANHO, CM.ID_EXTENSAO_RELATIVA, ER.DS_EXTENSAO_RELATIVA , CM.ID_REPARO, REP.DS_REPARO, "
-                + "U2.ID_UF as ID_UF_2, U2.DS_UF as DS_UF_2, "
+                + "U2.ID_UF as ID_UF_2, U2.DS_UF as DS_UF_2, U2.SG_UF as SG_UF_2, "
                 + "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA "
 
                 + "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, IDENTIFICACAO_OBRA_LOCALIZACAO L, "
@@ -136,7 +136,7 @@ public class PonteDAO {
                             new TremTipo(rs.getInt("ID_TREM_TIPO"), rs.getString("DS_TREM_TIPO")), 
                             rs.getString("DS_ANO_CONSTRUCAO")), 
                     new IdentificacaoObraLocalizacao(rs.getInt("ID_IDENTIFICACAO_OBRA_LOCALIZACAO"), 
-                            new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF")), 
+                            new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"), rs.getString("SG_UF")), 
                             new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getDouble("DS_LOCAL_VIA"), 
                             rs.getString("DS_CIDADE_MAIS_PROXIMA"), rs.getString("DS_PNV_ANO"), 
                             rs.getString("DS_PNV_VERSAO"), rs.getString("DS_PNV_CODIGO"), rs.getString("DS_PNV_ALTITUDE"), 
@@ -145,7 +145,7 @@ public class PonteDAO {
                     new IdentificacaoObraResponsaveis(rs.getInt("ID_IDENTIFICACAO_OBRA_RESPONSAVEIS"),  
                             new UnidadeLocal(rs.getInt("ID_UNIDADE_LOCAL"), rs.getString("DS_UNIDADE_LOCAL"), 
                                     new SuperintendenciaRegional(rs.getInt("ID_SUPERINTENDENCIA_REGIONAL"), 
-                                    rs.getString("DS_SUPERINTENDENCIA_REGIONAL"), new Uf(rs.getInt("ID_UF_2"), rs.getString("DS_UF_2")))), 
+                                    rs.getString("DS_SUPERINTENDENCIA_REGIONAL"), new Uf(rs.getInt("ID_UF_2"), rs.getString("DS_UF_2"), rs.getString("SG_UF_2")))), 
                             new TipoAdministracao(rs.getInt("ID_TIPO_ADMINISTRACAO"), rs.getString("DS_TIPO_ADMINISTRACAO")), 
                             rs.getString("DS_ADMINISTRADOR"), rs.getString("DS_PROJETISTA_ORIGEM"), 
                             rs.getString("DS_PROJETISTA_PROJETISTA"), rs.getString("DS_CONSTRUTOR_ORIGEM"), 
@@ -190,7 +190,7 @@ public class PonteDAO {
         query += "DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO,  ";
         query += "DB.ID_TIPO_ESTRUTURA, TE.DS_TIPO_ESTRUTURA, DB.ID_SISTEMA_CONSTRUTIVO, SC.DS_SISTEMA_CONSTRUTIVO,  ";
         query += "DB.DS_COMPRIMENTO, DB.DS_LARGURA, DB.ID_TREM_TIPO, TT.DS_TREM_TIPO, DB.DS_ANO_CONSTRUCAO,  ";
-        query += "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, L.DS_LOCAL_VIA,  ";
+        query += "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, U.SG_UF, L.DS_LOCAL_VIA,  ";
         query += "L.DS_CIDADE_MAIS_PROXIMA, L.DS_PNV_ANO, L.DS_PNV_VERSAO, L.DS_PNV_CODIGO, L.DS_PNV_ALTITUDE,  ";
         query += "L.DS_LATITUDE_GRAU, L.DS_LATITUDE_MINUTO, L.DS_LONGITUDE_GRAU, L.DS_LONGITUDE_MINUTO,  ";
         query += "P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, SR.ID_SUPERINTENDENCIA_REGIONAL, SR.DS_SUPERINTENDENCIA_REGIONAL,  ";
@@ -255,7 +255,7 @@ public class PonteDAO {
         ResultSet rs = stmt.executeQuery(query);
         Ponte ponte = null;
         if (rs.next()) {
-            Uf uf = new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"));
+            Uf uf = new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"), rs.getString("SG_UF"));
             ponte = new Ponte(
                     rs.getInt("ID_PONTE"), rs.getString("DS_INDICE_PERFORMANCE_RELATIVO"), 
                     new IdentificacaoObraDadosBasicos(rs.getInt("ID_IDENTIFICACAO_OBRA_DADOS_BASICOS"), 
@@ -324,7 +324,7 @@ public class PonteDAO {
                 + "DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO, "
                 + "DB.ID_TIPO_ESTRUTURA, TE.DS_TIPO_ESTRUTURA, DB.ID_SISTEMA_CONSTRUTIVO, SC.DS_SISTEMA_CONSTRUTIVO, "
                 + "DB.DS_COMPRIMENTO, DB.DS_LARGURA, DB.ID_TREM_TIPO, TT.DS_TREM_TIPO, DB.DS_ANO_CONSTRUCAO, "
-                + "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, L.DS_LOCAL_VIA, "
+                + "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, U.SG_UF, L.DS_LOCAL_VIA, "
                 + "L.DS_CIDADE_MAIS_PROXIMA, L.DS_PNV_ANO, L.DS_PNV_VERSAO, L.DS_PNV_CODIGO, L.DS_PNV_ALTITUDE, "
                 + "L.DS_LATITUDE_GRAU, L.DS_LATITUDE_MINUTO, L.DS_LONGITUDE_GRAU, L.DS_LONGITUDE_MINUTO, "
                 + "P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, UL.ID_SUPERINTENDENCIA_REGIONAL, SR.DS_SUPERINTENDENCIA_REGIONAL, "
@@ -343,7 +343,7 @@ public class PonteDAO {
                 + "CM.ID_NUMERO, N.DS_NUMERO, CM.ID_MANIFESTACOES_UFPR, MU.ID_ELEMENTO_UFPR, EU.CD_ELEMENTO, EU.DS_ELEMENTO, "
                 + "EU.DS_CAPA1, MU.CD_MANIFESTACOES_UFPR, MU.DS_MANIFESTACOES_UFPR, MU.DS_UNIDADE, MU.DS_BETA, CM.ID_FOTO, F.DS_FOTO, "
                 + "CM.DS_TAMANHO, CM.ID_EXTENSAO_RELATIVA, ER.DS_EXTENSAO_RELATIVA , CM.ID_REPARO, REP.DS_REPARO, "
-                + "U2.ID_UF as ID_UF_2, U2.DS_UF as DS_UF_2, "
+                + "U2.ID_UF as ID_UF_2, U2.DS_UF as DS_UF_2, U2.SG_UF as SG_UF_2, "
                 + "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA "
 
                 + "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, IDENTIFICACAO_OBRA_LOCALIZACAO L, "
@@ -430,7 +430,7 @@ public class PonteDAO {
                             new TremTipo(rs.getInt("ID_TREM_TIPO"), rs.getString("DS_TREM_TIPO")), 
                             rs.getString("DS_ANO_CONSTRUCAO")), 
                     new IdentificacaoObraLocalizacao(rs.getInt("ID_IDENTIFICACAO_OBRA_LOCALIZACAO"), 
-                            new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF")), 
+                            new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"), rs.getString("SG_UF")), 
                             new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getDouble("DS_LOCAL_VIA"), 
                             rs.getString("DS_CIDADE_MAIS_PROXIMA"), rs.getString("DS_PNV_ANO"), 
                             rs.getString("DS_PNV_VERSAO"), rs.getString("DS_PNV_CODIGO"), rs.getString("DS_PNV_ALTITUDE"), 
@@ -439,7 +439,7 @@ public class PonteDAO {
                     new IdentificacaoObraResponsaveis(rs.getInt("ID_IDENTIFICACAO_OBRA_RESPONSAVEIS"),  
                             new UnidadeLocal(rs.getInt("ID_UNIDADE_LOCAL"), rs.getString("DS_UNIDADE_LOCAL"), 
                                     new SuperintendenciaRegional(rs.getInt("ID_SUPERINTENDENCIA_REGIONAL"), 
-                                            rs.getString("DS_SUPERINTENDENCIA_REGIONAL"), new Uf(rs.getInt("ID_UF_2"), rs.getString("DS_UF_2")))), 
+                                            rs.getString("DS_SUPERINTENDENCIA_REGIONAL"), new Uf(rs.getInt("ID_UF_2"), rs.getString("DS_UF_2"), rs.getString("SG_UF_2")))), 
                             new TipoAdministracao(rs.getInt("ID_TIPO_ADMINISTRACAO"), rs.getString("DS_TIPO_ADMINISTRACAO")), 
                             rs.getString("DS_ADMINISTRADOR"), rs.getString("DS_PROJETISTA_ORIGEM"), 
                             rs.getString("DS_PROJETISTA_PROJETISTA"), rs.getString("DS_CONSTRUTOR_ORIGEM"), 
@@ -552,6 +552,25 @@ public class PonteDAO {
         
         return elementosComponentes;
     }
+    
+    public Ponte buscarPonteEmSimulacao(int idSimulacao, int id) throws SQLException {
+        String query = "select * "
+                + "from PONTE P, SIMULACAO S "
+                + "where P.ID_PONTE == S.ID_PONTE;";
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        Ponte ponte = null;
+        if (rs.next()) {
+            ponte = new Ponte(rs.getInt("ID_PONTE"));
+        }
+        conexao.closeConnection();
+        return ponte;
+    }
+    
 //    
 //    private ArrayList<ArquivoAnexo> buscarArquivosAnexos(int idPonte) throws SQLException {
 //        String query = "select ID_ARQUIVO_ANEXO_INSPECAO, DS_ARQUIVO, "

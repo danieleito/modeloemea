@@ -36,6 +36,7 @@ import com.model.NaturezaTransposicao;
 import com.model.Numero;
 import com.model.Ponte;
 import com.model.Reparo;
+import com.model.Simulacao;
 import com.model.SistemaConstrutivo;
 import com.model.SuperintendenciaRegional;
 import com.model.TipoAdministracao;
@@ -78,6 +79,8 @@ public class PonteBean extends ComumBean implements Serializable {
     private ArrayList<SuperintendenciaRegional> superintendenciasRegionais;
     private ArrayList<UnidadeLocal> unidadesLocais;
     private ArrayList<Ponte> pontesSelecionadas;
+    private ArrayList<Simulacao> simulacoes;
+    private Simulacao modelSimulacao;
     
     //aba identificacao obra
     private ArrayList<NaturezaTransposicao> naturezasTransposicoes;
@@ -140,6 +143,7 @@ public class PonteBean extends ComumBean implements Serializable {
     public PonteBean() {
         database = new PonteDAO();
         model = new Ponte();
+        modelSimulacao = new Simulacao();
         try {
             ufs = new UfDAO().buscar();
             vias = new ViaDAO().buscar();
@@ -208,8 +212,13 @@ public class PonteBean extends ComumBean implements Serializable {
         try {            
             RankingDAO db = new RankingDAO();
             for (int i = 0; i < pontesSelecionadas.size(); i++) {
-                db.inserir(pontesSelecionadas.get(i).getId(), idSimulacao);
-                //SimulacaoBean.carregarRanking(idSimulacao);
+//                se ponte ainda nao esta na simulacao
+//                int esta = buscarPonteEmSimulacao(idSimulacao, pontesSelecionadas.get(i).getId());
+                
+                Ponte ponte = database.buscarPonteEmSimulacao(idSimulacao, pontesSelecionadas.get(i).getId());
+                if (ponte != null) {
+                    db.inserir(pontesSelecionadas.get(i).getId(), idSimulacao);
+                }
             }
             adicionarMensagemInfo("Ponte adicionada com sucesso");
         } catch (SQLException ex) {
@@ -226,7 +235,7 @@ public class PonteBean extends ComumBean implements Serializable {
             pontes = database.buscar();
         } catch (SQLException ex) {
             pontes = new ArrayList<>();
-            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
+            adicionarMensagemErro("Erro ao carregar pontess. " + ex.getMessage());
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
@@ -250,7 +259,7 @@ public class PonteBean extends ComumBean implements Serializable {
             pontes = database.buscar();
         } catch (SQLException ex) {
             pontes = new ArrayList<>();
-            adicionarMensagemErro("Erro ao carregar pontesw. " + ex.getMessage());
+            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAEInspecao.jsf");
@@ -577,6 +586,15 @@ public class PonteBean extends ComumBean implements Serializable {
     public void setPontesSelecionadas(ArrayList<Ponte> pontesSelecionadas) {
         this.pontesSelecionadas = pontesSelecionadas;
     }
+    
+    public ArrayList<Simulacao> getSimulacoes() {
+        return simulacoes;
+    }
+
+    public void setSimulacoes(ArrayList<Simulacao> simulacoes) {
+        this.simulacoes = simulacoes;
+    }    
     // </editor-fold>
+
 
 }

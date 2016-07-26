@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class SuperintendenciaRegionalDAO {
     public ArrayList<SuperintendenciaRegional> buscar() throws SQLException {
         String query = "select S.ID_SUPERINTENDENCIA_REGIONAL, S.DS_SUPERINTENDENCIA_REGIONAL, "
-                + "S.ID_UF, U.DS_UF "
+                + "S.ID_UF, U.DS_UF, U.SG_UF "
                 + "from SUPERINTENDENCIA_REGIONAL S, UF U "
                 + "where S.ID_UF = U.ID_UF; ";
         Conexao conexao = new Conexao();
@@ -34,7 +34,7 @@ public class SuperintendenciaRegionalDAO {
         while (rs.next()) {
             tipos.add(new SuperintendenciaRegional(rs.getInt("ID_SUPERINTENDENCIA_REGIONAL"), 
                     rs.getString("DS_SUPERINTENDENCIA_REGIONAL"), 
-                    new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"))));
+                    new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"), rs.getString("SG_UF"))));
         }
 
         conexao.closeConnection();

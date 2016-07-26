@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class UnidadeLocalDAO {
     public ArrayList<UnidadeLocal> buscar() throws SQLException {
         String query = "select UL.ID_UNIDADE_LOCAL, UL.DS_UNIDADE_LOCAL, UL.ID_SUPERINTENDENCIA_REGIONAL, "
-                + "S.DS_SUPERINTENDENCIA_REGIONAL, S.ID_UF, U.DS_UF "
+                + "S.DS_SUPERINTENDENCIA_REGIONAL, S.ID_UF, U.DS_UF, U.SG_UF "
                 + "from UNIDADE_LOCAL UL, SUPERINTENDENCIA_REGIONAL S, UF U "
                 + "where UL.ID_SUPERINTENDENCIA_REGIONAL = S.ID_SUPERINTENDENCIA_REGIONAL "
                 + "and S.ID_UF = U.ID_UF; ";
@@ -37,7 +37,7 @@ public class UnidadeLocalDAO {
         while (rs.next()) {
             tipos.add(new UnidadeLocal(rs.getInt("ID_UNIDADE_LOCAL"), rs.getString("DS_UNIDADE_LOCAL"), 
                     new SuperintendenciaRegional(rs.getInt("ID_SUPERINTENDENCIA_REGIONAL"), 
-                    rs.getString("DS_SUPERINTENDENCIA_REGIONAL"), new Uf(rs.getInt("ID_UF"), rs.getString("DS_uf")))));
+                    rs.getString("DS_SUPERINTENDENCIA_REGIONAL"), new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"), rs.getString("SG_UF")))));
         }
 
         conexao.closeConnection();

@@ -39,37 +39,38 @@ create table UF
 	(
 		ID_UF				int				not null identity(1,1),
 		DS_UF				varchar(30)		not null,
+		SG_UF				varchar(2)		not null,
 		CONSTRAINT			pk_uf			PRIMARY KEY(ID_UF)
 	);
 
 GO
-insert into UF (DS_UF) values ('Acre');
-insert into UF (DS_UF) values ('Alagoas');
-insert into UF (DS_UF) values ('Amapá');
-insert into UF (DS_UF) values ('Amazonas');
-insert into UF (DS_UF) values ('Bahia');
-insert into UF (DS_UF) values ('Ceará');
-insert into UF (DS_UF) values ('Distrito Federal');
-insert into UF (DS_UF) values ('Espírito Santo');
-insert into UF (DS_UF) values ('Goiás');
-insert into UF (DS_UF) values ('Maranhão');
-insert into UF (DS_UF) values ('Mato Grosso');
-insert into UF (DS_UF) values ('Mato Grosso do Sul');
-insert into UF (DS_UF) values ('Minas Gerais');
-insert into UF (DS_UF) values ('Pará');
-insert into UF (DS_UF) values ('Paraíba');
-insert into UF (DS_UF) values ('Paraná');
-insert into UF (DS_UF) values ('Pernambuco');
-insert into UF (DS_UF) values ('Piauí');
-insert into UF (DS_UF) values ('Rio de Janeiro');
-insert into UF (DS_UF) values ('Rio Grande do Norte');
-insert into UF (DS_UF) values ('Rio Grande do Sul');
-insert into UF (DS_UF) values ('Rondônia');
-insert into UF (DS_UF) values ('Roraima');
-insert into UF (DS_UF) values ('Santa Catarina');
-insert into UF (DS_UF) values ('São Paulo');
-insert into UF (DS_UF) values ('Sergipe');
-insert into UF (DS_UF) values ('Tocantins');
+insert into UF (DS_UF, SG_UF) values ('Acre', 'AC');
+insert into UF (DS_UF, SG_UF) values ('Alagoas', 'AL');
+insert into UF (DS_UF, SG_UF) values ('Amapá', 'AP');
+insert into UF (DS_UF, SG_UF) values ('Amazonas', 'AM');
+insert into UF (DS_UF, SG_UF) values ('Bahia', 'BA');
+insert into UF (DS_UF, SG_UF) values ('Ceará', 'CE');
+insert into UF (DS_UF, SG_UF) values ('Distrito Federal', 'DF');
+insert into UF (DS_UF, SG_UF) values ('Espírito Santo', 'ES');
+insert into UF (DS_UF, SG_UF) values ('Goiás', 'GO');
+insert into UF (DS_UF, SG_UF) values ('Maranhão', 'MA');
+insert into UF (DS_UF, SG_UF) values ('Mato Grosso', 'MG');
+insert into UF (DS_UF, SG_UF) values ('Mato Grosso do Sul', 'MS');
+insert into UF (DS_UF, SG_UF) values ('Minas Gerais', 'MG');
+insert into UF (DS_UF, SG_UF) values ('Pará', 'PA');
+insert into UF (DS_UF, SG_UF) values ('Paraíba', 'PB');
+insert into UF (DS_UF, SG_UF) values ('Paraná', 'PR');
+insert into UF (DS_UF, SG_UF) values ('Pernambuco', 'PE');
+insert into UF (DS_UF, SG_UF) values ('Piauí', 'PI');
+insert into UF (DS_UF, SG_UF) values ('Rio de Janeiro', 'RJ');
+insert into UF (DS_UF, SG_UF) values ('Rio Grande do Norte', 'RN');
+insert into UF (DS_UF, SG_UF) values ('Rio Grande do Sul', 'RS');
+insert into UF (DS_UF, SG_UF) values ('Rondônia', 'RO');
+insert into UF (DS_UF, SG_UF) values ('Roraima', 'RR');
+insert into UF (DS_UF, SG_UF) values ('Santa Catarina', 'SC');
+insert into UF (DS_UF, SG_UF) values ('São Paulo', 'SP');
+insert into UF (DS_UF, SG_UF) values ('Sergipe', 'SE');
+insert into UF (DS_UF, SG_UF) values ('Tocantins', 'TO');
 
 ---------------------------------------------------------------------------
 --Via

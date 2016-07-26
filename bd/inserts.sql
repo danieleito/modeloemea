@@ -76,19 +76,19 @@ insert into PONTE (DS_INDICE_PERFORMANCE_RELATIVO, ID_IDENTIFICACAO_OBRA_DADOS_B
 insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 1, '00', '00');
 
 insert into RANKING (ID_PONTE, ID_SIMULACAO) values (1, 1);
-insert into RANKING (ID_PONTE, ID_SIMULACAO) values (1, 1);
-insert into RANKING (ID_PONTE, ID_SIMULACAO) values (1, 3);
-insert into RANKING (ID_PONTE, ID_SIMULACAO) values (1, 1);
-insert into RANKING (ID_PONTE, ID_SIMULACAO) values (1, 2);
+insert into RANKING (ID_PONTE, ID_SIMULACAO) values (2, 1);
+insert into RANKING (ID_PONTE, ID_SIMULACAO) values (3, 3);
+insert into RANKING (ID_PONTE, ID_SIMULACAO) values (3, 1);
+insert into RANKING (ID_PONTE, ID_SIMULACAO) values (2, 2);
 
 insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO) values ('06/07/2016', 1, 1, 1);
 
 insert into INSPECOES_MANIFESTACOES (ID_INSPECAO, ID_ELEMENTO_UFPR, DS_NUMERO, ID_MANIFESTACOES_UFPR, DS_FOTO, DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA) values (1, 1, '00', 1, '00', '00', 1, 1);
 
 
-insert into IMAGEM values ('Imagem 01', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Daniele\Documents\Imagens\imagem1.jpg', single_blob) as A))
-insert into IMAGEM values ('Imagem 02', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Daniele\Documents\Imagens\Imagens\imagem2.jpg', single_blob) as A))
-insert into IMAGEM values ('Imagem 03', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Daniele\Documents\Imagens\Imagens\imagem3.jpg', single_blob) as A))
+insert into IMAGEM values ('Imagem 01', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\Fotos\imagem1.jpg', single_blob) as A))
+insert into IMAGEM values ('Imagem 02', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\Fotos\imagem2.jpg', single_blob) as A))
+insert into IMAGEM values ('Imagem 03', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\Fotos\imagem3.jpg', single_blob) as A))
 
 insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'OAE', '10/05/2016', 1);
 insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'OAE', '11/05/2016', 2);

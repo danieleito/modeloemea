@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class UfDAO {
     public ArrayList<Uf> buscar() throws SQLException {
-        String query = "select ID_UF, DS_UF from UF; ";
+        String query = "select ID_UF, DS_UF, U.SG_UF from UF; ";
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
         Statement stmt;
@@ -28,7 +28,7 @@ public class UfDAO {
         ArrayList<Uf> uf = new ArrayList<>();
 
         while (rs.next()) {
-            uf.add(new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF")));
+            uf.add(new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"), rs.getString("SG_UF")));
         }
 
         conexao.closeConnection();

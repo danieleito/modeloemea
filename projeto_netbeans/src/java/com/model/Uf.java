@@ -11,17 +11,20 @@ package com.model;
  */
 public class Uf {
     private int id;
+    private String estado;
     private String uf;
 
     public Uf() {
     }
 
-    public Uf(int id, String uf) {
+    public Uf(int id, String estado, String uf) {
         this.id = id;
+        this.estado = estado;
         this.uf = uf;
     }
 
-    public Uf(String uf) {
+    public Uf(String estado, String uf) {
+        this.estado = estado;
         this.uf = uf;
     }
 
@@ -31,6 +34,14 @@ public class Uf {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getUf() {
