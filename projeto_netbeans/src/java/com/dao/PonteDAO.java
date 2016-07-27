@@ -25,8 +25,10 @@ import com.model.ManifestacaoUfpr;
 import com.model.NaturezaTransposicao;
 import com.model.Numero;
 import com.model.Observacao;
+import com.model.Ranking;
 import com.model.Reparo;
 import com.model.RotasAlternativas;
+import com.model.Simulacao;
 import com.model.SistemaConstrutivo;
 import com.model.Substituicao;
 import com.model.SuperintendenciaRegional;
@@ -553,22 +555,23 @@ public class PonteDAO {
         return elementosComponentes;
     }
     
-    public Ponte buscarPonteEmSimulacao(int idSimulacao, int id) throws SQLException {
+    public boolean ponteEstaSimulacao(int idPonte, int idSimulacao) throws SQLException {
         String query = "select * "
-                + "from PONTE P, SIMULACAO S "
-                + "where P.ID_PONTE == S.ID_PONTE;";
+                + "from RANKING "
+                + "where ID_PONTE = "+idPonte+" "
+                + "and ID_SIMULACAO = "+idSimulacao+";";
         
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
         Statement stmt;
         stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
-        Ponte ponte = null;
-        if (rs.next()) {
-            ponte = new Ponte(rs.getInt("ID_PONTE"));
+        boolean retorno = false;
+        if (rs.next()) { // nesse if cai fora, nao entra no if
+            retorno = true;
         }
         conexao.closeConnection();
-        return ponte;
+        return retorno;
     }
     
 //    

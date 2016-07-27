@@ -209,21 +209,22 @@ public class PonteBean extends ComumBean implements Serializable {
     }
     
     public void carregar(int idSimulacao) {
-        try {            
+        try {
+            int qtde = 0;
             RankingDAO db = new RankingDAO();
             for (int i = 0; i < pontesSelecionadas.size(); i++) {
 //                se ponte ainda nao esta na simulacao
 //                int esta = buscarPonteEmSimulacao(idSimulacao, pontesSelecionadas.get(i).getId());
-                
-                Ponte ponte = database.buscarPonteEmSimulacao(idSimulacao, pontesSelecionadas.get(i).getId());
-                if (ponte != null) {
+//
+                if (!database.ponteEstaSimulacao(pontesSelecionadas.get(i).getId(), idSimulacao)) {
                     db.inserir(pontesSelecionadas.get(i).getId(), idSimulacao);
+                    qtde++;
                 }
             }
-            adicionarMensagemInfo("Ponte adicionada com sucesso");
+            adicionarMensagemInfo(qtde + " pontes adicionadas das "+pontesSelecionadas.size()+" selecionadas");
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao carregar ponte no ranking." + ex.getMessage());
+            adicionarMensagemErro("Erro ao carregar ponte no ranking. " + ex.getMessage());
         }
         redirecionar("/View/Compartilhado/Simulacao/ranking.jsf");
     }

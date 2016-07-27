@@ -73,8 +73,10 @@ public class RankingDAO {
         stmt.execute(query);
     }
 
-    public void inserir(int idPonte, int idSimulacao) throws SQLException {
-        String query = "insert into RANKING (ID_PONTE, ID_SIMULACAO) values(?, ?); ";
+    public boolean inserir(int idPonte, int idSimulacao) throws SQLException {
+        String query = "if (not exists (select * from RANKING where ID_PONTE = "+idPonte+"and ID_SIMULACAO = "+idSimulacao+")) begin ";
+        query += "insert into RANKING (ID_PONTE, ID_SIMULACAO) values(?, ?) ";
+        query += "end; ";
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -83,7 +85,7 @@ public class RankingDAO {
         stmt = conn.prepareStatement(query);
         stmt.setInt(1, idPonte);
         stmt.setInt(2, idSimulacao);
-        stmt.execute();
+        return stmt.execute();
     }
     
     public void editar(Ranking ranking) throws SQLException {

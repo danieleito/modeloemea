@@ -194,7 +194,6 @@ create table SIMULACAO
 		CONSTRAINT		fk_simulacao_usuario	FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO(ID_USUARIO)
 	);
 
-
 ---------------------------------------------------------------------------
 
 --Elemento

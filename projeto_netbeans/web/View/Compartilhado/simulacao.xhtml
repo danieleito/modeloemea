@@ -43,7 +43,7 @@
                             <!--                            <c:choose>
                                                             <c:when test="${sim.usuario.id == simulacaoBean.usuarioLogado.id}">-->
 
-                            <p:commandButton icon="ui-icon-pencil" title="Ranking" action="#{simulacaoBean.ranking(sim.id)}" />
+                            <p:commandButton icon="ui-icon-pencil" title="Ranking" action="#{simulacaoBean.rankingGet(sim.id)}" />
 
                             <p:growl id="message" showDetail="true" />
                             <p:commandButton icon="ui-icon-trash" title="Deletar" actionListener="#{simulacaoBean.deletar(sim.id)}" update="message">

@@ -38,6 +38,11 @@ public class Simulacao {
         this.rankings = rankings;
     }
 
+    public Simulacao(int id, ArrayList<Ranking> rankings) {
+        this.id = id;
+        this.rankings = rankings;
+    }
+
     public int getId() {
         return id;
     }
