@@ -106,4 +106,12 @@ public class InspecaoDAO {
         conexao.closeConnection();
         return inspecao;
     }
+    
+    public Inspecao buscar (int idPonte) {
+        String query = "select "
+                + "from Ponte P, Inspecao I "
+                + "where P.ID_PONTE = " + idPonte;
+        
+        return inspecao;
+    }
 }
