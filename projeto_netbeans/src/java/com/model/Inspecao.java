@@ -15,25 +15,29 @@ public class Inspecao {
     private int id;
     private Date data;
     private Usuario usuario;
-    private String condicaoEstabilidade;
-    private String condicaoConservacao;
+    private Ponte ponte;
+    private Modelo modelo;
+//    private String condicaoEstabilidade;
+//    private String condicaoConservacao;
+    
 
     public Inspecao() {
     }
 
-    public Inspecao(int id, Date data, Usuario usuario, String condicaoEstabilidade, String condicaoConservacao) {
+    public Inspecao(int id, Date data, Usuario usuario, Ponte ponte, Modelo modelo) {
         this.id = id;
         this.data = data;
         this.usuario = usuario;
-        this.condicaoEstabilidade = condicaoEstabilidade;
-        this.condicaoConservacao = condicaoConservacao;
+        this.ponte = ponte;
+        this.modelo = modelo;
     }
 
-    public Inspecao(Date data, Usuario usuario, String condicaoEstabilidade, String condicaoConservacao) {
+    public Inspecao(Date data, Usuario usuario, Ponte ponte, Modelo modelo) {
         this.data = data;
         this.usuario = usuario;
-        this.condicaoEstabilidade = condicaoEstabilidade;
-        this.condicaoConservacao = condicaoConservacao;
+        this.ponte = ponte;
+        this.modelo = modelo;
+    
     }
 
     public int getId() {
@@ -60,19 +64,19 @@ public class Inspecao {
         this.usuario = usuario;
     }
 
-    public String getCondicaoEstabilidade() {
-        return condicaoEstabilidade;
+    public Ponte getPonte() {
+        return ponte;
     }
 
-    public void setCondicaoEstabilidade(String condicaoEstabilidade) {
-        this.condicaoEstabilidade = condicaoEstabilidade;
+    public void setPonte(Ponte ponte) {
+        this.ponte = ponte;
     }
 
-    public String getCondicaoConservacao() {
-        return condicaoConservacao;
+    public Modelo getModelo() {
+        return modelo;
     }
 
-    public void setCondicaoConservacao(String condicaoConservacao) {
-        this.condicaoConservacao = condicaoConservacao;
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
     }
 }

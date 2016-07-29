@@ -809,6 +809,7 @@ create table INSPECAO
 		ID_USUARIO					int						not null,
 		ID_PONTE					int						not null,
 		ID_MODELO					int						not null,
+
 		CONSTRAINT					pk_inspecao				PRIMARY KEY(ID_INSPECAO),
 		CONSTRAINT					fk_inspecao_usuario		FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO),
 		CONSTRAINT					fk_inspecao_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),

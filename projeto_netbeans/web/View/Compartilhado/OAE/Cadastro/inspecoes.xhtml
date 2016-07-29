@@ -10,7 +10,7 @@
     <h:body>
         <h:form id="form2">
             <h:panelGrid columns="2" cellpadding="10">
-                <p:dataTable var="i" value="#{inspecao.inspecoes}" paginator="true" rows="15" >
+                <p:dataTable var="i" value="#{ponteBean.model.inspecoes}" paginator="true" rows="15" >
                     <p:column headerText="Data" style="text-align: center" >
                         <h:outputText value="#{i.data}">
                             <f:convertDateTime pattern="dd/MM/yyyy"/>
@@ -21,12 +21,8 @@
                         <h:outputText value="#{i.usuario.usuario}" />
                     </p:column>
 
-                    <p:column headerText="Cond. de estabilidade" style="width: 150px; text-align: center" >
-                        <h:outputText value="#{i.condicaoEstabilidade}" />
-                    </p:column>
-
                     <p:column headerText="Cond. conservação" style="width: 150px; text-align: center" >
-                        <h:outputText value="#{i.condicaoConservacao}" />
+                        <h:outputText value="#{i.modelo.indicePerformance}" />
                     </p:column>
 
                     <p:column headerText="Ação" style="width: 150px; text-align: center" >

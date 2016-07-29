@@ -29,6 +29,7 @@ public class Ponte {
     private Substituicao substituicao;
     private CadastroManifestacao cadastroManifestacao;
     private ArrayList<ArquivoAnexo> arquivosAnexos;
+    private ArrayList<Inspecao> inspecoes;
     
     //para exibir na tela que lista o ranking
     private Date dataUltimaInspecao;
@@ -48,6 +49,7 @@ public class Ponte {
         substituicao = new Substituicao();
         cadastroManifestacao = new CadastroManifestacao();
         arquivosAnexos = new ArrayList<>();
+        inspecoes = new ArrayList<>();
     }
 
     public Ponte(int id) {
@@ -200,6 +202,14 @@ public class Ponte {
 
     public void setArquivosAnexos(ArrayList<ArquivoAnexo> arquivosAnexos) {
         this.arquivosAnexos = arquivosAnexos;
+    }
+
+    public ArrayList<Inspecao> getInspecoes() {
+        return inspecoes;
+    }
+
+    public void setInspecoes(ArrayList<Inspecao> inspecoes) {
+        this.inspecoes = inspecoes;
     }
 
     public Observacao getObservacao() {

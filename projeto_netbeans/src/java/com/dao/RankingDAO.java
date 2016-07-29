@@ -51,7 +51,7 @@ public class RankingDAO {
             ponte = new Ponte();
             ponte.setId(rs.getInt("ID_PONTE"));
             ponte.getIdentificacaoObraDadosBasicos().setCodigo(rs.getString("CD_CODIGO"));
-            ponte.getIdentificacaoObraDadosBasicos().setIdentificacao(rs.getString("DS_IDENTIFICACAO_OBRA"));
+            ponte.getIdentificacaoObraDadosBasicos().setIdentificacao(rs.getString("DS_IDENTIFICACAO"));
             ponte.getIdentificacaoObraLocalizacao().setVia(new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")));
             ponte.getIdentificacaoObraLocalizacao().setUf(new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"), rs.getString("SG_UF")));
             ponte.getIdentificacaoObraLocalizacao().setLocalVia(rs.getDouble("DS_LOCAL_VIA"));
@@ -101,7 +101,7 @@ public class RankingDAO {
 
     public Ranking buscar(int id) throws SQLException {
         String query = "SELECT R.ID_RANKING, R.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, "
-                + "DB.CD_CODIGO, DB.DS_IDENTIFICACAO_OBRA, P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, "
+                + "DB.CD_CODIGO, DB.DS_IDENTIFICACAO, P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, "
                 + "L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, U.SG_UF, L.DS_LOCAL_VIA, "
                 + "(select max(DT_DATA) from INSPECAO I, PONTE P where I.ID_PONTE = P.ID_PONTE) as DATA, "
                 + "R.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, S.NM_SIMULACAO, "

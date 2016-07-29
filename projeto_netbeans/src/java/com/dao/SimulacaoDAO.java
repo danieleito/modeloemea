@@ -90,8 +90,7 @@ public class SimulacaoDAO {
     }
     
     public Simulacao buscar(int id) throws SQLException {
-        String query = "SELECT S.ID_SIMULACAO, S.DT_DATA, S.NM_SIMULACAO, "
-                + "U.ID_USUARIO "
+        String query = "SELECT S.ID_SIMULACAO, S.DT_DATA, S.NM_SIMULACAO, U.ID_USUARIO "
                 + "FROM SIMULACAO S, USUARIO U "
                 + "WHERE S.ID_USUARIO = U.ID_USUARIO "
                 + "AND S.ID_SIMULACAO = " + id + ";";
