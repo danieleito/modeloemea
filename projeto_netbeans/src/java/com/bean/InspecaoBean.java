@@ -6,12 +6,14 @@
 package com.bean;
 
 import com.dao.InspecaoDAO;
+import com.dao.SimulacaoDAO;
 import com.model.Inspecao;
 import com.model.Ponte;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -41,8 +43,9 @@ public class InspecaoBean extends ComumBean {
     public void setInspecoes(ArrayList<Inspecao> inspecoes) {
         this.inspecoes = inspecoes;
     }
-    
-    public InspecaoBean() {
+        
+    @PostConstruct
+    public void init() {
         database = new InspecaoDAO();
         model = new Inspecao();
         try {
@@ -55,12 +58,12 @@ public class InspecaoBean extends ComumBean {
     }
     
     public void visualizar(int id) {
-        Inspecao inspecao;
         try {
-            inspecao = database.buscar(id);
+            model = database.buscar(id);
             redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
         } catch (SQLException ex) {
             Logger.getLogger(InspecaoBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar inspeçõess.");
         }
     }
 }
