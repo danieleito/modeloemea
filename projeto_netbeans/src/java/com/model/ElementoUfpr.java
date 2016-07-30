@@ -5,11 +5,13 @@
  */
 package com.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class ElementoUfpr {
+public class ElementoUfpr implements Serializable {
     private int id;
     private String codigo;
     private String descricao;

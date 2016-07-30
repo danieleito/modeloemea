@@ -5,11 +5,13 @@
  */
 package com.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class Via {
+public class Via implements Serializable {
     private int id;
     private String via;
 

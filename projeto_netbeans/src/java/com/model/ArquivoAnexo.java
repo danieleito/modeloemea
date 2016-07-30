@@ -5,13 +5,14 @@
  */
 package com.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class ArquivoAnexo {
+public class ArquivoAnexo implements Serializable {
     private int id;
     private Ponte ponte;
     private String arquivo;
@@ -118,5 +119,10 @@ public class ArquivoAnexo {
 
     public void setImagem(Imagem imagem) {
         this.imagem = imagem;
+    }
+    
+    @Override
+    public String toString() {
+        return descricao;
     }
 }

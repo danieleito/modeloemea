@@ -5,11 +5,13 @@
  */
 package com.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class CadastroAspectoEspecial {
+public class CadastroAspectoEspecial implements Serializable {
     private int id;
     private AspectoEspecial aspectoEspecial;
 

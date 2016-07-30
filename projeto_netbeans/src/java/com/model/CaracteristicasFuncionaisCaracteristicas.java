@@ -5,11 +5,13 @@
  */
 package com.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class CaracteristicasFuncionaisCaracteristicas {
+public class CaracteristicasFuncionaisCaracteristicas implements Serializable {
     private int id;
     private TipoRegiao tipoRegiao;
     private TipoTracado tipoTracado;

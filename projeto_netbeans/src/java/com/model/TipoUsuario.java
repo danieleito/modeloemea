@@ -62,16 +62,16 @@ public class TipoUsuario implements Serializable {
         return tipoUsuario;
     }
 
-    @Override
-    public String toString() {
-        return this.tipoUsuario;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
 
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
+    }
+    
+    @Override
+    public String toString() {
+        return this.tipoUsuario;
     }
 }

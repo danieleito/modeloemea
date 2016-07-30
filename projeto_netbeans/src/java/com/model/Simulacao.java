@@ -5,6 +5,7 @@
  */
 package com.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,7 +14,7 @@ import java.util.Date;
  *
  * @author Daniele Harumi Ito
  */
-public class Simulacao {
+public class Simulacao implements Serializable {
     private int id;
     private Date data;
     private Usuario usuario;

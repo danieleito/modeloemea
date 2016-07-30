@@ -5,11 +5,13 @@
  */
 package com.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class IdentificacaoObraDadosBasicos {
+public class IdentificacaoObraDadosBasicos implements Serializable {
     private int id;
     private String codigo;
     private String codigoIntegracao;

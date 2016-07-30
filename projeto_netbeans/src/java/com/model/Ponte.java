@@ -5,6 +5,7 @@
  */
 package com.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import java.util.Date;
  *
  * @author Daniele Harumi Ito
  */
-public class Ponte {
+public class Ponte implements Serializable {
     private int id;
     private String indicePerformanceRelativo;
     private IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos;

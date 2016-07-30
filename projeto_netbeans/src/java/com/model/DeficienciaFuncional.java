@@ -5,11 +5,13 @@
  */
 package com.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class DeficienciaFuncional {
+public class DeficienciaFuncional implements Serializable {
     private int id;
     private String codigo;
     private String descricao;

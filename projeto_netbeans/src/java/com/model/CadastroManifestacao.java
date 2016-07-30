@@ -5,11 +5,13 @@
  */
 package com.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class CadastroManifestacao {
+public class CadastroManifestacao implements Serializable {
     private int id;
     private Numero numero;
     private ManifestacaoUfpr manifestacaoUfpr;

@@ -6,12 +6,13 @@
 package com.model;
 
 import java.awt.Image;
+import java.io.Serializable;
 
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class Imagem {
+public class Imagem implements Serializable {
     private int id;
     private String nome;
     private String tipoMime;

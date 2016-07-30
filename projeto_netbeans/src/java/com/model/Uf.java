@@ -5,11 +5,13 @@
  */
 package com.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class Uf {
+public class Uf implements Serializable {
     private int id;
     private String estado;
     private String uf;

@@ -5,11 +5,13 @@
  */
 package com.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class Ranking {
+public class Ranking implements Serializable {
     private int id;
     private Ponte ponte;
 

@@ -5,13 +5,14 @@
  */
 package com.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class Inspecao {
+public class Inspecao implements Serializable {
     private int id;
     private Date data;
     private Usuario usuario;
