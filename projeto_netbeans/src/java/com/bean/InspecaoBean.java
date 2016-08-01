@@ -21,7 +21,7 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Daniele Harumi Ito
  */
-@ManagedBean(name = "inspecao")
+@ManagedBean(name = "inspecaobean")
 @SessionScoped
 public class InspecaoBean extends ComumBean {
     private Inspecao model;

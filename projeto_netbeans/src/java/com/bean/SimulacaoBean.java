@@ -23,16 +23,16 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "simulacaoBean")
 @SessionScoped
 public class SimulacaoBean extends ComumBean {
-    
+
     private Simulacao simulacao;
     private SimulacaoDAO database;
     private ArrayList<Simulacao> simulacoes;
-    
+
     @PostConstruct
     public void init() {
         database = new SimulacaoDAO();
     }
-    
+
     public void listarGet() {
         try {
             simulacao = new Simulacao();
@@ -60,7 +60,7 @@ public class SimulacaoBean extends ComumBean {
                     return;
                 }
             }
-            
+
             simulacao.setUsuario(usuarioLogado);
             simulacao.setData(new Date());
 //            else {
@@ -85,7 +85,7 @@ public class SimulacaoBean extends ComumBean {
         }
         redirecionar("/View/Compartilhado/Simulacao/visualizar.jsf");
     }
-    
+
     public void rankingGet(int idSimulacao) {
         try {
             simulacao = database.buscar(idSimulacao);
@@ -95,7 +95,7 @@ public class SimulacaoBean extends ComumBean {
         }
         redirecionar("/View/Compartilhado/Simulacao/ranking.jsf");
     }
-    
+
     //método executar ao carregar a view ranking
     public void recarregarSimulacao() {
         try {
@@ -106,7 +106,7 @@ public class SimulacaoBean extends ComumBean {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     //remove a ponte da simulação
     public void excluirRanking(int idRanking) {
         try {
@@ -119,7 +119,7 @@ public class SimulacaoBean extends ComumBean {
         }
         redirecionar("/View/Compartilhado/Simulacao/ranking.jsf");
     }
-    
+
     //excluir simulação do banco
     public void excluir(int id) {
         try {
@@ -132,7 +132,7 @@ public class SimulacaoBean extends ComumBean {
         }
         redirecionar("/View/Compartilhado/Simulacao/listar.jsf");
     }
-        
+
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Simulacao getSimulacao() {
         return simulacao;
