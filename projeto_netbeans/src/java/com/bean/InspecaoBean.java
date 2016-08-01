@@ -58,6 +58,7 @@ public class InspecaoBean extends ComumBean {
     }
     
     public void visualizar(int id) {
+        adicionarMensagemInfo("Olááá");
         try {
             model = database.buscar(id);
             redirecionar("/View/Compartilhado/visualizarInspecao.jsf");

@@ -330,6 +330,7 @@ public class PonteBean extends ComumBean implements Serializable {
     
     public void exibir(int idPonte) {
         try {
+            adicionarMensagemInfo("exibir!!!!!!");
             model = database.buscar(idPonte);
         } catch (Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
