@@ -37,6 +37,7 @@ and open the template in the editor.
                     <br/>
                     
                     <p:commandButton value="Consultar" action="#{ponteBean.consultarGet()}" />
+                    <p:commandButton value="Imprimir relatórios" action="#{ponteBean.consultarGet()}" />
 
                     <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="15" >
                         <f:facet name="header" >
@@ -86,7 +87,6 @@ and open the template in the editor.
                                 <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                                 <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                             </p:confirmDialog>
-
                         </p:column>
 
                     </p:dataTable>

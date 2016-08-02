@@ -206,6 +206,14 @@ public class PonteBean extends ComumBean implements Serializable {
     
     public void visualizar(int id) {
         //visualiza ponte do 'id'
+        adicionarMensagemInfo("Olááá");
+        try {
+            model = database.buscar(id);
+            redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
+        } catch (SQLException ex) {
+            Logger.getLogger(InspecaoBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar inspeçõess.");
+        }
     }
     
     public void carregar(int idSimulacao) {
@@ -330,7 +338,6 @@ public class PonteBean extends ComumBean implements Serializable {
     
     public void exibir(int idPonte) {
         try {
-            adicionarMensagemInfo("exibir!!!!!!");
             model = database.buscar(idPonte);
         } catch (Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -347,6 +354,8 @@ public class PonteBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro ao carregar. " + ex.getMessage());
         }
     }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {

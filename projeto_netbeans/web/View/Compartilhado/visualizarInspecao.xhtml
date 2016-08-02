@@ -19,6 +19,7 @@ and open the template in the editor.
                 <h:form id="form">
                     <p:breadCrumb>
                         <p:menuitem value="Categories" url="#" />
+                        <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
                         <p:menuitem value="Simulação" url="/View/Compartilhado/simulacao.jsf" />
                         <p:menuitem value="Ranking" url="/View/Compartilhado/Ranking/editar.jsf" />
                         <p:menuitem value="Exibir" url="/View/Compartilhado/exibir.jsf" />
@@ -28,19 +29,22 @@ and open the template in the editor.
                     <p:tabView>
                         <p:tab title="Inspeção rotineira">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <ui:include src="/View/Compartilhado/inspecaoRotineira.xhtml" />
+                                <!--<ui:include src="/View/Compartilhado/inspecaoRotineira.xhtml" />-->
+                                <ui:include src="/View/Compartilhado/OAE/Cadastro/dadosCadastrais.xhtml" />
                             </h:panelGrid>
                         </p:tab>
                     
                         <p:tab title="Modelo EMEA">
                             <h:panelGrid columns="2" cellpadding="10">
-                                
+                            
+                            <ui:include src="/View/Compartilhado/OAE/Cadastro/arquivosAnexos.xhtml" />
                             </h:panelGrid>
                         </p:tab>
                     
                         <p:tab title="Arquivos Anexos">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <ui:include src="/View/Compartilhado/ArquivosAnexos/inspecao.xhtml" />
+                                <ui:include src="/View/Compartilhado/OAE/Cadastro/inspecoes.xhtml" />
+                                <!--<ui:include src="/View/Compartilhado/ArquivosAnexos/inspecao.xhtml" />-->
                             </h:panelGrid>
                         </p:tab>
                     </p:tabView>
