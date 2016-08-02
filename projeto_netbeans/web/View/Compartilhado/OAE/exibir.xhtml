@@ -25,19 +25,25 @@ and open the template in the editor.
                         <p:menuitem value="Exibir" url="/View/Compartilhado/OAE/exibir.jsf" />
                     </p:breadCrumb>
 
+                    <div class="row">
+                        <p:outputLabel>Nome da simulação: #{simulacaoBean.simulacao.nomeSimulacao}</p:outputLabel>
+                    </div>
+                    <br/>
+                    <br/>
+                    
                     <p:tabView>
                         <p:tab title="Dados cadastrais">
                             <h:panelGrid columns="2" cellpadding="10">
                                 <ui:include src="/View/Compartilhado/OAE/Cadastro/dadosCadastrais.xhtml" />
                             </h:panelGrid>
                         </p:tab>
-                        
+
                         <p:tab title="Arquivos anexos">
                             <h:panelGrid columns="2" cellpadding="10">
                                 <ui:include src="/View/Compartilhado/OAE/Cadastro/arquivosAnexos.xhtml" />
                             </h:panelGrid>
                         </p:tab>
-                        
+
                         <p:tab title="Inspeções">
                             <h:panelGrid columns="2" cellpadding="10">
                                 <ui:include src="/View/Compartilhado/OAE/Cadastro/inspecoes.xhtml" />                                
