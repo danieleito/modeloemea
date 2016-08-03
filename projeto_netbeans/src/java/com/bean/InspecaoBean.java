@@ -47,18 +47,9 @@ public class InspecaoBean extends ComumBean {
     @PostConstruct
     public void init() {
         database = new InspecaoDAO();
-        model = new Inspecao();
-        try {
-            inspecoes = database.buscar();
-        } catch (SQLException ex) {
-            Logger.getLogger(InspecaoBean.class.getName()).log(Level.SEVERE, null, ex);
-            inspecoes = new ArrayList<>();
-            adicionarMensagemErro("Erro ao carregar inspeções.");
-        }
     }
     
     public void visualizar(int id) {
-        adicionarMensagemInfo("Olááá");
         try {
             model = database.buscar(id);
             redirecionar("/View/Compartilhado/visualizarInspecao.jsf");

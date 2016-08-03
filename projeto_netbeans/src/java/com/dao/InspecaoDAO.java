@@ -81,10 +81,13 @@ public class InspecaoDAO {
     
     public Inspecao buscar(int id) throws SQLException {
         String query = "select I.ID_INSPECAO, I.DT_DATA, I.ID_USUARIO, "
-                + "I.DS_CONDICAO_ESTABILIDADE, I.DS_CONDICAO_CONSERVACAO, "
-                + "U.ID_USUARIO, U.NM_NOME, U.DS_USUARIO "
-                + "from INSPECAO I, USUARIO U "
+                + "U.ID_USUARIO, U.NM_NOME, U.DS_USUARIO, "
+                + "I.ID_PONTE, I.ID_MODELO, M.DS_INDICE_BASE, DS_INDICE_PERFORMANCE "
+                
+                + "from INSPECAO I, USUARIO U, PONTE P, MODELO M "
                 + "where I.ID_USUARIO = U.ID_USUARIO "
+                + "and I.ID_PONTE = P.ID_PONTE "
+                + "and I.ID_MODELO = M.ID_MODELO "
                 + "and I.ID_INSPECAO = " + id + ";";
         
         Conexao conexao = new Conexao();

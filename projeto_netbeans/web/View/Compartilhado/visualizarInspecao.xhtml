@@ -23,28 +23,24 @@ and open the template in the editor.
                         <p:menuitem value="Simulação" url="/View/Compartilhado/Simulacao/listar.jsf" />
                         <p:menuitem value="Ranking" url="/View/Compartilhado/Simulacao/ranking.jsf" />
                         <p:menuitem value="Exibir" url="/View/Compartilhado/OAE/exibir.jsf" />
-                        <!--<p:menuitem value="Inspeções" url="/View/Compartilhado/visualizarInspecao.jsf" />-->
                     </p:breadCrumb>
                     
                     <p:tabView>
                         <p:tab title="Inspeção rotineira">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <!--<ui:include src="/View/Compartilhado/inspecaoRotineira.xhtml" />-->
-                                <ui:include src="/View/Compartilhado/OAE/Cadastro/dadosCadastrais.xhtml" />
+                                <ui:include src="/View/Compartilhado/inspecaoRotineira.xhtml" />
                             </h:panelGrid>
                         </p:tab>
                     
                         <p:tab title="Modelo EMEA">
                             <h:panelGrid columns="2" cellpadding="10">
-                            
-                            <ui:include src="/View/Compartilhado/OAE/Cadastro/arquivosAnexos.xhtml" />
+                                <ui:include src="/View/Compartilhado/modeloEmea.xhtml" />
                             </h:panelGrid>
                         </p:tab>
                     
                         <p:tab title="Arquivos Anexos">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <ui:include src="/View/Compartilhado/OAE/Cadastro/inspecoes.xhtml" />
-                                <!--<ui:include src="/View/Compartilhado/ArquivosAnexos/inspecao.xhtml" />-->
+                                <ui:include src="/View/Compartilhado/arquivosAnexos.xhtml" />
                             </h:panelGrid>
                         </p:tab>
                     </p:tabView>
