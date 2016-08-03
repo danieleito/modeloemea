@@ -21,16 +21,16 @@ and open the template in the editor.
                         <hr/>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Código:" style="font-weight: bold" />
-                            <h:outputText value="codigo" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.id}" />
 
                             <h:outputText value="Data da inspeção:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.dataInspecao}" />
 
                             <h:outputText value="Ponte:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.nomePonte}" />
 
                             <h:outputText value="Inspetor:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.nomeInspetor}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -40,16 +40,16 @@ and open the template in the editor.
                         <hr/>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Via/UF:" style="font-weight: bold" />
-                            <h:outputText value="via/uf" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.via} / #{inspecaorotineirabean.model.identificacaoObraSgo.uf}" />
 
                             <h:outputText value="Km:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.km}" />
 
                             <h:outputText value="Superint. Regional:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.superintendenciaRegional}" />
 
                             <h:outputText value="UL:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.ul}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -63,13 +63,13 @@ and open the template in the editor.
                         <hr/>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Condição de Estabilidade:" style="font-weight: bold" />
-                            <h:outputText value="condicao" />
+                            <h:outputText value="#{inspecaorotineirabean.model.condicaoSgo.condicaoEstabilididade}" />
 
                             <h:outputText value="Condição de Conservação:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="#{inspecaorotineirabean.model.condicaoSgo.condicaoConservacao}" />
 
                             <h:outputText value="Observações:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                            <h:outputText value="#{inspecaorotineirabean.model.condicaoSgo.observacoes}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -79,7 +79,7 @@ and open the template in the editor.
                         <hr/>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Nota Técnica" style="font-weight: bold" />
-                            <h:outputText value="via/uf" />
+                            <h:outputText value="#{inspecaorotineirabean.model.condicaoSgo.notaTecnica}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -93,7 +93,7 @@ and open the template in the editor.
                         <hr />
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Nota Técnica" style="font-weight: bold" />
-                            <h:outputText value="via/uf" />
+                            <h:outputText value="#{inspecaorotineirabean.model}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -107,7 +107,7 @@ and open the template in the editor.
                         <hr />
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Nota Técnica" style="font-weight: bold" />
-                            <h:outputText value="via/uf" />
+                            <h:outputText value="#{inspecaorotineirabean.model}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -121,13 +121,13 @@ and open the template in the editor.
                         <hr />
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Data do Laudo:" style="font-weight: bold" />
-                            <h:outputText value="data" />
+                            <h:outputText value="#{inspecaorotineirabean.model.laudoEspecializadoSgo.dataLaudo}" />
 
                             <h:outputText value="Observações:" style="font-weight: bold" />
-                            <h:outputText value="data" />
+                            <h:outputText value="#{inspecaorotineirabean.model.laudoEspecializadoSgo.observacoes}" />
 
                             <h:outputText value="Consultor:" style="font-weight: bold" />
-                            <h:outputText value="data" />
+                            <h:outputText value="#{inspecaorotineirabean.model.laudoEspecializadoSgo.consultor}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -141,13 +141,13 @@ and open the template in the editor.
                         <hr />
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Período:" style="font-weight: bold" />
-                            <h:outputText value="periodo" />
+                            <h:outputText value="#{inspecaorotineirabean.model.monitoramentoSgo.periodo}" />
 
                             <h:outputText value="Objeto:" style="font-weight: bold" />
-                            <h:outputText value="ob" />
+                            <h:outputText value="#{inspecaorotineirabean.model.monitoramentoSgo.objeto}" />
 
                             <h:outputText value="Técnicas:" style="font-weight: bold" />
-                            <h:outputText value="tec" />
+                            <h:outputText value="#{inspecaorotineirabean.model.monitoramentoSgo.tecnicas}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -157,13 +157,13 @@ and open the template in the editor.
                         <hr/>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Tipo de Monitoramento:" style="font-weight: bold" />
-                            <h:outputText value="tipo" />
+                            <h:outputText value="#{inspecaorotineirabean.model.monitoramentoSgo.tipoMonitoramento}" />
 
                             <h:outputText value="Executor:" style="font-weight: bold" />
-                            <h:outputText value="ex" />
+                            <h:outputText value="#{inspecaorotineirabean.model.monitoramentoSgo.executor}" />
 
                             <h:outputText value="Custo:" style="font-weight: bold" />
-                            <h:outputText value="cst" />
+                            <h:outputText value="#{inspecaorotineirabean.model.monitoramentoSgo.custo}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -175,7 +175,7 @@ and open the template in the editor.
                         <br/>
                         <hr/>
                         <h:outputText value="Relatório:" style="font-weight: bold" />
-                            <h:outputText value="Obs:" />
+                        <h:outputText value="#{inspecaorotineirabean.model.relatorio}" />
                     </p:outputPanel>
                 </h:panelGrid>
             </div>

@@ -1009,7 +1009,7 @@ insert into INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO values ('elemento', 'nota',
 create table LAUDO_ESPECIALIZADO_SGO
 	(
 		ID_LAUDO_ESPECIALIZADO_SGO					int							not null identity(1,1),
-		DS_DATA_LAUDO								varchar(10),
+		DT_DATA_LAUDO								varchar(10),
 		DS_CONSULTOR								varchar(30),
 		DS_OBSERVACOES								varchar(80),
 		CONSTRAINT									pk_laudoespecializadosgo	PRIMARY KEY(ID_LAUDO_ESPECIALIZADO_SGO)
@@ -1032,6 +1032,7 @@ insert into MONITORAMENTO_SGO values ('período', 'tipo monitoramento', 'executor
 create table INSPECAO_ROTINEIRA
 	(
 		ID_INSPECAO_ROTINEIRA								int															not null identity(1,1),
+		ID_PONTE											int															not null,
 		ID_IDENTIFICACAO_OBRA_SGO							int															not null,
 		ID_CONDICOES_SGO									int															not null,
 		ID_DANOS_ELEMENTOS_SGO								int															not null,
@@ -1040,6 +1041,7 @@ create table INSPECAO_ROTINEIRA
 		ID_MONITORAMENTO_SGO								int															not null,
 		DS_RELATORIO										varchar(80)													not null,
 		CONSTRAINT											pk_inspecaorotineira										PRIMARY KEY(ID_INSPECAO_ROTINEIRA),
+		CONSTRAINT											fk_inspecaorotineira_ponte									FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
 		CONSTRAINT											fk_inspecaorotineira_identificacaoobrasgo					FOREIGN KEY(ID_IDENTIFICACAO_OBRA_SGO) REFERENCES IDENTIFICACAO_OBRA_SGO(ID_IDENTIFICACAO_OBRA_SGO),
 		CONSTRAINT											fk_inspecaorotineira_condicaosgo							FOREIGN KEY(ID_CONDICOES_SGO) REFERENCES CONDICOES_SGO(ID_CONDICOES_SGO),
 		CONSTRAINT											fk_inspecaorotineira_danoselementossgo						FOREIGN KEY(ID_DANOS_ELEMENTOS_SGO) REFERENCES DANOS_ELEMENTOS_SGO(ID_DANOS_ELEMENTOS_SGO),

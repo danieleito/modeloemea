@@ -11,17 +11,17 @@ import java.io.Serializable;
  *
  * @author Daniele Harumi Ito
  */
-public class CondicoesSgo implements Serializable {
+public class CondicaoSgo implements Serializable {
     private int id;
     private String condicaoEstabilididade;
     private String condicaoConservacao;
     private String observacoes;
     private String notaTecnica;
 
-    public CondicoesSgo() {
+    public CondicaoSgo() {
     }
 
-    public CondicoesSgo(int id, String condicaoEstabilididade, String condicaoConservacao, String observacoes, String notaTecnica) {
+    public CondicaoSgo(int id, String condicaoEstabilididade, String condicaoConservacao, String observacoes, String notaTecnica) {
         this.id = id;
         this.condicaoEstabilididade = condicaoEstabilididade;
         this.condicaoConservacao = condicaoConservacao;
@@ -29,7 +29,7 @@ public class CondicoesSgo implements Serializable {
         this.notaTecnica = notaTecnica;
     }
 
-    public CondicoesSgo(String condicaoEstabilididade, String condicaoConservacao, String observacoes, String notaTecnica) {
+    public CondicaoSgo(String condicaoEstabilididade, String condicaoConservacao, String observacoes, String notaTecnica) {
         this.condicaoEstabilididade = condicaoEstabilididade;
         this.condicaoConservacao = condicaoConservacao;
         this.observacoes = observacoes;

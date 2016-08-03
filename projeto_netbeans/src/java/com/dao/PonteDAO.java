@@ -213,14 +213,14 @@ public class PonteDAO {
                 + "CM.DS_TAMANHO, CM.ID_EXTENSAO_RELATIVA, ER.DS_EXTENSAO_RELATIVA , CM.ID_REPARO, REP.DS_REPARO, "
                 + "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA, "
                 + "P.DS_INDICE_PERFORMANCE_RELATIVO "
-                
+
                 + "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, IDENTIFICACAO_OBRA_LOCALIZACAO L, "
                 + "IDENTIFICACAO_OBRA_RESPONSAVEIS R, IDENTIFICACAO_OBRA_INSPECAO I, UF U, VIA V, SUPERINTENDENCIA_REGIONAL SR, "
                 + "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, "
                 + "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
                 + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB, "
                 + "CADASTRO_MANIFESTACAO CM, ELEMENTOS_UFPR EU, NUMERO N, MANIFESTACOES_UFPR MU, FOTO F, EXTENSAO_RELATIVA ER, REPARO REP "
-                
+
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
                 + "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
                 + "AND P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS = R.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS "
@@ -322,10 +322,10 @@ public class PonteDAO {
         conexao.closeConnection();
         return ponte;
     }
-    
+
     public ArrayList<Ponte> buscar2(String codigo, String identificacao, int uf, int via, 
             double kmInicial, double kmFinal, int superintendenciaRegional, int unidadeLocal) throws SQLException {
-        
+
         String query = "select P.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, DB.CD_CODIGO, DB.CD_CODIGO_INTEGRACAO, "
                 + "DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO, "
                 + "DB.ID_TIPO_ESTRUTURA, TE.DS_TIPO_ESTRUTURA, DB.ID_SISTEMA_CONSTRUTIVO, SC.DS_SISTEMA_CONSTRUTIVO, "
@@ -358,7 +358,7 @@ public class PonteDAO {
                 + "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
                 + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB, "
                 + "CADASTRO_MANIFESTACAO CM, ELEMENTOS_UFPR EU, NUMERO N, MANIFESTACOES_UFPR MU, FOTO F, EXTENSAO_RELATIVA ER, REPARO REP "
-                
+
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
                 + "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
                 + "AND P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS = R.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS "
@@ -478,7 +478,7 @@ public class PonteDAO {
 //            ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
             ponte.setElementosComponentes(buscarElementosComponentes(ponte.getId()));
-            
+
             pontes.add(ponte);
         }
         conexao.closeConnection();
@@ -488,13 +488,13 @@ public class PonteDAO {
     public void carregar() {
 
     }
-    
+
 //    private ArrayList<DeficienciaFuncional> buscarDeficienciasFuncionais(int idPonte) throws SQLException {
 //        String query = "select ID_DEFICIENCIAS_FUNCIONAIS, CD_DEFICIENCIA_FUNCIONAL, "
 //                + "DS_DEFICIENCIA_FUNCIONAL, DS_UNIDADE_MEDIDA, ID_PONTE "
 //                + "from DEFICIENCIAS_FUNCIONAIS "
 //                + "where ID_PONTE = " + idPonte;
-//        
+//
 //        Conexao conexao = new Conexao();
 //        Connection conn = conexao.getConnection();
 //        Statement stmt;
@@ -507,17 +507,17 @@ public class PonteDAO {
 //                    rs.getString("CD_DEFICIENCIA_FUNCIONAL"), rs.getString("DS_DEFICIENCIA_FUNCIONAL"), 
 //                    rs.getString("DS_UNIDADE_MEDIDA")));
 //        }
-//        
+//
 //        return deficienciasFuncionais;
 //    }
-    
+
     private ArrayList<CadastroAspectoEspecial> buscarAspectosEspeciais(int idPonte) throws SQLException {
         String query = "select AE.ID_CADASTRO_ASPECTOS_ESPECIAIS, "
                 + "AE.ID_ASPECTOS_ESPECIAIS, A.DS_ASPECTOS_ESPECIAIS "
                 + "from CADASTRO_ASPECTOS_ESPECIAIS AE, ASPECTOS_ESPECIAIS A "
                 + "where AE.ID_ASPECTOS_ESPECIAIS = A.ID_ASPECTOS_ESPECIAIS "
                 + "and AE.ID_PONTE = " + idPonte;
-        
+
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
         Statement stmt;
@@ -530,7 +530,7 @@ public class PonteDAO {
                     new AspectoEspecial(rs.getInt("ID_ASPECTOS_ESPECIAIS"), 
                             rs.getString("DS_ASPECTOS_ESPECIAIS"))));
         }
-        
+
         return aspectosEspeciais;
     }
 
@@ -540,7 +540,7 @@ public class PonteDAO {
                 + "from ELEMENTOS_UFPR E, ELEMENTO_COMPONENTES EC "
                 + "where E.ID_ELEMENTO_UFPR = EC.ID_ELEMENTO_UFPR "
                 + "and EC.ID_PONTE = " + idPonte;
-        
+
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
         Statement stmt;
@@ -553,18 +553,17 @@ public class PonteDAO {
                     new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), rs.getString("CD_ELEMENTO"), 
                     rs.getString("DS_ELEMENTO"), rs.getString("DS_CAPA1")), 
                     rs.getString("DS_DETALHE"), rs.getString("NR_QUANTIDADE"))); 
-                    
         }
-        
+
         return elementosComponentes;
     }
-    
+
     public boolean ponteEstaSimulacao(int idPonte, int idSimulacao) throws SQLException {
         String query = "select * "
                 + "from RANKING "
                 + "where ID_PONTE = "+idPonte+" "
                 + "and ID_SIMULACAO = "+idSimulacao+";";
-        
+
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
         Statement stmt;
@@ -577,7 +576,7 @@ public class PonteDAO {
         conexao.closeConnection();
         return retorno;
     }
-    
+
 //    
 //    private ArrayList<ArquivoAnexo> buscarArquivosAnexos(int idPonte) throws SQLException {
 //        String query = "select ID_ARQUIVO_ANEXO_INSPECAO, DS_ARQUIVO, "
@@ -585,7 +584,7 @@ public class PonteDAO {
 //                + "DT_DATA_ANEXACAO, ID_PONTE "
 //                + "from ARQUIVO_ANEXO_INSPECAO "
 //                + "where ID_PONTE = " + idPonte;
-//        
+//
 //        Conexao conexao = new Conexao();
 //        Connection conn = conexao.getConnection();
 //        Statement stmt;
@@ -599,7 +598,7 @@ public class PonteDAO {
 //                    rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), 
 //                    rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO")));  
 //        }
-//        
+//
 //        return arquivosAnexos;
 //    }
 }

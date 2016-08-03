@@ -13,6 +13,110 @@ import java.io.Serializable;
  */
 public class InspecaoRotineira implements Serializable {
     private int id;
+    private Ponte ponte;
     private IdentificacaoObraSgo identificacaoObraSgo;
-    
+    private CondicaoSgo condicaoSgo;
+    private DanoElementoSgo danoElementoSgo;
+    private InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo;
+    private LaudoEspecializadoSgo laudoEspecializadoSgo;
+    private MonitoramentoSgo monitoramentoSgo;
+    private String relatorio;
+
+    public InspecaoRotineira() {
+    }
+
+    public InspecaoRotineira(int id, Ponte ponte, IdentificacaoObraSgo identificacaoObraSgo, CondicaoSgo condicaoSgo, DanoElementoSgo danoElementoSgo, InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo, LaudoEspecializadoSgo laudoEspecializadoSgo, MonitoramentoSgo monitoramentoSgo, String relatorio) {
+        this.id = id;
+        this.ponte = ponte;
+        this.identificacaoObraSgo = identificacaoObraSgo;
+        this.condicaoSgo = condicaoSgo;
+        this.danoElementoSgo = danoElementoSgo;
+        this.insuficienciaEstruturalElementoSgo = insuficienciaEstruturalElementoSgo;
+        this.laudoEspecializadoSgo = laudoEspecializadoSgo;
+        this.monitoramentoSgo = monitoramentoSgo;
+        this.relatorio = relatorio;
+    }
+
+    public InspecaoRotineira(Ponte ponte, IdentificacaoObraSgo identificacaoObraSgo, CondicaoSgo condicaoSgo, DanoElementoSgo danoElementoSgo, InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo, LaudoEspecializadoSgo laudoEspecializadoSgo, MonitoramentoSgo monitoramentoSgo, String relatorio) {
+        this.ponte = ponte;
+        this.identificacaoObraSgo = identificacaoObraSgo;
+        this.condicaoSgo = condicaoSgo;
+        this.danoElementoSgo = danoElementoSgo;
+        this.insuficienciaEstruturalElementoSgo = insuficienciaEstruturalElementoSgo;
+        this.laudoEspecializadoSgo = laudoEspecializadoSgo;
+        this.monitoramentoSgo = monitoramentoSgo;
+        this.relatorio = relatorio;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Ponte getPonte() {
+        return ponte;
+    }
+
+    public void setPonte(Ponte ponte) {
+        this.ponte = ponte;
+    }
+
+    public IdentificacaoObraSgo getIdentificacaoObraSgo() {
+        return identificacaoObraSgo;
+    }
+
+    public void setIdentificacaoObraSgo(IdentificacaoObraSgo identificacaoObraSgo) {
+        this.identificacaoObraSgo = identificacaoObraSgo;
+    }
+
+    public CondicaoSgo getCondicaoSgo() {
+        return condicaoSgo;
+    }
+
+    public void setCondicaoSgo(CondicaoSgo condicaoSgo) {
+        this.condicaoSgo = condicaoSgo;
+    }
+
+    public DanoElementoSgo getDanoElementoSgo() {
+        return danoElementoSgo;
+    }
+
+    public void setDanoElementoSgo(DanoElementoSgo danoElementoSgo) {
+        this.danoElementoSgo = danoElementoSgo;
+    }
+
+    public InsuficienciaEstruturalElementoSgo getInsuficienciaEstruturalElementoSgo() {
+        return insuficienciaEstruturalElementoSgo;
+    }
+
+    public void setInsuficienciaEstruturalElementoSgo(InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo) {
+        this.insuficienciaEstruturalElementoSgo = insuficienciaEstruturalElementoSgo;
+    }
+
+    public LaudoEspecializadoSgo getLaudoEspecializadoSgo() {
+        return laudoEspecializadoSgo;
+    }
+
+    public void setLaudoEspecializadoSgo(LaudoEspecializadoSgo laudoEspecializadoSgo) {
+        this.laudoEspecializadoSgo = laudoEspecializadoSgo;
+    }
+
+    public MonitoramentoSgo getMonitoramentoSgo() {
+        return monitoramentoSgo;
+    }
+
+    public void setMonitoramentoSgo(MonitoramentoSgo monitoramentoSgo) {
+        this.monitoramentoSgo = monitoramentoSgo;
+    }
+
+    public String getRelatorio() {
+        return relatorio;
+    }
+
+    public void setRelatorio(String relatorio) {
+        this.relatorio = relatorio;
+    }
 }

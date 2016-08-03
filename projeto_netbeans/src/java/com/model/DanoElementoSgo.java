@@ -1,0 +1,111 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.model;
+
+import java.io.Serializable;
+
+/**
+ *
+ * @author Daniele Harumi Ito
+ */
+public class DanoElementoSgo implements Serializable {
+    private int id;
+    private String elemento;
+    private String nota;
+    private String dano;
+    private String unidade;
+    private String quantidade;
+    private String extensaoRelativa;
+    private String localizacao;
+
+    public DanoElementoSgo() {
+    }
+
+    public DanoElementoSgo(int id, String elemento, String nota, String dano, String unidade, String quantidade, String extensaoRelativa, String localizacao) {
+        this.id = id;
+        this.elemento = elemento;
+        this.nota = nota;
+        this.dano = dano;
+        this.unidade = unidade;
+        this.quantidade = quantidade;
+        this.extensaoRelativa = extensaoRelativa;
+        this.localizacao = localizacao;
+    }
+
+    public DanoElementoSgo(String elemento, String nota, String dano, String unidade, String quantidade, String extensaoRelativa, String localizacao) {
+        this.elemento = elemento;
+        this.nota = nota;
+        this.dano = dano;
+        this.unidade = unidade;
+        this.quantidade = quantidade;
+        this.extensaoRelativa = extensaoRelativa;
+        this.localizacao = localizacao;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getElemento() {
+        return elemento;
+    }
+
+    public void setElemento(String elemento) {
+        this.elemento = elemento;
+    }
+
+    public String getNota() {
+        return nota;
+    }
+
+    public void setNota(String nota) {
+        this.nota = nota;
+    }
+
+    public String getDano() {
+        return dano;
+    }
+
+    public void setDano(String dano) {
+        this.dano = dano;
+    }
+
+    public String getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(String unidade) {
+        this.unidade = unidade;
+    }
+
+    public String getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(String quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public String getExtensaoRelativa() {
+        return extensaoRelativa;
+    }
+
+    public void setExtensaoRelativa(String extensaoRelativa) {
+        this.extensaoRelativa = extensaoRelativa;
+    }
+
+    public String getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
+    }
+}
