@@ -28,7 +28,10 @@
                     </p:column>
 
                     <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                        <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(r.ponte.id)}" />
+                        <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{inspecaobean}" />
+                        <h:outputText value="#{inspecaobean.model.id}">
+                            
+                        </h:outputText>
                     </p:column>
                 </p:dataTable>
 

@@ -931,8 +931,6 @@ create table INSPECOES_MANIFESTACOES
 		
 	);
 
-
-
 ------------------------------------------------------------------------
 
 create table ELEMENTO_COMPONENTES
@@ -952,7 +950,7 @@ create table ELEMENTO_COMPONENTES
 
 create table IDENTIFICACAO_OBRA_SGO
 	(
-		ID_IDENTIFICACAO_OBRA_SGO		int				not null identity(1,1),
+		ID_IDENTIFICACAO_OBRA_SGO		int													not null identity(1,1),
 		CD_CODIGO						varchar(20),
 		DT_DATA_INSPECAO				varchar(10),
 		NM_PONTE						varchar(30),
@@ -982,7 +980,7 @@ insert into CONDICOES_SGO values ('cond estabilidade', 'cond conservacao', 'obse
 
 create table DANOS_ELEMENTOS_SGO
 	(
-		ID_DANOS_ELEMENTOS_SGO		int						not null identity(1,1),
+		ID_DANOS_ELEMENTOS_SGO		int								not null identity(1,1),
 		DS_ELEMENTO					varchar(30),
 		DS_NOTA						varchar(20),
 		DS_DANO						varchar(20),
@@ -990,7 +988,7 @@ create table DANOS_ELEMENTOS_SGO
 		DS_QUANTIDADE				varchar(20),
 		DS_EXTENSAO_RELATIVA		varchar(20),
 		DS_LOCALIZACAO				varchar(20),
-		CONSTRAINT					pk_danoselementossgo	PRIMARY KEY(ID_DANOS_ELEMENTOS_SGO)
+		CONSTRAINT					pk_danoselementossgo			PRIMARY KEY(ID_DANOS_ELEMENTOS_SGO)
 	);
 insert into DANOS_ELEMENTOS_SGO values ('elemento', 'nota', 'dano', 'unidade', 'quantidade', 'ext relativa', 'localizacao');
 
@@ -1018,21 +1016,21 @@ insert into LAUDO_ESPECIALIZADO_SGO values ('04/08/2016', 'consultor', 'observaç
 
 create table MONITORAMENTO_SGO
 	(
-		ID_MONITORAMENTO_SGO			int						not null identity(1,1),
+		ID_MONITORAMENTO_SGO			int							not null identity(1,1),
 		DS_PERIODO						varchar(20),
 		DS_TIPO_MONITORAMENTO			varchar(20),
 		DS_EXECUTOR						varchar(30),
 		DS_CUSTO						varchar(20),
 		DS_OBJETO						varchar(80),
 		DS_TECNICAS						varchar(80),
-		CONSTRAINT						pk_monitoramentosgo		PRIMARY KEY(ID_MONITORAMENTO_SGO)
+		CONSTRAINT						pk_monitoramentosgo			PRIMARY KEY(ID_MONITORAMENTO_SGO)
 	);
 insert into MONITORAMENTO_SGO values ('período', 'tipo monitoramento', 'executor', 'custo', 'objeto', 'técnicas');
 
 create table INSPECAO_ROTINEIRA
 	(
 		ID_INSPECAO_ROTINEIRA								int															not null identity(1,1),
-		ID_PONTE											int															not null,
+		ID_INSPECAO											int															not null,
 		ID_IDENTIFICACAO_OBRA_SGO							int															not null,
 		ID_CONDICOES_SGO									int															not null,
 		ID_DANOS_ELEMENTOS_SGO								int															not null,
@@ -1041,7 +1039,7 @@ create table INSPECAO_ROTINEIRA
 		ID_MONITORAMENTO_SGO								int															not null,
 		DS_RELATORIO										varchar(80)													not null,
 		CONSTRAINT											pk_inspecaorotineira										PRIMARY KEY(ID_INSPECAO_ROTINEIRA),
-		CONSTRAINT											fk_inspecaorotineira_ponte									FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
+		CONSTRAINT											fk_inspecaorotineira_inspecao								FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO),
 		CONSTRAINT											fk_inspecaorotineira_identificacaoobrasgo					FOREIGN KEY(ID_IDENTIFICACAO_OBRA_SGO) REFERENCES IDENTIFICACAO_OBRA_SGO(ID_IDENTIFICACAO_OBRA_SGO),
 		CONSTRAINT											fk_inspecaorotineira_condicaosgo							FOREIGN KEY(ID_CONDICOES_SGO) REFERENCES CONDICOES_SGO(ID_CONDICOES_SGO),
 		CONSTRAINT											fk_inspecaorotineira_danoselementossgo						FOREIGN KEY(ID_DANOS_ELEMENTOS_SGO) REFERENCES DANOS_ELEMENTOS_SGO(ID_DANOS_ELEMENTOS_SGO),
@@ -1049,11 +1047,4 @@ create table INSPECAO_ROTINEIRA
 		CONSTRAINT											fk_inspecaorotineira_laudoespecializadosgo					FOREIGN KEY(ID_LAUDO_ESPECIALIZADO_SGO) REFERENCES LAUDO_ESPECIALIZADO_SGO(ID_LAUDO_ESPECIALIZADO_SGO),
 		CONSTRAINT											fk_inspecaorotineira_monitoramentosgo						FOREIGN KEY(ID_MONITORAMENTO_SGO) REFERENCES MONITORAMENTO_SGO(ID_MONITORAMENTO_SGO)
 	);
----------------------------------------------------------------------------
---MENSAGENS acho que nao vai ser necessario
-
--- ARQUIVOS ANEXOS tabela ja existe
-
--- INSPECOES tabela ja existe
-
 ---------------------------------------------------------------------------

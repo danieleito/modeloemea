@@ -5,8 +5,17 @@
  */
 package com.bean;
 
+import com.dao.Conexao;
 import com.dao.InspecaoRotineiraDAO;
+import com.model.Inspecao;
 import com.model.InspecaoRotineira;
+import com.model.Modelo;
+import com.model.Ponte;
+import com.model.Usuario;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -38,11 +47,12 @@ public class InspecaoRotineiraBean extends ComumBean {
     public void setInspecoesRotineiras(ArrayList<InspecaoRotineira> inspecoesRotineiras) {
         this.inspecoesRotineiras = inspecoesRotineiras;
     }
-    
+
     @PostConstruct
     public void init() {
         database = new InspecaoRotineiraDAO();
     }
+
+//    metodos
     
-//    metodos            
 }

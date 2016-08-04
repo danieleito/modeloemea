@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class InspecaoRotineira implements Serializable {
     private int id;
-    private Ponte ponte;
+    private Inspecao inspecao;
     private IdentificacaoObraSgo identificacaoObraSgo;
     private CondicaoSgo condicaoSgo;
     private DanoElementoSgo danoElementoSgo;
@@ -25,9 +25,9 @@ public class InspecaoRotineira implements Serializable {
     public InspecaoRotineira() {
     }
 
-    public InspecaoRotineira(int id, Ponte ponte, IdentificacaoObraSgo identificacaoObraSgo, CondicaoSgo condicaoSgo, DanoElementoSgo danoElementoSgo, InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo, LaudoEspecializadoSgo laudoEspecializadoSgo, MonitoramentoSgo monitoramentoSgo, String relatorio) {
+    public InspecaoRotineira(int id, Inspecao inspecao, IdentificacaoObraSgo identificacaoObraSgo, CondicaoSgo condicaoSgo, DanoElementoSgo danoElementoSgo, InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo, LaudoEspecializadoSgo laudoEspecializadoSgo, MonitoramentoSgo monitoramentoSgo, String relatorio) {
         this.id = id;
-        this.ponte = ponte;
+        this.inspecao = inspecao;
         this.identificacaoObraSgo = identificacaoObraSgo;
         this.condicaoSgo = condicaoSgo;
         this.danoElementoSgo = danoElementoSgo;
@@ -37,8 +37,8 @@ public class InspecaoRotineira implements Serializable {
         this.relatorio = relatorio;
     }
 
-    public InspecaoRotineira(Ponte ponte, IdentificacaoObraSgo identificacaoObraSgo, CondicaoSgo condicaoSgo, DanoElementoSgo danoElementoSgo, InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo, LaudoEspecializadoSgo laudoEspecializadoSgo, MonitoramentoSgo monitoramentoSgo, String relatorio) {
-        this.ponte = ponte;
+    public InspecaoRotineira(Inspecao inspecao, IdentificacaoObraSgo identificacaoObraSgo, CondicaoSgo condicaoSgo, DanoElementoSgo danoElementoSgo, InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo, LaudoEspecializadoSgo laudoEspecializadoSgo, MonitoramentoSgo monitoramentoSgo, String relatorio) {
+        this.inspecao = inspecao;
         this.identificacaoObraSgo = identificacaoObraSgo;
         this.condicaoSgo = condicaoSgo;
         this.danoElementoSgo = danoElementoSgo;
@@ -56,12 +56,12 @@ public class InspecaoRotineira implements Serializable {
         this.id = id;
     }
 
-    public Ponte getPonte() {
-        return ponte;
+    public Inspecao getInspecao() {
+        return inspecao;
     }
 
-    public void setPonte(Ponte ponte) {
-        this.ponte = ponte;
+    public void setInspecao(Inspecao inspecao) {
+        this.inspecao = inspecao;
     }
 
     public IdentificacaoObraSgo getIdentificacaoObraSgo() {

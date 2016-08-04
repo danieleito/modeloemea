@@ -47,28 +47,26 @@ and open the template in the editor.
 
                         <p:tab title="Inspeções">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <h:panelGrid columns="2" cellpadding="10">
-                                    <p:dataTable var="i" value="#{ponteBean.model.inspecoes}" paginator="true" rows="15" >
-                                        <p:column headerText="Data" style="text-align: center" >
-                                            <h:outputText value="#{i.data}">
-                                                <f:convertDateTime pattern="dd/MM/yyyy"/>
-                                            </h:outputText>
-                                        </p:column>
+                                <p:dataTable var="i" value="#{ponteBean.model.inspecoes}" paginator="true" rows="15" >
+                                    <p:column headerText="Data" style="text-align: center" >
+                                        <h:outputText value="#{i.data}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </p:column>
 
-                                        <p:column headerText="Inspetor" style="text-align: center" >
-                                            <h:outputText value="#{i.usuario.usuario}" />
-                                        </p:column>
+                                    <p:column headerText="Inspetor" style="text-align: center" >
+                                        <h:outputText value="#{i.usuario.usuario}" />
+                                    </p:column>
 
-                                        <p:column headerText="Cond. conservação" style="width: 150px; text-align: center" >
-                                            <h:outputText value="#{i.modelo.indicePerformance}" />
-                                        </p:column>
+                                    <p:column headerText="Cond. conservação" style="width: 150px; text-align: center" >
+                                        <h:outputText value="#{i.modelo.indicePerformance}" />
+                                    </p:column>
 
-                                        <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{inspecaobean.visualizar(i.id)}" />
-                                        </p:column>
-                                    </p:dataTable>
+                                    <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                                        <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{inspecaobean.visualizar(i.id)}" />
 
-                                </h:panelGrid>                               
+                                    </p:column>
+                                </p:dataTable>     
                             </h:panelGrid>
                         </p:tab>
                     </p:tabView>
