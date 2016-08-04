@@ -18,35 +18,32 @@ public class IdentificacaoObraSgo implements Serializable {
     private Date dataInspecao;
     private String nomePonte;
     private String nomeInspetor;
-    private int via;
-    private int uf;
+    private Via via;
     private String km;
-    private int superintendenciaRegional;
+    private SuperintendenciaRegional superintendenciaRegional;
     private String ul;
 
     public IdentificacaoObraSgo() {
     }
 
-    public IdentificacaoObraSgo(int id, String codigo, Date dataInspecao, String nomePonte, String nomeInspetor, int via, int uf, String km, int superintendenciaRegional, String ul) {
+    public IdentificacaoObraSgo(int id, String codigo, Date dataInspecao, String nomePonte, String nomeInspetor, Via via, String km, SuperintendenciaRegional superintendenciaRegional, String ul) {
         this.id = id;
         this.codigo = codigo;
         this.dataInspecao = dataInspecao;
         this.nomePonte = nomePonte;
         this.nomeInspetor = nomeInspetor;
         this.via = via;
-        this.uf = uf;
         this.km = km;
         this.superintendenciaRegional = superintendenciaRegional;
         this.ul = ul;
     }
 
-    public IdentificacaoObraSgo(String codigo, Date dataInspecao, String nomePonte, String nomeInspetor, int via, int uf, String km, int superintendenciaRegional, String ul) {
+    public IdentificacaoObraSgo(String codigo, Date dataInspecao, String nomePonte, String nomeInspetor, Via via, String km, SuperintendenciaRegional superintendenciaRegional, String ul) {
         this.codigo = codigo;
         this.dataInspecao = dataInspecao;
         this.nomePonte = nomePonte;
         this.nomeInspetor = nomeInspetor;
         this.via = via;
-        this.uf = uf;
         this.km = km;
         this.superintendenciaRegional = superintendenciaRegional;
         this.ul = ul;
@@ -92,20 +89,12 @@ public class IdentificacaoObraSgo implements Serializable {
         this.nomeInspetor = nomeInspetor;
     }
 
-    public int getVia() {
+    public Via getVia() {
         return via;
     }
 
-    public void setVia(int via) {
+    public void setVia(Via via) {
         this.via = via;
-    }
-
-    public int getUf() {
-        return uf;
-    }
-
-    public void setUf(int uf) {
-        this.uf = uf;
     }
 
     public String getKm() {
@@ -116,11 +105,11 @@ public class IdentificacaoObraSgo implements Serializable {
         this.km = km;
     }
 
-    public int getSuperintendenciaRegional() {
+    public SuperintendenciaRegional getSuperintendenciaRegional() {
         return superintendenciaRegional;
     }
 
-    public void setSuperintendenciaRegional(int superintendenciaRegional) {
+    public void setSuperintendenciaRegional(SuperintendenciaRegional superintendenciaRegional) {
         this.superintendenciaRegional = superintendenciaRegional;
     }
 

@@ -50,7 +50,6 @@ public class InspecaoBean extends ComumBean {
     }
     
     public void visualizar(int id) {
-        
         try {
             model = database.buscar(id);
             redirecionar("/View/Compartilhado/visualizarInspecao.jsf");

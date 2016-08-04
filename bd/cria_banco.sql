@@ -952,7 +952,7 @@ create table IDENTIFICACAO_OBRA_SGO
 	(
 		ID_IDENTIFICACAO_OBRA_SGO		int													not null identity(1,1),
 		CD_CODIGO						varchar(20),
-		DT_DATA_INSPECAO				varchar(10),
+		DT_DATA_INSPECAO				date,
 		NM_PONTE						varchar(30),
 		NM_INSPETOR						varchar(50),
 		ID_VIA							int,
@@ -1007,7 +1007,7 @@ insert into INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO values ('elemento', 'nota',
 create table LAUDO_ESPECIALIZADO_SGO
 	(
 		ID_LAUDO_ESPECIALIZADO_SGO					int							not null identity(1,1),
-		DT_DATA_LAUDO								varchar(10),
+		DT_DATA_LAUDO								date,
 		DS_CONSULTOR								varchar(30),
 		DS_OBSERVACOES								varchar(80),
 		CONSTRAINT									pk_laudoespecializadosgo	PRIMARY KEY(ID_LAUDO_ESPECIALIZADO_SGO)

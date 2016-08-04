@@ -17,6 +17,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -54,5 +56,13 @@ public class InspecaoRotineiraBean extends ComumBean {
     }
 
 //    metodos
-    
+    public void visualizar(int id) {
+        try {
+            model = database.buscar(id);
+            redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
+        } catch (SQLException ex) {
+            Logger.getLogger(InspecaoBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar inspeçãoy.");
+        }
+    }
 }

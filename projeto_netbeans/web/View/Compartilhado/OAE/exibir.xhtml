@@ -35,13 +35,13 @@ and open the template in the editor.
                     <p:tabView>
                         <p:tab title="Dados cadastrais">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <ui:include src="/View/Compartilhado/OAE/Cadastro/dadosCadastrais.xhtml" />
+                                <ui:include src="/View/Compartilhado/OAE/DadosCadastrais/dadosCadastrais.xhtml" />
                             </h:panelGrid>
                         </p:tab>
 
                         <p:tab title="Arquivos anexos">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <ui:include src="/View/Compartilhado/OAE/Cadastro/arquivosAnexos.xhtml" />
+                                <ui:include src="/View/Compartilhado/OAE/DadosCadastrais/arquivosAnexos.xhtml" />
                             </h:panelGrid>
                         </p:tab>
 
@@ -63,7 +63,7 @@ and open the template in the editor.
                                     </p:column>
 
                                     <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                                        <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{inspecaobean.visualizar(i.id)}" />
+                                        <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{inspecaorotineirabean.visualizar(i.id)}" />
 
                                     </p:column>
                                 </p:dataTable>     
