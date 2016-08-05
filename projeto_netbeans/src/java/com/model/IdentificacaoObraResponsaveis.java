@@ -54,6 +54,12 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.localizacaoDocumentosDiversos = localizacaoDocumentosDiversos;
     }
 
+    //    Constructor para inspecao rotineira
+    public IdentificacaoObraResponsaveis(int id, UnidadeLocal unidadeLocal) {
+        this.id = id;
+        this.unidadeLocal = unidadeLocal;
+    }
+
     public int getId() {
         return id;
     }

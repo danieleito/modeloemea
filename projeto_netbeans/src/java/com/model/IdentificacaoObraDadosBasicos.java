@@ -57,6 +57,13 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
         this.anoConstrucao = anoConstrucao;
     }
 
+//    Constructor para inspecao rotineira
+    public IdentificacaoObraDadosBasicos(int id, String codigo, String identificacao) {
+        this.id = id;
+        this.codigo = codigo;
+        this.identificacao = identificacao;
+    }
+
     public int getId() {
         return id;
     }

@@ -6,6 +6,7 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,33 +17,37 @@ public class InspecaoRotineira implements Serializable {
     private Inspecao inspecao;
     private IdentificacaoObraSgo identificacaoObraSgo;
     private CondicaoSgo condicaoSgo;
-    private DanoElementoSgo danoElementoSgo;
-    private InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo;
+//    private DanoElementoSgo danoElementoSgo;
+//    private InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo;
     private LaudoEspecializadoSgo laudoEspecializadoSgo;
     private MonitoramentoSgo monitoramentoSgo;
     private String relatorio;
+    private ArrayList<DanoElementoSgo> danosElementosSgo;
+    private ArrayList<InsuficienciaEstruturalElementoSgo> insuficienciasEstruturaisElementosSgo;
 
     public InspecaoRotineira() {
+        danosElementosSgo = new ArrayList<>();
+        insuficienciasEstruturaisElementosSgo = new ArrayList<>();
     }
 
-    public InspecaoRotineira(int id, Inspecao inspecao, IdentificacaoObraSgo identificacaoObraSgo, CondicaoSgo condicaoSgo, DanoElementoSgo danoElementoSgo, InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo, LaudoEspecializadoSgo laudoEspecializadoSgo, MonitoramentoSgo monitoramentoSgo, String relatorio) {
+    public InspecaoRotineira(int id) {
+        this.id = id;
+    }
+
+    public InspecaoRotineira(int id, Inspecao inspecao, IdentificacaoObraSgo identificacaoObraSgo, CondicaoSgo condicaoSgo, LaudoEspecializadoSgo laudoEspecializadoSgo, MonitoramentoSgo monitoramentoSgo, String relatorio) {
         this.id = id;
         this.inspecao = inspecao;
         this.identificacaoObraSgo = identificacaoObraSgo;
         this.condicaoSgo = condicaoSgo;
-        this.danoElementoSgo = danoElementoSgo;
-        this.insuficienciaEstruturalElementoSgo = insuficienciaEstruturalElementoSgo;
         this.laudoEspecializadoSgo = laudoEspecializadoSgo;
         this.monitoramentoSgo = monitoramentoSgo;
         this.relatorio = relatorio;
     }
 
-    public InspecaoRotineira(Inspecao inspecao, IdentificacaoObraSgo identificacaoObraSgo, CondicaoSgo condicaoSgo, DanoElementoSgo danoElementoSgo, InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo, LaudoEspecializadoSgo laudoEspecializadoSgo, MonitoramentoSgo monitoramentoSgo, String relatorio) {
+    public InspecaoRotineira(Inspecao inspecao, IdentificacaoObraSgo identificacaoObraSgo, CondicaoSgo condicaoSgo, LaudoEspecializadoSgo laudoEspecializadoSgo, MonitoramentoSgo monitoramentoSgo, String relatorio) {
         this.inspecao = inspecao;
         this.identificacaoObraSgo = identificacaoObraSgo;
         this.condicaoSgo = condicaoSgo;
-        this.danoElementoSgo = danoElementoSgo;
-        this.insuficienciaEstruturalElementoSgo = insuficienciaEstruturalElementoSgo;
         this.laudoEspecializadoSgo = laudoEspecializadoSgo;
         this.monitoramentoSgo = monitoramentoSgo;
         this.relatorio = relatorio;
@@ -80,22 +85,6 @@ public class InspecaoRotineira implements Serializable {
         this.condicaoSgo = condicaoSgo;
     }
 
-    public DanoElementoSgo getDanoElementoSgo() {
-        return danoElementoSgo;
-    }
-
-    public void setDanoElementoSgo(DanoElementoSgo danoElementoSgo) {
-        this.danoElementoSgo = danoElementoSgo;
-    }
-
-    public InsuficienciaEstruturalElementoSgo getInsuficienciaEstruturalElementoSgo() {
-        return insuficienciaEstruturalElementoSgo;
-    }
-
-    public void setInsuficienciaEstruturalElementoSgo(InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo) {
-        this.insuficienciaEstruturalElementoSgo = insuficienciaEstruturalElementoSgo;
-    }
-
     public LaudoEspecializadoSgo getLaudoEspecializadoSgo() {
         return laudoEspecializadoSgo;
     }
@@ -118,5 +107,21 @@ public class InspecaoRotineira implements Serializable {
 
     public void setRelatorio(String relatorio) {
         this.relatorio = relatorio;
+    }
+
+    public ArrayList<DanoElementoSgo> getDanosElementosSgo() {
+        return danosElementosSgo;
+    }
+
+    public void setDanosElementosSgo(ArrayList<DanoElementoSgo> danosElementosSgo) {
+        this.danosElementosSgo = danosElementosSgo;
+    }
+
+    public ArrayList<InsuficienciaEstruturalElementoSgo> getInsuficienciasEstruturaisElementosSgo() {
+        return insuficienciasEstruturaisElementosSgo;
+    }
+
+    public void setInsuficienciasEstruturaisElementosSgo(ArrayList<InsuficienciaEstruturalElementoSgo> insuficienciasEstruturaisElementosSgo) {
+        this.insuficienciasEstruturaisElementosSgo = insuficienciasEstruturaisElementosSgo;
     }
 }

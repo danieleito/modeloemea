@@ -21,13 +21,13 @@ and open the template in the editor.
                         <hr/>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Código:" style="font-weight: bold" />
-                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.codigo}" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.ponte.identificacaoObraDadosBasicos.codigo}" />
 
                             <h:outputText value="Data da inspeção:" style="font-weight: bold" />
                             <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.dataInspecao}" />
 
                             <h:outputText value="Ponte:" style="font-weight: bold" />
-                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.nomePonte}" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.ponte.identificacaoObraDadosBasicos.identificacao}" />
 
                             <h:outputText value="Inspetor:" style="font-weight: bold" />
                             <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.nomeInspetor}" />
@@ -40,16 +40,16 @@ and open the template in the editor.
                         <hr/>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Via/UF:" style="font-weight: bold" />
-                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.via} / #{inspecaorotineirabean.model.identificacaoObraSgo.superintendenciaRegional.uf}" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.ponte.identificacaoObraLocalizacao.via} / #{inspecaorotineirabean.model.identificacaoObraSgo.ponte.identificacaoObraResponsaveis.unidadeLocal.superintendenciaRegional.uf}" />
 
                             <h:outputText value="Km:" style="font-weight: bold" />
-                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.km}" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.ponte.identificacaoObraLocalizacao.localVia}" />
 
                             <h:outputText value="Superint. Regional:" style="font-weight: bold" />
-                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.superintendenciaRegional}" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.ponte.identificacaoObraResponsaveis.unidadeLocal.superintendenciaRegional}" />
 
                             <h:outputText value="UL:" style="font-weight: bold" />
-                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.ul}" />
+                            <h:outputText value="#{inspecaorotineirabean.model.identificacaoObraSgo.ponte.identificacaoObraResponsaveis.unidadeLocal}" />
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>
@@ -91,10 +91,40 @@ and open the template in the editor.
                     <p:outputPanel>
                         <h:outputText value="3. Danos nos elementos" style="font-weight: bold" />
                         <hr />
+                        
                         <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Nota Técnica" style="font-weight: bold" />
-                            <h:outputText value="#{inspecaorotineirabean.model}" />
+                            <p:dataTable var="d" value="#{inspecaorotineirabean.model.danosElementosSgo}">
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{d.elemento}" />
+                                </p:column>
+
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{d.nota}" />
+                                </p:column>
+                                         
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{d.dano}" />
+                                </p:column>
+
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{d.unidade}" />
+                                </p:column>
+                                         
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{d.quantidade}" />
+                                </p:column>
+
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{d.extensaoRelativa}" />
+                                </p:column>
+                                
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{d.localizacao}" />
+                                </p:column>
+
+                            </p:dataTable>
                         </h:panelGrid>
+
                     </p:outputPanel>
                 </h:panelGrid>
             </div>
@@ -106,8 +136,27 @@ and open the template in the editor.
                         <h:outputText value="4. Insuficiências estruturas nos elementos" style="font-weight: bold" />
                         <hr />
                         <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Nota Técnica" style="font-weight: bold" />
-                            <h:outputText value="#{inspecaorotineirabean.model}" />
+                            <p:dataTable var="i" value="#{inspecaorotineirabean.model.insuficienciasEstruturaisElementosSgo}" >
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{i.elemento}" />
+                                </p:column>
+
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{i.nota}" />
+                                </p:column>
+                                         
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{i.insuficiencia}" />
+                                </p:column>
+
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{i.causaProvavel}" />
+                                </p:column>
+                                         
+                                <p:column style="text-align: center" >
+                                    <h:outputText value="#{i.comentarios}" />
+                                </p:column>
+                            </p:dataTable>
                         </h:panelGrid>
                     </p:outputPanel>
                 </h:panelGrid>

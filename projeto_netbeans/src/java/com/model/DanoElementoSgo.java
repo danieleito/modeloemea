@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 public class DanoElementoSgo implements Serializable {
     private int id;
+    private InspecaoRotineira inspecaoRotineira;
     private String elemento;
     private String nota;
     private String dano;
@@ -24,8 +25,9 @@ public class DanoElementoSgo implements Serializable {
     public DanoElementoSgo() {
     }
 
-    public DanoElementoSgo(int id, String elemento, String nota, String dano, String unidade, String quantidade, String extensaoRelativa, String localizacao) {
+    public DanoElementoSgo(int id, InspecaoRotineira inspecaoRotineira, String elemento, String nota, String dano, String unidade, String quantidade, String extensaoRelativa, String localizacao) {
         this.id = id;
+        this.inspecaoRotineira = inspecaoRotineira;
         this.elemento = elemento;
         this.nota = nota;
         this.dano = dano;
@@ -35,7 +37,8 @@ public class DanoElementoSgo implements Serializable {
         this.localizacao = localizacao;
     }
 
-    public DanoElementoSgo(String elemento, String nota, String dano, String unidade, String quantidade, String extensaoRelativa, String localizacao) {
+    public DanoElementoSgo(InspecaoRotineira inspecaoRotineira, String elemento, String nota, String dano, String unidade, String quantidade, String extensaoRelativa, String localizacao) {
+        this.inspecaoRotineira = inspecaoRotineira;
         this.elemento = elemento;
         this.nota = nota;
         this.dano = dano;
@@ -51,6 +54,14 @@ public class DanoElementoSgo implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public InspecaoRotineira getInspecaoRotineira() {
+        return inspecaoRotineira;
+    }
+
+    public void setInspecaoRotineira(InspecaoRotineira inspecaoRotineira) {
+        this.inspecaoRotineira = inspecaoRotineira;
     }
 
     public String getElemento() {

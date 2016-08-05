@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class UfDAO {
     public ArrayList<Uf> buscar() throws SQLException {
-        String query = "select ID_UF, DS_UF, U.SG_UF from UF; ";
+        String query = "select ID_UF, DS_UF, SG_UF from UF; ";
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
         Statement stmt;

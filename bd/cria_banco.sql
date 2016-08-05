@@ -951,21 +951,13 @@ create table ELEMENTO_COMPONENTES
 create table IDENTIFICACAO_OBRA_SGO
 	(
 		ID_IDENTIFICACAO_OBRA_SGO		int													not null identity(1,1),
-		CD_CODIGO						varchar(20),
+		ID_PONTE						int													not null,
 		DT_DATA_INSPECAO				date,
-		NM_PONTE						varchar(30),
 		NM_INSPETOR						varchar(50),
-		ID_VIA							int,
-		ID_UF							int,
-		DS_KM							varchar(10),
-		ID_SUPERINTENDENCIA_REGIONAL	int,
-		DS_UL							varchar(30),
 		CONSTRAINT						pk_identificacaoobrasgo								PRIMARY KEY(ID_IDENTIFICACAO_OBRA_SGO),
-		CONSTRAINT						fk_identificacaoobrasgo_via							FOREIGN KEY(ID_VIA) REFERENCES VIA(ID_VIA),
-		CONSTRAINT						fk_identificacaoobrasgo_uf							FOREIGN KEY(ID_UF) REFERENCES UF(ID_UF),
-		CONSTRAINT						fk_identificacaoobrasgo_superintendenciaregional	FOREIGN KEY(ID_SUPERINTENDENCIA_REGIONAL) REFERENCES SUPERINTENDENCIA_REGIONAL(ID_SUPERINTENDENCIA_REGIONAL)
+		CONSTRAINT						fk_identificacaoobrasgo_ponte						FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE)
 	);
-insert into IDENTIFICACAO_OBRA_SGO values ('codigo', '04/08/2016', 'ponte', 'inspetor', 1, 1, 'km', 1, 'ul');
+insert into IDENTIFICACAO_OBRA_SGO values (1, '04/08/2016', 'inspetor');
 
 create table CONDICOES_SGO
 	(
@@ -978,19 +970,6 @@ create table CONDICOES_SGO
 	);
 insert into CONDICOES_SGO values ('cond estabilidade', 'cond conservacao', 'observacoes', 'nota técnica');
 
-create table DANOS_ELEMENTOS_SGO
-	(
-		ID_DANOS_ELEMENTOS_SGO		int								not null identity(1,1),
-		DS_ELEMENTO					varchar(30),
-		DS_NOTA						varchar(20),
-		DS_DANO						varchar(20),
-		DS_UNIDADE					varchar(20),
-		DS_QUANTIDADE				varchar(20),
-		DS_EXTENSAO_RELATIVA		varchar(20),
-		DS_LOCALIZACAO				varchar(20),
-		CONSTRAINT					pk_danoselementossgo			PRIMARY KEY(ID_DANOS_ELEMENTOS_SGO)
-	);
-insert into DANOS_ELEMENTOS_SGO values ('elemento', 'nota', 'dano', 'unidade', 'quantidade', 'ext relativa', 'localizacao');
 
 create table INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO
 	(
@@ -1033,7 +1012,6 @@ create table INSPECAO_ROTINEIRA
 		ID_INSPECAO											int															not null,
 		ID_IDENTIFICACAO_OBRA_SGO							int															not null,
 		ID_CONDICOES_SGO									int															not null,
-		ID_DANOS_ELEMENTOS_SGO								int															not null,
 		ID_INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO			int															not null,
 		ID_LAUDO_ESPECIALIZADO_SGO							int															not null,
 		ID_MONITORAMENTO_SGO								int															not null,
@@ -1042,9 +1020,25 @@ create table INSPECAO_ROTINEIRA
 		CONSTRAINT											fk_inspecaorotineira_inspecao								FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO),
 		CONSTRAINT											fk_inspecaorotineira_identificacaoobrasgo					FOREIGN KEY(ID_IDENTIFICACAO_OBRA_SGO) REFERENCES IDENTIFICACAO_OBRA_SGO(ID_IDENTIFICACAO_OBRA_SGO),
 		CONSTRAINT											fk_inspecaorotineira_condicaosgo							FOREIGN KEY(ID_CONDICOES_SGO) REFERENCES CONDICOES_SGO(ID_CONDICOES_SGO),
-		CONSTRAINT											fk_inspecaorotineira_danoselementossgo						FOREIGN KEY(ID_DANOS_ELEMENTOS_SGO) REFERENCES DANOS_ELEMENTOS_SGO(ID_DANOS_ELEMENTOS_SGO),
 		CONSTRAINT											fk_inspecaorotineira_insuficienciasestruturaiselementossgo	FOREIGN KEY(ID_INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO) REFERENCES INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO(ID_INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO),
 		CONSTRAINT											fk_inspecaorotineira_laudoespecializadosgo					FOREIGN KEY(ID_LAUDO_ESPECIALIZADO_SGO) REFERENCES LAUDO_ESPECIALIZADO_SGO(ID_LAUDO_ESPECIALIZADO_SGO),
 		CONSTRAINT											fk_inspecaorotineira_monitoramentosgo						FOREIGN KEY(ID_MONITORAMENTO_SGO) REFERENCES MONITORAMENTO_SGO(ID_MONITORAMENTO_SGO)
 	);
 ---------------------------------------------------------------------------
+
+create table DANOS_ELEMENTOS_SGO
+	(
+		ID_DANOS_ELEMENTOS_SGO		int								not null identity(1,1),
+		ID_INSPECAO_ROTINEIRA		int								not null,
+		DS_ELEMENTO					varchar(30),
+		DS_NOTA						varchar(20),
+		DS_DANO						varchar(20),
+		DS_UNIDADE					varchar(20),
+		DS_QUANTIDADE				varchar(20),
+		DS_EXTENSAO_RELATIVA		varchar(20),
+		DS_LOCALIZACAO				varchar(20),
+		CONSTRAINT					pk_danoselementossgo			PRIMARY KEY(ID_DANOS_ELEMENTOS_SGO),
+		CONSTRAINT					fk_danoselementossgo			FOREIGN KEY(ID_INSPECAO_ROTINEIRA) REFERENCES INSPECAO_ROTINEIRA(ID_INSPECAO_ROTINEIRA)
+	);
+insert into DANOS_ELEMENTOS_SGO values (1, 'elemento', 'nota', 'dano', 'unidade', 'quantidade', 'ext relativa', 'localizacao');
+

@@ -5,13 +5,11 @@
  */
 package com.dao;
 
-import com.model.ArquivoAnexo;
 import com.model.AspectoEspecial;
 import com.model.CadastroAspectoEspecial;
 import com.model.CadastroManifestacao;
 import com.model.CaracteristicasFuncionaisCaracteristicas;
 import com.model.CaracteristicasFuncionaisDimensoes;
-import com.model.DeficienciaFuncional;
 import com.model.ElementoComponente;
 import com.model.ElementoUfpr;
 import com.model.ExtensaoRelativa;
@@ -25,10 +23,8 @@ import com.model.ManifestacaoUfpr;
 import com.model.NaturezaTransposicao;
 import com.model.Numero;
 import com.model.Observacao;
-import com.model.Ranking;
 import com.model.Reparo;
 import com.model.RotasAlternativas;
-import com.model.Simulacao;
 import com.model.SistemaConstrutivo;
 import com.model.Substituicao;
 import com.model.SuperintendenciaRegional;
@@ -547,7 +543,6 @@ public class PonteDAO {
         stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         ArrayList<ElementoComponente> elementosComponentes = new ArrayList<>();
-        Ponte ponte;
         while (rs.next()) {
             elementosComponentes.add(new ElementoComponente(rs.getInt("ID_ELEMENTO_COMPONENTES"), 
                     new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), rs.getString("CD_ELEMENTO"), 

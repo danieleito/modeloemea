@@ -62,6 +62,13 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.longitudeMinuto = longitudeMinuto;
     }
 
+//    Constructor para inspecao rotineira
+    public IdentificacaoObraLocalizacao(int id, Via via, double localVia) {
+        this.id = id;
+        this.via = via;
+        this.localVia = localVia;
+    }
+
     public int getId() {
         return id;
     }

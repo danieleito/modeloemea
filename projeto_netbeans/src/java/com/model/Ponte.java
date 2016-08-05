@@ -93,6 +93,14 @@ public class Ponte implements Serializable {
         this.cadastroManifestacao = cadastroManifestacao;
     }
 
+//    constructor para inspecao rotineira
+    public Ponte(int id, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis) {
+        this.id = id;
+        this.identificacaoObraDadosBasicos = identificacaoObraDadosBasicos;
+        this.identificacaoObraLocalizacao = identificacaoObraLocalizacao;
+        this.identificacaoObraResponsaveis = identificacaoObraResponsaveis;
+    }
+
     public int getId() {
         return id;
     }

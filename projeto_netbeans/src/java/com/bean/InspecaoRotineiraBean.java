@@ -5,17 +5,9 @@
  */
 package com.bean;
 
-import com.dao.Conexao;
 import com.dao.InspecaoRotineiraDAO;
-import com.model.Inspecao;
 import com.model.InspecaoRotineira;
-import com.model.Modelo;
-import com.model.Ponte;
-import com.model.Usuario;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;

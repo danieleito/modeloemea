@@ -47,21 +47,13 @@ import com.model.TremTipo;
 import com.model.Uf;
 import com.model.UnidadeLocal;
 import com.model.Via;
-import java.awt.Image;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.event.PhaseId;
-import org.primefaces.model.DefaultStreamedContent;
-import org.primefaces.model.StreamedContent;
 
 /**
  *
@@ -197,6 +189,7 @@ public class PonteBean extends ComumBean implements Serializable {
             
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar campos da tela Consultar. " + ex);
         }
     }
 
@@ -206,7 +199,6 @@ public class PonteBean extends ComumBean implements Serializable {
     
     public void visualizar(int id) {
         //visualiza ponte do 'id'
-        adicionarMensagemInfo("Olááá");
         try {
             model = database.buscar(id);
             redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
