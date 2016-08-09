@@ -12,17 +12,53 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class CaracteristicasFuncionaisDimensoes implements Serializable {
+    /**
+     * identificador do CaracteristicasFuncionaisDimensoes no Banco de Dados
+     */
     private int id;
+    /**
+     * numero de faixas
+     */
     private String numeroFaixas;
+    /**
+     * largura da faixa
+     */
     private String larguraFaixa;
+    /**
+     * acostamento direito
+     */
     private String acostamentoDireito;
+    /**
+     * acostamento Esquerdo
+     */
     private String acostamentoEsquerdo;
+    /**
+     * calçada Direita
+     */
     private String calcadaDireita;
+    /**
+     * calçada Esquerda
+     */
     private String calcadaEsquerda;
+    /**
+     * largura Total da Pista
+     */
     private String larguraTotalPista;
+    /**
+     * gabarito Horizontal
+     */
     private String gabaritoHorizontal;
+    /**
+     * gabarito Vertical
+     */
     private String gabaritoVertical;
+    /**
+     * numero Vãos
+     */
     private String numeroVaos;
+    /**
+     * descrição dos Vãos
+     */
     private String descricaoVaos;
 
     public CaracteristicasFuncionaisDimensoes() {

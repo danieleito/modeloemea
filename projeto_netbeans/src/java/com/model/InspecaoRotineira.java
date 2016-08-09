@@ -14,6 +14,9 @@ import java.util.ArrayList;
  */
 public class InspecaoRotineira implements Serializable {
     private int id;
+    /**
+     * identificador do InspecaoRotineira no Banco de Dados
+     */
     private Inspecao inspecao;
     private IdentificacaoObraSgo identificacaoObraSgo;
     private CondicaoSgo condicaoSgo;

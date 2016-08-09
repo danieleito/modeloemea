@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class Substituicao implements Serializable {
+    /**
+     * identificador do Substituicao no Banco de Dados
+     */
     private int id;
     private String identificacao;
     private String existeProjetoIdentificacao;

@@ -12,7 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class Elemento implements Serializable {
-    
+    /**
+     * identificador do Elemento no Banco de Dados
+     */
     private int id;
     private String elemento;
     private String capa;

@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class ExtensaoRelativa implements Serializable {
+    /**
+     * identificador do ExtensaoRelativa no Banco de Dados
+     */
     private int id;
     private String descricao;
 

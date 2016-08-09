@@ -12,10 +12,25 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class CondicaoSgo implements Serializable {
+    /**
+     * identificador do CondicaoSgo no Banco de Dados
+     */
     private int id;
+    /**
+     * condição estabilidade
+     */
     private String condicaoEstabilididade;
+    /**
+     * condição conservação
+     */
     private String condicaoConservacao;
+    /**
+     * observações
+     */
     private String observacoes;
+    /**
+     * nota técnica
+     */
     private String notaTecnica;
 
     public CondicaoSgo() {

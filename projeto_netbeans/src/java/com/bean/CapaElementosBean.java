@@ -24,22 +24,6 @@ public class CapaElementosBean extends ComumBean {
     private ElementoDAO database;
     private ArrayList<Elemento> elementos;
 
-    public ElementoDAO getDatabase() {
-        return database;
-    }
-
-    public void setDatabase(ElementoDAO database) {
-        this.database = database;
-    }
-
-    public ArrayList<Elemento> getElementos() {
-        return elementos;
-    }
-
-    public void setElementos(ArrayList<Elemento> elementos) {
-        this.elementos = elementos;
-    }
-
     public CapaElementosBean() {
         database = new ElementoDAO();
         try {
@@ -63,4 +47,22 @@ public class CapaElementosBean extends ComumBean {
             }
         }
     }
+    
+    // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
+    public ElementoDAO getDatabase() {
+        return database;
+    }
+
+    public void setDatabase(ElementoDAO database) {
+        this.database = database;
+    }
+
+    public ArrayList<Elemento> getElementos() {
+        return elementos;
+    }
+
+    public void setElementos(ArrayList<Elemento> elementos) {
+        this.elementos = elementos;
+    }
+    // </editor-fold>
 }

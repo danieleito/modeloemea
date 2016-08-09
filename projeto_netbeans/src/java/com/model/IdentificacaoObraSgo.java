@@ -13,6 +13,9 @@ import java.util.Date;
  * @author Daniele Harumi Ito
  */
 public class IdentificacaoObraSgo implements Serializable {
+    /**
+     * identificador do IdentificacaoObraSgo no Banco de Dados
+     */
     private int id;
     private Ponte ponte;
     private Date dataInspecao;

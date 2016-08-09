@@ -12,7 +12,13 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class CadastroAspectoEspecial implements Serializable {
+    /**
+     * identificador do CadastroAspectoEspecial no Banco de Dados
+     */
     private int id;
+    /**
+     * identificador aspecto especial
+     */
     private AspectoEspecial aspectoEspecial;
 
     public CadastroAspectoEspecial() {

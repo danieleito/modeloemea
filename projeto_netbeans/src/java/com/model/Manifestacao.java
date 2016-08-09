@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class Manifestacao implements Serializable {
+    /**
+     * identificador do Manifestacao no Banco de Dados
+     */
     private int id;
     private String manifestacao;
     private String beta;

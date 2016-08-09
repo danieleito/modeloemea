@@ -13,6 +13,9 @@ import java.util.Date;
  * @author Daniele Harumi Ito
  */
 public class LaudoEspecializadoSgo implements Serializable {
+    /**
+     * identificador do LaudoEspecializadoSgo no Banco de Dados
+     */
     private int id;
     private Date dataLaudo;
     private String consultor;

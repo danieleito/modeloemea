@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class TipoRegiao implements Serializable {
+    /**
+     * identificador do TipoRegiao no Banco de Dados
+     */
     private int id;
     private String descricao;
 

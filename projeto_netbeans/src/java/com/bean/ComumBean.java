@@ -21,14 +21,6 @@ public abstract class ComumBean {
     
     public static Usuario usuarioLogado;
 
-    public Usuario getUsuarioLogado() {
-        return usuarioLogado;
-    }
-
-    public void setUsuarioLogado(Usuario usuarioLogado) {
-        ComumBean.usuarioLogado = usuarioLogado;
-    }
-
     protected void redirecionar(String url) {
         ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
         try {
@@ -64,4 +56,14 @@ public abstract class ComumBean {
     private void adicionarMensagem(FacesMessage.Severity severity, String titulo, String mensagem) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, titulo, mensagem));
     }
+    
+    // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
+    public Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
+    public void setUsuarioLogado(Usuario usuarioLogado) {
+        ComumBean.usuarioLogado = usuarioLogado;
+    }
+    // </editor-fold>
 }

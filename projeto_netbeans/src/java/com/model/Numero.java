@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class Numero implements Serializable {
+    /**
+     * identificador do Numero no Banco de Dados
+     */
     private int id;
     private String descricao;
 

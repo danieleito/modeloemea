@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class Uf implements Serializable {
+    /**
+     * identificador do Uf no Banco de Dados
+     */
     private int id;
     private String estado;
     private String uf;

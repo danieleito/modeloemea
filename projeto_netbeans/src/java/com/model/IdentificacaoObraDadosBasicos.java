@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class IdentificacaoObraDadosBasicos implements Serializable {
+    /**
+     * identificador do IdentificacaoObraDadosBasicos no Banco de Dados
+     */
     private int id;
     private String codigo;
     private String codigoIntegracao;

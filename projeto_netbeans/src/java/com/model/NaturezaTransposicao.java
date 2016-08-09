@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class NaturezaTransposicao implements Serializable {
+    /**
+     * identificador do NaturezaTransposicao no Banco de Dados
+     */
     private int id;
     private String descricao;
 

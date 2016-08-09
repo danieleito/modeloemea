@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class DeficienciaFuncional implements Serializable {
+    /**
+     * identificador do DeficienciaFuncional no Banco de Dados
+     */
     private int id;
     private String codigo;
     private String descricao;

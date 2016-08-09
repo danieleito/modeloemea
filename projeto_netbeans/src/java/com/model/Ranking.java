@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class Ranking implements Serializable {
+    /**
+     * identificador do Ranking no Banco de Dados
+     */
     private int id;
     private Ponte ponte;
 

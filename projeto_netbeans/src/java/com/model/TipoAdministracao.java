@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class TipoAdministracao implements Serializable {
+    /**
+     * identificador do TipoAdministracao no Banco de Dados
+     */
     private int id;
     private String descricao;
 

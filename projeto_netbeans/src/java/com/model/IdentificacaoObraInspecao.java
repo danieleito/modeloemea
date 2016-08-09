@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class IdentificacaoObraInspecao implements Serializable {
+    /**
+     * identificador do IdentificacaoObraInspecao no Banco de Dados
+     */
     private int id;
     private String periodo;
     private String equipamentoNecessario;

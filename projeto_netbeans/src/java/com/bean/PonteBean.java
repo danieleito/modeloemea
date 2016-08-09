@@ -30,7 +30,6 @@ import com.model.DeficienciaFuncional;
 import com.model.ElementoUfpr;
 import com.model.ExtensaoRelativa;
 import com.model.Foto;
-import com.model.Imagem;
 import com.model.ManifestacaoUfpr;
 import com.model.NaturezaTransposicao;
 import com.model.Numero;
@@ -346,8 +345,6 @@ public class PonteBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro ao carregar. " + ex.getMessage());
         }
     }
-    
-    
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
@@ -598,6 +595,5 @@ public class PonteBean extends ComumBean implements Serializable {
         this.simulacoes = simulacoes;
     }    
     // </editor-fold>
-
 
 }

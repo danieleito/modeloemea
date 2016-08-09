@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class SistemaConstrutivo implements Serializable {
+    /**
+     * identificador do SistemaConstrutivo no Banco de Dados
+     */
     private int id;
     private String descricao;
 

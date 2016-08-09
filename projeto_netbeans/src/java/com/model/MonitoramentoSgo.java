@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class MonitoramentoSgo implements Serializable {
+    /**
+     * identificador do MonitoramentoSgo no Banco de Dados
+     */
     private int id;
     private String periodo;
     private String tipoMonitoramento;

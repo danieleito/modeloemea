@@ -13,6 +13,9 @@ import java.util.Date;
  * @author Daniele Harumi Ito
  */
 public class Inspecao implements Serializable {
+    /**
+     * identificador do Inspecao no Banco de Dados
+     */
     private int id;
     private Date data;
     private Usuario usuario;

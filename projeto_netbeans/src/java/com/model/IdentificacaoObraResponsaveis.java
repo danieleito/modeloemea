@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class IdentificacaoObraResponsaveis implements Serializable {
+    /**
+     * identificador do IdentificacaoObraResponsaveis no Banco de Dados
+     */
     private int id;
     private UnidadeLocal unidadeLocal;
     private TipoAdministracao tipoAdministracao;

@@ -8,7 +8,6 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>TODO supply a title</title>
@@ -19,7 +18,6 @@ and open the template in the editor.
             <p:panel>
                 <table>
                     <tbody >
-
                         <tr>
                             <td class="th">
                                 <p:outputLabel value="Rota Alternativa" class="col-md-5" />
@@ -37,23 +35,16 @@ and open the template in the editor.
                                 <p:inputText value="#{ponteBean.model.rotasAlternativas.acrescimoKm}" class="col-md-1" />
                             </td>
                         </tr>
-
-
                     </tbody>
                 </table>
 
-
                 <p:toolbar>
                     <f:facet name="left">
-
                         <p:commandButton type="button" value="Incluir Registro - Rotas Alternativas"/>
 
                         <p:commandButton type="button" value="Limpar"  />
-
                     </f:facet>
-
                 </p:toolbar>     
-
 
                 <p:dataTable  paginator="true" rows="8" >
                     <p:column headerText="Rota Alternativa" style="text-align: center" >
@@ -66,9 +57,7 @@ and open the template in the editor.
                         </h:outputText>
                     </p:column>
 
-
                     <p:column headerText="Ação" style="width: 100px; text-align: center" >
-
 
                         <p:commandButton icon="ui-icon-pencil" title="Ranking" action="#{simulacao.ranking(sim.id)}" />
 
@@ -83,7 +72,6 @@ and open the template in the editor.
 
                     </p:column>
                 </p:dataTable>
-
 
             </p:panel>
         </p:tab>

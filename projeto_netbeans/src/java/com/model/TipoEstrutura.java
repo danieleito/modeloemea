@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class TipoEstrutura implements Serializable {
+    /**
+     * identificador do TipoEstrutura no Banco de Dados
+     */
     private int id;
     private String descricao;
 

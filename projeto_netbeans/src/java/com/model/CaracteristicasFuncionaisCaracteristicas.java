@@ -12,11 +12,29 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class CaracteristicasFuncionaisCaracteristicas implements Serializable {
+    /**
+     * identificador do CaracteristicasFuncionaisCaracteristicas no Banco de Dados
+     */
     private int id;
+    /**
+     * identificador do tipo regiao
+     */
     private TipoRegiao tipoRegiao;
+    /**
+     * identificador do tipo tracado
+     */
     private TipoTracado tipoTracado;
+    /**
+     * rampa maxima
+     */
     private String rampaMaxima;
+    /**
+     * raio da curva
+     */
     private String raioCurva;
+    /**
+     * vmd
+     */
     private String vmd;
 
     public CaracteristicasFuncionaisCaracteristicas() {

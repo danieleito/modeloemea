@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class UnidadeLocal implements Serializable {
+    /**
+     * identificador do UnidadeLocal no Banco de Dados
+     */
     private int id;
     private String descricao;
     private SuperintendenciaRegional superintendenciaRegional;

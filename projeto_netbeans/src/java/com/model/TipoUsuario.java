@@ -13,12 +13,12 @@ import java.io.Serializable;
  */
 public class TipoUsuario implements Serializable {
     /**
-     * Identificador do Engenheiro no Banco de Dados
+     * Identificador do TipoUsuario no Banco de Dados
      */
     private int id;
 
     /**
-     * tipo do engenheiro
+     * tipo do usuario
      */
     private String tipoUsuario;
 

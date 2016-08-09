@@ -27,22 +27,6 @@ public class LoginBean extends ComumBean implements Serializable {
     private String novaSenha;
     private final UsuarioDAO database;
 
-    public Usuario getModel() {
-        return model;
-    }
-
-    public void setModel(Usuario model) {
-        this.model = model;
-    }
-
-    public String getNovaSenha() {
-        return novaSenha;
-    }
-
-    public void setNovaSenha(String novaSenha) {
-        this.novaSenha = novaSenha;
-    }
-
     public LoginBean() {
         model = new Usuario();
         database = new UsuarioDAO();
@@ -90,4 +74,22 @@ public class LoginBean extends ComumBean implements Serializable {
 //            }
         }
     }
+    
+    // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
+    public Usuario getModel() {
+        return model;
+    }
+
+    public void setModel(Usuario model) {
+        this.model = model;
+    }
+
+    public String getNovaSenha() {
+        return novaSenha;
+    }
+
+    public void setNovaSenha(String novaSenha) {
+        this.novaSenha = novaSenha;
+    }
+    // </editor-fold>
 }

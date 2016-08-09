@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class ManifestacaoUfpr implements Serializable {
+    /**
+     * identificador do ManifestacaoUfpr no Banco de Dados
+     */
     private int id;
     private ElementoUfpr elementoUfpr;
     private String codigo;

@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class DanoElementoSgo implements Serializable {
+    /**
+     * identificador do DanoElementoSgo no Banco de Dados
+     */
     private int id;
     private InspecaoRotineira inspecaoRotineira;
     private String elemento;

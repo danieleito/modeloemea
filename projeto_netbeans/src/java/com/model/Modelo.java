@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class Modelo implements Serializable {
+    /**
+     * identificador do Modelo no Banco de Dados
+     */
     private int id;
     private String indiceBase;
     private String indicePerformance;

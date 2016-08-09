@@ -12,12 +12,33 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class CadastroManifestacao implements Serializable {
+    /**
+     * identificador do CadastroManifestacao no Banco de Dados
+     */
     private int id;
+    /**
+     * identificador do numero
+     */
     private Numero numero;
+    /**
+     * identificador da manifestacao ufpr
+     */
     private ManifestacaoUfpr manifestacaoUfpr;
+    /**
+     * identificador da foto
+     */
     private Foto foto;
+    /**
+     * tamanho 
+     */
     private String tamanho;
+    /**
+     * identificador da extensao relativa
+     */
     private ExtensaoRelativa extensaoRelativa;
+    /**
+     * identificador do reparo
+     */
     private Reparo reparo;
 
     public CadastroManifestacao() {

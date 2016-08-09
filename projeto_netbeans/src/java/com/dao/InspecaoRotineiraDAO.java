@@ -13,6 +13,7 @@ import com.model.IdentificacaoObraResponsaveis;
 import com.model.IdentificacaoObraSgo;
 import com.model.Inspecao;
 import com.model.InspecaoRotineira;
+import com.model.InsuficienciaEstruturalElementoSgo;
 import com.model.LaudoEspecializadoSgo;
 import com.model.Modelo;
 import com.model.MonitoramentoSgo;
@@ -56,7 +57,6 @@ public class InspecaoRotineiraDAO {
                 + "and I.ID_USUARIO = USU.ID_USUARIO "
                 + "and I.ID_MODELO = MO.ID_MODELO "
                 + "and I.ID_PONTE = P.ID_PONTE "
-//                + "and P.ID_PONTE = IO.ID_PONTE "
                 + "and P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS = R.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS "
                 + "and P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
                 + "and P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
@@ -92,20 +92,8 @@ public class InspecaoRotineiraDAO {
                     new MonitoramentoSgo(rs.getInt("ID_MONITORAMENTO_SGO"), rs.getString("DS_PERIODO"), rs.getString("DS_TIPO_MONITORAMENTO"), rs.getString("DS_EXECUTOR"), rs.getString("DS_CUSTO"), rs.getString("DS_OBJETO"), rs.getString("DS_TECNICAS")), 
                     rs.getString("DS_RELATORIO"));
             inspecaoRotineira.setDanosElementosSgo(buscarDanosElementosSgo(id));
-            
-//            inspecaoRotineira = new InspecaoRotineira(rs.getInt("ID_INSPECAO_ROTINEIRA"), 
-//                    new Inspecao(rs.getInt("ID_INSPECAO"), rs.getDate("DT_DATA"), usuario, new Ponte(rs.getInt("ID_PONTE")), new Modelo(rs.getInt("ID_MODELO"), rs.getString("DS_INDICE_BASE"), rs.getString("DS_INDICE_PERFORMANCE"))), 
-//                    new IdentificacaoObraSgo(rs.getInt("ID_IDENTIFICACAO_OBRA_SGO"), new Ponte(rs.getInt("ID_PONTE"), new IdentificacaoObraDadosBasicos(rs.getInt("ID_IDENTIFICACAO_OBRA_DADOS_BASICOS"), rs.getString("CD_CODIGO"), rs.getString("DS_IDENTIFICACAO")), 
-//                            new IdentificacaoObraLocalizacao(rs.getInt("ID_IDENTIFICACAO_OBRA_LOCALIZACAO"), new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getDouble("DS_LOCAL_VIA")), 
-//                            new IdentificacaoObraResponsaveis(rs.getInt("ID_IDENTIFICACAO_OBRA_RESPONSAVEIS") , new UnidadeLocal(rs.getInt("ID_UNIDADE_LOCAL"), rs.getString("DS_UNIDADE_LOCAL"), 
-//                                    new SuperintendenciaRegional(rs.getInt("ID_SUPERINTENDENCIA_REGIONAL"), rs.getString("DS_SUPERINTENDENCIA_REGIONAL"), 
-//                                            new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"), rs.getString("SG_UF")))))), rs.getDate("DT_DATA_INSPECAO"), rs.getString("NM_INSPETOR")),
-//                    new CondicaoSgo(rs.getInt("ID_CONDICOES_SGO"), rs.getString("DS_CONDICAO_ESTABILIDADE"), rs.getString("DS_CONDICAO_CONSERVACAO"), rs.getString("DS_OBSERVACOES"), rs.getString("DS_NOTA_TECNICA")), 
-//                    new DanoElementoSgo(rs.getInt("ID_DANOS_ELEMENTOS_SGO"), rs.getString("DS_ELEMENTO"), rs.getString("DS_NOTA"), rs.getString("DS_DANO"), rs.getString("DS_UNIDADE"), rs.getString("DS_QUANTIDADE") , rs.getString("DS_EXTENSAO_RELATIVA"), rs.getString("DS_LOCALIZACAO")), 
-//                    new InsuficienciaEstruturalElementoSgo(rs.getInt("ID_INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO"), rs.getString("DS_ELEMENTO"), rs.getString("DS_NOTA"), rs.getString("DS_INSUFICIENCIA"), rs.getString("DS_CAUSA_PROVAVEL"), rs.getString("DS_COMENTARIOS")), 
-//                    new LaudoEspecializadoSgo(rs.getInt("ID_LAUDO_ESPECIALIZADO_SGO"), rs.getDate("DT_DATA_LAUDO"), rs.getString("DS_CONSULTOR"), rs.getString("DS_OBSERVACOES")), 
-//                    new MonitoramentoSgo(rs.getInt("ID_MONITORAMENTO_SGO"), rs.getString("DS_PERIODO"), rs.getString("DS_TIPO_MONITORAMENTO"), rs.getString("DS_EXECUTOR"), rs.getString("DS_CUSTO"), rs.getString("DS_OBJETO"), rs.getString("DS_TECNICAS")), 
-//                    rs.getString("DS_RELATORIO"));
+            inspecaoRotineira.setInsuficienciasEstruturaisElementosSgo(buscarInsuficienciasEstruturaisElementosSgo(id));
+
         }
         conexao.closeConnection(); 
         return inspecaoRotineira;
@@ -123,13 +111,35 @@ public class InspecaoRotineiraDAO {
         Statement stmt;
         stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
-        ArrayList<DanoElementoSgo> danoElementoSgo = new ArrayList<>();
+        ArrayList<DanoElementoSgo> danosElementosSgo = new ArrayList<>();
         while (rs.next()) {
-            danoElementoSgo.add(new DanoElementoSgo(rs.getInt("ID_DANOS_ELEMENTOS_SGO"), new InspecaoRotineira(rs.getInt("ID_INSPECAO_ROTINEIRA")), 
+            danosElementosSgo.add(new DanoElementoSgo(rs.getInt("ID_DANOS_ELEMENTOS_SGO"), new InspecaoRotineira(rs.getInt("ID_INSPECAO_ROTINEIRA")), 
                     rs.getString("DS_ELEMENTO"), rs.getString("DS_NOTA"), rs.getString("DS_DANO"), rs.getString("DS_UNIDADE"), 
                     rs.getString("DS_QUANTIDADE"), rs.getString("DS_EXTENSAO_RELATIVA"), rs.getString("DS_LOCALIZACAO")));
         }
 
-        return danoElementoSgo;
+        return danosElementosSgo;
+    }
+    
+    private ArrayList<InsuficienciaEstruturalElementoSgo> buscarInsuficienciasEstruturaisElementosSgo(int idInspecaoRotineira) throws SQLException {
+        String query = "select IE.ID_INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO, IE.ID_INSPECAO_ROTINEIRA, "
+                + "IE.DS_ELEMENTO, IE.DS_NOTA, IE.DS_INSUFICIENCIA, IE.DS_CAUSA_PROVAVEL, IE.DS_COMENTARIOS "
+                + "from INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO IE, INSPECAO_ROTINEIRA IR "
+                + "where IE.ID_INSPECAO_ROTINEIRA = IR.ID_INSPECAO_ROTINEIRA "
+                + "and IE.ID_INSPECAO_ROTINEIRA = " + idInspecaoRotineira;
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        ArrayList<InsuficienciaEstruturalElementoSgo> insuficienciasEstruturaisElementosSgo = new ArrayList<>();
+        
+        while (rs.next()) {
+            insuficienciasEstruturaisElementosSgo.add(new InsuficienciaEstruturalElementoSgo(rs.getInt("ID_INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO"), 
+                    new InspecaoRotineira(rs.getInt("ID_INSPECAO_ROTINEIRA")), rs.getString("DS_ELEMENTO"), rs.getString("DS_NOTA"), 
+                    rs.getString("DS_INSUFICIENCIA"), rs.getString("DS_CAUSA_PROVAVEL"), rs.getString("DS_COMENTARIOS")));
+        }
+        return insuficienciasEstruturaisElementosSgo;
     }
 }

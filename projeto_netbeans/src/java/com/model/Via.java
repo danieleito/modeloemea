@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class Via implements Serializable {
+    /**
+     * identificador do Via no Banco de Dados
+     */
     private int id;
     private String via;
 

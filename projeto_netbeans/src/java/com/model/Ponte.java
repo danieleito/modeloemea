@@ -14,6 +14,9 @@ import java.util.Date;
  * @author Daniele Harumi Ito
  */
 public class Ponte implements Serializable {
+    /**
+     * identificador do Ponte no Banco de Dados
+     */
     private int id;
     private String indicePerformanceRelativo;
     private IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos;

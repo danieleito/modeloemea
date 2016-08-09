@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class TipoTracado implements Serializable {
+    /**
+     * identificador do TipoTracado no Banco de Dados
+     */
     private int id;
     private String descricao;
 

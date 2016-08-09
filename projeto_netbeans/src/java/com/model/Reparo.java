@@ -12,6 +12,9 @@ import java.io.Serializable;
  * @author Daniele Harumi Ito
  */
 public class Reparo implements Serializable {
+    /**
+     * identificador do Reparo no Banco de Dados
+     */
     private int id;
     private String descricao;
 

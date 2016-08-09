@@ -15,6 +15,9 @@ import java.util.Date;
  * @author Daniele Harumi Ito
  */
 public class Simulacao implements Serializable {
+    /**
+     * identificador do Simulacao no Banco de Dados
+     */
     private int id;
     private Date data;
     private Usuario usuario;

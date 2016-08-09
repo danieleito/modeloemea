@@ -26,22 +26,6 @@ public class InspecaoRotineiraBean extends ComumBean {
     private InspecaoRotineiraDAO database;
     private ArrayList<InspecaoRotineira> inspecoesRotineiras;
 
-    public InspecaoRotineira getModel() {
-        return model;
-    }
-
-    public void setModel(InspecaoRotineira model) {
-        this.model = model;
-    }
-
-    public ArrayList<InspecaoRotineira> getInspecoesRotineiras() {
-        return inspecoesRotineiras;
-    }
-
-    public void setInspecoesRotineiras(ArrayList<InspecaoRotineira> inspecoesRotineiras) {
-        this.inspecoesRotineiras = inspecoesRotineiras;
-    }
-
     @PostConstruct
     public void init() {
         database = new InspecaoRotineiraDAO();
@@ -57,4 +41,22 @@ public class InspecaoRotineiraBean extends ComumBean {
             adicionarMensagemErro("Erro ao carregar inspeçãoy.");
         }
     }
+    
+    // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
+    public InspecaoRotineira getModel() {
+        return model;
+    }
+
+    public void setModel(InspecaoRotineira model) {
+        this.model = model;
+    }
+
+    public ArrayList<InspecaoRotineira> getInspecoesRotineiras() {
+        return inspecoesRotineiras;
+    }
+
+    public void setInspecoesRotineiras(ArrayList<InspecaoRotineira> inspecoesRotineiras) {
+        this.inspecoesRotineiras = inspecoesRotineiras;
+    }
+    // </editor-fold>
 }
