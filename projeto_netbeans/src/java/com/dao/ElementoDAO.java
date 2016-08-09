@@ -66,7 +66,7 @@ public class ElementoDAO {
 
     public void editar(Elemento elemento) throws SQLException {
         String query = "update ELEMENTO ";
-        query += "set NM_ELEMENTO = '" + elemento.getElemento()+ "', ";
+        query += "set NM_ELEMENTO = '" + elemento.getDescricao()+ "', ";
         query += "DS_CAPA = '" + elemento.getCapa()+ "' ";
         query += "where ID_ELEMENTO = " + elemento.getId();
 

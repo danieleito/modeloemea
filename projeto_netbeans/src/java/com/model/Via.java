@@ -16,18 +16,30 @@ public class Via implements Serializable {
      * identificador do Via no Banco de Dados
      */
     private int id;
-    private String via;
+    /**
+     * descrição da via
+     */
+    private String descricao;
 
+
+    /**
+     * Constructor padrão
+     */
     public Via() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param via 
+     */
     public Via(int id, String via) {
         this.id = id;
-        this.via = via;
+        this.descricao = via;
     }
 
     public Via(String via) {
-        this.via = via;
+        this.descricao = via;
     }
 
     public int getId() {
@@ -38,16 +50,16 @@ public class Via implements Serializable {
         this.id = id;
     }
 
-    public String getVia() {
-        return via;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setVia(String via) {
-        this.via = via;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
     
     @Override
     public String toString() {
-        return via;
+        return descricao;
     }
 }

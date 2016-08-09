@@ -16,11 +16,23 @@ public class Ranking implements Serializable {
      * identificador do Ranking no Banco de Dados
      */
     private int id;
+    /**
+     * identificador da ponte
+     */
     private Ponte ponte;
 
+
+    /**
+     * Constructor padrão
+     */
     public Ranking() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param ponte 
+     */
     public Ranking(int id, Ponte ponte) {
         this.id = id;
         this.ponte = ponte;

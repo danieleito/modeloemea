@@ -16,9 +16,28 @@ public class SuperintendenciaRegional implements Serializable {
      * identificador do SuperintendenciaRegional no Banco de Dados
      */
     private int id;
+    /**
+     * descrição da superintendência regional 
+     */
     private String descricao;
+    /**
+     * identificador da uf
+     */
     private Uf uf;
 
+
+    /**
+     * Constructor padrão
+     */
+    public SuperintendenciaRegional() {
+    }
+
+    /**
+     * Conatructor completo
+     * @param id
+     * @param descricao
+     * @param uf 
+     */
     public SuperintendenciaRegional(int id, String descricao, Uf uf) {
         this.id = id;
         this.descricao = descricao;

@@ -50,9 +50,25 @@ public class ArquivoAnexo implements Serializable {
      */
     private Imagem imagem;
 
+
+    /**
+     * Constructor padrão.
+     */
     public ArquivoAnexo() {
     }
 
+    /**
+     * Constructor completo
+     * @param id {@link #id}
+     * @param ponte {@link #ponte}
+     * @param arquivo {@link #arquivo}
+     * @param tipoArquivo {@link #tipoArquivo}
+     * @param numero {@link #numero}
+     * @param descricao {@link #descricao}
+     * @param registro {@link #registro}
+     * @param dataAnexada {@link #dataAnexada}
+     * @param imagem {@link #imagem}
+     */
     public ArquivoAnexo(int id, Ponte ponte, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
         this.id = id;
         this.ponte = ponte;
@@ -65,6 +81,17 @@ public class ArquivoAnexo implements Serializable {
         this.imagem = imagem;
     }
 
+    /**
+     * Constructor sem id
+     * @param ponte {@link #ponte}
+     * @param arquivo {@link #arquivo}
+     * @param tipoArquivo {@link #tipoArquivo}
+     * @param numero {@link #numero}
+     * @param descricao {@link #descricao}
+     * @param registro {@link #registro}
+     * @param dataAnexada {@link #dataAnexada}
+     * @param imagem {@link #imagem}
+     */
     public ArquivoAnexo(Ponte ponte, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
         this.ponte = ponte;
         this.arquivo = arquivo;
@@ -76,6 +103,7 @@ public class ArquivoAnexo implements Serializable {
         this.imagem = imagem;
     }
 
+    
     public int getId() {
         return id;
     }

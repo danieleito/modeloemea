@@ -16,16 +16,48 @@ public class MonitoramentoSgo implements Serializable {
      * identificador do MonitoramentoSgo no Banco de Dados
      */
     private int id;
+    /**
+     * período
+     */
     private String periodo;
+    /**
+     * tipo de monitoramento
+     */
     private String tipoMonitoramento;
+    /**
+     * executor
+     */
     private String executor;
+    /**
+     * custo
+     */
     private String custo;
+    /**
+     * objeto
+     */
     private String objeto;
+    /**
+     * técnicas
+     */
     private String tecnicas;
 
+
+    /**
+     * Constructor padrão
+     */
     public MonitoramentoSgo() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param periodo
+     * @param tipoMonitoramento
+     * @param executor
+     * @param custo
+     * @param objeto
+     * @param tecnicas 
+     */
     public MonitoramentoSgo(int id, String periodo, String tipoMonitoramento, String executor, String custo, String objeto, String tecnicas) {
         this.id = id;
         this.periodo = periodo;

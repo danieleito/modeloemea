@@ -16,11 +16,23 @@ public class NaturezaTransposicao implements Serializable {
      * identificador do NaturezaTransposicao no Banco de Dados
      */
     private int id;
+    /**
+     * descrição da natureza transposeção
+     */
     private String descricao;
 
+
+    /**
+     * Constructor padrão
+     */
     public NaturezaTransposicao() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param descricao 
+     */
     public NaturezaTransposicao(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;

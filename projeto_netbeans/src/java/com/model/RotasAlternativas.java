@@ -16,13 +16,33 @@ public class RotasAlternativas implements Serializable {
      * identificador do RotasAlternativas no Banco de Dados
      */
     private int id;
+    /**
+     * identificação
+     */
     private String identificacao;
+    /**
+     * descrição das rotas alternativas
+     */
     private String descricao;
+    /**
+     * acrescimo em km
+     */
     private String acrescimoKm;
 
+
+    /**
+     * Constructor padrão
+     */
     public RotasAlternativas() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param identificacao
+     * @param descricao
+     * @param acrescimoKm 
+     */
     public RotasAlternativas(int id, String identificacao, String descricao, String acrescimoKm) {
         this.id = id;
         this.identificacao = identificacao;

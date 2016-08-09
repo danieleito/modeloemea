@@ -37,6 +37,9 @@ public class CaracteristicasFuncionaisCaracteristicas implements Serializable {
      */
     private String vmd;
 
+    /**
+     * Constructor padrão.
+     */
     public CaracteristicasFuncionaisCaracteristicas() {
     }
 

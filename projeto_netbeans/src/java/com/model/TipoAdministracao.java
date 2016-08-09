@@ -16,11 +16,23 @@ public class TipoAdministracao implements Serializable {
      * identificador do TipoAdministracao no Banco de Dados
      */
     private int id;
+    /**
+     * descrição do tipo de administração
+     */
     private String descricao;
 
+
+    /**
+     * Constructor padrão
+     */
     public TipoAdministracao() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param descricao 
+     */
     public TipoAdministracao(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;

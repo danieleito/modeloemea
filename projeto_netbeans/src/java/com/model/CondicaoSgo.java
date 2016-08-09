@@ -33,9 +33,21 @@ public class CondicaoSgo implements Serializable {
      */
     private String notaTecnica;
 
+
+    /**
+     * Constructor padrão.
+     */
     public CondicaoSgo() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param condicaoEstabilididade
+     * @param condicaoConservacao
+     * @param observacoes
+     * @param notaTecnica 
+     */
     public CondicaoSgo(int id, String condicaoEstabilididade, String condicaoConservacao, String observacoes, String notaTecnica) {
         this.id = id;
         this.condicaoEstabilididade = condicaoEstabilididade;

@@ -16,14 +16,38 @@ public class Substituicao implements Serializable {
      * identificador do Substituicao no Banco de Dados
      */
     private int id;
+    /**
+     * identificação
+     */
     private String identificacao;
+    /**
+     * existe projeto identificação
+     */
     private String existeProjetoIdentificacao;
+    /**
+     * custo estimado
+     */
     private String custoEstimado;
+    /**
+     * descrição da substituição
+     */
     private String descricao;
 
+
+    /**
+     * Constructor padrão
+     */
     public Substituicao() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param identificacao
+     * @param existeProjetoIdentificacao
+     * @param custoEstimado
+     * @param descricao 
+     */
     public Substituicao(int id, String identificacao, String existeProjetoIdentificacao, String custoEstimado, String descricao) {
         this.id = id;
         this.identificacao = identificacao;

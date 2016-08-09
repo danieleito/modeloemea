@@ -16,16 +16,44 @@ public class ManifestacaoUfpr implements Serializable {
      * identificador do ManifestacaoUfpr no Banco de Dados
      */
     private int id;
+    /**
+     * elemento da ufpr
+     */
     private ElementoUfpr elementoUfpr;
+    /**
+     * código da manifestação
+     */
     private String codigo;
+    /**
+     * descrição da manifestação
+     */
     private String descricao;
+    /**
+     * unidade 
+     */
     private String unidade;
+    /**
+     * beta da manifestação da ufpr 
+     */
     private String beta;
 
+
+    /**
+     * Constructor padrão
+     */
     public ManifestacaoUfpr() {
         elementoUfpr = new ElementoUfpr();
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param elementoUfpr
+     * @param codigo
+     * @param descricao
+     * @param unidade
+     * @param beta 
+     */
     public ManifestacaoUfpr(int id, ElementoUfpr elementoUfpr, String codigo, String descricao, String unidade, String beta) {
         this.id = id;
         this.elementoUfpr = elementoUfpr;

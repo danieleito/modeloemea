@@ -16,21 +16,73 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
      * identificador do IdentificacaoObraDadosBasicos no Banco de Dados
      */
     private int id;
+    /**
+     * código da identidicação da obra dados básicos
+     */
     private String codigo;
+    /**
+     * código da identidicação da obra dados básicos
+     */
     private String codigoIntegracao;
+    /**
+     * status
+     */
     private String status;
+    /**
+     * nome da ponte
+     */
     private String identificacao;
+    /**
+     * identificador da natureza tranposição
+     */
     private NaturezaTransposicao naturezaTransposicao;
+    /**
+     * identificador do tipo estrutura
+     */
     private TipoEstrutura tipoEstrutura;
+    /**
+     * identificador do sistema construtivo
+     */
     private SistemaConstrutivo sistemaConstrutivo;
+    /**
+     * comprimento da ponte
+     */
     private String comprimento;
+    /**
+     * largura da ponte
+     */
     private String largura;
+    /**
+     * identificadot do trem-tipo
+     */
     private TremTipo tremTipo;
+    /**
+     * ano da construção da ponte
+     */
     private String anoConstrucao;
 
+
+    /**
+     * Constructor padrão.
+     */
     public IdentificacaoObraDadosBasicos() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param codigo
+     * @param codigoIntegracao
+     * @param status
+     * @param identificacao
+     * @param idNaturezaTransposicao
+     * @param idTipoEstrutura
+     * @param idSistemaConstrutivo
+     * @param comprimento
+     * @param largura
+     * @param idTremTipo
+     * @param anoConstrucao 
+     */
     public IdentificacaoObraDadosBasicos(int id, String codigo, String codigoIntegracao, String status, String identificacao, NaturezaTransposicao idNaturezaTransposicao, TipoEstrutura idTipoEstrutura, SistemaConstrutivo idSistemaConstrutivo, String comprimento, String largura, TremTipo idTremTipo, String anoConstrucao) {
         this.id = id;
         this.codigo = codigo;

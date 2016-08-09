@@ -16,16 +16,29 @@ public class TipoEstrutura implements Serializable {
      * identificador do TipoEstrutura no Banco de Dados
      */
     private int id;
+    /**
+     * descrição do tipo de estrutura
+     */
     private String descricao;
 
+
+    /**
+     * Constructor padrão
+     */
     public TipoEstrutura() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param descricao 
+     */
     public TipoEstrutura(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
 
+    
     public TipoEstrutura(String descricao) {
         this.descricao = descricao;
     }

@@ -16,20 +16,37 @@ public class Elemento implements Serializable {
      * identificador do Elemento no Banco de Dados
      */
     private int id;
-    private String elemento;
+    
+    /**
+     * descricao do elemento
+     */
+    private String descricao;
+    /**
+     * capa do elemento
+     */
     private String capa;
 
+
+    /**
+     * Constructor padrão.
+     */
     public Elemento() {
     }
 
-    public Elemento(int id, String elemento, String capa) {
+    /**
+     * Constructor completo
+     * @param id
+     * @param descricao
+     * @param capa 
+     */
+    public Elemento(int id, String descricao, String capa) {
         this.id = id;
-        this.elemento = elemento;
+        this.descricao = descricao;
         this.capa = capa;
     }
 
-    public Elemento(String elemento, String capa) {
-        this.elemento = elemento;
+    public Elemento(String descricao, String capa) {
+        this.descricao = descricao;
         this.capa = capa;
     }
 
@@ -41,12 +58,12 @@ public class Elemento implements Serializable {
         this.id = id;
     }
 
-    public String getElemento() {
-        return elemento;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setElemento(String elemento) {
-        this.elemento = elemento;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getCapa() {
@@ -59,6 +76,6 @@ public class Elemento implements Serializable {
     
     @Override
     public String toString() {
-        return this.elemento;
+        return this.descricao;
     }
 }

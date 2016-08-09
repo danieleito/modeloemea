@@ -17,13 +17,33 @@ public class LaudoEspecializadoSgo implements Serializable {
      * identificador do LaudoEspecializadoSgo no Banco de Dados
      */
     private int id;
+    /**
+     * data do laudo
+     */
     private Date dataLaudo;
+    /**
+     * consultor
+     */
     private String consultor;
+    /**
+     * observações sobre laudo
+     */
     private String observacoes;
 
+
+    /**
+     * Constructor padrão.
+     */
     public LaudoEspecializadoSgo() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param dataLaudo
+     * @param consultor
+     * @param observacoes 
+     */
     public LaudoEspecializadoSgo(int id, Date dataLaudo, String consultor, String observacoes) {
         this.id = id;
         this.dataLaudo = dataLaudo;

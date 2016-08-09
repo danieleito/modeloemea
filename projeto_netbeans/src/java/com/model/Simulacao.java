@@ -19,14 +19,38 @@ public class Simulacao implements Serializable {
      * identificador do Simulacao no Banco de Dados
      */
     private int id;
+    /**
+     * data que foi criada a simulação
+     */
     private Date data;
+    /**
+     * identificador do usuário
+     */
     private Usuario usuario;
+    /**
+     * nome da simulação
+     */
     private String nomeSimulacao;
+    /**
+     * lista de rankings
+     */
     private ArrayList<Ranking> rankings;
 
+
+    /**
+     * Constructor padrão
+     */
     public Simulacao() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param data
+     * @param usuario
+     * @param nomeSimulacao
+     * @param rankings 
+     */
     public Simulacao(int id, Date data, Usuario usuario, String nomeSimulacao, ArrayList<Ranking> rankings) {
         this.id = id;
         this.data = data;

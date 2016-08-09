@@ -16,20 +16,36 @@ public class Manifestacao implements Serializable {
      * identificador do Manifestacao no Banco de Dados
      */
     private int id;
-    private String manifestacao;
+    /**
+     * descrição da manifestação
+     */
+    private String descricao;
+    /**
+     * beta da manifestação
+     */
     private String beta;
 
+
+    /**
+     * Constructor padrão
+     */
     public Manifestacao() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param manifestacao
+     * @param beta 
+     */
     public Manifestacao(int id, String manifestacao, String beta) {
         this.id = id;
-        this.manifestacao = manifestacao;
+        this.descricao = manifestacao;
         this.beta = beta;
     }
 
     public Manifestacao(String manifestacao, String beta) {
-        this.manifestacao = manifestacao;
+        this.descricao = manifestacao;
         this.beta = beta;
     }
 
@@ -41,12 +57,12 @@ public class Manifestacao implements Serializable {
         this.id = id;
     }
 
-    public String getManifestacao() {
-        return manifestacao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setManifestacao(String manifestacao) {
-        this.manifestacao = manifestacao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getBeta() {
@@ -59,6 +75,6 @@ public class Manifestacao implements Serializable {
     
     @Override
     public String toString() {
-        return this.manifestacao;
+        return this.descricao;
     }
 }

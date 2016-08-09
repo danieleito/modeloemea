@@ -52,7 +52,7 @@ public class ManifestacaoDAO {
 
     public void editar(Manifestacao manifestacao) throws SQLException {
         String query = "update MANIFESTACAO ";
-        query += "set NM_MANIFESTACAO = '" + manifestacao.getManifestacao()+ "', ";
+        query += "set NM_MANIFESTACAO = '" + manifestacao.getDescricao()+ "', ";
         query += "DS_BETA = '" + manifestacao.getBeta()+ "' ";
         query += "where ID_MANIFESTACAO = " + manifestacao.getId();
 

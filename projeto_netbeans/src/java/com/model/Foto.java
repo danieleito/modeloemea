@@ -16,11 +16,23 @@ public class Foto implements Serializable {
      * identificador do Foto no Banco de Dados
      */
     private int id;
+    /**
+     * descrição da foto
+     */
     private String descricao;
 
+
+    /**
+     * Constructor padrão.
+     */
     public Foto() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param descricao 
+     */
     public Foto(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;

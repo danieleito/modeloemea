@@ -16,12 +16,28 @@ public class Uf implements Serializable {
      * identificador do Uf no Banco de Dados
      */
     private int id;
+    /**
+     * nome do estado 
+     */
     private String estado;
+    /**
+     * sigla do estado
+     */
     private String uf;
 
+
+    /**
+     * Constructor padrão
+     */
     public Uf() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param estado
+     * @param uf 
+     */
     public Uf(int id, String estado, String uf) {
         this.id = id;
         this.estado = estado;

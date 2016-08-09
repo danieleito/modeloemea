@@ -41,6 +41,9 @@ public class CadastroManifestacao implements Serializable {
      */
     private Reparo reparo;
 
+    /**
+     * Constructor padrão.
+     */
     public CadastroManifestacao() {
         numero = new Numero();
         manifestacaoUfpr = new ManifestacaoUfpr();
@@ -49,6 +52,16 @@ public class CadastroManifestacao implements Serializable {
         reparo = new Reparo();
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param numero
+     * @param manifestacaoUfpr
+     * @param foto
+     * @param tamanho
+     * @param extensaoRelativa
+     * @param reparo 
+     */
     public CadastroManifestacao(int id, Numero numero, ManifestacaoUfpr manifestacaoUfpr, Foto foto, String tamanho, ExtensaoRelativa extensaoRelativa, Reparo reparo) {
         this.id = id;
         this.numero = numero;
@@ -68,6 +81,7 @@ public class CadastroManifestacao implements Serializable {
         this.reparo = reparo;
     }
 
+    
     public int getId() {
         return id;
     }

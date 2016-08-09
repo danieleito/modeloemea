@@ -16,11 +16,23 @@ public class Reparo implements Serializable {
      * identificador do Reparo no Banco de Dados
      */
     private int id;
+    /**
+     * descrição do reparo
+     */
     private String descricao;
 
+
+    /**
+     * Constructor padrão
+     */
     public Reparo() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param descricao 
+     */
     public Reparo(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;

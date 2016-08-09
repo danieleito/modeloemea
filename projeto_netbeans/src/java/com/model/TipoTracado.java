@@ -16,11 +16,23 @@ public class TipoTracado implements Serializable {
      * identificador do TipoTracado no Banco de Dados
      */
     private int id;
+    /**
+     * descrição do tipo traçado
+     */
     private String descricao;
 
+ 
+    /**
+     * Constructor padrão
+     */
     public TipoTracado() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param descricao 
+     */
     public TipoTracado(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;

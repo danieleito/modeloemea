@@ -16,11 +16,23 @@ public class TipoRegiao implements Serializable {
      * identificador do TipoRegiao no Banco de Dados
      */
     private int id;
+    /**
+     * descrição do tipo da região
+     */
     private String descricao;
 
+
+    /**
+     * Constructor padrão
+     */
     public TipoRegiao() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param descricao 
+     */
     public TipoRegiao(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;

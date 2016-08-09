@@ -16,11 +16,23 @@ public class TremTipo implements Serializable {
      * identificador do TremTipo no Banco de Dados
      */
     private int id;
+    /**
+     * descrição do trem-tipo
+     */
     private String descricao;
 
+
+    /**
+     * Constructor padrão
+     */
     public TremTipo() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param descricao 
+     */
     public TremTipo(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;

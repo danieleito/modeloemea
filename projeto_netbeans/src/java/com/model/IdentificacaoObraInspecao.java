@@ -16,13 +16,33 @@ public class IdentificacaoObraInspecao implements Serializable {
      * identificador do IdentificacaoObraInspecao no Banco de Dados
      */
     private int id;
+    /**
+     * periodo
+     */
     private String periodo;
+    /**
+     * equipamento necessário para inspeção
+     */
     private String equipamentoNecessario;
+    /**
+     * melhor época para inspeção da ponte
+     */
     private String melhorEpoca;
 
+
+    /**
+     * Constructor padrão.
+     */
     public IdentificacaoObraInspecao() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param periodo
+     * @param equipamentoNecessario
+     * @param melhorEpoca 
+     */
     public IdentificacaoObraInspecao(int id, String periodo, String equipamentoNecessario, String melhorEpoca) {
         this.id = id;
         this.periodo = periodo;

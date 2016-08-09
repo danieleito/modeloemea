@@ -16,13 +16,33 @@ public class ElementoComponente implements Serializable {
      * identificador do ElementoComponente no Banco de Dados
      */
     private int id;
+    /**
+     * elemento da ufpr
+     */
     private ElementoUfpr elementoUfpr;
+    /**
+     * detalhe
+     */
     private String detalhe;
+    /**
+     * quantidade do elemento componente
+     */
     private String quantidade;
 
+
+    /**
+     * Constructor padrão.
+     */
     public ElementoComponente() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param elementoUfpr
+     * @param detalhe
+     * @param quantidade 
+     */
     public ElementoComponente(int id, ElementoUfpr elementoUfpr, String detalhe, String quantidade) {
         this.id = id;
         this.elementoUfpr = elementoUfpr;

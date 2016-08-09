@@ -17,13 +17,33 @@ public class IdentificacaoObraSgo implements Serializable {
      * identificador do IdentificacaoObraSgo no Banco de Dados
      */
     private int id;
+    /**
+     * identifidor da ponte
+     */
     private Ponte ponte;
+    /**
+     * data da inspeção
+     */
     private Date dataInspecao;
+    /**
+     * nome do inspetor da ponte
+     */
     private String nomeInspetor;
 
+
+    /**
+     * Constructor padrão.
+     */
     public IdentificacaoObraSgo() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param ponte
+     * @param dataInspecao
+     * @param nomeInspetor 
+     */
     public IdentificacaoObraSgo(int id, Ponte ponte, Date dataInspecao, String nomeInspetor) {
         this.id = id;
         this.ponte = ponte;

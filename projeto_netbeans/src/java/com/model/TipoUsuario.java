@@ -22,6 +22,7 @@ public class TipoUsuario implements Serializable {
      */
     private String tipoUsuario;
 
+
     /**
      * Constructor padrao
      */

@@ -16,18 +16,58 @@ public class DanoElementoSgo implements Serializable {
      * identificador do DanoElementoSgo no Banco de Dados
      */
     private int id;
+    /**
+     * identificador da inspeção rotineira
+     */
     private InspecaoRotineira inspecaoRotineira;
+    /**
+     * 
+     */
     private String elemento;
+    /**
+     * 
+     */
     private String nota;
+    /**
+     * 
+     */
     private String dano;
+    /**
+     * 
+     */
     private String unidade;
+    /**
+     * 
+     */
     private String quantidade;
+    /**
+     * 
+     */
     private String extensaoRelativa;
+    /**
+     * 
+     */
     private String localizacao;
 
+
+    /**
+     * Constructor padrão.
+     */
     public DanoElementoSgo() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param inspecaoRotineira
+     * @param elemento
+     * @param nota
+     * @param dano
+     * @param unidade
+     * @param quantidade
+     * @param extensaoRelativa
+     * @param localizacao 
+     */
     public DanoElementoSgo(int id, InspecaoRotineira inspecaoRotineira, String elemento, String nota, String dano, String unidade, String quantidade, String extensaoRelativa, String localizacao) {
         this.id = id;
         this.inspecaoRotineira = inspecaoRotineira;

@@ -16,12 +16,28 @@ public class Observacao implements Serializable {
      * identificador do Observacao no Banco de Dados
      */
     private int id;
+    /**
+     * identificação
+     */
     private String identificacao;
+    /**
+     * descrição da observação
+     */
     private String descricao;
 
+
+    /**
+     * Constructor padrão
+     */
     public Observacao() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param identificacao
+     * @param descricao 
+     */
     public Observacao(int id, String identificacao, String descricao) {
         this.id = id;
         this.identificacao = identificacao;

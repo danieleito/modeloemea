@@ -16,11 +16,23 @@ public class SistemaConstrutivo implements Serializable {
      * identificador do SistemaConstrutivo no Banco de Dados
      */
     private int id;
+    /**
+     * decrição do sistema construtivo
+     */
     private String descricao;
 
+
+    /**
+     * Constructor padrão
+     */
     public SistemaConstrutivo() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param descricao 
+     */
     public SistemaConstrutivo(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;

@@ -16,24 +16,80 @@ public class IdentificacaoObraLocalizacao implements Serializable {
      * identificador do IdentificacaoObraLocalizacao no Banco de Dados
      */
     private int id;
+    /**
+     * idenficador do uf
+     */
     private Uf uf;
+    /**
+     * identificador da via
+     */
     private Via via;
+    /**
+     * km na via
+     */
     private double localVia;
+    /**
+     * cidade mais próxima 
+     */
     private String cidadeMaisProxima;
+    /**
+     * pnv ano
+     */
     private String pnvAno;
+    /**
+     * pnv versão
+     */
     private String pnvVersao;
+    /**
+     * pnv código
+     */
     private String pnvCodigo;
+    /**
+     * pnv altitude
+     */
     private String pnvAltitude;
+    /**
+     * latitude em graus
+     */
     private String latitudeGrau;
+    /**
+     * latitude em minutos
+     */
     private String latitudeMinuto;
+    /**
+     * lontitude em grau
+     */
     private String longitudeGrau;
+    /**
+     * longitude em minutos
+     */
     private String longitudeMinuto;
 
+
+    /**
+     * Constructor padrão.
+     */
     public IdentificacaoObraLocalizacao() {
         uf = new Uf();
         via = new Via();
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param uf
+     * @param via
+     * @param localVia
+     * @param cidadeMaisProxima
+     * @param pnvAno
+     * @param pnvVersao
+     * @param pnvCodigo
+     * @param pnvAltitude
+     * @param latitudeGrau
+     * @param latitudeMinuto
+     * @param longitudeGrau
+     * @param longitudeMinuto 
+     */
     public IdentificacaoObraLocalizacao(int id, Uf uf, Via via, double localVia, String cidadeMaisProxima, String pnvAno, String pnvVersao, String pnvCodigo, String pnvAltitude, String latitudeGrau, String latitudeMinuto, String longitudeGrau, String longitudeMinuto) {
         this.id = id;
         this.uf = uf;

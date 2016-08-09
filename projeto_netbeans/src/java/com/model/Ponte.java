@@ -18,26 +18,81 @@ public class Ponte implements Serializable {
      * identificador do Ponte no Banco de Dados
      */
     private int id;
+    /**
+     * indice de performance relativo
+     */
     private String indicePerformanceRelativo;
+    /**
+     * identificador da identificação obra de dados básicos
+     */
     private IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos;
+    /**
+     * identificador da identificação obra localização
+     */
     private IdentificacaoObraLocalizacao identificacaoObraLocalizacao;
+    /**
+     * identificador da identificação obra responsáveis
+     */
     private IdentificacaoObraResponsaveis identificacaoObraResponsaveis;
+    /**
+     * identificador da identificação obra inspeção
+     */
     private IdentificacaoObraInspecao identificacaoObraInspecao;
+    /**
+     * identificador da caracteristicas funcionais 
+     */
     private CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas;
+    /**
+     * identificador da caracteristicas funcionais dimensões
+     */
     private CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes;
+    /**
+     * identificador das rotas alternativas
+     */
     private RotasAlternativas rotasAlternativas;
-    private ArrayList<DeficienciaFuncional> deficienciasFuncionais;    
+    /**
+     * lista de deficiências funcionais
+     */
+    private ArrayList<DeficienciaFuncional> deficienciasFuncionais;
+    /**
+     * lista de aspectos especiais
+     */
     private ArrayList<CadastroAspectoEspecial> aspectosEspeciais;
+    /**
+     * lista de elementos componentes
+     */
     private ArrayList<ElementoComponente> elementosComponentes;
+    /**
+     * identificador de observação
+     */
     private Observacao observacao;
+    /**
+     * identificador da substituição
+     */
     private Substituicao substituicao;
+    /**
+     * identificador do cadastro manifestação
+     */
     private CadastroManifestacao cadastroManifestacao;
+    /**
+     * lista arquivos anexos
+     */
     private ArrayList<ArquivoAnexo> arquivosAnexos;
+    /**
+     * lista inspeção
+     */
     private ArrayList<Inspecao> inspecoes;
-    
-    //para exibir na tela que lista o ranking
+
+    /**
+     * data da última inspeção
+     * para exibir na tela que lista o ranking
+     */
     private Date dataUltimaInspecao;
 
+
+    /**
+     * Constructor padrão
+     */
     public Ponte() {
         identificacaoObraDadosBasicos = new IdentificacaoObraDadosBasicos();
         identificacaoObraInspecao = new IdentificacaoObraInspecao();
@@ -56,10 +111,29 @@ public class Ponte implements Serializable {
         inspecoes = new ArrayList<>();
     }
 
+    /**
+     * Constructor apenas com id
+     * @param id 
+     */
     public Ponte(int id) {
         this.id = id;
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param indicePerformanceRelativo
+     * @param identificacaoObraDadosBasicos
+     * @param identificacaoObraLocalizacao
+     * @param identificacaoObraResponsaveis
+     * @param identificacaoObraInspecao
+     * @param caracteristicasFuncionaisCaracteristicas
+     * @param caracteristicasFuncionaisDimensoes
+     * @param rotasAlternativas
+     * @param observacao
+     * @param substituicao
+     * @param cadastroManifestacao 
+     */
     public Ponte(int id, String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, 
             IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis, 
             IdentificacaoObraInspecao identificacaoObraInspecao, CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, 

@@ -5,7 +5,6 @@
  */
 package com.model;
 
-import java.awt.Image;
 import java.io.Serializable;
 
 /**
@@ -17,24 +16,49 @@ public class Imagem implements Serializable {
      * identificador do Imagem no Banco de Dados
      */
     private int id;
+    /**
+     * nome da imagem
+     */
     private String nome;
+    /**
+     * 
+     */
     private String tipoMime;
+    /**
+     * 
+     */
     private byte[] imagem;
+    
+    private String caminho;
 
+
+    /**
+     * Constructor padrão.
+     */
     public Imagem() {
     }
 
-    public Imagem(int id, String nome, String tipoMime, byte[] imagem) {
+    /**
+     * Constructor completo
+     * @param id
+     * @param nome
+     * @param tipoMime
+     * @param imagem 
+     * @param caminho 
+     */
+    public Imagem(int id, String nome, String tipoMime, byte[] imagem, String caminho) {
         this.id = id;
         this.nome = nome;
         this.tipoMime = tipoMime;
         this.imagem = imagem;
+        this.caminho = caminho;
     }
 
-    public Imagem(String nome, String tipoMime, byte[] imagem) {
+    public Imagem(String nome, String tipoMime, byte[] imagem, String caminho) {
         this.nome = nome;
         this.tipoMime = tipoMime;
         this.imagem = imagem;
+        this.caminho = caminho;
     }
 
     public int getId() {
@@ -67,5 +91,13 @@ public class Imagem implements Serializable {
 
     public void setImagem(byte[] imagem) {
         this.imagem = imagem;
-    }   
+    }
+
+    public String getCaminho() {
+        return caminho;
+    }
+
+    public void setCaminho(String caminho) {
+        this.caminho = caminho;
+    }
 }

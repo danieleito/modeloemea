@@ -16,12 +16,28 @@ public class Modelo implements Serializable {
      * identificador do Modelo no Banco de Dados
      */
     private int id;
+    /**
+     * indice base
+     */
     private String indiceBase;
+    /**
+     * indice de performance
+     */
     private String indicePerformance;
 
+
+    /**
+     * Constructor padrão
+     */
     public Modelo() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param indiceBase
+     * @param indicePerformance 
+     */
     public Modelo(int id, String indiceBase, String indicePerformance) {
         this.id = id;
         this.indiceBase = indiceBase;

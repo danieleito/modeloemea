@@ -16,9 +16,28 @@ public class UnidadeLocal implements Serializable {
      * identificador do UnidadeLocal no Banco de Dados
      */
     private int id;
+    /**
+     * descrição da unidade local
+     */
     private String descricao;
+    /**
+     * identificador da superintendência regional 
+     */
     private SuperintendenciaRegional superintendenciaRegional;
 
+
+    /**
+     * Constructor padrão
+     */
+    public UnidadeLocal() {
+    }
+
+    /**
+     * Constructor completo
+     * @param id
+     * @param unidadeLocal
+     * @param superintendenciaRegional 
+     */
     public UnidadeLocal(int id, String unidadeLocal, SuperintendenciaRegional superintendenciaRegional) {
         this.id = id;
         this.descricao = unidadeLocal;

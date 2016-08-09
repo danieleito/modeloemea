@@ -498,7 +498,14 @@ create table INSPECAO
 
 ---------------------------------------------------------------------------
 
-CREATE TABLE IMAGEM
+create table CONFIGURACAO
+	(
+		ID_CONFIGURACAO     int              not null,
+		DS_CAMINHO_IMAGEM	varchar(max)     not null
+		CONSTRAINT          pk_configuracao  PRIMARY KEY(ID_CONFIGURACAO)
+	);
+
+create table IMAGEM
    (
 	   ID_IMAGEM		int				not null identity(1,1), 
 	   NM_NOME			varchar(100)	not null,

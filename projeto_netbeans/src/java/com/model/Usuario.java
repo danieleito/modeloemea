@@ -37,6 +37,7 @@ public class Usuario implements Serializable {
      */
     private TipoUsuario tipoUsuario;
 
+
     /**
      * Constructor padrão.
      */

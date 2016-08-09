@@ -16,11 +16,23 @@ public class ExtensaoRelativa implements Serializable {
      * identificador do ExtensaoRelativa no Banco de Dados
      */
     private int id;
+    /**
+     * descrição da extensão relativa
+     */
     private String descricao;
 
+
+    /**
+     * Constructor padrão.
+     */
     public ExtensaoRelativa() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param descricao 
+     */
     public ExtensaoRelativa(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;

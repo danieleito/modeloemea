@@ -16,16 +16,48 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
      * identificador do InsuficienciaEstruturalElementoSgo no Banco de Dados
      */
     private int id;
+    /**
+     * identificador da inspeção rotineira
+     */
     private InspecaoRotineira inspecaoRotineira;
+    /**
+     * elemento
+     */
     private String elemento;
+    /**
+     * nota
+     */
     private String nota;
+    /**
+     * insuficiência
+     */
     private String insuficiencia;
+    /**
+     * causa provável
+     */
     private String causaProvavel;
+    /**
+     * comentários sobre insuficiências estruturais elementos
+     */
     private String comentarios;
 
+
+    /**
+     * Constructor padrão.
+     */
     public InsuficienciaEstruturalElementoSgo() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param inspecaoRotineira
+     * @param elemento
+     * @param nota
+     * @param insuficiencia
+     * @param causaProvavel
+     * @param comentarios 
+     */
     public InsuficienciaEstruturalElementoSgo(int id, InspecaoRotineira inspecaoRotineira, String elemento, String nota, String insuficiencia, String causaProvavel, String comentarios) {
         this.id = id;
         this.inspecaoRotineira = inspecaoRotineira;

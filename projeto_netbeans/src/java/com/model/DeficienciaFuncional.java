@@ -16,13 +16,33 @@ public class DeficienciaFuncional implements Serializable {
      * identificador do DeficienciaFuncional no Banco de Dados
      */
     private int id;
+    /**
+     * código da deficiência funcional
+     */
     private String codigo;
+    /**
+     * deficiência funcional
+     */
     private String descricao;
+    /**
+     * unidade
+     */
     private String unidadeMedida;
 
+
+    /**
+     * Constructor padrão.
+     */
     public DeficienciaFuncional() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param codigo
+     * @param descricao
+     * @param unidadeMedida 
+     */
     public DeficienciaFuncional(int id, String codigo, String descricao, String unidadeMedida) {
         this.id = id;
         this.codigo = codigo;

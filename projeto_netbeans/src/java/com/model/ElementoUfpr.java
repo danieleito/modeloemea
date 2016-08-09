@@ -16,13 +16,33 @@ public class ElementoUfpr implements Serializable {
      * identificador do ElementoUfpr no Banco de Dados
      */
     private int id;
+    /**
+     * código da elemento da ufpr
+     */
     private String codigo;
+    /**
+     * descrição do elemento da ufpr
+     */
     private String descricao;
+    /**
+     * capa do elemento da ufpr
+     */
     private String capa;
 
+
+    /**
+     * Constructor padrão.
+     */
     public ElementoUfpr() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param codigo
+     * @param descricao
+     * @param capa 
+     */
     public ElementoUfpr(int id, String codigo, String descricao, String capa) {
         this.id = id;
         this.codigo = codigo;

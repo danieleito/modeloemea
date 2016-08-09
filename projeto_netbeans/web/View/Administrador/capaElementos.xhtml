@@ -13,7 +13,7 @@
                 <h:form id="form">
                     <p:dataTable var="elem" value="#{capaElementos.elementos}" paginator="true" rows="15" >
                         <p:column headerText="Elemento">
-                            <h:outputText value="#{elem.elemento}" />
+                            <h:outputText value="#{elem.descricao}" />
                         </p:column>
 
                         <p:column headerText="Capa">

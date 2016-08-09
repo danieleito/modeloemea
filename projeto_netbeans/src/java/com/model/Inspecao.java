@@ -17,17 +17,40 @@ public class Inspecao implements Serializable {
      * identificador do Inspecao no Banco de Dados
      */
     private int id;
+    /**
+     * data da inspeção
+     */
     private Date data;
+    /**
+     * identificador do usuário
+     */
     private Usuario usuario;
+    /**
+     * identificador da ponte
+     */
     private Ponte ponte;
+    /**
+     * identificador do modelo
+     */
     private Modelo modelo;
 //    private String condicaoEstabilidade;
 //    private String condicaoConservacao;
     
 
+    /**
+     * Constructor padrão.
+     */
     public Inspecao() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param data
+     * @param usuario
+     * @param ponte
+     * @param modelo 
+     */
     public Inspecao(int id, Date data, Usuario usuario, Ponte ponte, Modelo modelo) {
         this.id = id;
         this.data = data;

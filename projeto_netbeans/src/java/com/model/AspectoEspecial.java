@@ -21,9 +21,17 @@ public class AspectoEspecial implements Serializable {
      */
     private String descricao;
 
+
+    /**
+     * Constructor padrão.
+     */
     public AspectoEspecial() {
     }
-
+    /**
+     * Constructor completo
+     * @param id
+     * @param descricao 
+     */
     public AspectoEspecial(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;

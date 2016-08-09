@@ -16,11 +16,23 @@ public class Numero implements Serializable {
      * identificador do Numero no Banco de Dados
      */
     private int id;
+    /**
+     * descrição do número
+     */
     private String descricao;
 
+
+    /**
+     * Constructor padrão
+     */
     public Numero() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param descricao 
+     */
     public Numero(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;

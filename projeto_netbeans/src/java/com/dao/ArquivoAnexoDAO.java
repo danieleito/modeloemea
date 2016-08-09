@@ -22,7 +22,8 @@ public class ArquivoAnexoDAO {
     public ArrayList<ArquivoAnexo> buscarCadastro(int id) throws SQLException {
         String query = "select A.ID_ARQUIVO_ANEXO_CADASTRO, A.ID_PONTE, A.DS_ARQUIVO, "
                 + "A.DS_TIPO_ARQUIVO, A.NR_NUMERO, A.DS_DESCRICAO, A.DS_REGISTRO, "
-                + "A.DT_DATA_ANEXACAO, A.ID_IMAGEM, I.NM_NOME, I.TIPO_MIME, I.DS_IMAGEM "
+                + "A.DT_DATA_ANEXACAO, A.ID_IMAGEM, I.NM_NOME, I.TIPO_MIME, I.DS_IMAGEM, "
+                + "(SELECT DS_CAMINHO_IMAGEM FROM CONFIGURACAO) AS CAMINHO "
                 + "from ARQUIVO_ANEXO_CADASTRO A, IMAGEM I, PONTE P "
                 + "where A.ID_IMAGEM = I.ID_IMAGEM "
                 + "and A.ID_PONTE = P.ID_PONTE "
@@ -40,8 +41,7 @@ public class ArquivoAnexoDAO {
         while (rs.next()) {
             arquivos.add(new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO_CADASTRO"), new Ponte(rs.getInt("ID_PONTE")), rs.getString("DS_ARQUIVO"), rs.getString("DS_TIPO_ARQUIVO"), rs.getString("NR_NUMERO"), 
                     rs.getString("DS_DESCRICAO"), rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO"), 
-                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"), rs.getBytes("DS_IMAGEM"))));
-
+                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"), rs.getBytes("DS_IMAGEM"), rs.getString("CAMINHO"))));
         }
 
         conexao.closeConnection();
@@ -51,7 +51,8 @@ public class ArquivoAnexoDAO {
     public ArquivoAnexo buscarCadastros(int id) throws SQLException {
         String query = "select A.ID_ARQUIVO_ANEXO_CADASTRO, A.ID_PONTE, A.DS_ARQUIVO, A.DS_TIPO_ARQUIVO, "
                 + "A.NR_NUMERO, A.DS_DESCRICAO, A.DS_REGISTRO, A.DT_DATA_ANEXACAO, A.ID_IMAGEM, I.NM_NOME, "
-                + "I.TIPO_MIME, I.DS_IMAGEM "
+                + "I.TIPO_MIME, I.DS_IMAGEM, "
+                + "(SELECT DS_CAMINHO_IMAGEM FROM CONFIGURACAO) AS CAMINHO "
                 + "from ARQUIVO_ANEXO_CADASTRO A, IMAGEM I, PONTE P "
                 + "where A.ID_IMAGEM = I.ID_IMAGEM "
                 + "and P.ID_PONTE = P.ID_PONTE "
@@ -70,7 +71,7 @@ public class ArquivoAnexoDAO {
             arquivoAnexo = new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO_CADASTRO"), new Ponte(rs.getInt("ID_PONTE")), rs.getString("DS_ARQUIVO"), 
                     rs.getString("DS_TIPO_ARQUIVO"), rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), 
                     rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO"), 
-                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"), rs.getBytes("DS_IMAGEM")));
+                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"), rs.getBytes("DS_IMAGEM"), rs.getString("CAMINHO")));
         }
 
         conexao.closeConnection();
@@ -81,6 +82,7 @@ public class ArquivoAnexoDAO {
         String query = "select A.ID_ARQUIVO_ANEXO_INSPECAO, A.ID_INSPECAO, A.DS_ARQUIVO, A.DS_TIPO_ARQUIVO, "
                 + "A.NR_NUMERO, A.DS_DESCRICAO, A.DS_REGISTRO, A.DT_DATA_ANEXACAO, A.ID_IMAGEM, I.NM_NOME, "
                 + "I.TIPO_MIME, I.DS_IMAGEM "
+                + "(SELECT DS_CAMINHO_IMAGEM FROM CONFIGURACAO) AS CAMINHO "
                 + "from ARQUIVO_ANEXO_INSPECAO A, IMAGEM I, INSPECAO INS "
                 + "where A.ID_IMAGEM = I.ID_IMAGEM "
                 + "and P.ID_INSPECAO = INS.ID_INSPECAO ";
@@ -97,7 +99,7 @@ public class ArquivoAnexoDAO {
         while (rs.next()) {
             arquivos.add(new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO_INSPECAO"), new Ponte(rs.getInt("ID_PONTE")), rs.getString("DS_ARQUIVO"), rs.getString("DS_TIPO_ARQUIVO"), 
                     rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO"), 
-                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"), rs.getBytes("DS_IMAGEM"))));
+                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"), rs.getBytes("DS_IMAGEM"), rs.getString("CAMINHO"))));
         }
 
         conexao.closeConnection();
@@ -108,6 +110,7 @@ public class ArquivoAnexoDAO {
         String query = "select A.ID_ARQUIVO_ANEXO_INSPECAO, A.ID_INSPECAO, A.DS_ARQUIVO, A.DS_TIPO_ARQUIVO, "
                 + "A.NR_NUMERO, A.DS_DESCRICAO, A.DS_REGISTRO, A.DT_DATA_ANEXACAO, A.ID_IMAGEM, I.NM_NOME, "
                 + "I.TIPO_MIME, I.DS_IMAGEM "
+                + "(SELECT DS_CAMINHO_IMAGEM FROM CONFIGURACAO) AS CAMINHO "
                 + "from ARQUIVO_ANEXO_INSPECAO A, IMAGEM I, INSPECAO INS "
                 + "where A.ID_IMAGEM = I.ID_IMAGEM "
                 + "and P.ID_INSPECAO = INS.ID_INSPECAO "
@@ -122,7 +125,7 @@ public class ArquivoAnexoDAO {
         if (rs.next()) {
             arquivoAnexo = new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO_INSPECAO"), new Ponte(rs.getInt("ID_PONTE")), rs.getString("DS_ARQUIVO"), rs.getString("DS_TIPO_ARQUIVO"), 
                     rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO"), 
-                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"), rs.getBytes("DS_IMAGEM")));
+                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"), rs.getBytes("DS_IMAGEM"), rs.getString("CAMINHO")));
         }
 
         conexao.closeConnection();

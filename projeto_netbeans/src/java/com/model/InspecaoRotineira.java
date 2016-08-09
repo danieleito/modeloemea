@@ -18,25 +18,64 @@ public class InspecaoRotineira implements Serializable {
      * identificador do InspecaoRotineira no Banco de Dados
      */
     private Inspecao inspecao;
+    /**
+     * identificador da identificação da obra
+     */
     private IdentificacaoObraSgo identificacaoObraSgo;
+    /**
+     * identificador da condição
+     */
     private CondicaoSgo condicaoSgo;
 //    private DanoElementoSgo danoElementoSgo;
 //    private InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo;
+    /**
+     * identificador do laudo especializado
+     */
     private LaudoEspecializadoSgo laudoEspecializadoSgo;
+    /**
+     * identificador do monitoramento
+     */
     private MonitoramentoSgo monitoramentoSgo;
+    /**
+     * relatório
+     */
     private String relatorio;
+    /**
+     * lista de danos elementos
+     */
     private ArrayList<DanoElementoSgo> danosElementosSgo;
+    /**
+     * lista de insuficiências estruturais elementos
+     */
     private ArrayList<InsuficienciaEstruturalElementoSgo> insuficienciasEstruturaisElementosSgo;
 
+
+    /**
+     * Constructor padrão.
+     */
     public InspecaoRotineira() {
         danosElementosSgo = new ArrayList<>();
         insuficienciasEstruturaisElementosSgo = new ArrayList<>();
     }
 
+    /**
+     * Constructor apenas com id
+     * @param id 
+     */
     public InspecaoRotineira(int id) {
         this.id = id;
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param inspecao
+     * @param identificacaoObraSgo
+     * @param condicaoSgo
+     * @param laudoEspecializadoSgo
+     * @param monitoramentoSgo
+     * @param relatorio 
+     */
     public InspecaoRotineira(int id, Inspecao inspecao, IdentificacaoObraSgo identificacaoObraSgo, CondicaoSgo condicaoSgo, LaudoEspecializadoSgo laudoEspecializadoSgo, MonitoramentoSgo monitoramentoSgo, String relatorio) {
         this.id = id;
         this.inspecao = inspecao;

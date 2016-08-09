@@ -13,7 +13,7 @@
                 <h:form id="form">
                     <p:dataTable var="manif" value="#{betaManifestacoes.manifestacoes}" paginator="true" rows="15" >
                         <p:column headerText="Manifestação">
-                            <h:outputText value="#{manif.manifestacao}"/>
+                            <h:outputText value="#{manif.descricao}"/>
                         </p:column>
                         
                         <p:column headerText="Beta">

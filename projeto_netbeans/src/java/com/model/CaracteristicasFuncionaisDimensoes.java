@@ -61,6 +61,9 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
      */
     private String descricaoVaos;
 
+    /**
+     * Constructor padrão.
+     */
     public CaracteristicasFuncionaisDimensoes() {
     }
 

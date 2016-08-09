@@ -21,9 +21,17 @@ public class CadastroAspectoEspecial implements Serializable {
      */
     private AspectoEspecial aspectoEspecial;
 
+    /**
+     * Constructor padrão.
+     */
     public CadastroAspectoEspecial() {
     }
 
+    /**
+     * 
+     * @param id
+     * @param aspectoEspecial 
+     */
     public CadastroAspectoEspecial(int id, AspectoEspecial aspectoEspecial) {
         this.id = id;
         this.aspectoEspecial = aspectoEspecial;
@@ -33,6 +41,7 @@ public class CadastroAspectoEspecial implements Serializable {
         this.aspectoEspecial = aspectoEspecial;
     }
 
+    
     public int getId() {
         return id;
     }

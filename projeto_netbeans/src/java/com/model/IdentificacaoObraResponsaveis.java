@@ -16,20 +16,68 @@ public class IdentificacaoObraResponsaveis implements Serializable {
      * identificador do IdentificacaoObraResponsaveis no Banco de Dados
      */
     private int id;
+    /**
+     * identificador da unidade local
+     */
     private UnidadeLocal unidadeLocal;
+    /**
+     * identifidor do tipo administração 
+     */
     private TipoAdministracao tipoAdministracao;
+    /**
+     * administrador
+     */
     private String administrador;
+    /**
+     * projetista origem
+     */
     private String projetistaOrigem;
+    /**
+     * projetista
+     */
     private String projetistaProjetista;
+    /**
+     * construtor origem
+     */
     private String construtorOrigem;
+    /**
+     * construtor
+     */
     private String construtorConstrutor;
+    /**
+     * localização do projeto
+     */
     private String localizacaoProjeto;
+    /**
+     * localização documentos de construção
+     */
     private String localizacaoDocumentosConstrucao;
+    /**
+     * localização de documentos diversos
+     */
     private String localizacaoDocumentosDiversos;
 
+
+    /**
+     * Constructor padrão.
+     */
     public IdentificacaoObraResponsaveis() {
     }
 
+    /**
+     * Constructor completo
+     * @param id
+     * @param unidadeLocal
+     * @param tipoAdministracao
+     * @param administrador
+     * @param projetistaOrigem
+     * @param projetistaProjetista
+     * @param construtorOrigem
+     * @param construtorConstrutor
+     * @param localizacaoProjeto
+     * @param localizacaoDocumentosConstrucao
+     * @param localizacaoDocumentosDiversos 
+     */
     public IdentificacaoObraResponsaveis(int id, UnidadeLocal unidadeLocal, TipoAdministracao tipoAdministracao, String administrador, String projetistaOrigem, String projetistaProjetista, String construtorOrigem, String construtorConstrutor, String localizacaoProjeto, String localizacaoDocumentosConstrucao, String localizacaoDocumentosDiversos) {
         this.id = id;
         this.unidadeLocal = unidadeLocal;
