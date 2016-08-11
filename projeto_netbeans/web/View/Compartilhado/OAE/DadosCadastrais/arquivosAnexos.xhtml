@@ -15,7 +15,7 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <h:panelGrid columns="2" cellpadding="10">
-            <p:dataTable var="arq" value="#{ponteBean.model.arquivosAnexos}" paginator="true" rows="15" >
+            <p:dataTable var="arq" value="#{ponteBean.model.arquivosAnexosCadastro}" paginator="true" rows="15" >
                 <p:column headerText="Arquivo" style="text-align: center" >
                     <h:outputText value="#{arq.arquivo}" />
                 </p:column>
@@ -44,8 +44,9 @@ and open the template in the editor.
 
                 <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
                     <p:lightBox styleClass="imagebox" id="lighbox1">
-                        <h:outputLink value="#{arq.imagem.imagem}" title="#{arq.imagem.nome}">
-                            <h:graphicImage name="#{arq.imagem.nome}" value="#{arq.imagem.imagem}" style="height: 77px; width: 100px" />  
+                        <h:outputLink value="#{arq.arquivo}" title="#{arq.imagem.nome}">
+                            <h:graphicImage name="\\PC01\03. Pastas pessoais\Daniele\Fotos/#{arq.imagem.nome}" alt="Image Description for #{image}" 
+                                            value="\\PC01\03. Pastas pessoais\Daniele\Fotos/#{arq.imagem.nome}" title="#{image}" style="height: 77px; width: 100px" />
                         </h:outputLink>
                     </p:lightBox>
                 </p:column>

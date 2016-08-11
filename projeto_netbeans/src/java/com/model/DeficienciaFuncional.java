@@ -38,10 +38,10 @@ public class DeficienciaFuncional implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param codigo
-     * @param descricao
-     * @param unidadeMedida 
+     * @param id {@link #id}
+     * @param codigo {@link #codigo}
+     * @param descricao {@link #descricao}
+     * @param unidadeMedida {@link #unidadeMedida}
      */
     public DeficienciaFuncional(int id, String codigo, String descricao, String unidadeMedida) {
         this.id = id;
@@ -50,6 +50,12 @@ public class DeficienciaFuncional implements Serializable {
         this.unidadeMedida = unidadeMedida;
     }
 
+    /**
+     * Constructor sem id
+     * @param codigo {@link #codigo}
+     * @param descricao {@link #descricao}
+     * @param unidadeMedida {@link #unidadeMedida}
+     */
     public DeficienciaFuncional(String codigo, String descricao, String unidadeMedida) {
         this.codigo = codigo;
         this.descricao = descricao;

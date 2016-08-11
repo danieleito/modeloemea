@@ -50,13 +50,13 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param inspecaoRotineira
-     * @param elemento
-     * @param nota
-     * @param insuficiencia
-     * @param causaProvavel
-     * @param comentarios 
+     * @param id {@link #id}
+     * @param inspecaoRotineira {@link #inspecaoRotineira}
+     * @param elemento {@link #elemento}
+     * @param nota {@link #nota}
+     * @param insuficiencia {@link #insuficiencia}
+     * @param causaProvavel {@link #causaProvavel}
+     * @param comentarios {@link #comentarios}
      */
     public InsuficienciaEstruturalElementoSgo(int id, InspecaoRotineira inspecaoRotineira, String elemento, String nota, String insuficiencia, String causaProvavel, String comentarios) {
         this.id = id;
@@ -68,6 +68,15 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
         this.comentarios = comentarios;
     }
 
+    /**
+     * Constructor sem id
+     * @param inspecaoRotineira {@link #inspecaoRotineira}
+     * @param elemento {@link #elemento}
+     * @param nota {@link #nota}
+     * @param insuficiencia {@link #insuficiencia}
+     * @param causaProvavel {@link #causaProvavel}
+     * @param comentarios {@link #comentarios}
+     */
     public InsuficienciaEstruturalElementoSgo(InspecaoRotineira inspecaoRotineira, String elemento, String nota, String insuficiencia, String causaProvavel, String comentarios) {
         this.inspecaoRotineira = inspecaoRotineira;
         this.elemento = elemento;

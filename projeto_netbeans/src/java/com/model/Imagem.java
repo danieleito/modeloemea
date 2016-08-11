@@ -27,8 +27,10 @@ public class Imagem implements Serializable {
     /**
      * 
      */
-    private byte[] imagem;
-    
+    //private byte[] imagem;
+    /**
+     * 
+     */
     private String caminho;
 
 
@@ -40,24 +42,29 @@ public class Imagem implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param nome
-     * @param tipoMime
-     * @param imagem 
-     * @param caminho 
+     * @param id {@link #id}
+     * @param nome {@link #nome}
+     * @param tipoMime {@link #tipoMime}
+     * @param caminho {@link #caminho}
      */
-    public Imagem(int id, String nome, String tipoMime, byte[] imagem, String caminho) {
+    public Imagem(int id, String nome, String tipoMime, String caminho) {
         this.id = id;
         this.nome = nome;
         this.tipoMime = tipoMime;
-        this.imagem = imagem;
+        //this.imagem = imagem;
         this.caminho = caminho;
     }
 
-    public Imagem(String nome, String tipoMime, byte[] imagem, String caminho) {
+    /**
+     * Constructor sem id
+     * @param nome {@link #nome}
+     * @param tipoMime {@link #tipoMime}
+     * @param caminho {@link #caminho}
+     */
+    public Imagem(String nome, String tipoMime, String caminho) {
         this.nome = nome;
         this.tipoMime = tipoMime;
-        this.imagem = imagem;
+        //this.imagem = imagem;
         this.caminho = caminho;
     }
 
@@ -85,13 +92,13 @@ public class Imagem implements Serializable {
         this.tipoMime = tipoMime;
     }
 
-    public byte[] getImagem() {
-        return imagem;
-    }
-
-    public void setImagem(byte[] imagem) {
-        this.imagem = imagem;
-    }
+//    public byte[] getImagem() {
+//        return imagem;
+//    }
+//
+//    public void setImagem(byte[] imagem) {
+//        this.imagem = imagem;
+//    }
 
     public String getCaminho() {
         return caminho;

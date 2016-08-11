@@ -42,11 +42,11 @@ public class CondicaoSgo implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param condicaoEstabilididade
-     * @param condicaoConservacao
-     * @param observacoes
-     * @param notaTecnica 
+     * @param id {@link #id}
+     * @param condicaoEstabilididade {@link #condicaoEstabilididade}
+     * @param condicaoConservacao {@link #condicaoConservacao}
+     * @param observacoes {@link #observacoes}
+     * @param notaTecnica {@link #notaTecnica}
      */
     public CondicaoSgo(int id, String condicaoEstabilididade, String condicaoConservacao, String observacoes, String notaTecnica) {
         this.id = id;
@@ -56,6 +56,13 @@ public class CondicaoSgo implements Serializable {
         this.notaTecnica = notaTecnica;
     }
 
+    /**
+     * Constructor sem id
+     * @param condicaoEstabilididade {@link #condicaoEstabilididade}
+     * @param condicaoConservacao {@link #condicaoConservacao}
+     * @param observacoes {@link #observacoes}
+     * @param notaTecnica {@link #notaTecnica}
+     */
     public CondicaoSgo(String condicaoEstabilididade, String condicaoConservacao, String observacoes, String notaTecnica) {
         this.condicaoEstabilididade = condicaoEstabilididade;
         this.condicaoConservacao = condicaoConservacao;

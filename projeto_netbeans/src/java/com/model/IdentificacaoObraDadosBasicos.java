@@ -70,49 +70,68 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param codigo
-     * @param codigoIntegracao
-     * @param status
-     * @param identificacao
-     * @param idNaturezaTransposicao
-     * @param idTipoEstrutura
-     * @param idSistemaConstrutivo
-     * @param comprimento
-     * @param largura
-     * @param idTremTipo
-     * @param anoConstrucao 
+     * @param id {@link #id}
+     * @param codigo {@link #codigo}
+     * @param codigoIntegracao {@link #codigoIntegracao}
+     * @param status {@link #status}
+     * @param identificacao {@link #identificacao}
+     * @param naturezaTransposicao {@link #naturezaTransposicao}
+     * @param tipoEstrutura {@link #tipoEstrutura}
+     * @param sistemaConstrutivo {@link #sistemaConstrutivo}
+     * @param comprimento {@link #comprimento}
+     * @param largura {@link #largura}
+     * @param tremTipo {@link #tremTipo}
+     * @param anoConstrucao {@link #anoConstrucao}
      */
-    public IdentificacaoObraDadosBasicos(int id, String codigo, String codigoIntegracao, String status, String identificacao, NaturezaTransposicao idNaturezaTransposicao, TipoEstrutura idTipoEstrutura, SistemaConstrutivo idSistemaConstrutivo, String comprimento, String largura, TremTipo idTremTipo, String anoConstrucao) {
+    public IdentificacaoObraDadosBasicos(int id, String codigo, String codigoIntegracao, String status, String identificacao, NaturezaTransposicao naturezaTransposicao, TipoEstrutura tipoEstrutura, SistemaConstrutivo sistemaConstrutivo, String comprimento, String largura, TremTipo tremTipo, String anoConstrucao) {
         this.id = id;
         this.codigo = codigo;
         this.codigoIntegracao = codigoIntegracao;
         this.status = status;
         this.identificacao = identificacao;
-        this.naturezaTransposicao = idNaturezaTransposicao;
-        this.tipoEstrutura = idTipoEstrutura;
-        this.sistemaConstrutivo = idSistemaConstrutivo;
+        this.naturezaTransposicao = naturezaTransposicao;
+        this.tipoEstrutura = tipoEstrutura;
+        this.sistemaConstrutivo = sistemaConstrutivo;
         this.comprimento = comprimento;
         this.largura = largura;
-        this.tremTipo = idTremTipo;
+        this.tremTipo = tremTipo;
         this.anoConstrucao = anoConstrucao;
     }
 
-    public IdentificacaoObraDadosBasicos(String codigo, String codigoIntegracao, String status, String identificacao, NaturezaTransposicao idNaturezaTransposicao, TipoEstrutura idTipoEstrutura, SistemaConstrutivo idSistemaConstrutivo, String comprimento, String largura, TremTipo idTremTipo, String anoConstrucao) {
+    /**
+     * Constructor sem id
+     * @param codigo {@link #codigo}
+     * @param codigoIntegracao {@link #codigoIntegracao}
+     * @param status {@link #status}
+     * @param identificacao {@link #identificacao}
+     * @param naturezaTransposicao {@link #naturezaTransposicao}
+     * @param tipoEstrutura {@link #tipoEstrutura}
+     * @param sistemaConstrutivo {@link #sistemaConstrutivo}
+     * @param comprimento {@link #comprimento}
+     * @param largura {@link #largura}
+     * @param tremTipo {@link #tremTipo}
+     * @param anoConstrucao {@link #anoConstrucao}
+     */
+    public IdentificacaoObraDadosBasicos(String codigo, String codigoIntegracao, String status, String identificacao, NaturezaTransposicao naturezaTransposicao, TipoEstrutura tipoEstrutura, SistemaConstrutivo sistemaConstrutivo, String comprimento, String largura, TremTipo tremTipo, String anoConstrucao) {
         this.codigo = codigo;
         this.codigoIntegracao = codigoIntegracao;
         this.status = status;
         this.identificacao = identificacao;
-        this.naturezaTransposicao = idNaturezaTransposicao;
-        this.tipoEstrutura = idTipoEstrutura;
-        this.sistemaConstrutivo = idSistemaConstrutivo;
+        this.naturezaTransposicao = naturezaTransposicao;
+        this.tipoEstrutura = tipoEstrutura;
+        this.sistemaConstrutivo = sistemaConstrutivo;
         this.comprimento = comprimento;
         this.largura = largura;
-        this.tremTipo = idTremTipo;
+        this.tremTipo = tremTipo;
         this.anoConstrucao = anoConstrucao;
     }
 
-//    Constructor para inspecao rotineira
+    /**
+     * Constructor para inspecao rotineira
+     * @param id {@link #id}
+     * @param codigo {@link #codigo}
+     * @param identificacao {@link #identificacao}
+     */
     public IdentificacaoObraDadosBasicos(int id, String codigo, String identificacao) {
         this.id = id;
         this.codigo = codigo;

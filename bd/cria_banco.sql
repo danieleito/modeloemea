@@ -500,18 +500,18 @@ create table INSPECAO
 
 create table CONFIGURACAO
 	(
-		ID_CONFIGURACAO     int              not null,
-		DS_CAMINHO_IMAGEM	varchar(max)     not null
-		CONSTRAINT          pk_configuracao  PRIMARY KEY(ID_CONFIGURACAO)
+		ID_CONFIGURACAO			int						not null,
+		DS_CAMINHO_IMAGEM		varchar(max)			not null
+		CONSTRAINT				pk_configuracao			PRIMARY KEY(ID_CONFIGURACAO)
 	);
 
 create table IMAGEM
    (
-	   ID_IMAGEM		int				not null identity(1,1), 
-	   NM_NOME			varchar(100)	not null,
-	   TIPO_MIME		varchar(20)		not null,
-	   DS_IMAGEM		varbinary(max),
-	   CONSTRAINT		pk_imagem		PRIMARY KEY(ID_IMAGEM)
+	   ID_IMAGEM				int						not null identity(1,1), 
+	   NM_NOME					varchar(100)			not null,
+	   TIPO_MIME				varchar(20)				not null,
+	   --DS_IMAGEM				varbinary(max),
+	   CONSTRAINT				pk_imagem				PRIMARY KEY(ID_IMAGEM)
    );
 
 --Arquivos anexos cadastro

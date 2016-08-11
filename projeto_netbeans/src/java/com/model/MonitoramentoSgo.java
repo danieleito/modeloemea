@@ -50,13 +50,13 @@ public class MonitoramentoSgo implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param periodo
-     * @param tipoMonitoramento
-     * @param executor
-     * @param custo
-     * @param objeto
-     * @param tecnicas 
+     * @param id {@link #id}
+     * @param periodo {@link #periodo}
+     * @param tipoMonitoramento {@link #tipoMonitoramento}
+     * @param executor {@link #executor}
+     * @param custo {@link #custo}
+     * @param objeto {@link #objeto}
+     * @param tecnicas {@link #tecnicas}
      */
     public MonitoramentoSgo(int id, String periodo, String tipoMonitoramento, String executor, String custo, String objeto, String tecnicas) {
         this.id = id;
@@ -68,6 +68,15 @@ public class MonitoramentoSgo implements Serializable {
         this.tecnicas = tecnicas;
     }
 
+    /**
+     * Constructor sem id
+     * @param periodo {@link #periodo}
+     * @param tipoMonitoramento {@link #tipoMonitoramento}
+     * @param executor {@link #executor}
+     * @param custo {@link #custo}
+     * @param objeto {@link #objeto}
+     * @param tecnicas {@link #tecnicas}
+     */
     public MonitoramentoSgo(String periodo, String tipoMonitoramento, String executor, String custo, String objeto, String tecnicas) {
         this.periodo = periodo;
         this.tipoMonitoramento = tipoMonitoramento;

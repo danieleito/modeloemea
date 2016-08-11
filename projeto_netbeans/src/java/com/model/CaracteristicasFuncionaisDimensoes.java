@@ -67,6 +67,21 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
     public CaracteristicasFuncionaisDimensoes() {
     }
 
+    /**
+     * Constructor completo
+     * @param id {@link #id}
+     * @param numeroFaixas {@link #numeroFaixas}
+     * @param larguraFaixa {@link #larguraFaixa}
+     * @param acostamentoDireito {@link #acostamentoDireito}
+     * @param acostamentoEsquerdo {@link #acostamentoEsquerdo}
+     * @param calcadaDireita {@link #calcadaDireita}
+     * @param calcadaEsquerda {@link #calcadaEsquerda}
+     * @param larguraTotalPista {@link #larguraTotalPista}
+     * @param gabaritoHorizontal {@link #gabaritoHorizontal}
+     * @param gabaritoVertical {@link #gabaritoVertical}
+     * @param numeroVaos {@link #numeroVaos}
+     * @param descricaoVaos {@link #descricaoVaos}
+     */
     public CaracteristicasFuncionaisDimensoes(int id, String numeroFaixas, String larguraFaixa, String acostamentoDireito, String acostamentoEsquerdo, String calcadaDireita, String calcadaEsquerda, String larguraTotalPista, String gabaritoHorizontal, String gabaritoVertical, String numeroVaos, String descricaoVaos) {
         this.id = id;
         this.numeroFaixas = numeroFaixas;
@@ -82,6 +97,20 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
         this.descricaoVaos = descricaoVaos;
     }
 
+    /**
+     * Constructor sem id
+     * @param numeroFaixas {@link #numeroFaixas}
+     * @param larguraFaixa {@link #larguraFaixa}
+     * @param acostamentoDireito {@link #acostamentoDireito}
+     * @param acostamentoEsquerdo {@link #acostamentoEsquerdo}
+     * @param calcadaDireita {@link #calcadaDireita}
+     * @param calcadaEsquerda {@link #calcadaEsquerda}
+     * @param larguraTotalPista {@link #larguraTotalPista}
+     * @param gabaritoHorizontal {@link #gabaritoHorizontal}
+     * @param gabaritoVertical {@link #gabaritoVertical}
+     * @param numeroVaos {@link #numeroVaos}
+     * @param descricaoVaos {@link #descricaoVaos}
+     */
     public CaracteristicasFuncionaisDimensoes(String numeroFaixas, String larguraFaixa, String acostamentoDireito, String acostamentoEsquerdo, String calcadaDireita, String calcadaEsquerda, String larguraTotalPista, String gabaritoHorizontal, String gabaritoVertical, String numeroVaos, String descricaoVaos) {
         this.numeroFaixas = numeroFaixas;
         this.larguraFaixa = larguraFaixa;

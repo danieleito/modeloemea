@@ -34,9 +34,9 @@ public class Manifestacao implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param manifestacao
-     * @param beta 
+     * @param id {@link #id}
+     * @param manifestacao {@link #manifestacao}
+     * @param beta {@link #beta}
      */
     public Manifestacao(int id, String manifestacao, String beta) {
         this.id = id;
@@ -44,6 +44,11 @@ public class Manifestacao implements Serializable {
         this.beta = beta;
     }
 
+    /**
+     * Constructor sem id
+     * @param manifestacao {@link #manifestacao}
+     * @param beta {@link #beta}
+     */
     public Manifestacao(String manifestacao, String beta) {
         this.descricao = manifestacao;
         this.beta = beta;

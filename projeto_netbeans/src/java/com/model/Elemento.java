@@ -35,9 +35,9 @@ public class Elemento implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param descricao
-     * @param capa 
+     * @param id {@link #id}
+     * @param descricao {@link #descricao}
+     * @param capa {@link #capa}
      */
     public Elemento(int id, String descricao, String capa) {
         this.id = id;
@@ -45,6 +45,11 @@ public class Elemento implements Serializable {
         this.capa = capa;
     }
 
+    /**
+     * Constructor sem id
+     * @param descricao {@link #descricao}
+     * @param capa {@link #capa}
+     */
     public Elemento(String descricao, String capa) {
         this.descricao = descricao;
         this.capa = capa;

@@ -47,12 +47,12 @@ public class ManifestacaoUfpr implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param elementoUfpr
-     * @param codigo
-     * @param descricao
-     * @param unidade
-     * @param beta 
+     * @param id {@link #id}
+     * @param elementoUfpr {@link #elementoUfpr}
+     * @param codigo {@link #codigo}
+     * @param descricao {@link #descricao}
+     * @param unidade {@link #unidade}
+     * @param beta {@link #beta}
      */
     public ManifestacaoUfpr(int id, ElementoUfpr elementoUfpr, String codigo, String descricao, String unidade, String beta) {
         this.id = id;
@@ -63,6 +63,14 @@ public class ManifestacaoUfpr implements Serializable {
         this.beta = beta;
     }
 
+    /**
+     * Constructor sem id
+     * @param elementoUfpr {@link #elementoUfpr}
+     * @param codigo {@link #codigo}
+     * @param descricao {@link #descricao}
+     * @param unidade {@link #unidade}
+     * @param beta {@link #beta}
+     */
     public ManifestacaoUfpr(ElementoUfpr elementoUfpr, String codigo, String descricao, String unidade, String beta) {
         this.elementoUfpr = elementoUfpr;
         this.codigo = codigo;

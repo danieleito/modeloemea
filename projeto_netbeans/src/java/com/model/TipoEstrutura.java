@@ -30,15 +30,18 @@ public class TipoEstrutura implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param descricao 
+     * @param id {@link #id}
+     * @param descricao {@link #descricao}
      */
     public TipoEstrutura(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
 
-    
+    /**
+     * Constructor sem id
+     * @param descricao {@link #descricao}
+     */
     public TipoEstrutura(String descricao) {
         this.descricao = descricao;
     }

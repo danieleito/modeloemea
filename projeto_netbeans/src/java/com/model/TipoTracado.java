@@ -30,14 +30,18 @@ public class TipoTracado implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param descricao 
+     * @param id {@link #id}
+     * @param descricao {@link #descricao}
      */
     public TipoTracado(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
 
+    /**
+     * Constructor sem id
+     * @param descricao {@link #descricao}
+     */
     public TipoTracado(String descricao) {
         this.descricao = descricao;
     }

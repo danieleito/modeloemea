@@ -77,7 +77,11 @@ public class Ponte implements Serializable {
     /**
      * lista arquivos anexos
      */
-    private ArrayList<ArquivoAnexo> arquivosAnexos;
+    private ArrayList<ArquivoAnexo> arquivosAnexosCadastro;
+    /**
+     * lista arquivos anexos
+     */
+    private ArrayList<ArquivoAnexo> arquivosAnexosInspecao;
     /**
      * lista inspeção
      */
@@ -107,13 +111,14 @@ public class Ponte implements Serializable {
         observacao = new Observacao();
         substituicao = new Substituicao();
         cadastroManifestacao = new CadastroManifestacao();
-        arquivosAnexos = new ArrayList<>();
+        arquivosAnexosCadastro = new ArrayList<>();
+        arquivosAnexosInspecao = new ArrayList<>();
         inspecoes = new ArrayList<>();
     }
 
     /**
      * Constructor apenas com id
-     * @param id 
+     * @param id {@link #id}
      */
     public Ponte(int id) {
         this.id = id;
@@ -121,18 +126,18 @@ public class Ponte implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param indicePerformanceRelativo
-     * @param identificacaoObraDadosBasicos
-     * @param identificacaoObraLocalizacao
-     * @param identificacaoObraResponsaveis
-     * @param identificacaoObraInspecao
-     * @param caracteristicasFuncionaisCaracteristicas
-     * @param caracteristicasFuncionaisDimensoes
-     * @param rotasAlternativas
-     * @param observacao
-     * @param substituicao
-     * @param cadastroManifestacao 
+     * @param id {@link #id}
+     * @param indicePerformanceRelativo {@link #indicePerformanceRelativo}
+     * @param identificacaoObraDadosBasicos {@link #identificacaoObraDadosBasicos}
+     * @param identificacaoObraLocalizacao {@link #identificacaoObraLocalizacao}
+     * @param identificacaoObraResponsaveis {@link #identificacaoObraResponsaveis}
+     * @param identificacaoObraInspecao {@link #identificacaoObraInspecao}
+     * @param caracteristicasFuncionaisCaracteristicas {@link #caracteristicasFuncionaisCaracteristicas}
+     * @param caracteristicasFuncionaisDimensoes {@link #caracteristicasFuncionaisDimensoes}
+     * @param rotasAlternativas {@link #rotasAlternativas}
+     * @param observacao {@link #observacao}
+     * @param substituicao {@link #substituicao}
+     * @param cadastroManifestacao {@link #cadastroManifestacao}
      */
     public Ponte(int id, String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, 
             IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis, 
@@ -153,6 +158,20 @@ public class Ponte implements Serializable {
         this.cadastroManifestacao = cadastroManifestacao;
     }
 
+    /**
+     * Constructor sem id
+     * @param indicePerformanceRelativo {@link #indicePerformanceRelativo}
+     * @param identificacaoObraDadosBasicos {@link #identificacaoObraDadosBasicos}
+     * @param identificacaoObraLocalizacao {@link #identificacaoObraLocalizacao}
+     * @param identificacaoObraResponsaveis {@link #identificacaoObraResponsaveis}
+     * @param identificacaoObraInspecao {@link #identificacaoObraInspecao}
+     * @param caracteristicasFuncionaisCaracteristicas {@link #caracteristicasFuncionaisCaracteristicas}
+     * @param caracteristicasFuncionaisDimensoes {@link #caracteristicasFuncionaisDimensoes}
+     * @param rotasAlternativas {@link #rotasAlternativas}
+     * @param observacao {@link #observacao}
+     * @param substituicao {@link #substituicao}
+     * @param cadastroManifestacao {@link #cadastroManifestacao}
+     */
     public Ponte(String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, IdentificacaoObraLocalizacao identificacaoObraLocalizacao, 
             IdentificacaoObraResponsaveis identificacaoObraResponsaveis, IdentificacaoObraInspecao identificacaoObraInspecao, 
             CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, 
@@ -170,6 +189,13 @@ public class Ponte implements Serializable {
         this.cadastroManifestacao = cadastroManifestacao;
     }
 
+    /**
+     * Constructor apenas com id, identificacaoObraDadosBasicos, identificacaoObraLocalizacao, identificacaoObraResponsaveis
+     * @param id {@link #id}
+     * @param identificacaoObraDadosBasicos {@link #identificacaoObraDadosBasicos}
+     * @param identificacaoObraLocalizacao {@link #identificacaoObraLocalizacao}
+     * @param identificacaoObraResponsaveis {@link #identificacaoObraResponsaveis}
+     */
 //    constructor para inspecao rotineira
     public Ponte(int id, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis) {
         this.id = id;
@@ -282,13 +308,22 @@ public class Ponte implements Serializable {
         this.elementosComponentes = elementosComponentes;
     }
 
-    public ArrayList<ArquivoAnexo> getArquivosAnexos() {
-        return arquivosAnexos;
+    public ArrayList<ArquivoAnexo> getArquivosAnexosCadastro() {
+        return arquivosAnexosCadastro;
     }
 
-    public void setArquivosAnexos(ArrayList<ArquivoAnexo> arquivosAnexos) {
-        this.arquivosAnexos = arquivosAnexos;
+    public void setArquivosAnexosCadastro(ArrayList<ArquivoAnexo> arquivosAnexosCadastro) {
+        this.arquivosAnexosCadastro = arquivosAnexosCadastro;
     }
+
+    public ArrayList<ArquivoAnexo> getArquivosAnexosInspecao() {
+        return arquivosAnexosInspecao;
+    }
+
+    public void setArquivosAnexosInspecao(ArrayList<ArquivoAnexo> arquivosAnexosInspecao) {
+        this.arquivosAnexosInspecao = arquivosAnexosInspecao;
+    }
+    
 
     public ArrayList<Inspecao> getInspecoes() {
         return inspecoes;

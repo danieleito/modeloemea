@@ -34,9 +34,9 @@ public class Uf implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param estado
-     * @param uf 
+     * @param id {@link #id}
+     * @param estado {@link #estado}
+     * @param uf {@link #uf}
      */
     public Uf(int id, String estado, String uf) {
         this.id = id;
@@ -44,6 +44,11 @@ public class Uf implements Serializable {
         this.uf = uf;
     }
 
+    /**
+     * Constructor sem id
+     * @param estado {@link #estado}
+     * @param uf {@link #uf}
+     */
     public Uf(String estado, String uf) {
         this.estado = estado;
         this.uf = uf;

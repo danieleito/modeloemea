@@ -58,15 +58,15 @@ public class DanoElementoSgo implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param inspecaoRotineira
-     * @param elemento
-     * @param nota
-     * @param dano
-     * @param unidade
-     * @param quantidade
-     * @param extensaoRelativa
-     * @param localizacao 
+     * @param id {@link #id}
+     * @param inspecaoRotineira {@link #inspecaoRotineira}
+     * @param elemento {@link #elemento}
+     * @param nota {@link #nota}
+     * @param dano {@link #dano}
+     * @param unidade {@link #unidade}
+     * @param quantidade {@link #quantidade}
+     * @param extensaoRelativa {@link #extensaoRelativa}
+     * @param localizacao {@link #localizacao}
      */
     public DanoElementoSgo(int id, InspecaoRotineira inspecaoRotineira, String elemento, String nota, String dano, String unidade, String quantidade, String extensaoRelativa, String localizacao) {
         this.id = id;
@@ -80,6 +80,17 @@ public class DanoElementoSgo implements Serializable {
         this.localizacao = localizacao;
     }
 
+    /**
+     * Constructor sem id
+     * @param inspecaoRotineira {@link #inspecaoRotineira}
+     * @param elemento {@link #elemento}
+     * @param nota {@link #nota}
+     * @param dano {@link #dano}
+     * @param unidade {@link #unidade}
+     * @param quantidade {@link #quantidade}
+     * @param extensaoRelativa {@link #extensaoRelativa}
+     * @param localizacao {@link #localizacao}
+     */
     public DanoElementoSgo(InspecaoRotineira inspecaoRotineira, String elemento, String nota, String dano, String unidade, String quantidade, String extensaoRelativa, String localizacao) {
         this.inspecaoRotineira = inspecaoRotineira;
         this.elemento = elemento;

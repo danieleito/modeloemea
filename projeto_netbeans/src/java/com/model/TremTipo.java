@@ -30,14 +30,18 @@ public class TremTipo implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param descricao 
+     * @param id {@link #id}
+     * @param descricao  {@link #descricao}
      */
     public TremTipo(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
 
+    /**
+     * Constructor sem id
+     * @param descricao  {@link #descricao}
+     */
     public TremTipo(String descricao) {
         this.descricao = descricao;
     }

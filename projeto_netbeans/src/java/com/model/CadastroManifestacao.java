@@ -54,13 +54,13 @@ public class CadastroManifestacao implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param numero
-     * @param manifestacaoUfpr
-     * @param foto
-     * @param tamanho
-     * @param extensaoRelativa
-     * @param reparo 
+     * @param id {@link #id}
+     * @param numero {@link #numero}
+     * @param manifestacaoUfpr {@link #manifestacaoUfpr}
+     * @param foto {@link #foto}
+     * @param tamanho {@link #tamanho}
+     * @param extensaoRelativa {@link #extensaoRelativa}
+     * @param reparo {@link #reparo}
      */
     public CadastroManifestacao(int id, Numero numero, ManifestacaoUfpr manifestacaoUfpr, Foto foto, String tamanho, ExtensaoRelativa extensaoRelativa, Reparo reparo) {
         this.id = id;
@@ -72,6 +72,15 @@ public class CadastroManifestacao implements Serializable {
         this.reparo = reparo;
     }
 
+    /**
+     * Constructor sem id
+     * @param numero {@link #numero}
+     * @param manifestacaoUfpr {@link #manifestacaoUfpr}
+     * @param foto {@link #foto}
+     * @param tamanho {@link #tamanho}
+     * @param extensaoRelativa {@link #extensaoRelativa}
+     * @param reparo {@link #reparo}
+     */
     public CadastroManifestacao(Numero numero, ManifestacaoUfpr manifestacaoUfpr, Foto foto, String tamanho, ExtensaoRelativa extensaoRelativa, Reparo reparo) {
         this.numero = numero;
         this.manifestacaoUfpr = manifestacaoUfpr;

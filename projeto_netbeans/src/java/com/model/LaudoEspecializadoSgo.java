@@ -39,10 +39,10 @@ public class LaudoEspecializadoSgo implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param dataLaudo
-     * @param consultor
-     * @param observacoes 
+     * @param id {@link #id}
+     * @param dataLaudo {@link #dataLaudo}
+     * @param consultor {@link #consultor}
+     * @param observacoes {@link #observacoes}
      */
     public LaudoEspecializadoSgo(int id, Date dataLaudo, String consultor, String observacoes) {
         this.id = id;
@@ -51,6 +51,12 @@ public class LaudoEspecializadoSgo implements Serializable {
         this.observacoes = observacoes;
     }
 
+    /**
+     * Constructor sem id
+     * @param dataLaudo {@link #dataLaudo}
+     * @param consultor {@link #consultor}
+     * @param observacoes {@link #observacoes}
+     */
     public LaudoEspecializadoSgo(Date dataLaudo, String consultor, String observacoes) {
         this.dataLaudo = dataLaudo;
         this.consultor = consultor;

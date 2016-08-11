@@ -38,10 +38,10 @@ public class IdentificacaoObraInspecao implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param periodo
-     * @param equipamentoNecessario
-     * @param melhorEpoca 
+     * @param id {@link #id}
+     * @param periodo {@link #periodo}
+     * @param equipamentoNecessario {@link #equipamentoNecessario}
+     * @param melhorEpoca {@link #melhorEpoca}
      */
     public IdentificacaoObraInspecao(int id, String periodo, String equipamentoNecessario, String melhorEpoca) {
         this.id = id;
@@ -50,6 +50,12 @@ public class IdentificacaoObraInspecao implements Serializable {
         this.melhorEpoca = melhorEpoca;
     }
 
+    /**
+     * Constructor sem id
+     * @param periodo {@link #periodo}
+     * @param equipamentoNecessario {@link #equipamentoNecessario}
+     * @param melhorEpoca {@link #melhorEpoca}
+     */
     public IdentificacaoObraInspecao(String periodo, String equipamentoNecessario, String melhorEpoca) {
         this.periodo = periodo;
         this.equipamentoNecessario = equipamentoNecessario;

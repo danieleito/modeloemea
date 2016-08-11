@@ -34,9 +34,9 @@ public class Observacao implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param identificacao
-     * @param descricao 
+     * @param id {@link #id}
+     * @param identificacao {@link #identificacao}
+     * @param descricao {@link #descricao}
      */
     public Observacao(int id, String identificacao, String descricao) {
         this.id = id;
@@ -44,6 +44,11 @@ public class Observacao implements Serializable {
         this.descricao = descricao;
     }
 
+    /**
+     * Constructor sem id
+     * @param identificacao {@link #identificacao}
+     * @param descricao {@link #descricao}
+     */
     public Observacao(String identificacao, String descricao) {
         this.identificacao = identificacao;
         this.descricao = descricao;

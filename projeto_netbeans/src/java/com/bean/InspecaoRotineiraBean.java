@@ -38,7 +38,7 @@ public class InspecaoRotineiraBean extends ComumBean {
             redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
         } catch (SQLException ex) {
             Logger.getLogger(InspecaoBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao carregar inspeçãoy.");
+            adicionarMensagemErro("Erro ao carregar inspeção.");
         }
     }
     

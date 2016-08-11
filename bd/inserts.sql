@@ -436,9 +436,13 @@ insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO) values ('06/08/2
 insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO) values ('07/08/2016', 1, 1, 1);
 
 ---------------------------------------------------------------------------
-insert into IMAGEM values ('Imagem 01', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\Fotos\imagem1.jpg', single_blob) as A))
-insert into IMAGEM values ('Imagem 02', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\Fotos\imagem2.jpg', single_blob) as A))
-insert into IMAGEM values ('Imagem 03', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\Fotos\imagem3.jpg', single_blob) as A))
+--insert into IMAGEM values ('Imagem 01', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\Fotos\imagem1.jpg', single_blob) as A))
+--insert into IMAGEM values ('Imagem 02', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\Fotos\imagem2.jpg', single_blob) as A))
+--insert into IMAGEM values ('Imagem 03', 'image/jpeg', (select * from openrowset(bulk 'C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\Fotos\imagem3.jpg', single_blob) as A))
+
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('imagem01.png', 'image/jpeg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('imagem02.png', 'image/jpeg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('imagem03.png', 'image/jpeg');
 
 ---------------------------------------------------------------------------
 

@@ -30,14 +30,18 @@ public class ExtensaoRelativa implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param descricao 
+     * @param id {@link #id}
+     * @param descricao {@link #descricao}
      */
     public ExtensaoRelativa(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
 
+    /**
+     * Constructor sem id
+     * @param descricao {@link #descricao}
+     */
     public ExtensaoRelativa(String descricao) {
         this.descricao = descricao;
     }

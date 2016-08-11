@@ -60,7 +60,7 @@ public class InspecaoRotineira implements Serializable {
 
     /**
      * Constructor apenas com id
-     * @param id 
+     * @param id {@link #id}
      */
     public InspecaoRotineira(int id) {
         this.id = id;
@@ -68,13 +68,13 @@ public class InspecaoRotineira implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param inspecao
-     * @param identificacaoObraSgo
-     * @param condicaoSgo
-     * @param laudoEspecializadoSgo
-     * @param monitoramentoSgo
-     * @param relatorio 
+     * @param id {@link #id}
+     * @param inspecao {@link #inspecao}
+     * @param identificacaoObraSgo {@link #identificacaoObraSgo}
+     * @param condicaoSgo {@link #condicaoSgo}
+     * @param laudoEspecializadoSgo {@link #laudoEspecializadoSgo}
+     * @param monitoramentoSgo {@link #monitoramentoSgo}
+     * @param relatorio {@link #relatorio}
      */
     public InspecaoRotineira(int id, Inspecao inspecao, IdentificacaoObraSgo identificacaoObraSgo, CondicaoSgo condicaoSgo, LaudoEspecializadoSgo laudoEspecializadoSgo, MonitoramentoSgo monitoramentoSgo, String relatorio) {
         this.id = id;
@@ -86,6 +86,15 @@ public class InspecaoRotineira implements Serializable {
         this.relatorio = relatorio;
     }
 
+    /**
+     * 
+     * @param inspecao {@link #inspecao}
+     * @param identificacaoObraSgo {@link #identificacaoObraSgo}
+     * @param condicaoSgo {@link #condicaoSgo}
+     * @param laudoEspecializadoSgo {@link #laudoEspecializadoSgo}
+     * @param monitoramentoSgo {@link #monitoramentoSgo}
+     * @param relatorio {@link #relatorio}
+     */
     public InspecaoRotineira(Inspecao inspecao, IdentificacaoObraSgo identificacaoObraSgo, CondicaoSgo condicaoSgo, LaudoEspecializadoSgo laudoEspecializadoSgo, MonitoramentoSgo monitoramentoSgo, String relatorio) {
         this.inspecao = inspecao;
         this.identificacaoObraSgo = identificacaoObraSgo;

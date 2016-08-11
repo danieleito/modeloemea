@@ -43,6 +43,15 @@ public class CaracteristicasFuncionaisCaracteristicas implements Serializable {
     public CaracteristicasFuncionaisCaracteristicas() {
     }
 
+    /**
+     * Constructor completo
+     * @param id {@link #id}
+     * @param tipoRegiao {@link #tipoRegiao}
+     * @param tipoTracado {@link #tipoTracado}
+     * @param rampaMaxima {@link #rampaMaxima}
+     * @param raioCurva {@link #raioCurva}
+     * @param vmd {@link #vmd}
+     */
     public CaracteristicasFuncionaisCaracteristicas(int id, TipoRegiao tipoRegiao, TipoTracado tipoTracado, String rampaMaxima, String raioCurva, String vmd) {
         this.id = id;
         this.tipoRegiao = tipoRegiao;
@@ -52,6 +61,14 @@ public class CaracteristicasFuncionaisCaracteristicas implements Serializable {
         this.vmd = vmd;
     }
 
+    /**
+     * Constructor sem id
+     * @param tipoRegiao {@link #tipoRegiao}
+     * @param tipoTracado {@link #tipoTracado}
+     * @param rampaMaxima {@link #rampaMaxima}
+     * @param raioCurva {@link #raioCurva}
+     * @param vmd {@link #vmd}
+     */
     public CaracteristicasFuncionaisCaracteristicas(TipoRegiao tipoRegiao, TipoTracado tipoTracado, String rampaMaxima, String raioCurva, String vmd) {
         this.tipoRegiao = tipoRegiao;
         this.tipoTracado = tipoTracado;

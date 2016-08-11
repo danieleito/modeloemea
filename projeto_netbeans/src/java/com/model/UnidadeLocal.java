@@ -34,9 +34,9 @@ public class UnidadeLocal implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param unidadeLocal
-     * @param superintendenciaRegional 
+     * @param id {@link #id}
+     * @param unidadeLocal {@link #unidadeLocal}
+     * @param superintendenciaRegional {@link #superintendenciaRegional}
      */
     public UnidadeLocal(int id, String unidadeLocal, SuperintendenciaRegional superintendenciaRegional) {
         this.id = id;
@@ -44,6 +44,11 @@ public class UnidadeLocal implements Serializable {
         this.superintendenciaRegional = superintendenciaRegional;
     }
 
+    /**
+     * Constructor sem id
+     * @param unidadeLocal {@link #unidadeLocal}
+     * @param superintendenciaRegional {@link #superintendenciaRegional}
+     */
     public UnidadeLocal(String unidadeLocal, SuperintendenciaRegional superintendenciaRegional) {
         this.descricao = unidadeLocal;
         this.superintendenciaRegional = superintendenciaRegional;

@@ -34,9 +34,9 @@ public class SuperintendenciaRegional implements Serializable {
 
     /**
      * Conatructor completo
-     * @param id
-     * @param descricao
-     * @param uf 
+     * @param id {@link #id}
+     * @param descricao {@link #descricao}
+     * @param uf {@link #uf}
      */
     public SuperintendenciaRegional(int id, String descricao, Uf uf) {
         this.id = id;
@@ -44,6 +44,11 @@ public class SuperintendenciaRegional implements Serializable {
         this.uf = uf;
     }
 
+    /**
+     * Conatructor sem id
+     * @param descricao {@link #descricao}
+     * @param uf {@link #uf}
+     */
     public SuperintendenciaRegional(String descricao, Uf uf) {
         this.descricao = descricao;
         this.uf = uf;

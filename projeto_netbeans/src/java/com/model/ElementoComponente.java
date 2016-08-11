@@ -38,10 +38,10 @@ public class ElementoComponente implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param elementoUfpr
-     * @param detalhe
-     * @param quantidade 
+     * @param id {@link #id}
+     * @param elementoUfpr {@link #elementoUfpr}
+     * @param detalhe {@link #detalhe}
+     * @param quantidade {@link #quantidade}
      */
     public ElementoComponente(int id, ElementoUfpr elementoUfpr, String detalhe, String quantidade) {
         this.id = id;
@@ -50,6 +50,12 @@ public class ElementoComponente implements Serializable {
         this.quantidade = quantidade;
     }
 
+    /**
+     * Constructor sem id
+     * @param elementoUfpr {@link #elementoUfpr}
+     * @param detalhe {@link #detalhe}
+     * @param quantidade {@link #quantidade}
+     */
     public ElementoComponente(ElementoUfpr elementoUfpr, String detalhe, String quantidade) {
         this.elementoUfpr = elementoUfpr;
         this.detalhe = detalhe;

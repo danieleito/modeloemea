@@ -28,15 +28,19 @@ public class CadastroAspectoEspecial implements Serializable {
     }
 
     /**
-     * 
-     * @param id
-     * @param aspectoEspecial 
+     * Constructor completo
+     * @param id {@link #id}
+     * @param aspectoEspecial {@link #aspectoEspecial}
      */
     public CadastroAspectoEspecial(int id, AspectoEspecial aspectoEspecial) {
         this.id = id;
         this.aspectoEspecial = aspectoEspecial;
     }
 
+    /**
+     * Constructor sem id
+     * @param aspectoEspecial {@link #aspectoEspecial}
+     */
     public CadastroAspectoEspecial(AspectoEspecial aspectoEspecial) {
         this.aspectoEspecial = aspectoEspecial;
     }

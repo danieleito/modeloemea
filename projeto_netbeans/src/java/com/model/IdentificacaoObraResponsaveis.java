@@ -66,17 +66,17 @@ public class IdentificacaoObraResponsaveis implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param unidadeLocal
-     * @param tipoAdministracao
-     * @param administrador
-     * @param projetistaOrigem
-     * @param projetistaProjetista
-     * @param construtorOrigem
-     * @param construtorConstrutor
-     * @param localizacaoProjeto
-     * @param localizacaoDocumentosConstrucao
-     * @param localizacaoDocumentosDiversos 
+     * @param id {@link #id}
+     * @param unidadeLocal {@link #unidadeLocal}
+     * @param tipoAdministracao {@link #tipoAdministracao}
+     * @param administrador {@link #administrador}
+     * @param projetistaOrigem {@link #projetistaOrigem}
+     * @param projetistaProjetista {@link #projetistaProjetista}
+     * @param construtorOrigem {@link #construtorOrigem}
+     * @param construtorConstrutor {@link #construtorConstrutor}
+     * @param localizacaoProjeto {@link #localizacaoProjeto}
+     * @param localizacaoDocumentosConstrucao {@link #localizacaoDocumentosConstrucao}
+     * @param localizacaoDocumentosDiversos {@link #localizacaoDocumentosDiversos}
      */
     public IdentificacaoObraResponsaveis(int id, UnidadeLocal unidadeLocal, TipoAdministracao tipoAdministracao, String administrador, String projetistaOrigem, String projetistaProjetista, String construtorOrigem, String construtorConstrutor, String localizacaoProjeto, String localizacaoDocumentosConstrucao, String localizacaoDocumentosDiversos) {
         this.id = id;
@@ -92,6 +92,19 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.localizacaoDocumentosDiversos = localizacaoDocumentosDiversos;
     }
 
+    /**
+     * Constructor sem id
+     * @param unidadeLocal {@link #unidadeLocal}
+     * @param tipoAdministracao {@link #tipoAdministracao}
+     * @param administrador {@link #administrador}
+     * @param projetistaOrigem {@link #projetistaOrigem}
+     * @param projetistaProjetista {@link #projetistaProjetista}
+     * @param construtorOrigem {@link #construtorOrigem}
+     * @param construtorConstrutor {@link #construtorConstrutor}
+     * @param localizacaoProjeto {@link #localizacaoProjeto}
+     * @param localizacaoDocumentosConstrucao {@link #localizacaoDocumentosConstrucao}
+     * @param localizacaoDocumentosDiversos {@link #localizacaoDocumentosDiversos}
+     */
     public IdentificacaoObraResponsaveis(UnidadeLocal unidadeLocal, TipoAdministracao tipoAdministracao, String administrador, String projetistaOrigem, String projetistaProjetista, String construtorOrigem, String construtorConstrutor, String localizacaoProjeto, String localizacaoDocumentosConstrucao, String localizacaoDocumentosDiversos) {
         this.unidadeLocal = unidadeLocal;
         this.tipoAdministracao = tipoAdministracao;
@@ -104,8 +117,13 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.localizacaoDocumentosConstrucao = localizacaoDocumentosConstrucao;
         this.localizacaoDocumentosDiversos = localizacaoDocumentosDiversos;
     }
-
-    //    Constructor para inspecao rotineira
+  
+    /**
+     * Constructor apenas com id e unidade local
+     * @param id {@link #id}
+     * @param unidadeLocal {@link #unidadeLocal}
+     * Constructor para inspecao rotineira
+     */
     public IdentificacaoObraResponsaveis(int id, UnidadeLocal unidadeLocal) {
         this.id = id;
         this.unidadeLocal = unidadeLocal;

@@ -76,19 +76,19 @@ public class IdentificacaoObraLocalizacao implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param uf
-     * @param via
-     * @param localVia
-     * @param cidadeMaisProxima
-     * @param pnvAno
-     * @param pnvVersao
-     * @param pnvCodigo
-     * @param pnvAltitude
-     * @param latitudeGrau
-     * @param latitudeMinuto
-     * @param longitudeGrau
-     * @param longitudeMinuto 
+     * @param id {@link #id}
+     * @param uf {@link #uf}
+     * @param via {@link #via}
+     * @param localVia {@link #localVia}
+     * @param cidadeMaisProxima {@link #cidadeMaisProxima}
+     * @param pnvAno {@link #pnvAno}
+     * @param pnvVersao {@link #pnvVersao}
+     * @param pnvCodigo {@link #pnvCodigo}
+     * @param pnvAltitude {@link #pnvAltitude}
+     * @param latitudeGrau {@link #latitudeGrau}
+     * @param latitudeMinuto {@link #latitudeMinuto}
+     * @param longitudeGrau {@link #longitudeGrau}
+     * @param longitudeMinuto {@link #longitudeMinuto}
      */
     public IdentificacaoObraLocalizacao(int id, Uf uf, Via via, double localVia, String cidadeMaisProxima, String pnvAno, String pnvVersao, String pnvCodigo, String pnvAltitude, String latitudeGrau, String latitudeMinuto, String longitudeGrau, String longitudeMinuto) {
         this.id = id;
@@ -106,6 +106,21 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.longitudeMinuto = longitudeMinuto;
     }
 
+    /**
+     * Constructor sem id
+     * @param uf {@link #uf}
+     * @param via {@link #via}
+     * @param localVia {@link #localVia}
+     * @param cidadeMaisProxima {@link #cidadeMaisProxima}
+     * @param pnvAno {@link #pnvAno}
+     * @param pnvVersao {@link #pnvVersao}
+     * @param pnvCodigo {@link #pnvCodigo}
+     * @param pnvAltitude {@link #pnvAltitude}
+     * @param latitudeGrau {@link #latitudeGrau}
+     * @param latitudeMinuto {@link #latitudeMinuto}
+     * @param longitudeGrau {@link #longitudeGrau}
+     * @param longitudeMinuto {@link #longitudeMinuto}
+     */
     public IdentificacaoObraLocalizacao(Uf uf, Via via, double localVia, String cidadeMaisProxima, String pnvAno, String pnvVersao, String pnvCodigo, String pnvAltitude, String latitudeGrau, String latitudeMinuto, String longitudeGrau, String longitudeMinuto) {
         this.uf = uf;
         this.via = via;
@@ -121,7 +136,12 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.longitudeMinuto = longitudeMinuto;
     }
 
-//    Constructor para inspecao rotineira
+    /**
+     * Constructor para inspecao rotineira
+     * @param id {@link #id}
+     * @param via {@link #via}
+     * @param localVia {@link #localVia}
+     */
     public IdentificacaoObraLocalizacao(int id, Via via, double localVia) {
         this.id = id;
         this.via = via;

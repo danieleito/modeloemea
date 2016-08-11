@@ -45,11 +45,11 @@ public class Inspecao implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param data
-     * @param usuario
-     * @param ponte
-     * @param modelo 
+     * @param id {@link #id}
+     * @param data {@link #data}
+     * @param usuario {@link #usuario}
+     * @param ponte {@link #ponte}
+     * @param modelo {@link #modelo}
      */
     public Inspecao(int id, Date data, Usuario usuario, Ponte ponte, Modelo modelo) {
         this.id = id;
@@ -59,6 +59,13 @@ public class Inspecao implements Serializable {
         this.modelo = modelo;
     }
 
+    /**
+     * Constructor sem id
+     * @param data {@link #data}
+     * @param usuario {@link #usuario}
+     * @param ponte {@link #ponte}
+     * @param modelo {@link #modelo}
+     */
     public Inspecao(Date data, Usuario usuario, Ponte ponte, Modelo modelo) {
         this.data = data;
         this.usuario = usuario;

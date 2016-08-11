@@ -42,11 +42,11 @@ public class Substituicao implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param identificacao
-     * @param existeProjetoIdentificacao
-     * @param custoEstimado
-     * @param descricao 
+     * @param id {@link #id}
+     * @param identificacao {@link #identificacao}
+     * @param existeProjetoIdentificacao {@link #existeProjetoIdentificacao}
+     * @param custoEstimado {@link #custoEstimado}
+     * @param descricao {@link #descricao}
      */
     public Substituicao(int id, String identificacao, String existeProjetoIdentificacao, String custoEstimado, String descricao) {
         this.id = id;
@@ -56,6 +56,13 @@ public class Substituicao implements Serializable {
         this.descricao = descricao;
     }
 
+    /**
+     * Constructor sem id
+     * @param identificacao {@link #identificacao}
+     * @param existeProjetoIdentificacao {@link #existeProjetoIdentificacao}
+     * @param custoEstimado {@link #custoEstimado}
+     * @param descricao {@link #descricao}
+     */
     public Substituicao(String identificacao, String existeProjetoIdentificacao, String custoEstimado, String descricao) {
         this.identificacao = identificacao;
         this.existeProjetoIdentificacao = existeProjetoIdentificacao;

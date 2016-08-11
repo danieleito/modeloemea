@@ -30,14 +30,18 @@ public class Ranking implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param ponte 
+     * @param id {@link #id}
+     * @param ponte {@link #ponte}
      */
     public Ranking(int id, Ponte ponte) {
         this.id = id;
         this.ponte = ponte;
     }
 
+    /**
+     * Constructor sem id
+     * @param ponte {@link #ponte}
+     */
     public Ranking(Ponte ponte) {
         this.ponte = ponte;
     }

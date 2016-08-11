@@ -6,13 +6,56 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <div>aqui</div>
+        <h:panelGrid columns="2" cellpadding="10">
+            <p:dataTable var="arq" value="#{ponteBean.model.arquivosAnexosInspecao}" paginator="true" rows="15" >
+                <p:column headerText="Arquivo" style="text-align: center" >
+                    <h:outputText value="#{arq.arquivo}" />
+                </p:column>
+
+                <p:column headerText="Tipo arquivo" style="text-align: center" >
+                    <h:outputText value="#{arq.tipoArquivo}" />
+                </p:column>
+
+                <p:column headerText="Número" style="width: 150px; text-align: center" >
+                    <h:outputText value="#{arq.numero}" />
+                </p:column>
+
+                <p:column headerText="Descrição" style="width: 150px; text-align: center" >
+                    <h:outputText value="#{arq.descricao}" />
+                </p:column>
+
+                <p:column headerText="Registro" style="text-align: center" >
+                    <h:outputText value="#{arq.registro}" />
+                </p:column>
+
+                <p:column headerText="Data anexação" style="width: 150px; text-align: center" >
+                    <h:outputText value="#{arq.dataAnexada}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
+                    <p:lightBox styleClass="imagebox" id="lighbox1">
+                        <h:outputLink value="#{arq.arquivo}" title="#{arq.imagem.nome}">
+                            <h:graphicImage name="\\PC01\03. Pastas pessoais\Daniele\Fotos/#{arq.imagem.nome}" alt="Image Description for #{image}" 
+                                            value="\\PC01\03. Pastas pessoais\Daniele\Fotos/#{arq.imagem.nome}" title="#{image}" style="height: 77px; width: 100px" />
+                        </h:outputLink>
+                    </p:lightBox>
+                </p:column>
+
+                <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                    <p:commandButton icon="ui-icon-arrowthickstop-1-s" title="Baixar" action="#{arquivoAnexo.baixar()}" />
+                </p:column>
+            </p:dataTable>
+        </h:panelGrid>
     </h:body>
 </html>

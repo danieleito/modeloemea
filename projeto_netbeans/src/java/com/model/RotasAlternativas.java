@@ -38,10 +38,10 @@ public class RotasAlternativas implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param identificacao
-     * @param descricao
-     * @param acrescimoKm 
+     * @param id {@link #id}
+     * @param identificacao {@link #identificacao}
+     * @param descricao {@link #descricao}
+     * @param acrescimoKm {@link #acrescimoKm}
      */
     public RotasAlternativas(int id, String identificacao, String descricao, String acrescimoKm) {
         this.id = id;
@@ -50,6 +50,12 @@ public class RotasAlternativas implements Serializable {
         this.acrescimoKm = acrescimoKm;
     }
 
+    /**
+     * Constructor sem id
+     * @param identificacao {@link #identificacao}
+     * @param descricao {@link #descricao}
+     * @param acrescimoKm {@link #acrescimoKm}
+     */
     public RotasAlternativas(String identificacao, String descricao, String acrescimoKm) {
         this.identificacao = identificacao;
         this.descricao = descricao;

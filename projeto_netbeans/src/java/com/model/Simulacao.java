@@ -45,11 +45,11 @@ public class Simulacao implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param data
-     * @param usuario
-     * @param nomeSimulacao
-     * @param rankings 
+     * @param id {@link #id}
+     * @param data {@link #data}
+     * @param usuario {@link #usuario}
+     * @param nomeSimulacao {@link #nomeSimulacao}
+     * @param rankings {@link #rankings}
      */
     public Simulacao(int id, Date data, Usuario usuario, String nomeSimulacao, ArrayList<Ranking> rankings) {
         this.id = id;
@@ -59,6 +59,13 @@ public class Simulacao implements Serializable {
         this.rankings = rankings;
     }
 
+    /**
+     * Constructor sem id
+     * @param data {@link #data}
+     * @param usuario {@link #usuario}
+     * @param nomeSimulacao {@link #nomeSimulacao}
+     * @param rankings {@link #rankings}
+     */
     public Simulacao(Date data, Usuario usuario, String nomeSimulacao, ArrayList<Ranking> rankings) {
         this.data = data;
         this.usuario = usuario;
@@ -66,6 +73,11 @@ public class Simulacao implements Serializable {
         this.rankings = rankings;
     }
 
+    /**
+     * Constructor apenas com id e lista de rankings
+     * @param id {@link #id}
+     * @param rankings {@link #rankings}
+     */
     public Simulacao(int id, ArrayList<Ranking> rankings) {
         this.id = id;
         this.rankings = rankings;

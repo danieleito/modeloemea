@@ -38,10 +38,10 @@ public class ElementoUfpr implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param codigo
-     * @param descricao
-     * @param capa 
+     * @param id {@link #id}
+     * @param codigo {@link #codigo}
+     * @param descricao {@link #descricao}
+     * @param capa {@link #capa}
      */
     public ElementoUfpr(int id, String codigo, String descricao, String capa) {
         this.id = id;
@@ -50,6 +50,12 @@ public class ElementoUfpr implements Serializable {
         this.capa = capa;
     }
 
+    /**
+     * Constructor sem id
+     * @param codigo {@link #codigo}
+     * @param descricao {@link #descricao}
+     * @param capa {@link #capa}
+     */
     public ElementoUfpr(String codigo, String descricao, String capa) {
         this.codigo = codigo;
         this.descricao = descricao;

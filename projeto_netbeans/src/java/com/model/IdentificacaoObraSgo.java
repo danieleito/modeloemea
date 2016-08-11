@@ -39,10 +39,10 @@ public class IdentificacaoObraSgo implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param ponte
-     * @param dataInspecao
-     * @param nomeInspetor 
+     * @param id {@link #id}
+     * @param ponte {@link #ponte}
+     * @param dataInspecao {@link #dataInspecao}
+     * @param nomeInspetor {@link #nomeInspetor}
      */
     public IdentificacaoObraSgo(int id, Ponte ponte, Date dataInspecao, String nomeInspetor) {
         this.id = id;
@@ -51,6 +51,12 @@ public class IdentificacaoObraSgo implements Serializable {
         this.nomeInspetor = nomeInspetor;
     }
 
+    /**
+     * Constructor sem id
+     * @param ponte {@link #ponte}
+     * @param dataInspecao {@link #dataInspecao}
+     * @param nomeInspetor {@link #nomeInspetor}
+     */
     public IdentificacaoObraSgo(Ponte ponte, Date dataInspecao, String nomeInspetor) {
         this.ponte = ponte;
         this.dataInspecao = dataInspecao;

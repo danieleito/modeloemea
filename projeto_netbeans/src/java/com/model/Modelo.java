@@ -34,9 +34,9 @@ public class Modelo implements Serializable {
 
     /**
      * Constructor completo
-     * @param id
-     * @param indiceBase
-     * @param indicePerformance 
+     * @param id {@link #id}
+     * @param indiceBase {@link #indiceBase}
+     * @param indicePerformance {@link #indicePerformance}
      */
     public Modelo(int id, String indiceBase, String indicePerformance) {
         this.id = id;
@@ -44,6 +44,11 @@ public class Modelo implements Serializable {
         this.indicePerformance = indicePerformance;
     }
 
+    /**
+     * Constructor sem id
+     * @param indiceBase {@link #indiceBase}
+     * @param indicePerformance {@link #indicePerformance}
+     */
     public Modelo(String indiceBase, String indicePerformance) {
         this.indiceBase = indiceBase;
         this.indicePerformance = indicePerformance;
