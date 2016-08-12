@@ -7,6 +7,7 @@ package com.bean;
 
 import com.dao.ArquivoAnexoDAO;
 import com.model.ArquivoAnexoCadastro;
+import com.model.ArquivoAnexoInspecao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -20,11 +21,11 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "arquivoAnexo")
 @SessionScoped
-public class ArquivoAnexoBean {
+public class ArquivoAnexoBean extends ComumBean {
     private ArquivoAnexoDAO databaseC;
     private ArquivoAnexoDAO databaseI;
     private ArrayList<ArquivoAnexoCadastro> arquivosCadastro;
-    private ArrayList<ArquivoAnexoCadastro> arquivosInspecao;
+    private ArrayList<ArquivoAnexoInspecao> arquivosInspecao;
 
     public ArquivoAnexoDAO getDatabaseC() {
         return databaseC;
@@ -51,11 +52,11 @@ public class ArquivoAnexoBean {
         this.arquivosCadastro = arquivosCadastro;
     }
 
-    public ArrayList<ArquivoAnexoCadastro> getArquivosInspecao() {
+    public ArrayList<ArquivoAnexoInspecao> getArquivosInspecao() {
         return arquivosInspecao;
     }
 
-    public void setArquivosInspecao(ArrayList<ArquivoAnexoCadastro> arquivosInspecao) {
+    public void setArquivosInspecao(ArrayList<ArquivoAnexoInspecao> arquivosInspecao) {
         this.arquivosInspecao = arquivosInspecao;
     }
 
@@ -63,15 +64,17 @@ public class ArquivoAnexoBean {
         databaseC = new ArquivoAnexoDAO();
         databaseI = new ArquivoAnexoDAO();
         try {
-            arquivosCadastro = databaseC.buscarCadastro(1);
+            arquivosCadastro = databaseC.buscarCadastros(1);
         } catch (SQLException ex) {
             Logger.getLogger(ArquivoAnexoBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar arquivos anexos de cadastro. " + ex.getMessage());
         }
         
         try {
-            arquivosInspecao = databaseI.buscarInspecao();
+            arquivosInspecao = databaseI.buscarInspecoes(1);
         } catch (SQLException ex) {
             Logger.getLogger(ArquivoAnexoBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar arquivos anexos de inspeção. " + ex.getMessage());
         }
     }
     

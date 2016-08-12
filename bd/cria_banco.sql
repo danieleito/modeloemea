@@ -525,7 +525,6 @@ create table ARQUIVO_ANEXO_CADASTRO
 		DS_DESCRICAO					varchar(20)						not null,
 		DS_REGISTRO						varchar(10)						not null,
 		DT_DATA_ANEXACAO				date							not null,
-		--DS_MINIATURA
 		ID_IMAGEM						int,					
 		CONSTRAINT						pk_arquivoanexocadastro			PRIMARY KEY(ID_ARQUIVO_ANEXO_CADASTRO),
 		CONSTRAINT						fk_arquivoanexocadastro_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),

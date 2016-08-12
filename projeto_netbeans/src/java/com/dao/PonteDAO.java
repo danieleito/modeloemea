@@ -310,7 +310,7 @@ public class PonteDAO {
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
 
             ArquivoAnexoDAO arquivoAnexoDAO = new ArquivoAnexoDAO();
-            ponte.setArquivosAnexosCadastro(arquivoAnexoDAO.buscarCadastro(ponte.getId()));
+            ponte.setArquivosAnexosCadastro(arquivoAnexoDAO.buscarCadastros(ponte.getId()));
 
             InspecaoDAO inspecaoDAO = new InspecaoDAO();
             ponte.setInspecoes(inspecaoDAO.buscarInspecao(ponte.getId()));
