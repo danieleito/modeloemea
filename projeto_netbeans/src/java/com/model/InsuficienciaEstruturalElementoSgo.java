@@ -86,6 +86,11 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
         this.comentarios = comentarios;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -94,6 +99,10 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #inspecaoRotineira}
+     * @return {@link #inspecaoRotineira}
+     */
     public InspecaoRotineira getInspecaoRotineira() {
         return inspecaoRotineira;
     }
@@ -102,6 +111,10 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
         this.inspecaoRotineira = inspecaoRotineira;
     }
 
+    /**
+     * retorna {@link #elemento}
+     * @return {@link #elemento}
+     */
     public String getElemento() {
         return elemento;
     }
@@ -110,6 +123,10 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
         this.elemento = elemento;
     }
 
+    /**
+     * retorna {@link #nota}
+     * @return {@link #nota}
+     */
     public String getNota() {
         return nota;
     }
@@ -118,6 +135,10 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
         this.nota = nota;
     }
 
+    /**
+     * retorna {@link #insuficiencia}
+     * @return {@link #insuficiencia}
+     */
     public String getInsuficiencia() {
         return insuficiencia;
     }
@@ -126,6 +147,10 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
         this.insuficiencia = insuficiencia;
     }
 
+    /**
+     * retorna {@link #causaProvavel}
+     * @return {@link #causaProvavel}
+     */
     public String getCausaProvavel() {
         return causaProvavel;
     }
@@ -134,6 +159,10 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
         this.causaProvavel = causaProvavel;
     }
 
+    /**
+     * retorna {@link #comentarios}
+     * @return {@link #comentarios}
+     */
     public String getComentarios() {
         return comentarios;
     }

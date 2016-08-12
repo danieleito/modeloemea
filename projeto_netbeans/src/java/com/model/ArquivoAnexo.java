@@ -104,14 +104,26 @@ public class ArquivoAnexo implements Serializable {
     }
 
     
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * 
+     * @param id 
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #ponte}
+     * @return {@link #ponte}
+     */
     public Ponte getPonte() {
         return ponte;
     }
@@ -120,6 +132,10 @@ public class ArquivoAnexo implements Serializable {
         this.ponte = ponte;
     }
 
+    /**
+     * retorna {@link #arquivo}
+     * @return {@link #arquivo}
+     */
     public String getArquivo() {
         return arquivo;
     }
@@ -128,6 +144,10 @@ public class ArquivoAnexo implements Serializable {
         this.arquivo = arquivo;
     }
 
+    /**
+     * retorna {@link #tipoArquivo}
+     * @return {@link #tipoArquivo}
+     */
     public String getTipoArquivo() {
         return tipoArquivo;
     }
@@ -136,6 +156,10 @@ public class ArquivoAnexo implements Serializable {
         this.tipoArquivo = tipoArquivo;
     }
 
+    /**
+     * retorna {@link #numero}
+     * @return {@link #numero}
+     */
     public String getNumero() {
         return numero;
     }
@@ -144,6 +168,10 @@ public class ArquivoAnexo implements Serializable {
         this.numero = numero;
     }
 
+    /**
+     * retorna {@link #descricao}
+     * @return {@link #descricao}
+     */
     public String getDescricao() {
         return descricao;
     }
@@ -152,6 +180,10 @@ public class ArquivoAnexo implements Serializable {
         this.descricao = descricao;
     }
 
+    /**
+     * retorna {@link #registro}
+     * @return {@link #registro}
+     */
     public String getRegistro() {
         return registro;
     }
@@ -160,6 +192,10 @@ public class ArquivoAnexo implements Serializable {
         this.registro = registro;
     }
 
+    /**
+     * retorna {@link #dataAnexada}
+     * @return {@link #dataAnexada}
+     */
     public Date getDataAnexada() {
         return dataAnexada;
     }
@@ -168,6 +204,10 @@ public class ArquivoAnexo implements Serializable {
         this.dataAnexada = dataAnexada;
     }
 
+    /**
+     * retorna {@link #imagem}
+     * @return {@link #imagem}
+     */
     public Imagem getImagem() {
         return imagem;
     }

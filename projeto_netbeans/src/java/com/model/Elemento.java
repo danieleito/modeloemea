@@ -55,6 +55,11 @@ public class Elemento implements Serializable {
         this.capa = capa;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -63,6 +68,10 @@ public class Elemento implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #descricao}
+     * @return {@link #descricao}
+     */
     public String getDescricao() {
         return descricao;
     }
@@ -71,6 +80,10 @@ public class Elemento implements Serializable {
         this.descricao = descricao;
     }
 
+    /**
+     * retorna {@link #capa}
+     * @return {@link #capa}
+     */
     public String getCapa() {
         return capa;
     }

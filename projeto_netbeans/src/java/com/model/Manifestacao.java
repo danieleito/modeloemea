@@ -54,6 +54,11 @@ public class Manifestacao implements Serializable {
         this.beta = beta;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -62,6 +67,10 @@ public class Manifestacao implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #descricao}
+     * @return {@link #descricao}
+     */
     public String getDescricao() {
         return descricao;
     }
@@ -70,6 +79,10 @@ public class Manifestacao implements Serializable {
         this.descricao = descricao;
     }
 
+    /**
+     * retorna {@link #beta}
+     * @return {@link #beta}
+     */
     public String getBeta() {
         return beta;
     }

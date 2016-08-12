@@ -54,6 +54,11 @@ public class Modelo implements Serializable {
         this.indicePerformance = indicePerformance;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -62,6 +67,10 @@ public class Modelo implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #indiceBase}
+     * @return {@link #indiceBase}
+     */
     public String getIndiceBase() {
         return indiceBase;
     }
@@ -70,6 +79,10 @@ public class Modelo implements Serializable {
         this.indiceBase = indiceBase;
     }
 
+    /**
+     * retorna {@link #indicePerformance}
+     * @return 
+     */
     public String getIndicePerformance() {
         return indicePerformance;
     }

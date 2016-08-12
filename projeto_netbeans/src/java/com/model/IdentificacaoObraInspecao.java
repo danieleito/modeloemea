@@ -62,6 +62,10 @@ public class IdentificacaoObraInspecao implements Serializable {
         this.melhorEpoca = melhorEpoca;
     }
 
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -70,6 +74,10 @@ public class IdentificacaoObraInspecao implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #periodo}
+     * @return {@link #periodo}
+     */
     public String getPeriodo() {
         return periodo;
     }
@@ -78,6 +86,10 @@ public class IdentificacaoObraInspecao implements Serializable {
         this.periodo = periodo;
     }
 
+    /**
+     * retorna {@link #equipamentoNecessario}
+     * @return {@link #equipamentoNecessario}
+     */
     public String getEquipamentoNecessario() {
         return equipamentoNecessario;
     }
@@ -86,6 +98,10 @@ public class IdentificacaoObraInspecao implements Serializable {
         this.equipamentoNecessario = equipamentoNecessario;
     }
 
+    /**
+     * retorna {@link #melhorEpoca}
+     * @return {@link #melhorEpoca}
+     */
     public String getMelhorEpoca() {
         return melhorEpoca;
     }

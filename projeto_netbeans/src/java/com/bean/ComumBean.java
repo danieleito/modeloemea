@@ -6,18 +6,28 @@
 package com.bean;
 
 import com.model.Usuario;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseId;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 /**
  *
  * @author Daniele Harumi Ito
  */
-public abstract class ComumBean {
+@ManagedBean(name = "comumbean")
+@SessionScoped
+public class ComumBean {
     
     public static Usuario usuarioLogado;
 
@@ -56,6 +66,23 @@ public abstract class ComumBean {
     private void adicionarMensagem(FacesMessage.Severity severity, String titulo, String mensagem) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, titulo, mensagem));
     }
+    
+    
+    
+    public StreamedContent getImage() throws FileNotFoundException {
+       FacesContext context = FacesContext.getCurrentInstance();
+
+       if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
+           // So, we're rendering the view. Return a stub StreamedContent so that it will generate right URL.
+           return new DefaultStreamedContent();
+       }
+       else {
+           // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
+           String filename = context.getExternalContext().getRequestParameterMap().get("filename");
+           StreamedContent sc = new DefaultStreamedContent(new FileInputStream(new File("C:\\wildfly-10.0.0.CR4\\Imagens", filename)));
+           return sc;
+       }
+   }
     
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Usuario getUsuarioLogado() {

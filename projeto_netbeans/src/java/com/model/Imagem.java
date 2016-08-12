@@ -68,6 +68,11 @@ public class Imagem implements Serializable {
         this.caminho = caminho;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -76,6 +81,10 @@ public class Imagem implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #nome}
+     * @return {@link #nome}
+     */
     public String getNome() {
         return nome;
     }
@@ -84,6 +93,10 @@ public class Imagem implements Serializable {
         this.nome = nome;
     }
 
+    /**
+     * retorna {@link #tipoMime}
+     * @return {@link #tipoMime}
+     */
     public String getTipoMime() {
         return tipoMime;
     }
@@ -100,6 +113,10 @@ public class Imagem implements Serializable {
 //        this.imagem = imagem;
 //    }
 
+    /**
+     * retorna {@link #caminho}
+     * @return {@link #caminho}
+     */
     public String getCaminho() {
         return caminho;
     }

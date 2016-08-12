@@ -148,6 +148,11 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.localVia = localVia;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -156,6 +161,10 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #uf}
+     * @return {@link #uf}
+     */
     public Uf getUf() {
         return uf;
     }
@@ -164,6 +173,10 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.uf = uf;
     }
 
+    /**
+     * retorna {@link #via}
+     * @return {@link #via}
+     */
     public Via getVia() {
         return via;
     }
@@ -172,6 +185,10 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.via = via;
     }
 
+    /**
+     * retorna {@link #localVia}
+     * @return {@link #localVia}
+     */
     public double getLocalVia() {
         return localVia;
     }
@@ -180,6 +197,10 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.localVia = localVia;
     }
 
+    /**
+     * retorna {@link #cidadeMaisProxima}
+     * @return {@link #cidadeMaisProxima}
+     */
     public String getCidadeMaisProxima() {
         return cidadeMaisProxima;
     }
@@ -188,6 +209,10 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.cidadeMaisProxima = cidadeMaisProxima;
     }
 
+    /**
+     * retorna {@link #pnvAno}
+     * @return {@link #pnvAno}
+     */
     public String getPnvAno() {
         return pnvAno;
     }
@@ -196,6 +221,10 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.pnvAno = pnvAno;
     }
 
+    /**
+     * retorna {@link #pnvVersao}
+     * @return {@link #pnvVersao}
+     */
     public String getPnvVersao() {
         return pnvVersao;
     }
@@ -204,6 +233,10 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.pnvVersao = pnsVersao;
     }
 
+    /**
+     * retorna {@link #pnvCodigo}
+     * @return {@link #pnvCodigo}
+     */
     public String getPnvCodigo() {
         return pnvCodigo;
     }
@@ -212,6 +245,10 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.pnvCodigo = pnvCodigo;
     }
 
+    /**
+     * retorna {@link #pnvAltitude}
+     * @return {@link #pnvAltitude}
+     */
     public String getPnvAltitude() {
         return pnvAltitude;
     }
@@ -220,6 +257,10 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.pnvAltitude = pnvAltitude;
     }
 
+    /**
+     * retorna {@link #latitudeGrau}
+     * @return {@link #latitudeGrau}
+     */
     public String getLatitudeGrau() {
         return latitudeGrau;
     }
@@ -228,6 +269,10 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.latitudeGrau = latitudeGrau;
     }
 
+    /**
+     * retorna {@link #latitudeMinuto}
+     * @return 
+     */
     public String getLatitudeMinuto() {
         return latitudeMinuto;
     }
@@ -236,6 +281,10 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.latitudeMinuto = latitudeMinuto;
     }
 
+    /**
+     * retorna {@link #longitudeGrau}
+     * @return {@link #longitudeGrau}
+     */
     public String getLongitudeGrau() {
         return longitudeGrau;
     }
@@ -244,6 +293,10 @@ public class IdentificacaoObraLocalizacao implements Serializable {
         this.longitudeGrau = longitudeGrau;
     }
 
+    /**
+     * retorna {@link #longitudeMinuto}
+     * @return {@link #longitudeMinuto}
+     */
     public String getLongitudeMinuto() {
         return longitudeMinuto;
     }

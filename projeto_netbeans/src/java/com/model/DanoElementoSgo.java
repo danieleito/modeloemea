@@ -102,6 +102,11 @@ public class DanoElementoSgo implements Serializable {
         this.localizacao = localizacao;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -110,6 +115,10 @@ public class DanoElementoSgo implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #inspecaoRotineira}
+     * @return {@link #inspecaoRotineira}
+     */
     public InspecaoRotineira getInspecaoRotineira() {
         return inspecaoRotineira;
     }
@@ -118,6 +127,10 @@ public class DanoElementoSgo implements Serializable {
         this.inspecaoRotineira = inspecaoRotineira;
     }
 
+    /**
+     * retorna {@link #elemento}
+     * @return {@link #elemento}
+     */
     public String getElemento() {
         return elemento;
     }
@@ -126,6 +139,10 @@ public class DanoElementoSgo implements Serializable {
         this.elemento = elemento;
     }
 
+    /**
+     * retorna {@link #nota}
+     * @return {@link #nota}
+     */
     public String getNota() {
         return nota;
     }
@@ -134,6 +151,10 @@ public class DanoElementoSgo implements Serializable {
         this.nota = nota;
     }
 
+    /**
+     * retorna {@link #dano}
+     * @return {@link #dano}
+     */
     public String getDano() {
         return dano;
     }
@@ -142,6 +163,10 @@ public class DanoElementoSgo implements Serializable {
         this.dano = dano;
     }
 
+    /**
+     * retorna {@link #unidade}
+     * @return {@link #unidade}
+     */
     public String getUnidade() {
         return unidade;
     }
@@ -150,6 +175,10 @@ public class DanoElementoSgo implements Serializable {
         this.unidade = unidade;
     }
 
+    /**
+     * retorna {@link #quantidade}
+     * @return {@link #quantidade}
+     */
     public String getQuantidade() {
         return quantidade;
     }
@@ -158,6 +187,10 @@ public class DanoElementoSgo implements Serializable {
         this.quantidade = quantidade;
     }
 
+    /**
+     * retorna {@link #extensaoRelativa}
+     * @return {@link #extensaoRelativa}
+     */
     public String getExtensaoRelativa() {
         return extensaoRelativa;
     }
@@ -166,6 +199,10 @@ public class DanoElementoSgo implements Serializable {
         this.extensaoRelativa = extensaoRelativa;
     }
 
+    /**
+     * retorna {@link #localizacao}
+     * @return {@link #localizacao}
+     */
     public String getLocalizacao() {
         return localizacao;
     }

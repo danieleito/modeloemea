@@ -46,6 +46,10 @@ public class CadastroAspectoEspecial implements Serializable {
     }
 
     
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -54,6 +58,10 @@ public class CadastroAspectoEspecial implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #aspectoEspecial}
+     * @return {@link #aspectoEspecial}
+     */
     public AspectoEspecial getAspectoEspecial() {
         return aspectoEspecial;
     }

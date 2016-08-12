@@ -47,6 +47,7 @@ public class TipoUsuario implements Serializable {
         this.tipoUsuario = tipoUsuario;
     }
 
+
     /**
      * Retorna {@link #id}
      * @return {@link  #id}

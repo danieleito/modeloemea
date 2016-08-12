@@ -63,6 +63,11 @@ public class IdentificacaoObraSgo implements Serializable {
         this.nomeInspetor = nomeInspetor;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -71,6 +76,10 @@ public class IdentificacaoObraSgo implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #ponte}
+     * @return {@link #ponte}
+     */
     public Ponte getPonte() {
         return ponte;
     }
@@ -79,6 +88,10 @@ public class IdentificacaoObraSgo implements Serializable {
         this.ponte = ponte;
     }
 
+    /**
+     * retorna {@link #dataInspecao}
+     * @return {@link #dataInspecao}
+     */
     public Date getDataInspecao() {
         return dataInspecao;
     }
@@ -87,6 +100,10 @@ public class IdentificacaoObraSgo implements Serializable {
         this.dataInspecao = dataInspecao;
     }
 
+    /**
+     * retorna {@link #nomeInspetor}
+     * @return {@link #nomeInspetor}
+     */
     public String getNomeInspetor() {
         return nomeInspetor;
     }

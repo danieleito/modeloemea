@@ -63,6 +63,11 @@ public class LaudoEspecializadoSgo implements Serializable {
         this.observacoes = observacoes;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -71,6 +76,10 @@ public class LaudoEspecializadoSgo implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #dataLaudo}
+     * @return {@link #dataLaudo}
+     */
     public Date getDataLaudo() {
         return dataLaudo;
     }
@@ -79,6 +88,10 @@ public class LaudoEspecializadoSgo implements Serializable {
         this.dataLaudo = dataLaudo;
     }
 
+    /**
+     * retorna {@link #consultor}
+     * @return {@link #consultor}
+     */
     public String getConsultor() {
         return consultor;
     }
@@ -87,6 +100,10 @@ public class LaudoEspecializadoSgo implements Serializable {
         this.consultor = consultor;
     }
 
+    /**
+     * retorna {@link #observacoes}
+     * @return {@link #observacoes}
+     */
     public String getObservacoes() {
         return observacoes;
     }

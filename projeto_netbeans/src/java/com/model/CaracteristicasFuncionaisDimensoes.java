@@ -125,6 +125,11 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
         this.descricaoVaos = descricaoVaos;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -133,6 +138,10 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #numeroFaixas}
+     * @return {@link #numeroFaixas}
+     */
     public String getNumeroFaixas() {
         return numeroFaixas;
     }
@@ -141,6 +150,10 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
         this.numeroFaixas = numeroFaixas;
     }
 
+    /**
+     * retorna {@link #larguraFaixa}
+     * @return {@link #larguraFaixa}
+     */
     public String getLarguraFaixa() {
         return larguraFaixa;
     }
@@ -149,6 +162,10 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
         this.larguraFaixa = larguraFaixa;
     }
 
+    /**
+     * retorna {@link #acostamentoDireito}
+     * @return {@link #acostamentoDireito}
+     */
     public String getAcostamentoDireito() {
         return acostamentoDireito;
     }
@@ -157,6 +174,10 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
         this.acostamentoDireito = acostamentoDireito;
     }
 
+    /**
+     * retorna {@link #acostamentoEsquerdo}
+     * @return {@link #acostamentoEsquerdo}
+     */
     public String getAcostamentoEsquerdo() {
         return acostamentoEsquerdo;
     }
@@ -165,6 +186,10 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
         this.acostamentoEsquerdo = acostamentoEsquerdo;
     }
 
+    /**
+     * retorna {@link #calcadaDireita}
+     * @return {@link #calcadaDireita}
+     */
     public String getCalcadaDireita() {
         return calcadaDireita;
     }
@@ -173,6 +198,10 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
         this.calcadaDireita = calcadaDireita;
     }
 
+    /**
+     * retorna {@link #calcadaEsquerda}
+     * @return {@link #calcadaEsquerda}
+     */
     public String getCalcadaEsquerda() {
         return calcadaEsquerda;
     }
@@ -181,6 +210,10 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
         this.calcadaEsquerda = calcadaEsquerda;
     }
 
+    /**
+     * retorna {@link #larguraTotalPista}
+     * @return {@link #larguraTotalPista}
+     */
     public String getLarguraTotalPista() {
         return larguraTotalPista;
     }
@@ -189,6 +222,10 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
         this.larguraTotalPista = larguraTotalPista;
     }
 
+    /**
+     * retorna {@link #gabaritoHorizontal}
+     * @return {@link #gabaritoHorizontal}
+     */
     public String getGabaritoHorizontal() {
         return gabaritoHorizontal;
     }
@@ -197,6 +234,10 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
         this.gabaritoHorizontal = gabaritoHorizontal;
     }
 
+    /**
+     * retorna {@link #gabaritoVertical}
+     * @return {@link #gabaritoVertical}
+     */
     public String getGabaritoVertical() {
         return gabaritoVertical;
     }
@@ -205,6 +246,10 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
         this.gabaritoVertical = gabaritoVertical;
     }
 
+    /**
+     * retorna {@link #numeroVaos}
+     * @return {@link #numeroVaos}
+     */
     public String getNumeroVaos() {
         return numeroVaos;
     }
@@ -213,6 +258,10 @@ public class CaracteristicasFuncionaisDimensoes implements Serializable {
         this.numeroVaos = numeroVaos;
     }
 
+    /**
+     * retorna {@link #descricaoVaos}
+     * @return {@link #descricaoVaos}
+     */
     public String getDescricaoVaos() {
         return descricaoVaos;
     }

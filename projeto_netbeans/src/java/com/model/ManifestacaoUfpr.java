@@ -79,6 +79,11 @@ public class ManifestacaoUfpr implements Serializable {
         this.beta = beta;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -87,6 +92,10 @@ public class ManifestacaoUfpr implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #elementoUfpr}
+     * @return {@link #elementoUfpr}
+     */
     public ElementoUfpr getElementoUfpr() {
         return elementoUfpr;
     }
@@ -95,6 +104,10 @@ public class ManifestacaoUfpr implements Serializable {
         this.elementoUfpr = elementoUfpr;
     }
 
+    /**
+     * retorna {@link #codigo}
+     * @return {@link #codigo}
+     */
     public String getCodigo() {
         return codigo;
     }
@@ -103,6 +116,10 @@ public class ManifestacaoUfpr implements Serializable {
         this.codigo = codigo;
     }
 
+    /**
+     * retorna {@link #descricao}
+     * @return {@link #descricao}
+     */
     public String getDescricao() {
         return descricao;
     }
@@ -111,6 +128,10 @@ public class ManifestacaoUfpr implements Serializable {
         this.descricao = descricao;
     }
 
+    /**
+     * retorna {@link #unidade}
+     * @return {@link #unidade}
+     */
     public String getUnidade() {
         return unidade;
     }
@@ -119,6 +140,10 @@ public class ManifestacaoUfpr implements Serializable {
         this.unidade = unidade;
     }
 
+    /**
+     * retorna {@link #beta}
+     * @return {@link #beta}
+     */
     public String getBeta() {
         return beta;
     }

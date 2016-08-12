@@ -129,6 +129,11 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.unidadeLocal = unidadeLocal;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -137,6 +142,10 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #unidadeLocal}
+     * @return {@link #unidadeLocal}
+     */
     public UnidadeLocal getUnidadeLocal() {
         return unidadeLocal;
     }
@@ -145,6 +154,10 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.unidadeLocal = unidadeLocal;
     }
 
+    /**
+     * retorna {@link #tipoAdministracao}
+     * @return {@link #tipoAdministracao}
+     */
     public TipoAdministracao getTipoAdministracao() {
         return tipoAdministracao;
     }
@@ -153,6 +166,10 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.tipoAdministracao = tipoAdministracao;
     }
 
+    /**
+     * retorna {@link #administrador}
+     * @return {@link #administrador}
+     */
     public String getAdministrador() {
         return administrador;
     }
@@ -161,6 +178,10 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.administrador = administrador;
     }
 
+    /**
+     * retorna {@link #projetistaOrigem}
+     * @return {@link #projetistaOrigem}
+     */
     public String getProjetistaOrigem() {
         return projetistaOrigem;
     }
@@ -169,6 +190,10 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.projetistaOrigem = projetistaOrigem;
     }
 
+    /**
+     * retorna {@link #projetistaProjetista}
+     * @return {@link #projetistaProjetista}
+     */
     public String getProjetistaProjetista() {
         return projetistaProjetista;
     }
@@ -177,6 +202,10 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.projetistaProjetista = projetistaProjetista;
     }
 
+    /**
+     * retorna {@link #construtorOrigem}
+     * @return {@link #construtorOrigem}
+     */
     public String getConstrutorOrigem() {
         return construtorOrigem;
     }
@@ -185,6 +214,10 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.construtorOrigem = construtorOrigem;
     }
 
+    /**
+     * retorna {@link #construtorConstrutor}
+     * @return {@link #construtorConstrutor}
+     */
     public String getConstrutorConstrutor() {
         return construtorConstrutor;
     }
@@ -193,6 +226,10 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.construtorConstrutor = construtorConstrutor;
     }
 
+    /**
+     * retorna {@link #localizacaoProjeto}
+     * @return {@link #localizacaoProjeto}
+     */
     public String getLocalizacaoProjeto() {
         return localizacaoProjeto;
     }
@@ -201,6 +238,10 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.localizacaoProjeto = localizacaoProjeto;
     }
 
+    /**
+     * retorna {@link #localizacaoDocumentosConstrucao}
+     * @return {@link #localizacaoDocumentosConstrucao}
+     */
     public String getLocalizacaoDocumentosConstrucao() {
         return localizacaoDocumentosConstrucao;
     }
@@ -209,6 +250,10 @@ public class IdentificacaoObraResponsaveis implements Serializable {
         this.localizacaoDocumentosConstrucao = localizacaoDocumentosConstrucao;
     }
 
+    /**
+     * retorna {@link #localizacaoDocumentosDiversos}
+     * @return {@link #localizacaoDocumentosDiversos}
+     */
     public String getLocalizacaoDocumentosDiversos() {
         return localizacaoDocumentosDiversos;
     }

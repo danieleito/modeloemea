@@ -104,6 +104,11 @@ public class InspecaoRotineira implements Serializable {
         this.relatorio = relatorio;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -112,6 +117,10 @@ public class InspecaoRotineira implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #inspecao}
+     * @return {@link #inspecao}
+     */
     public Inspecao getInspecao() {
         return inspecao;
     }
@@ -120,6 +129,10 @@ public class InspecaoRotineira implements Serializable {
         this.inspecao = inspecao;
     }
 
+    /**
+     * retorna {@link #identificacaoObraSgo}
+     * @return {@link #identificacaoObraSgo}
+     */
     public IdentificacaoObraSgo getIdentificacaoObraSgo() {
         return identificacaoObraSgo;
     }
@@ -128,6 +141,10 @@ public class InspecaoRotineira implements Serializable {
         this.identificacaoObraSgo = identificacaoObraSgo;
     }
 
+    /**
+     * retorna {@link #condicaoSgo}
+     * @return {@link #condicaoSgo}
+     */
     public CondicaoSgo getCondicaoSgo() {
         return condicaoSgo;
     }
@@ -136,6 +153,10 @@ public class InspecaoRotineira implements Serializable {
         this.condicaoSgo = condicaoSgo;
     }
 
+    /**
+     * retorna {@link #laudoEspecializadoSgo}
+     * @return {@link #laudoEspecializadoSgo}
+     */
     public LaudoEspecializadoSgo getLaudoEspecializadoSgo() {
         return laudoEspecializadoSgo;
     }
@@ -144,6 +165,10 @@ public class InspecaoRotineira implements Serializable {
         this.laudoEspecializadoSgo = laudoEspecializadoSgo;
     }
 
+    /**
+     * retorna {@link #monitoramentoSgo}
+     * @return {@link #monitoramentoSgo}
+     */
     public MonitoramentoSgo getMonitoramentoSgo() {
         return monitoramentoSgo;
     }
@@ -152,6 +177,10 @@ public class InspecaoRotineira implements Serializable {
         this.monitoramentoSgo = monitoramentoSgo;
     }
 
+    /**
+     * retorna {@link #relatorio}
+     * @return {@link #relatorio}
+     */
     public String getRelatorio() {
         return relatorio;
     }
@@ -160,6 +189,10 @@ public class InspecaoRotineira implements Serializable {
         this.relatorio = relatorio;
     }
 
+    /**
+     * retorna {@link #danosElementosSgo}
+     * @return {@link #danosElementosSgo}
+     */
     public ArrayList<DanoElementoSgo> getDanosElementosSgo() {
         return danosElementosSgo;
     }
@@ -168,6 +201,10 @@ public class InspecaoRotineira implements Serializable {
         this.danosElementosSgo = danosElementosSgo;
     }
 
+    /**
+     * retorna {@link #insuficienciasEstruturaisElementosSgo}
+     * @return {@link #insuficienciasEstruturaisElementosSgo}
+     */
     public ArrayList<InsuficienciaEstruturalElementoSgo> getInsuficienciasEstruturaisElementosSgo() {
         return insuficienciasEstruturaisElementosSgo;
     }

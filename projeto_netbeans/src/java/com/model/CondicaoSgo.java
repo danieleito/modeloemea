@@ -70,6 +70,11 @@ public class CondicaoSgo implements Serializable {
         this.notaTecnica = notaTecnica;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -78,6 +83,10 @@ public class CondicaoSgo implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #condicaoEstabilidade}
+     * @return {@link #condicaoEstabilidade}
+     */
     public String getCondicaoEstabilididade() {
         return condicaoEstabilididade;
     }
@@ -86,6 +95,10 @@ public class CondicaoSgo implements Serializable {
         this.condicaoEstabilididade = condicaoEstabilididade;
     }
 
+    /**
+     * retorna {@link #condicaoConservacao}
+     * @return {@link #condicaoConservacao}
+     */
     public String getCondicaoConservacao() {
         return condicaoConservacao;
     }
@@ -94,6 +107,10 @@ public class CondicaoSgo implements Serializable {
         this.condicaoConservacao = condicaoConservacao;
     }
 
+    /**
+     * retorna {@link #observacoes}
+     * @return {@link #observacoes}
+     */
     public String getObservacoes() {
         return observacoes;
     }
@@ -102,6 +119,10 @@ public class CondicaoSgo implements Serializable {
         this.observacoes = observacoes;
     }
 
+    /**
+     * retorna {@link #notaTecnica}
+     * @return {@link #notaTecnica}
+     */
     public String getNotaTecnica() {
         return notaTecnica;
     }

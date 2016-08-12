@@ -74,6 +74,11 @@ public class Inspecao implements Serializable {
     
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -82,6 +87,10 @@ public class Inspecao implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #data}
+     * @return {@link #data}
+     */
     public Date getData() {
         return data;
     }
@@ -90,6 +99,10 @@ public class Inspecao implements Serializable {
         this.data = data;
     }
 
+    /**
+     * retorna {@link #usuario}
+     * @return {@link #usuario}
+     */
     public Usuario getUsuario() {
         return usuario;
     }
@@ -98,6 +111,10 @@ public class Inspecao implements Serializable {
         this.usuario = usuario;
     }
 
+    /**
+     * retorna {@link #ponte}
+     * @return {@link #ponte}
+     */
     public Ponte getPonte() {
         return ponte;
     }
@@ -106,6 +123,10 @@ public class Inspecao implements Serializable {
         this.ponte = ponte;
     }
 
+    /**
+     * retorna {@link #modelo}
+     * @return {@link #modelo}
+     */
     public Modelo getModelo() {
         return modelo;
     }

@@ -138,6 +138,11 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
         this.identificacao = identificacao;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -146,6 +151,10 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #descricao}
+     * @return {@link #descricao}
+     */
     public String getCodigo() {
         return codigo;
     }
@@ -154,6 +163,10 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
         this.codigo = codigo;
     }
 
+    /**
+     * retorna {@link #codigoIntegracao}
+     * @return {@link #codigoIntegracao}
+     */
     public String getCodigoIntegracao() {
         return codigoIntegracao;
     }
@@ -162,6 +175,10 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
         this.codigoIntegracao = codigoIntegracao;
     }
 
+    /**
+     * retorna {@link #status}
+     * @return {@link #status}
+     */
     public String getStatus() {
         return status;
     }
@@ -170,6 +187,10 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
         this.status = status;
     }
 
+    /**
+     * retorna {@link #identificacao}
+     * @return {@link #identificacao}
+     */
     public String getIdentificacao() {
         return identificacao;
     }
@@ -178,6 +199,10 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
         this.identificacao = identificacao;
     }
 
+    /**
+     * retorna {@link #naturezaTransposicao}
+     * @return {@link #naturezaTransposicao}
+     */
     public NaturezaTransposicao getNaturezaTransposicao() {
         return naturezaTransposicao;
     }
@@ -186,6 +211,10 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
         this.naturezaTransposicao = naturezaTransposicao;
     }
 
+    /**
+     * retorna {@link #tipoEstrutura}
+     * @return {@link #tipoEstrutura}
+     */
     public TipoEstrutura getTipoEstrutura() {
         return tipoEstrutura;
     }
@@ -194,6 +223,10 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
         this.tipoEstrutura = tipoEstrutura;
     }
 
+    /**
+     * retorna {@link #sistemaConstrutivo}
+     * @return {@link #sistemaConstrutivo}
+     */
     public SistemaConstrutivo getSistemaConstrutivo() {
         return sistemaConstrutivo;
     }
@@ -202,6 +235,10 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
         this.sistemaConstrutivo = sistemaConstrutivo;
     }
 
+    /**
+     * retorna {@link #comprimento}
+     * @return {@link #comprimento}
+     */
     public String getComprimento() {
         return comprimento;
     }
@@ -210,14 +247,26 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
         this.comprimento = comprimento;
     }
 
+    /**
+     * retorna {@link #largura}
+     * @return {@link #largura}
+     */
     public String getLargura() {
         return largura;
     }
 
+    /**
+     * 
+     * @param largura 
+     */
     public void setLargura(String largura) {
         this.largura = largura;
     }
 
+    /**
+     * retorna {@link #tremTipo}
+     * @return {@link #tremTipo}
+     */
     public TremTipo getTremTipo() {
         return tremTipo;
     }
@@ -226,6 +275,10 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
         this.tremTipo = tremTipo;
     }
 
+    /**
+     * retorna {@link #anoConstrucao}
+     * @return {@link #anoConstrucao}
+     */
     public String getAnoConstrucao() {
         return anoConstrucao;
     }

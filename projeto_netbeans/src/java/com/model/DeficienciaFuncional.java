@@ -62,6 +62,11 @@ public class DeficienciaFuncional implements Serializable {
         this.unidadeMedida = unidadeMedida;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -70,6 +75,10 @@ public class DeficienciaFuncional implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #codigo}
+     * @return {@link #codigo}
+     */
     public String getCodigo() {
         return codigo;
     }
@@ -78,6 +87,10 @@ public class DeficienciaFuncional implements Serializable {
         this.codigo = codigo;
     }
 
+    /**
+     * retorna {@link #descricao}
+     * @return {@link #descricao}
+     */
     public String getDescricao() {
         return descricao;
     }
@@ -86,6 +99,10 @@ public class DeficienciaFuncional implements Serializable {
         this.descricao = descricao;
     }
 
+    /**
+     * retorna {@link #unidadeMedida}
+     * @return {@link #unidadeMedida}
+     */
     public String getUnidadeMedida() {
         return unidadeMedida;
     }

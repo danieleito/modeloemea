@@ -77,6 +77,11 @@ public class CaracteristicasFuncionaisCaracteristicas implements Serializable {
         this.vmd = vmd;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -85,6 +90,10 @@ public class CaracteristicasFuncionaisCaracteristicas implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #tipoRegiao}
+     * @return {@link #tipoRegiao}
+     */
     public TipoRegiao getTipoRegiao() {
         return tipoRegiao;
     }
@@ -93,6 +102,10 @@ public class CaracteristicasFuncionaisCaracteristicas implements Serializable {
         this.tipoRegiao = tipoRegiao;
     }
 
+    /**
+     * retorna {@link #tipoTracado}
+     * @return {@link #tipoTracado}
+     */
     public TipoTracado getTipoTracado() {
         return tipoTracado;
     }
@@ -101,6 +114,10 @@ public class CaracteristicasFuncionaisCaracteristicas implements Serializable {
         this.tipoTracado = tipoTracado;
     }
 
+    /**
+     * retorna {@link #rampaMaxima}
+     * @return {@link #rampaMaxima}
+     */
     public String getRampaMaxima() {
         return rampaMaxima;
     }
@@ -109,6 +126,10 @@ public class CaracteristicasFuncionaisCaracteristicas implements Serializable {
         this.rampaMaxima = rampaMaxima;
     }
 
+    /**
+     * retorna {@link #raioCurva}
+     * @return {@link #raioCurva}
+     */
     public String getRaioCurva() {
         return raioCurva;
     }
@@ -117,6 +138,10 @@ public class CaracteristicasFuncionaisCaracteristicas implements Serializable {
         this.raioCurva = raioCurva;
     }
 
+    /**
+     * retorna {@link #vmd}
+     * @return {@link #vmd}
+     */
     public String getVmd() {
         return vmd;
     }

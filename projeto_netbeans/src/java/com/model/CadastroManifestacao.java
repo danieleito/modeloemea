@@ -91,6 +91,10 @@ public class CadastroManifestacao implements Serializable {
     }
 
     
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -99,6 +103,10 @@ public class CadastroManifestacao implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #numero}
+     * @return {@link #numero}
+     */
     public Numero getNumero() {
         return numero;
     }
@@ -107,6 +115,10 @@ public class CadastroManifestacao implements Serializable {
         this.numero = numero;
     }
 
+    /**
+     * retorna {@link #manifestacaoUfpr}
+     * @return {@link #manifestacaoUfpr}
+     */
     public ManifestacaoUfpr getManifestacaoUfpr() {
         return manifestacaoUfpr;
     }
@@ -115,6 +127,10 @@ public class CadastroManifestacao implements Serializable {
         this.manifestacaoUfpr = manifestacaoUfpr;
     }
 
+    /**
+     * retorna {@link #foto}
+     * @return {@link #foto}
+     */
     public Foto getFoto() {
         return foto;
     }
@@ -123,6 +139,10 @@ public class CadastroManifestacao implements Serializable {
         this.foto = foto;
     }
 
+    /**
+     * retorna {@link #tamanho}
+     * @return {@link #tamanho}
+     */
     public String getTamanho() {
         return tamanho;
     }
@@ -131,6 +151,10 @@ public class CadastroManifestacao implements Serializable {
         this.tamanho = tamanho;
     }
 
+    /**
+     * retorna {@link #extensaoRelativa}
+     * @return {@link #extensaoRelativa}
+     */
     public ExtensaoRelativa getExtensaoRelativa() {
         return extensaoRelativa;
     }
@@ -139,6 +163,10 @@ public class CadastroManifestacao implements Serializable {
         this.extensaoRelativa = extensaoRelativa;
     }
 
+    /**
+     * retorna {@link #reparo}
+     * @return {@link #reparo}
+     */
     public Reparo getReparo() {
         return reparo;
     }

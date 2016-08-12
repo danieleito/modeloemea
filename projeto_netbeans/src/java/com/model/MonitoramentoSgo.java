@@ -86,6 +86,11 @@ public class MonitoramentoSgo implements Serializable {
         this.tecnicas = tecnicas;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -94,6 +99,10 @@ public class MonitoramentoSgo implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #periodo}
+     * @return {@link #periodo}
+     */
     public String getPeriodo() {
         return periodo;
     }
@@ -102,6 +111,10 @@ public class MonitoramentoSgo implements Serializable {
         this.periodo = periodo;
     }
 
+    /**
+     * retorna {@link #tipoMonitoramento}
+     * @return {@link #tipoMonitoramento}
+     */
     public String getTipoMonitoramento() {
         return tipoMonitoramento;
     }
@@ -110,6 +123,10 @@ public class MonitoramentoSgo implements Serializable {
         this.tipoMonitoramento = tipoMonitoramento;
     }
 
+    /**
+     * retorna {@link #executor}
+     * @return {@link #executor}
+     */
     public String getExecutor() {
         return executor;
     }
@@ -118,6 +135,10 @@ public class MonitoramentoSgo implements Serializable {
         this.executor = executor;
     }
 
+    /**
+     * retorna {@link #custo}
+     * @return {@link #custo}
+     */
     public String getCusto() {
         return custo;
     }
@@ -126,6 +147,10 @@ public class MonitoramentoSgo implements Serializable {
         this.custo = custo;
     }
 
+    /**
+     * retorna {@link #objeto}
+     * @return {@link #objeto}
+     */
     public String getObjeto() {
         return objeto;
     }
@@ -134,6 +159,10 @@ public class MonitoramentoSgo implements Serializable {
         this.objeto = objeto;
     }
 
+    /**
+     * retorna {@link #tecnicas}
+     * @return {@link #tecnicas}
+     */
     public String getTecnicas() {
         return tecnicas;
     }

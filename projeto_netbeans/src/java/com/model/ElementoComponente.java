@@ -62,6 +62,11 @@ public class ElementoComponente implements Serializable {
         this.quantidade = quantidade;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -70,6 +75,10 @@ public class ElementoComponente implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #elementoUfpr}
+     * @return {@link #elementoUfpr}
+     */
     public ElementoUfpr getElementoUfpr() {
         return elementoUfpr;
     }
@@ -78,6 +87,10 @@ public class ElementoComponente implements Serializable {
         this.elementoUfpr = elementoUfpr;
     }
 
+    /**
+     * retorna {@link #detalhe}
+     * @return {@link #detalhe}
+     */
     public String getDetalhe() {
         return detalhe;
     }
@@ -86,6 +99,10 @@ public class ElementoComponente implements Serializable {
         this.detalhe = detalhe;
     }
 
+    /**
+     * retorna {@link #quantidade}
+     * @return {@link #quantidade}
+     */
     public String getQuantidade() {
         return quantidade;
     }
