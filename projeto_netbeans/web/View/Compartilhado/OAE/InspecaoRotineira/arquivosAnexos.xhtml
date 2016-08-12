@@ -45,9 +45,11 @@ and open the template in the editor.
 
                 <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
                     <p:lightBox styleClass="imagebox" id="lighbox1">
-                        <h:outputLink value="#{arq.arquivo}" title="#{arq.imagem.nome}">
-                            <h:graphicImage name="\\PC01\03. Pastas pessoais\Daniele\Fotos/#{arq.imagem.nome}" alt="Image Description for #{image}" 
-                                            value="\\PC01\03. Pastas pessoais\Daniele\Fotos/#{arq.imagem.nome}" title="#{image}" style="height: 77px; width: 100px" />
+                        <h:outputLink value="#{comumbean.getImage()}" title="#{arq.imagem.nome}">
+                            <f:param name="filename" value="#{arq.imagem.nome}" />
+                            <p:graphicImage value="#{comumbean.getImage()}" style="height: 77px; width: 100px" title="#{image}" alt="Image Description for #{image}" >
+                                <f:param name="filename" value="#{arq.imagem.nome}" />
+                            </p:graphicImage>
                         </h:outputLink>
                     </p:lightBox>
                 </p:column>

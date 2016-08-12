@@ -5,22 +5,21 @@
  */
 package com.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class ArquivoAnexo implements Serializable {
+public class ArquivoAnexoInspecao {
     /**
-     * identificador do ArquivoAnexo no Banco de Dados
+     * identificador do ArquivoAnexoCadastro no Banco de Dados
      */
     private int id;
     /**
-     * identificador da ponte
+     * identificador da inspecao
      */
-    private Ponte ponte;
+    private Inspecao inspecao;
     /**
      * arquivo
      */
@@ -54,13 +53,13 @@ public class ArquivoAnexo implements Serializable {
     /**
      * Constructor padrão.
      */
-    public ArquivoAnexo() {
+    public ArquivoAnexoInspecao() {
     }
 
     /**
      * Constructor completo
      * @param id {@link #id}
-     * @param ponte {@link #ponte}
+     * @param inspecao {@link #inspecao}
      * @param arquivo {@link #arquivo}
      * @param tipoArquivo {@link #tipoArquivo}
      * @param numero {@link #numero}
@@ -69,9 +68,9 @@ public class ArquivoAnexo implements Serializable {
      * @param dataAnexada {@link #dataAnexada}
      * @param imagem {@link #imagem}
      */
-    public ArquivoAnexo(int id, Ponte ponte, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
+    public ArquivoAnexoInspecao(int id, Inspecao inspecao, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
         this.id = id;
-        this.ponte = ponte;
+        this.inspecao = inspecao;
         this.arquivo = arquivo;
         this.tipoArquivo = tipoArquivo;
         this.numero = numero;
@@ -83,7 +82,7 @@ public class ArquivoAnexo implements Serializable {
 
     /**
      * Constructor sem id
-     * @param ponte {@link #ponte}
+     * @param inspecao {@link #inspecao}
      * @param arquivo {@link #arquivo}
      * @param tipoArquivo {@link #tipoArquivo}
      * @param numero {@link #numero}
@@ -92,8 +91,8 @@ public class ArquivoAnexo implements Serializable {
      * @param dataAnexada {@link #dataAnexada}
      * @param imagem {@link #imagem}
      */
-    public ArquivoAnexo(Ponte ponte, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
-        this.ponte = ponte;
+    public ArquivoAnexoInspecao(Inspecao inspecao, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
+        this.inspecao = inspecao;
         this.arquivo = arquivo;
         this.tipoArquivo = tipoArquivo;
         this.numero = numero;
@@ -124,12 +123,12 @@ public class ArquivoAnexo implements Serializable {
      * retorna {@link #ponte}
      * @return {@link #ponte}
      */
-    public Ponte getPonte() {
-        return ponte;
+    public Inspecao getInspecao() {
+        return inspecao;
     }
 
-    public void setPonte(Ponte ponte) {
-        this.ponte = ponte;
+    public void setInspecao(Inspecao inspecao) {
+        this.inspecao = inspecao;
     }
 
     /**

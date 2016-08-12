@@ -588,7 +588,7 @@ public class PonteDAO {
 //        ArrayList<ArquivoAnexo> arquivosAnexos = new ArrayList<>();
 //        Ponte ponte;
 //        while (rs.next()) {
-//            arquivosAnexos.add(new ArquivoAnexo(rs.getInt("ID_ARQUIVO_ANEXO_INSPECAO"), 
+//            arquivosAnexos.add(new ArquivoAnexoCadastro(rs.getInt("ID_ARQUIVO_ANEXO_INSPECAO"), 
 //                    rs.getString("DS_ARQUIVO"), rs.getString("DS_TIPO_ARQUIVO"), 
 //                    rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), 
 //                    rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO")));  

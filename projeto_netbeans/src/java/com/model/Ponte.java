@@ -77,11 +77,11 @@ public class Ponte implements Serializable {
     /**
      * lista arquivos anexos
      */
-    private ArrayList<ArquivoAnexo> arquivosAnexosCadastro;
+    private ArrayList<ArquivoAnexoCadastro> arquivosAnexosCadastro;
     /**
      * lista arquivos anexos
      */
-    private ArrayList<ArquivoAnexo> arquivosAnexosInspecao;
+    private ArrayList<ArquivoAnexoCadastro> arquivosAnexosInspecao;
     /**
      * lista inspeção
      */
@@ -204,6 +204,11 @@ public class Ponte implements Serializable {
         this.identificacaoObraResponsaveis = identificacaoObraResponsaveis;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -212,6 +217,10 @@ public class Ponte implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #identificacaoObraDadosBasicos}
+     * @return {@link #identificacaoObraDadosBasicos}
+     */
     public IdentificacaoObraDadosBasicos getIdentificacaoObraDadosBasicos() {
         return identificacaoObraDadosBasicos;
     }
@@ -220,6 +229,10 @@ public class Ponte implements Serializable {
         this.identificacaoObraDadosBasicos = identificacaoObraDadosBasicos;
     }
 
+    /**
+     * retorna {@link #identificacaoObraLocalizacao}
+     * @return {@link #identificacaoObraLocalizacao}
+     */
     public IdentificacaoObraLocalizacao getIdentificacaoObraLocalizacao() {
         return identificacaoObraLocalizacao;
     }
@@ -228,6 +241,10 @@ public class Ponte implements Serializable {
         this.identificacaoObraLocalizacao = identificacaoObraLocalizacao;
     }
 
+    /**
+     * retorna {@link #identificacaoObraresponsaveis}
+     * @return {@link #identificacaoObraresponsaveis}
+     */
     public IdentificacaoObraResponsaveis getIdentificacaoObraResponsaveis() {
         return identificacaoObraResponsaveis;
     }
@@ -308,19 +325,19 @@ public class Ponte implements Serializable {
         this.elementosComponentes = elementosComponentes;
     }
 
-    public ArrayList<ArquivoAnexo> getArquivosAnexosCadastro() {
+    public ArrayList<ArquivoAnexoCadastro> getArquivosAnexosCadastro() {
         return arquivosAnexosCadastro;
     }
 
-    public void setArquivosAnexosCadastro(ArrayList<ArquivoAnexo> arquivosAnexosCadastro) {
+    public void setArquivosAnexosCadastro(ArrayList<ArquivoAnexoCadastro> arquivosAnexosCadastro) {
         this.arquivosAnexosCadastro = arquivosAnexosCadastro;
     }
 
-    public ArrayList<ArquivoAnexo> getArquivosAnexosInspecao() {
+    public ArrayList<ArquivoAnexoCadastro> getArquivosAnexosInspecao() {
         return arquivosAnexosInspecao;
     }
 
-    public void setArquivosAnexosInspecao(ArrayList<ArquivoAnexo> arquivosAnexosInspecao) {
+    public void setArquivosAnexosInspecao(ArrayList<ArquivoAnexoCadastro> arquivosAnexosInspecao) {
         this.arquivosAnexosInspecao = arquivosAnexosInspecao;
     }
     

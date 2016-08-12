@@ -6,7 +6,7 @@
 package com.bean;
 
 import com.dao.ArquivoAnexoDAO;
-import com.model.ArquivoAnexo;
+import com.model.ArquivoAnexoCadastro;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -23,8 +23,8 @@ import javax.faces.bean.SessionScoped;
 public class ArquivoAnexoBean {
     private ArquivoAnexoDAO databaseC;
     private ArquivoAnexoDAO databaseI;
-    private ArrayList<ArquivoAnexo> arquivosCadastro;
-    private ArrayList<ArquivoAnexo> arquivosInspecao;
+    private ArrayList<ArquivoAnexoCadastro> arquivosCadastro;
+    private ArrayList<ArquivoAnexoCadastro> arquivosInspecao;
 
     public ArquivoAnexoDAO getDatabaseC() {
         return databaseC;
@@ -43,19 +43,19 @@ public class ArquivoAnexoBean {
     }
 
 
-    public ArrayList<ArquivoAnexo> getArquivosCadastro() {
+    public ArrayList<ArquivoAnexoCadastro> getArquivosCadastro() {
         return arquivosCadastro;
     }
 
-    public void setArquivosCadastro(ArrayList<ArquivoAnexo> arquivosCadastro) {
+    public void setArquivosCadastro(ArrayList<ArquivoAnexoCadastro> arquivosCadastro) {
         this.arquivosCadastro = arquivosCadastro;
     }
 
-    public ArrayList<ArquivoAnexo> getArquivosInspecao() {
+    public ArrayList<ArquivoAnexoCadastro> getArquivosInspecao() {
         return arquivosInspecao;
     }
 
-    public void setArquivosInspecao(ArrayList<ArquivoAnexo> arquivosInspecao) {
+    public void setArquivosInspecao(ArrayList<ArquivoAnexoCadastro> arquivosInspecao) {
         this.arquivosInspecao = arquivosInspecao;
     }
 

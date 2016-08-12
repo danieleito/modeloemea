@@ -46,6 +46,11 @@ public class Numero implements Serializable {
         this.descricao = descricao;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -54,6 +59,10 @@ public class Numero implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #descricao}
+     * @return {@link #descricao}
+     */
     public String getDescricao() {
         return descricao;
     }

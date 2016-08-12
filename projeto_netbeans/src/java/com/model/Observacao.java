@@ -54,6 +54,11 @@ public class Observacao implements Serializable {
         this.descricao = descricao;
     }
 
+
+    /**
+     * retorna {@link #id}
+     * @return {@link #id}
+     */
     public int getId() {
         return id;
     }
@@ -62,6 +67,10 @@ public class Observacao implements Serializable {
         this.id = id;
     }
 
+    /**
+     * retorna {@link #identificacao}
+     * @return {@link #identificacao}
+     */
     public String getIdentificacao() {
         return identificacao;
     }
@@ -70,6 +79,10 @@ public class Observacao implements Serializable {
         this.identificacao = identificacao;
     }
 
+    /**
+     * retorna {@link #descricao}
+     * @return {@link #descricao}
+     */
     public String getDescricao() {
         return descricao;
     }

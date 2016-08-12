@@ -74,6 +74,14 @@ public class Inspecao implements Serializable {
     
     }
 
+    /**
+     * Constructor apenas com id
+     * @param id {@link #id}
+     */
+    public Inspecao(int id) {
+        this.id = id;
+    }
+
 
     /**
      * retorna {@link #id}
