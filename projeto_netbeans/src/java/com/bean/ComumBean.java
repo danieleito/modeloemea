@@ -79,10 +79,27 @@ public class ComumBean {
        else {
            // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
            String filename = context.getExternalContext().getRequestParameterMap().get("filename");
-           StreamedContent sc = new DefaultStreamedContent(new FileInputStream(new File("C:\\wildfly-10.0.0.CR4\\Imagens", filename)));
+           String tipoImagem = context.getExternalContext().getRequestParameterMap().get("tipoimagem");
+           StreamedContent sc = new DefaultStreamedContent(new FileInputStream(new File("C:\\wildfly-10.0.0.CR4\\Imagens", filename)), tipoImagem, filename);
            return sc;
        }
-   }
+    }
+    
+    
+    
+    public StreamedContent getImage(String filename, String tipoImagem) throws FileNotFoundException {
+       FacesContext context = FacesContext.getCurrentInstance();
+
+       if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
+           // So, we're rendering the view. Return a stub StreamedContent so that it will generate right URL.
+           return new DefaultStreamedContent();
+       }
+       else {
+           // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
+           StreamedContent sc = new DefaultStreamedContent(new FileInputStream(new File("C:\\wildfly-10.0.0.CR4\\Imagens", filename)), tipoImagem, filename);
+           return sc;
+       }
+    }
     
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Usuario getUsuarioLogado() {

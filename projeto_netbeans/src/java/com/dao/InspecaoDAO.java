@@ -5,8 +5,12 @@
  */
 package com.dao;
 
+import com.model.CondicaoSgo;
+import com.model.IdentificacaoObraSgo;
 import com.model.Inspecao;
+import com.model.LaudoEspecializadoSgo;
 import com.model.Modelo;
+import com.model.MonitoramentoSgo;
 import com.model.Ponte;
 import com.model.Usuario;
 import java.sql.Connection;
@@ -43,7 +47,7 @@ public class InspecaoDAO {
         stmt = conn.prepareStatement(query);
         stmt.setDate(1, new java.sql.Date(inspecao.getData().getTime()));
         stmt.setInt(2, inspecao.getUsuario().getId());
-        stmt.setInt(3, inspecao.getPonte().getId());
+        stmt.setInt(3, inspecao.getIdPonte());
         stmt.setInt(4, inspecao.getModelo().getId());
         stmt.execute();
     }
@@ -70,7 +74,6 @@ public class InspecaoDAO {
             usuario.setUsuario(rs.getString("DS_USUARIO"));
 
             Inspecao inspecao = new Inspecao(rs.getInt("ID_INSPECAO"), rs.getDate("DT_DATA"), usuario, 
-                    new Ponte(), 
                     new Modelo(rs.getInt("ID_MODELO"), rs.getString("DS_INDICE_BASE"), rs.getString("DS_INDICE_PERFORMANCE")));
             inspecoes.add(inspecao);
         }
@@ -103,7 +106,6 @@ public class InspecaoDAO {
             usuario.setUsuario(rs.getString("DS_USUARIO"));
 
             inspecao = new Inspecao(rs.getInt("ID_INSPECAO"), rs.getDate("DT_DATA"), usuario, 
-                    new Ponte(), 
                     new Modelo(rs.getInt("ID_MODELO"), rs.getString("DS_INDICE_BASE"), rs.getString("DS_INDICE_PERFORMANCE")));
         }
         conexao.closeConnection();
@@ -111,13 +113,12 @@ public class InspecaoDAO {
     }
 
     public ArrayList<Inspecao> buscarInspecao (int idPonte) throws SQLException {
-        String query = "select I.ID_INSPECAO, I.DT_DATA, I.ID_USUARIO, U.NM_NOME, U.DS_USUARIO, U.DS_EMAIL, "
-                + "I.ID_PONTE, I.ID_MODELO, M.DS_INDICE_BASE, M.DS_INDICE_PERFORMANCE "
-                + "from Ponte P, Inspecao I, USUARIO U, MODELO M "
-                + "where I.ID_USUARIO = U.ID_USUARIO "
-                + "and I.ID_MODELO = M.ID_MODELO "
-                + "and I.ID_PONTE = P.ID_PONTE "
-                + "and P.ID_PONTE = " + idPonte;
+        String query = "select I.ID_INSPECAO, I.DT_DATA, I.ID_USUARIO, "
+                + "I.ID_PONTE, I.ID_MODELO, I.ID_IDENTIFICACAO_OBRA_SGO, "
+                + "I.ID_CONDICOES_SGO, I.ID_LAUDO_ESPECIALIZADO_SGO, "
+                + "I.ID_MONITORAMENTO_SGO, I.DS_RELATORIO "
+                + "from Inspecao I "
+                + "where I.ID_PONTE = " + idPonte;
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -125,16 +126,30 @@ public class InspecaoDAO {
         stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         ArrayList<Inspecao> inspecoes = new ArrayList<>();
+        UsuarioDAO dbUsuario = new UsuarioDAO();
+        ModeloDAO dbModelo = new ModeloDAO();
+        ArquivoAnexoDAO dbArquivoAnexo = new ArquivoAnexoDAO();
+//        IdentificacaoObraSgoDAO dbIdentificacaoObraSgo = new IdentificacaoObraSgoDAO();
+//        CondicaoSgoDAO dbCondicaoSgo = new CondicaoSgoDAO();
+//        LaudoEspecializadoSgoDAO dbLaudoEspecializadoSgo = new LaudoEspecializadoSgoDAO();
+//        MonitoramentoSgoDAO dbMonitoramentoSgo = new MonitoramentoSgoDAO();
+        
 
+        Inspecao inspecao;
         while (rs.next()) {
-            Usuario usuario = new Usuario();
-            usuario.setId(rs.getInt("ID_USUARIO"));
-            usuario.setNome(rs.getString("NM_NOME"));
-            usuario.setUsuario(rs.getString("DS_USUARIO"));
-
-            inspecoes.add(new Inspecao(rs.getInt("ID_INSPECAO"), rs.getDate("DT_DATA"), usuario, 
-                    new Ponte(rs.getInt("ID_PONTE")), 
-                    new Modelo(rs.getInt("ID_MODELO"), rs.getString("DS_INDICE_BASE"), rs.getString("DS_INDICE_PERFORMANCE"))));
+            inspecao = new Inspecao();
+            inspecao.setId(rs.getInt("ID_INSPECAO"));
+            inspecao.setData(rs.getDate("DT_DATA"));
+            inspecao.setUsuario(dbUsuario.buscar(rs.getInt("ID_USUARIO")));
+            inspecao.setModelo(dbModelo.buscar(rs.getInt("ID_MODELO")));
+            inspecao.setIdentificacaoObraSgo(null);
+            inspecao.setCondicaoSgo(null);
+            inspecao.setLaudoEspecializadoSgo(null);
+            inspecao.setMonitoramentoSgo(null);
+            inspecao.setRelatorio(rs.getString("DS_RELATORIO"));
+            inspecao.setArquivosAnexosInspecao(dbArquivoAnexo.buscarInspecoes(rs.getInt("ID_INSPECAO")));
+            
+            inspecoes.add(inspecao);
         }
         conexao.closeConnection();
         return inspecoes;

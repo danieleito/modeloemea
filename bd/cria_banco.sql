@@ -481,23 +481,6 @@ create table PONTE
 
 ---------------------------------------------------------------------------
 
---Inspecoes
-create table INSPECAO
-	(
-		ID_INSPECAO					int						not null identity(1,1),
-		DT_DATA						date					not null,
-		ID_USUARIO					int						not null,
-		ID_PONTE					int						not null,
-		ID_MODELO					int						not null,
-
-		CONSTRAINT					pk_inspecao				PRIMARY KEY(ID_INSPECAO),
-		CONSTRAINT					fk_inspecao_usuario		FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO),
-		CONSTRAINT					fk_inspecao_ponte		FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
-		CONSTRAINT					fk_inspecao_modelo		FOREIGN KEY(ID_MODELO) REFERENCES MODELO(ID_MODELO)
-	);
-
----------------------------------------------------------------------------
-
 create table CONFIGURACAO
 	(
 		ID_CONFIGURACAO			int						not null,
@@ -513,44 +496,7 @@ create table IMAGEM
 	   --DS_IMAGEM				varbinary(max),
 	   CONSTRAINT				pk_imagem				PRIMARY KEY(ID_IMAGEM)
    );
-
---Arquivos anexos cadastro
-create table ARQUIVO_ANEXO_CADASTRO
-	(
-		ID_ARQUIVO_ANEXO_CADASTRO		int								not null identity(1,1),
-		ID_PONTE						int								not null,
-		DS_ARQUIVO						varchar(20)						not null,
-		DS_TIPO_ARQUIVO					varchar(10)						not null,
-		NR_NUMERO						varchar(3)						not null,
-		DS_DESCRICAO					varchar(20)						not null,
-		DS_REGISTRO						varchar(10)						not null,
-		DT_DATA_ANEXACAO				date							not null,
-		ID_IMAGEM						int,					
-		CONSTRAINT						pk_arquivoanexocadastro			PRIMARY KEY(ID_ARQUIVO_ANEXO_CADASTRO),
-		CONSTRAINT						fk_arquivoanexocadastro_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
-		CONSTRAINT						fk_arquivoanexocadastro_imagem	FOREIGN KEY(ID_IMAGEM) REFERENCES IMAGEM(ID_IMAGEM)
-	);
-
---Arquivos anexos inspecao
-create table ARQUIVO_ANEXO_INSPECAO
-	(
-		ID_ARQUIVO_ANEXO_INSPECAO		int				not null identity(1,1),
-		ID_INSPECAO						int				not null,
-		DS_ARQUIVO						varchar(20)		not null,
-		DS_TIPO_ARQUIVO					varchar(10)		not null,
-		NR_NUMERO						varchar(3)		not null,
-		DS_DESCRICAO					varchar(20)		not null,
-		DS_REGISTRO						varchar(10)		not null,
-		DT_DATA_ANEXACAO				date			not null,
-		--DS_MINIATURA
-		ID_IMAGEM						int,
-		CONSTRAINT						pk_arquivoanexoinspecao	PRIMARY KEY(ID_ARQUIVO_ANEXO_INSPECAO),
-		CONSTRAINT						fk_arquivoanexoinspecao_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO),
-		CONSTRAINT						fk_arquivoanexoinspecao_imagem		FOREIGN KEY(ID_IMAGEM) REFERENCES IMAGEM(ID_IMAGEM)
-	);
-
----------------------------------------------------------------------------
-
+--------------------------------------------------------------------------
 --aspectos especiais
 create table ASPECTOS_ESPECIAIS
 	(
@@ -587,28 +533,6 @@ create table RANKING
 	);
 
 ---------------------------------------------------------------------------
-
--- Inspeções Manifestações
-create table INSPECOES_MANIFESTACOES
-	(
-		ID_INSPECOES_MANIFESTACOES				int									not null identity(1,1),
-		ID_INSPECAO								int,
-		ID_ELEMENTO_UFPR						int,
-		DS_NUMERO								varchar(20),
-		ID_MANIFESTACOES_UFPR					int,
-		DS_FOTO									varchar(20),
-		DS_TAMANHO								varchar(20),
-		ID_MANIFESTACOES_EXTENSAO				int,
-		ID_MANIFESTACOES_URGENCIA				int,
-		CONSTRAINT								pk_inspecoesmanifestacoes		PRIMARY KEY(ID_INSPECOES_MANIFESTACOES),
-		CONSTRAINT								fk_inspecoesmanifestacoes_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO),
-		CONSTRAINT								fk_inspecoesmanifestacoes_elementosufpr	FOREIGN KEY(ID_ELEMENTO_UFPR) REFERENCES ELEMENTOS_UFPR(ID_ELEMENTO_UFPR),
-		CONSTRAINT								fk_inspecoesmanifestacoes_manifestacoesufpr	FOREIGN KEY(ID_MANIFESTACOES_UFPR) REFERENCES MANIFESTACOES_UFPR(ID_MANIFESTACOES_UFPR),
-		CONSTRAINT								fk_inspecoesmanifestacoes_manifestacoesextensao	FOREIGN KEY(ID_MANIFESTACOES_EXTENSAO) REFERENCES MANIFESTACOES_EXTENSAO(ID_MANIFESTACOES_EXTENSAO),
-		CONSTRAINT								fk_inspecoesmanifestacoes_manifestacoesurgencia	FOREIGN KEY(ID_MANIFESTACOES_URGENCIA) REFERENCES MANIFESTACOES_URGENCIA(ID_MANIFESTACOES_URGENCIA)
-	);
-
-------------------------------------------------------------------------
 
 create table ELEMENTO_COMPONENTES
 	(
@@ -666,29 +590,97 @@ create table MONITORAMENTO_SGO
 		CONSTRAINT						pk_monitoramentosgo			PRIMARY KEY(ID_MONITORAMENTO_SGO)
 	);
 
-create table INSPECAO_ROTINEIRA
+---------------------------------------------------------------------------
+
+--Inspecoes
+create table INSPECAO
 	(
-		ID_INSPECAO_ROTINEIRA								int															not null identity(1,1),
-		ID_INSPECAO											int															not null,
-		ID_IDENTIFICACAO_OBRA_SGO							int															not null,
-		ID_CONDICOES_SGO									int															not null,
-		ID_LAUDO_ESPECIALIZADO_SGO							int															not null,
-		ID_MONITORAMENTO_SGO								int															not null,
-		DS_RELATORIO										varchar(80)													not null,
-		CONSTRAINT											pk_inspecaorotineira										PRIMARY KEY(ID_INSPECAO_ROTINEIRA),
-		CONSTRAINT											fk_inspecaorotineira_inspecao								FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO),
-		CONSTRAINT											fk_inspecaorotineira_identificacaoobrasgo					FOREIGN KEY(ID_IDENTIFICACAO_OBRA_SGO) REFERENCES IDENTIFICACAO_OBRA_SGO(ID_IDENTIFICACAO_OBRA_SGO),
-		CONSTRAINT											fk_inspecaorotineira_condicaosgo							FOREIGN KEY(ID_CONDICOES_SGO) REFERENCES CONDICOES_SGO(ID_CONDICOES_SGO),
-		CONSTRAINT											fk_inspecaorotineira_laudoespecializadosgo					FOREIGN KEY(ID_LAUDO_ESPECIALIZADO_SGO) REFERENCES LAUDO_ESPECIALIZADO_SGO(ID_LAUDO_ESPECIALIZADO_SGO),
-		CONSTRAINT											fk_inspecaorotineira_monitoramentosgo						FOREIGN KEY(ID_MONITORAMENTO_SGO) REFERENCES MONITORAMENTO_SGO(ID_MONITORAMENTO_SGO)
+		ID_INSPECAO									int											not null identity(1,1),
+		ID_PONTE									int											not null,
+		DT_DATA										date										not null,
+		ID_USUARIO									int											not null,
+		ID_MODELO									int											not null,
+		ID_IDENTIFICACAO_OBRA_SGO					int											not null,
+		ID_CONDICOES_SGO							int											not null,
+		ID_LAUDO_ESPECIALIZADO_SGO					int											not null,
+		ID_MONITORAMENTO_SGO						int											not null,
+		DS_RELATORIO								varchar(80)									not null,
+		CONSTRAINT									pk_inspecao									PRIMARY KEY(ID_INSPECAO),
+		CONSTRAINT									fk_inspecao_usuario							FOREIGN KEY(ID_USUARIO) REFERENCES USUARIO(ID_USUARIO),
+		CONSTRAINT									fk_inspecao_ponte							FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
+		CONSTRAINT									fk_inspecao_modelo							FOREIGN KEY(ID_MODELO) REFERENCES MODELO(ID_MODELO),
+		CONSTRAINT									fk_inspecao_identificacaoobrasgo			FOREIGN KEY(ID_IDENTIFICACAO_OBRA_SGO) REFERENCES IDENTIFICACAO_OBRA_SGO(ID_IDENTIFICACAO_OBRA_SGO),
+		CONSTRAINT									fk_inspecao_condicaosgo						FOREIGN KEY(ID_CONDICOES_SGO) REFERENCES CONDICOES_SGO(ID_CONDICOES_SGO),
+		CONSTRAINT									fk_inspecao_laudoespecializadosgo			FOREIGN KEY(ID_LAUDO_ESPECIALIZADO_SGO) REFERENCES LAUDO_ESPECIALIZADO_SGO(ID_LAUDO_ESPECIALIZADO_SGO),
+		CONSTRAINT									fk_inspecao_monitoramentosgo				FOREIGN KEY(ID_MONITORAMENTO_SGO) REFERENCES MONITORAMENTO_SGO(ID_MONITORAMENTO_SGO)
+		
 	);
 
 ---------------------------------------------------------------------------
 
+--Arquivos anexos cadastro
+create table ARQUIVO_ANEXO_CADASTRO
+	(
+		ID_ARQUIVO_ANEXO_CADASTRO		int								not null identity(1,1),
+		ID_PONTE						int								not null,
+		DS_ARQUIVO						varchar(20)						not null,
+		DS_TIPO_ARQUIVO					varchar(10)						not null,
+		NR_NUMERO						varchar(3)						not null,
+		DS_DESCRICAO					varchar(20)						not null,
+		DS_REGISTRO						varchar(10)						not null,
+		DT_DATA_ANEXACAO				date							not null,
+		ID_IMAGEM						int,					
+		CONSTRAINT						pk_arquivoanexocadastro			PRIMARY KEY(ID_ARQUIVO_ANEXO_CADASTRO),
+		CONSTRAINT						fk_arquivoanexocadastro_ponte	FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
+		CONSTRAINT						fk_arquivoanexocadastro_imagem	FOREIGN KEY(ID_IMAGEM) REFERENCES IMAGEM(ID_IMAGEM)
+	);
+
+--Arquivos anexos inspecao
+create table ARQUIVO_ANEXO_INSPECAO
+	(
+		ID_ARQUIVO_ANEXO_INSPECAO		int				not null identity(1,1),
+		ID_INSPECAO						int				not null,
+		DS_ARQUIVO						varchar(20)		not null,
+		DS_TIPO_ARQUIVO					varchar(10)		not null,
+		NR_NUMERO						varchar(3)		not null,
+		DS_DESCRICAO					varchar(20)		not null,
+		DS_REGISTRO						varchar(10)		not null,
+		DT_DATA_ANEXACAO				date			not null,
+		--DS_MINIATURA
+		ID_IMAGEM						int,
+		CONSTRAINT						pk_arquivoanexoinspecao	PRIMARY KEY(ID_ARQUIVO_ANEXO_INSPECAO),
+		CONSTRAINT						fk_arquivoanexoinspecao_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO),
+		CONSTRAINT						fk_arquivoanexoinspecao_imagem		FOREIGN KEY(ID_IMAGEM) REFERENCES IMAGEM(ID_IMAGEM)
+	);
+
+---------------------------------------------------------------------------
+
+-- Inspeções Manifestações
+create table INSPECOES_MANIFESTACOES
+	(
+		ID_INSPECOES_MANIFESTACOES				int									not null identity(1,1),
+		ID_INSPECAO								int,
+		ID_ELEMENTO_UFPR						int,
+		DS_NUMERO								varchar(20),
+		ID_MANIFESTACOES_UFPR					int,
+		DS_FOTO									varchar(20),
+		DS_TAMANHO								varchar(20),
+		ID_MANIFESTACOES_EXTENSAO				int,
+		ID_MANIFESTACOES_URGENCIA				int,
+		CONSTRAINT								pk_inspecoesmanifestacoes		PRIMARY KEY(ID_INSPECOES_MANIFESTACOES),
+		CONSTRAINT								fk_inspecoesmanifestacoes_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO),
+		CONSTRAINT								fk_inspecoesmanifestacoes_elementosufpr	FOREIGN KEY(ID_ELEMENTO_UFPR) REFERENCES ELEMENTOS_UFPR(ID_ELEMENTO_UFPR),
+		CONSTRAINT								fk_inspecoesmanifestacoes_manifestacoesufpr	FOREIGN KEY(ID_MANIFESTACOES_UFPR) REFERENCES MANIFESTACOES_UFPR(ID_MANIFESTACOES_UFPR),
+		CONSTRAINT								fk_inspecoesmanifestacoes_manifestacoesextensao	FOREIGN KEY(ID_MANIFESTACOES_EXTENSAO) REFERENCES MANIFESTACOES_EXTENSAO(ID_MANIFESTACOES_EXTENSAO),
+		CONSTRAINT								fk_inspecoesmanifestacoes_manifestacoesurgencia	FOREIGN KEY(ID_MANIFESTACOES_URGENCIA) REFERENCES MANIFESTACOES_URGENCIA(ID_MANIFESTACOES_URGENCIA)
+	);
+
+------------------------------------------------------------------------
+
 create table DANOS_ELEMENTOS_SGO
 	(
 		ID_DANOS_ELEMENTOS_SGO		int								not null identity(1,1),
-		ID_INSPECAO_ROTINEIRA		int								not null,
+		ID_INSPECAO					int								not null,
 		DS_ELEMENTO					varchar(30),
 		DS_NOTA						varchar(20),
 		DS_DANO						varchar(20),
@@ -697,20 +689,20 @@ create table DANOS_ELEMENTOS_SGO
 		DS_EXTENSAO_RELATIVA		varchar(20),
 		DS_LOCALIZACAO				varchar(20),
 		CONSTRAINT					pk_danoselementossgo			PRIMARY KEY(ID_DANOS_ELEMENTOS_SGO),
-		CONSTRAINT					fk_danoselementossgo			FOREIGN KEY(ID_INSPECAO_ROTINEIRA) REFERENCES INSPECAO_ROTINEIRA(ID_INSPECAO_ROTINEIRA)
+		CONSTRAINT					fk_danoselementossgo_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO)
 	);
 
 create table INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO
 	(
 		ID_INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO		int																not null identity(1,1),
-		ID_INSPECAO_ROTINEIRA							int																not null,
+		ID_INSPECAO										int																not null,
 		DS_ELEMENTO										varchar(30),
 		DS_NOTA											varchar(20),
 		DS_INSUFICIENCIA								varchar(20),
 		DS_CAUSA_PROVAVEL								varchar(20),
 		DS_COMENTARIOS									varchar(20),
 		CONSTRAINT										pk_insuficienciasestruturaiselementossgo						PRIMARY KEY(ID_INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO),
-		CONSTRAINT										fk_insuficienciasestruturaiselementossgo_inspecaorotineira		FOREIGN KEY(ID_INSPECAO_ROTINEIRA) REFERENCES INSPECAO_ROTINEIRA(ID_INSPECAO_ROTINEIRA)
+		CONSTRAINT										fk_insuficienciasestruturaiselementossgo_inspecao				FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO)
 	);
 
 ---------------------------------------------------------------------------

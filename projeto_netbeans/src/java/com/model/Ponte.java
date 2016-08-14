@@ -78,10 +78,7 @@ public class Ponte implements Serializable {
      * lista arquivos anexos
      */
     private ArrayList<ArquivoAnexoCadastro> arquivosAnexosCadastro;
-    /**
-     * lista arquivos anexos
-     */
-    private ArrayList<ArquivoAnexoCadastro> arquivosAnexosInspecao;
+   
     /**
      * lista inspeção
      */
@@ -112,7 +109,6 @@ public class Ponte implements Serializable {
         substituicao = new Substituicao();
         cadastroManifestacao = new CadastroManifestacao();
         arquivosAnexosCadastro = new ArrayList<>();
-        arquivosAnexosInspecao = new ArrayList<>();
         inspecoes = new ArrayList<>();
     }
 
@@ -332,15 +328,6 @@ public class Ponte implements Serializable {
     public void setArquivosAnexosCadastro(ArrayList<ArquivoAnexoCadastro> arquivosAnexosCadastro) {
         this.arquivosAnexosCadastro = arquivosAnexosCadastro;
     }
-
-    public ArrayList<ArquivoAnexoCadastro> getArquivosAnexosInspecao() {
-        return arquivosAnexosInspecao;
-    }
-
-    public void setArquivosAnexosInspecao(ArrayList<ArquivoAnexoCadastro> arquivosAnexosInspecao) {
-        this.arquivosAnexosInspecao = arquivosAnexosInspecao;
-    }
-    
 
     public ArrayList<Inspecao> getInspecoes() {
         return inspecoes;

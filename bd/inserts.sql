@@ -427,32 +427,12 @@ insert into PONTE (DS_INDICE_PERFORMANCE_RELATIVO, ID_IDENTIFICACAO_OBRA_DADOS_B
 
 ---------------------------------------------------------------------------
 
-insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO) values ('01/07/2016', 1, 1, 1);
-insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO) values ('02/08/2016', 1, 2, 1);
-insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO) values ('03/08/2016', 1, 3, 1);
-insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO) values ('04/08/2016', 1, 4, 1);
-insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO) values ('05/08/2016', 1, 5, 1);
-insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO) values ('06/08/2016', 1, 1, 1);
-insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO) values ('07/08/2016', 1, 1, 1);
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('imagem01.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('imagem02.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('imagem03.jpg', 'image/jpg');
 
 ---------------------------------------------------------------------------
 
-insert into IMAGEM(NM_NOME, TIPO_MIME) values ('imagem01.png', 'image/jpeg');
-insert into IMAGEM(NM_NOME, TIPO_MIME) values ('imagem02.png', 'image/jpeg');
-insert into IMAGEM(NM_NOME, TIPO_MIME) values ('imagem03.png', 'image/jpeg');
-
----------------------------------------------------------------------------
-
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'OAE', '10/05/2016', 1);
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'OAE', '11/05/2016', 2);
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'OAE', '12/05/2016', 3);
-
-
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'INS', '13/05/2016', 2);
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'INS', '14/05/2016', 3);
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'INS', '15/05/2016', 1);
-
----------------------------------------------------------------------------
 insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Meio ambiente agressivo');
 insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Nível de vibração elevado');
 insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Leito do rio erodível');
@@ -474,8 +454,6 @@ insert into RANKING (ID_PONTE, ID_SIMULACAO) values (2, 2);
 
 ---------------------------------------------------------------------------
 
-insert into INSPECOES_MANIFESTACOES (ID_INSPECAO, ID_ELEMENTO_UFPR, DS_NUMERO, ID_MANIFESTACOES_UFPR, DS_FOTO, DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA) values (1, 1, '00', 1, '00', '00', 1, 1);
-
 insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 1, '00', '00');
 
 ---------------------------------------------------------------------------
@@ -490,9 +468,28 @@ insert into MONITORAMENTO_SGO values ('período', 'tipo monitoramento', 'executo
 
 ---------------------------------------------------------------------------
 
-insert into INSPECAO_ROTINEIRA (ID_INSPECAO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values (1, 1, 1, 1, 1, 'relatórios1');
-insert into INSPECAO_ROTINEIRA (ID_INSPECAO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values (2, 1, 1, 1, 1, 'relatórios2');
-insert into INSPECAO_ROTINEIRA (ID_INSPECAO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values (3, 1, 1, 1, 1, 'relatórios3');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('01/07/2016', 1, 1, 1, 1, 1, 1, 1, 'relatórios1');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('02/08/2016', 1, 2, 1, 1, 1, 1, 1, 'relatórios2');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('03/08/2016', 1, 3, 1, 1, 1, 1, 1, 'relatórios3');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('04/08/2016', 1, 4, 1, 1, 1, 1, 1, 'relatórios4');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('05/08/2016', 1, 5, 1, 1, 1, 1, 1, 'relatórios5');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('06/08/2016', 1, 1, 1, 1, 1, 1, 1, 'relatórios6');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('07/08/2016', 1, 1, 1, 1, 1, 1, 1, 'relatórios7');
+																																																		  
+---------------------------------------------------------------------------																																  
+
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'OAE', '10/05/2016', 1);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'OAE', '11/05/2016', 2);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'OAE', '12/05/2016', 3);
+
+
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'INS', '13/05/2016', 2);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'INS', '14/05/2016', 3);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'INS', '15/05/2016', 1);
+
+---------------------------------------------------------------------------
+
+insert into INSPECOES_MANIFESTACOES (ID_INSPECAO, ID_ELEMENTO_UFPR, DS_NUMERO, ID_MANIFESTACOES_UFPR, DS_FOTO, DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA) values (1, 1, '00', 1, '00', '00', 1, 1);
 
 ---------------------------------------------------------------------------
 

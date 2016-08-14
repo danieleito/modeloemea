@@ -17,10 +17,6 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
      */
     private int id;
     /**
-     * identificador da inspeção rotineira
-     */
-    private InspecaoRotineira inspecaoRotineira;
-    /**
      * elemento
      */
     private String elemento;
@@ -51,16 +47,14 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
     /**
      * Constructor completo
      * @param id {@link #id}
-     * @param inspecaoRotineira {@link #inspecaoRotineira}
      * @param elemento {@link #elemento}
      * @param nota {@link #nota}
      * @param insuficiencia {@link #insuficiencia}
      * @param causaProvavel {@link #causaProvavel}
      * @param comentarios {@link #comentarios}
      */
-    public InsuficienciaEstruturalElementoSgo(int id, InspecaoRotineira inspecaoRotineira, String elemento, String nota, String insuficiencia, String causaProvavel, String comentarios) {
+    public InsuficienciaEstruturalElementoSgo(int id, String elemento, String nota, String insuficiencia, String causaProvavel, String comentarios) {
         this.id = id;
-        this.inspecaoRotineira = inspecaoRotineira;
         this.elemento = elemento;
         this.nota = nota;
         this.insuficiencia = insuficiencia;
@@ -70,15 +64,13 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
 
     /**
      * Constructor sem id
-     * @param inspecaoRotineira {@link #inspecaoRotineira}
      * @param elemento {@link #elemento}
      * @param nota {@link #nota}
      * @param insuficiencia {@link #insuficiencia}
      * @param causaProvavel {@link #causaProvavel}
      * @param comentarios {@link #comentarios}
      */
-    public InsuficienciaEstruturalElementoSgo(InspecaoRotineira inspecaoRotineira, String elemento, String nota, String insuficiencia, String causaProvavel, String comentarios) {
-        this.inspecaoRotineira = inspecaoRotineira;
+    public InsuficienciaEstruturalElementoSgo(String elemento, String nota, String insuficiencia, String causaProvavel, String comentarios) {
         this.elemento = elemento;
         this.nota = nota;
         this.insuficiencia = insuficiencia;
@@ -97,18 +89,6 @@ public class InsuficienciaEstruturalElementoSgo implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    /**
-     * retorna {@link #inspecaoRotineira}
-     * @return {@link #inspecaoRotineira}
-     */
-    public InspecaoRotineira getInspecaoRotineira() {
-        return inspecaoRotineira;
-    }
-
-    public void setInspecaoRotineira(InspecaoRotineira inspecaoRotineira) {
-        this.inspecaoRotineira = inspecaoRotineira;
     }
 
     /**

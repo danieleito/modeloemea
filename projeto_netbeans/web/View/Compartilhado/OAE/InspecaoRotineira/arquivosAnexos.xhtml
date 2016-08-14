@@ -16,7 +16,7 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <h:panelGrid columns="2" cellpadding="10">
-            <p:dataTable var="arq" value="#{ponteBean.model.arquivosAnexosInspecao}" paginator="true" rows="15" >
+            <p:dataTable var="arq" value="#{ponteBean.inspecao.arquivosAnexosInspecao}" paginator="true" rows="15" >
                 <p:column headerText="Arquivo" style="text-align: center" >
                     <h:outputText value="#{arq.arquivo}" />
                 </p:column>
@@ -45,17 +45,19 @@ and open the template in the editor.
 
                 <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
                     <p:lightBox styleClass="imagebox" id="lighbox1">
-                        <h:outputLink value="#{comumbean.getImage()}" title="#{arq.imagem.nome}">
-                            <f:param name="filename" value="#{arq.imagem.nome}" />
+                        <h:outputLink value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" title="#{arq.imagem.nome}">
                             <p:graphicImage value="#{comumbean.getImage()}" style="height: 77px; width: 100px" title="#{image}" alt="Image Description for #{image}" >
                                 <f:param name="filename" value="#{arq.imagem.nome}" />
+                                <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
                             </p:graphicImage>
                         </h:outputLink>
                     </p:lightBox>
                 </p:column>
 
                 <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                    <p:commandButton icon="ui-icon-arrowthickstop-1-s" title="Baixar" action="#{arquivoAnexo.baixar()}" />
+                    <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthickstop-1-s">
+                        <p:fileDownload value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" />
+                    </p:commandButton>
                 </p:column>
             </p:dataTable>
         </h:panelGrid>

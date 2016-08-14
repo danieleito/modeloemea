@@ -5,10 +5,14 @@
  */
 package com.dao;
 
+import com.model.IdentificacaoObraDadosBasicos;
+import com.model.IdentificacaoObraLocalizacao;
 import com.model.Ponte;
 import com.model.Ranking;
 import com.model.Simulacao;
+import com.model.Uf;
 import com.model.Usuario;
+import com.model.Via;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -115,10 +119,18 @@ public class SimulacaoDAO {
     }
 
     private ArrayList<Ranking> buscarRankings(int idSimulacao) throws SQLException {
-        String query = "select R.ID_RANKING, R.ID_PONTE "
-                + "from RANKING R, PONTE P "
-                + "where R.ID_PONTE = P.ID_PONTE "
-                + "and R.ID_SIMULACAO = " + idSimulacao + " "
+        String query = "select R.ID_RANKING, R.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, "
+                + "DB.CD_CODIGO, DB.DS_IDENTIFICACAO, P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, "
+                + "L.ID_UF, U.SG_UF, L.ID_VIA, V.DS_VIA, L.DS_LOCAL_VIA, P.DS_INDICE_PERFORMANCE_RELATIVO, "
+                + "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA "
+                + "from RANKING R, PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, "
+                + "IDENTIFICACAO_OBRA_LOCALIZACAO L, VIA V, UF U "
+                + "where R.ID_SIMULACAO = " + idSimulacao + " "
+                + "and R.ID_PONTE = P.ID_PONTE "
+                + "and P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
+                + "and P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
+                + "and L.ID_UF = U.ID_UF "
+                + "and L.ID_VIA = V.ID_VIA "
                 + "ORDER BY P.DS_INDICE_PERFORMANCE_RELATIVO DESC; ";
 
         Conexao conexao = new Conexao();
@@ -131,9 +143,24 @@ public class SimulacaoDAO {
         ArrayList<Ranking> rankings = new ArrayList<>();
 
         Ponte ponte;
-        PonteDAO dbPonte = new PonteDAO();
+        IdentificacaoObraDadosBasicos dadosBasicos;
+        IdentificacaoObraLocalizacao localizacao;
         while (rs.next()) {
-            ponte = dbPonte.buscar(rs.getInt("ID_PONTE"));
+            dadosBasicos = new IdentificacaoObraDadosBasicos();
+            localizacao = new IdentificacaoObraLocalizacao();
+            dadosBasicos.setCodigo(rs.getString("CD_CODIGO"));
+            dadosBasicos.setIdentificacao(rs.getString("DS_IDENTIFICACAO"));
+            localizacao.setUf(new Uf(rs.getInt("ID_UF"), null, rs.getString("SG_UF")));
+            localizacao.setVia(new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")));
+            localizacao.setLocalVia(rs.getDouble("DS_LOCAL_VIA"));
+            
+            ponte = new Ponte();
+            ponte.setId(rs.getInt("ID_PONTE"));
+            ponte.setIdentificacaoObraDadosBasicos(dadosBasicos);
+            ponte.setIdentificacaoObraLocalizacao(localizacao);
+            ponte.setIndicePerformanceRelativo(rs.getString("DS_INDICE_PERFORMANCE_RELATIVO"));
+            ponte.setDataUltimaInspecao(rs.getDate("DATA"));
+
             Ranking ranking = new Ranking(rs.getInt("ID_RANKING"), ponte);
             rankings.add(ranking);
         }

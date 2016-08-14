@@ -17,10 +17,7 @@ public class ArquivoAnexoCadastro implements Serializable {
      * identificador do ArquivoAnexoCadastro no Banco de Dados
      */
     private int id;
-    /**
-     * identificador da ponte
-     */
-    private Ponte ponte;
+    
     /**
      * arquivo
      */
@@ -60,7 +57,6 @@ public class ArquivoAnexoCadastro implements Serializable {
     /**
      * Constructor completo
      * @param id {@link #id}
-     * @param ponte {@link #ponte}
      * @param arquivo {@link #arquivo}
      * @param tipoArquivo {@link #tipoArquivo}
      * @param numero {@link #numero}
@@ -69,9 +65,8 @@ public class ArquivoAnexoCadastro implements Serializable {
      * @param dataAnexada {@link #dataAnexada}
      * @param imagem {@link #imagem}
      */
-    public ArquivoAnexoCadastro(int id, Ponte ponte, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
+    public ArquivoAnexoCadastro(int id, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
         this.id = id;
-        this.ponte = ponte;
         this.arquivo = arquivo;
         this.tipoArquivo = tipoArquivo;
         this.numero = numero;
@@ -92,8 +87,7 @@ public class ArquivoAnexoCadastro implements Serializable {
      * @param dataAnexada {@link #dataAnexada}
      * @param imagem {@link #imagem}
      */
-    public ArquivoAnexoCadastro(Ponte ponte, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
-        this.ponte = ponte;
+    public ArquivoAnexoCadastro(String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
         this.arquivo = arquivo;
         this.tipoArquivo = tipoArquivo;
         this.numero = numero;
@@ -118,18 +112,6 @@ public class ArquivoAnexoCadastro implements Serializable {
      */
     public void setId(int id) {
         this.id = id;
-    }
-
-    /**
-     * retorna {@link #ponte}
-     * @return {@link #ponte}
-     */
-    public Ponte getPonte() {
-        return ponte;
-    }
-
-    public void setPonte(Ponte ponte) {
-        this.ponte = ponte;
     }
 
     /**

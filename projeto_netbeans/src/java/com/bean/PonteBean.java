@@ -30,6 +30,7 @@ import com.model.DeficienciaFuncional;
 import com.model.ElementoUfpr;
 import com.model.ExtensaoRelativa;
 import com.model.Foto;
+import com.model.Inspecao;
 import com.model.ManifestacaoUfpr;
 import com.model.NaturezaTransposicao;
 import com.model.Numero;
@@ -128,6 +129,8 @@ public class PonteBean extends ComumBean implements Serializable {
     //reparo
     private ArrayList<Reparo> reparos;
     
+    private Inspecao inspecao;
+    
     /**
      * Constructor
      */
@@ -202,7 +205,7 @@ public class PonteBean extends ComumBean implements Serializable {
             model = database.buscar(id);
             redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
         } catch (SQLException ex) {
-            Logger.getLogger(InspecaoBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar inspeçõess.");
         }
     }
@@ -344,6 +347,16 @@ public class PonteBean extends ComumBean implements Serializable {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar. " + ex.getMessage());
         }
+    }
+    
+    public void visualizarInspecao(int id) {
+        try {
+            inspecao = model.getInspecoes().stream().filter(i -> i.getId() == id).findFirst().orElse(new Inspecao());
+        } catch (Exception ex) {
+            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar inspeção. " + ex.getMessage());
+        }
+        redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
     }
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
@@ -593,7 +606,16 @@ public class PonteBean extends ComumBean implements Serializable {
 
     public void setSimulacoes(ArrayList<Simulacao> simulacoes) {
         this.simulacoes = simulacoes;
-    }    
+    }
+    
+    public Inspecao getInspecao() {
+        return inspecao;
+    }
+
+    public void setInspecao(Inspecao inspecao) {
+        this.inspecao = inspecao;
+    }
+    
     // </editor-fold>
 
 }

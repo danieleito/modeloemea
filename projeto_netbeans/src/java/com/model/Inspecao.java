@@ -6,6 +6,7 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -26,16 +27,47 @@ public class Inspecao implements Serializable {
      */
     private Usuario usuario;
     /**
-     * identificador da ponte
-     */
-    private Ponte ponte;
-    /**
      * identificador do modelo
      */
     private Modelo modelo;
 //    private String condicaoEstabilidade;
 //    private String condicaoConservacao;
     
+
+    private IdentificacaoObraSgo identificacaoObraSgo;
+    /**
+     * identificador da condição
+     */
+    private CondicaoSgo condicaoSgo;
+//    private DanoElementoSgo danoElementoSgo;
+//    private InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo;
+    /**
+     * identificador do laudo especializado
+     */
+    private LaudoEspecializadoSgo laudoEspecializadoSgo;
+    /**
+     * identificador do monitoramento
+     */
+    private MonitoramentoSgo monitoramentoSgo;
+    /**
+     * relatório
+     */
+    private String relatorio;
+    /**
+     * lista de danos elementos
+     */
+    private ArrayList<DanoElementoSgo> danosElementosSgo;
+    /**
+     * lista de insuficiências estruturais elementos
+     */
+    private ArrayList<InsuficienciaEstruturalElementoSgo> insuficienciasEstruturaisElementosSgo;
+     /**
+     * lista arquivos anexos
+     */
+    private ArrayList<ArquivoAnexoInspecao> arquivosAnexosInspecao;
+    
+    private int idPonte;
+
 
     /**
      * Constructor padrão.
@@ -48,14 +80,12 @@ public class Inspecao implements Serializable {
      * @param id {@link #id}
      * @param data {@link #data}
      * @param usuario {@link #usuario}
-     * @param ponte {@link #ponte}
      * @param modelo {@link #modelo}
      */
-    public Inspecao(int id, Date data, Usuario usuario, Ponte ponte, Modelo modelo) {
+    public Inspecao(int id, Date data, Usuario usuario, Modelo modelo) {
         this.id = id;
         this.data = data;
         this.usuario = usuario;
-        this.ponte = ponte;
         this.modelo = modelo;
     }
 
@@ -63,13 +93,11 @@ public class Inspecao implements Serializable {
      * Constructor sem id
      * @param data {@link #data}
      * @param usuario {@link #usuario}
-     * @param ponte {@link #ponte}
      * @param modelo {@link #modelo}
      */
-    public Inspecao(Date data, Usuario usuario, Ponte ponte, Modelo modelo) {
+    public Inspecao(Date data, Usuario usuario, Modelo modelo) {
         this.data = data;
         this.usuario = usuario;
-        this.ponte = ponte;
         this.modelo = modelo;
     
     }
@@ -120,18 +148,6 @@ public class Inspecao implements Serializable {
     }
 
     /**
-     * retorna {@link #ponte}
-     * @return {@link #ponte}
-     */
-    public Ponte getPonte() {
-        return ponte;
-    }
-
-    public void setPonte(Ponte ponte) {
-        this.ponte = ponte;
-    }
-
-    /**
      * retorna {@link #modelo}
      * @return {@link #modelo}
      */
@@ -142,4 +158,77 @@ public class Inspecao implements Serializable {
     public void setModelo(Modelo modelo) {
         this.modelo = modelo;
     }
+
+    public IdentificacaoObraSgo getIdentificacaoObraSgo() {
+        return identificacaoObraSgo;
+    }
+
+    public void setIdentificacaoObraSgo(IdentificacaoObraSgo identificacaoObraSgo) {
+        this.identificacaoObraSgo = identificacaoObraSgo;
+    }
+
+    public CondicaoSgo getCondicaoSgo() {
+        return condicaoSgo;
+    }
+
+    public void setCondicaoSgo(CondicaoSgo condicaoSgo) {
+        this.condicaoSgo = condicaoSgo;
+    }
+
+    public LaudoEspecializadoSgo getLaudoEspecializadoSgo() {
+        return laudoEspecializadoSgo;
+    }
+
+    public void setLaudoEspecializadoSgo(LaudoEspecializadoSgo laudoEspecializadoSgo) {
+        this.laudoEspecializadoSgo = laudoEspecializadoSgo;
+    }
+
+    public MonitoramentoSgo getMonitoramentoSgo() {
+        return monitoramentoSgo;
+    }
+
+    public void setMonitoramentoSgo(MonitoramentoSgo monitoramentoSgo) {
+        this.monitoramentoSgo = monitoramentoSgo;
+    }
+
+    public String getRelatorio() {
+        return relatorio;
+    }
+
+    public void setRelatorio(String relatorio) {
+        this.relatorio = relatorio;
+    }
+
+    public ArrayList<DanoElementoSgo> getDanosElementosSgo() {
+        return danosElementosSgo;
+    }
+
+    public void setDanosElementosSgo(ArrayList<DanoElementoSgo> danosElementosSgo) {
+        this.danosElementosSgo = danosElementosSgo;
+    }
+
+    public ArrayList<InsuficienciaEstruturalElementoSgo> getInsuficienciasEstruturaisElementosSgo() {
+        return insuficienciasEstruturaisElementosSgo;
+    }
+
+    public void setInsuficienciasEstruturaisElementosSgo(ArrayList<InsuficienciaEstruturalElementoSgo> insuficienciasEstruturaisElementosSgo) {
+        this.insuficienciasEstruturaisElementosSgo = insuficienciasEstruturaisElementosSgo;
+    }
+
+    public ArrayList<ArquivoAnexoInspecao> getArquivosAnexosInspecao() {
+        return arquivosAnexosInspecao;
+    }
+
+    public void setArquivosAnexosInspecao(ArrayList<ArquivoAnexoInspecao> arquivosAnexosInspecao) {
+        this.arquivosAnexosInspecao = arquivosAnexosInspecao;
+    }
+
+    public int getIdPonte() {
+        return idPonte;
+    }
+
+    public void setIdPonte(int idPonte) {
+        this.idPonte = idPonte;
+    }
+    
 }
