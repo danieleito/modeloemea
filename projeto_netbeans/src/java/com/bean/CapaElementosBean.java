@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -24,7 +25,8 @@ public class CapaElementosBean extends ComumBean {
     private ElementoDAO database;
     private ArrayList<Elemento> elementos;
 
-    public CapaElementosBean() {
+    @PostConstruct
+    public void init() {
         database = new ElementoDAO();
         try {
             elementos = database.buscar();

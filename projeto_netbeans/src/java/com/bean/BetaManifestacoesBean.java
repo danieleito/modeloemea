@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -40,7 +41,8 @@ public class BetaManifestacoesBean extends ComumBean {
         this.manifestacoes = manifestacoes;
     }
 
-    public BetaManifestacoesBean() {
+    @PostConstruct
+    public void init() {
         database = new ManifestacaoDAO();
         try {
             manifestacoes = database.buscar();

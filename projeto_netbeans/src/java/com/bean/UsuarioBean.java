@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 
@@ -27,10 +28,8 @@ public class UsuarioBean extends ComumBean implements Serializable {
     private String confirmarSenha;
     private ArrayList<Usuario> listaUsuarios;
 
-    /**
-     * Constructor.
-     */
-    public UsuarioBean() {
+    @PostConstruct
+    public void init() {
         database = new UsuarioDAO();
         model = new Usuario();
         try {

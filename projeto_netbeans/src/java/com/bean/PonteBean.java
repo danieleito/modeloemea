@@ -52,6 +52,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -131,10 +132,8 @@ public class PonteBean extends ComumBean implements Serializable {
     
     private Inspecao inspecao;
     
-    /**
-     * Constructor
-     */
-    public PonteBean() {
+    @PostConstruct
+    public void init() {
         database = new PonteDAO();
         model = new Ponte();
         modelSimulacao = new Simulacao();

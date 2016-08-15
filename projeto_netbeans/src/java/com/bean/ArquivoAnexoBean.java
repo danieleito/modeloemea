@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.primefaces.model.StreamedContent;
@@ -61,7 +62,8 @@ public class ArquivoAnexoBean extends ComumBean {
         this.arquivosInspecao = arquivosInspecao;
     }
 
-    public ArquivoAnexoBean() {
+    @PostConstruct
+    public void init() {
         databaseC = new ArquivoAnexoDAO();
         databaseI = new ArquivoAnexoDAO();
         try {

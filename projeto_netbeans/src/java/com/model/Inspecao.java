@@ -34,19 +34,22 @@ public class Inspecao implements Serializable {
 //    private String condicaoConservacao;
     
 
+    /**
+     * identificador da identificação obra do sgo
+     */
     private IdentificacaoObraSgo identificacaoObraSgo;
     /**
-     * identificador da condição
+     * identificador da condição do sgo
      */
     private CondicaoSgo condicaoSgo;
 //    private DanoElementoSgo danoElementoSgo;
 //    private InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo;
     /**
-     * identificador do laudo especializado
+     * identificador do laudo especializado do sgo
      */
     private LaudoEspecializadoSgo laudoEspecializadoSgo;
     /**
-     * identificador do monitoramento
+     * identificador do monitoramento do sgo
      */
     private MonitoramentoSgo monitoramentoSgo;
     /**

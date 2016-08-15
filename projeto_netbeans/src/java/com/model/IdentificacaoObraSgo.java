@@ -20,7 +20,7 @@ public class IdentificacaoObraSgo implements Serializable {
     /**
      * identifidor da ponte
      */
-    private Ponte ponte;
+    //private Ponte ponte;
     /**
      * data da inspeção
      */
@@ -40,25 +40,21 @@ public class IdentificacaoObraSgo implements Serializable {
     /**
      * Constructor completo
      * @param id {@link #id}
-     * @param ponte {@link #ponte}
      * @param dataInspecao {@link #dataInspecao}
      * @param nomeInspetor {@link #nomeInspetor}
      */
-    public IdentificacaoObraSgo(int id, Ponte ponte, Date dataInspecao, String nomeInspetor) {
+    public IdentificacaoObraSgo(int id, Date dataInspecao, String nomeInspetor) {
         this.id = id;
-        this.ponte = ponte;
         this.dataInspecao = dataInspecao;
         this.nomeInspetor = nomeInspetor;
     }
 
     /**
      * Constructor sem id
-     * @param ponte {@link #ponte}
      * @param dataInspecao {@link #dataInspecao}
      * @param nomeInspetor {@link #nomeInspetor}
      */
-    public IdentificacaoObraSgo(Ponte ponte, Date dataInspecao, String nomeInspetor) {
-        this.ponte = ponte;
+    public IdentificacaoObraSgo(Date dataInspecao, String nomeInspetor) {
         this.dataInspecao = dataInspecao;
         this.nomeInspetor = nomeInspetor;
     }
@@ -74,18 +70,6 @@ public class IdentificacaoObraSgo implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    /**
-     * retorna {@link #ponte}
-     * @return {@link #ponte}
-     */
-    public Ponte getPonte() {
-        return ponte;
-    }
-
-    public void setPonte(Ponte ponte) {
-        this.ponte = ponte;
     }
 
     /**
