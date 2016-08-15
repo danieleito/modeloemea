@@ -42,8 +42,6 @@ public class Inspecao implements Serializable {
      * identificador da condição do sgo
      */
     private CondicaoSgo condicaoSgo;
-//    private DanoElementoSgo danoElementoSgo;
-//    private InsuficienciaEstruturalElementoSgo insuficienciaEstruturalElementoSgo;
     /**
      * identificador do laudo especializado do sgo
      */

@@ -129,11 +129,12 @@ public class InspecaoDAO {
         UsuarioDAO dbUsuario = new UsuarioDAO();
         ModeloDAO dbModelo = new ModeloDAO();
         ArquivoAnexoDAO dbArquivoAnexo = new ArquivoAnexoDAO();
-//        IdentificacaoObraSgoDAO dbIdentificacaoObraSgo = new IdentificacaoObraSgoDAO();
-//        CondicaoSgoDAO dbCondicaoSgo = new CondicaoSgoDAO();
-//        LaudoEspecializadoSgoDAO dbLaudoEspecializadoSgo = new LaudoEspecializadoSgoDAO();
-//        MonitoramentoSgoDAO dbMonitoramentoSgo = new MonitoramentoSgoDAO();
-        
+        IdentificacaoObraSgoDAO dbIdentificacaoObraSgo = new IdentificacaoObraSgoDAO();
+        CondicaoSgoDAO dbCondicaoSgo = new CondicaoSgoDAO();
+        LaudoEspecializadoSgoDAO dbLaudoEspecializadoSgo = new LaudoEspecializadoSgoDAO();
+        MonitoramentoSgoDAO dbMonitoramentoSgo = new MonitoramentoSgoDAO();
+        DanoElementoSgoDAO dbDanoElementoSgo = new DanoElementoSgoDAO();
+        InsuficienciaEstruturalElementoSgoDAO dbInsuficienciaEstruturalElementoSgo = new InsuficienciaEstruturalElementoSgoDAO();
 
         Inspecao inspecao;
         while (rs.next()) {
@@ -142,11 +143,13 @@ public class InspecaoDAO {
             inspecao.setData(rs.getDate("DT_DATA"));
             inspecao.setUsuario(dbUsuario.buscar(rs.getInt("ID_USUARIO")));
             inspecao.setModelo(dbModelo.buscar(rs.getInt("ID_MODELO")));
-            inspecao.setIdentificacaoObraSgo(null);
-            inspecao.setCondicaoSgo(null);
-            inspecao.setLaudoEspecializadoSgo(null);
-            inspecao.setMonitoramentoSgo(null);
+            inspecao.setIdentificacaoObraSgo(dbIdentificacaoObraSgo.buscar(rs.getInt("ID_IDENTIFICACAO_OBRA_SGO")));
+            inspecao.setCondicaoSgo(dbCondicaoSgo.buscar(rs.getInt("ID_CONDICOES_SGO")));
+            inspecao.setLaudoEspecializadoSgo(dbLaudoEspecializadoSgo.buscar(rs.getInt("ID_LAUDO_ESPECIALIZADO_SGO")));
+            inspecao.setMonitoramentoSgo(dbMonitoramentoSgo.buscar(rs.getInt("ID_MONITORAMENTO_SGO")));
             inspecao.setRelatorio(rs.getString("DS_RELATORIO"));
+            inspecao.setDanosElementosSgo(dbDanoElementoSgo.buscarDanosElementosSgo(rs.getInt("ID_INSPECAO")));
+            inspecao.setInsuficienciasEstruturaisElementosSgo(dbInsuficienciaEstruturalElementoSgo.buscarInsuficienciasEstruturaisElementosSgo(rs.getInt("ID_INSPECAO")));
             inspecao.setArquivosAnexosInspecao(dbArquivoAnexo.buscarInspecoes(rs.getInt("ID_INSPECAO")));
             
             inspecoes.add(inspecao);
