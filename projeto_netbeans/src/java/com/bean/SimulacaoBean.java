@@ -7,6 +7,7 @@ package com.bean;
 
 import com.dao.SimulacaoDAO;
 import com.model.Simulacao;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,6 +16,10 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
 
 /**
  *
@@ -22,16 +27,61 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "simulacaoBean")
 @SessionScoped
-public class SimulacaoBean extends ComumBean {
+public class SimulacaoBean extends ComumBean implements Serializable {
 
     private Simulacao simulacao;
     private SimulacaoDAO database;
     private ArrayList<Simulacao> simulacoes;
+    
+    private BarChartModel barModel;
 
     @PostConstruct
     public void init() {
         database = new SimulacaoDAO();
+
+        createBarModels();
     }
+
+    private BarChartModel initBarModel() {
+        BarChartModel model = new BarChartModel();
+
+        ChartSeries pontes = new ChartSeries();
+        pontes.setLabel("");
+//        for (int i = 0; i < model.) {
+            
+//        }
+        pontes.set("2004", 120);
+        pontes.set("2005", 100);
+        pontes.set("2006", 44);
+        pontes.set("2007", 150);
+        pontes.set("2008", 25);
+
+        model.addSeries(pontes);
+
+        return model;
+    }
+
+    private void createBarModels() {
+        createBarModel();
+    }
+
+    private void createBarModel() {
+        barModel = initBarModel();
+
+        barModel.setTitle("Ranqueamento");
+        barModel.setLegendPosition("ne");
+
+        Axis xAxis = barModel.getAxis(AxisType.X);
+        xAxis.setLabel("Pontes");
+
+        Axis yAxis = barModel.getAxis(AxisType.Y);
+        yAxis.setLabel("Índice de performance relativo");
+        yAxis.setMin(0);
+        yAxis.setMax(200);
+    }
+
+
+
 
     public void listarGet() {
         try {
@@ -149,5 +199,18 @@ public class SimulacaoBean extends ComumBean {
     public void setSimulacoes(ArrayList<Simulacao> simulacoes) {
         this.simulacoes = simulacoes;
     }
+    
+    
+    
+    
+    public BarChartModel getBarModel() {
+        return barModel;
+    }
+
+    public void setBarModel(BarChartModel barModel) {
+        this.barModel = barModel;
+    }
     // </editor-fold>
+
+    
 }
