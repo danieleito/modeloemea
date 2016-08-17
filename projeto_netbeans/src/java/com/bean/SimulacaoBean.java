@@ -6,6 +6,8 @@
 package com.bean;
 
 import com.dao.SimulacaoDAO;
+import com.model.Inspecao;
+import com.model.Modelo;
 import com.model.Simulacao;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -38,31 +40,29 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     @PostConstruct
     public void init() {
         database = new SimulacaoDAO();
-
-        createBarModels();
+        simulacao = null;
+        
     }
 
     private BarChartModel initBarModel() {
         BarChartModel model = new BarChartModel();
 
         ChartSeries pontes = new ChartSeries();
-        pontes.setLabel("");
-//        for (int i = 0; i < model.) {
-            
-//        }
-        pontes.set("2004", 120);
-        pontes.set("2005", 100);
-        pontes.set("2006", 44);
-        pontes.set("2007", 150);
-        pontes.set("2008", 25);
+        
+        if (simulacao != null) {
+            if (simulacao.getRankings() != null) {
+                int t = simulacao.getRankings().size();
 
-        model.addSeries(pontes);
+                for (int i = 0; i < t; i++) {
+                    String nomePonte = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraDadosBasicos().getIdentificacao();
+                    int indicePerformanceRelativo = Integer.parseInt(simulacao.getRankings().get(i).getPonte().getIndicePerformanceRelativo());
+                    pontes.set(nomePonte, indicePerformanceRelativo);
+                }
+                model.addSeries(pontes);
+            }
+        }
 
         return model;
-    }
-
-    private void createBarModels() {
-        createBarModel();
     }
 
     private void createBarModel() {
@@ -77,7 +77,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         Axis yAxis = barModel.getAxis(AxisType.Y);
         yAxis.setLabel("Índice de performance relativo");
         yAxis.setMin(0);
-        yAxis.setMax(200);
+        yAxis.setMax(10);
     }
 
 
@@ -139,6 +139,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     public void rankingGet(int idSimulacao) {
         try {
             simulacao = database.buscar(idSimulacao);
+            createBarModel();
         } catch (SQLException ex) {
             adicionarMensagemErro("Erro ao listar rankings: " + ex.getMessage());
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);

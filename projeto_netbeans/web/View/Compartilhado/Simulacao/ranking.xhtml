@@ -13,7 +13,8 @@ and open the template in the editor.
     
     <h:head>
         <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
-        <script src="http://maps.google.com/maps/api/js?sensor=false&amp;v=5.3" type="text/javascript"></script>
+        <!--<script src="http://maps.google.com/maps/api/js?sensor=false&amp;v=5.3" type="text/javascript"></script>-->
+        
     </h:head>
     
     <h:body>
@@ -41,21 +42,17 @@ and open the template in the editor.
                     <p:commandButton value="Consultar" action="#{ponteBean.consultarGet()}" />
                     <p:commandButton value="Imprimir relatórios" action="#{ponteBean.consultarGet()}" />
                     
-                    
-<!--                    <h:form>
-                        <f:view contentType="text/html" >
-                            <p:gmap center="4.56 , 50.3268092386" zoom="15" type="ROADMAP"  style="width:600px;height:400px" />
-                        </f:view>
-                    </h:form>-->
-
                     <p:tabView>
                         <p:tab title="Ranking">
                                 <ui:include src="/View/Compartilhado/OAE/Ranking/ranking.xhtml" />
                         </p:tab>
 
-                        <p:tab title="Gráfico">
-                            
-                                <ui:include src="/View/Compartilhado/OAE/Ranking/grafico.xhtml" />
+                        <p:tab title="Gráficos">
+                            <ui:include src="/View/Compartilhado/OAE/Ranking/grafico.xhtml" />
+                        </p:tab>
+                        
+                        <p:tab title="Mapa">
+                                <ui:include src="/View/Compartilhado/OAE/Ranking/mapa.xhtml" />
                         </p:tab>
                     </p:tabView>
                     

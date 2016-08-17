@@ -179,4 +179,9 @@ public class SimulacaoDAO {
         stmt = conn.createStatement();
         stmt.execute(query);
     }
+    
+    public int buscarIndicePerformanceRelativo(int idModelo) {
+        String query = "";
+        return 100;
+    }
 }
