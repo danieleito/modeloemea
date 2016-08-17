@@ -14,5 +14,13 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <p:chart type="bar" model="#{simulacaoBean.barModel}" style="height:300px; width: 100%; "/>
+        
+        <p:separator />
+        
+        <p:chart type="pie" model="#{simulacaoBean.pieModel}" style="width:100%;height:500px" widgetVar="chart" />
+        
+        <p:separator />
+        
+        
     </h:body>
 </html>

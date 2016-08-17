@@ -6,8 +6,6 @@
 package com.bean;
 
 import com.dao.SimulacaoDAO;
-import com.model.Inspecao;
-import com.model.Modelo;
 import com.model.Simulacao;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -22,6 +20,7 @@ import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.PieChartModel;
 
 /**
  *
@@ -36,14 +35,17 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private ArrayList<Simulacao> simulacoes;
     
     private BarChartModel barModel;
+    private PieChartModel pieModel;
+    private PieChartModel pieModel2;
 
     @PostConstruct
     public void init() {
         database = new SimulacaoDAO();
         simulacao = null;
-        
+        createPieModels();
     }
 
+//    início dos métodos para os gráficos
     private BarChartModel initBarModel() {
         BarChartModel model = new BarChartModel();
 
@@ -69,19 +71,86 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         barModel = initBarModel();
 
         barModel.setTitle("Ranqueamento");
-        barModel.setLegendPosition("ne");
+        barModel.setLegendPosition("s");
 
         Axis xAxis = barModel.getAxis(AxisType.X);
-        xAxis.setLabel("Pontes");
+        xAxis.setLabel("OAEs");
 
         Axis yAxis = barModel.getAxis(AxisType.Y);
         yAxis.setLabel("Índice de performance relativo");
         yAxis.setMin(0);
         yAxis.setMax(10);
     }
+///////////////////////////////////////
+ 
+//    @PostConstruct
+//    public void init() {
+//        createPieModels();
+//    }
+     
+    private void createPieModels() {
+        createPieModel();
+//        createPieModel2();
+    }
+ 
+    private void createPieModel() {
+        pieModel = new PieChartModel();
+         
+        if ( 1 == 1) {
+            int t = 0;
+            for (int i = 0; i < t; i++) {
+                for (int j = 0; j < t; j++) {
+                    
+                }
+                String manifestacao = "";
+                Double porcentagem = 0.0;
+                pieModel.set(manifestacao, porcentagem);
+            }
+        }
+        
+        pieModel.set("Carro", 540);
+        pieModel.set("Ônibus", 325);
+        pieModel.set("Metrô", 702);
+        pieModel.set("Trem", 421);
+         
+        pieModel.setTitle("Meio de transporte");
+        pieModel.setLegendPosition("s");
+        
+        
+        
+        
+               
+//        if (simulacao != null) {
+//            if (simulacao.getRankings() != null) {
+//                int t = simulacao.getRankings().size();
+//
+//                for (int i = 0; i < t; i++) {
+//                    String nomePonte = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraDadosBasicos().getIdentificacao();
+//                    int indicePerformanceRelativo = Integer.parseInt(simulacao.getRankings().get(i).getPonte().getIndicePerformanceRelativo());
+//                    pontes.set(nomePonte, indicePerformanceRelativo);
+//                }
+//                model.addSeries(pontes);
+//            }
+//        }
 
+    }
+     
+//    private void createPieModel2() {
+//        pieModel2 = new PieChartModel();
+//         
+//        pieModel2.set("Brand 5", 540);
+//        pieModel2.set("Brand 6", 325);
+//        pieModel2.set("Brand 7", 702);
+//        pieModel2.set("Brand 8", 421);
+//         
+//        pieModel2.setTitle("Custom Pie");
+//        pieModel2.setLegendPosition("ne");
+//        pieModel2.setFill(false);
+//        pieModel2.setShowDataLabels(true);
+//        pieModel2.setDiameter(150);
+//    }
 
-
+//    fim métodos para gráficos
 
     public void listarGet() {
         try {
@@ -140,6 +209,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         try {
             simulacao = database.buscar(idSimulacao);
             createBarModel();
+            createPieModel();
         } catch (SQLException ex) {
             adicionarMensagemErro("Erro ao listar rankings: " + ex.getMessage());
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -210,6 +280,14 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
     public void setBarModel(BarChartModel barModel) {
         this.barModel = barModel;
+    }
+    
+    public PieChartModel getPieModel() {
+        return pieModel;
+    }
+     
+    public PieChartModel getPieModel2() {
+        return pieModel2;
     }
     // </editor-fold>
 

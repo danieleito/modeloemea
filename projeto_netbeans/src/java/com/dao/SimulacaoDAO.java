@@ -180,8 +180,32 @@ public class SimulacaoDAO {
         stmt.execute(query);
     }
     
-    public int buscarIndicePerformanceRelativo(int idModelo) {
-        String query = "";
+    public int buscarIndicePerformanceRelativo(int idSimulacao) throws SQLException {
+        String query = "select P.ID_PONTE, P.DS_INDICE_PERFORMANCE_RELATIVO, "
+                + "R.ID_RANKING, R.ID_SIMULACAO "
+                + "from PONTE P, RANKING R, SIMULACAO S "
+                + "where P.ID_PONTE = R.ID_PONTE "
+                + "and R.ID_SIMULACAO = S.ID_SIMULACAO "
+                + "and S.ID_SIMULACAO = " + idSimulacao;
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        Simulacao simulacao = null;
+        if (rs.next()) {
+            Usuario usuario = new Usuario();
+            usuario.setId(rs.getInt("ID_USUARIO"));
+            
+            ArrayList<Ranking> rankings = buscarRankings(rs.getInt("ID_SIMULACAO"));
+            simulacao = new Simulacao(rs.getInt("ID_SIMULACAO"), rs.getDate("DT_DATA"), 
+                    usuario, rs.getString("NM_SIMULACAO"), rankings);
+            
+            
+        }
+
+        conexao.closeConnection();
         return 100;
     }
 }
