@@ -21,6 +21,7 @@ import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.LegendPlacement;
 import org.primefaces.model.chart.PieChartModel;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -78,7 +79,8 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         barModel = initBarModel();
 
         barModel.setTitle("Ranqueamento");
-        barModel.setLegendPosition("s");
+//        barModel.setLegendPosition("w");
+//        barModel.setLegendPlacement(LegendPlacement.OUTSIDE);
 
         Axis xAxis = barModel.getAxis(AxisType.X);
         xAxis.setLabel("OAEs");
@@ -86,7 +88,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         Axis yAxis = barModel.getAxis(AxisType.Y);
         yAxis.setLabel("Índice de performance relativo");
         yAxis.setMin(0);
-        yAxis.setMax(10);
+//        yAxis.setMax(10);
     }
 ///////////////////////////////////////
  
