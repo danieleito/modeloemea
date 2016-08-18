@@ -16,11 +16,16 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.PieChartModel;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
 
 /**
  *
@@ -37,12 +42,14 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private BarChartModel barModel;
     private PieChartModel pieModel;
     private PieChartModel pieModel2;
+    private MapModel advancedModel;
+    private Marker marker;
 
     @PostConstruct
     public void init() {
         database = new SimulacaoDAO();
         simulacao = null;
-        createPieModels();
+
     }
 
 //    início dos métodos para os gráficos
@@ -151,6 +158,37 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 //    }
 
 //    fim métodos para gráficos
+    
+//    início métodos para mapa
+    public void carregarMapa() {
+        advancedModel = new DefaultMapModel();
+        //Shared coordinates
+        LatLng coord1 = new LatLng(36.879466, 30.667648);
+        LatLng coord2 = new LatLng(36.883707, 30.689216);
+        LatLng coord3 = new LatLng(36.879703, 30.706707);
+        LatLng coord4 = new LatLng(36.885233, 30.702323);
+          
+        //Icons and Data
+        advancedModel.addOverlay(new Marker(coord1, "Konyaalti", "konyaalti.png", "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"));
+        advancedModel.addOverlay(new Marker(coord2, "Ataturk Parki", "ataturkparki.png"));
+        advancedModel.addOverlay(new Marker(coord4, "Kaleici", "kaleici.png", "http://maps.google.com/mapfiles/ms/micons/pink-dot.png"));
+        advancedModel.addOverlay(new Marker(coord3, "Karaalioglu Parki", "karaalioglu.png", "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png"));
+        
+    }
+    
+    public MapModel getAdvancedModel() {
+        return advancedModel;
+    }
+      
+    public void onMarkerSelect(OverlaySelectEvent event) {
+        marker = (Marker) event.getOverlay();
+    }
+      
+    public Marker getMarker() {
+        return marker;
+    }
+    
+//    fim métodos para mapa
 
     public void listarGet() {
         try {
@@ -210,6 +248,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             simulacao = database.buscar(idSimulacao);
             createBarModel();
             createPieModel();
+            carregarMapa();
         } catch (SQLException ex) {
             adicionarMensagemErro("Erro ao listar rankings: " + ex.getMessage());
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
