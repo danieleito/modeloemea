@@ -14,8 +14,11 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.map.MarkerDragEvent;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
@@ -45,6 +48,8 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private PieChartModel pieModel2;
     private MapModel advancedModel;
     private Marker marker;
+    
+    private MapModel draggableModel;
 
     @PostConstruct
     public void init() {
@@ -163,31 +168,41 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     
 //    início métodos para mapa
     public void carregarMapa() {
-        advancedModel = new DefaultMapModel();
-        //Shared coordinates
-        LatLng coord1 = new LatLng(36.879466, 30.667648);
-        LatLng coord2 = new LatLng(36.883707, 30.689216);
-        LatLng coord3 = new LatLng(36.879703, 30.706707);
-        LatLng coord4 = new LatLng(36.885233, 30.702323);
-          
-        //Icons and Data
-        advancedModel.addOverlay(new Marker(coord1, "Konyaalti", "konyaalti.png", "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"));
-        advancedModel.addOverlay(new Marker(coord2, "Ataturk Parki", "ataturkparki.png"));
-        advancedModel.addOverlay(new Marker(coord4, "Kaleici", "kaleici.png", "http://maps.google.com/mapfiles/ms/micons/pink-dot.png"));
-        advancedModel.addOverlay(new Marker(coord3, "Karaalioglu Parki", "karaalioglu.png", "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png"));
-        
+ 
+        draggableModel = new DefaultMapModel();
+
+//        if (simulacao != null) {
+//            if (simulacao.getRankings() != null) {
+                int t = simulacao.getRankings().size();
+                for (int i= 0; i < t; i++) {
+                    //Shared coordinates
+                    Double grau = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLatitudeGrau());
+                    Double minuto = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLatitudeMinuto());
+                    Double latitude = minuto/60 + grau;
+                    grau = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLongitudeGrau());
+                    minuto = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLongitudeMinuto());
+                    Double longitude = minuto/60 + grau;
+                    LatLng coord = new LatLng(latitude, longitude);
+
+                    //Draggable
+//                    draggableModel.addOverlay(new Marker(coord, "nome da OAE"));
+                }
+//            }
+//        }
+
+//        for(Marker premarker : draggableModel.getMarkers()) {
+//            premarker.setDraggable(true);
+//        }
     }
-    
-    public MapModel getAdvancedModel() {
-        return advancedModel;
+
+    public MapModel getDraggableModel() {
+        return draggableModel;
     }
-      
-    public void onMarkerSelect(OverlaySelectEvent event) {
-        marker = (Marker) event.getOverlay();
-    }
-      
-    public Marker getMarker() {
-        return marker;
+
+    public void onMarkerDrag(MarkerDragEvent event) {
+        marker = event.getMarker();
+
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Dragged", "Lat:" + marker.getLatlng().getLat() + ", Lng:" + marker.getLatlng().getLng()));
     }
     
 //    fim métodos para mapa
