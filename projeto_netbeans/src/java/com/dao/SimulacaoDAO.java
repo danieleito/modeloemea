@@ -121,7 +121,9 @@ public class SimulacaoDAO {
     private ArrayList<Ranking> buscarRankings(int idSimulacao) throws SQLException {
         String query = "select R.ID_RANKING, R.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, "
                 + "DB.CD_CODIGO, DB.DS_IDENTIFICACAO, P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, "
-                + "L.ID_UF, U.SG_UF, L.ID_VIA, V.DS_VIA, L.DS_LOCAL_VIA, P.DS_INDICE_PERFORMANCE_RELATIVO, "
+                + "L.ID_UF, U.SG_UF, L.ID_VIA, V.DS_VIA, L.DS_LOCAL_VIA, L.DS_LATITUDE_GRAU, "
+                + "L.DS_LATITUDE_MINUTO, L.DS_LONGITUDE_GRAU, L.DS_LONGITUDE_MINUTO, "
+                + "P.DS_INDICE_PERFORMANCE_RELATIVO, "
                 + "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA "
                 + "from RANKING R, PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, "
                 + "IDENTIFICACAO_OBRA_LOCALIZACAO L, VIA V, UF U "
@@ -153,6 +155,10 @@ public class SimulacaoDAO {
             localizacao.setUf(new Uf(rs.getInt("ID_UF"), null, rs.getString("SG_UF")));
             localizacao.setVia(new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")));
             localizacao.setLocalVia(rs.getDouble("DS_LOCAL_VIA"));
+            localizacao.setLatitudeGrau(rs.getString("DS_LATITUDE_GRAU"));
+            localizacao.setLatitudeMinuto(rs.getString("DS_LATITUDE_MINUTO"));
+            localizacao.setLongitudeGrau(rs.getString("DS_LONGITUDE_GRAU"));
+            localizacao.setLongitudeMinuto(rs.getString("DS_LONGITUDE_MINUTO"));
             
             ponte = new Ponte();
             ponte.setId(rs.getInt("ID_PONTE"));

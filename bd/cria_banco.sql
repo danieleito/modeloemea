@@ -281,21 +281,21 @@ create table FOTO
 		CONSTRAINT		pk_foto			PRIMARY KEY(ID_FOTO)
 	);
 
---extensao relativa
-create table EXTENSAO_RELATIVA
-	(
-		ID_EXTENSAO_RELATIVA		int						not null identity(1,1),
-		DS_EXTENSAO_RELATIVA		varchar(30)				not null,
-		CONSTRAINT					pk_extensaorelativa		PRIMARY KEY(ID_EXTENSAO_RELATIVA)
-	);
+--extensao relativa retirar
+--create table EXTENSAO_RELATIVA
+--	(
+--		ID_EXTENSAO_RELATIVA		int						not null identity(1,1),
+--		DS_EXTENSAO_RELATIVA		varchar(30)				not null,
+--		CONSTRAINT					pk_extensaorelativa		PRIMARY KEY(ID_EXTENSAO_RELATIVA)
+--	);
 
---reparo
-create table REPARO
-	(
-		ID_REPARO		int				not null identity(1,1),
-		DS_REPARO		varchar(30)		not null,
-		CONSTRAINT		pk_reparo		PRIMARY KEY(ID_REPARO)
-	);
+--reparo retirar
+--create table REPARO
+--	(
+--		ID_REPARO		int				not null identity(1,1),
+--		DS_REPARO		varchar(30)		not null,
+--		CONSTRAINT		pk_reparo		PRIMARY KEY(ID_REPARO)
+--	);
 
 --numero
 create table NUMERO
@@ -431,23 +431,23 @@ create table MANIFESTACOES_UFPR
 
 ------------------------------------------------------------------------
 
--- cadastro manifestacao
-create table CADASTRO_MANIFESTACAO
-	(
-		ID_CADASTRO_MANIFESTACAO		int											not null identity(1,1),
-		ID_NUMERO						int,
-		ID_MANIFESTACOES_UFPR			int,
-		ID_FOTO							int,
-		DS_TAMANHO						varchar(10),
-		ID_EXTENSAO_RELATIVA			int,
-		ID_REPARO						int,
-		CONSTRAINT						pk_cadastromanifestacao						PRIMARY KEY(ID_CADASTRO_MANIFESTACAO),
-		CONSTRAINT						fk_cadastromanifestacao_numero				FOREIGN KEY(ID_NUMERO) REFERENCES NUMERO(ID_NUMERO),
-		CONSTRAINT						fk_cadastromanifestacao_manifestacoesufpr	FOREIGN KEY(ID_MANIFESTACOES_UFPR) REFERENCES MANIFESTACOES_UFPR(ID_MANIFESTACOES_UFPR),
-		CONSTRAINT						fk_cadastromanifestacao_foto				FOREIGN KEY(ID_FOTO) REFERENCES FOTO(ID_FOTO),
-		CONSTRAINT						fk_cadastromanifestacao_extensaorelativa	FOREIGN KEY(ID_EXTENSAO_RELATIVA) REFERENCES EXTENSAO_RELATIVA(ID_EXTENSAO_RELATIVA),
-		CONSTRAINT						fk_cadastromanifestacao_reparo				FOREIGN KEY(ID_REPARO) REFERENCES REPARO(ID_REPARO)
-	);
+-- cadastro manifestacao retirar
+--create table CADASTRO_MANIFESTACAO
+--	(
+--		ID_CADASTRO_MANIFESTACAO		int											not null identity(1,1),
+--		ID_NUMERO						int,
+--		ID_MANIFESTACOES_UFPR			int,
+--		ID_FOTO							int,
+--		DS_TAMANHO						varchar(10),
+--		ID_EXTENSAO_RELATIVA			int,
+--		ID_REPARO						int,
+--		CONSTRAINT						pk_cadastromanifestacao						PRIMARY KEY(ID_CADASTRO_MANIFESTACAO),
+--		CONSTRAINT						fk_cadastromanifestacao_numero				FOREIGN KEY(ID_NUMERO) REFERENCES NUMERO(ID_NUMERO),
+--		CONSTRAINT						fk_cadastromanifestacao_manifestacoesufpr	FOREIGN KEY(ID_MANIFESTACOES_UFPR) REFERENCES MANIFESTACOES_UFPR(ID_MANIFESTACOES_UFPR),
+--		CONSTRAINT						fk_cadastromanifestacao_foto				FOREIGN KEY(ID_FOTO) REFERENCES FOTO(ID_FOTO),
+--		CONSTRAINT						fk_cadastromanifestacao_extensaorelativa	FOREIGN KEY(ID_EXTENSAO_RELATIVA) REFERENCES EXTENSAO_RELATIVA(ID_EXTENSAO_RELATIVA),
+--		CONSTRAINT						fk_cadastromanifestacao_reparo				FOREIGN KEY(ID_REPARO) REFERENCES REPARO(ID_REPARO)
+--	);
 
 ------------------------------------------------------------------------
 
@@ -465,7 +465,7 @@ create table PONTE
 		ID_ROTAS_ALTERNATIVAS							int													not null,
 		ID_OBSERVACOES									int													not null,
 		ID_SUBSTITUICAO									int													not null,
-		ID_CADASTRO_MANIFESTACAO						int													not null
+		--ID_CADASTRO_MANIFESTACAO						int													not null
 		CONSTRAINT										pk_ponte											PRIMARY KEY(ID_PONTE), 
 		CONSTRAINT										fk_ponte_identificacaoobradadosbasicos				FOREIGN KEY(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS) REFERENCES IDENTIFICACAO_OBRA_DADOS_BASICOS(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS),
 		CONSTRAINT										fk_ponte_identificacaoobralocalizacao				FOREIGN KEY(ID_IDENTIFICACAO_OBRA_LOCALIZACAO) REFERENCES IDENTIFICACAO_OBRA_LOCALIZACAO(ID_IDENTIFICACAO_OBRA_LOCALIZACAO),
@@ -476,7 +476,7 @@ create table PONTE
 		CONSTRAINT										fk_ponte_rotasalternativas							FOREIGN KEY(ID_ROTAS_ALTERNATIVAS) REFERENCES ROTAS_ALTERNATIVAS(ID_ROTAS_ALTERNATIVAS),
 		CONSTRAINT										fk_ponte_observacoes								FOREIGN KEY(ID_OBSERVACOES) REFERENCES OBSERVACOES(ID_OBSERVACOES),
 		CONSTRAINT										fk_ponte_substituicao								FOREIGN KEY(ID_SUBSTITUICAO) REFERENCES SUBSTITUICAO(ID_SUBSTITUICAO),
-		CONSTRAINT										fk_ponte_cadastromanifestacao						FOREIGN KEY(ID_CADASTRO_MANIFESTACAO) REFERENCES CADASTRO_MANIFESTACAO(ID_CADASTRO_MANIFESTACAO)
+		--CONSTRAINT										fk_ponte_cadastromanifestacao						FOREIGN KEY(ID_CADASTRO_MANIFESTACAO) REFERENCES CADASTRO_MANIFESTACAO(ID_CADASTRO_MANIFESTACAO)
 	);
 
 ---------------------------------------------------------------------------

@@ -46,10 +46,11 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private BarChartModel barModel;
     private PieChartModel pieModel;
     private PieChartModel pieModel2;
-    private MapModel advancedModel;
     private Marker marker;
     
     private MapModel draggableModel;
+    private int lat;
+    private int lgt;
 
     @PostConstruct
     public void init() {
@@ -168,12 +169,13 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     
 //    início métodos para mapa
     public void carregarMapa() {
- 
         draggableModel = new DefaultMapModel();
 
-//        if (simulacao != null) {
-//            if (simulacao.getRankings() != null) {
+        if (simulacao != null) {
+            if (simulacao.getRankings() != null) {
                 int t = simulacao.getRankings().size();
+                
+                maiorLatitudeLongitude();
                 for (int i= 0; i < t; i++) {
                     //Shared coordinates
                     Double grau = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLatitudeGrau());
@@ -182,17 +184,24 @@ public class SimulacaoBean extends ComumBean implements Serializable {
                     grau = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLongitudeGrau());
                     minuto = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLongitudeMinuto());
                     Double longitude = minuto/60 + grau;
+                    if (latitude > 0) {
+                        latitude *= -1;
+                    }
+                    if (longitude > 0) {
+                        longitude *= -1;
+                    }
                     LatLng coord = new LatLng(latitude, longitude);
 
                     //Draggable
-//                    draggableModel.addOverlay(new Marker(coord, "nome da OAE"));
+                    String nome = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraDadosBasicos().getIdentificacao();
+                    draggableModel.addOverlay(new Marker(coord, nome));
                 }
-//            }
-//        }
+            }
+        }
 
-//        for(Marker premarker : draggableModel.getMarkers()) {
-//            premarker.setDraggable(true);
-//        }
+        for(Marker premarker : draggableModel.getMarkers()) {
+            premarker.setDraggable(true);
+        }
     }
 
     public MapModel getDraggableModel() {
@@ -218,7 +227,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro ao carregar simulações. " + ex.getMessage());
         }
 
-        redirecionar("/View/Compartilhado/Simulacao/listar.jsf");
+        redirecionar("/View/Compartilhado/OAE/Simulacao/listar.jsf");
     }
 
     public void salvar() {
@@ -247,7 +256,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao cadastrar simulação: " + ex.getMessage());
         }
-        redirecionar("/View/Compartilhado/Simulacao/listar.jsf");
+        redirecionar("/View/Compartilhado/OAE/Simulacao/listar.jsf");
     }
 
     public void visualizar(int idSimulacao) {
@@ -257,7 +266,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro ao carregar simulação. " + ex.getMessage());
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        redirecionar("/View/Compartilhado/Simulacao/visualizar.jsf");
+        redirecionar("/View/Compartilhado/OAE/Simulacao/visualizar.jsf");
     }
 
     public void rankingGet(int idSimulacao) {
@@ -270,7 +279,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro ao listar rankings: " + ex.getMessage());
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        redirecionar("/View/Compartilhado/Simulacao/ranking.jsf");
+        redirecionar("/View/Compartilhado/OAE/Simulacao/ranking.jsf");
     }
 
     //método executar ao carregar a view ranking
@@ -278,6 +287,9 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         try {
             if (simulacao != null) {
                 simulacao = database.buscar(simulacao.getId());
+                createBarModel();
+                createPieModel();
+                carregarMapa();
             }
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -294,7 +306,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao remover ponte da simulação: " + ex.getMessage());
         }
-        redirecionar("/View/Compartilhado/Simulacao/ranking.jsf");
+        redirecionar("/View/Compartilhado/OAE/Simulacao/ranking.jsf");
     }
 
     //excluir simulação do banco
@@ -307,7 +319,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao remover simulação: " + ex.getMessage());
         }
-        redirecionar("/View/Compartilhado/Simulacao/listar.jsf");
+        redirecionar("/View/Compartilhado/OAE/Simulacao/listar.jsf");
     }
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
@@ -345,7 +357,44 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     public PieChartModel getPieModel2() {
         return pieModel2;
     }
+    
+    public int getLat() {
+        return lat;
+    }
+
+    public void setLat(int lat) {
+        this.lat = lat;
+    }
+
+    public int getLgt() {
+        return lgt;
+    }
+
+    public void setLgt(int lgt) {
+        this.lgt = lgt;
+    }
     // </editor-fold>
+
+    private void maiorLatitudeLongitude() {
+//        int t = simulacao.getRankings().size();
+//        int maiorLatitude = 0;
+//        int maiorLongitude = 0;
+//        int menorLatitude = 34;
+//        int menorLongitude = 8;
+//        for (int i = 0; i < t; i++) {
+//            lat = Integer.parseInt(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLatitudeGrau());
+//            if (maiorLatitude < lat) {
+//                maiorLatitude = lat;
+//            }
+//            if (menorLatitude > latitude) {
+//                latitude
+//            }
+//            lgt = Integer.parseInt(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLongitudeGrau());
+//            if (maiorLongitude < lgt) {
+//                maiorLongitude = lgt;
+//            }
+//        }
+    }
 
     
 }
