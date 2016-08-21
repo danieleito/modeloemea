@@ -19,12 +19,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.map.MarkerDragEvent;
-import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
-import org.primefaces.model.chart.LegendPlacement;
 import org.primefaces.model.chart.PieChartModel;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -47,7 +45,6 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private PieChartModel pieModel;
     private PieChartModel pieModel2;
     private Marker marker;
-    
     private MapModel draggableModel;
     private int lat;
     private int lgt;
@@ -56,7 +53,6 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     public void init() {
         database = new SimulacaoDAO();
         simulacao = null;
-
     }
 
 //    início dos métodos para os gráficos
@@ -175,7 +171,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             if (simulacao.getRankings() != null) {
                 int t = simulacao.getRankings().size();
                 
-                maiorLatitudeLongitude();
+//                maiorLatitudeLongitude();
                 for (int i= 0; i < t; i++) {
                     //Shared coordinates
                     Double grau = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLatitudeGrau());

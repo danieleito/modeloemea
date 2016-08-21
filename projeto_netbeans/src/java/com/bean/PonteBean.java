@@ -53,8 +53,15 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.map.MarkerDragEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
 
 /**
  *
@@ -132,6 +139,10 @@ public class PonteBean extends ComumBean implements Serializable {
     
     private Inspecao inspecao;
     
+    //mapa
+    private MapModel draggableModel;
+    private Marker marker;
+    
     @PostConstruct
     public void init() {
         database = new PonteDAO();
@@ -188,6 +199,11 @@ public class PonteBean extends ComumBean implements Serializable {
             //reparo
             reparos = new ReparoDAO().buscar();
             
+            
+            //mapa
+            database = new PonteDAO();
+            model = null;
+            
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar campos da tela Consultar. " + ex);
@@ -235,6 +251,7 @@ public class PonteBean extends ComumBean implements Serializable {
             pontesSelecionadas = new ArrayList<>();
             limparFiltros();
             pontes = database.buscar();
+            carregarMapa();
         } catch (SQLException ex) {
             pontes = new ArrayList<>();
             adicionarMensagemErro("Erro ao carregar pontess. " + ex.getMessage());
@@ -274,6 +291,7 @@ public class PonteBean extends ComumBean implements Serializable {
                     filtroKmInicial.isEmpty() ? 0 :Double.parseDouble(filtroKmInicial.replace(",", ".")), 
                     filtroKmFinal.isEmpty() ? 0 : Double.parseDouble(filtroKmFinal.replace(",", ".")), 
                     filtroIdSuperintendencia, filtroIdUnidadeLocal);
+            carregarMapa();
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
@@ -357,6 +375,55 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
     }
+    
+    
+    
+    //    início métodos para mapa
+    public void carregarMapa() {
+        draggableModel = new DefaultMapModel();
+
+        if (pontes != null) {
+            int t = pontes.size();
+
+            for (int i= 0; i < t; i++) {
+                //Shared coordinates
+                Double grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeGrau());
+                Double minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeMinuto());
+                Double latitude = minuto/60 + grau;
+                grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeGrau());
+                minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeMinuto());
+                Double longitude = minuto/60 + grau;
+                if (latitude > 0) {
+                    latitude *= -1;
+                }
+                if (longitude > 0) {
+                    longitude *= -1;
+                }
+                LatLng coord = new LatLng(latitude, longitude);
+
+                //Draggable
+                String nome = pontes.get(i).getIdentificacaoObraDadosBasicos().getIdentificacao();
+                draggableModel.addOverlay(new Marker(coord, nome));
+            }
+        }
+
+        for(Marker premarker : draggableModel.getMarkers()) {
+            premarker.setDraggable(true);
+        }
+        
+    }
+
+    public MapModel getDraggableModel() {
+        return draggableModel;
+    }
+
+    public void onMarkerDrag(MarkerDragEvent event) {
+        marker = event.getMarker();
+
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Dragged", "Lat:" + marker.getLatlng().getLat() + ", Lng:" + marker.getLatlng().getLng()));
+    }
+    
+//    fim métodos para mapa
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
