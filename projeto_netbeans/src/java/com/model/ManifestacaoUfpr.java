@@ -17,10 +17,6 @@ public class ManifestacaoUfpr implements Serializable {
      */
     private int id;
     /**
-     * elemento da ufpr
-     */
-    private ElementoUfpr elementoUfpr;
-    /**
      * código da manifestação
      */
     private String codigo;
@@ -42,21 +38,19 @@ public class ManifestacaoUfpr implements Serializable {
      * Constructor padrão
      */
     public ManifestacaoUfpr() {
-        elementoUfpr = new ElementoUfpr();
+        
     }
 
     /**
      * Constructor completo
      * @param id {@link #id}
-     * @param elementoUfpr {@link #elementoUfpr}
      * @param codigo {@link #codigo}
      * @param descricao {@link #descricao}
      * @param unidade {@link #unidade}
      * @param beta {@link #beta}
      */
-    public ManifestacaoUfpr(int id, ElementoUfpr elementoUfpr, String codigo, String descricao, String unidade, String beta) {
+    public ManifestacaoUfpr(int id, String codigo, String descricao, String unidade, String beta) {
         this.id = id;
-        this.elementoUfpr = elementoUfpr;
         this.codigo = codigo;
         this.descricao = descricao;
         this.unidade = unidade;
@@ -65,14 +59,12 @@ public class ManifestacaoUfpr implements Serializable {
 
     /**
      * Constructor sem id
-     * @param elementoUfpr {@link #elementoUfpr}
      * @param codigo {@link #codigo}
      * @param descricao {@link #descricao}
      * @param unidade {@link #unidade}
      * @param beta {@link #beta}
      */
-    public ManifestacaoUfpr(ElementoUfpr elementoUfpr, String codigo, String descricao, String unidade, String beta) {
-        this.elementoUfpr = elementoUfpr;
+    public ManifestacaoUfpr(String codigo, String descricao, String unidade, String beta) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.unidade = unidade;
@@ -90,18 +82,6 @@ public class ManifestacaoUfpr implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    /**
-     * retorna {@link #elementoUfpr}
-     * @return {@link #elementoUfpr}
-     */
-    public ElementoUfpr getElementoUfpr() {
-        return elementoUfpr;
-    }
-
-    public void setElementoUfpr(ElementoUfpr elementoUfpr) {
-        this.elementoUfpr = elementoUfpr;
     }
 
     /**

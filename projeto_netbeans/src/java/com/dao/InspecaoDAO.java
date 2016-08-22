@@ -157,4 +157,8 @@ public class InspecaoDAO {
         conexao.closeConnection();
         return inspecoes;
     }
+    
+//    public Inspecao buscarInspecao(int idPonte) {
+//        
+//    }
 }

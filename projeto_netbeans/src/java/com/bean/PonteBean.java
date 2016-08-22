@@ -193,11 +193,11 @@ public class PonteBean extends ComumBean implements Serializable {
             //combo foto
             fotos = new FotoDAO().buscar();
             
-            //extensao relativa
-            extensoesRelativa = new ExtensaoRelativaDAO().buscar();
-            
-            //reparo
-            reparos = new ReparoDAO().buscar();
+//            //extensao relativa
+//            extensoesRelativa = new ExtensaoRelativaDAO().buscar();
+//            
+//            //reparo
+//            reparos = new ReparoDAO().buscar();
             
             
             //mapa
@@ -221,7 +221,7 @@ public class PonteBean extends ComumBean implements Serializable {
             redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao carregar inspeçõess.");
+            adicionarMensagemErro("Erro ao carregar inspeções.");
         }
     }
     

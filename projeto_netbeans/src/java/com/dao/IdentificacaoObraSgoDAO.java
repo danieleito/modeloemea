@@ -6,7 +6,6 @@
 package com.dao;
 
 import com.model.IdentificacaoObraSgo;
-import com.model.Ponte;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

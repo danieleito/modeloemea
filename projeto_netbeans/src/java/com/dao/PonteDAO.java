@@ -7,23 +7,17 @@ package com.dao;
 
 import com.model.AspectoEspecial;
 import com.model.CadastroAspectoEspecial;
-import com.model.CadastroManifestacao;
 import com.model.CaracteristicasFuncionaisCaracteristicas;
 import com.model.CaracteristicasFuncionaisDimensoes;
 import com.model.ElementoComponente;
 import com.model.ElementoUfpr;
-import com.model.ExtensaoRelativa;
-import com.model.Foto;
 import com.model.Ponte;
 import com.model.IdentificacaoObraDadosBasicos;
 import com.model.IdentificacaoObraInspecao;
 import com.model.IdentificacaoObraLocalizacao;
 import com.model.IdentificacaoObraResponsaveis;
-import com.model.ManifestacaoUfpr;
 import com.model.NaturezaTransposicao;
-import com.model.Numero;
 import com.model.Observacao;
-import com.model.Reparo;
 import com.model.RotasAlternativas;
 import com.model.SistemaConstrutivo;
 import com.model.Substituicao;
@@ -77,7 +71,7 @@ public class PonteDAO {
                 + "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, "
                 + "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
                 + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB, "
-                + "ELEMENTOS_UFPR EU, NUMERO N, MANIFESTACOES_UFPR MU, FOTO F "
+                + "NUMERO N, FOTO F "
 
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
                 + "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
@@ -88,7 +82,6 @@ public class PonteDAO {
                 + "AND P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
                 + "AND P.ID_OBSERVACOES = O.ID_OBSERVACOES "
                 + "AND P.ID_SUBSTITUICAO = SUB.ID_SUBSTITUICAO "
-                + "AND MU.ID_ELEMENTO_UFPR = EU.ID_ELEMENTO_UFPR "
                 + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
                 + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
                 + "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
@@ -196,7 +189,7 @@ public class PonteDAO {
                 + "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, "
                 + "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
                 + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB, "
-                + "ELEMENTOS_UFPR EU, NUMERO N, MANIFESTACOES_UFPR MU, FOTO F "
+                + "NUMERO N, FOTO F "
 
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
                 + "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
@@ -207,7 +200,6 @@ public class PonteDAO {
                 + "AND P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
                 + "AND P.ID_OBSERVACOES = O.ID_OBSERVACOES "
                 + "AND P.ID_SUBSTITUICAO = SUB.ID_SUBSTITUICAO "
-                + "AND MU.ID_ELEMENTO_UFPR = EU.ID_ELEMENTO_UFPR "
                 + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
                 + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
                 + "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
@@ -318,7 +310,7 @@ public class PonteDAO {
                 + "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, "
                 + "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
                 + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB, "
-                + "ELEMENTOS_UFPR EU, NUMERO N, MANIFESTACOES_UFPR MU, FOTO F "
+                + "NUMERO N, FOTO F "
 
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
                 + "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
@@ -329,7 +321,6 @@ public class PonteDAO {
                 + "AND P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
                 + "AND P.ID_OBSERVACOES = O.ID_OBSERVACOES "
                 + "AND P.ID_SUBSTITUICAO = SUB.ID_SUBSTITUICAO "
-                + "AND MU.ID_ELEMENTO_UFPR = EU.ID_ELEMENTO_UFPR "
                 + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
                 + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
                 + "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
@@ -485,7 +476,7 @@ public class PonteDAO {
     private ArrayList<ElementoComponente> buscarElementosComponentes(int idPonte) throws SQLException {
         String query = "select EC.ID_ELEMENTO_COMPONENTES, E.CD_ELEMENTO, E.DS_ELEMENTO, "
                 + "E.DS_CAPA1, E.ID_ELEMENTO_UFPR, EC.DS_DETALHE, EC.NR_QUANTIDADE "
-                + "from ELEMENTOS_UFPR E, ELEMENTO_COMPONENTES EC "
+                + "from ELEMENTO_UFPR E, ELEMENTO_COMPONENTES EC "
                 + "where E.ID_ELEMENTO_UFPR = EC.ID_ELEMENTO_UFPR "
                 + "and EC.ID_PONTE = " + idPonte;
 
