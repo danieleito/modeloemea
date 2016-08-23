@@ -47,20 +47,39 @@ label {
 
 .topo2 {
     height: 70px;
-    width: 500px;
+    width: 92%;
     background-image: url(#{resource['images/header_bg.jpg']});
     background-repeat: no-repeat;
     box-shadow: 0px 2px 3px #cccccc;
     background-color: white;
+    float: left;
 }
 
 .topo3 {
     height: 70px;
-    width: 500px;
-    background-image: url(#{resource['images/SGO_Gestor-logo-RV001.jpg']});
+    width: 8%;
+    background-image: url(#{resource['images/SGO-Gestor-logo-RV002.jpg']});
     background-repeat: no-repeat;
     box-shadow: 0px 2px 3px #cccccc;
     background-color: white;
+    float: right;
+}
+
+.login {
+    height: 400px;
+    width: 92%;
+    background-color: white;
+}
+.login1 {
+    width: 50%;
+    float: left;
+    background-color: white;
+}
+
+.login2 {
+    width: 50%;
+    float: right;
+    background: white;
 }
 
 .corpo {
@@ -161,6 +180,8 @@ table td.th {
 
 .rodape {
     text-align: center;
+    width: 100%;
+    height: 100%;
 }
 
 .div_center {

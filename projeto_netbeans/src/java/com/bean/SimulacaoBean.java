@@ -5,7 +5,11 @@
  */
 package com.bean;
 
+import com.dao.PonteDAO;
 import com.dao.SimulacaoDAO;
+import com.model.Inspecao;
+import com.model.InspecaoManifestacaoElemento;
+import com.model.Ponte;
 import com.model.Simulacao;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -41,9 +45,13 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private SimulacaoDAO database;
     private ArrayList<Simulacao> simulacoes;
     
+    private Ponte ponte;
+    private PonteDAO dbPonte;
+    private ArrayList<Ponte> pontess;
+    private InspecaoManifestacaoElemento inspecaoManifestacaoElemento;
+    
     private BarChartModel barModel;
-    private PieChartModel pieModel;
-    private PieChartModel pieModel2;
+    private PieChartModel pieModel1;
     private Marker marker;
     private MapModel draggableModel;
     private int lat;
@@ -58,7 +66,6 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 //    início dos métodos para os gráficos
     private BarChartModel initBarModel() {
         BarChartModel model = new BarChartModel();
-
         ChartSeries pontes = new ChartSeries();
         
         if (simulacao != null) {
@@ -93,73 +100,31 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 //        yAxis.setMax(10);
     }
 ///////////////////////////////////////
- 
-//    @PostConstruct
-//    public void init() {
-//        createPieModels();
-//    }
+    
      
-    private void createPieModels() {
-        createPieModel();
-//        createPieModel2();
+    private void createPieModel() {
+        createPieModel1();
     }
  
-    private void createPieModel() {
-        pieModel = new PieChartModel();
-         
-        if ( 1 == 1) {
-            int t = 0;
-            for (int i = 0; i < t; i++) {
-                for (int j = 0; j < t; j++) {
-                    
-                }
-                String manifestacao = "";
-                Double porcentagem = 0.0;
-                pieModel.set(manifestacao, porcentagem);
+    private void createPieModel1() {
+        pieModel1 = new PieChartModel();
+
+        int t = simulacao.getRankings().size();
+        for (int i = 0; i < t; i++) {
+            int t2 = ponte.getInspecoes().size();
+            for (int j = 0; j < t2; j++) {
+                int idInspecao = inspecaoManifestacaoElemento.getIdInspecao();
+                
             }
         }
-        
-        pieModel.set("Carro", 540);
-        pieModel.set("Ônibus", 325);
-        pieModel.set("Metrô", 702);
-        pieModel.set("Trem", 421);
+        pieModel1.set("Brand 1", 540);
+        pieModel1.set("Brand 2", 325);
+        pieModel1.set("Brand 3", 702);
+        pieModel1.set("Brand 4", 421);
          
-        pieModel.setTitle("Meio de transporte");
-        pieModel.setLegendPosition("s");
-        
-        
-        
-        
-               
-//        if (simulacao != null) {
-//            if (simulacao.getRankings() != null) {
-//                int t = simulacao.getRankings().size();
-//
-//                for (int i = 0; i < t; i++) {
-//                    String nomePonte = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraDadosBasicos().getIdentificacao();
-//                    int indicePerformanceRelativo = Integer.parseInt(simulacao.getRankings().get(i).getPonte().getIndicePerformanceRelativo());
-//                    pontes.set(nomePonte, indicePerformanceRelativo);
-//                }
-//                model.addSeries(pontes);
-//            }
-//        }
-
+        pieModel1.setTitle("Manifestações");
+//        pieModel1.setLegendPosition("w");
     }
-     
-//    private void createPieModel2() {
-//        pieModel2 = new PieChartModel();
-//         
-//        pieModel2.set("Brand 5", 540);
-//        pieModel2.set("Brand 6", 325);
-//        pieModel2.set("Brand 7", 702);
-//        pieModel2.set("Brand 8", 421);
-//         
-//        pieModel2.setTitle("Custom Pie");
-//        pieModel2.setLegendPosition("ne");
-//        pieModel2.setFill(false);
-//        pieModel2.setShowDataLabels(true);
-//        pieModel2.setDiameter(150);
-//    }
 
 //    fim métodos para gráficos
     
@@ -347,11 +312,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
     
     public PieChartModel getPieModel() {
-        return pieModel;
-    }
-     
-    public PieChartModel getPieModel2() {
-        return pieModel2;
+        return pieModel1;
     }
     
     public int getLat() {
