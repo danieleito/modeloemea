@@ -5,11 +5,8 @@
  */
 package com.bean;
 
-import com.dao.PonteDAO;
 import com.dao.SimulacaoDAO;
-import com.model.Inspecao;
-import com.model.InspecaoManifestacaoElemento;
-import com.model.Ponte;
+import com.model.GraficoManifestacao;
 import com.model.Simulacao;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -45,13 +42,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private SimulacaoDAO database;
     private ArrayList<Simulacao> simulacoes;
     
-    private Ponte ponte;
-    private PonteDAO dbPonte;
-    private ArrayList<Ponte> pontess;
-    private InspecaoManifestacaoElemento inspecaoManifestacaoElemento;
-    
     private BarChartModel barModel;
-    private PieChartModel pieModel1;
     private Marker marker;
     private MapModel draggableModel;
     private int lat;
@@ -100,30 +91,31 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 //        yAxis.setMax(10);
     }
 ///////////////////////////////////////
-    
+
+    private PieChartModel pieModel1;
+ 
+    public PieChartModel getPieModel1() {
+        return pieModel1;
+    }
      
-    private void createPieModel() {
+    private void createPieModels() {
         createPieModel1();
     }
  
     private void createPieModel1() {
         pieModel1 = new PieChartModel();
 
-        int t = simulacao.getRankings().size();
-        for (int i = 0; i < t; i++) {
-            int t2 = ponte.getInspecoes().size();
-            for (int j = 0; j < t2; j++) {
-                int idInspecao = inspecaoManifestacaoElemento.getIdInspecao();
-                
+        try {
+            ArrayList<GraficoManifestacao> dados = database.buscarGraficoManifestacoes(simulacao.getId());
+            int total = 0;
+            total = dados.stream().map((d) -> d.getQtde()).reduce(total, Integer::sum);
+            for (GraficoManifestacao d : dados) {
+                pieModel1.set(d.getNome(), d.getQtde()/total);
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        pieModel1.set("Brand 1", 540);
-        pieModel1.set("Brand 2", 325);
-        pieModel1.set("Brand 3", 702);
-        pieModel1.set("Brand 4", 421);
-         
         pieModel1.setTitle("Manifestações");
-//        pieModel1.setLegendPosition("w");
     }
 
 //    fim métodos para gráficos
@@ -234,7 +226,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         try {
             simulacao = database.buscar(idSimulacao);
             createBarModel();
-            createPieModel();
+            createPieModels();
             carregarMapa();
         } catch (SQLException ex) {
             adicionarMensagemErro("Erro ao listar rankings: " + ex.getMessage());
@@ -249,7 +241,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             if (simulacao != null) {
                 simulacao = database.buscar(simulacao.getId());
                 createBarModel();
-                createPieModel();
+                createPieModels();
                 carregarMapa();
             }
         } catch (SQLException ex) {
@@ -310,11 +302,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     public void setBarModel(BarChartModel barModel) {
         this.barModel = barModel;
     }
-    
-    public PieChartModel getPieModel() {
-        return pieModel1;
-    }
-    
+
     public int getLat() {
         return lat;
     }
