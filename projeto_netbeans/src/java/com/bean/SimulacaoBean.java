@@ -5,18 +5,13 @@
  */
 package com.bean;
 
-import com.dao.PonteDAO;
 import com.dao.SimulacaoDAO;
 import com.model.GraficoManifestacao;
-import com.model.Inspecao;
-import com.model.InspecaoManifestacaoElemento;
-import com.model.Ponte;
 import com.model.Simulacao;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -48,7 +43,6 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private ArrayList<Simulacao> simulacoes;
     
     private BarChartModel barModel;
-    private PieChartModel pieModel;
     private Marker marker;
     private MapModel draggableModel;
     private int lat;
