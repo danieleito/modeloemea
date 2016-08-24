@@ -5,6 +5,7 @@
  */
 package com.dao;
 
+import com.model.GraficoManifestacao;
 import com.model.IdentificacaoObraDadosBasicos;
 import com.model.IdentificacaoObraLocalizacao;
 import com.model.Ponte;
@@ -18,7 +19,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Map;
+import javax.persistence.Tuple;
 
 /**
  *
@@ -213,5 +217,37 @@ public class SimulacaoDAO {
 
         conexao.closeConnection();
         return 100;
+    }
+    
+    public ArrayList<GraficoManifestacao> buscarGraficoManifestacoes(int idSimulacao) throws SQLException {
+        String query = "select TOP(10) COUNT(MUF.DS_MANIFESTACAO_UFPR) as QTDE, "
+                + "MUF.DS_MANIFESTACAO_UFPR "
+                + "from SIMULACAO SIM, RANKING RAN, PONTE PON, "
+                + "INSPECAO INS, INSPECAO_MANIFESTACAO_ELEMENTO IME, "
+                + "ELEMENTO_UFPR_MANIFESTACAO_UFPR EUM, "
+                + "MANIFESTACAO_UFPR MUF "
+                + "where SIM.ID_SIMULACAO = " + idSimulacao + " "
+                + "and RAN.ID_SIMULACAO = SIM.ID_SIMULACAO "
+                + "and RAN.ID_PONTE = PON.ID_PONTE "
+                + "and PON.ID_PONTE = INS.ID_PONTE "
+                + "and INS.ID_INSPECAO = IME.ID_INSPECAO "
+                + "and IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR = EUM.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR "
+                + "and EUM.ID_MANIFESTACAO_UFPR = MUF.ID_MANIFESTACAO_UFPR "
+                + "group by MUF.DS_MANIFESTACAO_UFPR "
+                + "order by QTDE DESC; ";
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        
+        ArrayList<GraficoManifestacao> graficoManifestacoes = new ArrayList<>();
+        GraficoManifestacao g;
+        while (rs.next()) {
+            g = new GraficoManifestacao(rs.getInt("QTDE"), rs.getString("DS_MANIFESTACAO_UFPR"));
+            graficoManifestacoes.add(g);
+        }
+        return graficoManifestacoes;
     }
 }
