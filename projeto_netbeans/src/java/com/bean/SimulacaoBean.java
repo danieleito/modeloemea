@@ -115,6 +115,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         pieModel1.setTitle("Manifestações");
+        pieModel1.setLegendPosition("nw");
     }
 
 //    fim métodos para gráficos

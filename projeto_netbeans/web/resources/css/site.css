@@ -47,7 +47,7 @@ label {
 
 .topo2 {
     height: 70px;
-    width: 92%;
+    width: 85%;
     background-image: url(#{resource['images/header_bg.jpg']});
     background-repeat: no-repeat;
     box-shadow: 0px 2px 3px #cccccc;
@@ -57,7 +57,7 @@ label {
 
 .topo3 {
     height: 70px;
-    width: 8%;
+    width: 15%;
     background-image: url(#{resource['images/SGO-Gestor-logo-RV002.jpg']});
     background-repeat: no-repeat;
     box-shadow: 0px 2px 3px #cccccc;
