@@ -75,7 +75,11 @@ public class PdfGenerator
  public static void drawTable(PDPage page, PDPageContentStream contentStream,
                              float y, float margin,
                              String[][] content) throws IOException {
+                  
         final int rows = content.length;
+        
+        if(rows == 0)
+            return;                 
         final int cols = content[0].length;
         final float rowHeight = 20f;
         final float tableWidth = page.getCropBox().getWidth() - margin - margin;
