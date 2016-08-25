@@ -241,7 +241,7 @@ public class PonteBean extends ComumBean implements Serializable {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar ponte no ranking. " + ex.getMessage());
         }
-        redirecionar("/View/Compartilhado/Simulacao/ranking.jsf");
+        redirecionar("/View/Compartilhado/OAE/Simulacao/ranking.jsf");
     }
     
     public void consultarGet() {
