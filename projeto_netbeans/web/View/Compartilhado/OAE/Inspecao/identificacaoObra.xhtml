@@ -32,7 +32,7 @@ and open the template in the editor.
                                 <p:outputLabel value="Natureza da Transposição" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraDadosBasicos.naturezaTransposicao.descricao  }" class="col-md-6" >
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraDadosBasicos.naturezaTransposicao}" class="col-md-6" >
                                     <f:selectItem itemLabel="Selecione a Natureza da Transposição" itemValue="0"/>
                                     <f:selectItems value="#{ponteBean.naturezasTransposicoes}" var="nt" itemValue="#{nt.id}" />
                                 </p:selectOneMenu>

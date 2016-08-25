@@ -107,10 +107,9 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
         try {
             ArrayList<GraficoManifestacao> dados = database.buscarGraficoManifestacoes(simulacao.getId());
-            int total = 0;
-            total = dados.stream().map((d) -> d.getQtde()).reduce(total, Integer::sum);
+
             for (GraficoManifestacao d : dados) {
-                pieModel1.set(d.getNome(), d.getQtde()/total);
+                pieModel1.set(d.getNome(), d.getQtde());
             }
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);

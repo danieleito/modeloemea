@@ -66,6 +66,7 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
      * Constructor padrão.
      */
     public IdentificacaoObraDadosBasicos() {
+        naturezaTransposicao = new NaturezaTransposicao();
     }
 
     /**
