@@ -507,3 +507,9 @@ ul.form-info,
 	border-color: #05b;
 }*/
 
+
+.chartStyleClass table.jqplot-table-legend {
+/*    top:50px !important;
+    right:50px !important;*/
+    width: 200px;
+}

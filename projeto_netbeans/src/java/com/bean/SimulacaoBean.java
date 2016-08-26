@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.chart.PieChart;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -106,6 +107,10 @@ public class SimulacaoBean extends ComumBean implements Serializable {
  
     private void createPieModel1() {
         pieModel1 = new PieChartModel();
+        pieModel1.setTitle("Manifestações");
+        pieModel1.setLegendPosition("e");
+        pieModel1.setLegendCols(1);
+        pieModel1.setLegendPlacement(LegendPlacement.OUTSIDEGRID);
 
         try {
             ArrayList<GraficoManifestacao> dados = database.buscarGraficoManifestacoes(simulacao.getId());
@@ -116,9 +121,6 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        pieModel1.setTitle("Manifestações");
-        pieModel1.setLegendPosition("n");
-//        pieModel1.setLegendPlacement(LegendPlacement.OUTSIDE);
     }
 
     ///////////////////////////////////////
@@ -130,15 +132,20 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
  
     private void createPieModel2() {
+        try {
         pieModel2 = new PieChartModel();
 
-        ArrayList<GraficoTipoElemento> dados = database.buscarGraficoTipoElemento(simulacao.getId());
+        ArrayList<GraficoTipoElemento> dados;
+            dados = database.buscarGraficoTipoElemento(simulacao.getId());
         for (GraficoTipoElemento d : dados) {
             pieModel2.set(d.getNome(), d.getQtde());
         }
         
         pieModel2.setTitle("Tipo estruturas");
         pieModel2.setLegendPosition("n");
+        } catch (SQLException ex) {
+            Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
     }
     
