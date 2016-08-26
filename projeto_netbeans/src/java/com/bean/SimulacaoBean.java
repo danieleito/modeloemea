@@ -7,6 +7,7 @@ package com.bean;
 
 import com.dao.SimulacaoDAO;
 import com.model.GraficoManifestacao;
+import com.model.GraficoSistemaConstrutivo;
 import com.model.GraficoTipoElemento;
 import com.model.Simulacao;
 import java.io.Serializable;
@@ -97,6 +98,8 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private void createPieModels() {
         createPieModel1();
         createPieModel2();
+        createPieModel3();
+
     }
 //grafico para mostrar manifetacoes;
     private PieChartModel pieModel1;
@@ -123,7 +126,6 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         }
     }
 
-    ///////////////////////////////////////
 //grafico para mostrar tipo estruturas;
     private PieChartModel pieModel2;
  
@@ -132,20 +134,44 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
  
     private void createPieModel2() {
-        try {
         pieModel2 = new PieChartModel();
 
-        ArrayList<GraficoTipoElemento> dados;
-            dados = database.buscarGraficoTipoElemento(simulacao.getId());
-        for (GraficoTipoElemento d : dados) {
-            pieModel2.set(d.getNome(), d.getQtde());
+        try {
+            ArrayList<GraficoTipoElemento> dados = database.buscarGraficoTipoElemento(simulacao.getId());
+            for (GraficoTipoElemento d : dados) {
+                pieModel2.set(d.getNome(), d.getQtde());
+            }
+        }catch (SQLException ex) {
+            Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         pieModel2.setTitle("Tipo estruturas");
         pieModel2.setLegendPosition("n");
-        } catch (SQLException ex) {
+    
+    }
+    
+///////////////////////////////////////
+//grafico para mostrar sistema construtivo;
+    private PieChartModel pieModel3;
+ 
+    public PieChartModel getPieModel3() {
+        return pieModel3;
+    }
+ 
+    private void createPieModel3() {
+        pieModel3 = new PieChartModel();
+
+        try {
+            ArrayList<GraficoSistemaConstrutivo> dados = database.buscarGraficoSistemaConstrutivo(simulacao.getId());
+            for (GraficoSistemaConstrutivo d : dados) {
+                pieModel3.set(d.getNome(), d.getQtde());
+            }
+        }catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        pieModel3.setTitle("Sistema construtivo");
+        pieModel3.setLegendPosition("n");
     
     }
     
