@@ -11,12 +11,12 @@ import java.io.Serializable;
  *
  * @author Daniele Harumi Ito
  */
-public class GraficoManifestacao implements Serializable {
-
+public class GraficoTipoElemento implements Serializable {
+    
     private int qtde;
     private String nome;
 
-    public GraficoManifestacao(int qtde, String nome) {
+    public GraficoTipoElemento(int qtde, String nome) {
         this.qtde = qtde;
         this.nome = nome;
     }
@@ -36,6 +36,4 @@ public class GraficoManifestacao implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    
 }

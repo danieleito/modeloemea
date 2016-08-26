@@ -6,6 +6,7 @@
 package com.dao;
 
 import com.model.GraficoManifestacao;
+import com.model.GraficoTipoElemento;
 import com.model.IdentificacaoObraDadosBasicos;
 import com.model.IdentificacaoObraLocalizacao;
 import com.model.Ponte;
@@ -246,5 +247,23 @@ public class SimulacaoDAO {
             graficoManifestacoes.add(g);
         }
         return graficoManifestacoes;
+    }
+    
+    public ArrayList<GraficoTipoElemento> buscarGraficoTipoElemento(int idSimulacao) throws SQLException {
+        String query = "select ";
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        
+        ArrayList<GraficoTipoElemento> graficoTipoElementos = new ArrayList<>();
+        GraficoTipoElemento g;
+        while (rs.next()) {
+            g = new GraficoTipoElemento(rs.getInt("QTDE"), rs.getString("DS_TIPO_ESTRUTURA"));
+            graficoTipoElementos.add(g);
+        }
+        return graficoTipoElementos;
     }
 }

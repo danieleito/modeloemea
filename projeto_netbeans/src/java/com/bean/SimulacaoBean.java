@@ -7,6 +7,7 @@ package com.bean;
 
 import com.dao.SimulacaoDAO;
 import com.model.GraficoManifestacao;
+import com.model.GraficoTipoElemento;
 import com.model.Simulacao;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -24,6 +25,7 @@ import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.LegendPlacement;
 import org.primefaces.model.chart.PieChartModel;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -91,15 +93,15 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 //        yAxis.setMax(10);
     }
 ///////////////////////////////////////
-
+    private void createPieModels() {
+        createPieModel1();
+        createPieModel2();
+    }
+//grafico para mostrar manifetacoes;
     private PieChartModel pieModel1;
  
     public PieChartModel getPieModel1() {
         return pieModel1;
-    }
-     
-    private void createPieModels() {
-        createPieModel1();
     }
  
     private void createPieModel1() {
@@ -115,9 +117,32 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         pieModel1.setTitle("Manifestações");
-        pieModel1.setLegendPosition("nw");
+        pieModel1.setLegendPosition("n");
+//        pieModel1.setLegendPlacement(LegendPlacement.OUTSIDE);
     }
 
+    ///////////////////////////////////////
+//grafico para mostrar tipo estruturas;
+    private PieChartModel pieModel2;
+ 
+    public PieChartModel getPieModel2() {
+        return pieModel2;
+    }
+ 
+    private void createPieModel2() {
+        pieModel2 = new PieChartModel();
+
+        ArrayList<GraficoTipoElemento> dados = database.buscarGraficoTipoElemento(simulacao.getId());
+        for (GraficoTipoElemento d : dados) {
+            pieModel2.set(d.getNome(), d.getQtde());
+        }
+        
+        pieModel2.setTitle("Tipo estruturas");
+        pieModel2.setLegendPosition("n");
+    
+    }
+    
+    
 //    fim métodos para gráficos
     
 //    início métodos para mapa
