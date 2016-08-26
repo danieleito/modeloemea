@@ -6,6 +6,7 @@
 package com.dao;
 
 import com.model.GraficoManifestacao;
+import com.model.GraficoSistemaConstrutivo;
 import com.model.GraficoTipoElemento;
 import com.model.IdentificacaoObraDadosBasicos;
 import com.model.IdentificacaoObraLocalizacao;
@@ -250,7 +251,15 @@ public class SimulacaoDAO {
     }
     
     public ArrayList<GraficoTipoElemento> buscarGraficoTipoElemento(int idSimulacao) throws SQLException {
-        String query = "select ";
+        String query = "select TOP(10) COUNT(TE.DS_TIPO_ESTRUTURA) as QTDE, TE.DS_TIPO_ESTRUTURA "
+                + "from SIMULACAO S, RANKING R, PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, TIPO_ESTRUTURA TE "
+                + "where S.ID_SIMULACAO = " + idSimulacao + " "
+                + "and S.ID_SIMULACAO = R.ID_SIMULACAO "
+                + "and R.ID_PONTE = P.ID_PONTE "
+                + "and P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
+                + "and DB.ID_TIPO_ESTRUTURA = TE.ID_TIPO_ESTRUTURA "
+                + "group by TE.DS_TIPO_ESTRUTURA "
+                + "order by QTDE DESC;";
         
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -265,5 +274,31 @@ public class SimulacaoDAO {
             graficoTipoElementos.add(g);
         }
         return graficoTipoElementos;
+    }
+    
+    public ArrayList<GraficoSistemaConstrutivo> buscarGraficoSistemaConstrutivo(int idSimulacao) throws SQLException {
+        String query = "select TOP(10) COUNT(SC.DS_SISTEMA_CONSTRUTIVO) as QTDE, SC.DS_SISTEMA_CONSTRUTIVO "
+                + "from SIMULACAO S, RANKING R, PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, SISTEMA_CONSTRUTIVO SC "
+                + "where S.ID_SIMULACAO = " + idSimulacao + " "
+                + "and S.ID_SIMULACAO = R.ID_SIMULACAO "
+                + "and R.ID_PONTE = P.ID_PONTE "
+                + "and P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
+                + "and DB.ID_SISTEMA_CONSTRUTIVO = SC.ID_SISTEMA_CONSTRUTIVO "
+                + "group by SC.DS_SISTEMA_CONSTRUTIVO "
+                + "order by QTDE DESC;";
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        
+        ArrayList<GraficoSistemaConstrutivo> graficoSistemaConstrutivos = new ArrayList<>();
+        GraficoSistemaConstrutivo g;
+        while (rs.next()) {
+            g = new GraficoSistemaConstrutivo(rs.getInt("QTDE"), rs.getString("DS_SISTEMA_CONSTRUTIVO"));
+            graficoSistemaConstrutivos.add(g);
+        }
+        return graficoSistemaConstrutivos;
     }
 }
