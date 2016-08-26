@@ -146,7 +146,9 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         }
         
         pieModel2.setTitle("Tipo estruturas");
-        pieModel2.setLegendPosition("n");
+        pieModel2.setLegendPosition("e");
+        pieModel2.setLegendCols(1);
+        pieModel2.setLegendPlacement(LegendPlacement.OUTSIDEGRID);
     
     }
     
@@ -171,7 +173,9 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         }
         
         pieModel3.setTitle("Sistema construtivo");
-        pieModel3.setLegendPosition("n");
+        pieModel3.setLegendPosition("e");
+        pieModel3.setLegendCols(1);
+        pieModel3.setLegendPlacement(LegendPlacement.OUTSIDEGRID);
     
     }
     
