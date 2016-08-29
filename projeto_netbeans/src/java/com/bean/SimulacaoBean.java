@@ -113,7 +113,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         pieModel1.setTitle("Manifestações");
         pieModel1.setLegendPosition("e");
         pieModel1.setLegendCols(1);
-        pieModel1.setLegendPlacement(LegendPlacement.OUTSIDEGRID);
+        pieModel1.setLegendPlacement(LegendPlacement.INSIDE);
 
         try {
             ArrayList<GraficoManifestacao> dados = database.buscarGraficoManifestacoes(simulacao.getId());
@@ -145,10 +145,10 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        pieModel2.setTitle("Tipo estruturas");
+        pieModel2.setTitle("Tipo de estrutura");
         pieModel2.setLegendPosition("e");
         pieModel2.setLegendCols(1);
-        pieModel2.setLegendPlacement(LegendPlacement.OUTSIDEGRID);
+        pieModel2.setLegendPlacement(LegendPlacement.INSIDE);
     
     }
     
@@ -175,7 +175,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         pieModel3.setTitle("Sistema construtivo");
         pieModel3.setLegendPosition("e");
         pieModel3.setLegendCols(1);
-        pieModel3.setLegendPlacement(LegendPlacement.OUTSIDEGRID);
+        pieModel3.setLegendPlacement(LegendPlacement.INSIDE);
     
     }
     

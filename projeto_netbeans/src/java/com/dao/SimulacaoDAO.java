@@ -219,7 +219,7 @@ public class SimulacaoDAO {
     }
     
     public ArrayList<GraficoManifestacao> buscarGraficoManifestacoes(int idSimulacao) throws SQLException {
-        String query = "select TOP(10) COUNT(MUF.DS_MANIFESTACAO_UFPR) as QTDE, "
+        String query = "select COUNT(MUF.DS_MANIFESTACAO_UFPR) as QTDE, "
                 + "MUF.DS_MANIFESTACAO_UFPR "
                 + "from SIMULACAO SIM, RANKING RAN, PONTE PON, "
                 + "INSPECAO INS, INSPECAO_MANIFESTACAO_ELEMENTO IME, "
@@ -243,15 +243,27 @@ public class SimulacaoDAO {
         
         ArrayList<GraficoManifestacao> graficoManifestacoes = new ArrayList<>();
         GraficoManifestacao g;
-        while (rs.next()) {
+        GraficoManifestacao outros;
+        int i = 0;
+        while (rs.next() && i <= 10) {
             g = new GraficoManifestacao(rs.getInt("QTDE"), rs.getString("DS_MANIFESTACAO_UFPR"));
             graficoManifestacoes.add(g);
+            i++;
+            if (i == 10) {
+                int qtde = 0;
+                while(rs.next()) {
+                    outros = new GraficoManifestacao(rs.getInt("QTDE"), rs.getString("DS_MANIFESTACAO_UFPR"));
+                    qtde += outros.getQtde();
+                }
+                g = new GraficoManifestacao(qtde, "Outros");
+                graficoManifestacoes.add(g);
+            }
         }
         return graficoManifestacoes;
     }
     
     public ArrayList<GraficoTipoElemento> buscarGraficoTipoElemento(int idSimulacao) throws SQLException {
-        String query = "select TOP(10) COUNT(TE.DS_TIPO_ESTRUTURA) as QTDE, TE.DS_TIPO_ESTRUTURA "
+        String query = "select COUNT(TE.DS_TIPO_ESTRUTURA) as QTDE, TE.DS_TIPO_ESTRUTURA "
                 + "from SIMULACAO S, RANKING R, PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, TIPO_ESTRUTURA TE "
                 + "where S.ID_SIMULACAO = " + idSimulacao + " "
                 + "and S.ID_SIMULACAO = R.ID_SIMULACAO "
@@ -269,15 +281,27 @@ public class SimulacaoDAO {
         
         ArrayList<GraficoTipoElemento> graficoTipoElementos = new ArrayList<>();
         GraficoTipoElemento g;
-        while (rs.next()) {
+        GraficoTipoElemento outros;
+        int i = 0;
+        while (rs.next() && i <= 9) {
             g = new GraficoTipoElemento(rs.getInt("QTDE"), rs.getString("DS_TIPO_ESTRUTURA"));
             graficoTipoElementos.add(g);
+            i++;
+            if (i == 9) {
+                int qtde = 0;
+                while(rs.next()) {
+                    outros = new GraficoTipoElemento(rs.getInt("QTDE"), rs.getString("DS_TIPO_ESTRUTURA"));
+                    qtde += outros.getQtde();
+                }
+                g = new GraficoTipoElemento(qtde, "Outros");
+                graficoTipoElementos.add(g);
+            }
         }
         return graficoTipoElementos;
     }
     
     public ArrayList<GraficoSistemaConstrutivo> buscarGraficoSistemaConstrutivo(int idSimulacao) throws SQLException {
-        String query = "select TOP(10) COUNT(SC.DS_SISTEMA_CONSTRUTIVO) as QTDE, SC.DS_SISTEMA_CONSTRUTIVO "
+        String query = "select COUNT(SC.DS_SISTEMA_CONSTRUTIVO) as QTDE, SC.DS_SISTEMA_CONSTRUTIVO "
                 + "from SIMULACAO S, RANKING R, PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, SISTEMA_CONSTRUTIVO SC "
                 + "where S.ID_SIMULACAO = " + idSimulacao + " "
                 + "and S.ID_SIMULACAO = R.ID_SIMULACAO "
@@ -295,9 +319,21 @@ public class SimulacaoDAO {
         
         ArrayList<GraficoSistemaConstrutivo> graficoSistemaConstrutivos = new ArrayList<>();
         GraficoSistemaConstrutivo g;
-        while (rs.next()) {
+        GraficoSistemaConstrutivo outros;
+        int i = 0;
+        while (rs.next() && i <= 9) {
             g = new GraficoSistemaConstrutivo(rs.getInt("QTDE"), rs.getString("DS_SISTEMA_CONSTRUTIVO"));
             graficoSistemaConstrutivos.add(g);
+            i++;
+            if (i == 9 && rs.last()) {
+                int qtde = 0;
+                while(rs.next()) {
+                    outros = new GraficoSistemaConstrutivo(rs.getInt("QTDE"), rs.getString("DS_SISTEMA_CONSTRUTIVO"));
+                    qtde += outros.getQtde();
+                }
+                g = new GraficoSistemaConstrutivo(qtde, "Outros");
+                graficoSistemaConstrutivos.add(g);
+            }
         }
         return graficoSistemaConstrutivos;
     }
