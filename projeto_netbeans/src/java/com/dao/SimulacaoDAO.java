@@ -7,7 +7,7 @@ package com.dao;
 
 import com.model.GraficoManifestacao;
 import com.model.GraficoSistemaConstrutivo;
-import com.model.GraficoTipoElemento;
+import com.model.GraficoTipoEstrutura;
 import com.model.IdentificacaoObraDadosBasicos;
 import com.model.IdentificacaoObraLocalizacao;
 import com.model.Ponte;
@@ -243,26 +243,15 @@ public class SimulacaoDAO {
         
         ArrayList<GraficoManifestacao> graficoManifestacoes = new ArrayList<>();
         GraficoManifestacao g;
-        GraficoManifestacao outros;
-        int i = 0;
-        while (rs.next() && i <= 10) {
+        while (rs.next()) {
             g = new GraficoManifestacao(rs.getInt("QTDE"), rs.getString("DS_MANIFESTACAO_UFPR"));
             graficoManifestacoes.add(g);
-            i++;
-            if (i == 10) {
-                int qtde = 0;
-                while(rs.next()) {
-                    outros = new GraficoManifestacao(rs.getInt("QTDE"), rs.getString("DS_MANIFESTACAO_UFPR"));
-                    qtde += outros.getQtde();
-                }
-                g = new GraficoManifestacao(qtde, "Outros");
-                graficoManifestacoes.add(g);
-            }
+            
         }
         return graficoManifestacoes;
     }
     
-    public ArrayList<GraficoTipoElemento> buscarGraficoTipoElemento(int idSimulacao) throws SQLException {
+    public ArrayList<GraficoTipoEstrutura> buscarGraficoTipoEstrutura(int idSimulacao) throws SQLException {
         String query = "select COUNT(TE.DS_TIPO_ESTRUTURA) as QTDE, TE.DS_TIPO_ESTRUTURA "
                 + "from SIMULACAO S, RANKING R, PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, TIPO_ESTRUTURA TE "
                 + "where S.ID_SIMULACAO = " + idSimulacao + " "
@@ -279,25 +268,13 @@ public class SimulacaoDAO {
         stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         
-        ArrayList<GraficoTipoElemento> graficoTipoElementos = new ArrayList<>();
-        GraficoTipoElemento g;
-        GraficoTipoElemento outros;
-        int i = 0;
-        while (rs.next() && i <= 9) {
-            g = new GraficoTipoElemento(rs.getInt("QTDE"), rs.getString("DS_TIPO_ESTRUTURA"));
-            graficoTipoElementos.add(g);
-            i++;
-            if (i == 9) {
-                int qtde = 0;
-                while(rs.next()) {
-                    outros = new GraficoTipoElemento(rs.getInt("QTDE"), rs.getString("DS_TIPO_ESTRUTURA"));
-                    qtde += outros.getQtde();
-                }
-                g = new GraficoTipoElemento(qtde, "Outros");
-                graficoTipoElementos.add(g);
-            }
+        ArrayList<GraficoTipoEstrutura> graficoTipoEstruturas = new ArrayList<>();
+        GraficoTipoEstrutura g;
+        while (rs.next()) {
+            g = new GraficoTipoEstrutura(rs.getInt("QTDE"), rs.getString("DS_TIPO_ESTRUTURA"));
+            graficoTipoEstruturas.add(g);
         }
-        return graficoTipoElementos;
+        return graficoTipoEstruturas;
     }
     
     public ArrayList<GraficoSistemaConstrutivo> buscarGraficoSistemaConstrutivo(int idSimulacao) throws SQLException {
@@ -319,21 +296,9 @@ public class SimulacaoDAO {
         
         ArrayList<GraficoSistemaConstrutivo> graficoSistemaConstrutivos = new ArrayList<>();
         GraficoSistemaConstrutivo g;
-        GraficoSistemaConstrutivo outros;
-        int i = 0;
-        while (rs.next() && i <= 9) {
+        while (rs.next()) {
             g = new GraficoSistemaConstrutivo(rs.getInt("QTDE"), rs.getString("DS_SISTEMA_CONSTRUTIVO"));
             graficoSistemaConstrutivos.add(g);
-            i++;
-            if (i == 9 && rs.last()) {
-                int qtde = 0;
-                while(rs.next()) {
-                    outros = new GraficoSistemaConstrutivo(rs.getInt("QTDE"), rs.getString("DS_SISTEMA_CONSTRUTIVO"));
-                    qtde += outros.getQtde();
-                }
-                g = new GraficoSistemaConstrutivo(qtde, "Outros");
-                graficoSistemaConstrutivos.add(g);
-            }
         }
         return graficoSistemaConstrutivos;
     }

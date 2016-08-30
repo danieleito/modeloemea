@@ -11,12 +11,12 @@ import java.io.Serializable;
  *
  * @author Daniele Harumi Ito
  */
-public class GraficoTipoElemento implements Serializable {
+public class GraficoTipoEstrutura implements Serializable {
     
     private int qtde;
     private String nome;
 
-    public GraficoTipoElemento(int qtde, String nome) {
+    public GraficoTipoEstrutura(int qtde, String nome) {
         this.qtde = qtde;
         this.nome = nome;
     }

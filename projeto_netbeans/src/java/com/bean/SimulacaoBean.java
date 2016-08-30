@@ -8,7 +8,7 @@ package com.bean;
 import com.dao.SimulacaoDAO;
 import com.model.GraficoManifestacao;
 import com.model.GraficoSistemaConstrutivo;
-import com.model.GraficoTipoElemento;
+import com.model.GraficoTipoEstrutura;
 import com.model.Simulacao;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -118,9 +118,23 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         try {
             ArrayList<GraficoManifestacao> dados = database.buscarGraficoManifestacoes(simulacao.getId());
 
-            for (GraficoManifestacao d : dados) {
-                pieModel1.set(d.getNome(), d.getQtde());
+            int i = 0;
+            for (; i < 10 && i < dados.size(); i++) {
+//                for (GraficoManifestacao d : dados) {
+                    pieModel1.set(dados.get(i).getNome(), dados.get(i).getQtde());
+//                }
             }
+            int count = 0;
+            for (; i < dados.size(); i++) {
+                count+= dados.get(i).getQtde();
+            }
+            if (dados.size() > 10) {
+                pieModel1.set("Outros", count);
+            }
+
+//            for (GraficoManifestacao d : dados) {
+//                pieModel1.set(d.getNome(), d.getQtde());
+//            }
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -137,19 +151,29 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         pieModel2 = new PieChartModel();
 
         try {
-            ArrayList<GraficoTipoElemento> dados = database.buscarGraficoTipoElemento(simulacao.getId());
-            for (GraficoTipoElemento d : dados) {
-                pieModel2.set(d.getNome(), d.getQtde());
+            ArrayList<GraficoTipoEstrutura> dados = database.buscarGraficoTipoEstrutura(simulacao.getId());
+            int i = 0;
+            for (; i < 10 && i < dados.size(); i++) {
+                pieModel2.set(dados.get(i).getNome(), dados.get(i).getQtde());
             }
+            int count = 0;
+            for (; i < dados.size(); i++) {
+                count += dados.get(i).getQtde();
+            }
+            if (dados.size() > 10) {
+                pieModel2.set("Outros", count);
+            }
+//            for (GraficoTipoEstrutura d : dados) {
+//                pieModel2.set(d.getNome(), d.getQtde());
+//            }
         }catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         pieModel2.setTitle("Tipo de estrutura");
         pieModel2.setLegendPosition("e");
         pieModel2.setLegendCols(1);
         pieModel2.setLegendPlacement(LegendPlacement.INSIDE);
-    
     }
     
 ///////////////////////////////////////
@@ -165,9 +189,20 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
         try {
             ArrayList<GraficoSistemaConstrutivo> dados = database.buscarGraficoSistemaConstrutivo(simulacao.getId());
-            for (GraficoSistemaConstrutivo d : dados) {
-                pieModel3.set(d.getNome(), d.getQtde());
+            int i = 0;
+            for (; i < 10 && i < dados.size(); i++) {
+                pieModel3.set(dados.get(i).getNome(), dados.get(i).getQtde());
             }
+            int count = 0;
+            for (; i < dados.size(); i++) {
+                count += dados.get(i).getQtde();
+            }
+            if (dados.size() > 10) {
+                pieModel3.set("Outros", count);
+            }
+//            for (GraficoSistemaConstrutivo d : dados) {
+//                pieModel3.set(d.getNome(), d.getQtde());
+//            }
         }catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
