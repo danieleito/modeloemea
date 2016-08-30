@@ -252,7 +252,7 @@ public class PonteBean extends ComumBean implements Serializable {
             limparFiltros();
             pontes = database.buscar();
             carregarMapa();
-            carregarDetalhesPin();
+//            carregarDetalhesPin();
         } catch (SQLException ex) {
             pontes = new ArrayList<>();
             adicionarMensagemErro("Erro ao carregar pontess. " + ex.getMessage());
@@ -293,7 +293,7 @@ public class PonteBean extends ComumBean implements Serializable {
                     filtroKmFinal.isEmpty() ? 0 : Double.parseDouble(filtroKmFinal.replace(",", ".")), 
                     filtroIdSuperintendencia, filtroIdUnidadeLocal);
             carregarMapa();
-            carregarDetalhesPin();
+//            carregarDetalhesPin();
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
@@ -432,21 +432,21 @@ public class PonteBean extends ComumBean implements Serializable {
     
     private MapModel advancedModel;
   
-    public void carregarDetalhesPin() {
-        advancedModel = new DefaultMapModel();
-          
-        //Shared coordinates
-        LatLng coord1 = new LatLng(36.879466, 30.667648);
-        LatLng coord2 = new LatLng(36.883707, 30.689216);
-        LatLng coord3 = new LatLng(36.879703, 30.706707);
-        LatLng coord4 = new LatLng(36.885233, 30.702323);
-          
-        //Icons and Data
-        advancedModel.addOverlay(new Marker(coord1, "Konyaalti", "konyaalti.png", "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"));
-        advancedModel.addOverlay(new Marker(coord2, "Ataturk Parki", "ataturkparki.png"));
-        advancedModel.addOverlay(new Marker(coord4, "Kaleici", "kaleici.png", "http://maps.google.com/mapfiles/ms/micons/pink-dot.png"));
-        advancedModel.addOverlay(new Marker(coord3, "Karaalioglu Parki", "karaalioglu.png", "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png"));
-    }
+//    public void carregarDetalhesPin() {
+//        advancedModel = new DefaultMapModel();
+//          
+//        //Shared coordinates
+//        LatLng coord1 = new LatLng(36.879466, 30.667648);
+//        LatLng coord2 = new LatLng(36.883707, 30.689216);
+//        LatLng coord3 = new LatLng(36.879703, 30.706707);
+//        LatLng coord4 = new LatLng(36.885233, 30.702323);
+//          
+//        //Icons and Data
+//        advancedModel.addOverlay(new Marker(coord1, "Konyaalti", "konyaalti.png", "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"));
+//        advancedModel.addOverlay(new Marker(coord2, "Ataturk Parki", "ataturkparki.png"));
+//        advancedModel.addOverlay(new Marker(coord4, "Kaleici", "kaleici.png", "http://maps.google.com/mapfiles/ms/micons/pink-dot.png"));
+//        advancedModel.addOverlay(new Marker(coord3, "Karaalioglu Parki", "karaalioglu.png", "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png"));
+//    }
   
     public MapModel getAdvancedModel() {
         return advancedModel;

@@ -37,33 +37,36 @@ and open the template in the editor.
                             <p:gmapInfoWindow id="infoWindow">
                                 <p:outputPanel style="text-align: center; display: block; margin: auto">
 
-                                    <p:graphicImage name="/demo/images/antalya/#{ponteBean.marker.data}" height="150" />
+                                    <h:outputText value="#{ponteBean.marker.title}" />
+                                    <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}" />
+                                    
                                         <br />
+                                        
                                         <h:outputText value="#{ponteBean.marker.title}" />
 
                                 </p:outputPanel>
                             </p:gmapInfoWindow>
                         </p:gmap>
                         <!-- Preload for demo -->
-                        <p:outputPanel style="display:none" var="p" >
+                        <p:outputPanel style="display:none" >
                             <p:column headerText="Código" style="text-align: center" >
-                                <h:outputText value="#{p.identificacaoObraDadosBasicos.codigo}" />
+                                <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}" />
                             </p:column>
 
                             <p:column headerText="Identificação da obra" style="text-align: center" >
-                                <h:outputText value="#{p.identificacaoObraDadosBasicos.identificacao}" />
+                                <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.identificacao}" />
                             </p:column>
 
                             <p:column headerText="Via" style="width: 150px; text-align: center" >
-                                <h:outputText value="#{p.identificacaoObraLocalizacao.via.descricao}" />
+                                <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.via.descricao}" />
                             </p:column>
 
                             <p:column headerText="UF" style="width: 150px; text-align: center" >
-                                <h:outputText value="#{p.identificacaoObraLocalizacao.uf.uf}" />
+                                <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.uf.uf}" />
                             </p:column>
 
                             <p:column headerText="Local na via" style="width: 150px; text-align: center" >
-                                <h:outputText value="#{p.identificacaoObraLocalizacao.localVia}" >
+                                <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.localVia}" >
                                     <f:convertNumber pattern="#0.00" />
                                 </h:outputText>
                             </p:column>
