@@ -9,6 +9,7 @@ import com.dao.SimulacaoDAO;
 import com.model.GraficoManifestacao;
 import com.model.GraficoSistemaConstrutivo;
 import com.model.GraficoTipoEstrutura;
+import com.model.Ponte;
 import com.model.Simulacao;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -16,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.chart.PieChart;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -244,7 +244,8 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
                     //Draggable
                     String nome = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraDadosBasicos().getIdentificacao();
-                    draggableModel.addOverlay(new Marker(coord, nome));
+                    Ponte ponte = simulacao.getRankings().get(i).getPonte();
+                    draggableModel.addOverlay(new Marker(coord, nome, ponte));
                 }
             }
         }

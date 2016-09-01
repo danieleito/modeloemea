@@ -31,17 +31,24 @@ and open the template in the editor.
                         <p:gmap id="gmap" center="-13.354516, -53.906905" zoom="4" type="HYBRID"  model="#{ponteBean.draggableModel}" style="width:100%;height:400px">
                             <p:ajax event="markerDrag" listener="#{ponteBean.onMarkerDrag}" update="growl" />
                         
-                        
                             <p:ajax event="overlaySelect" listener="#{ponteBean.onMarkerSelect}" />
 
                             <p:gmapInfoWindow id="infoWindow">
                                 <p:outputPanel style="text-align: center; display: block; margin: auto">
 
-                                    <h:outputText value="#{ponteBean.marker.title}" />
-                                    <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}" />
+                                    <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos}" />
+                                    <h:outputText value="1" />
                                     
                                         <br />
                                         
+                                        <h:outputText value="#{ponteBean.marker.id}" />
+                                        <br />
+                                        <h:outputText value="2" />
+                                        <br />
+                                        <h:outputText value="#{Ponte.ponteBean.marker.data.getIdentificacaoObraDadosBasicos().getCodigo()}" />
+                                        <br />
+                                        <h:outputText value="3" />
+                                        <br />
                                         <h:outputText value="#{ponteBean.marker.title}" />
 
                                 </p:outputPanel>
@@ -216,3 +223,23 @@ and open the template in the editor.
         </ui:composition>
     </h:body>
 </html>
+<!--
+<script type="text/javascript" >
+    function myScript() {
+        if (GBrowserIsCompatible()) {
+            var map = new GMap2(document.getElementById("map"));
+            var markerBounds = new GLatLngBounds();
+            for (var i = 0; i &lt; 15; i++) {
+                var randomPoint = new GLatLng( 39.00 + (Math.random() - 0.5) * 20, 
+                                   -77.00 + (Math.random() - 0.5) * 20);
+
+                map.addOverlay(new GMarker(randomPoint));
+                markerBounds.extend(randomPoint);
+             }
+
+             map.setCenter(markerBounds.getCenter(), 
+                           map.getBoundsZoomLevel(markerBounds));
+        }
+    }  
+
+</script>-->

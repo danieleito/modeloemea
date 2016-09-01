@@ -405,8 +405,10 @@ public class PonteBean extends ComumBean implements Serializable {
 
                 //Draggable
                 String nome = pontes.get(i).getIdentificacaoObraDadosBasicos().getIdentificacao();
-                draggableModel.addOverlay(new Marker(coord, nome));
+                
+                draggableModel.addOverlay(new Marker(coord, nome, pontes.get(i)));
             }
+            
         }
 
         for(Marker premarker : draggableModel.getMarkers()) {
@@ -414,7 +416,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         
     }
-
+    
     public MapModel getDraggableModel() {
         return draggableModel;
     }
