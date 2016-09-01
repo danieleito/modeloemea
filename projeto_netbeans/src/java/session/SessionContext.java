@@ -11,7 +11,7 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author Paulo
+ * @author Daniele Harumi Ito
  */
 public class SessionContext {
     
