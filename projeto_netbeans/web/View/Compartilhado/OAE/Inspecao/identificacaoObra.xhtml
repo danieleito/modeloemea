@@ -32,11 +32,18 @@ and open the template in the editor.
                                 <p:outputLabel value="Natureza da Transposição" class="col-md-5" />
                             </td>
                             <td>
-                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraDadosBasicos.naturezaTransposicao}" class="col-md-6" >
+                                <p:selectOneMenu value="#{ponteBean.model.identificacaoObraDadosBasicos.naturezaTransposicao.toString}" class="col-md-6" >
                                     <f:selectItem itemLabel="Selecione a Natureza da Transposição" itemValue="0"/>
                                     <f:selectItems value="#{ponteBean.naturezasTransposicoes}" var="nt" itemValue="#{nt.id}" />
                                 </p:selectOneMenu>
                             </td>
+                            
+                            <div class="row">
+                                <p:outputLabel value="Tipo de usuário" class="col-md-10" />
+                                <p:selectOneMenu value="#{usuarioBean.model.tipoUsuario.id}" class="col-md-5">
+                                    <f:selectItems value="#{usuarioBean.tipos}" var="t" itemValue="#{t.id}" />
+                                </p:selectOneMenu>
+                            </div>
                         </tr>
 
                         <tr>

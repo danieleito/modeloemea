@@ -13,6 +13,7 @@ import com.model.Ponte;
 import com.model.Simulacao;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -23,6 +24,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.map.MarkerDragEvent;
+import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
@@ -213,15 +215,14 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         pieModel3.setLegendPlacement(LegendPlacement.INSIDE);
     
     }
-    
-    
 //    fim métodos para gráficos
-    
+
+
 //    início métodos para mapa
     public void carregarMapa() {
         draggableModel = new DefaultMapModel();
 
-        if (simulacao != null) {
+//        if (simulacao != null) {
             if (simulacao.getRankings() != null) {
                 int t = simulacao.getRankings().size();
                 
@@ -244,10 +245,14 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
                     //Draggable
                     String nome = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraDadosBasicos().getIdentificacao();
-                    Ponte ponte = simulacao.getRankings().get(i).getPonte();
-                    draggableModel.addOverlay(new Marker(coord, nome, ponte));
+                    String codigo = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraDadosBasicos().getCodigo();
+                    String via = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getVia().getDescricao();
+                    String uf = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getUf().getUf();
+                    DecimalFormat df = new DecimalFormat("#.00"); 
+                    String localVia = String.format("%.2f", simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLocalVia());
+                    draggableModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia}));
                 }
-            }
+//            }
         }
 
         for(Marker premarker : draggableModel.getMarkers()) {
@@ -267,6 +272,19 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     
 //    fim métodos para mapa
 
+    private MapModel advancedModel;
+    public MapModel getAdvancedModel() {
+        return advancedModel;
+    }
+      
+    public void onMarkerSelect(OverlaySelectEvent event) {
+        marker = (Marker) event.getOverlay();
+    }
+      
+    public Marker getMarker() {
+        return marker;
+    }
+    
     public void listarGet() {
         try {
             simulacao = new Simulacao();
