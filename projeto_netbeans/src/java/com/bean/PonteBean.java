@@ -47,6 +47,7 @@ import com.model.UnidadeLocal;
 import com.model.Via;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -405,8 +406,12 @@ public class PonteBean extends ComumBean implements Serializable {
 
                 //Draggable
                 String nome = pontes.get(i).getIdentificacaoObraDadosBasicos().getIdentificacao();
-                
-                draggableModel.addOverlay(new Marker(coord, nome, pontes.get(i)));
+                String codigo = pontes.get(i).getIdentificacaoObraDadosBasicos().getCodigo();
+                String via = pontes.get(i).getIdentificacaoObraLocalizacao().getVia().getDescricao();
+                String uf = pontes.get(i).getIdentificacaoObraLocalizacao().getUf().getUf();
+                DecimalFormat df = new DecimalFormat("#.00"); 
+                String localVia = String.format("%.2f", pontes.get(i).getIdentificacaoObraLocalizacao().getLocalVia());
+                draggableModel.addOverlay(new Marker(coord, null, new String [] {nome, codigo, via, uf, localVia}));
             }
             
         }

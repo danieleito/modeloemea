@@ -35,21 +35,30 @@ and open the template in the editor.
 
                             <p:gmapInfoWindow id="infoWindow">
                                 <p:outputPanel style="text-align: center; display: block; margin: auto">
-
-                                    <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos}" />
-                                    <h:outputText value="1" />
-                                    
-                                        <br />
-                                        
-                                        <h:outputText value="#{ponteBean.marker.id}" />
-                                        <br />
-                                        <h:outputText value="2" />
-                                        <br />
-                                        <h:outputText value="#{Ponte.ponteBean.marker.data.getIdentificacaoObraDadosBasicos().getCodigo()}" />
-                                        <br />
-                                        <h:outputText value="3" />
-                                        <br />
-                                        <h:outputText value="#{ponteBean.marker.title}" />
+                                    <div class="row">
+                                        <h:outputText value="Identificação: " style="font-weight: bold" />
+                                        <h:outputText value="#{ponteBean.marker.data[0]}" />
+                                    </div>
+                                    <br />
+                                    <div class="row" >
+                                        <h:outputText value="Código: " style="font-weight: bold" />
+                                        <h:outputText value="#{ponteBean.marker.data[1]}" />
+                                    </div>
+                                    <br />
+                                    <div class="row" >
+                                        <h:outputText value="Via: " style="font-weight: bold" />
+                                        <h:outputText value="#{ponteBean.marker.data[2]}" />
+                                    </div>
+                                    <br />
+                                    <div class="row" >
+                                        <h:outputText value="UF: " style="font-weight: bold" />
+                                        <h:outputText value="#{ponteBean.marker.data[3]}" />
+                                    </div>
+                                    <br />
+                                    <div class="row" >
+                                        <h:outputText value="Local via: " style="font-weight: bold" />
+                                        <h:outputText value="#{ponteBean.marker.data[4]}" />
+                                    </div>
 
                                 </p:outputPanel>
                             </p:gmapInfoWindow>
