@@ -67,6 +67,9 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
      */
     public IdentificacaoObraDadosBasicos() {
         naturezaTransposicao = new NaturezaTransposicao();
+        tipoEstrutura = new TipoEstrutura();
+        sistemaConstrutivo = new SistemaConstrutivo();
+        tremTipo = new TremTipo();
     }
 
     /**

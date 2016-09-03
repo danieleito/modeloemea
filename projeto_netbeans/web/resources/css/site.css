@@ -230,6 +230,10 @@ table td.thLarger {
 	font-weight: bold;
 }
 
+table td.subtituloTabela {
+    background-color: white;
+}
+
 table thead th {
 	text-align: center;
 	width: auto;

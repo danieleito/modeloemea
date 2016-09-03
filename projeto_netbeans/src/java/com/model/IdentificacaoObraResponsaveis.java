@@ -62,6 +62,8 @@ public class IdentificacaoObraResponsaveis implements Serializable {
      * Constructor padrão.
      */
     public IdentificacaoObraResponsaveis() {
+        unidadeLocal = new UnidadeLocal();
+        
     }
 
     /**

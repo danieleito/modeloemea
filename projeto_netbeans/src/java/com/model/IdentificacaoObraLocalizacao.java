@@ -72,6 +72,7 @@ public class IdentificacaoObraLocalizacao implements Serializable {
     public IdentificacaoObraLocalizacao() {
         uf = new Uf();
         via = new Via();
+        //cidade mais proxima, pnvAno, pnvversao, pnvcodigo
     }
 
     /**

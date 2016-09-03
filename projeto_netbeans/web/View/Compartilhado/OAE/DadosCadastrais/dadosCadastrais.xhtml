@@ -7,12 +7,295 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
+        <h:outputText value="DADOS CADASTRAIS DE OBRA DE ARTE ESPECIAL" style="font-weight: bold" />
+        <hr />
+        <p:panel  header="1. Identificação da obra" style="width: 100%; float: left;">
+                <table>
+                    <tbody >
+                        <tr>
+                            <td class="subtituloTabela">
+                                <h:outputText value="Dados Básicos" style="font-weight: bold" />
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Código" class="col-md-10"/>                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Identificação" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.identificacao}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Últ. atualização" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.dataUltimaInspecao}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Nat. transposição" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.naturezaTransposicao.descricao}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Tipo estrutura" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.tipoEstrutura.descricao}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Sist. construtivo" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.sistemaConstrutivo.descricao}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Comp./Larg.(m)" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.comprimento}/#{ponteBean.model.identificacaoObraDadosBasicos.largura}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Trem-tipo" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.tremTipo.descricao}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Construção" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.anoConstrucao}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                    <tbody >
+                        <tr>
+                            <td class="subtituloTabela">
+                                <h:outputText value="Localização" style="font-weight: bold" />
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Via/UF/Km" class="col-md-10"/>                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraLocalizacao.via.descricao}/#{ponteBean.model.identificacaoObraLocalizacao.uf.uf}/#{ponteBean.model.identificacaoObraLocalizacao.localVia}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Trecho" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.identificacao}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Cidade mais próxima" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraLocalizacao.cidadeMaisProxima}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Alt./Lat./Long." class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraLocalizacao.pnvAltitude}/#{ponteBean.model.identificacaoObraLocalizacao.latitudeGrau}/#{ponteBean.model.identificacaoObraLocalizacao.longitudeGrau}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        <br />
+                        <tr>
+                            <td class="subtituloTabela">
+                                <h:outputText value="Inspeção" style="font-weight: bold" />
+                            </td>
+                        </tr>
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Período(anos)" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraInspecao.periodo}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Equip. necessário" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraInspecao.equipamentoNecessario}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Melhor época" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraInspecao.melhorEpoca}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody >
+                        <tr>
+                            <td class="subtituloTabela">
+                                <h:outputText value="Responsáveis" style="font-weight: bold" />
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Superint. regional" class="col-md-10"/>                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.superintendenciaRegional.descricao}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Unidade local" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.descricao}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Tp. administração" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.tipoAdministracao.descricao}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Administrador" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.administrador}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Projetista" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.projetistaProjetista}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Construtor" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.construtorConstrutor}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Observações" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <br />
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Loc. projeto" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoProjeto}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Loc. doc. constr." class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoDocumentosConstrucao}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                        
+                        <tr >
+                            <td class="th">
+                                <p:outputLabel value="Loc. doc. diversos" class="col-md-10" />                                  
+                            </td>
+                            <td>
+                                <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoDocumentosDiversos}" class="col-md-10"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </p:panel>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--////////////////////////////////////////////-->
+        
         <h:outputLabel value="DADOS CADASTRAIS DE OBRA DE ARTE ESPECIAL" style="width: 100%; float: left;" />
 
         <h:form id="form" >

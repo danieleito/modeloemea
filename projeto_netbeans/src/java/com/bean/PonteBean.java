@@ -362,6 +362,7 @@ public class PonteBean extends ComumBean implements Serializable {
     
     public void cadastrar() {
         try {
+            model = new Ponte();
             redirecionar("/View/Compartilhado/OAE/cadastrar.jsf");
         } catch (Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
