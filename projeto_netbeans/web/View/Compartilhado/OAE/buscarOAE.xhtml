@@ -21,7 +21,7 @@ and open the template in the editor.
                     <p:breadCrumb>
                         <p:menuitem value="Categories" url="#" />
                         <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
-                        <p:menuitem value="Simulação" url="/View/Compartilhado/simulacao.jsf" />
+                        <p:menuitem value="Simulação" action="#{simulacaoBean.listarGet()}" />
                         <p:menuitem value="Ranqueamento" url="/View/Compartilhado/OAE/Simulacao/ranking.jsf" />
                         <p:menuitem value="Consulta" url="/View/Compartilhado/OAE/buscarOAE.jsf" />
                     </p:breadCrumb>

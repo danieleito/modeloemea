@@ -181,7 +181,7 @@ table td.th {
 }
 
 .tabela_dados_cadastrais {
-    width: 50%;
+    /*width: 50%;*/
     float: left;
     height: auto;
 }
@@ -225,12 +225,14 @@ table td.th {
 	font-weight: bold;
 }
 
+
+
 table td.thLarger {
 	width: 30%;
 	font-weight: bold;
 }
 
-table td.subtituloTabela {
+.subtituloTabela {
     background-color: white;
 }
 
