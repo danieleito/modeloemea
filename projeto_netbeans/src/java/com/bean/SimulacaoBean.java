@@ -9,7 +9,6 @@ import com.dao.SimulacaoDAO;
 import com.model.GraficoManifestacao;
 import com.model.GraficoSistemaConstrutivo;
 import com.model.GraficoTipoEstrutura;
-import com.model.Ponte;
 import com.model.Simulacao;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -339,6 +338,9 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
 
     public void rankingGet(int idSimulacao) {
+//        if (usuarioLogado.getId() == simulacao.getUsuario().getId()) {
+//            adicionarMensagemInfo("conferir se usuaáio logado é o mesmo usuário dono da simulação");
+//        }
         try {
             simulacao = database.buscar(idSimulacao);
             createBarModel();
@@ -457,5 +459,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 //        }
     }
 
-    
+    private boolean usuarioLogadoIgualDonoSimulacao() {
+        return true;
+    }
 }

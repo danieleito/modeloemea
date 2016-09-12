@@ -35,7 +35,15 @@ and open the template in the editor.
                             <p:ajax event="overlaySelect" listener="#{ponteBean.onMarkerSelect}" />
 
                             <p:gmapInfoWindow id="infoWindow">
+                                
                                 <p:outputPanel style="text-align: center; display: block; margin: auto">
+                                    
+                                    <h:outputLink value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" title="#{arq.imagem.nome}">
+                                        <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
+                                            <f:param name="filename" value="#{arq.imagem.nome}" />
+                                            <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
+                                        </p:graphicImage>
+                                    </h:outputLink>
                                     <div class="row">
                                         <h:outputText value="Identificação: " style="font-weight: bold" />
                                         <h:outputText value="#{ponteBean.marker.data[0]}" />
@@ -184,7 +192,6 @@ and open the template in the editor.
                         </tbody>
                     </table>
 
-                    <!--                    <p:commandButton value="Consultar" oncomplete="$('.mySelector').show();" />-->
                     <p:commandButton action='#{ponteBean.consultarPost()}' value="Consultar" />
                     <p:commandButton action="#{ponteBean.cancelar()}" value="Cancelar" />
 
@@ -196,12 +203,6 @@ and open the template in the editor.
                         <p:column selectionMode="multiple" style="width:16px; text-align:center" />
                         
                         
-                        <!--styleClass="mySelector" style="display: none"-->
-
-<!--                        <p:column headerText="check" style="text-align: center; width: 20px" >
-                            <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
-                        </p:column>-->
-
                         <p:column headerText="Código" style="text-align: center" >
                             <h:outputText value="#{p.identificacaoObraDadosBasicos.codigo}" />
                         </p:column>
@@ -229,6 +230,7 @@ and open the template in the editor.
                         </p:column>
                         <f:facet name="footer" >
                             <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{ponteBean.carregar(simulacaoBean.simulacao.id)}" />
+                            <h:outputText value="Registros encontrados: " style="text-align: right;" />
                          </f:facet>
                     </p:dataTable>
                 </h:form>
