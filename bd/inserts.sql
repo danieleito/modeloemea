@@ -118,9 +118,10 @@ insert into UNIDADE_LOCAL (DS_UNIDADE_LOCAL, ID_SUPERINTENDENCIA_REGIONAL) value
 
 ---------------------------------------------------------------------------
 
-insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) values ('28/04/2016', 1, 'simulação 1');
-insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) values ('29/04/2016', 1, 'simulação 2');
-insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) values ('30/04/2016', 1, 'simulação 3');
+insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) values ('28/04/2016', 1, 'simulação 01');
+insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) values ('29/04/2016', 1, 'simulação 02');
+insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) values ('30/04/2016', 5, 'simulação 03');
+insert into SIMULACAO (DT_DATA, ID_USUARIO, NM_SIMULACAO) values ('13/09/2016', 6, 'simulação 04');
 
 ---------------------------------------------------------------------------
 
@@ -514,6 +515,9 @@ insert into RANKING (ID_PONTE, ID_SIMULACAO) values (2, 1);
 insert into RANKING (ID_PONTE, ID_SIMULACAO) values (3, 3);
 insert into RANKING (ID_PONTE, ID_SIMULACAO) values (3, 1);
 insert into RANKING (ID_PONTE, ID_SIMULACAO) values (2, 2);
+insert into RANKING (ID_PONTE, ID_SIMULACAO) values (1, 4);
+insert into RANKING (ID_PONTE, ID_SIMULACAO) values (3, 4);
+insert into RANKING (ID_PONTE, ID_SIMULACAO) values (2, 4);
 
 ---------------------------------------------------------------------------
 

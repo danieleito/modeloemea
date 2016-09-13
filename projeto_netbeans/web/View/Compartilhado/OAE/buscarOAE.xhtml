@@ -26,6 +26,7 @@ and open the template in the editor.
                         <p:menuitem value="Consulta" url="/View/Compartilhado/OAE/buscarOAE.jsf" />
                     </p:breadCrumb>
 
+                    <br/>
                     <div>
                         <p:growl id="growl" showDetail="true" />
                         <p:gmap id="gmap" center="-13.354516, -53.906905" zoom="4" type="HYBRID"  model="#{ponteBean.draggableModel}" style="width:100%;height:400px" 
@@ -38,10 +39,10 @@ and open the template in the editor.
                                 
                                 <p:outputPanel style="text-align: center; display: block; margin: auto">
                                     
-                                    <h:outputLink value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" title="#{arq.imagem.nome}">
+                                    <h:outputLink value="#{comumbean.getImage(ponteBean.model.arquivosAnexosCadastro.imagem, ponteBean.model.arquivosAnexosCadastro.imagem)}" title="#{ponteBean.model.arquivosAnexosCadastro.imagem}">
                                         <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
-                                            <f:param name="filename" value="#{arq.imagem.nome}" />
-                                            <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
+                                            <f:param name="filename" value="imagem03.jpg" />
+                                            <f:param name="tipoimagem" value="image/jpg" />
                                         </p:graphicImage>
                                     </h:outputLink>
                                     <div class="row">
