@@ -199,6 +199,7 @@ and open the template in the editor.
                     <p:dataTable id="checkboxDT" var="p" value="#{ponteBean.pontes}" rowKey="#{p.id}" selection="#{ponteBean.pontesSelecionadas}" style="margin-bottom: 0" paginator="true" rows="15" reflow="true" >     
                         <f:facet name="header" >
 <!--                            OAEs-->
+                            <h:outputText value="Registros encontrados: #{ponteBean.numeroPontesBuscados(ponteBean.pontes)}" style="text-align: right;" />
                         </f:facet>
                         <!--para checkbox em cada uma das linhas da grid-->
                         <p:column selectionMode="multiple" style="width:16px; text-align:center" />
@@ -230,8 +231,7 @@ and open the template in the editor.
                             <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
                         </p:column>
                         <f:facet name="footer" >
-                            <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{ponteBean.carregar(simulacaoBean.simulacao.id)}" />
-                            <h:outputText value="Registros encontrados: " style="text-align: right;" />
+                            <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{ponteBean.carregar(simulacaoBean.simulacao.id)}"  />
                          </f:facet>
                     </p:dataTable>
                 </h:form>

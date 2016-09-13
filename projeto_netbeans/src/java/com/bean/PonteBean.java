@@ -450,6 +450,14 @@ public class PonteBean extends ComumBean implements Serializable {
         return marker;
     }
 
+    
+    
+//    busca o numero de pontes que foi pesquisado na tela BuscarPonte
+    public int numeroPontesBuscados(ArrayList pontes) {
+        int numero = pontes.size();
+        return numero;
+    }
+
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
         return filtroCodigo;
