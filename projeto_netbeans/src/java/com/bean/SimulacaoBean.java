@@ -108,7 +108,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     public PieChartModel getPieModel1() {
         return pieModel1;
     }
- 
+
     private void createPieModel1() {
         pieModel1 = new PieChartModel();
         pieModel1.setTitle("Manifestações");
