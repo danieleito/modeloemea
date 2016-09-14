@@ -64,7 +64,8 @@ public class ComumBean {
     }
     
     private void adicionarMensagem(FacesMessage.Severity severity, String titulo, String mensagem) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, titulo, mensagem));
+//        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, titulo, mensagem));
+        FacesContext.getCurrentInstance().addMessage("codigoMessage", new FacesMessage(severity, titulo, mensagem));
     }
     
     
