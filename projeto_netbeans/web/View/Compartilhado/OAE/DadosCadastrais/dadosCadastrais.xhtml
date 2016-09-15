@@ -294,7 +294,12 @@ and open the template in the editor.
                             <p:outputLabel value="Traçado/Raio(m)" class="col-md-10" />                                  
                         </td>
                         <td>
-                            <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.tipoTracado.descricao}/#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.raioCurva}" class="col-md-10"/>
+                            <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.tipoTracado.descricao}"/>
+                            <h:panelGroup rendered="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.raioCurva.length() > 0}">
+                                <p:outputLabel value="/#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.raioCurva}" />
+                            </h:panelGroup>
+                            
+                           
                         </td>
                     </tr>
 
@@ -357,7 +362,9 @@ and open the template in the editor.
                             <p:outputLabel value="Larg. acost. dir/esq(m)" class="col-md-10" />                                  
                         </td>
                         <td>
-                            <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoDireito}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoEsquerdo}" class="col-md-10"/>
+                            <h:panelGroup rendered="#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoDireito.length() > 0}">
+                                <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoDireito}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoEsquerdo}" class="col-md-10"/>
+                            </h:panelGroup>
                         </td>
                     </tr>
 
@@ -366,7 +373,9 @@ and open the template in the editor.
                             <p:outputLabel value="Larg. calçada dir/esq(m)" class="col-md-10"/>                                  
                         </td>
                         <td>
-                            <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaDireita}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaEsquerda}" class="col-md-10"/>
+                            <h:panelGroup rendered="#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaDireita.length() > 0}">
+                                <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaDireita}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaEsquerda}" class="col-md-10"/>
+                            </h:panelGroup>
                         </td>
                     </tr>
 
