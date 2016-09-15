@@ -247,7 +247,7 @@ public class PonteBean extends ComumBean implements Serializable {
             }
             redirecionar("/View/Compartilhado/OAE/Simulacao/ranking.jsf");
         } else {
-            adicionarMensagemWarning("Nenhum OAE foi selecionada.");
+            adicionarMensagemWarning("Nenhuma OAE foi selecionada.");
             redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
         }
         
