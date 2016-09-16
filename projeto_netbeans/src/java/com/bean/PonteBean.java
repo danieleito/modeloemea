@@ -60,8 +60,10 @@ import org.primefaces.event.map.MarkerDragEvent;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.LatLngBounds;
 import org.primefaces.model.map.MapModel;
 import org.primefaces.model.map.Marker;
+import org.primefaces.model.map.Rectangle;
 
 /**
  *
@@ -143,6 +145,8 @@ public class PonteBean extends ComumBean implements Serializable {
     private MapModel draggableModel;
     private Marker marker;
     private String titulo;
+    private MapModel rectangleModel;
+    private MapModel advancedModel;
     
     @PostConstruct
     public void init() {
@@ -259,6 +263,7 @@ public class PonteBean extends ComumBean implements Serializable {
             limparFiltros();
             pontes = database.buscar();
             carregarMapa();
+            retangulo();
 //            carregarDetalhesPin();
         } catch (SQLException ex) {
             pontes = new ArrayList<>();
@@ -300,6 +305,7 @@ public class PonteBean extends ComumBean implements Serializable {
                     filtroKmFinal.isEmpty() ? 0 : Double.parseDouble(filtroKmFinal.replace(",", ".")), 
                     filtroIdSuperintendencia, filtroIdUnidadeLocal);
             carregarMapa();
+            retangulo();
 //            carregarDetalhesPin();
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -391,7 +397,9 @@ public class PonteBean extends ComumBean implements Serializable {
     //    início métodos para mapa
     public void carregarMapa() {
         draggableModel = new DefaultMapModel();
-
+//        advancedModel = new DefaultMapModel();
+        double maiorLongitude = 0;
+        double maiorLatitude = 0;
         if (pontes != null) {
             int t = pontes.size();
 
@@ -403,6 +411,8 @@ public class PonteBean extends ComumBean implements Serializable {
                 grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeGrau());
                 minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeMinuto());
                 Double longitude = minuto/60 + grau;
+                
+                //latitude e logitude transformado em valor negativo
                 if (latitude > 0) {
                     latitude *= -1;
                 }
@@ -410,6 +420,14 @@ public class PonteBean extends ComumBean implements Serializable {
                     longitude *= -1;
                 }
                 LatLng coord = new LatLng(latitude, longitude);
+                
+                //pega maior latitude e longitude
+                if (longitude < maiorLongitude) {
+                    maiorLongitude = longitude;
+                }
+                if (latitude < maiorLatitude) {
+                    maiorLatitude = latitude;
+                }
 
                 //Draggable
                 String nome = pontes.get(i).getIdentificacaoObraDadosBasicos().getIdentificacao();
@@ -419,6 +437,7 @@ public class PonteBean extends ComumBean implements Serializable {
                 DecimalFormat df = new DecimalFormat("#.00"); 
                 String localVia = String.format("%.2f", pontes.get(i).getIdentificacaoObraLocalizacao().getLocalVia());
                 draggableModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia}));
+//                advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia}));
             }
         }
 
@@ -437,13 +456,41 @@ public class PonteBean extends ComumBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Dragged", "Lat:" + marker.getLatlng().getLat() + ", Lng:" + marker.getLatlng().getLng()));
     }
     
+    
+    
+    /////////////////////////////////////////////////////////////////////////////
+//   parametros         double latitude, double longitude
+    public void retangulo() {
+        double latitude = -23.49975;
+        double longitude = -50.108916667;
+        rectangleModel = new DefaultMapModel();
+
+        //Shared coordinates
+        LatLng ne = new LatLng(latitude, longitude);
+        LatLng sw = new LatLng(36.885233, 30.702323);
+
+        //Rectangle
+        Rectangle rect = new Rectangle(new LatLngBounds(sw, ne));
+        rect.setStrokeColor("#d93c3c");
+        rect.setFillColor("#d93c3c");
+        rect.setFillOpacity(0.5);
+        rectangleModel.addOverlay(rect);
+    }
+
+    public MapModel getRectangleModel() {
+        return rectangleModel;
+    }
+
+    public void onRectangleSelect(OverlaySelectEvent event) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Rectangle Selected", null));
+    }       
+//            ////////////////////////////////////////////////////////////////////////////////
+    
 //    fim métodos para mapa
-    
-    
-    
-    
-    private MapModel advancedModel;
-  
+
+
+
+
     public MapModel getAdvancedModel() {
         return advancedModel;
     }
