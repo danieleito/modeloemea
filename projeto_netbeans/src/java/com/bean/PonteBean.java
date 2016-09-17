@@ -142,7 +142,7 @@ public class PonteBean extends ComumBean implements Serializable {
     private Inspecao inspecao;
     
     //mapa
-    private MapModel draggableModel;
+//    private MapModel draggableModel;
     private Marker marker;
     private String titulo;
     private MapModel rectangleModel;
@@ -396,8 +396,7 @@ public class PonteBean extends ComumBean implements Serializable {
     
     //    início métodos para mapa
     public void carregarMapa() {
-        draggableModel = new DefaultMapModel();
-//        advancedModel = new DefaultMapModel();
+        advancedModel = new DefaultMapModel();
         double maiorLongitude = 0;
         double maiorLatitude = 0;
         if (pontes != null) {
@@ -436,27 +435,26 @@ public class PonteBean extends ComumBean implements Serializable {
                 String uf = pontes.get(i).getIdentificacaoObraLocalizacao().getUf().getUf();
                 DecimalFormat df = new DecimalFormat("#.00"); 
                 String localVia = String.format("%.2f", pontes.get(i).getIdentificacaoObraLocalizacao().getLocalVia());
-                draggableModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia}));
-//                advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia}));
+                advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia}, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"));
             }
         }
 
-        for(Marker premarker : draggableModel.getMarkers()) {
-            premarker.setDraggable(true);
-        } 
-    }
-    
-    public MapModel getDraggableModel() {
-        return draggableModel;
+//        for(Marker premarker : draggableModel.getMarkers()) {
+//            premarker.setDraggable(true);
+//        } 
     }
 
-    public void onMarkerDrag(MarkerDragEvent event) {
-        marker = event.getMarker();
-
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Dragged", "Lat:" + marker.getLatlng().getLat() + ", Lng:" + marker.getLatlng().getLng()));
+    public MapModel getAdvancedModel() {
+        return advancedModel;
     }
-    
-    
+      
+    public void onMarkerSelect(OverlaySelectEvent event) {
+        marker = (Marker) event.getOverlay();
+    }
+      
+    public Marker getMarker() {
+        return marker;
+    }
     
     /////////////////////////////////////////////////////////////////////////////
 //   parametros         double latitude, double longitude
@@ -487,23 +485,8 @@ public class PonteBean extends ComumBean implements Serializable {
 //            ////////////////////////////////////////////////////////////////////////////////
     
 //    fim métodos para mapa
-
-
-
-
-    public MapModel getAdvancedModel() {
-        return advancedModel;
-    }
-      
-    public void onMarkerSelect(OverlaySelectEvent event) {
-        marker = (Marker) event.getOverlay();
-    }
-      
-    public Marker getMarker() {
-        return marker;
-    }
-
     
+
     
 //    busca o numero de pontes que foi pesquisado na tela BuscarPonte
     public int numeroPontesBuscados(ArrayList pontes) {

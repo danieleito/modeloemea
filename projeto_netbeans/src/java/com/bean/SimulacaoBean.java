@@ -49,7 +49,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     
     private BarChartModel barModel;
     private Marker marker;
-    private MapModel draggableModel;
+    private MapModel advancedModel;
     private int lat;
     private int lgt;
 
@@ -219,8 +219,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
 //    início métodos para mapa
     public void carregarMapa() {
-        draggableModel = new DefaultMapModel();
-
+        advancedModel = new DefaultMapModel();
 //        if (simulacao != null) {
             if (simulacao.getRankings() != null) {
                 int t = simulacao.getRankings().size();
@@ -249,29 +248,16 @@ public class SimulacaoBean extends ComumBean implements Serializable {
                     String uf = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getUf().getUf();
                     DecimalFormat df = new DecimalFormat("#.00"); 
                     String localVia = String.format("%.2f", simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLocalVia());
-                    draggableModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia}));
+                    advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia}));
                 }
 //            }
         }
 
-        for(Marker premarker : draggableModel.getMarkers()) {
-            premarker.setDraggable(true);
-        }
+//        for(Marker premarker : draggableModel.getMarkers()) {
+//            premarker.setDraggable(true);
+//        }
     }
 
-    public MapModel getDraggableModel() {
-        return draggableModel;
-    }
-
-    public void onMarkerDrag(MarkerDragEvent event) {
-        marker = event.getMarker();
-
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Dragged", "Lat:" + marker.getLatlng().getLat() + ", Lng:" + marker.getLatlng().getLng()));
-    }
-    
-//    fim métodos para mapa
-
-    private MapModel advancedModel;
     public MapModel getAdvancedModel() {
         return advancedModel;
     }
@@ -283,6 +269,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     public Marker getMarker() {
         return marker;
     }
+//    fim métodos para mapa
     
     public void listarGet() {
         try {

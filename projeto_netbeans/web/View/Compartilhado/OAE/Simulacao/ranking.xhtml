@@ -37,11 +37,9 @@ and open the template in the editor.
                     
                     <div>
                         <p:growl id="growl" showDetail="true" />
-                        <p:gmap id="gmap" center="-13.354516, -53.906905" zoom="4" type="HYBRID"  model="#{simulacaoBean.draggableModel}" style="width:100%;height:400px"
-                                onPointClick="handlePointClick(event);">
-                            <p:ajax event="markerDrag" listener="#{simulacaoBean.onMarkerDrag}" update="growl" />
+                        <p:gmap id="gmap" center="-13.354516, -53.906905" zoom="4" type="HYBRID"  model="#{simulacaoBean.advancedModel}" style="width:100%;height:400px" >
+                            <p:ajax event="overlaySelect" listener="#{simulacaoBean.onMarkerSelect}" update="growl" />
                             
-                            <p:ajax event="overlaySelect" listener="#{simulacaoBean.onMarkerSelect}" />
 
                             <p:gmapInfoWindow id="infoWindow">
                                 <p:outputPanel style="text-align: center; display: block; margin: auto">
