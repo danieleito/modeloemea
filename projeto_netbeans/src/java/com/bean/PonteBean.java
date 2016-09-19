@@ -56,7 +56,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import org.primefaces.event.map.MarkerDragEvent;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -245,6 +244,7 @@ public class PonteBean extends ComumBean implements Serializable {
                     }
                 }
                 adicionarMensagemInfo(qtde + " pontes adicionadas das "+pontesSelecionadas.size()+" selecionadas");
+                
             } catch (SQLException ex) {
                 Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
                 adicionarMensagemErro("Erro ao carregar ponte no ranking. " + ex.getMessage());
@@ -435,7 +435,7 @@ public class PonteBean extends ComumBean implements Serializable {
                 String uf = pontes.get(i).getIdentificacaoObraLocalizacao().getUf().getUf();
                 DecimalFormat df = new DecimalFormat("#.00"); 
                 String localVia = String.format("%.2f", pontes.get(i).getIdentificacaoObraLocalizacao().getLocalVia());
-                advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia}, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"));
+                advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia})); //pode ser o quarto de ultimo parametro, serve para mudar a cor do pin, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"
             }
         }
 

@@ -18,9 +18,9 @@ and open the template in the editor.
             <ui:define name="content">
                 <h:form id="form">
                     
-                    <f:metadata>
-                        <f:event type="preRenderView" listener="#{simulacaoBean.recarregarSimulacao()}"/>
-                    </f:metadata>
+<!--                    <f:metadata>
+                        <f:event type="preRenderView" listener="{simulacaoBean.recarregarSimulacao()}"/>
+                    </f:metadata>-->
                     
                     <p:breadCrumb>
                         <p:menuitem value="Categories" url="#" />
@@ -43,6 +43,12 @@ and open the template in the editor.
 
                             <p:gmapInfoWindow id="infoWindow">
                                 <p:outputPanel style="text-align: center; display: block; margin: auto">
+                                    <h:outputLink>
+                                        <p:graphicImage value="#{comumbean.getImage()}"  style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
+                                            <f:param name="filename" value="#{ponteBean.model.arquivosAnexosCadastro}/Ponte02/vistaGeral.jpg" />
+                                            <f:param name="tipoimagem" value="image/jpg" />
+                                        </p:graphicImage>
+                                    </h:outputLink>
                                     <div class="row">
                                         <h:outputText value="Identificação: " style="font-weight: bold" />
                                         <h:outputText value="#{simulacaoBean.marker.data[0]}" />

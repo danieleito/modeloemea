@@ -18,11 +18,8 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import org.primefaces.event.map.MarkerDragEvent;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
@@ -448,5 +445,19 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
     private boolean usuarioLogadoIgualDonoSimulacao() {
         return true;
+    }
+    
+    public String fotoVistaGeral(Marker marker) {
+        String primeiraFoto = "";
+        String nomeFoto = "vistaGeral";
+//        int t = arquivoAnexo.size();
+        
+//        for (int i = 0; i < t; i++) {
+//            String nomeFoto = arquivoAnexo.get(i).toString();
+            if (nomeFoto.equalsIgnoreCase("vistageral")) {
+                return nomeFoto;
+            }
+//        }
+        return primeiraFoto;
     }
 }

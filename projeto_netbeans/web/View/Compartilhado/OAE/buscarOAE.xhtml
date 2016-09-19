@@ -37,8 +37,8 @@ and open the template in the editor.
                             <p:gmapInfoWindow id="infoWindow">
                                 
                                 <p:outputPanel style="text-align: center; display: block; margin: auto">
-<!--                                    <h:outputLink value="#{comumbean.getImage(ponteBean.model.arquivosAnexosCadastro.imagem, ponteBean.model.arquivosAnexosCadastro.imagem)}" title="#{ponteBean.model.arquivosAnexosCadastro.imagem}">-->
-                                    <h:outputLink value="#{comumbean.getImage(imagem03.jpg, image/jpg)}" title="#{ponteBean.model.arquivosAnexosCadastro.imagem}">
+
+                                    <h:outputLink>
                                         <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
                                             <f:param name="filename" value="imagem03.jpg" />
                                             <f:param name="tipoimagem" value="image/jpg" />
@@ -239,7 +239,7 @@ and open the template in the editor.
                             <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
                         </p:column>
                         <f:facet name="footer" >
-                            <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{ponteBean.carregar(simulacaoBean.simulacao.id)}"  />
+                            <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{ponteBean.carregar(simulacaoBean.simulacao.id)}" actionListener="#{simulacaoBean.recarregarSimulacao()}"  />
                          </f:facet>
                     </p:dataTable>
                 </h:form>
