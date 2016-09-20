@@ -23,6 +23,7 @@ import com.dao.TremTipoDAO;
 import com.dao.UfDAO;
 import com.dao.UnidadeLocalDAO;
 import com.dao.ViaDAO;
+import com.model.ArquivoAnexoCadastro;
 import com.model.AspectoEspecial;
 import com.model.DeficienciaFuncional;
 import com.model.ElementoUfpr;
@@ -49,6 +50,7 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -433,9 +435,20 @@ public class PonteBean extends ComumBean implements Serializable {
                 String codigo = pontes.get(i).getIdentificacaoObraDadosBasicos().getCodigo();
                 String via = pontes.get(i).getIdentificacaoObraLocalizacao().getVia().getDescricao();
                 String uf = pontes.get(i).getIdentificacaoObraLocalizacao().getUf().getUf();
+                String imagem = "";
+                if (pontes.get(i).getArquivosAnexosCadastro() != null && pontes.get(i).getArquivosAnexosCadastro().size() > 0) {
+                    Optional<ArquivoAnexoCadastro> arq = pontes.get(i).getArquivosAnexosCadastro().stream()
+                            .filter(p -> p.getImagem().getNome().contains("geral")).findFirst();
+                    
+                    if (!arq.isPresent()) {
+                        imagem = pontes.get(i).getArquivosAnexosCadastro().get(0).getImagem().getNome();
+                    } else {
+                        imagem = arq.get().getImagem().getNome();
+                    }
+                }
                 DecimalFormat df = new DecimalFormat("#.00"); 
                 String localVia = String.format("%.2f", pontes.get(i).getIdentificacaoObraLocalizacao().getLocalVia());
-                advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia})); //pode ser o quarto de ultimo parametro, serve para mudar a cor do pin, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"
+                advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem})); //pode ser o quarto de ultimo parametro, serve para mudar a cor do pin, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"
             }
         }
 

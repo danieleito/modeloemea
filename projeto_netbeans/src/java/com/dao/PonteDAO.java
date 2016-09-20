@@ -153,6 +153,8 @@ public class PonteDAO {
 //            ponte.setDeficienciasFuncionais(buscarDeficienciasFuncionais(ponte.getId()));
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
             ponte.setElementosComponentes(buscarElementosComponentes(ponte.getId()));
+            ArquivoAnexoDAO dbArquivoAnexo = new ArquivoAnexoDAO();
+            ponte.setArquivosAnexosCadastro(dbArquivoAnexo.buscarCadastros(ponte.getId()));
             pontes.add(ponte);
         }
         conexao.closeConnection(); 
