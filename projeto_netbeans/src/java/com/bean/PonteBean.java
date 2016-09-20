@@ -437,6 +437,8 @@ public class PonteBean extends ComumBean implements Serializable {
                 String uf = pontes.get(i).getIdentificacaoObraLocalizacao().getUf().getUf();
                 String imagem = "";
                 if (pontes.get(i).getArquivosAnexosCadastro() != null && pontes.get(i).getArquivosAnexosCadastro().size() > 0) {
+                    
+                    
                     Optional<ArquivoAnexoCadastro> arq = pontes.get(i).getArquivosAnexosCadastro().stream()
                             .filter(p -> p.getImagem().getNome().contains("geral")).findFirst();
                     

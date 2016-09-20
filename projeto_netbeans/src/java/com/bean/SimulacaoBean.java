@@ -6,6 +6,7 @@
 package com.bean;
 
 import com.dao.SimulacaoDAO;
+import com.model.ArquivoAnexoCadastro;
 import com.model.GraficoManifestacao;
 import com.model.GraficoSistemaConstrutivo;
 import com.model.GraficoTipoEstrutura;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -243,9 +245,22 @@ public class SimulacaoBean extends ComumBean implements Serializable {
                     String codigo = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraDadosBasicos().getCodigo();
                     String via = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getVia().getDescricao();
                     String uf = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getUf().getUf();
+                    String imagem = "";
+                    if (simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro() != null && simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro().size() > 0) {
+
+
+                        Optional<ArquivoAnexoCadastro> arq = simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro().stream()
+                                .filter(p -> p.getImagem().getNome().contains("geral")).findFirst();
+
+                        if (!arq.isPresent()) {
+                            imagem = simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro().get(0).getImagem().getNome();
+                        } else {
+                            imagem = arq.get().getImagem().getNome();
+                        }
+                    }
                     DecimalFormat df = new DecimalFormat("#.00"); 
                     String localVia = String.format("%.2f", simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLocalVia());
-                    advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia}));
+                    advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}));
                 }
 //            }
         }
@@ -441,23 +456,5 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 //                maiorLongitude = lgt;
 //            }
 //        }
-    }
-
-    private boolean usuarioLogadoIgualDonoSimulacao() {
-        return true;
-    }
-    
-    public String fotoVistaGeral(Marker marker) {
-        String primeiraFoto = "";
-        String nomeFoto = "vistaGeral";
-//        int t = arquivoAnexo.size();
-        
-//        for (int i = 0; i < t; i++) {
-//            String nomeFoto = arquivoAnexo.get(i).toString();
-            if (nomeFoto.equalsIgnoreCase("vistageral")) {
-                return nomeFoto;
-            }
-//        }
-        return primeiraFoto;
     }
 }
