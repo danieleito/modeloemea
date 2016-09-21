@@ -222,8 +222,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 //        if (simulacao != null) {
             if (simulacao.getRankings() != null) {
                 int t = simulacao.getRankings().size();
-                
-//                maiorLatitudeLongitude();
+
                 for (int i= 0; i < t; i++) {
                     //Shared coordinates
                     Double grau = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLatitudeGrau());
@@ -246,19 +245,20 @@ public class SimulacaoBean extends ComumBean implements Serializable {
                     String via = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getVia().getDescricao();
                     String uf = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getUf().getUf();
                     String imagem = "";
-                    if (simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro() != null && simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro().size() > 0) {
-
-
-                        Optional<ArquivoAnexoCadastro> arq = simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro().stream()
-                                .filter(p -> p.getImagem().getNome().contains("geral")).findFirst();
-
-                        if (!arq.isPresent()) {
-                            imagem = simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro().get(0).getImagem().getNome();
-                        } else {
-                            imagem = arq.get().getImagem().getNome();
-                        }
-                    }
-                    DecimalFormat df = new DecimalFormat("#.00"); 
+                    
+                    //arrumar issooo
+//                    if (simulacoes.get(i).getRankings().get(i).getPonte().getArquivosAnexosCadastro() != null && 
+//                            simulacoes.get(i).getRankings().get(i).getPonte().getArquivosAnexosCadastro().size() > 0) {
+//                        Optional<ArquivoAnexoCadastro> arq = simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro().stream()
+//                                .filter(p -> p.getImagem().getNome().contains("geral")).findFirst();
+//
+//                        if (!arq.isPresent()) {
+//                            imagem = simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro().get(0).getImagem().getNome();
+//                        } else {
+//                            imagem = arq.get().getImagem().getNome();
+//                        }
+//                    }
+                    DecimalFormat df = new DecimalFormat("#.00");
                     String localVia = String.format("%.2f", simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLocalVia());
                     advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}));
                 }
@@ -327,6 +327,8 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
 
     public void visualizar(int idSimulacao) {
+        int i = 0;
+        i ++;
         try {
             simulacao = database.buscar(idSimulacao);
         } catch (Exception ex) {

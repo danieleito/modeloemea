@@ -491,14 +491,29 @@ insert into PONTE (DS_INDICE_PERFORMANCE_RELATIVO, ID_IDENTIFICACAO_OBRA_DADOS_B
 
 ---------------------------------------------------------------------------
 
-insert into IMAGEM(NM_NOME, TIPO_MIME) values ('imagem01.jpg', 'image/jpg');
-insert into IMAGEM(NM_NOME, TIPO_MIME) values ('imagem02.jpg', 'image/jpg');
-insert into IMAGEM(NM_NOME, TIPO_MIME) values ('imagem03.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte01Vistageral.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte01foto01.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte01foto02.jpg', 'image/jpg');
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte02VistaGeral.jpg', 'image/jpg');
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte03VistaGeral.jpg', 'image/jpg');
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte03foto01.jpg', 'image/jpg');
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte03foto02.jpg', 'image/jpg');
-
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte04VistaGeral.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte04foto01.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte05VistaGeral.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte05foto01.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte06VistaGeral.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte06foto01.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte07VistaGeral.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte07foto01.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte08VistaGeral.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte08foto01.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte09VistaGeral.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte09foto01.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte10VistaGeral.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte10foto01.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte11VistaGeral.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte11foto01.jpg', 'image/jpg');
 ---------------------------------------------------------------------------
 
 insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Meio ambiente agressivo');
@@ -553,9 +568,26 @@ insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NU
 insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'OAE', '05/07/2016', 2);
 insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'OAE', '05/07/2016', 3);
 insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (2, 'geral.jpg', 'Foto', '01', 'Vista geral', 'OAE', '19/09/2016', 4);
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (3, 'ponte02Geral.jpg', 'Foto', '01', 'Vista geral', 'OAE', '20/09/2016', 5);
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (3, 'ponte02foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '20/09/2016', 6);
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (3, 'ponte02foto02.jpg', 'Foto', '03', 'foto 02', 'OAE', '20/09/2016', 7);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (3, 'ponte03Geral.jpg', 'Foto', '01', 'Vista geral', 'OAE', '20/09/2016', 5);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (3, 'ponte03foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '20/09/2016', 6);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (3, 'ponte03foto02.jpg', 'Foto', '03', 'foto 02', 'OAE', '20/09/2016', 7);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (4, 'ponte04Geral.jpg', 'Foto', '01', 'Vista geral', 'OAE', '20/09/2016', 8);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (4, 'ponte04foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '21/09/2016', 9);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (5, 'ponte05Geral.jpg', 'Foto', '01', 'Vista geral', 'OAE', '21/09/2016', 10);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (5, 'ponte05foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '21/09/2016', 11);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (6, 'ponte06Geral.jpg', 'Foto', '01', 'Vista geral', 'OAE', '21/09/2016', 12);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (6, 'ponte06foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '21/09/2016', 13);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (7, 'ponte07Geral.jpg', 'Foto', '01', 'Vista geral', 'OAE', '21/09/2016', 14);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (7, 'ponte07foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '21/09/2016', 15);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (8, 'ponte08Geral.jpg', 'Foto', '01', 'Vista geral', 'OAE', '21/09/2016', 16);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (8, 'ponte08foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '21/09/2016', 17);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (9, 'ponte09Geral.jpg', 'Foto', '01', 'Vista geral', 'OAE', '21/09/2016', 18);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (9, 'ponte09foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '21/09/2016', 19);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (10, 'ponte10Geral.jpg', 'Foto', '01', 'Vista geral', 'OAE', '21/09/2016', 20);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (10, 'ponte10foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '21/09/2016', 21);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (11, 'ponte11Geral.jpg', 'Foto', '01', 'Vista geral', 'OAE', '21/09/2016', 22);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (11, 'ponte11foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '21/09/2016', 23);
+
 
 insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'INS', '05/08/2016', 2);
 insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'INS', '05/08/2016', 3);

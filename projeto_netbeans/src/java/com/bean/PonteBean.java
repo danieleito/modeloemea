@@ -436,19 +436,18 @@ public class PonteBean extends ComumBean implements Serializable {
                 String via = pontes.get(i).getIdentificacaoObraLocalizacao().getVia().getDescricao();
                 String uf = pontes.get(i).getIdentificacaoObraLocalizacao().getUf().getUf();
                 String imagem = "";
-                if (pontes.get(i).getArquivosAnexosCadastro() != null && pontes.get(i).getArquivosAnexosCadastro().size() > 0) {
-                    
-                    
-                    Optional<ArquivoAnexoCadastro> arq = pontes.get(i).getArquivosAnexosCadastro().stream()
-                            .filter(p -> p.getImagem().getNome().contains("geral")).findFirst();
-                    
-                    if (!arq.isPresent()) {
-                        imagem = pontes.get(i).getArquivosAnexosCadastro().get(0).getImagem().getNome();
-                    } else {
-                        imagem = arq.get().getImagem().getNome();
-                    }
-                }
-                DecimalFormat df = new DecimalFormat("#.00"); 
+//                if (pontes.get(i).getArquivosAnexosCadastro() != null && 
+//                        pontes.get(i).getArquivosAnexosCadastro().size() > 0) {
+//                    Optional<ArquivoAnexoCadastro> arq = pontes.get(i).getArquivosAnexosCadastro().stream()
+//                            .filter(p -> p.getImagem().getNome().contains("geral")).findFirst();
+//                    
+//                    if (!arq.isPresent()) {
+//                        imagem = pontes.get(i).getArquivosAnexosCadastro().get(0).getImagem().getNome();
+//                    } else {
+//                        imagem = arq.get().getImagem().getNome();
+//                    }
+//                }
+                DecimalFormat df = new DecimalFormat("#.00");
                 String localVia = String.format("%.2f", pontes.get(i).getIdentificacaoObraLocalizacao().getLocalVia());
                 advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem})); //pode ser o quarto de ultimo parametro, serve para mudar a cor do pin, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"
             }
