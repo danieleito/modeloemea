@@ -218,7 +218,7 @@ public class PonteBean extends ComumBean implements Serializable {
     }
 
     public void cancelar() {
-        redirecionar("/View/Compartilhado/Simulacao/ranking.jsf");
+        redirecionar("/View/Compartilhado/OAE/Simulacao/ranking.jsf");
     }
     
     public void visualizar(int id) {

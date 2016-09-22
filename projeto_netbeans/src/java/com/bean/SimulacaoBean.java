@@ -111,7 +111,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
     private void createPieModel1() {
         pieModel1 = new PieChartModel();
-        pieModel1.setTitle("Manifestações");
+        pieModel1.setTitle("Manifestações Patalógicas");
         pieModel1.setLegendPosition("e");
         pieModel1.setLegendCols(1);
         pieModel1.setLegendPlacement(LegendPlacement.INSIDE);
@@ -263,7 +263,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
                     }
                     DecimalFormat df = new DecimalFormat("#.00");
                     String localVia = String.format("%.2f", simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLocalVia());
-                    advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}));
+                    advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"));
                 }
 //            }
         }

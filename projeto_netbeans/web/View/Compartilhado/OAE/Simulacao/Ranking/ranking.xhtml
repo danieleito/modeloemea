@@ -13,7 +13,7 @@ and open the template in the editor.
     <h:body>
         <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="15" >
             <f:facet name="header" >
-                Simulações
+                #{simulacaoBean.simulacao.nomeSimulacao}
             </f:facet>
 
             <p:column headerText="Data da última inspeção" style="width: 100px; text-align: center" >
@@ -38,7 +38,7 @@ and open the template in the editor.
                 <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.uf.uf}" />
             </p:column>
 
-            <p:column headerText="Local na via" style="width: 80px; text-align: center" >
+            <p:column headerText="Local na via (km)" style="width: 80px; text-align: center" >
                 <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.localVia}" >
                     <f:convertNumber pattern="#0.00" />
                 </h:outputText>
@@ -52,7 +52,7 @@ and open the template in the editor.
                 <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(r.ponte.id)}" />
 
                 <p:growl id="message" showDetail="true" />
-                <p:commandButton icon="ui-icon-closethick" title="Deletar" actionListener="#{simulacaoBean.excluirRanking(r.id)}" update="message">
+                <p:commandButton icon="ui-icon-trash" title="Deletar" actionListener="#{simulacaoBean.excluirRanking(r.id)}" update="message">
                     <p:confirm header="Confirmation" message="Tem certeza que deseja remover a ponte da simulação permanentemente?" icon="ui-icon-alert" />
                 </p:commandButton>
                 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">

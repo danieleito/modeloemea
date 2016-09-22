@@ -31,8 +31,6 @@ and open the template in the editor.
                         <p:growl id="growl" showDetail="true" />
                         <p:gmap id="gmap" center="-13.354516, -53.906905" zoom="4" type="HYBRID"  model="#{ponteBean.advancedModel}" style="width:100%;height:400px" >
                             <p:ajax event="overlaySelect" listener="#{ponteBean.onMarkerSelect}" update="growl" />
-                        
-                            
 
                             <p:gmapInfoWindow id="infoWindow">
                                 
@@ -65,7 +63,7 @@ and open the template in the editor.
                                     </div>
                                     <br />
                                     <div class="row" >
-                                        <h:outputText value="Local via: " style="font-weight: bold" />
+                                        <h:outputText value="Local via (km): " style="font-weight: bold" />
                                         <h:outputText value="#{ponteBean.marker.data[4]}" />
                                     </div>
 
@@ -229,7 +227,7 @@ and open the template in the editor.
                             <h:outputText value="#{p.identificacaoObraLocalizacao.uf.uf}" />
                         </p:column>
 
-                        <p:column headerText="Local na via" style="width: 150px; text-align: center" >
+                        <p:column headerText="Local na via (km)" style="width: 150px; text-align: center" >
                             <h:outputText value="#{p.identificacaoObraLocalizacao.localVia}" >
                                 <f:convertNumber pattern="#0.00" />
                             </h:outputText>
@@ -239,7 +237,7 @@ and open the template in the editor.
                             <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
                         </p:column>
                         <f:facet name="footer" >
-                            <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{ponteBean.carregar(simulacaoBean.simulacao.id)}" actionListener="#{simulacaoBean.recarregarSimulacao()}"  />
+                            <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{ponteBean.carregar(simulacaoBean.simulacao.id)}" actionListener="#{simulacaoBean.recarregarSimulacao()}" />
                          </f:facet>
                     </p:dataTable>
                 </h:form>

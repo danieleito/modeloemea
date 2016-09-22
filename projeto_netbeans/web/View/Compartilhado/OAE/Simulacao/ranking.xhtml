@@ -18,9 +18,9 @@ and open the template in the editor.
             <ui:define name="content">
                 <h:form id="form">
                     
-<!--                    <f:metadata>
+                    <f:metadata>
                         <f:event type="preRenderView" listener="{simulacaoBean.recarregarSimulacao()}"/>
-                    </f:metadata>-->
+                    </f:metadata>
                     
                     <p:breadCrumb>
                         <p:menuitem value="Categories" url="#" />
@@ -70,7 +70,7 @@ and open the template in the editor.
                                     </div>
                                     <br />
                                     <div class="row" >
-                                        <h:outputText value="Local via: " style="font-weight: bold" />
+                                        <h:outputText value="Local via (km): " style="font-weight: bold" />
                                         <h:outputText value="#{simulacaoBean.marker.data[4]}" />
                                     </div>
 
@@ -81,7 +81,7 @@ and open the template in the editor.
                     
                     <p:separator />
                     
-                    <p:commandButton value="Consultar" action="#{ponteBean.consultarGet()}" />
+                    <p:commandButton value="Adicionar OAE" action="#{ponteBean.consultarGet()}" />
                     <p:commandButton value="Imprimir relatórios" action="#{ponteBean.consultarGet()}" style="width: 180px;" />
                     
                     <p:tabView>
@@ -92,11 +92,8 @@ and open the template in the editor.
                         <p:tab title="Dados estatísticos">
                             <ui:include src="/View/Compartilhado/OAE/Simulacao/Ranking/grafico.xhtml" />
                         </p:tab>
-                        
-                        
                     </p:tabView>
-                    
-                    
+
                 </h:form>
             </ui:define>
         </ui:composition>
