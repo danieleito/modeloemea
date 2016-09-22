@@ -11,6 +11,7 @@ import com.model.GraficoManifestacao;
 import com.model.GraficoSistemaConstrutivo;
 import com.model.GraficoTipoEstrutura;
 import com.model.Simulacao;
+import java.io.File;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
@@ -245,19 +246,21 @@ public class SimulacaoBean extends ComumBean implements Serializable {
                     String via = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getVia().getDescricao();
                     String uf = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getUf().getUf();
                     String imagem = "";
-                    
+
                     //arrumar issooo
-//                    if (simulacoes.get(i).getRankings().get(i).getPonte().getArquivosAnexosCadastro() != null && 
-//                            simulacoes.get(i).getRankings().get(i).getPonte().getArquivosAnexosCadastro().size() > 0) {
-//                        Optional<ArquivoAnexoCadastro> arq = simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro().stream()
-//                                .filter(p -> p.getImagem().getNome().contains("geral")).findFirst();
-//
-//                        if (!arq.isPresent()) {
-//                            imagem = simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro().get(0).getImagem().getNome();
-//                        } else {
-//                            imagem = arq.get().getImagem().getNome();
-//                        }
-//                    }
+                    if (simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro() != null && 
+                            simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro().size() > 0) {
+                        Optional<ArquivoAnexoCadastro> arq = simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro().stream()
+                                .filter(p -> p.getImagem().getNome().contains("geral")).findFirst();
+
+                        imagem = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraDadosBasicos().getCodigo();
+                        imagem += File.separatorChar;
+                        if (!arq.isPresent()) {
+                            imagem += simulacao.getRankings().get(i).getPonte().getArquivosAnexosCadastro().get(0).getImagem().getNome();
+                        } else {
+                            imagem += arq.get().getImagem().getNome();
+                        }
+                    }
                     DecimalFormat df = new DecimalFormat("#.00");
                     String localVia = String.format("%.2f", simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLocalVia());
                     advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}));

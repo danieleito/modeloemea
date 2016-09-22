@@ -115,7 +115,10 @@ public class ComumBean {
            return sc;
        }
     }
-    
+
+    public char getFileSeparator() {
+        return File.separatorChar;
+    }
 //    public void pontoSelecionado(PointSelectEvent event) {  
 //        LatLng latituteLongitude = event.getLatLng();  
 //           
