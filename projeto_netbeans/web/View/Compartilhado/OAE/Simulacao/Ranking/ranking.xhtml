@@ -6,17 +6,14 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
         <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="15" >
             <f:facet name="header" >
-                Simulações
+                #{simulacaoBean.simulacao.nomeSimulacao}
             </f:facet>
 
             <p:column headerText="Data da última inspeção" style="width: 100px; text-align: center" >
@@ -41,7 +38,7 @@ and open the template in the editor.
                 <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.uf.uf}" />
             </p:column>
 
-            <p:column headerText="Local na via" style="width: 80px; text-align: center" >
+            <p:column headerText="Local na via (km)" style="width: 80px; text-align: center" >
                 <h:outputText value="#{r.ponte.identificacaoObraLocalizacao.localVia}" >
                     <f:convertNumber pattern="#0.00" />
                 </h:outputText>
@@ -55,7 +52,7 @@ and open the template in the editor.
                 <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(r.ponte.id)}" />
 
                 <p:growl id="message" showDetail="true" />
-                <p:commandButton icon="ui-icon-closethick" title="Deletar" actionListener="#{simulacaoBean.excluirRanking(r.id)}" update="message">
+                <p:commandButton icon="ui-icon-trash" title="Deletar" actionListener="#{simulacaoBean.excluirRanking(r.id)}" update="message">
                     <p:confirm header="Confirmation" message="Tem certeza que deseja remover a ponte da simulação permanentemente?" icon="ui-icon-alert" />
                 </p:commandButton>
                 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
@@ -65,5 +62,5 @@ and open the template in the editor.
             </p:column>
 
         </p:dataTable>
-    </body>
+    </h:body>
 </html>

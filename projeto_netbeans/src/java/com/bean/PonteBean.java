@@ -8,14 +8,12 @@ package com.bean;
 import com.dao.AspectoEspecialDAO;
 import com.dao.DeficienciaFuncionalDAO;
 import com.dao.ElementoUfprDAO;
-import com.dao.ExtensaoRelativaDAO;
 import com.dao.FotoDAO;
 import com.dao.ManifestacaoUfprDAO;
 import com.dao.NaturezaTransposicaoDAO;
 import com.dao.NumeroDAO;
 import com.dao.PonteDAO;
 import com.dao.RankingDAO;
-import com.dao.ReparoDAO;
 import com.dao.SistemaConstrutivoDAO;
 import com.dao.SuperintendenciaRegionalDAO;
 import com.dao.TipoEstruturaDAO;
@@ -25,6 +23,7 @@ import com.dao.TremTipoDAO;
 import com.dao.UfDAO;
 import com.dao.UnidadeLocalDAO;
 import com.dao.ViaDAO;
+import com.model.ArquivoAnexoCadastro;
 import com.model.AspectoEspecial;
 import com.model.DeficienciaFuncional;
 import com.model.ElementoUfpr;
@@ -47,14 +46,26 @@ import com.model.TremTipo;
 import com.model.Uf;
 import com.model.UnidadeLocal;
 import com.model.Via;
+import java.io.File;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.map.OverlaySelectEvent;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.LatLngBounds;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
+import org.primefaces.model.map.Rectangle;
 
 /**
  *
@@ -132,6 +143,13 @@ public class PonteBean extends ComumBean implements Serializable {
     
     private Inspecao inspecao;
     
+    //mapa
+//    private MapModel draggableModel;
+    private Marker marker;
+    private String titulo;
+    private MapModel rectangleModel;
+    private MapModel advancedModel;
+    
     @PostConstruct
     public void init() {
         database = new PonteDAO();
@@ -182,11 +200,16 @@ public class PonteBean extends ComumBean implements Serializable {
             //combo foto
             fotos = new FotoDAO().buscar();
             
-            //extensao relativa
-            extensoesRelativa = new ExtensaoRelativaDAO().buscar();
+//            //extensao relativa
+//            extensoesRelativa = new ExtensaoRelativaDAO().buscar();
+//            
+//            //reparo
+//            reparos = new ReparoDAO().buscar();
             
-            //reparo
-            reparos = new ReparoDAO().buscar();
+            
+            //mapa
+            database = new PonteDAO();
+            model = null;
             
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -195,7 +218,7 @@ public class PonteBean extends ComumBean implements Serializable {
     }
 
     public void cancelar() {
-        redirecionar("/View/Compartilhado/Simulacao/ranking.jsf");
+        redirecionar("/View/Compartilhado/OAE/Simulacao/ranking.jsf");
     }
     
     public void visualizar(int id) {
@@ -205,29 +228,36 @@ public class PonteBean extends ComumBean implements Serializable {
             redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao carregar inspeçõess.");
+            adicionarMensagemErro("Erro ao carregar inspeções.");
         }
     }
     
     public void carregar(int idSimulacao) {
-        try {
-            int qtde = 0;
-            RankingDAO db = new RankingDAO();
-            for (int i = 0; i < pontesSelecionadas.size(); i++) {
-//                se ponte ainda nao esta na simulacao
-//                int esta = buscarPonteEmSimulacao(idSimulacao, pontesSelecionadas.get(i).getId());
-//
-                if (!database.ponteEstaSimulacao(pontesSelecionadas.get(i).getId(), idSimulacao)) {
-                    db.inserir(pontesSelecionadas.get(i).getId(), idSimulacao);
-                    qtde++;
+        if (pontesSelecionadas.size() > 0) {
+            try {
+                int qtde = 0;
+                RankingDAO db = new RankingDAO();
+                for (int i = 0; i < pontesSelecionadas.size(); i++) {
+    //                se ponte ainda nao esta na simulacao
+    //                int esta = buscarPonteEmSimulacao(idSimulacao, pontesSelecionadas.get(i).getId());
+    //
+                    if (!database.ponteEstaSimulacao(pontesSelecionadas.get(i).getId(), idSimulacao)) {
+                        db.inserir(pontesSelecionadas.get(i).getId(), idSimulacao);
+                        qtde++;
+                    }
                 }
+                adicionarMensagemInfo(qtde + " pontes adicionadas das "+pontesSelecionadas.size()+" selecionadas");
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+                adicionarMensagemErro("Erro ao carregar ponte no ranking. " + ex.getMessage());
             }
-            adicionarMensagemInfo(qtde + " pontes adicionadas das "+pontesSelecionadas.size()+" selecionadas");
-        } catch (SQLException ex) {
-            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao carregar ponte no ranking. " + ex.getMessage());
+            redirecionar("/View/Compartilhado/OAE/Simulacao/ranking.jsf");
+        } else {
+            adicionarMensagemWarning("Nenhuma OAE foi selecionada.");
+            redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
         }
-        redirecionar("/View/Compartilhado/Simulacao/ranking.jsf");
+        
     }
     
     public void consultarGet() {
@@ -235,6 +265,9 @@ public class PonteBean extends ComumBean implements Serializable {
             pontesSelecionadas = new ArrayList<>();
             limparFiltros();
             pontes = database.buscar();
+            carregarMapa();
+            retangulo();
+//            carregarDetalhesPin();
         } catch (SQLException ex) {
             pontes = new ArrayList<>();
             adicionarMensagemErro("Erro ao carregar pontess. " + ex.getMessage());
@@ -274,6 +307,9 @@ public class PonteBean extends ComumBean implements Serializable {
                     filtroKmInicial.isEmpty() ? 0 :Double.parseDouble(filtroKmInicial.replace(",", ".")), 
                     filtroKmFinal.isEmpty() ? 0 : Double.parseDouble(filtroKmFinal.replace(",", ".")), 
                     filtroIdSuperintendencia, filtroIdUnidadeLocal);
+            carregarMapa();
+            retangulo();
+//            carregarDetalhesPin();
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
@@ -341,6 +377,7 @@ public class PonteBean extends ComumBean implements Serializable {
     
     public void cadastrar() {
         try {
+            model = new Ponte();
             redirecionar("/View/Compartilhado/OAE/cadastrar.jsf");
         } catch (Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -356,6 +393,121 @@ public class PonteBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro ao carregar inspeção. " + ex.getMessage());
         }
         redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
+    }
+    
+    
+    
+    //    início métodos para mapa
+    public void carregarMapa() {
+        advancedModel = new DefaultMapModel();
+        double maiorLongitude = 0;
+        double maiorLatitude = 0;
+        if (pontes != null) {
+            int t = pontes.size();
+
+            for (int i= 0; i < t; i++) {
+                //Shared coordinates
+                Double grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeGrau());
+                Double minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeMinuto());
+                Double latitude = minuto/60 + grau;
+                grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeGrau());
+                minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeMinuto());
+                Double longitude = minuto/60 + grau;
+                
+                //latitude e logitude transformado em valor negativo
+                if (latitude > 0) {
+                    latitude *= -1;
+                }
+                if (longitude > 0) {
+                    longitude *= -1;
+                }
+                LatLng coord = new LatLng(latitude, longitude);
+                
+                //pega maior latitude e longitude
+                if (longitude < maiorLongitude) {
+                    maiorLongitude = longitude;
+                }
+                if (latitude < maiorLatitude) {
+                    maiorLatitude = latitude;
+                }
+
+                //Draggable
+                String nome = pontes.get(i).getIdentificacaoObraDadosBasicos().getIdentificacao();
+                String codigo = pontes.get(i).getIdentificacaoObraDadosBasicos().getCodigo();
+                String via = pontes.get(i).getIdentificacaoObraLocalizacao().getVia().getDescricao();
+                String uf = pontes.get(i).getIdentificacaoObraLocalizacao().getUf().getUf();
+                String imagem = "";
+                if (pontes.get(i).getArquivosAnexosCadastro() != null && 
+                        pontes.get(i).getArquivosAnexosCadastro().size() > 0) {
+                    Optional<ArquivoAnexoCadastro> arq = pontes.get(i).getArquivosAnexosCadastro().stream()
+                            .filter(p -> p.getImagem().getNome().contains("geral")).findFirst();
+                    imagem = pontes.get(i).getIdentificacaoObraDadosBasicos().getCodigo();
+                    imagem += File.separatorChar;
+                    if (!arq.isPresent()) {
+                        imagem += pontes.get(i).getArquivosAnexosCadastro().get(0).getImagem().getNome();
+                    } else {
+                        imagem += arq.get().getImagem().getNome();
+                    }
+                }
+                DecimalFormat df = new DecimalFormat("#.00");
+                String localVia = String.format("%.2f", pontes.get(i).getIdentificacaoObraLocalizacao().getLocalVia());
+                advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem})); //pode ser o quarto de ultimo parametro, serve para mudar a cor do pin, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"
+            }
+        }
+
+//        for(Marker premarker : draggableModel.getMarkers()) {
+//            premarker.setDraggable(true);
+//        } 
+    }
+
+    public MapModel getAdvancedModel() {
+        return advancedModel;
+    }
+      
+    public void onMarkerSelect(OverlaySelectEvent event) {
+        marker = (Marker) event.getOverlay();
+    }
+      
+    public Marker getMarker() {
+        return marker;
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////
+//   parametros         double latitude, double longitude
+    public void retangulo() {
+        double latitude = -23.49975;
+        double longitude = -50.108916667;
+        rectangleModel = new DefaultMapModel();
+
+        //Shared coordinates
+        LatLng ne = new LatLng(latitude, longitude);
+        LatLng sw = new LatLng(36.885233, 30.702323);
+
+        //Rectangle
+        Rectangle rect = new Rectangle(new LatLngBounds(sw, ne));
+        rect.setStrokeColor("#d93c3c");
+        rect.setFillColor("#d93c3c");
+        rect.setFillOpacity(0.5);
+        rectangleModel.addOverlay(rect);
+    }
+
+    public MapModel getRectangleModel() {
+        return rectangleModel;
+    }
+
+    public void onRectangleSelect(OverlaySelectEvent event) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Rectangle Selected", null));
+    }       
+//            ////////////////////////////////////////////////////////////////////////////////
+    
+//    fim métodos para mapa
+    
+
+    
+//    busca o numero de pontes que foi pesquisado na tela BuscarPonte
+    public int numeroPontesBuscados(ArrayList pontes) {
+        int numero = pontes.size();
+        return numero;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
@@ -615,6 +767,14 @@ public class PonteBean extends ComumBean implements Serializable {
         this.inspecao = inspecao;
     }
     
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
     // </editor-fold>
 
+    
 }

@@ -11,25 +11,33 @@
     <h:body>
         <ui:composition template="/View/Compartilhado/templateLogin.xhtml">
             <ui:define name="content">
-                <div style="margin: auto; width: 500px;">
-                    <p:fieldset legend="Login do usuário" style="padding: 20px 50px 20px 50px">
-                        <h:form id="form">
-                            <h:outputLabel value="Usuário" />
-                            <p:inputText id="usuario" value="#{login.model.usuario}" />
+                <div class="login">
+                    
+                    <div class="login1">
+                        <h:graphicImage  library="images" name="SGO-GESTOR-MOD2-RV004.png" style="width: 450px; height: 188px;" />
+                    </div>
 
-                            <h:outputLabel value="Senha" />
-                            <p:password id="senha" value="#{login.model.senha}" />
+                    <div class="login2">
+                        <p:fieldset legend="Login do usuário" style="padding: 20px 50px 20px 50px">
+                            <h:form id="form">
+                                <h:outputLabel value="Usuário" />
+                                <p:inputText id="usuario" value="#{login.model.usuario}" />
 
-                            <h:outputLabel value="Nova senha" />
-                            <p:password id="novaSenha" value="#{login.novaSenha}"/>
+                                <h:outputLabel value="Senha" />
+                                <p:password id="senha" value="#{login.model.senha}" />
 
-                            <h:outputLabel value="Confirmar senha" />
-                            <p:password id="confirmarNovaSenha" />
+                                <h:outputLabel value="Nova senha" />
+                                <p:password id="novaSenha" value="#{login.novaSenha}"/>
 
-                            <p:commandButton value="Entrar" onclick="return validarLogin()" action="#{login.entrar()}" />
+                                <h:outputLabel value="Confirmar senha" />
+                                <p:password id="confirmarNovaSenha" />
 
-                        </h:form>
-                    </p:fieldset>    
+                                <p:commandButton value="Entrar" onclick="return validarLogin()" action="#{login.entrar()}" />
+
+                            </h:form>
+                        </p:fieldset>    
+                    </div>
+                    
                 </div>
             </ui:define>
         </ui:composition>

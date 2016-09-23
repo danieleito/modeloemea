@@ -21,11 +21,93 @@ and open the template in the editor.
                     <p:breadCrumb>
                         <p:menuitem value="Categories" url="#" />
                         <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
-                        <p:menuitem value="Simulação" url="/View/Compartilhado/simulacao.jsf" />
-                        <p:menuitem value="Ranking" url="/View/Compartilhado/Simulacao/ranking.jsf" />
+                        <p:menuitem value="Simulação" action="#{simulacaoBean.listarGet()}" />
+                        <p:menuitem value="Ranqueamento" url="/View/Compartilhado/OAE/Simulacao/ranking.jsf" />
                         <p:menuitem value="Consulta" url="/View/Compartilhado/OAE/buscarOAE.jsf" />
                     </p:breadCrumb>
 
+                    <br/>
+                    <div>
+                        <p:growl id="growl" showDetail="true" />
+                        <p:gmap id="gmap" center="-13.354516, -53.906905" zoom="4" type="HYBRID"  model="#{ponteBean.advancedModel}" style="width:100%;height:400px" >
+                            <p:ajax event="overlaySelect" listener="#{ponteBean.onMarkerSelect}" update="growl" />
+
+                            <p:gmapInfoWindow id="infoWindow">
+                                
+                                <p:outputPanel style="text-align: center; display: block; margin: auto">
+
+                                    <h:outputLink>
+                                        <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
+                                            <f:param name="filename" value="#{ponteBean.marker.data[5]}" />
+                                            <f:param name="tipoimagem" value="image/jpg" />
+                                        </p:graphicImage>
+                                    </h:outputLink>
+                                    <div class="row">
+                                        <h:outputText value="Identificação: " style="font-weight: bold" />
+                                        <h:outputText value="#{ponteBean.marker.data[0]}" />
+                                    </div>
+                                    <br />
+                                    <div class="row" >
+                                        <h:outputText value="Código: " style="font-weight: bold" />
+                                        <h:outputText value="#{ponteBean.marker.data[1]}" />
+                                    </div>
+                                    <br />
+                                    <div class="row" >
+                                        <h:outputText value="Via: " style="font-weight: bold" />
+                                        <h:outputText value="#{ponteBean.marker.data[2]}" />
+                                    </div>
+                                    <br />
+                                    <div class="row" >
+                                        <h:outputText value="UF: " style="font-weight: bold" />
+                                        <h:outputText value="#{ponteBean.marker.data[3]}" />
+                                    </div>
+                                    <br />
+                                    <div class="row" >
+                                        <h:outputText value="Local via (km): " style="font-weight: bold" />
+                                        <h:outputText value="#{ponteBean.marker.data[4]}" />
+                                    </div>
+
+                                </p:outputPanel>
+                            </p:gmapInfoWindow>
+                        </p:gmap>
+                        
+                        <script type="text/javascript"> 
+                            if (GBrowserIsCompatible()) {
+                               var map = new GMap2(document.getElementById("map"));
+                               var markerBounds = new GLatLngBounds();
+                               map.setCenter(markerBounds.getCenter(), 
+                                             map.getBoundsZoomLevel(markerBounds));
+                            }
+                        </script>
+                    </div>
+                    
+                    <div>
+                        <!-- Preload for demo -->
+                        <p:outputPanel style="display:none" >
+                            <p:column headerText="Código" style="text-align: center" >
+                                <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}" />
+                            </p:column>
+
+                            <p:column headerText="Identificação da obra" style="text-align: center" >
+                                <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.identificacao}" />
+                            </p:column>
+
+                            <p:column headerText="Via" style="width: 150px; text-align: center" >
+                                <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.via.descricao}" />
+                            </p:column>
+
+                            <p:column headerText="UF" style="width: 150px; text-align: center" >
+                                <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.uf.uf}" />
+                            </p:column>
+
+                            <p:column headerText="Local na via" style="width: 150px; text-align: center" >
+                                <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.localVia}" >
+                                    <f:convertNumber pattern="#0.00" />
+                                </h:outputText>
+                            </p:column>
+                        </p:outputPanel>
+                    </div>
+                    <p:separator/>
                     <h2>Obras de Arte Especiais</h2>
                     <p:separator />
                     <br/>
@@ -117,24 +199,18 @@ and open the template in the editor.
                         </tbody>
                     </table>
 
-                    <!--                    <p:commandButton value="Consultar" oncomplete="$('.mySelector').show();" />-->
                     <p:commandButton action='#{ponteBean.consultarPost()}' value="Consultar" />
                     <p:commandButton action="#{ponteBean.cancelar()}" value="Cancelar" />
 
                     <p:dataTable id="checkboxDT" var="p" value="#{ponteBean.pontes}" rowKey="#{p.id}" selection="#{ponteBean.pontesSelecionadas}" style="margin-bottom: 0" paginator="true" rows="15" reflow="true" >     
                         <f:facet name="header" >
-                            Simulações
+<!--                            OAEs-->
+                            <h:outputText value="Registros encontrados: #{ponteBean.numeroPontesBuscados(ponteBean.pontes)}" style="text-align: right;" />
                         </f:facet>
                         <!--para checkbox em cada uma das linhas da grid-->
                         <p:column selectionMode="multiple" style="width:16px; text-align:center" />
                         
                         
-                        <!--styleClass="mySelector" style="display: none"-->
-
-<!--                        <p:column headerText="check" style="text-align: center; width: 20px" >
-                            <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
-                        </p:column>-->
-
                         <p:column headerText="Código" style="text-align: center" >
                             <h:outputText value="#{p.identificacaoObraDadosBasicos.codigo}" />
                         </p:column>
@@ -151,7 +227,7 @@ and open the template in the editor.
                             <h:outputText value="#{p.identificacaoObraLocalizacao.uf.uf}" />
                         </p:column>
 
-                        <p:column headerText="Local na via" style="width: 150px; text-align: center" >
+                        <p:column headerText="Local na via (km)" style="width: 150px; text-align: center" >
                             <h:outputText value="#{p.identificacaoObraLocalizacao.localVia}" >
                                 <f:convertNumber pattern="#0.00" />
                             </h:outputText>
@@ -161,11 +237,25 @@ and open the template in the editor.
                             <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
                         </p:column>
                         <f:facet name="footer" >
-                            <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{ponteBean.carregar(simulacaoBean.simulacao.id)}" />
+                            <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{ponteBean.carregar(simulacaoBean.simulacao.id)}" actionListener="#{simulacaoBean.recarregarSimulacao()}" />
                          </f:facet>
                     </p:dataTable>
                 </h:form>
             </ui:define>
-        </ui:composition>
+        </ui:composition> 
     </h:body>
 </html>
+
+<!--<script type="text/javascript" >
+    function myScript() {
+        if (GBrowserIsCompatible()) {
+            var map = new GMap2(document.getElementById("map"));
+            var markerBounds = new GLatLngBounds();
+            
+
+             map.setCenter(markerBounds.getCenter(), 
+                           map.getBoundsZoomLevel(markerBounds));
+        }
+    }  
+
+</script>-->

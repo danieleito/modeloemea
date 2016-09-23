@@ -45,8 +45,8 @@ and open the template in the editor.
                 <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
                     <p:lightBox styleClass="imagebox" id="lighbox1">
                         <h:outputLink value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" title="#{arq.imagem.nome}">
-                            <p:graphicImage value="#{comumbean.getImage()}" style="height: 77px; width: 100px" title="#{image}" alt="Image Description for #{image}" >
-                                <f:param name="filename" value="#{arq.imagem.nome}" />
+                            <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
+                                <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
                                 <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
                             </p:graphicImage>
                         </h:outputLink>

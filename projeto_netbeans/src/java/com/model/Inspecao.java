@@ -29,10 +29,7 @@ public class Inspecao implements Serializable {
     /**
      * identificador do modelo
      */
-    private Modelo modelo;
-//    private String condicaoEstabilidade;
-//    private String condicaoConservacao;
-    
+    private Modelo modelo;    
 
     /**
      * identificador da identificação obra do sgo
@@ -68,6 +65,7 @@ public class Inspecao implements Serializable {
     private ArrayList<ArquivoAnexoInspecao> arquivosAnexosInspecao;
     
     private int idPonte;
+    private ArrayList<InspecaoManifestacaoElemento> inspecaoManifestacaoElemento;
 
 
     /**
@@ -231,5 +229,12 @@ public class Inspecao implements Serializable {
     public void setIdPonte(int idPonte) {
         this.idPonte = idPonte;
     }
-    
+
+    public ArrayList<InspecaoManifestacaoElemento> getInspecaoManifestacaoElemento() {
+        return inspecaoManifestacaoElemento;
+    }
+
+    public void setInspecaoManifestacaoElemento(ArrayList<InspecaoManifestacaoElemento> inspecaoManifestacaoElemento) {
+        this.inspecaoManifestacaoElemento = inspecaoManifestacaoElemento;
+    }    
 }

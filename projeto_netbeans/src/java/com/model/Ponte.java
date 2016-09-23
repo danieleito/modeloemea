@@ -73,7 +73,7 @@ public class Ponte implements Serializable {
     /**
      * identificador do cadastro manifestação
      */
-    private CadastroManifestacao cadastroManifestacao;
+//    private CadastroManifestacao cadastroManifestacao;
     /**
      * lista arquivos anexos
      */
@@ -107,7 +107,7 @@ public class Ponte implements Serializable {
         elementosComponentes = new ArrayList<>();
         observacao = new Observacao();
         substituicao = new Substituicao();
-        cadastroManifestacao = new CadastroManifestacao();
+//        cadastroManifestacao = new CadastroManifestacao();
         arquivosAnexosCadastro = new ArrayList<>();
         inspecoes = new ArrayList<>();
     }
@@ -133,13 +133,12 @@ public class Ponte implements Serializable {
      * @param rotasAlternativas {@link #rotasAlternativas}
      * @param observacao {@link #observacao}
      * @param substituicao {@link #substituicao}
-     * @param cadastroManifestacao {@link #cadastroManifestacao}
      */
     public Ponte(int id, String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, 
             IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis, 
             IdentificacaoObraInspecao identificacaoObraInspecao, CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, 
             CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, RotasAlternativas rotasAlternativas,
-            Observacao observacao, Substituicao substituicao, CadastroManifestacao cadastroManifestacao) {
+            Observacao observacao, Substituicao substituicao) {
         this.id = id;
         this.indicePerformanceRelativo = indicePerformanceRelativo;
         this.identificacaoObraDadosBasicos = identificacaoObraDadosBasicos;
@@ -151,7 +150,7 @@ public class Ponte implements Serializable {
         this.rotasAlternativas = rotasAlternativas;
         this.observacao = observacao;
         this.substituicao = substituicao;
-        this.cadastroManifestacao = cadastroManifestacao;
+//        this.cadastroManifestacao = cadastroManifestacao;
     }
 
     /**
@@ -166,12 +165,11 @@ public class Ponte implements Serializable {
      * @param rotasAlternativas {@link #rotasAlternativas}
      * @param observacao {@link #observacao}
      * @param substituicao {@link #substituicao}
-     * @param cadastroManifestacao {@link #cadastroManifestacao}
      */
     public Ponte(String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, IdentificacaoObraLocalizacao identificacaoObraLocalizacao, 
             IdentificacaoObraResponsaveis identificacaoObraResponsaveis, IdentificacaoObraInspecao identificacaoObraInspecao, 
             CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, 
-            RotasAlternativas rotasAlternativas, Observacao observacao, Substituicao substituicao, CadastroManifestacao cadastroManifestacao) {
+            RotasAlternativas rotasAlternativas, Observacao observacao, Substituicao substituicao) {
         this.indicePerformanceRelativo = indicePerformanceRelativo;
         this.identificacaoObraDadosBasicos = identificacaoObraDadosBasicos;
         this.identificacaoObraLocalizacao = identificacaoObraLocalizacao;
@@ -182,7 +180,7 @@ public class Ponte implements Serializable {
         this.rotasAlternativas = rotasAlternativas;
         this.observacao = observacao;
         this.substituicao = substituicao;
-        this.cadastroManifestacao = cadastroManifestacao;
+//        this.cadastroManifestacao = cadastroManifestacao;
     }
 
     /**
@@ -353,11 +351,11 @@ public class Ponte implements Serializable {
         this.substituicao = substituicao;
     }
 
-    public CadastroManifestacao getCadastroManifestacao() {
-        return cadastroManifestacao;
-    }
-
-    public void setCadastroManifestacao(CadastroManifestacao cadastroManifestacao) {
-        this.cadastroManifestacao = cadastroManifestacao;
-    }
+//    public CadastroManifestacao getCadastroManifestacao() {
+//        return cadastroManifestacao;
+//    }
+//
+//    public void setCadastroManifestacao(CadastroManifestacao cadastroManifestacao) {
+//        this.cadastroManifestacao = cadastroManifestacao;
+//    }
 }

@@ -172,12 +172,12 @@ create table IDENTIFICACAO_OBRA_DADOS_BASICOS
 		CD_CODIGO								varchar(20),
 		CD_CODIGO_INTEGRACAO					varchar(20),
 		DS_STATUS								varchar(20),
-		DS_IDENTIFICACAO						varchar(50),
+		DS_IDENTIFICACAO						varchar(50)												not null,
 		ID_NATUREZA_TRANSPOSICAO				int,	
 		ID_TIPO_ESTRUTURA						int,
 		ID_SISTEMA_CONSTRUTIVO					int,
-		DS_COMPRIMENTO							varchar(20),
-		DS_LARGURA								varchar(20),
+		DS_COMPRIMENTO							varchar(20)												not null,
+		DS_LARGURA								varchar(20)												not null,
 		ID_TREM_TIPO							int,
 		DS_ANO_CONSTRUCAO						varchar(20),
 		CONSTRAINT								pk_identificacaoobradadosbasicos						PRIMARY KEY(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS),
@@ -191,18 +191,18 @@ create table IDENTIFICACAO_OBRA_DADOS_BASICOS
 create table IDENTIFICACAO_OBRA_LOCALIZACAO
 	(
 		ID_IDENTIFICACAO_OBRA_LOCALIZACAO		int										not null identity(1,1),
-		ID_UF									int,
-		ID_VIA									int,
+		ID_UF									int										not null,
+		ID_VIA									int										not null,
 		DS_LOCAL_VIA							real,
-		DS_CIDADE_MAIS_PROXIMA					varchar(40),
-		DS_PNV_ANO								varchar(20),
-		DS_PNV_VERSAO							varchar(20),
-		DS_PNV_CODIGO							varchar(40),
-		DS_PNV_ALTITUDE							varchar(20),
-		DS_LATITUDE_GRAU						varchar(20),
-		DS_LATITUDE_MINUTO						varchar(20),
-		DS_LONGITUDE_GRAU						varchar(20),
-		DS_LONGITUDE_MINUTO						varchar(20),
+		DS_CIDADE_MAIS_PROXIMA					varchar(40)								not null,
+		DS_PNV_ANO								varchar(20)								not null,
+		DS_PNV_VERSAO							varchar(20)								not null,
+		DS_PNV_CODIGO							varchar(40)								not null,
+		DS_PNV_ALTITUDE							varchar(20)								not null,
+		DS_LATITUDE_GRAU						varchar(20)								not null,
+		DS_LATITUDE_MINUTO						varchar(20)								not null,
+		DS_LONGITUDE_GRAU						varchar(20)								not null,
+		DS_LONGITUDE_MINUTO						varchar(20)								not null,
 		CONSTRAINT								pk_identificacaoobralocalizacao			PRIMARY KEY(ID_IDENTIFICACAO_OBRA_LOCALIZACAO),
 		CONSTRAINT								fk_identificacaoobralocalizacao_uf		FOREIGN KEY(ID_UF) REFERENCES UF(ID_UF),
 		CONSTRAINT								fk_identificacaoobralocalizacao_via		FOREIGN KEY(ID_VIA) REFERENCES VIA(ID_VIA)
@@ -212,9 +212,9 @@ create table IDENTIFICACAO_OBRA_LOCALIZACAO
 create table IDENTIFICACAO_OBRA_RESPONSAVEIS
 	(
 		ID_IDENTIFICACAO_OBRA_RESPONSAVEIS		int					not null identity(1,1),
-		ID_UNIDADE_LOCAL						int,
-		ID_TIPO_ADMINISTRACAO					int,
-		DS_ADMINISTRADOR						varchar(80),
+		ID_UNIDADE_LOCAL						int					not null,
+		ID_TIPO_ADMINISTRACAO					int					not null,
+		DS_ADMINISTRADOR						varchar(80)			not null,
 		DS_PROJETISTA_ORIGEM					varchar(80),
 		DS_PROJETISTA_PROJETISTA				varchar(80),
 		DS_CONSTRUTOR_ORIGEM					varchar(80),
@@ -231,7 +231,7 @@ create table IDENTIFICACAO_OBRA_RESPONSAVEIS
 create table IDENTIFICACAO_OBRA_INSPECAO
 	(
 		ID_IDENTIFICACAO_OBRA_INSPECAO		int									not null identity(1,1),
-		DS_PERIODO							varchar(20),
+		DS_PERIODO							varchar(20)							not null,
 		DS_EQUIPAMENTO_NECESSARIO			varchar(20),
 		DS_MELHOR_EPOCA						varchar(20),
 		CONSTRAINT							pk_identificacaoobrainspecao		PRIMARY KEY(ID_IDENTIFICACAO_OBRA_INSPECAO)
@@ -281,21 +281,21 @@ create table FOTO
 		CONSTRAINT		pk_foto			PRIMARY KEY(ID_FOTO)
 	);
 
---extensao relativa
-create table EXTENSAO_RELATIVA
-	(
-		ID_EXTENSAO_RELATIVA		int						not null identity(1,1),
-		DS_EXTENSAO_RELATIVA		varchar(30)				not null,
-		CONSTRAINT					pk_extensaorelativa		PRIMARY KEY(ID_EXTENSAO_RELATIVA)
-	);
+--extensao relativa retirar
+--create table EXTENSAO_RELATIVA
+--	(
+--		ID_EXTENSAO_RELATIVA		int						not null identity(1,1),
+--		DS_EXTENSAO_RELATIVA		varchar(30)				not null,
+--		CONSTRAINT					pk_extensaorelativa		PRIMARY KEY(ID_EXTENSAO_RELATIVA)
+--	);
 
---reparo
-create table REPARO
-	(
-		ID_REPARO		int				not null identity(1,1),
-		DS_REPARO		varchar(30)		not null,
-		CONSTRAINT		pk_reparo		PRIMARY KEY(ID_REPARO)
-	);
+--reparo retirar
+--create table REPARO
+--	(
+--		ID_REPARO		int				not null identity(1,1),
+--		DS_REPARO		varchar(30)		not null,
+--		CONSTRAINT		pk_reparo		PRIMARY KEY(ID_REPARO)
+--	);
 
 --numero
 create table NUMERO
@@ -406,48 +406,46 @@ create table DEFICIENCIAS_FUNCIONAIS
 
 ---------------------------------------------------------------------------
 
-create table ELEMENTOS_UFPR
+create table ELEMENTO_UFPR
 	(
 		ID_ELEMENTO_UFPR		int						not null identity(1,1),
 		CD_ELEMENTO				int,
 		DS_ELEMENTO				varchar(100),
 		DS_CAPA1				varchar(10)				not null,
-		CONSTRAINT				pk_elementosufpr		PRIMARY KEY(ID_ELEMENTO_UFPR)
+		CONSTRAINT				pk_elementoufpr		PRIMARY KEY(ID_ELEMENTO_UFPR)
 	);
 
 -- Manifestações ufpr
-create table MANIFESTACOES_UFPR
+create table MANIFESTACAO_UFPR
 	(
-		ID_MANIFESTACOES_UFPR						int									not null identity(1,1),
-		ID_ELEMENTO_UFPR							int,
-		CD_MANIFESTACOES_UFPR						int,
-		DS_MANIFESTACOES_UFPR						varchar(100),
+		ID_MANIFESTACAO_UFPR						int									not null identity(1,1),
+		CD_MANIFESTACAO_UFPR						int,
+		DS_MANIFESTACAO_UFPR						varchar(100),
 		DS_UNIDADE									varchar(10),
 		DS_BETA										varchar(10),
 
-		CONSTRAINT									pk_manifestacoesufpr				PRIMARY KEY(ID_MANIFESTACOES_UFPR),
-		CONSTRAINT									fk_manifestacoesufpr_elementosufpr	FOREIGN KEY(ID_ELEMENTO_UFPR) REFERENCES ELEMENTOS_UFPR(ID_ELEMENTO_UFPR)
+		CONSTRAINT									pk_manifestacaoufpr				PRIMARY KEY(ID_MANIFESTACAO_UFPR)
 	);
 
 ------------------------------------------------------------------------
 
--- cadastro manifestacao
-create table CADASTRO_MANIFESTACAO
-	(
-		ID_CADASTRO_MANIFESTACAO		int											not null identity(1,1),
-		ID_NUMERO						int,
-		ID_MANIFESTACOES_UFPR			int,
-		ID_FOTO							int,
-		DS_TAMANHO						varchar(10),
-		ID_EXTENSAO_RELATIVA			int,
-		ID_REPARO						int,
-		CONSTRAINT						pk_cadastromanifestacao						PRIMARY KEY(ID_CADASTRO_MANIFESTACAO),
-		CONSTRAINT						fk_cadastromanifestacao_numero				FOREIGN KEY(ID_NUMERO) REFERENCES NUMERO(ID_NUMERO),
-		CONSTRAINT						fk_cadastromanifestacao_manifestacoesufpr	FOREIGN KEY(ID_MANIFESTACOES_UFPR) REFERENCES MANIFESTACOES_UFPR(ID_MANIFESTACOES_UFPR),
-		CONSTRAINT						fk_cadastromanifestacao_foto				FOREIGN KEY(ID_FOTO) REFERENCES FOTO(ID_FOTO),
-		CONSTRAINT						fk_cadastromanifestacao_extensaorelativa	FOREIGN KEY(ID_EXTENSAO_RELATIVA) REFERENCES EXTENSAO_RELATIVA(ID_EXTENSAO_RELATIVA),
-		CONSTRAINT						fk_cadastromanifestacao_reparo				FOREIGN KEY(ID_REPARO) REFERENCES REPARO(ID_REPARO)
-	);
+-- cadastro manifestacao retirar
+--create table CADASTRO_MANIFESTACAO
+--	(
+--		ID_CADASTRO_MANIFESTACAO		int											not null identity(1,1),
+--		ID_NUMERO						int,
+--		ID_MANIFESTACOES_UFPR			int,
+--		ID_FOTO							int,
+--		DS_TAMANHO						varchar(10),
+--		ID_EXTENSAO_RELATIVA			int,
+--		ID_REPARO						int,
+--		CONSTRAINT						pk_cadastromanifestacao						PRIMARY KEY(ID_CADASTRO_MANIFESTACAO),
+--		CONSTRAINT						fk_cadastromanifestacao_numero				FOREIGN KEY(ID_NUMERO) REFERENCES NUMERO(ID_NUMERO),
+--		CONSTRAINT						fk_cadastromanifestacao_manifestacoesufpr	FOREIGN KEY(ID_MANIFESTACOES_UFPR) REFERENCES MANIFESTACOES_UFPR(ID_MANIFESTACOES_UFPR),
+--		CONSTRAINT						fk_cadastromanifestacao_foto				FOREIGN KEY(ID_FOTO) REFERENCES FOTO(ID_FOTO),
+--		CONSTRAINT						fk_cadastromanifestacao_extensaorelativa	FOREIGN KEY(ID_EXTENSAO_RELATIVA) REFERENCES EXTENSAO_RELATIVA(ID_EXTENSAO_RELATIVA),
+--		CONSTRAINT						fk_cadastromanifestacao_reparo				FOREIGN KEY(ID_REPARO) REFERENCES REPARO(ID_REPARO)
+--	);
 
 ------------------------------------------------------------------------
 
@@ -465,7 +463,7 @@ create table PONTE
 		ID_ROTAS_ALTERNATIVAS							int													not null,
 		ID_OBSERVACOES									int													not null,
 		ID_SUBSTITUICAO									int													not null,
-		ID_CADASTRO_MANIFESTACAO						int													not null
+		--ID_CADASTRO_MANIFESTACAO						int													not null
 		CONSTRAINT										pk_ponte											PRIMARY KEY(ID_PONTE), 
 		CONSTRAINT										fk_ponte_identificacaoobradadosbasicos				FOREIGN KEY(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS) REFERENCES IDENTIFICACAO_OBRA_DADOS_BASICOS(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS),
 		CONSTRAINT										fk_ponte_identificacaoobralocalizacao				FOREIGN KEY(ID_IDENTIFICACAO_OBRA_LOCALIZACAO) REFERENCES IDENTIFICACAO_OBRA_LOCALIZACAO(ID_IDENTIFICACAO_OBRA_LOCALIZACAO),
@@ -476,7 +474,7 @@ create table PONTE
 		CONSTRAINT										fk_ponte_rotasalternativas							FOREIGN KEY(ID_ROTAS_ALTERNATIVAS) REFERENCES ROTAS_ALTERNATIVAS(ID_ROTAS_ALTERNATIVAS),
 		CONSTRAINT										fk_ponte_observacoes								FOREIGN KEY(ID_OBSERVACOES) REFERENCES OBSERVACOES(ID_OBSERVACOES),
 		CONSTRAINT										fk_ponte_substituicao								FOREIGN KEY(ID_SUBSTITUICAO) REFERENCES SUBSTITUICAO(ID_SUBSTITUICAO),
-		CONSTRAINT										fk_ponte_cadastromanifestacao						FOREIGN KEY(ID_CADASTRO_MANIFESTACAO) REFERENCES CADASTRO_MANIFESTACAO(ID_CADASTRO_MANIFESTACAO)
+		--CONSTRAINT										fk_ponte_cadastromanifestacao						FOREIGN KEY(ID_CADASTRO_MANIFESTACAO) REFERENCES CADASTRO_MANIFESTACAO(ID_CADASTRO_MANIFESTACAO)
 	);
 
 ---------------------------------------------------------------------------
@@ -541,9 +539,9 @@ create table ELEMENTO_COMPONENTES
 		ID_ELEMENTO_UFPR				int										not null,
 		DS_DETALHE						varchar(20),
 		NR_QUANTIDADE					varchar(10),	
-		CONSTRAINT						pk_elementoscomponentes					PRIMARY KEY(ID_ELEMENTO_COMPONENTES),
-		CONSTRAINT						fk_elementoscomponentes_ponte			FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
-		CONSTRAINT						fk_elementoscomponentes_elementosufpr	FOREIGN KEY(ID_ELEMENTO_UFPR) REFERENCES ELEMENTOS_UFPR(ID_ELEMENTO_UFPR)
+		CONSTRAINT						pk_elementocomponentes					PRIMARY KEY(ID_ELEMENTO_COMPONENTES),
+		CONSTRAINT						fk_elementocomponentes_ponte			FOREIGN KEY(ID_PONTE) REFERENCES PONTE(ID_PONTE),
+		CONSTRAINT						fk_elementocomponentes_elementoufpr	FOREIGN KEY(ID_ELEMENTO_UFPR) REFERENCES ELEMENTO_UFPR(ID_ELEMENTO_UFPR)
 	);
 
 ---------------------------------------------------------------------------
@@ -655,24 +653,53 @@ create table ARQUIVO_ANEXO_INSPECAO
 
 ---------------------------------------------------------------------------
 
--- Inspeções Manifestações
-create table INSPECOES_MANIFESTACOES
+--create table DADOS_ELEMENTO
+	--(
+	--	ID_DADOS_ELEMENTO		int				not null identity(1,1),
+		--DS_NUMERO				varchar(10),
+	--	DS_FOTO					varchar(10),
+	--	DS_TAMANHO				varchar(10),
+--		CONSTRAINT				pk_dadoselemento	PRIMARY KEY(ID_DADOS_ELEMENTO)
+--	);
+
+create table DADOS_MANIFESTACAO
 	(
-		ID_INSPECOES_MANIFESTACOES				int									not null identity(1,1),
-		ID_INSPECAO								int,
-		ID_ELEMENTO_UFPR						int,
-		DS_NUMERO								varchar(20),
-		ID_MANIFESTACOES_UFPR					int,
-		DS_FOTO									varchar(20),
-		DS_TAMANHO								varchar(20),
-		ID_MANIFESTACOES_EXTENSAO				int,
-		ID_MANIFESTACOES_URGENCIA				int,
-		CONSTRAINT								pk_inspecoesmanifestacoes		PRIMARY KEY(ID_INSPECOES_MANIFESTACOES),
-		CONSTRAINT								fk_inspecoesmanifestacoes_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO),
-		CONSTRAINT								fk_inspecoesmanifestacoes_elementosufpr	FOREIGN KEY(ID_ELEMENTO_UFPR) REFERENCES ELEMENTOS_UFPR(ID_ELEMENTO_UFPR),
-		CONSTRAINT								fk_inspecoesmanifestacoes_manifestacoesufpr	FOREIGN KEY(ID_MANIFESTACOES_UFPR) REFERENCES MANIFESTACOES_UFPR(ID_MANIFESTACOES_UFPR),
-		CONSTRAINT								fk_inspecoesmanifestacoes_manifestacoesextensao	FOREIGN KEY(ID_MANIFESTACOES_EXTENSAO) REFERENCES MANIFESTACOES_EXTENSAO(ID_MANIFESTACOES_EXTENSAO),
-		CONSTRAINT								fk_inspecoesmanifestacoes_manifestacoesurgencia	FOREIGN KEY(ID_MANIFESTACOES_URGENCIA) REFERENCES MANIFESTACOES_URGENCIA(ID_MANIFESTACOES_URGENCIA)
+		ID_DADOS_MANIFESTACAO			int												not null identity(1,1),
+		DS_FOTO							varchar(10),
+		DS_TAMANHO						varchar(10),
+		DS_NUMERO						varchar(20),
+		ID_MANIFESTACOES_EXTENSAO		int,
+		ID_MANIFESTACOES_URGENCIA		int,
+		CONSTRAINT						pk_dadosmanifestacao							PRIMARY KEY(ID_DADOS_MANIFESTACAO),
+		CONSTRAINT						fk_dadosmanifestacao_manifestacoes_extensao		FOREIGN KEY(ID_MANIFESTACOES_EXTENSAO) REFERENCES MANIFESTACOES_EXTENSAO(ID_MANIFESTACOES_EXTENSAO),
+		CONSTRAINT						fk_dadosmanifestacao_manifestacoes_urgencia		FOREIGN KEY(ID_MANIFESTACOES_URGENCIA) REFERENCES MANIFESTACOES_URGENCIA(ID_MANIFESTACOES_URGENCIA)
+	);
+
+create table ELEMENTO_UFPR_MANIFESTACAO_UFPR
+	(
+		ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR			int													not null identity(1,1),
+		ID_ELEMENTO_UFPR							int													not null,
+		ID_MANIFESTACAO_UFPR						int													not null,
+		CONSTRAINT									pk_elementoufprmanifestacaoufpr						PRIMARY KEY(ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR),
+		CONSTRAINT									fk_elementoufprmanifestacaoufpr_elementoufpr		FOREIGN KEY(ID_ELEMENTO_UFPR) REFERENCES ELEMENTO_UFPR(ID_ELEMENTO_UFPR),
+		CONSTRAINT									fk_elementoufprmanifestacaoufpr_manifestacaoufpr	FOREIGN KEY(ID_MANIFESTACAO_UFPR) REFERENCES MANIFESTACAO_UFPR(ID_MANIFESTACAO_UFPR)
+	);
+
+
+
+-- Inspeções Manifestações
+create table INSPECAO_MANIFESTACAO_ELEMENTO
+	(
+		ID_INSPECAO_MANIFESTACAO_ELEMENTO		int															not null identity(1,1),
+		ID_INSPECAO								int															not null,
+		--ID_DADOS_ELEMENTO						int															not null,
+		ID_DADOS_MANIFESTACAO					int															not null,
+		ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR		int															not null,
+		CONSTRAINT								pk_inspecaomanifestacaoelemento								PRIMARY KEY(ID_INSPECAO_MANIFESTACAO_ELEMENTO),
+		CONSTRAINT								fk_inspecaomanifestacaoelemento_inspecao					FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO),
+		--CONSTRAINT								fk_inspecaomanifestacaoelemento_dadoselemento				FOREIGN KEY(ID_DADOS_ELEMENTO) REFERENCES DADOS_ELEMENTO(ID_DADOS_ELEMENTO),
+		CONSTRAINT								fk_inspecaomanifestacaoelemento_dadosmanifestacao			FOREIGN KEY(ID_DADOS_MANIFESTACAO) REFERENCES DADOS_MANIFESTACAO(ID_DADOS_MANIFESTACAO),
+		CONSTRAINT								fk_inspecaomanifestacaoelemento_elementoufprelementoufpr	FOREIGN KEY(ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) REFERENCES ELEMENTO_UFPR_MANIFESTACAO_UFPR(ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR),
 	);
 
 ------------------------------------------------------------------------

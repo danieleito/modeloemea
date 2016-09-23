@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <title>Simulação</title>
         <h:outputScript library="js" name="validacoes.js" />
@@ -16,11 +17,11 @@
                     <p:breadCrumb>
                         <p:menuitem value="Categories" url="#" />
                         <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
-                        <p:menuitem value="Simulação" url="/View/Compartilhado/simulacao.jsf" />
+                        <p:menuitem value="Simulação" url="/View/Compartilhado/OAE/Simulacao/listar.jsf" />
                     </p:breadCrumb>
                     <h:outputLabel value="Nome da simulação" class="col-md-10" />
                     <p:inputText class="col-md-2" id="nova_simulacao" value="#{simulacaoBean.simulacao.nomeSimulacao}" />
-                    <p:commandButton style="margin: 0 0 20px 20px;" value="Nova simulação" action="#{simulacaoBean.salvar()}" />
+                    <p:commandButton style="margin: 0 0 20px 20px; width: 160px;" value="Nova simulação" action="#{simulacaoBean.salvar()}" />
                     
                     <p:dataTable var="sim" value="#{simulacaoBean.simulacoes}" paginator="true" rows="15" >
                         <p:column headerText="Simulação" style="text-align: center" >
@@ -33,15 +34,15 @@
                             </h:outputText>
                         </p:column>
 
-                        <p:column headerText="Inspetor" style="width: 150px; text-align: center" >
+                        <p:column headerText="Gestor" style="width: 150px; text-align: center" >
                             <h:outputText value="#{sim.usuario.usuario}" />
+                            
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 120px; text-align: center" >
                             <p:commandButton icon="ui-icon-search" title="Visualizar" actionListener="#{simulacaoBean.visualizar(sim.id)}"  />
-<!--                            <c:choose>
-                                <c:when test="${sim.usuario.id == simulacaoBean.usuarioLogado.id}">-->
 
+                            <h:panelGroup rendered="#{login.usuarioLogado.id == sim.usuario.id}">
                                     <p:commandButton icon="ui-icon-pencil" title="Ranking" action="#{simulacaoBean.rankingGet(sim.id)}" />
 
                                     <p:growl id="message" showDetail="true" />
@@ -52,9 +53,8 @@
                                         <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                                         <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                                     </p:confirmDialog>
+                            </h:panelGroup>
 
-<!--                                </c:when>
-                            </c:choose>-->
                         </p:column>
                     </p:dataTable>
                 </h:form>

@@ -13,221 +13,303 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <h:form id="form" >
-            <div class="row">
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <h:outputText value="1. Identificação da obra" style="font-weight: bold" />
-                        <hr/>
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Código:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}" />
+        <p:panel  header="1. Identificação da obra" style="width: 100%; float: left;">
+            <table>
+                <tbody >
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Código" class="col-md-10"/>                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Data da inspeção:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.data}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Data da inspeção" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.data}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Ponte:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.identificacao}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Ponte" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.identificacao}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Inspetor:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.usuario.nome}" />
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <br />
-                        <hr/>
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Via/UF:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.via} / #{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.superintendenciaRegional.uf}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Inspetor" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.usuario.nome}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Km:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.localVia}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Via/UF" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraLocalizacao.via} / #{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.superintendenciaRegional.uf}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Superint. Regional:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.superintendenciaRegional}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Km" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraLocalizacao.localVia}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="UL:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal}" />
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-            
-            <div class="row">
-                <br/>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <h:outputText value="2. Condições" style="font-weight: bold" />
-                        <hr/>
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Condição de Estabilidade:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.condicaoSgo.condicaoEstabilididade}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Superint. regional" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.superintendenciaRegional}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Condição de Conservação:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.condicaoSgo.condicaoConservacao}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Unidade local" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.descricao}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p:panel>
+        
+        
+        <p:panel  header="2. Condições" style="width: 100%; float: left;">
+            <table>
+                <tbody >
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Condição de estabilidade" class="col-md-10"/>                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.condicaoSgo.condicaoEstabilididade}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Observações:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.condicaoSgo.observacoes}" />
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <br />
-                        <hr/>
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Nota Técnica" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.condicaoSgo.notaTecnica}" />
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-            
-            <div class="row">
-                <br/>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <h:outputText value="3. Danos nos elementos" style="font-weight: bold" />
-                        <hr />
-                        
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:dataTable var="d" value="#{ponteBean.inspecao.danosElementosSgo}">
-                                <p:column style="text-align: center" >
-                                    <h:outputText value="#{d.elemento}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Condição de conservação" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.condicaoSgo.condicaoConservacao}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Observações" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.condicaoSgo.observacoes}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Nota técnica" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.condicaoSgo.notaTecnica}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p:panel>
+        
+        <p:panel  header="3. Danos nos elementos" style="width: 100%; float: left;">
+            <table>
+                <tbody >
+                    <tr>
+                        <td class="th">
+                            <p:dataTable var="dan" value="#{ponteBean.inspecao.danosElementosSgo}" >
+                                <p:column headerText="Elemento" style="text-align: center" >
+                                    <h:outputText value="#{dan.elemento}" />
                                 </p:column>
 
-                                <p:column style="text-align: center" >
-                                    <h:outputText value="#{d.nota}" />
-                                </p:column>
-                                         
-                                <p:column style="text-align: center" >
-                                    <h:outputText value="#{d.dano}" />
-                                </p:column>
-
-                                <p:column style="text-align: center" >
-                                    <h:outputText value="#{d.unidade}" />
-                                </p:column>
-                                         
-                                <p:column style="text-align: center" >
-                                    <h:outputText value="#{d.quantidade}" />
-                                </p:column>
-
-                                <p:column style="text-align: center" >
-                                    <h:outputText value="#{d.extensaoRelativa}" />
+                                <p:column headerText="Nota" style="text-align: center" >
+                                    <h:outputText value="#{dan.nota}" />
                                 </p:column>
                                 
-                                <p:column style="text-align: center" >
-                                    <h:outputText value="#{d.localizacao}" />
+                                <p:column headerText="Dano" style="text-align: center" >
+                                    <h:outputText value="#{dan.dano}" />
                                 </p:column>
-
-                            </p:dataTable>
-                        </h:panelGrid>
-
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-            
-            <div class="row">
-                <br/>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <h:outputText value="4. Insuficiências estruturas nos elementos" style="font-weight: bold" />
-                        <hr />
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:dataTable var="i" value="#{ponteBean.inspecao.insuficienciasEstruturaisElementosSgo}" >
-                                <p:column style="text-align: center" >
-                                    <h:outputText value="#{i.elemento}" />
+                                
+                                <p:column headerText="Unidade" style="text-align: center" >
+                                    <h:outputText value="#{dan.unidade}" />
                                 </p:column>
-
-                                <p:column style="text-align: center" >
-                                    <h:outputText value="#{i.nota}" />
+                                
+                                <p:column headerText="Quantidade" style="text-align: center" >
+                                    <h:outputText value="#{dan.quantidade}" />
                                 </p:column>
-                                         
-                                <p:column style="text-align: center" >
-                                    <h:outputText value="#{i.insuficiencia}" />
+                                
+                                <p:column headerText="Ext. relativa" style="text-align: center" >
+                                    <h:outputText value="#{dan.extensaoRelativa}" />
                                 </p:column>
-
-                                <p:column style="text-align: center" >
-                                    <h:outputText value="#{i.causaProvavel}" />
-                                </p:column>
-                                         
-                                <p:column style="text-align: center" >
-                                    <h:outputText value="#{i.comentarios}" />
+                                
+                                <p:column headerText="Localização" style="text-align: center" >
+                                    <h:outputText value="#{dan.localizacao}" />
                                 </p:column>
                             </p:dataTable>
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-            
-            <div class="row">
-                <br/>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <h:outputText value="5. Laudo especializado" style="font-weight: bold" />
-                        <hr />
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Data do Laudo:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.laudoEspecializadoSgo.dataLaudo}" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p:panel>
+        <p:panel  header="4. Insuficiências estruturais nos elementos" style="width: 100%; float: left;">
+            <table>
+                <tbody >
+                    <tr>
+                        <td class="th">
+                            <p:dataTable var="ins" value="#{ponteBean.inspecao.insuficienciasEstruturaisElementosSgo}" >
+                                <p:column headerText="Elemento" style="text-align: center" >
+                                    <h:outputText value="#{ins.elemento}" />
+                                </p:column>
 
-                            <h:outputText value="Observações:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.laudoEspecializadoSgo.observacoes}" />
+                                <p:column headerText="Nota" style="text-align: center" >
+                                    <h:outputText value="#{ins.nota}" />
+                                </p:column>
+                                
+                                <p:column headerText="Insuficiência" style="text-align: center" >
+                                    <h:outputText value="#{ins.insuficiencia}" />
+                                </p:column>
+                                
+                                <p:column headerText="Causa próvavel" style="text-align: center" >
+                                    <h:outputText value="#{ins.causaProvavel}" />
+                                </p:column>
+                                
+                                <p:column headerText="Comentários" style="text-align: center" >
+                                    <h:outputText value="#{ins.comentarios}" />
+                                </p:column>
+                            </p:dataTable>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p:panel>
+        <p:panel  header="5. Laudo especializado" style="width: 100%; float: left;">
+            <table>
+                <tbody >
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Data do laudo" class="col-md-10"/>                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.laudoEspecializadoSgo.dataLaudo}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Consultor:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.laudoEspecializadoSgo.consultor}" />
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-            
-            <div class="row">
-                <br/>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <h:outputText value="6. Monitoramento" style="font-weight: bold" />
-                        <hr />
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Período:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.monitoramentoSgo.periodo}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Consultor" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.laudoEspecializadoSgo.consultor}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                    
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Observações" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.laudoEspecializadoSgo.observacoes}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p:panel>
+        <p:panel  header="6. Monitoramento" style="width: 100%; float: left;">
+            <table>
+                <tbody >
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Período" class="col-md-10"/>                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.monitoramentoSgo.periodo}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Objeto:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.monitoramentoSgo.objeto}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Objeto" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.monitoramentoSgo.objeto}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                    
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Técnicas" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.monitoramentoSgo.tecnicas}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                    
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Tipo de monitoramento" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.monitoramentoSgo.tipoMonitoramento}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                    
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Executor" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.monitoramentoSgo.executor}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                    
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Custo" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.monitoramentoSgo.custo}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p:panel>
+        
+        <p:panel  header="Relatório" style="width: 100%; float: left;">
+            <table>
+                <tbody >
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Obs:" class="col-md-10"/>                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.inspecao.relatorio}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p:panel>
 
-                            <h:outputText value="Técnicas:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.monitoramentoSgo.tecnicas}" />
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <br/>
-                        <hr/>
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Tipo de Monitoramento:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.monitoramentoSgo.tipoMonitoramento}" />
-
-                            <h:outputText value="Executor:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.monitoramentoSgo.executor}" />
-
-                            <h:outputText value="Custo:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.inspecao.monitoramentoSgo.custo}" />
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-            
-            <div class="row">
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <br/>
-                        <hr/>
-                        <h:outputText value="Relatório:" style="font-weight: bold" />
-                        <h:outputText value="#{ponteBean.inspecao.relatorio}" />
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-        </h:form>
     </h:body>
 </html>

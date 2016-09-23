@@ -7,196 +7,397 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <h:outputLabel value="DADOS CADASTRAIS DE OBRA DE ARTE ESPECIAL" style="width: 100%; float: left;" />
+            <p:panel  header="1. Identificação da obra" style="width: 100%; float: left;">
+            <table>
+                <tbody >
+                    <tr>
+                        <td class="subtituloTabela" >
+                            <h:outputText value="Dados Básicos" style="font-weight: bold" />
+                        </td>
+                    </tr>
 
-        <h:form id="form" >
-            <div class="row">
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <br />
-                    <p:outputPanel>
-                        <h:outputText value="1. Identificação da obra" style="font-weight: bold" />
-                        <hr />
-                        <h:outputText value="Dados Básicos" style="font-weight: bold" />
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Código:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Código" class="col-md-10"/>                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Identificação:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.identificacao}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Identificação" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.identificacao}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Últ. Atualização:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.dataUltimaInspecao}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Últ. atualização" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.dataUltimaInspecao}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Nat. Transposição:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.naturezaTransposicao.descricao}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Nat. transposição" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.naturezaTransposicao.descricao}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Tipo Estrutura:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.tipoEstrutura.descricao}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Tipo estrutura" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.tipoEstrutura.descricao}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Sist. Construtivo:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.sistemaConstrutivo.descricao}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Sist. construtivo" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.sistemaConstrutivo.descricao}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Comp/Larg(m):" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.comprimento}/#{ponteBean.model.identificacaoObraDadosBasicos.largura}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Comp./Larg.(m)" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.comprimento}/#{ponteBean.model.identificacaoObraDadosBasicos.largura}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Trem-Tipo:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.tremTipo.descricao}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Trem-tipo" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.tremTipo.descricao}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Construção:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraDadosBasicos.anoConstrucao}" />
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <br/>
-                        <hr/>
-                        <h:outputText value="Localização" style="font-weight: bold" />
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Via/UF/Km:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.via.descricao}/#{ponteBean.model.identificacaoObraLocalizacao.uf.uf}/#{ponteBean.model.identificacaoObraLocalizacao.localVia}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Construção" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.anoConstrucao}" class="col-md-10"/>
+                        </td>
+                    </tr>
+<!--////-->
+                    <tr>
+                        <td class="subtituloTabela">
+                            <h:outputText value="Localização" style="font-weight: bold" />
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Trecho:" style="font-weight: bold" />
-                            <h:outputText value="" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Via/UF/Km" class="col-md-10"/>                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraLocalizacao.via.descricao}/#{ponteBean.model.identificacaoObraLocalizacao.uf.uf}/#{ponteBean.model.identificacaoObraLocalizacao.localVia}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Cidade próx.:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.cidadeMaisProxima}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Trecho" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraDadosBasicos.identificacao}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Cidade mais próxima" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraLocalizacao.cidadeMaisProxima}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Alt./Lat./Long." class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraLocalizacao.pnvAltitude}/#{ponteBean.model.identificacaoObraLocalizacao.latitudeGrau}/#{ponteBean.model.identificacaoObraLocalizacao.longitudeGrau}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="subtituloTabela">
+                            <h:outputText value="Inspeção" style="font-weight: bold" />
+                        </td>
+                    </tr>
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Período(anos)" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraInspecao.periodo}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Equip. necessário" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraInspecao.equipamentoNecessario}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Melhor época" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraInspecao.melhorEpoca}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                <!--/////-->
+                    <tr>
+                        <td class="subtituloTabela">
+                            <h:outputText value="Responsáveis" style="font-weight: bold" />
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Superint. regional" class="col-md-10"/>                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.superintendenciaRegional.descricao}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Unidade local" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.descricao}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Tp. administração" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.tipoAdministracao.descricao}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Administrador" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.administrador}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Projetista" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.projetistaProjetista}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Construtor" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.construtorConstrutor}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Observações" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Loc. projeto" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoProjeto}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Loc. doc. constr." class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoDocumentosConstrucao}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Loc. doc. diversos" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoDocumentosDiversos}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p:panel>
+        
+        
+        <p:panel  header="2. Características funcionais" style="width: 100%; float: left;">
+            <table>
+                <tbody >
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Região" class="col-md-10"/>                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.tipoRegiao.descricao}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Traçado/Raio(m)" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.tipoTracado.descricao}"/>
+                            <h:panelGroup rendered="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.raioCurva.length() > 0}">
+                                <p:outputLabel value="/#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.raioCurva}" />
+                            </h:panelGroup>
                             
+                           
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Alt./Lat./Long.:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraLocalizacao.pnvAltitude}/#{ponteBean.model.identificacaoObraLocalizacao.latitudeGrau}/#{ponteBean.model.identificacaoObraLocalizacao.longitudeGrau}" />
-                        </h:panelGrid>
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Rampa máxima" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.rampaMaxima}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                        <h:panelGrid columns="2" width="40%" columnClasses="logo,detail" >
-                            <p:outputPanel>
-                                <br/>
-                                <br/>
-                                <h:outputText value="Inspeção" style="font-weight: bold" />
-                                <h:panelGrid columns="2" cellpadding="5">
-                                    <h:outputText value="Período(anos):" style="font-weight: bold" />
-                                    <h:outputText value="#{ponteBean.model.identificacaoObraInspecao.periodo}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="VMD" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.vmd}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                                    <h:outputText value="Equip. Necessário:" style="font-weight: bold" />
-                                    <h:outputText value="#{ponteBean.model.identificacaoObraInspecao.equipamentoNecessario}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Nº de vãos" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.numeroVaos}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                                    <h:outputText value="Melhor época:" style="font-weight: bold" />
-                                    <h:outputText value="#{ponteBean.model.identificacaoObraInspecao.melhorEpoca}" />
-                                </h:panelGrid>
-                            </p:outputPanel>
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-            <div class="row">
-                <br/>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <hr />
-                        <h:outputText value="Responsáveis" style="font-weight: bold" />
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Superint. Regional:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.superintendenciaRegional.descricao}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Descr. dos vãos" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.descricaoVaos}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Unidade Local:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.unidadeLocal.descricao}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Largura total da pista(m)" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.larguraTotalPista}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Tp. Administração:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.tipoAdministracao.descricao}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Nº de faixa/Larg. faixa(m)" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.numeroFaixas}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.larguraFaixa}" class="col-md-10"/>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Administrador:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.administrador}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Larg. acost. dir/esq(m)" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <h:panelGroup rendered="#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoDireito.length() > 0}">
+                                <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoDireito}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoEsquerdo}" class="col-md-10"/>
+                            </h:panelGroup>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Projetista:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.projetistaProjetista}" />
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Larg. calçada dir/esq(m)" class="col-md-10"/>                                  
+                        </td>
+                        <td>
+                            <h:panelGroup rendered="#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaDireita.length() > 0}">
+                                <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaDireita}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaEsquerda}" class="col-md-10"/>
+                            </h:panelGroup>
+                        </td>
+                    </tr>
 
-                            <h:outputText value="Construtor:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.construtorConstrutor}" />
-
-                            <h:outputText value="Observações:" style="font-weight: bold" />
-                            <h:outputText value="" />
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <hr />
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Loc. Projeto:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoProjeto}" />
-
-                            <h:outputText value="Loc. Doc. Constr.:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoDocumentosConstrucao}" />
-
-                            <h:outputText value="Loc. Doc. Diversos:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.identificacaoObraResponsaveis.localizacaoDocumentosDiversos}" />
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-            <div class="row">
-                <br/>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <h:outputText value="2. Características Funcionais" style="font-weight: bold" />
-                        <hr/>
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Região:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.tipoRegiao.descricao}" />
-
-                            <h:outputText value="Traçado/Raio(m):" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.tipoTracado.descricao}" />
-
-                            <h:outputText value="Rampa Máxima:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.rampaMaxima}" />
-
-                            <h:outputText value="VMD:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisCaracteristicas.vmd}" />
-
-                            <h:outputText value="Nº de Vãos:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.numeroVaos}" />
-
-                            <h:outputText value="Descr. dos Vãos:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.descricaoVaos}" />
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <br/>
-                        <hr/>
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Largura total da pista(m):" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.larguraTotalPista}" />
-
-                            <h:outputText value="Nº de Faixas/Larg. Faixa(m):" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.numeroFaixas}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.larguraFaixa}" />
-
-                            <h:outputText value="Larg. Acost. Dir/Esq(m):" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoDireito}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.acostamentoEsquerdo}" />
-
-                            <h:outputText value="Larg. Calçada Dir/Esq(m):" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaDireita}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.calcadaEsquerda}" />
-
-                            <h:outputText value="Gabarito Horiz./Vertical(m):" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.gabaritoHorizontal}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.gabaritoVertical}" />
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-            <div class="row" >
-                <br/>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <br />
-                        <h:outputText value="3. Elementos Componentes" style="font-weight: bold" />
-                        <hr/>
-                        <h:panelGrid columns="2" cellpadding="10">
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Gabarito horiz/vertical(m)" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <h:panelGroup rendered="#{ponteBean.model.caracteristicasFuncionaisDimensoes.gabaritoHorizontal.length() > 0}">
+                                <p:outputLabel value="#{ponteBean.model.caracteristicasFuncionaisDimensoes.gabaritoHorizontal}/#{ponteBean.model.caracteristicasFuncionaisDimensoes.gabaritoVertical}" class="col-md-10"/>
+                            </h:panelGroup>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p:panel>
+        
+        <p:panel  header="3. Elementos componentes" style="width: 100%; float: left;">
+            <table>
+                <tbody >
+                    <tr>
+                        <td class="th">
                             <p:dataTable var="ele" value="#{ponteBean.model.elementosComponentes}" >
                                 <p:column style="text-align: center" >
                                     <h:outputText value="#{ele.elementoUfpr.codigo}" />
@@ -205,20 +406,17 @@ and open the template in the editor.
                                 <p:column style="text-align: center" >
                                     <h:outputText value="#{ele.elementoUfpr.descricao}" />
                                 </p:column>
-
                             </p:dataTable>
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-            <div class="row">
-                <br/>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <br />
-                        <h:outputText value="4. Aspectos Especiais" style="font-weight: bold" />
-                        <hr />
-                        <h:panelGrid columns="2" cellpadding="10">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p:panel>
+        <p:panel  header="4. Aspectos especiais" style="width: 100%; float: left;">
+            <table>
+                <tbody >
+                    <tr>
+                        <td class="th">
                             <p:dataTable var="asp" value="#{ponteBean.model.aspectosEspeciais}" >
                                 <p:column style="text-align: center" >
                                     <h:outputText value="#{asp.aspectoEspecial.id}" />
@@ -228,19 +426,17 @@ and open the template in the editor.
                                     <h:outputText value="#{asp.aspectoEspecial.descricao}" />
                                 </p:column>
                             </p:dataTable>
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-            <div class="row">
-                <br/>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <br />
-                        <h:outputText value="5. Deficiências Funcionais" style="font-weight: bold" />
-                        <hr/>
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <p:dataTable var="def" value="#{ponteBean.model.deficienciasFuncionais}">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p:panel>
+        <p:panel  header="5. Deficiências Funcionais" style="width: 100%; float: left;">
+            <table>
+                <tbody >
+                    <tr>
+                        <td class="th">
+                            <p:dataTable var="def" value="#{ponteBean.model.deficienciasFuncionais}" >
                                 <p:column style="text-align: center" >
                                     <h:outputText value="#{def.codigo}" />
                                 </p:column>
@@ -249,26 +445,33 @@ and open the template in the editor.
                                     <h:outputText value="#{def.descricao}" />
                                 </p:column>
                             </p:dataTable>
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-            <div class="row">
-                <br/>
-                <h:panelGrid columns="2" columnClasses="logo,detail" class="tabela_dados_cadastrais" >
-                    <p:outputPanel>
-                        <br />
-                        <h:outputText value="6. Rotas Funcionais" style="font-weight: bold" />
-                        <hr/>
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Rotas:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.rotasAlternativas.descricao}" />
-                            <h:outputText value="Acréscimo de km:" style="font-weight: bold" />
-                            <h:outputText value="#{ponteBean.model.rotasAlternativas.acrescimoKm}" />
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </div>
-        </h:form>                   
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p:panel>
+        <p:panel  header="6. Rotas alternativas" style="width: 100%; float: left;">
+            <table>
+                <tbody >
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Rota" class="col-md-10"/>                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.rotasAlternativas.descricao}" class="col-md-10"/>
+                        </td>
+                    </tr>
+
+                    <tr >
+                        <td class="th">
+                            <p:outputLabel value="Acréscimo de Km" class="col-md-10" />                                  
+                        </td>
+                        <td>
+                            <p:outputLabel value="#{ponteBean.model.rotasAlternativas.acrescimoKm}" class="col-md-10"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p:panel>
     </h:body>
 </html>
