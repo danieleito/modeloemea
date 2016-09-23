@@ -375,6 +375,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     public void excluirRanking(int idRanking) {
         try {
             database.excluirRanking(idRanking);
+            recarregarSimulacao();
             adicionarMensagemInfo("Ponte removida da simulação com sucesso.");
             //simulacoes = database.buscar();
         } catch (SQLException ex) {

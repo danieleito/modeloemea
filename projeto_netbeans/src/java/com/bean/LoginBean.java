@@ -25,6 +25,7 @@ public class LoginBean extends ComumBean implements Serializable {
     
     private Usuario model;
     private String novaSenha;
+    private String confirmarSenha;
     private final UsuarioDAO database;
 
     public LoginBean() {
@@ -41,9 +42,11 @@ public class LoginBean extends ComumBean implements Serializable {
                 adicionarMensagemErro("Senha inválida.");
             } else {
                 if (novaSenha != null && !novaSenha.isEmpty()) {
-                    u.setSenha(novaSenha);
-                    database.editar(u);
-                    adicionarMensagemInfo("Senha alterada com sucesso.");
+//                    if (novaSenha.equals(confirmarSenha)) {
+                        u.setSenha(novaSenha);
+                        database.editar(u);
+                        adicionarMensagemInfo("Senha alterada com sucesso.");
+//                    }
                 }
                 usuarioLogado = u;
                 SessionContext.getInstance().setAttribute("usuarioLogado", u);
