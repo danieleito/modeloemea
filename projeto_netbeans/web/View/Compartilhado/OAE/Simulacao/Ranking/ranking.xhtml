@@ -12,9 +12,6 @@ and open the template in the editor.
 
     <h:body>
         <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="15" >
-            <f:facet name="header" >
-                #{simulacaoBean.simulacao.nomeSimulacao}
-            </f:facet>
 
             <p:column headerText="Data da última inspeção" style="width: 100px; text-align: center" >
                 <h:outputText value="#{r.ponte.dataUltimaInspecao}">

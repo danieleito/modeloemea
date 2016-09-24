@@ -26,6 +26,7 @@ public class LoginBean extends ComumBean implements Serializable {
     private Usuario model;
     private String novaSenha;
     private String confirmarSenha;
+
     private final UsuarioDAO database;
 
     public LoginBean() {
@@ -40,13 +41,15 @@ public class LoginBean extends ComumBean implements Serializable {
                 adicionarMensagemErro("Usuário não existe");
             } else if(!u.getSenha().equals(model.getSenha())) {
                 adicionarMensagemErro("Senha inválida.");
+            } else if (preencheuNovaSenha() && !preencheuConfirmarSenha()) {
+                adicionarMensagemInfo("Confirmar senha é obrigatório para alterar senha.");
+            } else if (preencheuNovaSenha() && preencheuConfirmarSenha() && !novaSenha.equals(confirmarSenha)) {
+                adicionarMensagemInfo("Os campos Nova senha e Confirmar senha devem ser iguais.");
             } else {
-                if (novaSenha != null && !novaSenha.isEmpty()) {
-//                    if (novaSenha.equals(confirmarSenha)) {
+                if (preencheuNovaSenha() && novaSenha.equals(confirmarSenha)) {
                         u.setSenha(novaSenha);
                         database.editar(u);
                         adicionarMensagemInfo("Senha alterada com sucesso.");
-//                    }
                 }
                 usuarioLogado = u;
                 SessionContext.getInstance().setAttribute("usuarioLogado", u);
@@ -59,6 +62,14 @@ public class LoginBean extends ComumBean implements Serializable {
             Logger.getLogger(LoginBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         redirecionar("/View/Compartilhado/login.jsf");
+    }
+    
+    private boolean preencheuNovaSenha() {
+        return novaSenha != null && !novaSenha.isEmpty();
+    }
+    
+    private boolean preencheuConfirmarSenha() {
+        return confirmarSenha != null && !confirmarSenha.isEmpty();
     }
     
     public void sair() {
@@ -93,6 +104,14 @@ public class LoginBean extends ComumBean implements Serializable {
 
     public void setNovaSenha(String novaSenha) {
         this.novaSenha = novaSenha;
+    }
+    
+    public String getConfirmarSenha() {
+        return confirmarSenha;
+    }
+
+    public void setConfirmarSenha(String confirmarSenha) {
+        this.confirmarSenha = confirmarSenha;
     }
     // </editor-fold>
 }

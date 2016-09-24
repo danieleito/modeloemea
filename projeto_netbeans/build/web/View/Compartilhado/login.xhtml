@@ -30,7 +30,7 @@
                                 <p:password id="novaSenha" value="#{login.novaSenha}"/>
 
                                 <h:outputLabel value="Confirmar senha" />
-                                <p:password id="confirmarNovaSenha" />
+                                <p:password id="confirmarNovaSenha" value="#{login.confirmarSenha}"/>
 
                                 <p:commandButton value="Entrar" onclick="return validarLogin()" action="#{login.entrar()}" />
 

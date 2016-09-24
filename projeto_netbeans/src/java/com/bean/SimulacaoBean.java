@@ -330,10 +330,11 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
 
     public void visualizar(int idSimulacao) {
-        int i = 0;
-        i ++;
         try {
             simulacao = database.buscar(idSimulacao);
+            createBarModel();
+            createPieModels();
+            carregarMapa();
         } catch (Exception ex) {
             adicionarMensagemErro("Erro ao carregar simulação. " + ex.getMessage());
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
