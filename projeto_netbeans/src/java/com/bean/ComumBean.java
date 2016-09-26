@@ -120,18 +120,13 @@ public class ComumBean {
     public char getFileSeparator() {
         return File.separatorChar;
     }
-//    public void pontoSelecionado(PointSelectEvent event) {  
-//        LatLng latituteLongitude = event.getLatLng();  
-//           
-//        FacesContext.getCurrentInstance().addMessage(
-//            null,
-//            new FacesMessage(
-//                FacesMessage.SEVERITY_INFO, 
-//                "Ponto selecionado", 
-//                "Lat:" + latituteLongitude.getLat() + ", Long:" + latituteLongitude.getLng()
-//            )
-//        );  
-//    }  
+    
+    protected String getImagePath(String imageName) {
+        return FacesContext
+                .getCurrentInstance()
+                .getExternalContext()
+                .getRequestContextPath() + "/resources/images/" + imageName;
+    }
     
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Usuario getUsuarioLogado() {

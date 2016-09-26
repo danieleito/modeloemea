@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
@@ -262,22 +263,11 @@ public class SimulacaoBean extends ComumBean implements Serializable {
                             imagem += arq.get().getImagem().getNome();
                         }
                     }
-                    DecimalFormat df = new DecimalFormat("#.00");
+                    
                     String localVia = String.format("%.2f", simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLocalVia());
-
-                    String pino = (System.getProperty("jboss.server.data.dir")+File.separatorChar + "imagens" + File.separatorChar + "pin_sgo_hardblue.png");
-//                    ClassLoader classLoader = getClass().getClassLoader();
-                     
-//                    File file = new File(classLoader.getResource("file/test.xml").getFile());
-                    advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, "http://localhost:8080/ModeloEmea/javax.faces.resource/pin_sgo_hardblue.png.jsf?ln=images"));
-//                    advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, classLoader.getResource("images/pin_sgo_hardblue.png").getPath()));
+                    advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, getImagePath("pin_sgo_hardblue.png")));
                 }
-//            }
         }
-
-//        for(Marker premarker : draggableModel.getMarkers()) {
-//            premarker.setDraggable(true);
-//        }
     }
 
     public MapModel getAdvancedModel() {
