@@ -453,7 +453,7 @@ create table MANIFESTACAO_UFPR
 create table PONTE
 	(
 		ID_PONTE										int													not null identity(1,1),
-		DS_INDICE_PERFORMANCE_RELATIVO					varchar(20)											null,
+		DS_INDICE_PERFORMANCE_RELATIVO					real												null,
 		ID_IDENTIFICACAO_OBRA_DADOS_BASICOS				int													not null,	
 		ID_IDENTIFICACAO_OBRA_LOCALIZACAO				int													not null,
 		ID_IDENTIFICACAO_OBRA_RESPONSAVEIS				int													not null,

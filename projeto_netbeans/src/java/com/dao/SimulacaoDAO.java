@@ -168,7 +168,7 @@ public class SimulacaoDAO {
             ponte.setId(rs.getInt("ID_PONTE"));
             ponte.setIdentificacaoObraDadosBasicos(dadosBasicos);
             ponte.setIdentificacaoObraLocalizacao(localizacao);
-            ponte.setIndicePerformanceRelativo(rs.getString("DS_INDICE_PERFORMANCE_RELATIVO"));
+            ponte.setIndicePerformanceRelativo(rs.getDouble("DS_INDICE_PERFORMANCE_RELATIVO"));
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
             ArquivoAnexoDAO dbArquivoAnexo = new ArquivoAnexoDAO();
             ponte.setArquivosAnexosCadastro(dbArquivoAnexo.buscarCadastros(rs.getInt("ID_PONTE")));

@@ -106,7 +106,7 @@ public class PonteDAO {
         Ponte ponte;
         while (rs.next()) {
             ponte = new Ponte(
-                    rs.getInt("ID_PONTE"), rs.getString("DS_INDICE_PERFORMANCE_RELATIVO"), 
+                    rs.getInt("ID_PONTE"), rs.getDouble("DS_INDICE_PERFORMANCE_RELATIVO"), 
                     new IdentificacaoObraDadosBasicos(rs.getInt("ID_IDENTIFICACAO_OBRA_DADOS_BASICOS"), 
                             rs.getString("CD_CODIGO"), rs.getString("CD_CODIGO_INTEGRACAO"), 
                             rs.getString("DS_STATUS"), rs.getString("DS_IDENTIFICACAO"), 
@@ -224,7 +224,7 @@ public class PonteDAO {
         if (rs.next()) {
             Uf uf = new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"), rs.getString("SG_UF"));
             ponte = new Ponte(
-                    rs.getInt("ID_PONTE"), rs.getString("DS_INDICE_PERFORMANCE_RELATIVO"), 
+                    rs.getInt("ID_PONTE"), rs.getDouble("DS_INDICE_PERFORMANCE_RELATIVO"), 
                     new IdentificacaoObraDadosBasicos(rs.getInt("ID_IDENTIFICACAO_OBRA_DADOS_BASICOS"), 
                             rs.getString("CD_CODIGO"), rs.getString("CD_CODIGO_INTEGRACAO"), 
                             rs.getString("DS_STATUS"), rs.getString("DS_IDENTIFICACAO"), 
@@ -372,7 +372,7 @@ public class PonteDAO {
         Ponte ponte;
         while (rs.next()) {
             ponte = new Ponte(
-                    rs.getInt("ID_PONTE"), rs.getString("DS_INDICE_PERFORMANCE_RELATIVO"), 
+                    rs.getInt("ID_PONTE"), rs.getDouble("DS_INDICE_PERFORMANCE_RELATIVO"), 
                     new IdentificacaoObraDadosBasicos(rs.getInt("ID_IDENTIFICACAO_OBRA_DADOS_BASICOS"), 
                             rs.getString("CD_CODIGO"), rs.getString("CD_CODIGO_INTEGRACAO"), 
                             rs.getString("DS_STATUS"), rs.getString("DS_IDENTIFICACAO"), 

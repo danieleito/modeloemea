@@ -12,6 +12,7 @@ import com.model.GraficoSistemaConstrutivo;
 import com.model.GraficoTipoEstrutura;
 import com.model.Simulacao;
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
@@ -70,7 +71,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
                 for (int i = 0; i < t; i++) {
                     String nomePonte = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraDadosBasicos().getIdentificacao();
-                    int indicePerformanceRelativo = Integer.parseInt(simulacao.getRankings().get(i).getPonte().getIndicePerformanceRelativo());
+                    double indicePerformanceRelativo = simulacao.getRankings().get(i).getPonte().getIndicePerformanceRelativo();
                     pontes.set(nomePonte, indicePerformanceRelativo);
                 }
                 model.addSeries(pontes);
@@ -218,7 +219,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
 
 //    início métodos para mapa
-    public void carregarMapa() {
+    public void carregarMapa() throws IOException {
         advancedModel = new DefaultMapModel();
 //        if (simulacao != null) {
             if (simulacao.getRankings() != null) {
@@ -263,7 +264,13 @@ public class SimulacaoBean extends ComumBean implements Serializable {
                     }
                     DecimalFormat df = new DecimalFormat("#.00");
                     String localVia = String.format("%.2f", simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLocalVia());
-                    advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"));
+
+                    String pino = (System.getProperty("jboss.server.data.dir")+File.separatorChar + "imagens" + File.separatorChar + "pin_sgo_hardblue.png");
+//                    ClassLoader classLoader = getClass().getClassLoader();
+                     
+//                    File file = new File(classLoader.getResource("file/test.xml").getFile());
+                    advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, "http://localhost:8080/ModeloEmea/javax.faces.resource/pin_sgo_hardblue.png.jsf?ln=images"));
+//                    advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, classLoader.getResource("images/pin_sgo_hardblue.png").getPath()));
                 }
 //            }
         }
@@ -342,7 +349,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         redirecionar("/View/Compartilhado/OAE/Simulacao/visualizar.jsf");
     }
 
-    public void rankingGet(int idSimulacao) {
+    public void rankingGet(int idSimulacao) throws IOException {
 //        if (usuarioLogado.getId() == simulacao.getUsuario().getId()) {
 //            adicionarMensagemInfo("conferir se usuaáio logado é o mesmo usuário dono da simulação");
 //        }
@@ -359,7 +366,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
 
     //método executar ao carregar a view ranking
-    public void recarregarSimulacao() {
+    public void recarregarSimulacao() throws IOException {
         try {
             if (simulacao != null) {
                 simulacao = database.buscar(simulacao.getId());
@@ -373,7 +380,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
 
     //remove a ponte da simulação
-    public void excluirRanking(int idRanking) {
+    public void excluirRanking(int idRanking) throws IOException {
         try {
             database.excluirRanking(idRanking);
             recarregarSimulacao();
