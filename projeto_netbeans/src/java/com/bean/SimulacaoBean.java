@@ -12,9 +12,9 @@ import com.model.GraficoSistemaConstrutivo;
 import com.model.GraficoTipoEstrutura;
 import com.model.Simulacao;
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
@@ -46,7 +46,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private Simulacao simulacao;
     private SimulacaoDAO database;
     private ArrayList<Simulacao> simulacoes;
-    
+
     private BarChartModel barModel;
     private Marker marker;
     private MapModel advancedModel;
@@ -63,14 +63,14 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private BarChartModel initBarModel() {
         BarChartModel model = new BarChartModel();
         ChartSeries pontes = new ChartSeries();
-        
+
         if (simulacao != null) {
             if (simulacao.getRankings() != null) {
                 int t = simulacao.getRankings().size();
 
                 for (int i = 0; i < t; i++) {
                     String nomePonte = simulacao.getRankings().get(i).getPonte().getIdentificacaoObraDadosBasicos().getIdentificacao();
-                    int indicePerformanceRelativo = Integer.parseInt(simulacao.getRankings().get(i).getPonte().getIndicePerformanceRelativo());
+                    double indicePerformanceRelativo = simulacao.getRankings().get(i).getPonte().getIndicePerformanceRelativo();
                     pontes.set(nomePonte, indicePerformanceRelativo);
                 }
                 model.addSeries(pontes);
@@ -100,11 +100,10 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         createPieModel1();
         createPieModel2();
         createPieModel3();
-
     }
 //grafico para mostrar manifetacoes;
     private PieChartModel pieModel1;
- 
+
     public PieChartModel getPieModel1() {
         return pieModel1;
     }
@@ -143,11 +142,11 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
 //grafico para mostrar tipo estruturas;
     private PieChartModel pieModel2;
- 
+
     public PieChartModel getPieModel2() {
         return pieModel2;
     }
- 
+
     private void createPieModel2() {
         pieModel2 = new PieChartModel();
 
@@ -176,15 +175,15 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         pieModel2.setLegendCols(1);
         pieModel2.setLegendPlacement(LegendPlacement.INSIDE);
     }
-    
+
 ///////////////////////////////////////
 //grafico para mostrar sistema construtivo;
     private PieChartModel pieModel3;
- 
+
     public PieChartModel getPieModel3() {
         return pieModel3;
     }
- 
+
     private void createPieModel3() {
         pieModel3 = new PieChartModel();
 
@@ -207,18 +206,17 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         }catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         pieModel3.setTitle("Sistema construtivo");
         pieModel3.setLegendPosition("e");
         pieModel3.setLegendCols(1);
         pieModel3.setLegendPlacement(LegendPlacement.INSIDE);
-    
     }
 //    fim métodos para gráficos
 
 
 //    início métodos para mapa
-    public void carregarMapa() {
+    public void carregarMapa() throws IOException {
         advancedModel = new DefaultMapModel();
 //        if (simulacao != null) {
             if (simulacao.getRankings() != null) {
@@ -261,31 +259,26 @@ public class SimulacaoBean extends ComumBean implements Serializable {
                             imagem += arq.get().getImagem().getNome();
                         }
                     }
-                    DecimalFormat df = new DecimalFormat("#.00");
-                    String localVia = String.format("%.2f", simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLocalVia());
-                    advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"));
-                }
-//            }
-        }
 
-//        for(Marker premarker : draggableModel.getMarkers()) {
-//            premarker.setDraggable(true);
-//        }
+                    String localVia = String.format("%.2f", simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLocalVia());
+                    advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, getImagePath("pin_sgo_hardblue.png")));
+                }
+        }
     }
 
     public MapModel getAdvancedModel() {
         return advancedModel;
     }
-      
+
     public void onMarkerSelect(OverlaySelectEvent event) {
         marker = (Marker) event.getOverlay();
     }
-      
+
     public Marker getMarker() {
         return marker;
     }
 //    fim métodos para mapa
-    
+
     public void listarGet() {
         try {
             simulacao = new Simulacao();
@@ -296,7 +289,6 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             System.out.println(ex.getMessage());
             adicionarMensagemErro("Erro ao carregar simulações. " + ex.getMessage());
         }
-
         redirecionar("/View/Compartilhado/OAE/Simulacao/listar.jsf");
     }
 
@@ -330,10 +322,11 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
 
     public void visualizar(int idSimulacao) {
-        int i = 0;
-        i ++;
         try {
             simulacao = database.buscar(idSimulacao);
+            createBarModel();
+            createPieModels();
+            carregarMapa();
         } catch (Exception ex) {
             adicionarMensagemErro("Erro ao carregar simulação. " + ex.getMessage());
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -341,7 +334,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         redirecionar("/View/Compartilhado/OAE/Simulacao/visualizar.jsf");
     }
 
-    public void rankingGet(int idSimulacao) {
+    public void rankingGet(int idSimulacao) throws IOException {
 //        if (usuarioLogado.getId() == simulacao.getUsuario().getId()) {
 //            adicionarMensagemInfo("conferir se usuaáio logado é o mesmo usuário dono da simulação");
 //        }
@@ -358,7 +351,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
 
     //método executar ao carregar a view ranking
-    public void recarregarSimulacao() {
+    public void recarregarSimulacao() throws IOException {
         try {
             if (simulacao != null) {
                 simulacao = database.buscar(simulacao.getId());
@@ -372,9 +365,10 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
 
     //remove a ponte da simulação
-    public void excluirRanking(int idRanking) {
+    public void excluirRanking(int idRanking) throws IOException {
         try {
             database.excluirRanking(idRanking);
+            recarregarSimulacao();
             adicionarMensagemInfo("Ponte removida da simulação com sucesso.");
             //simulacoes = database.buscar();
         } catch (SQLException ex) {

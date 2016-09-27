@@ -12,7 +12,6 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui">
     
     
-    
     <h:body>
         <ui:composition template="/View/Compartilhado/template.xhtml">
             <ui:define name="content">
@@ -81,7 +80,7 @@ and open the template in the editor.
                     
                     <p:separator />
                     
-                    <p:commandButton value="Adicionar OAE" action="#{ponteBean.consultarGet()}" />
+                    <p:commandButton value="Adicionar OAE" action="#{ponteBean.consultarGet(simulacaoBean.simulacao.id)}" />
                     <p:commandButton value="Imprimir relatórios" action="#{ponteBean.consultarGet()}" style="width: 180px;" />
                     
                     <p:tabView>

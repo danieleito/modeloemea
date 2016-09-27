@@ -82,7 +82,7 @@ public class ComumBean {
            String tipoImagem = context.getExternalContext().getRequestParameterMap().get("tipoimagem");
            
            File imagens_dir = new File(System.getProperty("jboss.server.data.dir")+File.separatorChar+ "imagens");
-//           File imagens_dir = new File("\\\\PC01\\03. Pastas pessoais\\Daniele\\wildfly-10.0.0.CR4\\wildfly-10.0.0.CR4\\Imagens");
+//           File imagens_dir = new File("C:\\wildfly-10.0.0.CR4\\Imagens");
            StreamedContent sc = new DefaultStreamedContent(new FileInputStream(new File(imagens_dir, filename)), tipoImagem, filename);
            
            return sc;
@@ -111,7 +111,7 @@ public class ComumBean {
        else {
            // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
            File imagens_dir = new File(System.getProperty("jboss.server.data.dir")+File.separatorChar+ "imagens");
-//           File imagens_dir = new File("\\\\PC01\\03. Pastas pessoais\\Daniele\\wildfly-10.0.0.CR4\\wildfly-10.0.0.CR4\\Imagens");
+//           File imagens_dir = new File("C:\\wildfly-10.0.0.CR4\\Imagens");
            StreamedContent sc = new DefaultStreamedContent(new FileInputStream(new File(imagens_dir, filename)), tipoImagem, filename);
            return sc;
        }
@@ -120,18 +120,13 @@ public class ComumBean {
     public char getFileSeparator() {
         return File.separatorChar;
     }
-//    public void pontoSelecionado(PointSelectEvent event) {  
-//        LatLng latituteLongitude = event.getLatLng();  
-//           
-//        FacesContext.getCurrentInstance().addMessage(
-//            null,
-//            new FacesMessage(
-//                FacesMessage.SEVERITY_INFO, 
-//                "Ponto selecionado", 
-//                "Lat:" + latituteLongitude.getLat() + ", Long:" + latituteLongitude.getLng()
-//            )
-//        );  
-//    }  
+    
+    protected String getImagePath(String imageName) {
+        return FacesContext
+                .getCurrentInstance()
+                .getExternalContext()
+                .getRequestContextPath() + "/resources/images/" + imageName;
+    }
     
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Usuario getUsuarioLogado() {

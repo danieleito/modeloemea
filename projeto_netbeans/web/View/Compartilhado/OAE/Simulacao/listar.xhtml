@@ -19,6 +19,7 @@
                         <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
                         <p:menuitem value="Simulação" url="/View/Compartilhado/OAE/Simulacao/listar.jsf" />
                     </p:breadCrumb>
+                    <br/>
                     <h:outputLabel value="Nome da simulação" class="col-md-10" />
                     <p:inputText class="col-md-2" id="nova_simulacao" value="#{simulacaoBean.simulacao.nomeSimulacao}" />
                     <p:commandButton style="margin: 0 0 20px 20px; width: 160px;" value="Nova simulação" action="#{simulacaoBean.salvar()}" />
@@ -35,7 +36,7 @@
                         </p:column>
 
                         <p:column headerText="Gestor" style="width: 150px; text-align: center" >
-                            <h:outputText value="#{sim.usuario.usuario}" />
+                            <h:outputText value="#{sim.usuario.nome}" />
                             
                         </p:column>
 

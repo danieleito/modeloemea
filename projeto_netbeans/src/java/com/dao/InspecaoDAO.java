@@ -5,13 +5,8 @@
  */
 package com.dao;
 
-import com.model.CondicaoSgo;
-import com.model.IdentificacaoObraSgo;
 import com.model.Inspecao;
-import com.model.LaudoEspecializadoSgo;
 import com.model.Modelo;
-import com.model.MonitoramentoSgo;
-import com.model.Ponte;
 import com.model.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -9,7 +9,8 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -66,7 +67,6 @@ and open the template in the editor.
                                         <h:outputText value="Local via (km): " style="font-weight: bold" />
                                         <h:outputText value="#{ponteBean.marker.data[4]}" />
                                     </div>
-
                                 </p:outputPanel>
                             </p:gmapInfoWindow>
                         </p:gmap>
@@ -79,6 +79,9 @@ and open the template in the editor.
                                              map.getBoundsZoomLevel(markerBounds));
                             }
                         </script>
+                    </div>
+                    <div>
+                        <h:graphicImage  library="images" name="legenda_pins.png" style="float:left" />
                     </div>
                     
                     <div>
@@ -107,10 +110,9 @@ and open the template in the editor.
                             </p:column>
                         </p:outputPanel>
                     </div>
-                    <p:separator/>
-                    <h2>Obras de Arte Especiais</h2>
                     <p:separator />
-                    <br/>
+                    <h2>Obras de Arte Especiais</h2>
+
                     <table>
                         <tbody>
                             <tr>
@@ -207,9 +209,11 @@ and open the template in the editor.
 <!--                            OAEs-->
                             <h:outputText value="Registros encontrados: #{ponteBean.numeroPontesBuscados(ponteBean.pontes)}" style="text-align: right;" />
                         </f:facet>
-                        <!--para checkbox em cada uma das linhas da grid-->
-                        <p:column selectionMode="multiple" style="width:16px; text-align:center" />
                         
+                        <c:set var="r" value="#{ponteBean.exibirCheckBox(p.id)}" />
+                        
+                        <p:column rendered="#{r == 0}" style="width:16px; text-align:center" />
+                        <p:column rendered="#{r == 1}" selectionMode="multiple" style="width:16px; text-align:center" />
                         
                         <p:column headerText="Código" style="text-align: center" >
                             <h:outputText value="#{p.identificacaoObraDadosBasicos.codigo}" />
@@ -237,7 +241,7 @@ and open the template in the editor.
                             <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
                         </p:column>
                         <f:facet name="footer" >
-                            <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{ponteBean.carregar(simulacaoBean.simulacao.id)}" actionListener="#{simulacaoBean.recarregarSimulacao()}" />
+                            <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{simulacaoBean.recarregarSimulacao()}" actionListener="#{ponteBean.carregar(simulacaoBean.simulacao.id)}" />
                          </f:facet>
                     </p:dataTable>
                 </h:form>

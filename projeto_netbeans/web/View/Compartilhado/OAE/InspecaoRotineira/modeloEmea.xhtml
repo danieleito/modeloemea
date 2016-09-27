@@ -14,38 +14,58 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <h:panelGrid columns="2" cellpadding="10">
-            <p:dataTable var="arq" value="#{arquivoAnexo.arquivosCadastro}" paginator="true" rows="15" >
-                <p:column headerText="Arquivo" style="text-align: center" >
-                    <h:outputText value="#{arq.arquivo}" />
-                </p:column>
+        <h:form id="form">
+            <p:dataGrid var="mani" value="#{ponteBean.inspecoes}" columns="3" layout="grid" rows="12" paginator="true" id="cars" 
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+                        rowsPerPageTemplate="6,12,16">
 
-                <p:column headerText="Tipo arquivo" style="text-align: center" >
-                    <h:outputText value="#{arq.tipoArquivo}" />
-                </p:column>
+                <f:facet name="header">
+                    Modelo UFPR
+                </f:facet>
 
-                <p:column headerText="Número" style="width: 150px; text-align: center" >
-                    <h:outputText value="#{arq.numero}" />
-                </p:column>
+                <p:panel header="#{mani.id}" style="text-align:center">
+                    <h:panelGrid columns="1" style="width:100%">
+                        <!--foto-->
+                        <h:outputText value="#{mani.inspecaoManifestacaoElemento.dadosManifestacao.foto}" />
+<!--                        <h:outputText value="#{mani.elementoUfprManifestacaoUfpr.elementoUfpr.descricao}" />
+                        <h:outputText value="#{mani.dadosManifestacao.numero}" />
+                        <h:outputText value="#{mani.elementoUfprManifestacaoUfpr.manifestacaoUfpr.descricao}" />
+                        <h:outputText value="#{mani.dadosManifestacao.manifestacaoExtensao.descricao}" />
+                        <h:outputText value="#{mani.dadosManifestacao.tamanho}" />
+                        <h:outputText value="#{mani.elementoUfprManifestacaoUfpr.manifestacaoUfpr.unidade}" />
+                        <h:outputText value="#{mani.dadosManifestacao.manifestacaoUrgencia.descricao}" />-->
+                                                
 
-                <p:column headerText="Descrição" style="width: 150px; text-align: center" >
-                    <h:outputText value="#{arq.descricao}" />
-                </p:column>
+<!--                        <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                            <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                            <f:setPropertyActionListener value="{car}" target="{dataGridView.selectedCar}" />
+                        </p:commandLink>-->
+                    </h:panelGrid>
+                </p:panel>
 
-                <p:column headerText="Registro" style="text-align: center" >
-                    <h:outputText value="#{arq.registro}" />
-                </p:column>
+            </p:dataGrid>
 
-                <p:column headerText="Data anexação" style="width: 150px; text-align: center" >
-                    <h:outputText value="#{arq.dataAnexada}">
-                        <f:convertDateTime pattern="dd/MM/yyyy"/>
-                    </h:outputText>
-                </p:column>
+<!--            <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="carDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty dataGridView.selectedCar}" columnClasses="label,value">
+                        <f:facet name="header">
+                            <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/> 
+                        </f:facet>
 
-                <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                    <p:commandButton icon="ui-icon-arrowthickstop-1-s" title="Baixar" action="#{arquivoAnexo.baixar()}" />
-                </p:column>
-            </p:dataTable>
-        </h:panelGrid>
+                        <h:outputText value="Id:" />
+                        <h:outputText value="#{dataGridView.selectedCar.id}" />
+
+                        <h:outputText value="Year" />
+                        <h:outputText value="#{dataGridView.selectedCar.year}" />
+
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{dataGridView.selectedCar.color}" style="color:#{dataGridView.selectedCar.color}"/>
+
+                        <h:outputText value="Price" />
+                        <h:outputText value="$#{dataGridView.selectedCar.price}" />
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>-->
+        </h:form>
     </h:body>
 </html>

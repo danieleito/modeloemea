@@ -125,7 +125,7 @@ public class RankingDAO {
             Ponte ponte = new Ponte();
             ponte.setId(rs.getInt("ID_PONTE"));
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
-            ponte.setIndicePerformanceRelativo(rs.getString("DS_INDICE_PERFORMANCE_RELATIVO"));
+            ponte.setIndicePerformanceRelativo(rs.getDouble("DS_INDICE_PERFORMANCE_RELATIVO"));
             ponte.getIdentificacaoObraDadosBasicos().setCodigo(rs.getString("CD_PONTE"));
             ponte.getIdentificacaoObraDadosBasicos().setIdentificacao(rs.getString("DS_IDENTIFICACAO_OBRA"));
             ponte.getIdentificacaoObraLocalizacao().setVia(new Via(rs.getInt("ID_VIA"), null));

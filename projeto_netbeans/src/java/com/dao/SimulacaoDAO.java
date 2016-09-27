@@ -69,7 +69,7 @@ public class SimulacaoDAO {
     //BUSCAR APENAS PARA A GRID SIMULACAO;
     public ArrayList<Simulacao> buscar() throws SQLException {
         String query = "select S.ID_SIMULACAO, S.DT_DATA, S.ID_USUARIO, "
-                + "U.DS_USUARIO, S.NM_SIMULACAO "
+                + "U.DS_USUARIO, U.NM_NOME, S.NM_SIMULACAO "
                 + "from SIMULACAO S, USUARIO U "
                 + "where S.ID_USUARIO = U.ID_USUARIO;";
 
@@ -86,6 +86,7 @@ public class SimulacaoDAO {
             Usuario usuario = new Usuario();
             usuario.setId(rs.getInt("ID_USUARIO"));
             usuario.setUsuario(rs.getString("DS_USUARIO"));
+            usuario.setNome(rs.getString("NM_NOME"));
 
             Simulacao simulacao = new Simulacao(rs.getInt("ID_SIMULACAO"), 
                     rs.getDate("DT_DATA"), usuario, rs.getString("NM_SIMULACAO"), null);
@@ -167,7 +168,7 @@ public class SimulacaoDAO {
             ponte.setId(rs.getInt("ID_PONTE"));
             ponte.setIdentificacaoObraDadosBasicos(dadosBasicos);
             ponte.setIdentificacaoObraLocalizacao(localizacao);
-            ponte.setIndicePerformanceRelativo(rs.getString("DS_INDICE_PERFORMANCE_RELATIVO"));
+            ponte.setIndicePerformanceRelativo(rs.getDouble("DS_INDICE_PERFORMANCE_RELATIVO"));
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
             ArquivoAnexoDAO dbArquivoAnexo = new ArquivoAnexoDAO();
             ponte.setArquivosAnexosCadastro(dbArquivoAnexo.buscarCadastros(rs.getInt("ID_PONTE")));

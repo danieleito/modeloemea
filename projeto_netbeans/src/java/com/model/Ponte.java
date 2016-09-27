@@ -21,7 +21,7 @@ public class Ponte implements Serializable {
     /**
      * indice de performance relativo
      */
-    private String indicePerformanceRelativo;
+    private double indicePerformanceRelativo;
     /**
      * identificador da identificação obra de dados básicos
      */
@@ -134,7 +134,7 @@ public class Ponte implements Serializable {
      * @param observacao {@link #observacao}
      * @param substituicao {@link #substituicao}
      */
-    public Ponte(int id, String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, 
+    public Ponte(int id, double indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, 
             IdentificacaoObraLocalizacao identificacaoObraLocalizacao, IdentificacaoObraResponsaveis identificacaoObraResponsaveis, 
             IdentificacaoObraInspecao identificacaoObraInspecao, CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, 
             CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, RotasAlternativas rotasAlternativas,
@@ -166,7 +166,7 @@ public class Ponte implements Serializable {
      * @param observacao {@link #observacao}
      * @param substituicao {@link #substituicao}
      */
-    public Ponte(String indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, IdentificacaoObraLocalizacao identificacaoObraLocalizacao, 
+    public Ponte(double indicePerformanceRelativo, IdentificacaoObraDadosBasicos identificacaoObraDadosBasicos, IdentificacaoObraLocalizacao identificacaoObraLocalizacao, 
             IdentificacaoObraResponsaveis identificacaoObraResponsaveis, IdentificacaoObraInspecao identificacaoObraInspecao, 
             CaracteristicasFuncionaisCaracteristicas caracteristicasFuncionaisCaracteristicas, CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes, 
             RotasAlternativas rotasAlternativas, Observacao observacao, Substituicao substituicao) {
@@ -263,11 +263,11 @@ public class Ponte implements Serializable {
         this.dataUltimaInspecao = dataUltimaInspecao;
     }
 
-    public String getIndicePerformanceRelativo() {
+    public double getIndicePerformanceRelativo() {
         return indicePerformanceRelativo;
     }
 
-    public void setIndicePerformanceRelativo(String indicePerformanceRelativo) {
+    public void setIndicePerformanceRelativo(double indicePerformanceRelativo) {
         this.indicePerformanceRelativo = indicePerformanceRelativo;
     }
 

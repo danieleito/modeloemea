@@ -82,9 +82,7 @@ and open the template in the editor.
                     <p:tabView>
                         <p:tab title="Ranqueamento">
                             <p:dataTable id="checkboxDT" var="r" value="#{simulacaoBean.simulacao.rankings}" rowKey="#{r.id}" style="margin-bottom: 0" paginator="true" rows="15" >
-                                <f:facet name="header" >
-                                    #{simulacaoBean.simulacao.nomeSimulacao}
-                                </f:facet>
+
                                 <!--<p:column selectionMode="multiple" style="width:16px; text-align:center" />-->
                                 <p:column headerText="Data da última inspeção" style="width: 100px; text-align: center" >
                                     <h:outputText value="#{r.ponte.dataUltimaInspecao}">
