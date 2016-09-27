@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Simulação</title>
+        <h:outputScript library="js" name="validacoes.js" />
+    </h:head>
+    <h:body>
+        <ui:composition template="/View/Compartilhado/template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:breadCrumb>
+                        <p:menuitem value="Categories" url="#" />
+                        <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
+                        <p:menuitem value="Simulação" url="/View/Compartilhado/OAE/Simulacao/listar.jsf" />
+                    </p:breadCrumb>
+                    <br/>
+                    <h:outputLabel value="Nome da simulação" class="col-md-10" />
+                    <p:inputText class="col-md-2" id="nova_simulacao" value="#{simulacaoBean.simulacao.nomeSimulacao}" />
+                    <p:commandButton style="margin: 0 0 20px 20px; width: 160px;" value="Nova simulação" action="#{simulacaoBean.salvar()}" />
+                    
+                    <p:dataTable var="sim" value="#{simulacaoBean.simulacoes}" paginator="true" rows="15" >
+                        <p:column headerText="Simulação" style="text-align: center" >
+                            <h:outputText value="#{sim.nomeSimulacao}" />
+                        </p:column>
+                        
+                        <p:column headerText="Data" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{sim.data}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Gestor" style="width: 150px; text-align: center" >
+                            <h:outputText value="#{sim.usuario.nome}" />
+                            
+                        </p:column>
+
+                        <p:column headerText="Ação" style="width: 120px; text-align: center" >
+                            <p:commandButton icon="ui-icon-search" title="Visualizar" actionListener="#{simulacaoBean.visualizar(sim.id)}"  />
+
+                            <h:panelGroup rendered="#{login.usuarioLogado.id == sim.usuario.id}">
+                                    <p:commandButton icon="ui-icon-pencil" title="Ranking" action="#{simulacaoBean.rankingGet(sim.id)}" />
+
+                                    <p:growl id="message" showDetail="true" />
+                                    <p:commandButton icon="ui-icon-trash" title="Deletar" actionListener="#{simulacaoBean.excluir(sim.id)}" update="message">
+                                        <p:confirm header="Confirmation" message="Tem certeza que deseja excluir a simulação permanentemente?" icon="ui-icon-alert" />
+                                    </p:commandButton>
+                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                    </p:confirmDialog>
+                            </h:panelGroup>
+
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>
+ 
+    <h:body>
+        <div class="topo">
+            <h:graphicImage  library="images" name="header_logo-dnit.png" style="float:left" />
+            <h:graphicImage library="images" name="SGO-Gestor-logo-RV002.png" style="float:right" />
+        </div>
+        <div class="corpo">
+            <div class="page"> 
+                <div class="content">
+                    <ui:insert name="content">
+                        Default Content
+                    </ui:insert>
+                </div>
+                <div class="row">
+                    <p:messages id="messages" showSummary="false"  showDetail="true" globalOnly="true" autoUpdate="true" closable="true" />
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <ui:include src="/View/Compartilhado/rodape.xhtml" />
+        </div>
+    </h:body>
+</html>
+
