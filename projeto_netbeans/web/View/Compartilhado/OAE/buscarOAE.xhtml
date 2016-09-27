@@ -67,7 +67,6 @@ and open the template in the editor.
                                         <h:outputText value="Local via (km): " style="font-weight: bold" />
                                         <h:outputText value="#{ponteBean.marker.data[4]}" />
                                     </div>
-
                                 </p:outputPanel>
                             </p:gmapInfoWindow>
                         </p:gmap>
@@ -80,6 +79,9 @@ and open the template in the editor.
                                              map.getBoundsZoomLevel(markerBounds));
                             }
                         </script>
+                    </div>
+                    <div>
+                        <h:graphicImage  library="images" name="legenda_pins.png" style="float:left" />
                     </div>
                     
                     <div>
@@ -108,10 +110,9 @@ and open the template in the editor.
                             </p:column>
                         </p:outputPanel>
                     </div>
-                    <p:separator/>
-                    <h2>Obras de Arte Especiais</h2>
                     <p:separator />
-                    <br/>
+                    <h2>Obras de Arte Especiais</h2>
+
                     <table>
                         <tbody>
                             <tr>

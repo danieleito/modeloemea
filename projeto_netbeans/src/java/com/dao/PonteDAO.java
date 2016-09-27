@@ -510,7 +510,7 @@ public class PonteDAO {
         stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         boolean retorno = false;
-        if (rs.next()) { // nesse if cai fora, nao entra no if
+        if (rs.next()) {
             retorno = true;
         }
         conexao.closeConnection();

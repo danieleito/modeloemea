@@ -143,6 +143,7 @@ public class PonteBean extends ComumBean implements Serializable {
     private ArrayList<Reparo> reparos;
     
     private Inspecao inspecao;
+    private ArrayList<Inspecao> inspecoes;
     
     //mapa
 //    private MapModel draggableModel;
@@ -221,7 +222,7 @@ public class PonteBean extends ComumBean implements Serializable {
     public void cancelar() {
         redirecionar("/View/Compartilhado/OAE/Simulacao/ranking.jsf");
     }
-    
+
     public void visualizar(int id) {
         //visualiza ponte do 'id'
         try {
@@ -232,7 +233,7 @@ public class PonteBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro ao carregar inspeções.");
         }
     }
-    
+
     public void carregar(int idSimulacao) {
         if (pontesSelecionadas.size() > 0) {
             try {
@@ -241,14 +242,14 @@ public class PonteBean extends ComumBean implements Serializable {
                 for (int i = 0; i < pontesSelecionadas.size(); i++) {
     //                se ponte ainda nao esta na simulacao
     //                int esta = buscarPonteEmSimulacao(idSimulacao, pontesSelecionadas.get(i).getId());
-    //
+
                     if (!database.ponteEstaSimulacao(pontesSelecionadas.get(i).getId(), idSimulacao)) {
                         db.inserir(pontesSelecionadas.get(i).getId(), idSimulacao);
                         qtde++;
                     }
                 }
                 adicionarMensagemInfo(qtde + " pontes adicionadas das "+pontesSelecionadas.size()+" selecionadas");
-                
+
             } catch (SQLException ex) {
                 Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
                 adicionarMensagemErro("Erro ao carregar ponte no ranking. " + ex.getMessage());
@@ -798,6 +799,14 @@ public class PonteBean extends ComumBean implements Serializable {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+    
+    public ArrayList<Inspecao> getInspecoes() {
+        return inspecoes;
+    }
+
+    public void setInspecoes(ArrayList<Inspecao> inspecoes) {
+        this.inspecoes = inspecoes;
     }
     // </editor-fold>
 
