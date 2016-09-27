@@ -15,7 +15,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
@@ -24,7 +23,6 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
@@ -48,7 +46,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private Simulacao simulacao;
     private SimulacaoDAO database;
     private ArrayList<Simulacao> simulacoes;
-    
+
     private BarChartModel barModel;
     private Marker marker;
     private MapModel advancedModel;
@@ -65,7 +63,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private BarChartModel initBarModel() {
         BarChartModel model = new BarChartModel();
         ChartSeries pontes = new ChartSeries();
-        
+
         if (simulacao != null) {
             if (simulacao.getRankings() != null) {
                 int t = simulacao.getRankings().size();
@@ -102,11 +100,10 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         createPieModel1();
         createPieModel2();
         createPieModel3();
-
     }
 //grafico para mostrar manifetacoes;
     private PieChartModel pieModel1;
- 
+
     public PieChartModel getPieModel1() {
         return pieModel1;
     }
@@ -145,11 +142,11 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
 //grafico para mostrar tipo estruturas;
     private PieChartModel pieModel2;
- 
+
     public PieChartModel getPieModel2() {
         return pieModel2;
     }
- 
+
     private void createPieModel2() {
         pieModel2 = new PieChartModel();
 
@@ -178,15 +175,15 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         pieModel2.setLegendCols(1);
         pieModel2.setLegendPlacement(LegendPlacement.INSIDE);
     }
-    
+
 ///////////////////////////////////////
 //grafico para mostrar sistema construtivo;
     private PieChartModel pieModel3;
- 
+
     public PieChartModel getPieModel3() {
         return pieModel3;
     }
- 
+
     private void createPieModel3() {
         pieModel3 = new PieChartModel();
 
@@ -209,12 +206,11 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         }catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         pieModel3.setTitle("Sistema construtivo");
         pieModel3.setLegendPosition("e");
         pieModel3.setLegendCols(1);
         pieModel3.setLegendPlacement(LegendPlacement.INSIDE);
-    
     }
 //    fim métodos para gráficos
 
@@ -263,7 +259,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
                             imagem += arq.get().getImagem().getNome();
                         }
                     }
-                    
+
                     String localVia = String.format("%.2f", simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLocalVia());
                     advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, getImagePath("pin_sgo_hardblue.png")));
                 }
@@ -273,16 +269,16 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     public MapModel getAdvancedModel() {
         return advancedModel;
     }
-      
+
     public void onMarkerSelect(OverlaySelectEvent event) {
         marker = (Marker) event.getOverlay();
     }
-      
+
     public Marker getMarker() {
         return marker;
     }
 //    fim métodos para mapa
-    
+
     public void listarGet() {
         try {
             simulacao = new Simulacao();
@@ -293,7 +289,6 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             System.out.println(ex.getMessage());
             adicionarMensagemErro("Erro ao carregar simulações. " + ex.getMessage());
         }
-
         redirecionar("/View/Compartilhado/OAE/Simulacao/listar.jsf");
     }
 
