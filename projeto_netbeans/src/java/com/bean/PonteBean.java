@@ -242,7 +242,11 @@ public class PonteBean extends ComumBean implements Serializable {
     //                int esta = buscarPonteEmSimulacao(idSimulacao, pontesSelecionadas.get(i).getId());
     //
                     if (!database.ponteEstaSimulacao(pontesSelecionadas.get(i).getId(), idSimulacao)) {
-                        db.inserir(pontesSelecionadas.get(i).getId(), idSimulacao);
+                        try{
+                            db.inserir(pontesSelecionadas.get(i).getId(), idSimulacao);
+                        } catch(SQLException ex){
+                            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         qtde++;
                     }
                 }

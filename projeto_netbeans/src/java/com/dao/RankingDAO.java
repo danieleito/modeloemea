@@ -74,9 +74,7 @@ public class RankingDAO {
     }
 
     public boolean inserir(int idPonte, int idSimulacao) throws SQLException {
-        String query = "if (not exists (select * from RANKING where ID_PONTE = "+idPonte+"and ID_SIMULACAO = "+idSimulacao+")) begin ";
-        query += "insert into RANKING (ID_PONTE, ID_SIMULACAO) values(?, ?) ";
-        query += "end; ";
+        String query = "insert into RANKING (ID_PONTE, ID_SIMULACAO) values(?, ?) ";
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
