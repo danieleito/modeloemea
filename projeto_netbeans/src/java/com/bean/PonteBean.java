@@ -14,6 +14,7 @@ import com.dao.NaturezaTransposicaoDAO;
 import com.dao.NumeroDAO;
 import com.dao.PonteDAO;
 import com.dao.RankingDAO;
+import com.dao.SimulacaoDAO;
 import com.dao.SistemaConstrutivoDAO;
 import com.dao.SuperintendenciaRegionalDAO;
 import com.dao.TipoEstruturaDAO;
@@ -257,12 +258,14 @@ public class PonteBean extends ComumBean implements Serializable {
             adicionarMensagemWarning("Nenhuma OAE foi selecionada.");
             redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
         }
-        
     }
     
-    public void consultarGet() {
+    public void consultarGet(int idSimulacao) {
         try {
+            SimulacaoDAO dbSimulacao = new SimulacaoDAO();
+            modelSimulacao = dbSimulacao.buscar(idSimulacao);
             pontesSelecionadas = new ArrayList<>();
+            
             limparFiltros();
             pontes = database.buscar();
             carregarMapa();
@@ -451,15 +454,37 @@ public class PonteBean extends ComumBean implements Serializable {
                 }
                 DecimalFormat df = new DecimalFormat("#.00");
                 String localVia = String.format("%.2f", pontes.get(i).getIdentificacaoObraLocalizacao().getLocalVia());
-                advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, "http://localhost:8080/ModeloEmea/javax.faces.resource/pin_sgo_lightblue.png.jsf?ln=images")); //pode ser o quarto de ultimo parametro, serve para mudar a cor do pin, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"
+                
+                String path = "";
+                int idPonte = pontes.get(i).getId();
+                if (modelSimulacao.getRankings().stream()
+                        .filter(p -> p.getPonte().getId() == idPonte)
+                        .findFirst()
+                        .isPresent()) {
+                    path = getImagePath("pin_sgo_hardblue.png");
+                } else {
+                    path = getImagePath("pin_sgo_white.png");
+                }
+                advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, path)); //pode ser o quarto de ultimo parametro, serve para mudar a cor do pin, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"
             }
         }
-
 //        for(Marker premarker : draggableModel.getMarkers()) {
 //            premarker.setDraggable(true);
 //        } 
     }
 
+    public int exibirCheckBox(int idPonte) {
+        int r = modelSimulacao.getRankings().stream()
+                        .filter(p -> p.getPonte().getId() == idPonte)
+                        .findFirst()
+                        .isPresent() 
+                ? 0 
+                : 1;
+        String w = "";
+        String q = w;
+        return r;
+    }
+    
     public MapModel getAdvancedModel() {
         return advancedModel;
     }
