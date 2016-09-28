@@ -15,3 +15,5 @@ projeto_netbeans/nbproject/private/private.properties
 projeto_netbeans/nbproject/private/private.properties
 /projeto_netbeans/dist/
 /projeto_netbeans/build/*
+build.xml
+/nbproject
