@@ -11,7 +11,6 @@ create table TIPO_USUARIO
 		CONSTRAINT			pk_tipausuario	PRIMARY KEY(ID_TIPO_USUARIO)
 	);
 
-
 create table USUARIO 
 	(
 		ID_USUARIO			int				not null identity(1,1),

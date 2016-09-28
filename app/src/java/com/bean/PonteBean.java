@@ -31,6 +31,7 @@ import com.model.ElementoUfpr;
 import com.model.ExtensaoRelativa;
 import com.model.Foto;
 import com.model.Inspecao;
+import com.model.InspecaoManifestacaoElemento;
 import com.model.ManifestacaoUfpr;
 import com.model.NaturezaTransposicao;
 import com.model.Numero;
@@ -58,6 +59,7 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.map.OverlaySelectEvent;
@@ -212,6 +214,9 @@ public class PonteBean extends ComumBean implements Serializable {
             //mapa
             database = new PonteDAO();
             model = null;
+            
+            //modelo emea
+//            inspecaoManifestacaoElementos = inspecaoManifestacaoElemento.
             
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -540,6 +545,38 @@ public class PonteBean extends ComumBean implements Serializable {
         return numero;
     }
 
+    //////////////////////////////////////
+    private ArrayList<InspecaoManifestacaoElemento> inspecaoManifestacaoElementos;
+     
+    private InspecaoManifestacaoElemento selectedInspecaoManifestacaoElemento;
+     
+    @ManagedProperty("#{inspecaoManifestacaoElemento}")
+    private InspecaoManifestacaoElemento inspecaoManifestacaoElemento;
+
+    public ArrayList<InspecaoManifestacaoElemento> getInspecaoManifestacaoElementos() {
+        return inspecaoManifestacaoElementos;
+    }
+
+    public void setInspecaoManifestacaoElemento(InspecaoManifestacaoElemento inspecaoManifestacaoElemento) {
+        this.inspecaoManifestacaoElemento = inspecaoManifestacaoElemento;
+    }
+
+    public InspecaoManifestacaoElemento getSelectedInspecaoManifestacaoElemento() {
+        return selectedInspecaoManifestacaoElemento;
+    }
+
+    public void setSelectedInspecaoManifestacaoElemento(InspecaoManifestacaoElemento selectedInspecaoManifestacaoElemento) {
+        this.selectedInspecaoManifestacaoElemento = selectedInspecaoManifestacaoElemento;
+    }
+
+    public ArrayList<InspecaoManifestacaoElemento> createInspecaoManifestacaoElemento(int size) {
+        ArrayList<InspecaoManifestacaoElemento> list = new ArrayList<InspecaoManifestacaoElemento>();
+        for(int i = 0 ; i < size ; i++) {
+//            list.add(new InspecaoManifestacaoElemento(i, size, dadosManifestacao, elementoUfprManifestacaoUfpr));
+        }
+         
+        return list;
+    }
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
         return filtroCodigo;
