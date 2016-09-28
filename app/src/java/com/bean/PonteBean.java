@@ -59,7 +59,6 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.map.OverlaySelectEvent;
@@ -214,10 +213,7 @@ public class PonteBean extends ComumBean implements Serializable {
             //mapa
             database = new PonteDAO();
             model = null;
-            
-            //modelo emea
-//            inspecaoManifestacaoElementos = inspecaoManifestacaoElemento.
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar campos da tela Consultar. " + ex);
@@ -506,8 +502,7 @@ public class PonteBean extends ComumBean implements Serializable {
     public Marker getMarker() {
         return marker;
     }
-    
-    /////////////////////////////////////////////////////////////////////////////
+
 //   parametros         double latitude, double longitude
     public void retangulo() {
         double latitude = -23.49975;
@@ -532,9 +527,8 @@ public class PonteBean extends ComumBean implements Serializable {
 
     public void onRectangleSelect(OverlaySelectEvent event) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Rectangle Selected", null));
-    }       
-//            ////////////////////////////////////////////////////////////////////////////////
-    
+    }
+
 //    fim métodos para mapa
     
 
@@ -545,38 +539,30 @@ public class PonteBean extends ComumBean implements Serializable {
         return numero;
     }
 
-    //////////////////////////////////////
+    ////////////////////////////////////// modelo emea
     private ArrayList<InspecaoManifestacaoElemento> inspecaoManifestacaoElementos;
      
-    private InspecaoManifestacaoElemento selectedInspecaoManifestacaoElemento;
-     
-    @ManagedProperty("#{inspecaoManifestacaoElemento}")
     private InspecaoManifestacaoElemento inspecaoManifestacaoElemento;
+     
+//    @ManagedProperty("#{carService}")
+//    private CarService service;
 
-    public ArrayList<InspecaoManifestacaoElemento> getInspecaoManifestacaoElementos() {
+    public ArrayList<InspecaoManifestacaoElemento> getCars() {
         return inspecaoManifestacaoElementos;
     }
-
-    public void setInspecaoManifestacaoElemento(InspecaoManifestacaoElemento inspecaoManifestacaoElemento) {
+ 
+//    public void setService(CarService service) {
+//        this.service = service;
+//    }
+ 
+    public InspecaoManifestacaoElemento getInspecaoManifestacaoElemento() {
+        return inspecaoManifestacaoElemento;
+    }
+ 
+    public void setSelectedCar(InspecaoManifestacaoElemento inspecaoManifestacaoElemento) {
         this.inspecaoManifestacaoElemento = inspecaoManifestacaoElemento;
     }
-
-    public InspecaoManifestacaoElemento getSelectedInspecaoManifestacaoElemento() {
-        return selectedInspecaoManifestacaoElemento;
-    }
-
-    public void setSelectedInspecaoManifestacaoElemento(InspecaoManifestacaoElemento selectedInspecaoManifestacaoElemento) {
-        this.selectedInspecaoManifestacaoElemento = selectedInspecaoManifestacaoElemento;
-    }
-
-    public ArrayList<InspecaoManifestacaoElemento> createInspecaoManifestacaoElemento(int size) {
-        ArrayList<InspecaoManifestacaoElemento> list = new ArrayList<InspecaoManifestacaoElemento>();
-        for(int i = 0 ; i < size ; i++) {
-//            list.add(new InspecaoManifestacaoElemento(i, size, dadosManifestacao, elementoUfprManifestacaoUfpr));
-        }
-         
-        return list;
-    }
+    
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
         return filtroCodigo;
