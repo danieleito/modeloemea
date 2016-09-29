@@ -15,7 +15,7 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <h:form id="form">
-            <p:dataGrid var="i" value="#{ponteBean.inspecao.inspecaoManifestacaoElemento}" columns="3" layout="grid" rows="12" paginator="true" >
+            <p:dataGrid var="i" value="#{ponteBean.inspecao.inspecaoManifestacaoElemento}" columns="4" layout="grid" rows="12" paginator="true" >
 
                 <f:facet name="header">
                     Modelo UFPR
@@ -23,10 +23,31 @@ and open the template in the editor.
 
                 <p:panel header="" style="text-align:center">
                     <h:panelGrid columns="1" style="width:100%">
-                        <!--foto-->
-                        <h:outputLabel value="ola" />
-                        <!--<p:outputLabel value="oi" />-->
-                        <h:outputText value="#{i.dadosManifestacao.manifestacaoExtensao.descricao}" />
+
+<!--                        <h:outputLink>
+                            <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
+                                <f:param name="filename" value="" />
+                                <f:param name="tipoimagem" value="image/jpg" />
+                            </p:graphicImage>
+                        </h:outputLink>
+                        
+                        <p:graphicImage name="#{ponteBean.inspecao.arquivosAnexosInspecao}"/> -->
+                        
+                        <h:outputText value="Foto: #{i.dadosManifestacao.foto}" />
+                        
+                        <h:outputText value="Elemento: #{i.elementoUfprManifestacaoUfpr.elementoUfpr.descricao}" />
+
+                        <h:outputText value="Número: #{i.dadosManifestacao.numero}" />
+                        
+                        <h:outputText value="Manifestação: #{i.elementoUfprManifestacaoUfpr.manifestacaoUfpr.descricao}" />
+                        
+                        <h:outputText value="Dimensão: #{i.dadosManifestacao.manifestacaoExtensao.descricao}" />
+                        
+                        <h:outputText value="Tamanho: #{i.dadosManifestacao.tamanho}" />
+                        
+                        <h:outputText value="Unidade: #{i.elementoUfprManifestacaoUfpr.manifestacaoUfpr.unidade}" />
+                        
+                        <h:outputText value="Reparo: #{i.dadosManifestacao.manifestacaoUrgencia.descricao}" />
 
                     </h:panelGrid>
                 </p:panel>

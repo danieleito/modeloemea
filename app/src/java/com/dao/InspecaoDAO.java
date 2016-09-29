@@ -5,8 +5,14 @@
  */
 package com.dao;
 
+import com.model.DadosManifestacao;
+import com.model.ElementoUfpr;
+import com.model.ElementoUfprManifestacaoUfpr;
 import com.model.Inspecao;
 import com.model.InspecaoManifestacaoElemento;
+import com.model.ManifestacaoExtensao;
+import com.model.ManifestacaoUfpr;
+import com.model.ManifestacaoUrgencia;
 import com.model.Modelo;
 import com.model.Usuario;
 import java.sql.Connection;
@@ -165,7 +171,7 @@ public class InspecaoDAO {
                 + "from INSPECAO_MANIFESTACAO_ELEMENTO IME, DADOS_MANIFESTACAO DM, "
                 + "ELEMENTO_UFPR_MANIFESTACAO_UFPR EUMU, ELEMENTO_UFPR EU, MANIFESTACAO_UFPR MU, "
                 + "MANIFESTACOES_EXTENSAO ME, MANIFESTACOES_URGENCIA MURG "
-                + "where IME.ID_INSPECAO = 1 "
+                + "where IME.ID_INSPECAO = " + idInspecao + " "
                 + "and IME.ID_DADOS_MANIFESTACAO = DM.ID_DADOS_MANIFESTACAO "
                 + "and IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR = EUMU.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR "
                 + "and EUMU.ID_ELEMENTO_UFPR = EU.ID_ELEMENTO_UFPR "
@@ -182,7 +188,13 @@ public class InspecaoDAO {
         ArrayList<InspecaoManifestacaoElemento> inspecaoManifestacaoElementos = new ArrayList<>();
 
         while (rs.next()) {
-            InspecaoManifestacaoElemento inspecaoManifestacaoElemento = new InspecaoManifestacaoElemento();
+            InspecaoManifestacaoElemento inspecaoManifestacaoElemento = new InspecaoManifestacaoElemento(rs.getInt("ID_INSPECAO_MANIFESTACAO_ELEMENTO"), 
+                    rs.getInt("ID_INSPECAO"), 
+                    new DadosManifestacao(rs.getInt("ID_DADOS_MANIFESTACAO"), rs.getString("DS_FOTO"), rs.getString("DS_TAMANHO"), rs.getString("DS_NUMERO"), 
+                            new ManifestacaoExtensao(rs.getInt("ID_MANIFESTACOES_EXTENSAO"), rs.getString("DS_MANIFESTACOES_EXTENSAO"), null, null), 
+                            new ManifestacaoUrgencia(rs.getInt("ID_MANIFESTACOES_URGENCIA"), rs.getString("DS_MANIFESTACOES_URGENCIA"), null, null)), 
+                    new ElementoUfprManifestacaoUfpr(rs.getInt("ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR"), new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), null, rs.getString("DS_ELEMENTO"), null), 
+                            new ManifestacaoUfpr(rs.getInt("ID_MANIFESTACAO_UFPR"), null, rs.getString("DS_MANIFESTACAO_UFPR"), null, null)));
             inspecaoManifestacaoElementos.add(inspecaoManifestacaoElemento);
         }
         conexao.closeConnection();
