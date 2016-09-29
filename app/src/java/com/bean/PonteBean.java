@@ -540,28 +540,7 @@ public class PonteBean extends ComumBean implements Serializable {
     }
 
     ////////////////////////////////////// modelo emea
-    private ArrayList<InspecaoManifestacaoElemento> inspecaoManifestacaoElementos;
-     
-    private InspecaoManifestacaoElemento inspecaoManifestacaoElemento;
-     
-//    @ManagedProperty("#{carService}")
-//    private CarService service;
-
-    public ArrayList<InspecaoManifestacaoElemento> getCars() {
-        return inspecaoManifestacaoElementos;
-    }
- 
-//    public void setService(CarService service) {
-//        this.service = service;
-//    }
- 
-    public InspecaoManifestacaoElemento getInspecaoManifestacaoElemento() {
-        return inspecaoManifestacaoElemento;
-    }
- 
-    public void setSelectedCar(InspecaoManifestacaoElemento inspecaoManifestacaoElemento) {
-        this.inspecaoManifestacaoElemento = inspecaoManifestacaoElemento;
-    }
+    
     
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {

@@ -6,6 +6,7 @@
 package com.dao;
 
 import com.model.Inspecao;
+import com.model.InspecaoManifestacaoElemento;
 import com.model.Modelo;
 import com.model.Usuario;
 import java.sql.Connection;
@@ -146,14 +147,45 @@ public class InspecaoDAO {
             inspecao.setDanosElementosSgo(dbDanoElementoSgo.buscarDanosElementosSgo(rs.getInt("ID_INSPECAO")));
             inspecao.setInsuficienciasEstruturaisElementosSgo(dbInsuficienciaEstruturalElementoSgo.buscarInsuficienciasEstruturaisElementosSgo(rs.getInt("ID_INSPECAO")));
             inspecao.setArquivosAnexosInspecao(dbArquivoAnexo.buscarInspecoes(rs.getInt("ID_INSPECAO")));
-            
+            inspecao.setInspecaoManifestacaoElemento(buscarInspecaoManifestacaoElemento(rs.getInt("ID_INSPECAO")));
             inspecoes.add(inspecao);
         }
         conexao.closeConnection();
         return inspecoes;
     }
     
-//    public Inspecao buscarInspecao(int idPonte) {
-//        
-//    }
+    private ArrayList<InspecaoManifestacaoElemento> buscarInspecaoManifestacaoElemento(int idInspecao) throws SQLException {
+        String query = "select IME.ID_INSPECAO_MANIFESTACAO_ELEMENTO, IME.ID_INSPECAO, "
+                + "IME.ID_DADOS_MANIFESTACAO, DM.DS_FOTO, DM.DS_NUMERO, DM.DS_TAMANHO, "
+                + "DM.ID_MANIFESTACOES_EXTENSAO, ME.DS_MANIFESTACOES_EXTENSAO, "
+                + "DM.ID_MANIFESTACOES_URGENCIA, MURG.DS_MANIFESTACOES_URGENCIA, "
+                + "IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR, EUMU.ID_ELEMENTO_UFPR, "
+                + "EU.DS_ELEMENTO, EUMU.ID_MANIFESTACAO_UFPR, MU.DS_MANIFESTACAO_UFPR, "
+                + "MU.DS_UNIDADE "
+                + "from INSPECAO_MANIFESTACAO_ELEMENTO IME, DADOS_MANIFESTACAO DM, "
+                + "ELEMENTO_UFPR_MANIFESTACAO_UFPR EUMU, ELEMENTO_UFPR EU, MANIFESTACAO_UFPR MU, "
+                + "MANIFESTACOES_EXTENSAO ME, MANIFESTACOES_URGENCIA MURG "
+                + "where IME.ID_INSPECAO = 1 "
+                + "and IME.ID_DADOS_MANIFESTACAO = DM.ID_DADOS_MANIFESTACAO "
+                + "and IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR = EUMU.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR "
+                + "and EUMU.ID_ELEMENTO_UFPR = EU.ID_ELEMENTO_UFPR "
+                + "and EUMU.ID_MANIFESTACAO_UFPR = MU.ID_MANIFESTACAO_UFPR "
+                + "and DM.ID_MANIFESTACOES_EXTENSAO = ME.ID_MANIFESTACOES_EXTENSAO "
+                + "and DM.ID_MANIFESTACOES_URGENCIA = MURG.ID_MANIFESTACOES_URGENCIA;";
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        ArrayList<InspecaoManifestacaoElemento> inspecaoManifestacaoElementos = new ArrayList<>();
+
+        while (rs.next()) {
+            InspecaoManifestacaoElemento inspecaoManifestacaoElemento = new InspecaoManifestacaoElemento();
+            inspecaoManifestacaoElementos.add(inspecaoManifestacaoElemento);
+        }
+        conexao.closeConnection();
+        return inspecaoManifestacaoElementos;
+    }
 }

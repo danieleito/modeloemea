@@ -172,7 +172,8 @@ public class SimulacaoDAO {
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
             ArquivoAnexoDAO dbArquivoAnexo = new ArquivoAnexoDAO();
             ponte.setArquivosAnexosCadastro(dbArquivoAnexo.buscarCadastros(rs.getInt("ID_PONTE")));
-
+            
+            
             Ranking ranking = new Ranking(rs.getInt("ID_RANKING"), ponte);
             rankings.add(ranking);
         }
