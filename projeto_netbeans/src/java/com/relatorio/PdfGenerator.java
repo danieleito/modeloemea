@@ -65,12 +65,38 @@ public class PdfGenerator
         {"HTC","01:25"},
         {"Samsung Tab2","05:30"}
     } ;
-
-    drawTable(page, contentStream, 700, 100, content);
+    
+     final float width = page.getCropBox().getWidth()/2 ;
+    drawSection(page, contentStream, 792, 10, width,"1. IDENTIFICAÇÃO DA OBRA", content);
 
     contentStream.close();
     doc.save("C:\\Users\\Usuario\\Documents\\test.pdf" );
 } 
+
+
+   
+ public static void drawSection(PDPage page, PDPageContentStream contentStream,
+                             float y, float x,float width,
+                             String title, String[][] content) throws IOException{
+     
+    
+     
+      
+        StringPDFbox titlePDFbox = new StringPDFbox(title, PDType1Font.HELVETICA_BOLD, 12);
+        float titlex = x+10;
+        float titley = y-15;
+        titlePDFbox.draw(contentStream, titlex, titley);
+    
+        
+       
+        
+        contentStream.moveTo(titlex, titley-5f);
+        contentStream.lineTo(titlex+width, titley-5f);
+        contentStream.stroke();
+         
+     
+ }
+ 
 
  public static void drawTable(PDPage page, PDPageContentStream contentStream,
                              float y, float margin,
