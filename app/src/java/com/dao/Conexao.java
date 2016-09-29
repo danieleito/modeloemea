@@ -12,12 +12,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ *
  * @author Daniele Harumi Ito
  */
 public class Conexao {
     private Connection connection;
 
-    private static final String JDBC_URL = "jdbc:mysql://localhost:1433;databaseName=Emea";
+    private static final String JDBC_URL = "jdbc:mysql://localhost/emea";
     private static final String USER = "sa";
     private static final String PASSWORD = "adminEMEA";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
@@ -43,3 +44,4 @@ public class Conexao {
         }
     }
 }
+
