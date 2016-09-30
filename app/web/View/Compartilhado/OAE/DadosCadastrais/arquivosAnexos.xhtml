@@ -57,7 +57,12 @@ and open the template in the editor.
                     <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthickstop-1-s">
                         <p:fileDownload value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" />
                     </p:commandButton>
+
+                    <p:commandButton icon="ui-icon-search" title="Visualizar foto" action="#{ponteBean.visualizarFoto()}" />
                     
+                    <p:dialog header="Dialog" widgetVar="dlg" minHeight="40" modal="true">
+                        <h:outputText value="Resistance to PrimeFaces is futile!" />
+                    </p:dialog>
                 </p:column>
             </p:dataTable>
         </h:panelGrid>

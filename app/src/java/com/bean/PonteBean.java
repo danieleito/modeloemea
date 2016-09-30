@@ -53,6 +53,8 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,6 +63,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -539,7 +542,18 @@ public class PonteBean extends ComumBean implements Serializable {
         return numero;
     }
 
-    ////////////////////////////////////// modelo emea
+    public void visualizarFoto() {
+        String ola = "Olá";
+        Map<String,Object> options = new HashMap<String, Object>();
+        options.put("modal", true);
+        options.put("width", 640);
+        options.put("height", 340);
+        options.put("contentWidth", "100%");
+        options.put("contentHeight", "100%");
+        options.put("headerElement", "customheader");
+         
+        RequestContext.getCurrentInstance().openDialog("viewCars", options, null);
+    }
     
     
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
