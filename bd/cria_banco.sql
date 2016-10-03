@@ -272,13 +272,7 @@ create table CARACTERISTICAS_FUNCIONAIS_DIMENSOES
 
 ---------------------------------------------------------------------------
 
--- foto
-create table FOTO
-	(
-		ID_FOTO			int				not null identity(1,1),
-		DS_FOTO			varchar(30)		not null,
-		CONSTRAINT		pk_foto			PRIMARY KEY(ID_FOTO)
-	);
+
 
 --extensao relativa retirar
 --create table EXTENSAO_RELATIVA
@@ -296,13 +290,6 @@ create table FOTO
 --		CONSTRAINT		pk_reparo		PRIMARY KEY(ID_REPARO)
 --	);
 
---numero
-create table NUMERO
-	(
-		ID_NUMERO		int				not null identity(1,1),
-		DS_NUMERO		varchar(10)		not null,
-		CONSTRAINT		pk_numero		PRIMARY KEY(ID_NUMERO)
-	);
 
 ---------------------------------------------------------------------------
 
@@ -623,7 +610,7 @@ create table ARQUIVO_ANEXO_CADASTRO
 		DS_ARQUIVO						varchar(20)						not null,
 		DS_TIPO_ARQUIVO					varchar(10)						not null,
 		NR_NUMERO						varchar(3)						not null,
-		DS_DESCRICAO					varchar(20)						not null,
+		DS_DESCRICAO					varchar(50)						not null,
 		DS_REGISTRO						varchar(10)						not null,
 		DT_DATA_ANEXACAO				date							not null,
 		ID_IMAGEM						int,					
@@ -640,7 +627,7 @@ create table ARQUIVO_ANEXO_INSPECAO
 		DS_ARQUIVO						varchar(20)		not null,
 		DS_TIPO_ARQUIVO					varchar(10)		not null,
 		NR_NUMERO						varchar(3)		not null,
-		DS_DESCRICAO					varchar(20)		not null,
+		DS_DESCRICAO					varchar(50)		not null,
 		DS_REGISTRO						varchar(10)		not null,
 		DT_DATA_ANEXACAO				date			not null,
 		--DS_MINIATURA
@@ -664,7 +651,7 @@ create table ARQUIVO_ANEXO_INSPECAO
 create table DADOS_MANIFESTACAO
 	(
 		ID_DADOS_MANIFESTACAO			int												not null identity(1,1),
-		DS_FOTO							varchar(10),
+		DS_FOTO							varchar(50),
 		DS_TAMANHO						varchar(10),
 		DS_NUMERO						varchar(20),
 		ID_MANIFESTACOES_EXTENSAO		int,

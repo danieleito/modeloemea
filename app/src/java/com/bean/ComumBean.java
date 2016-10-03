@@ -82,7 +82,6 @@ public class ComumBean {
            String tipoImagem = context.getExternalContext().getRequestParameterMap().get("tipoimagem");
            
            File imagens_dir = new File(System.getProperty("jboss.server.data.dir")+File.separatorChar+ "imagens");
-//           File imagens_dir = new File("C:\\wildfly-10.0.0.CR4\\Imagens");
            StreamedContent sc = new DefaultStreamedContent(new FileInputStream(new File(imagens_dir, filename)), tipoImagem, filename);
            
            return sc;
@@ -111,7 +110,6 @@ public class ComumBean {
        else {
            // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
            File imagens_dir = new File(System.getProperty("jboss.server.data.dir")+File.separatorChar+ "imagens");
-//           File imagens_dir = new File("C:\\wildfly-10.0.0.CR4\\Imagens");
            StreamedContent sc = new DefaultStreamedContent(new FileInputStream(new File(imagens_dir, filename)), tipoImagem, filename);
            return sc;
        }
