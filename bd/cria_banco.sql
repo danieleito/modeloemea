@@ -719,3 +719,18 @@ create table INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO
 	);
 
 ---------------------------------------------------------------------------
+--numero
+create table NUMERO
+	(
+		ID_NUMERO		int				not null identity(1,1),
+		DS_NUMERO		varchar(10)		not null,
+		CONSTRAINT		pk_numero		PRIMARY KEY(ID_NUMERO)
+	);
+
+-- foto
+create table FOTO
+	(
+		ID_FOTO			int				not null identity(1,1),
+		DS_FOTO			varchar(30)		not null,
+		CONSTRAINT		pk_foto			PRIMARY KEY(ID_FOTO)
+	);

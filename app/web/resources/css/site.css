@@ -508,3 +508,31 @@ ul.form-info,
     right:50px !important;*/
     width: 200px;
 }
+
+.ui-icon-anterior {
+    background-image: url(#{resource['images/anterior.png']});
+    width: 49px;
+    height: 49px;
+}
+
+.ui-icon-proximo {
+    background-image: url(#{resource['images/proximo.png']});
+    background-repeat: no-repeat;
+}
+
+.ui-icon-editar {
+    background-image: url(#{resource['images/lapis.png']});
+    background-repeat: no-repeat;
+}
+
+.ui-icon-visualizar {
+    background-image: url(#{resource['images/lupa.png']});
+    background-repeat: no-repeat;
+}
+
+.ui-icon-excluir {
+    background-image: url(#{resource['images/lixeira.png']});
+    background-repeat: no-repeat;
+    background-color: white;
+    float: none;
+}

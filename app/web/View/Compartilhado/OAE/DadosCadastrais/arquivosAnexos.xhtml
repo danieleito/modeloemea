@@ -72,7 +72,7 @@ and open the template in the editor.
                     
                     <p:commandButton type="button" onclick="PF('dlg').show()" icon="ui-icon-search">
                         <p:dialog header="#{arq.descricao}" style="font-size: 15px" widgetVar="dlg" modal="true" draggable="false" resizable="false" >  
-                        <p:imageSwitch effect="zoom" widgetVar="switcher" id="manuelSwitcher" slideshowAuto="false">
+                        <p:imageSwitch effect="fade" widgetVar="switcher" id="manuelSwitcher" slideshowAuto="false">
                             <ui:repeat var="a" value="#{ponteBean.model.arquivosAnexosCadastro}" id="manuelSwitcherImages">
                                 <p:graphicImage value="#{comumbean.getImage()}" style="height: 800px; width: 1200px" title="#{image}" alt="Image Description for #{image}" >
                                     <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{a.imagem.nome}" />
@@ -80,8 +80,8 @@ and open the template in the editor.
                                 </p:graphicImage>
                             </ui:repeat>
                         </p:imageSwitch>
-                        <p:commandButton type="button" style="height: 50px; width: 50px;" onclick="PF('switcher').previous();" icon="ui-icon-circle-triangle-w"  id="prev" />
-                        <p:commandButton type="button" onclick="PF('switcher').next();" icon="ui-icon-circle-triangle-e" id="next" style="height: 20px;width: 20px"/>
+                        <p:commandButton type="button" style="height: 50px; width: 50px;" onclick="PF('switcher').previous();" image="ui-icon-anterior" id="prev" />
+                        <p:commandButton type="button" onclick="PF('switcher').next();" image="ui-icon-proximo" id="next" />
                     </p:dialog>
                     </p:commandButton>
                     
