@@ -14,15 +14,18 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <h3>PDF</h3>
-<!--        <object type="application/pdf" data="C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\wildfly-10.0.0.CR4\wildfly-10.0.0.CR4\standalone\data\imagens\01\Croqui.pdf?pfdrid_c=true" 
-                height="300px" width="100%" internalinstanceid="89">
-            Your browser can't display pdf, <a href="C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\wildfly-10.0.0.CR4\wildfly-10.0.0.CR4\standalone\data\imagens\01\Croqui.pdf">click</a> to download pdf instead.
-        </object>-->
         
-
-<!--        <object data="C:\Users\Usuario\Desktop\Pasta Compartilhada na Rede\03. Pastas pessoais\Daniele\wildfly-10.0.0.CR4\wildfly-10.0.0.CR4\standalone\data\imagens\01\OAE 001 - Croquis SGO.pdf" type="application/pdf">
-            <p>Seu navegador não tem um plugin pra PDF</p>
-        </object>-->
+        <object type="application/pdf" data="\\PC01\03. Pastas pessoais\Daniele\wildfly-10.0.0.CR4\wildfly-10.0.0.CR4\standalone\data\imagens\01\Croqui.pdf" height="300px" width="100%" internalinstanceid="4"/>
         
+        <!--<ui:repeat var="a" value="#{ponteBean.model.arquivosAnexosCadastro}" id="manuelSwitcherImages">
+            <p:graphicImage value="#{comumbean.getImage()}" style="height: 800px; width: 1200px" title="#{image}" alt="Image Description for #{image}" >
+                <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}croqui.pdf" />  
+                {a.imagem.croqui}
+                <f:param name="tipoimagem" value="{a.imagem.tipoMime}" />
+                <f:param name="tipoimagem" value="image/pdf" />
+            </p:graphicImage>
+        </ui:repeat>-->
     </h:body>
 </html>
+
+

@@ -33,7 +33,10 @@ public class Imagem implements Serializable {
      */
     private String caminho;
 
-
+    /**
+     * nome do croqui
+     */
+    private String croqui;
     /**
      * Constructor padrão.
      */
@@ -123,5 +126,13 @@ public class Imagem implements Serializable {
 
     public void setCaminho(String caminho) {
         this.caminho = caminho;
+    }
+
+    public String getCroqui() {
+        return croqui;
+    }
+
+    public void setCroqui(String croqui) {
+        this.croqui = croqui;
     }
 }

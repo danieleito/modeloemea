@@ -31,7 +31,6 @@ import com.model.ElementoUfpr;
 import com.model.ExtensaoRelativa;
 import com.model.Foto;
 import com.model.Inspecao;
-import com.model.InspecaoManifestacaoElemento;
 import com.model.ManifestacaoUfpr;
 import com.model.NaturezaTransposicao;
 import com.model.Numero;
@@ -472,7 +471,7 @@ public class PonteBean extends ComumBean implements Serializable {
                         .isPresent()) {
                     path = getImagePath("pin_sgo_hardblue.png");
                 } else {
-                    path = getImagePath("pin_sgo_white.png");
+                    path = getImagePath("pin_sgo_hardred.png");
                 }
                 advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, path)); //pode ser o quarto de ultimo parametro, serve para mudar a cor do pin, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"
             }
