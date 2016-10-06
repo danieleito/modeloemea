@@ -44,7 +44,6 @@ public class ArquivoAnexoBean extends ComumBean {
         this.databaseI = databaseI;
     }
 
-
     public ArrayList<ArquivoAnexoCadastro> getArquivosCadastro() {
         return arquivosCadastro;
     }
@@ -71,16 +70,12 @@ public class ArquivoAnexoBean extends ComumBean {
             Logger.getLogger(ArquivoAnexoBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar arquivos anexos de cadastro. " + ex.getMessage());
         }
-        
+
         try {
             arquivosInspecao = databaseI.buscarInspecoes(1);
         } catch (SQLException ex) {
             Logger.getLogger(ArquivoAnexoBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar arquivos anexos de inspeção. " + ex.getMessage());
         }
-    }
-    
-    public void baixar() {
-        
     }
 }

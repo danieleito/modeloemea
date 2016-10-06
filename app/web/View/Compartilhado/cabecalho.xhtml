@@ -13,16 +13,15 @@
             <p:menubar>
                 <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
 
-                    
-                <c:choose>
-                    <c:when test="${login.usuarioLogado.tipoUsuario.id == 1}">
-                        <p:submenu label="Administrador" icon="">
-                            <p:menuitem value="Usuário" url="/View/Administrador/Usuario/listar.jsf" />
-                            <p:menuitem value="Cadastrar capa elementos" url="/View/Administrador/capaElementos.jsf" />
-                            <p:menuitem value="Cadastrar beta manifestações" url="/View/Administrador/betaManifestacoes.jsf" />
-                        </p:submenu>
-                    </c:when>
-                </c:choose>
+                    <c:choose>
+                        <c:when test="${login.usuarioLogado.tipoUsuario.id == 1}">
+                            <p:submenu label="Administrador" icon="">
+                                <p:menuitem value="Usuário" url="/View/Administrador/Usuario/listar.jsf" />
+                                <p:menuitem value="Cadastrar capa elementos" url="/View/Administrador/capaElementos.jsf" />
+                                <p:menuitem value="Cadastrar beta manifestações" url="/View/Administrador/betaManifestacoes.jsf" />
+                            </p:submenu>
+                        </c:when>
+                    </c:choose>
                 
                 <p:menuitem value="Sair" action="#{login.sair()}"/>
             </p:menubar>

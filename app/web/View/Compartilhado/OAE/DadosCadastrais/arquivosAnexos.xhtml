@@ -9,7 +9,8 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -44,14 +45,18 @@ and open the template in the editor.
                 </p:column>
 
                 <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
-                    <p:lightBox styleClass="imagebox" id="lighbox1">
-                        <h:outputLink value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" title="#{arq.imagem.nome}">
-                            <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
-                                <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
-                                <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
-                            </p:graphicImage>
-                        </h:outputLink>
-                    </p:lightBox>
+                    <c:set var="esquema" value="esquema"/>
+                    <h:panelGroup rendered="#{!arq.tipoArquivo.equalsIgnoreCase(esquema)}">
+                        <p:lightBox styleClass="imagebox" id="lighbox1">
+                            <h:outputLink value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" title="#{arq.imagem.nome}">
+                                    <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
+                                        <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
+                                        <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
+                                    </p:graphicImage>
+
+                            </h:outputLink>
+                        </p:lightBox>
+                    </h:panelGroup>
                 </p:column>
 
                 <p:column headerText="Ação" style="width: 150px; text-align: center" >
@@ -62,30 +67,24 @@ and open the template in the editor.
                         </p:fileDownload>
                     </p:commandButton>
 
-                    <p:commandButton value="#{arq.descricao}"/>
-
-
-
-
-
                     
-                    
-                    <p:commandButton type="button" onclick="PF('dlg').show()" icon="ui-icon-search">
-                        <p:dialog header="#{arq.descricao}" style="font-size: 15px" widgetVar="dlg" modal="true" draggable="false" resizable="false" >  
-                        <p:imageSwitch effect="fade" widgetVar="switcher" id="manuelSwitcher" slideshowAuto="false">
-                            <ui:repeat var="a" value="#{ponteBean.model.arquivosAnexosCadastro}" id="manuelSwitcherImages">
-                                <p:graphicImage value="#{comumbean.getImage()}" style="height: 800px; width: 1200px" title="#{image}" alt="Image Description for #{image}" >
-                                    <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{a.imagem.nome}" />
-                                    <f:param name="tipoimagem" value="#{a.imagem.tipoMime}" />
-                                </p:graphicImage>
-                            </ui:repeat>
-                        </p:imageSwitch>
-                        <p:commandButton type="button" style="height: 50px; width: 50px;" onclick="PF('switcher').previous();" class="ui-icon-anterior" id="prev" />
-                        <p:commandButton type="button" onclick="PF('switcher').next();" image="ui-icon-proximo" id="next" />
-                    </p:dialog>
-                    </p:commandButton>
-                    
-                    
+                    <h:panelGroup rendered="#{!arq.tipoArquivo.equalsIgnoreCase(esquema)}">
+                        <p:commandButton type="button" onclick="PF('dlg').show()" icon="ui-icon-search">
+                            <p:dialog header="#{arq.descricao}" style="font-size: 15px" widgetVar="dlg" modal="true" draggable="false" resizable="false" >  
+                            <p:imageSwitch effect="fade" widgetVar="switcher" id="manuelSwitcher" slideshowAuto="false">
+                                <ui:repeat var="a" value="#{ponteBean.model.arquivosAnexosCadastro}" id="manuelSwitcherImages">
+                                    <p:graphicImage value="#{comumbean.getImage()}" style="height: 800px; width: 1200px" title="#{image}" alt="Image Description for #{image}" >
+                                        <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{a.imagem.nome}" />
+                                        <f:param name="tipoimagem" value="#{a.imagem.tipoMime}" />
+                                    </p:graphicImage>
+                                </ui:repeat>
+                            </p:imageSwitch>
+                            <p:commandButton type="button" onclick="PF('switcher').previous();" icon="ui-icon-circle-triangle-w" id="prev" />
+                            <p:commandButton type="button" onclick="PF('switcher').next();" icon="ui-icon-circle-triangle-e" id="next" />
+                        </p:dialog>
+                        </p:commandButton>
+                    </h:panelGroup>
+
                 </p:column>
             </p:dataTable>
         </h:panelGrid>

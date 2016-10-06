@@ -4,8 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Simulação</title>
         <h:outputScript library="js" name="validacoes.js" />
@@ -45,7 +44,6 @@
 
                             <h:panelGroup rendered="#{login.usuarioLogado.id == sim.usuario.id}">
                                 <p:commandButton icon="ui-icon-pencil" action="#{simulacaoBean.rankingGet(sim.id)}" />
-
                                     <p:growl id="message" showDetail="true" />
                                     <p:commandButton icon="ui-icon-trash" title="Deletar" actionListener="#{simulacaoBean.excluir(sim.id)}" update="message">
                                         <p:confirm header="Confirmation" message="Tem certeza que deseja excluir a simulação permanentemente?" icon="ui-icon-alert" />

@@ -113,7 +113,9 @@ and open the template in the editor.
                                 </p:column>
 
                                 <p:column headerText="Ind. performance relativo" style="width: 100px; text-align: center" >
-                                    <h:outputText value="#{r.ponte.indicePerformanceRelativo}" />
+                                    <h:outputText value="#{r.ponte.indicePerformanceRelativo}" >
+                                        <f:convertNumber pattern="#0.000" />
+                                    </h:outputText>
                                 </p:column>
 
                                 <p:column headerText="Ação" style="width: 90px; text-align: center" >
