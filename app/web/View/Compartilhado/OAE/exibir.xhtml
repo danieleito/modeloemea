@@ -35,89 +35,21 @@ and open the template in the editor.
 
                     <p:tabView>
                         <p:tab title="Dados cadastrais">
-                            <h:panelGrid columns="2" cellpadding="10">
+                            <div style="display: table">
                                 <ui:include src="/View/Compartilhado/OAE/DadosCadastrais/dadosCadastrais.xhtml" />
-                            </h:panelGrid>
+                            </div>
                         </p:tab>
 
                         <p:tab title="Croqui" >
-                            <h:panelGrid columns="2" cellpadding="10">
+                            <div style="display: table">
                                 <ui:include src="/View/Compartilhado/OAE/DadosCadastrais/croqui.xhtml" />
-                            </h:panelGrid>
+                            </div>
                         </p:tab>
                         
                         <p:tab title="Arquivos anexos">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <p:dataTable var="arq" value="#{ponteBean.model.arquivosAnexosCadastro}" paginator="true" rows="15" >
-                                    <p:column headerText="Arquivo" style="text-align: center" >
-                                        <h:outputText value="#{arq.arquivo}" />
-                                    </p:column>
-
-                                    <p:column headerText="Tipo arquivo" style="text-align: center" >
-                                        <h:outputText value="#{arq.tipoArquivo}" />
-                                    </p:column>
-
-                                    <p:column headerText="Número" style="width: 150px; text-align: center" >
-                                        <h:outputText value="#{arq.numero}" />
-                                    </p:column>
-
-                                    <p:column headerText="Descrição" style="width: 150px; text-align: center" >
-                                        <h:outputText value="#{arq.descricao}" />
-                                    </p:column>
-
-                                    <p:column headerText="Registro" style="text-align: center" >
-                                        <h:outputText value="#{arq.registro}" />
-                                    </p:column>
-
-                                    <p:column headerText="Data anexação" style="width: 150px; text-align: center" >
-                                        <h:outputText value="#{arq.dataAnexada}">
-                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
-                                        </h:outputText>
-                                    </p:column>
-
-                                    <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
-                                        <c:set var="esquema" value="esquema"/>
-                                        <h:panelGroup rendered="#{!arq.tipoArquivo.equalsIgnoreCase(esquema)}">
-                                            <p:lightBox styleClass="imagebox" id="lighbox1">
-                                                <h:outputLink value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" title="#{arq.imagem.nome}">
-                                                    <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
-                                                        <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
-                                                        <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
-                                                    </p:graphicImage>
-                                                </h:outputLink>
-                                            </p:lightBox>
-                                        </h:panelGroup>
-                                    </p:column>
-
-                                    <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                                        <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthickstop-1-s">
-                                            <p:fileDownload value="#{comumbean.getImage()}" >
-                                                <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
-                                                <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
-                                            </p:fileDownload>
-                                        </p:commandButton>
-
-
-                                        <h:panelGroup rendered="#{!arq.tipoArquivo.equalsIgnoreCase(esquema)}">
-                                            <p:commandButton type="button" onclick="PF('dlg').show()" icon="ui-icon-search">
-                                                <p:dialog header="#{arq.descricao}" style="font-size: 15px" widgetVar="dlg" modal="true" draggable="false" resizable="false" >  
-                                                <p:imageSwitch effect="fade" widgetVar="switcher" id="manuelSwitcher" slideshowAuto="false">
-                                                    <ui:repeat var="a" value="#{ponteBean.model.arquivosAnexosCadastro}" id="manuelSwitcherImages">
-                                                        <p:graphicImage value="#{comumbean.getImage()}" style="height: 800px; width: 1200px" title="#{image}" alt="Image Description for #{image}" >
-                                                            <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{a.imagem.nome}" />
-                                                            <f:param name="tipoimagem" value="#{a.imagem.tipoMime}" />
-                                                        </p:graphicImage>
-                                                    </ui:repeat>
-                                                </p:imageSwitch>
-                                                <p:commandButton type="button" onclick="PF('switcher').previous();" icon="ui-icon-circle-triangle-w" id="prev" />
-                                                <p:commandButton type="button" onclick="PF('switcher').next();" icon="ui-icon-circle-triangle-e" id="next" />
-                                            </p:dialog>
-                                            </p:commandButton>
-                                        </h:panelGroup>
-
-                                    </p:column>
-                                </p:dataTable>
-                            </h:panelGrid>
+                            <div style="display: table">
+                                <ui:include src="/View/Compartilhado/OAE/DadosCadastrais/arquivosAnexos.xhtml" />
+                            </div>
                         </p:tab>
 
                         <p:tab title="Inspeções">
