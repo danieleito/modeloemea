@@ -515,6 +515,14 @@ insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte10foto01.jpg', 'image/jpg')
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte11VistaGeral.jpg', 'image/jpg');
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte11foto01.jpg', 'image/jpg');
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Croqui.pdf', 'image/pdf');
+
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto01.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto02.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto03.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto04.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto05.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto06.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto01.jpg', 'image/jpg');
 ---------------------------------------------------------------------------
 
 insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Meio ambiente agressivo');
@@ -606,9 +614,13 @@ insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NU
 insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, 'Croqui.pdf', 'esquema', '01', 'croqui 01', 'OAE', '05/10/2016', 24);
 
 
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'INS', '05/08/2016', 2);
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'INS', '05/08/2016', 3);
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'INS', '05/08/2016', 1);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '01.jpg', 'Foto', '01', 'foto01', 'INS', '05/08/2012', 25);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '02.jpg', 'Foto', '02', 'foto02', 'INS', '05/08/2012', 26);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '03.jpg', 'Foto', '03', 'foto03', 'INS', '05/08/2012', 27);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '04.jpg', 'Foto', '04', 'foto04', 'INS', '05/08/2012', 28);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '05.jpg', 'Foto', '05', 'foto05', 'INS', '05/08/2012', 29);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '06.jpg', 'Foto', '06', 'foto06', 'INS', '05/08/2012', 30);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (6, '01.jpg', 'Foto', '01', 'foto01', 'INS', '05/08/2014', 31);
 
 ---------------------------------------------------------------------------
 
