@@ -38,16 +38,15 @@
 
                         <p:column headerText="Gestor" style="width: 150px; text-align: center" >
                             <h:outputText value="#{sim.usuario.nome}" />
-                            
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 200px; text-align: center" >
-                            <p:commandButton icon="ui-icon-search" title="Visualizar" actionListener="#{simulacaoBean.visualizar(sim.id)}"  />
+                            <p:commandButton icon="ui-icon-visualizar" title="Visualizar" actionListener="#{simulacaoBean.visualizar(sim.id)}"  />
 
                             <h:panelGroup rendered="#{login.usuarioLogado.id == sim.usuario.id}">
-                                <p:commandButton icon="ui-icon-pencil" action="#{simulacaoBean.rankingGet(sim.id)}" />
+                                <p:commandButton icon="ui-icon-editar" action="#{simulacaoBean.rankingGet(sim.id)}" />
                                     <p:growl id="message" showDetail="true" />
-                                    <p:commandButton icon="ui-icon-trash" title="Deletar" actionListener="#{simulacaoBean.excluir(sim.id)}" update="message">
+                                    <p:commandButton icon="ui-icon-excluir" title="Deletar" actionListener="#{simulacaoBean.excluir(sim.id)}" update="message">
                                         <p:confirm header="Confirmation" message="Tem certeza que deseja excluir a simulação permanentemente?" icon="ui-icon-alert" />
                                     </p:commandButton>
                                     <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">

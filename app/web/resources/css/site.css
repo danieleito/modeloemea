@@ -519,18 +519,14 @@ ul.form-info,
     background-repeat: no-repeat;
 }
 
-.ui-icon-editar {
-    background-image: url(#{resource['images/lapis.png']});
+.ui-widget .ui-icon-editar {
+    background-image: url("#{resource['images/lapis.png']}") !important;
 }
 
-.ui-icon-visualizar {
-    background-image: url(#{resource['images/lupa.png']});
-    background-repeat: no-repeat;
+.ui-widget .ui-icon-visualizar {
+    background-image: url("#{resource['images/lupa.png']}") !important;
 }
 
-.ui-icon-excluir {
-    background-image: url(#{resource['images/lixeira.png']});
-    background-repeat: no-repeat;
-    background-color: white;
-    float: none;
+.ui-widget .ui-icon-excluir {
+    background-image: url("#{resource['images/lixeira.png']}") !important;
 }
