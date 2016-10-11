@@ -524,7 +524,7 @@ ul.form-info,
 }
 
 .ui-widget .ui-icon-visualizar {
-    background-image: url("#{resource['images/lupa.png']}") !important;
+    background-image: url("#{resource['images/lupa.png']}");
 }
 
 .ui-widget .ui-icon-excluir {
