@@ -5,13 +5,12 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-   
+
     <h:body>
         <ui:composition template="/View/Compartilhado/template.xhtml">
             <ui:define name="content">
 
             <h:form id="form">
-
                 <p:menu style="width: 350px; margin: auto;" >
                     <c:choose>
                         <c:when test="${login.usuarioLogado.tipoUsuario.id == 1 || login.usuarioLogado.tipoUsuario.id == 2 }" >

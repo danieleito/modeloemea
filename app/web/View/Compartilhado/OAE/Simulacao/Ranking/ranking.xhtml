@@ -12,6 +12,9 @@ and open the template in the editor.
 
     <h:body>
         <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="15" >
+            <f:facet name="header" >
+                <h:outputText value="Número de OAEs: #{simulacaoBean.numeroOaesSimulacao(simulacaoBean.simulacao.rankings)}" style="text-align: right;" />
+            </f:facet>
 
             <p:column headerText="Data da última inspeção" style="width: 100px; text-align: center" >
                 <h:outputText value="#{r.ponte.dataUltimaInspecao}">

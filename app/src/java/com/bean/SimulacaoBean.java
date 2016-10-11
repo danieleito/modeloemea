@@ -390,6 +390,10 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/OAE/Simulacao/listar.jsf");
     }
+    
+    public int numeroOaesSimulacao(ArrayList simulacao) {
+        return simulacao.size();
+    }
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Simulacao getSimulacao() {

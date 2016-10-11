@@ -11,12 +11,13 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
     <h:head>
-        <title>TODO supply a title</title>
+        <title>SGO Gestor</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
+
     <h:body>
-        <h:form id="form2">
         <h:panelGrid columns="2" cellpadding="10">
             <p:dataTable var="arq" value="#{ponteBean.model.arquivosAnexosCadastro}" paginator="true" rows="15" >
                 <p:column headerText="Arquivo" style="text-align: center" >

@@ -10,10 +10,12 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
     <h:head>
-        <title>TODO supply a title</title>
+        <title>SGO Gestor</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
+
     <h:body>
         <ui:composition template="/View/Compartilhado/template.xhtml">
             <ui:define name="content">
@@ -82,8 +84,10 @@ and open the template in the editor.
                     <p:tabView>
                         <p:tab title="Ranqueamento">
                             <p:dataTable id="checkboxDT" var="r" value="#{simulacaoBean.simulacao.rankings}" rowKey="#{r.id}" style="margin-bottom: 0" paginator="true" rows="15" >
+                                <f:facet name="header" >
+                                    <h:outputText value="Número de OAEs: #{simulacaoBean.numeroOaesSimulacao(simulacaoBean.simulacao.rankings)}" style="text-align: right;" />
+                                </f:facet>
 
-                                <!--<p:column selectionMode="multiple" style="width:16px; text-align:center" />-->
                                 <p:column headerText="Data da última inspeção" style="width: 100px; text-align: center" >
                                     <h:outputText value="#{r.ponte.dataUltimaInspecao}">
                                         <f:convertDateTime pattern="dd/MM/yyyy"/>
