@@ -509,7 +509,7 @@ ul.form-info,
     width: 200px;
 }
 
-.ui-icon-anterior {
+.ui-widget .ui-icon-anterior {
     background-image: url("#{resource['images/anterior.png']}") !important;
 }
 
