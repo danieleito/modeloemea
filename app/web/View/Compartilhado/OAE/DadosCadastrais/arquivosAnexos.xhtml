@@ -49,19 +49,19 @@ and open the template in the editor.
                 <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
                     <c:set var="esquema" value="esquema"/>
                     <h:panelGroup rendered="#{!arq.tipoArquivo.equalsIgnoreCase(esquema)}">
-                        <p:lightBox styleClass="imagebox" id="lighbox1">
+                        <!--<p:lightBox styleClass="imagebox" id="lighbox1">-->
                             <h:outputLink value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" title="#{arq.imagem.nome}">
                                 <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
                                     <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
                                     <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
                                 </p:graphicImage>
                             </h:outputLink>
-                        </p:lightBox>
+                        <!--</p:lightBox>-->
                     </h:panelGroup>
                 </p:column>
 
                 <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                    <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthickstop-1-s">
+                    <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-baixar">
                         <p:fileDownload value="#{comumbean.getImage()}" >
                             <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
                             <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
@@ -70,7 +70,7 @@ and open the template in the editor.
 
                     
                     <h:panelGroup rendered="#{!arq.tipoArquivo.equalsIgnoreCase(esquema)}">
-                        <p:commandButton type="button" onclick="PF('dlg').show()" icon="ui-icon-search">
+                        <p:commandButton type="button" onclick="PF('dlg').show()" icon="ui-icon-visualizar">
                             <p:dialog header="#{arq.descricao}" style="font-size: 15px" widgetVar="dlg" modal="true" draggable="false" resizable="false" >  
                             <p:imageSwitch effect="fade" widgetVar="switcher" id="manuelSwitcher" slideshowAuto="false">
                                 <ui:repeat var="a" value="#{ponteBean.model.arquivosAnexosCadastro}" id="manuelSwitcherImages">
@@ -80,8 +80,8 @@ and open the template in the editor.
                                     </p:graphicImage>
                                 </ui:repeat>
                             </p:imageSwitch>
-                            <p:commandButton type="button" onclick="PF('switcher').previous();" icon="ui-icon-circle-triangle-w" id="prev" />
-                            <p:commandButton type="button" onclick="PF('switcher').next();" icon="ui-icon-circle-triangle-e" id="next" />
+                            <p:commandButton type="button" onclick="PF('switcher').previous();" icon="ui-icon-anterior" id="prev" />
+                            <p:commandButton type="button" onclick="PF('switcher').next();" icon="ui-icon-proximo" id="next" />
                         </p:dialog>
                         </p:commandButton>
                     </h:panelGroup>

@@ -510,13 +510,11 @@ ul.form-info,
 }
 
 .ui-icon-anterior {
-    background-image: url(#{resource['images/anterior.png']});
-    background-repeat: no-repeat;
+    background-image: url("#{resource['images/anterior.png']}") !important;
 }
 
 .ui-icon-proximo {
-    background-image: url(#{resource['images/proximo.png']});
-    background-repeat: no-repeat;
+    background-image: url("#{resource['images/proximo.png']}") !important;
 }
 
 .ui-widget .ui-icon-editar {
@@ -524,9 +522,17 @@ ul.form-info,
 }
 
 .ui-widget .ui-icon-visualizar {
-    background-image: url("#{resource['images/lupa.png']}");
+    background-image: url("#{resource['images/lupa.png']}") !important;
 }
 
 .ui-widget .ui-icon-excluir {
     background-image: url("#{resource['images/lixeira.png']}") !important;
+}
+
+.ui-widget .ui-icon-baixar {
+    background-image: url("#{resource['images/baixar.png']}") !important;
+}
+
+.bordas-datagrid {
+    border-radius: 40px;
 }

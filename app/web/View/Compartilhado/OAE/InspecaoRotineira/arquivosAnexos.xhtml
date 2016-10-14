@@ -59,11 +59,11 @@ and open the template in the editor.
                 </p:column>
 
                 <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                    <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthickstop-1-s">
+                    <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-baixar">
                         <p:fileDownload value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" />
                     </p:commandButton>
 
-                    <p:commandButton type="button" onclick="PF('dlg').show()" icon="ui-icon-search">
+                    <p:commandButton type="button" onclick="PF('dlg').show()" icon="ui-icon-visualizar">
                         <c:set var="pastaInspecao" value="05082012"/>
                         <p:dialog header="#{arq.descricao}" style="font-size: 15px" widgetVar="dlg" modal="true" draggable="false" resizable="false" >  
                         <p:imageSwitch effect="fade" widgetVar="switcher" id="manuelSwitcher" slideshowAuto="false">
@@ -74,8 +74,8 @@ and open the template in the editor.
                                 </p:graphicImage>
                             </ui:repeat>
                         </p:imageSwitch>
-                        <p:commandButton type="button" onclick="PF('switcher').previous();" icon="ui-icon-circle-triangle-w" id="prev" />
-                        <p:commandButton type="button" onclick="PF('switcher').next();" icon="ui-icon-circle-triangle-e" id="next" />
+                        <p:commandButton type="button" onclick="PF('switcher').previous();" icon="ui-icon-anterior" id="prev" />
+                        <p:commandButton type="button" onclick="PF('switcher').next();" icon="ui-icon-proximo" id="next" />
                     </p:dialog>
                     </p:commandButton>
                 </p:column>
