@@ -240,7 +240,7 @@ and open the template in the editor.
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
+                            <p:commandButton icon="ui-icon-visualizar" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
                         </p:column>
                         <f:facet name="footer" >
                             <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{simulacaoBean.recarregarSimulacao()}" actionListener="#{ponteBean.carregar(simulacaoBean.simulacao.id)}" />
