@@ -69,11 +69,9 @@ and open the template in the editor.
                         </p:fileDownload>
                     </p:commandButton>
 
-                    <p:commandButton type="button" value="Show" onclick="PF('dlg#{arq.id}').show()" icon="ui-icon-extlink"/>
-                    <p:dialog header="Images" widgetVar="dlg#{arq.id}" modal="true"
-                        draggable="false" resizable="false">
-                        <p:imageSwitch effect="fade" slideshowAuto="false" widgetVar="switcher#{arq.id}" 
-                                       id="manuelSwitcher#{arq.id}" activeIndex="#{ponteBean.model.getIndexOfArquivoAnexoCadastro(arq.id)}" >
+                    <p:commandButton type="button" onclick="PF('dlg#{arq.id}').show()" icon="ui-icon-visualizar"/>
+                    <p:dialog header="Images" widgetVar="dlg#{arq.id}" modal="true" draggable="false" resizable="false">
+                        <p:imageSwitch effect="fade" slideshowAuto="false" widgetVar="switcher#{arq.id}" id="manuelSwitcher#{arq.id}" activeIndex="#{ponteBean.model.getIndexOfArquivoAnexoCadastro(arq.id)}" >
                             <ui:repeat value="#{ponteBean.model.arquivosAnexosCadastro}" var="image" >
                                 <p:graphicImage value="#{comumbean.getImage()}" style="height: 500px; width: 800px" title="#{image.imagem.nome}" alt="Image Description for #{image}" >
                                     <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{image.imagem.nome}" />
@@ -82,11 +80,10 @@ and open the template in the editor.
                             </ui:repeat>
                         </p:imageSwitch>
                         <h:outputLabel value="#{arq.imagem.nome}" />
-                        <p:commandButton type="button" onclick="PF('switcher#{arq.id}').previous();"
-                            icon="ui-icon-circle-triangle-w" id="prev"/>
-                        <p:commandButton type="button" onclick="PF('switcher#{arq.id}').next();"
-                            icon="ui-icon-circle-triangle-e" id="next"/>
+                        <p:commandButton type="button" onclick="PF('switcher#{arq.id}').previous();" icon="ui-icon-anterior" id="prev"/>
+                        <p:commandButton type="button" onclick="PF('switcher#{arq.id}').next();" icon="ui-icon-proximo" id="next"/>
                     </p:dialog>
+
                 </p:column>
             </p:dataTable>
         </h:panelGrid>
