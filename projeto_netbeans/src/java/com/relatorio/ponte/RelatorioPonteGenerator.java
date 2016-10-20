@@ -55,7 +55,18 @@ public class RelatorioPonteGenerator {
 
     public static void generatePdf(Ponte ponte) throws IOException {
         PDDocument doc = new PDDocument();
-
+        PDPage page1 = new PDPage();
+        doc.addPage(page1);
+        PDPageContentStream contentStream = new PDPageContentStream(doc, page1);
+        
+        //PAGE INFO
+        final float marginX = 10;
+        final float fullContentWidth = (float) (page1.getCropBox().getWidth() - (2 * marginX));
+        final float halfContentWidth = (float) (fullContentWidth * 0.5);
+        final float topY = page1.getCropBox().getHeight() - 20;
+        
+        int contSection = 2;
+        
         IdentificacaoObraDadosBasicos dadosBasicos = ponte.getIdentificacaoObraDadosBasicos();
         IdentificacaoObraResponsaveis responsaveis = ponte.getIdentificacaoObraResponsaveis();
         IdentificacaoObraLocalizacao localizacao = ponte.getIdentificacaoObraLocalizacao();
@@ -102,15 +113,9 @@ public class RelatorioPonteGenerator {
             {"Loc. Doc. Constr", ""},
             {"Loc. Doc. Diversos", ""},};
 
-        PDPage page1 = new PDPage();
-        doc.addPage(page1);
-        PDPageContentStream contentStream = new PDPageContentStream(doc, page1);
+      
 
-        //PAGE INFO
-        final float marginX = 10;
-        final float fullContentWidth = (float) (page1.getCropBox().getWidth() - (2 * marginX));
-        final float halfContentWidth = (float) (fullContentWidth * 0.5);
-        final float topY = page1.getCropBox().getHeight() - 20;
+        
 
         float secaoDadosBasicosEndY = drawSection(page1, contentStream, topY, marginX, halfContentWidth, "1. IDENTIFICAÇÃO DA OBRA", contentSecaoDadosBasicos, false);
 
@@ -143,52 +148,50 @@ public class RelatorioPonteGenerator {
 
           final float caracteristicasFuncionaisTopY = identificacaoObraEndY - 20;
 
-        final float caracteristicasFuncionaisEndY = drawSection(page1, contentStream, caracteristicasFuncionaisTopY, marginX, halfContentWidth, "2. Características Funcionais", contentSecaoDadosBasicos, false);
+        final float caracteristicasFuncionaisEndY = drawSection(page1, contentStream, caracteristicasFuncionaisTopY, marginX, halfContentWidth, "2. CARACTERISTICAS FUNCIONAIS", contentSecaoDadosBasicos, false);
 
         drawSection(page1, contentStream, caracteristicasFuncionaisTopY, marginX + halfContentWidth, halfContentWidth, "", caracteristicasFuncionaisSecao2, true);
           
-        /**
-         * TODO: Adicionar nova página dinâmicamente PÁGINA 3
-         */
+        //ELEMENTOS COMPONENTES
+        final float elementosComponentesTopY = caracteristicasFuncionaisEndY - 20;
+        float elementosComponentesEndY = caracteristicasFuncionaisEndY;
+        
         if (ponte.getElementosComponentes().size() > 0) {
-            String[][] contentP3 = new String[ponte.getElementosComponentes().size()][2];
+            String[][] contentSecaoElementosComponentes = new String[ponte.getElementosComponentes().size()][2];
       
             int i = 0;
             for (ElementoComponente ec : ponte.getElementosComponentes()) {
                 //TODO: DESCOBRIR DA ONDE PUXAR OS DADOS
-                contentP3[i][0] = ec.getElementoUfpr().getCodigo();
-                contentP3[i][1] = ec.getElementoUfpr().getDescricao();
+                contentSecaoElementosComponentes[i][0] = ec.getElementoUfpr().getCodigo();
+                contentSecaoElementosComponentes[i][1] = ec.getElementoUfpr().getDescricao();
                 ++i;
             }
             
-           final float elementosComponentesTopY = caracteristicasFuncionaisEndY - 20;
-           drawSection(page1, contentStream, elementosComponentesTopY, marginX, fullContentWidth, "3. Elementos Componentes", contentSecaoDadosBasicos, false);
-            contentStream.close();
+           
+          elementosComponentesEndY =  drawSection(page1, contentStream, elementosComponentesTopY, marginX, fullContentWidth, ++contSection + ". ELEMENTOS COMPONENTES", contentSecaoElementosComponentes, false);
+            
         }
-        /**
-         * PÁGINA 4
-         */
-
+       
+        //TODO: Testar aspectos especiais
+        final float aspectosEspeciaisTopY = elementosComponentesEndY - 20;
+        float aspectosEspeciaisEndY = elementosComponentesEndY;
         if (ponte.getAspectosEspeciais().size() > 0) {
-            String[][] contentP4 = new String[ponte.getAspectosEspeciais().size() + 1][2];
+            String[][] contentAspectosEspeciais = new String[ponte.getAspectosEspeciais().size()][2];
 
-            contentP4[0][0] = "4";
-            contentP4[0][1] = "Aspectos Especiais";
-
-            int i = 1;
+  
+            int i = 0;
             for (CadastroAspectoEspecial ae : ponte.getAspectosEspeciais()) {
                 //TODO: Descobir qual é o valor real da primeira coluna
-                contentP4[i][0] = Integer.toString(ae.getAspectoEspecial().getId());
-                contentP4[i][1] = ae.getAspectoEspecial().getDescricao();
+                contentAspectosEspeciais[i][0] = Integer.toString(ae.getAspectoEspecial().getId());
+                contentAspectosEspeciais[i][1] = ae.getAspectoEspecial().getDescricao();
                 ++i;
             }
 
-            PDPage page4 = new PDPage();
-            doc.addPage(page4);
-            PDPageContentStream contentStream4 = new PDPageContentStream(doc, page4);
-            PdfGenerator.drawTable(page4, contentStream4, 700, 100, contentP4);
-            contentStream4.close();
+            
+            aspectosEspeciaisEndY = drawSection(page1, contentStream, elementosComponentesTopY, marginX, fullContentWidth, ++contSection + ". ASPECTOS ESPECIAIS", contentAspectosEspeciais, false);
+            
         }
+       
 
         /**
          * PÁGINA 5
@@ -213,6 +216,20 @@ public class RelatorioPonteGenerator {
         contentStream5.close();
     }
          */
+        
+        
+        final float rotasAlternativasTopY = aspectosEspeciaisEndY - 20;
+        float rotasAlternativasEndY = aspectosEspeciaisEndY;
+       String[][]  contentRotaRotas = {
+           {"Rota:", ponte.getRotasAlternativas().getIdentificacao()}
+       };
+        String[][]  contentAcrescimoRota = {
+           {"Acréscimo de Km:", ponte.getRotasAlternativas().getAcrescimoKm()}
+        };
+        
+        drawSection(page1, contentStream, rotasAlternativasTopY, marginX, halfContentWidth, ++contSection + ". ROTAS ALTERNATIVAS", contentRotaRotas, false);
+        drawSection(page1, contentStream, rotasAlternativasTopY, marginX + halfContentWidth , halfContentWidth, "", contentAcrescimoRota, false);
+        contentStream.close();
         /**
          * PÁGINA 5
          */
