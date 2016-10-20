@@ -57,7 +57,7 @@ label {
     width: 950px;
     min-width: 950px;
     background-color: white;
-    margin: auto;
+    margin: 100px auto auto auto;
 }
 .login1 {
     width: 450px;
@@ -77,8 +77,7 @@ label {
 }
 
 .content {
-    padding-top: 25px;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .row, p {

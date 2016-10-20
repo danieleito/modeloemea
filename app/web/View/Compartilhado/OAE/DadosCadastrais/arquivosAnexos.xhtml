@@ -19,6 +19,7 @@ and open the template in the editor.
 
     <h:body>
         <h:panelGrid columns="2" cellpadding="10">
+            <c:set var="i" value="#{0}" scope="view"/>
             <p:dataTable var="arq" value="#{ponteBean.model.arquivosAnexosCadastro}" paginator="true" rows="15" >
                 <p:column headerText="Arquivo" style="text-align: center" >
                     <h:outputText value="#{arq.arquivo}" />
@@ -51,7 +52,7 @@ and open the template in the editor.
                     <h:panelGroup rendered="#{!arq.tipoArquivo.equalsIgnoreCase(esquema)}">
                         <p:imageSwitch effect="wipe" widgetVar="switcher" id="manuelSwitchers" slideshowAuto="false">
                             <ui:repeat value="#{ponteBean.model.arquivosAnexosCadastro}" var="image" id="manuelSwitcherImagess">
-                                <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
+                                <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image.imagem.nome}" alt="Image Description for #{image}" >
                                     <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
                                     <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
                                 </p:graphicImage>
@@ -68,25 +69,24 @@ and open the template in the editor.
                         </p:fileDownload>
                     </p:commandButton>
 
-                    
-                    
-                    
-                    
-                    <p:commandButton type="button" value="Show" onclick="PF('dlg').show()" icon="ui-icon-extlink"/>
-                    <p:dialog header="Images" widgetVar="dlg" modal="true" draggable="false" resizable="false">
-                        <p:imageSwitch effect="fade" slideshowAuto="false">
-                            <ui:repeat var="a" value="#{ponteBean.model.arquivosAnexosCadastro}" id="manuelSwitcherImagesa" >
-                                <p:graphicImage value="#{comumbean.getImage()}" style="height: 800px; width: 1200px" title="#{image}" alt="Image Description for #{image}" >
-                                    <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{a.imagem.nome}" />
-                                    <f:param name="tipoimagem" value="#{a.imagem.tipoMime}" />
+                    <p:commandButton type="button" value="Show" onclick="PF('dlg#{arq.id}').show()" icon="ui-icon-extlink"/>
+                    <p:dialog header="Images" widgetVar="dlg#{arq.id}" modal="true"
+                        draggable="false" resizable="false">
+                        <p:imageSwitch effect="fade" slideshowAuto="false" widgetVar="switcher#{arq.id}" 
+                                       id="manuelSwitcher#{arq.id}" activeIndex="#{ponteBean.model.getIndexOfArquivoAnexoCadastro(arq.id)}" >
+                            <ui:repeat value="#{ponteBean.model.arquivosAnexosCadastro}" var="image" >
+                                <p:graphicImage value="#{comumbean.getImage()}" style="height: 500px; width: 800px" title="#{image.imagem.nome}" alt="Image Description for #{image}" >
+                                    <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{image.imagem.nome}" />
+                                    <f:param name="tipoimagem" value="#{image.imagem.tipoMime}" />
                                 </p:graphicImage>
                             </ui:repeat>
                         </p:imageSwitch>
+                        <h:outputLabel value="#{arq.imagem.nome}" />
+                        <p:commandButton type="button" onclick="PF('switcher#{arq.id}').previous();"
+                            icon="ui-icon-circle-triangle-w" id="prev"/>
+                        <p:commandButton type="button" onclick="PF('switcher#{arq.id}').next();"
+                            icon="ui-icon-circle-triangle-e" id="next"/>
                     </p:dialog>
-                    
-                    
-                    
-
                 </p:column>
             </p:dataTable>
         </h:panelGrid>
