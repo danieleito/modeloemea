@@ -308,12 +308,10 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
             simulacao.setUsuario(usuarioLogado);
             simulacao.setData(new Date());
-//            else {
-                database.inserir(simulacao);
-                simulacoes = database.buscar();
-                adicionarMensagemInfo("Simulação cadastrada com sucesso.");
-                simulacao.setNomeSimulacao("");//
-//            }
+            database.inserir(simulacao);
+            simulacoes = database.buscar();
+            adicionarMensagemInfo("Simulação cadastrada com sucesso.");
+            simulacao.setNomeSimulacao("");
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao cadastrar simulação: " + ex.getMessage());

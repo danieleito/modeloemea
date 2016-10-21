@@ -554,6 +554,12 @@ public class PonteBean extends ComumBean implements Serializable {
         RequestContext.getCurrentInstance().openDialog("viewCars", options, null);
     }
     
+//    retorna o nome da pasta da inspecao
+    public String nomePastaInspecao(int idPasta) {   
+        String pasta = Integer.toString(idPasta);
+        return pasta;
+    }
+    
     
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
