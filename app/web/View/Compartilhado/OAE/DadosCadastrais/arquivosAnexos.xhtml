@@ -19,7 +19,6 @@ and open the template in the editor.
 
     <h:body>
         <h:panelGrid columns="2" cellpadding="10">
-            <c:set var="i" value="#{0}" scope="view"/>
             <p:dataTable var="arq" value="#{ponteBean.model.arquivosAnexosCadastro}" paginator="true" rows="15" >
                 <p:column headerText="Arquivo" style="text-align: center" >
                     <h:outputText value="#{arq.arquivo}" />
@@ -63,10 +62,8 @@ and open the template in the editor.
 
                 <p:column headerText="Ação" style="width: 150px; text-align: center" >
                     <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-baixar">
-                        <p:fileDownload value="#{comumbean.getImage()}" >
-                            <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
-                            <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
-                        </p:fileDownload>
+                        <c:set value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" var="nome" />
+                        <p:fileDownload value="#{comumbean.getImage(nome, arq.imagem.tipoMime)}" />
                     </p:commandButton>
 
                     <p:commandButton type="button" onclick="PF('dlg#{arq.id}').show()" icon="ui-icon-visualizar"/>
