@@ -22,6 +22,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -182,8 +183,8 @@ public class SimulacaoDAO {
         return rankings;
     }
     
-    public void excluirRanking(int id) throws SQLException {
-        String query = "delete from RANKING where ID_RANKING = " + id;
+    public void excluirRanking(int idRanking) throws SQLException {
+        String query = "delete from RANKING where ID_RANKING = " + idRanking;
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -191,6 +192,20 @@ public class SimulacaoDAO {
         Statement stmt;
         stmt = conn.createStatement();
         stmt.execute(query);
+    }
+    
+    public void atualizaDataSimulacao(Simulacao simulacao) throws SQLException {        
+        Date dataAtual = new Date();
+        String d = dataAtual.toString();
+        int idSimulacao = simulacao.getId();
+        String query = "update SIMULACAO set DT_DATA = " + d + " where ID_SIMULACAO = " + idSimulacao;
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        PreparedStatement stmt;
+        stmt = conn.prepareStatement(query);
+        stmt.setDate(1, new java.sql.Date(simulacao.getData().getTime()));
+        stmt.executeUpdate(query);
     }
     
     public int buscarIndicePerformanceRelativo(int idSimulacao) throws SQLException {

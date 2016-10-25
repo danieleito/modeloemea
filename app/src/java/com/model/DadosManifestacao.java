@@ -18,25 +18,28 @@ public class DadosManifestacao implements Serializable {
     private String numero;
     private ManifestacaoExtensao manifestacaoExtensao;
     private ManifestacaoUrgencia manifestacaoUrgencia;
+    private ArquivoAnexoManifestacao arquivoAnexoManifestacao;
 
     public DadosManifestacao() {
     }
 
-    public DadosManifestacao(int id, String foto, String tamanho, String numero, ManifestacaoExtensao manifestacaoExtensao, ManifestacaoUrgencia manifestacaoUrgencia) {
+    public DadosManifestacao(int id, String foto, String tamanho, String numero, ManifestacaoExtensao manifestacaoExtensao, ManifestacaoUrgencia manifestacaoUrgencia, ArquivoAnexoManifestacao arquivoAnexoManifestacao) {
         this.id = id;
         this.foto = foto;
         this.tamanho = tamanho;
         this.numero = numero;
         this.manifestacaoExtensao = manifestacaoExtensao;
         this.manifestacaoUrgencia = manifestacaoUrgencia;
+        this.arquivoAnexoManifestacao = arquivoAnexoManifestacao;
     }
 
-    public DadosManifestacao(String foto, String tamanho, String numero, ManifestacaoExtensao manifestacaoExtensao, ManifestacaoUrgencia manifestacaoUrgencia) {
+    public DadosManifestacao(String foto, String tamanho, String numero, ManifestacaoExtensao manifestacaoExtensao, ManifestacaoUrgencia manifestacaoUrgencia, ArquivoAnexoManifestacao arquivoAnexoManifestacao) {
         this.foto = foto;
         this.tamanho = tamanho;
         this.numero = numero;
         this.manifestacaoExtensao = manifestacaoExtensao;
         this.manifestacaoUrgencia = manifestacaoUrgencia;
+        this.arquivoAnexoManifestacao = arquivoAnexoManifestacao;
     }
 
     public int getId() {
@@ -85,5 +88,13 @@ public class DadosManifestacao implements Serializable {
 
     public void setManifestacaoUrgencia(ManifestacaoUrgencia manifestacaoUrgencia) {
         this.manifestacaoUrgencia = manifestacaoUrgencia;
+    }
+
+    public ArquivoAnexoManifestacao getArquivoAnexoManifestacao() {
+        return arquivoAnexoManifestacao;
+    }
+
+    public void setArquivoAnexoManifestacao(ArquivoAnexoManifestacao arquivoAnexoManifestacao) {
+        this.arquivoAnexoManifestacao = arquivoAnexoManifestacao;
     }
 }

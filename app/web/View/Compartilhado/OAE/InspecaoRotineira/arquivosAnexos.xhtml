@@ -46,13 +46,8 @@ and open the template in the editor.
                     </h:outputText>
                 </p:column>
 
-                <p:column headerText="id" >
-                <h:outputText value="#{ponteBean.nomePastaInspecao(arq.inspecao.id)}" />
-                </p:column>
-
                 <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
-                    <c:set var="pastaInspecao" value="#{ponteBean.nomePastaInspecao(arq.inspecao.id)}"/>
-
+                    <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
                     <p:imageSwitch effect="wipe" widgetVar="switcher" id="manuelSwitchers" slideshowAuto="false">
                         <ui:repeat value="#{ponteBean.model.arquivosAnexosCadastro}" var="image" id="manuelSwitcherImagess">
                             <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
@@ -64,16 +59,19 @@ and open the template in the editor.
                 </p:column>
 
                 <p:column headerText="Ação" style="width: 150px; text-align: center" >
+                    
                     <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-baixar">
-                        <p:fileDownload value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" />
+                        <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
+                        <c:set value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" var="nome" />
+                        <p:fileDownload value="#{comumbean.getImage(nome, arq.imagem.tipoMime)}" />
                     </p:commandButton>
-
                     
                     <p:commandButton type="button" onclick="PF('dlg#{arq.id}').show()" icon="ui-icon-visualizar"/>
                     <p:dialog header="Images" widgetVar="dlg#{arq.id}" modal="true" draggable="false" resizable="false">
                         <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
-                        <p:imageSwitch effect="wipe" widgetVar="switcher#{arq.id}" id="manuelSwitcher#{arq.id}" slideshowAuto="false" activeIndex="#{ponteBean.model.getIndexOfArquivoAnexoCadastro(arq.id)}">
-                            <ui:repeat value="#{ponteBean.model.arquivosAnexosInspecoes}" var="image" >
+                        <c:set value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" var="nome" />
+                        <p:imageSwitch effect="fade" slideshowAuto="false" widgetVar="switcher#{arq.id}" id="manuelSwitcher#{arq.id}" activeIndex="#{ponteBean.model.getIndexOfArquivoAnexoCadastro(arq.id)}">                         
+                            <ui:repeat value="#{ponteBean.model.arquivosAnexosCadastro}" var="image" >
                                 <p:graphicImage value="#{comumbean.getImage()}" style="height: 500px; width: 800px" title="#{image.imagem.nome}" alt="Image Description for #{image}" >
                                     <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
                                     <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />

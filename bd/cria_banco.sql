@@ -637,6 +637,21 @@ create table ARQUIVO_ANEXO_INSPECAO
 		CONSTRAINT						fk_arquivoanexoinspecao_imagem		FOREIGN KEY(ID_IMAGEM) REFERENCES IMAGEM(ID_IMAGEM)
 	);
 
+--Arquivos anexos manifestacao
+create table ARQUIVO_ANEXO_MANIFESTACAO
+	(
+		ID_ARQUIVO_ANEXO_MANIFESTACAO	int				not null identity(1,1),
+		
+		DS_TIPO_ARQUIVO					varchar(10)		not null,
+		NR_NUMERO						varchar(3)		not null,
+		DS_DESCRICAO					varchar(50)		not null,
+		DS_REGISTRO						varchar(10)		not null,
+		DT_DATA_ANEXACAO				date			not null,
+		ID_IMAGEM						int				not null,
+		CONSTRAINT						pk_arquivoanexomanifestacao			PRIMARY KEY(ID_ARQUIVO_ANEXO_MANIFESTACAO),
+		CONSTRAINT						fk_arquivoanexomanifestacao_imagem	FOREIGN KEY(ID_IMAGEM) REFERENCES IMAGEM(ID_IMAGEM)
+	);
+
 ---------------------------------------------------------------------------
 
 --create table DADOS_ELEMENTO
@@ -656,9 +671,11 @@ create table DADOS_MANIFESTACAO
 		DS_NUMERO						varchar(20),
 		ID_MANIFESTACOES_EXTENSAO		int,
 		ID_MANIFESTACOES_URGENCIA		int,
+		ID_ARQUIVO_ANEXO_MANIFESTACAO	int,
 		CONSTRAINT						pk_dadosmanifestacao							PRIMARY KEY(ID_DADOS_MANIFESTACAO),
-		CONSTRAINT						fk_dadosmanifestacao_manifestacoes_extensao		FOREIGN KEY(ID_MANIFESTACOES_EXTENSAO) REFERENCES MANIFESTACOES_EXTENSAO(ID_MANIFESTACOES_EXTENSAO),
-		CONSTRAINT						fk_dadosmanifestacao_manifestacoes_urgencia		FOREIGN KEY(ID_MANIFESTACOES_URGENCIA) REFERENCES MANIFESTACOES_URGENCIA(ID_MANIFESTACOES_URGENCIA)
+		CONSTRAINT						fk_dadosmanifestacao_manifestacoesextensao		FOREIGN KEY(ID_MANIFESTACOES_EXTENSAO) REFERENCES MANIFESTACOES_EXTENSAO(ID_MANIFESTACOES_EXTENSAO),
+		CONSTRAINT						fk_dadosmanifestacao_manifestacoesurgencia		FOREIGN KEY(ID_MANIFESTACOES_URGENCIA) REFERENCES MANIFESTACOES_URGENCIA(ID_MANIFESTACOES_URGENCIA),
+		CONSTRAINT						fk_dadosmanifestacao_arquivoanexomanifestacao	FOREIGN KEY(ID_ARQUIVO_ANEXO_MANIFESTACAO) REFERENCES ARQUIVO_ANEXO_MANIFESTACAO(ID_ARQUIVO_ANEXO_MANIFESTACAO)
 	);
 
 create table ELEMENTO_UFPR_MANIFESTACAO_UFPR

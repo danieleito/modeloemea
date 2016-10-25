@@ -12,19 +12,11 @@ import java.util.Date;
  *
  * @author Daniele Harumi Ito
  */
-public class ArquivoAnexoInspecao implements Serializable {
+public class ArquivoAnexoManifestacao implements Serializable {
     /**
      * identificador do ArquivoAnexoCadastro no Banco de Dados
      */
     private int id;
-    /**
-     * identificador da inspecao
-     */
-    private Inspecao inspecao;
-    /**
-     * arquivo
-     */
-    private String arquivo;
     /**
      * tipo de arquivo
      */
@@ -50,18 +42,15 @@ public class ArquivoAnexoInspecao implements Serializable {
      */
     private Imagem imagem;
 
-
     /**
-     * Constructor padrão.
+     * Constructor padrão
      */
-    public ArquivoAnexoInspecao() {
+    public ArquivoAnexoManifestacao() {
     }
 
     /**
      * Constructor completo
      * @param id {@link #id}
-     * @param inspecao {@link #inspecao}
-     * @param arquivo {@link #arquivo}
      * @param tipoArquivo {@link #tipoArquivo}
      * @param numero {@link #numero}
      * @param descricao {@link #descricao}
@@ -69,10 +58,8 @@ public class ArquivoAnexoInspecao implements Serializable {
      * @param dataAnexada {@link #dataAnexada}
      * @param imagem {@link #imagem}
      */
-    public ArquivoAnexoInspecao(int id, Inspecao inspecao, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
+    public ArquivoAnexoManifestacao(int id, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
         this.id = id;
-        this.inspecao = inspecao;
-        this.arquivo = arquivo;
         this.tipoArquivo = tipoArquivo;
         this.numero = numero;
         this.descricao = descricao;
@@ -83,8 +70,6 @@ public class ArquivoAnexoInspecao implements Serializable {
 
     /**
      * Constructor sem id
-     * @param inspecao {@link #inspecao}
-     * @param arquivo {@link #arquivo}
      * @param tipoArquivo {@link #tipoArquivo}
      * @param numero {@link #numero}
      * @param descricao {@link #descricao}
@@ -92,9 +77,7 @@ public class ArquivoAnexoInspecao implements Serializable {
      * @param dataAnexada {@link #dataAnexada}
      * @param imagem {@link #imagem}
      */
-    public ArquivoAnexoInspecao(Inspecao inspecao, String arquivo, String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
-        this.inspecao = inspecao;
-        this.arquivo = arquivo;
+    public ArquivoAnexoManifestacao(String tipoArquivo, String numero, String descricao, String registro, Date dataAnexada, Imagem imagem) {
         this.tipoArquivo = tipoArquivo;
         this.numero = numero;
         this.descricao = descricao;
@@ -103,7 +86,6 @@ public class ArquivoAnexoInspecao implements Serializable {
         this.imagem = imagem;
     }
 
-    
     /**
      * retorna {@link #id}
      * @return {@link #id}
@@ -112,36 +94,8 @@ public class ArquivoAnexoInspecao implements Serializable {
         return id;
     }
 
-    /**
-     * 
-     * @param id 
-     */
     public void setId(int id) {
         this.id = id;
-    }
-
-    /**
-     * retorna {@link #inspecao}
-     * @return {@link #inspecao}
-     */
-    public Inspecao getInspecao() {
-        return inspecao;
-    }
-
-    public void setInspecao(Inspecao inspecao) {
-        this.inspecao = inspecao;
-    }
-
-    /**
-     * retorna {@link #arquivo}
-     * @return {@link #arquivo}
-     */
-    public String getArquivo() {
-        return arquivo;
-    }
-
-    public void setArquivo(String arquivo) {
-        this.arquivo = arquivo;
     }
 
     /**
@@ -215,7 +169,7 @@ public class ArquivoAnexoInspecao implements Serializable {
     public void setImagem(Imagem imagem) {
         this.imagem = imagem;
     }
-    
+
     @Override
     public String toString() {
         return descricao;

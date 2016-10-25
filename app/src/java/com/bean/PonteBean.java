@@ -542,7 +542,6 @@ public class PonteBean extends ComumBean implements Serializable {
     }
 
     public void visualizarFoto() {
-        String ola = "Olá";
         Map<String,Object> options = new HashMap<String, Object>();
         options.put("modal", true);
         options.put("width", 640);

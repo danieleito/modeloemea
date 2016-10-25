@@ -5,9 +5,11 @@
  */
 package com.dao;
 
+import com.model.ArquivoAnexoManifestacao;
 import com.model.DadosManifestacao;
 import com.model.ElementoUfpr;
 import com.model.ElementoUfprManifestacaoUfpr;
+import com.model.Imagem;
 import com.model.InspecaoManifestacaoElemento;
 import com.model.ManifestacaoExtensao;
 import com.model.ManifestacaoUfpr;
@@ -47,7 +49,9 @@ public class InspecaoManifestacaoElementoDAO {
                                     rs.getString("DS_MANIFESTACOES_EXTENSAO"), rs.getString("DS_CRITERIO_MANIFESTACOES_EXTENSAO"), 
                                     rs.getString("DS_CAPA2")), new ManifestacaoUrgencia(rs.getInt("ID_MANIFESTACOES_URGENCIA"), 
                                             rs.getString("DS_MANIFESTACOES_URGENCIA"), rs.getString("DS_CRITERIO_MANIFESTACOES_URGENCIA"), 
-                                            rs.getString("DS_CAPA4"))), 
+                                            rs.getString("DS_CAPA4")), new ArquivoAnexoManifestacao(rs.getInt("ID_ARQUIVO_ANEXO_MANIFESTACAO"), rs.getString("DS_TIPO_ARQUIVO"), 
+                            rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), rs.getString("DS_REGISTRO"), 
+                            rs.getDate("DT_DATA_ANEXACAO"), new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME")))), 
                             new ElementoUfprManifestacaoUfpr(rs.getInt("ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR"), new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), 
                                     rs.getString("CD_ELEMENTO"), rs.getString("DS_ELEMENTO"), rs.getString("DS_CAPA1")), 
                                     new ManifestacaoUfpr(rs.getInt("ID_MANIFESTACAO_UFPR"), rs.getString("CD_MANIFESTACOES_UFPR"), 

@@ -362,16 +362,17 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         }
     }
 
-    //remove a ponte da simulação
-    public void excluirRanking(int idRanking) throws IOException {
+    //remove a ponte da simulação e atualiza data de edicao da simulacao
+    public void excluirRanking(int idRanking, Simulacao simulacao) throws IOException {
         try {
             database.excluirRanking(idRanking);
+            database.atualizaDataSimulacao(simulacao);
             recarregarSimulacao();
             adicionarMensagemInfo("Ponte removida da simulação com sucesso.");
             //simulacoes = database.buscar();
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao remover ponte da simulação: " + ex.getMessage());
+            adicionarMensagemErro("Erro ao remover ponte da simulação:: " + ex.getMessage());
         }
         redirecionar("/View/Compartilhado/OAE/Simulacao/ranking.jsf");
     }
@@ -437,25 +438,4 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         this.lgt = lgt;
     }
     // </editor-fold>
-
-    private void maiorLatitudeLongitude() {
-//        int t = simulacao.getRankings().size();
-//        int maiorLatitude = 0;
-//        int maiorLongitude = 0;
-//        int menorLatitude = 34;
-//        int menorLongitude = 8;
-//        for (int i = 0; i < t; i++) {
-//            lat = Integer.parseInt(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLatitudeGrau());
-//            if (maiorLatitude < lat) {
-//                maiorLatitude = lat;
-//            }
-//            if (menorLatitude > latitude) {
-//                latitude
-//            }
-//            lgt = Integer.parseInt(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLongitudeGrau());
-//            if (maiorLongitude < lgt) {
-//                maiorLongitude = lgt;
-//            }
-//        }
-    }
 }

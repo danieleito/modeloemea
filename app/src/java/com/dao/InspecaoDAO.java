@@ -5,9 +5,11 @@
  */
 package com.dao;
 
+import com.model.ArquivoAnexoManifestacao;
 import com.model.DadosManifestacao;
 import com.model.ElementoUfpr;
 import com.model.ElementoUfprManifestacaoUfpr;
+import com.model.Imagem;
 import com.model.Inspecao;
 import com.model.InspecaoManifestacaoElemento;
 import com.model.ManifestacaoExtensao;
@@ -167,17 +169,24 @@ public class InspecaoDAO {
                 + "DM.ID_MANIFESTACOES_URGENCIA, MURG.DS_MANIFESTACOES_URGENCIA, "
                 + "IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR, EUMU.ID_ELEMENTO_UFPR, "
                 + "EU.DS_ELEMENTO, EUMU.ID_MANIFESTACAO_UFPR, MU.DS_MANIFESTACAO_UFPR, "
-                + "MU.DS_UNIDADE "
+                + "MU.DS_UNIDADE, AAM.ID_ARQUIVO_ANEXO_MANIFESTACAO, AAM.DS_TIPO_ARQUIVO, "
+                + "AAM.NR_NUMERO, AAM.DS_DESCRICAO, AAM.DS_REGISTRO, AAM.DT_DATA_ANEXACAO, "
+                + "I.ID_IMAGEM, I.NM_NOME, I.TIPO_MIME"
+                
                 + "from INSPECAO_MANIFESTACAO_ELEMENTO IME, DADOS_MANIFESTACAO DM, "
                 + "ELEMENTO_UFPR_MANIFESTACAO_UFPR EUMU, ELEMENTO_UFPR EU, MANIFESTACAO_UFPR MU, "
-                + "MANIFESTACOES_EXTENSAO ME, MANIFESTACOES_URGENCIA MURG "
+                + "MANIFESTACOES_EXTENSAO ME, MANIFESTACOES_URGENCIA MURG, "
+                + "ARQUIVO_ANEXO_MANIFESTACAO AAM, IMAGEM I  "
+                
                 + "where IME.ID_INSPECAO = " + idInspecao + " "
                 + "and IME.ID_DADOS_MANIFESTACAO = DM.ID_DADOS_MANIFESTACAO "
                 + "and IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR = EUMU.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR "
                 + "and EUMU.ID_ELEMENTO_UFPR = EU.ID_ELEMENTO_UFPR "
                 + "and EUMU.ID_MANIFESTACAO_UFPR = MU.ID_MANIFESTACAO_UFPR "
                 + "and DM.ID_MANIFESTACOES_EXTENSAO = ME.ID_MANIFESTACOES_EXTENSAO "
-                + "and DM.ID_MANIFESTACOES_URGENCIA = MURG.ID_MANIFESTACOES_URGENCIA;";
+                + "and DM.ID_MANIFESTACOES_URGENCIA = MURG.ID_MANIFESTACOES_URGENCIA"
+                + "and DM.ID_ARQUIVO_ANEXO_MANIFESTACAO = AAM.ID_ARQUIVO_ANEXO_MANIFESTACAO "
+                + "and AAM.ID_IMAGEM = I.ID_IMAGEM;";
         
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -192,7 +201,10 @@ public class InspecaoDAO {
                     rs.getInt("ID_INSPECAO"), 
                     new DadosManifestacao(rs.getInt("ID_DADOS_MANIFESTACAO"), rs.getString("DS_FOTO"), rs.getString("DS_TAMANHO"), rs.getString("DS_NUMERO"), 
                             new ManifestacaoExtensao(rs.getInt("ID_MANIFESTACOES_EXTENSAO"), rs.getString("DS_MANIFESTACOES_EXTENSAO"), null, null), 
-                            new ManifestacaoUrgencia(rs.getInt("ID_MANIFESTACOES_URGENCIA"), rs.getString("DS_MANIFESTACOES_URGENCIA"), null, null)), 
+                            new ManifestacaoUrgencia(rs.getInt("ID_MANIFESTACOES_URGENCIA"), rs.getString("DS_MANIFESTACOES_URGENCIA"), null, null), 
+                            new ArquivoAnexoManifestacao(rs.getInt("ID_ARQUIVO_ANEXO_MANIFESTACAO"), rs.getString("DS_TIPO_ARQUIVO"), 
+                            rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), rs.getString("DS_REGISTRO"), 
+                            rs.getDate("DT_DATA_ANEXACAO"), new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME")))), 
                     new ElementoUfprManifestacaoUfpr(rs.getInt("ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR"), new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), null, rs.getString("DS_ELEMENTO"), null), 
                             new ManifestacaoUfpr(rs.getInt("ID_MANIFESTACAO_UFPR"), null, rs.getString("DS_MANIFESTACAO_UFPR"), null, null)));
             inspecaoManifestacaoElementos.add(inspecaoManifestacaoElemento);

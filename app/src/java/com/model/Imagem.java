@@ -31,7 +31,7 @@ public class Imagem implements Serializable {
     /**
      * 
      */
-    private String caminho;
+    //private String caminho;
 
     /**
      * Constructor padrão.
@@ -46,12 +46,11 @@ public class Imagem implements Serializable {
      * @param tipoMime {@link #tipoMime}
      * @param caminho {@link #caminho}
      */
-    public Imagem(int id, String nome, String tipoMime, String caminho) {
+    public Imagem(int id, String nome, String tipoMime) {
         this.id = id;
         this.nome = nome;
         this.tipoMime = tipoMime;
         //this.imagem = imagem;
-        this.caminho = caminho;
     }
 
     /**
@@ -60,11 +59,10 @@ public class Imagem implements Serializable {
      * @param tipoMime {@link #tipoMime}
      * @param caminho {@link #caminho}
      */
-    public Imagem(String nome, String tipoMime, String caminho) {
+    public Imagem(String nome, String tipoMime) {
         this.nome = nome;
         this.tipoMime = tipoMime;
         //this.imagem = imagem;
-        this.caminho = caminho;
     }
 
 
@@ -112,15 +110,4 @@ public class Imagem implements Serializable {
 //        this.imagem = imagem;
 //    }
 
-    /**
-     * retorna {@link #caminho}
-     * @return {@link #caminho}
-     */
-    public String getCaminho() {
-        return caminho;
-    }
-
-    public void setCaminho(String caminho) {
-        this.caminho = caminho;
-    }
 }

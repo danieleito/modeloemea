@@ -44,7 +44,7 @@ public class ArquivoAnexoDAO {
             arquivos.add(new ArquivoAnexoCadastro(rs.getInt("ID_ARQUIVO_ANEXO_CADASTRO"), 
                     rs.getString("DS_ARQUIVO"), rs.getString("DS_TIPO_ARQUIVO"), rs.getString("NR_NUMERO"), 
                     rs.getString("DS_DESCRICAO"), rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO"), 
-                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"), rs.getString("CAMINHO"))));
+                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"))));
         }
 
         conexao.closeConnection();
@@ -74,7 +74,7 @@ public class ArquivoAnexoDAO {
             arquivoAnexo = new ArquivoAnexoCadastro(rs.getInt("ID_ARQUIVO_ANEXO_CADASTRO"), rs.getString("DS_ARQUIVO"), 
                     rs.getString("DS_TIPO_ARQUIVO"), rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), 
                     rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO"), 
-                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"), rs.getString("CAMINHO")));
+                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME")));
         }
 
         conexao.closeConnection();
@@ -103,7 +103,7 @@ public class ArquivoAnexoDAO {
         while (rs.next()) {     
             arquivos.add(new ArquivoAnexoInspecao(rs.getInt("ID_ARQUIVO_ANEXO_INSPECAO"), new Inspecao(rs.getInt("ID_INSPECAO")), rs.getString("DS_ARQUIVO"), 
                     rs.getString("DS_TIPO_ARQUIVO"), rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO"), 
-                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"), rs.getString("CAMINHO"))));
+                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"))));
         }
 
         conexao.closeConnection();
@@ -129,7 +129,7 @@ public class ArquivoAnexoDAO {
         if (rs.next()) {
             arquivoAnexo = new ArquivoAnexoInspecao(rs.getInt("ID_ARQUIVO_ANEXO_INSPECAO"), new Inspecao(rs.getInt("ID_INSPECAO")), rs.getString("DS_ARQUIVO"), rs.getString("DS_TIPO_ARQUIVO"), 
                     rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO"), 
-                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"), rs.getString("CAMINHO")));
+                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME")));
         }
 
         conexao.closeConnection();

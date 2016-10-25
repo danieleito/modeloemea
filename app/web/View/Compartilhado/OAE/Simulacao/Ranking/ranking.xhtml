@@ -54,7 +54,7 @@ and open the template in the editor.
                 <p:commandButton icon="ui-icon-visualizar" title="Visualizar" action="#{ponteBean.exibir(r.ponte.id)}" />
 
                 <p:growl id="message" showDetail="true" />
-                <p:commandButton icon="ui-icon-excluir" title="Deletar" actionListener="#{simulacaoBean.excluirRanking(r.id)}" update="message">
+                <p:commandButton icon="ui-icon-excluir" title="Deletar" actionListener="#{simulacaoBean.excluirRanking(r.id, simulacaoBean.simulacao)}" update="message">
                     <p:confirm header="Confirmação" message="Tem certeza que deseja remover a ponte da simulação permanentemente?" icon="ui-icon-alert" />
                 </p:commandButton>
                 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
