@@ -19,7 +19,7 @@ and open the template in the editor.
 
     <h:body>
         <h:panelGrid columns="2" cellpadding="10">
-            <p:dataTable var="arq" value="#{ponteBean.model.arquivosAnexosCadastro}" paginator="true" rows="15" >
+            <p:dataTable emptyMessage="#{comumbean.getMensagemTabelaVazia()}" var="arq" value="#{ponteBean.model.arquivosAnexosCadastro}" paginator="true" rows="15" >
                 <p:column headerText="Arquivo" style="text-align: center" >
                     <h:outputText value="#{arq.arquivo}" />
                 </p:column>

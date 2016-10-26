@@ -381,7 +381,7 @@ public class PonteBean extends ComumBean implements Serializable {
             model = database.buscar(idPonte);
         } catch (Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao carregar ponte. " + ex.getMessage());
+            adicionarMensagemErro("Erro ao carregar ponte: " + ex.getMessage());
         }
         redirecionar("/View/Compartilhado/OAE/exibir.jsf");
     }

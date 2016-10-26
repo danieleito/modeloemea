@@ -56,7 +56,7 @@ and open the template in the editor.
 
                         <p:tab title="Inspeções">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <p:dataTable var="i" value="#{ponteBean.model.inspecoes}" paginator="true" rows="15" >
+                                <p:dataTable emptyMessage="#{comumbean.getMensagemTabelaVazia()}" var="i" value="#{ponteBean.model.inspecoes}" paginator="true" rows="15" >
                                     <p:column headerText="Data" style="text-align: center" >
                                         <h:outputText value="#{i.data}">
                                             <f:convertDateTime pattern="dd/MM/yyyy"/>

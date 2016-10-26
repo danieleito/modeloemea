@@ -11,7 +11,7 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:body>
-        <p:dataTable var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="15" >
+        <p:dataTable emptyMessage="#{comumbean.getMensagemTabelaVazia()}" var="r" value="#{simulacaoBean.simulacao.rankings}" paginator="true" rows="15" >
             <f:facet name="header" >
                 <h:outputText value="Número de OAEs: #{simulacaoBean.numeroOaesSimulacao(simulacaoBean.simulacao.rankings)}" style="text-align: right;" />
             </f:facet>
