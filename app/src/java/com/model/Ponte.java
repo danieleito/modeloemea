@@ -85,6 +85,8 @@ public class Ponte implements Serializable {
      */
     private ArrayList<ArquivoAnexoInspecao> arquivosAnexosInspecoes;
     
+    private ArrayList<ArquivoAnexoManifestacao> arquivosAnexosManifestacoes;
+    
     /**
      * lista inspeção
      */
@@ -116,6 +118,7 @@ public class Ponte implements Serializable {
 //        cadastroManifestacao = new CadastroManifestacao();
         arquivosAnexosCadastro = new ArrayList<>();
         arquivosAnexosInspecoes = new ArrayList<>();
+        arquivosAnexosManifestacoes = new ArrayList<>();
         inspecoes = new ArrayList<>();
     }
 
@@ -342,6 +345,14 @@ public class Ponte implements Serializable {
         this.arquivosAnexosInspecoes = arquivosAnexosInspecoes;
     }
 
+    public ArrayList<ArquivoAnexoManifestacao> getArquivosAnexosManifestacoes() {
+        return arquivosAnexosManifestacoes;
+    }
+
+    public void setArquivosAnexosManifestacoes(ArrayList<ArquivoAnexoManifestacao> arquivosAnexosManifestacoes) {
+        this.arquivosAnexosManifestacoes = arquivosAnexosManifestacoes;
+    }
+
     public ArrayList<Inspecao> getInspecoes() {
         return inspecoes;
     }
@@ -369,6 +380,15 @@ public class Ponte implements Serializable {
     public int getIndexOfArquivoAnexoCadastro(int id) {
         for (int i = 0; i < arquivosAnexosCadastro.size(); i++) {
             if (arquivosAnexosCadastro.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return 0;
+    }
+    
+    public int getIndexArquivoAnexoManifestacao(int id) {
+        for (int i = 0; i < arquivosAnexosManifestacoes.size(); i++) {
+            if (arquivosAnexosManifestacoes.get(i).getId() == id) {
                 return i;
             }
         }
