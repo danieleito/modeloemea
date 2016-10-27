@@ -33,7 +33,7 @@ public class DadosManifestacaoDAO {
                 + "ARQUIVO_ANEXO_MANIFESTACAO AAM, IMAGEM I "
                 
                 + "where DM.ID_DADOS_MANIFESTACAO = " + idDadosManifestacao + " "
-                + "and DM.ID_MANIFESTACOES_EXTENSAO = DE.ID_MANIFESTACOES_EXTENSAO "
+                + "and DM.ID_MANIFESTACOES_EXTENSAO = ME.ID_MANIFESTACOES_EXTENSAO "
                 + "and DM.ID_MANIFESTACOES_URGENCIA = MU.ID_MANIFESTACOES_URGENCIA "
                 + "and DM.ID_ARQUIVO_ANEXO_MANIFESTACAO = AAM.ID_ARQUIVO_ANEXO_MANIFESTACAO "
                 + "and AAM.ID_IMAGEM = I.ID_IMAGEM;";
