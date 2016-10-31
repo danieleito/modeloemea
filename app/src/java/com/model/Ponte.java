@@ -386,9 +386,9 @@ public class Ponte implements Serializable {
         return 0;
     }
     
-    public int getIndexArquivoAnexoManifestacao(int id) {
-        for (int i = 0; i < arquivosAnexosManifestacoes.size(); i++) {
-            if (arquivosAnexosManifestacoes.get(i).getId() == id) {
+    public int getIndexArquivoAnexoInspecao(int id) {
+        for (int i = 0; i < arquivosAnexosInspecoes.size(); i++) {
+            if (arquivosAnexosInspecoes.get(i).getId() == id) {
                 return i;
             }
         }

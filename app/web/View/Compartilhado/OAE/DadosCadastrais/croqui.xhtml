@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
         <title>SGO Gestor</title>
@@ -17,39 +18,16 @@ and open the template in the editor.
 
     <h:body>
         <p:accordionPanel multiple="true">
-            <p:tab title="Croqui I">
-                <h:panelGrid columns="1" cellpadding="10">
-                    <p:graphicImage value="#{comumbean.getImage()}" style="height: 800px; width: 1200px" title="#{image}" alt="Image Description for #{image}" >
-                        <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{Croqui.pdf}" />
-                        <f:param name="tipoimagem" value="image/pdf" />
-                    </p:graphicImage>
-                </h:panelGrid>
-            </p:tab>
             <p:tab title="Croqui II">
                 <h:panelGrid columns="2" cellpadding="10">
-                    <object data='/PC01/03. Pastas pessoais/Daniele/wildfly-10.0.0.CR4/wildfly-10.0.0.CR4/standalone/data/imagens/01/#{Croqui.pdf}' type='application/pdf' width='700px' height='400px'>
+                    <c:set value="croqui.pdf" var="croqui" />
+                    <object data="#{comumbean.getPdfPath(ponteBean.model.identificacaoObraDadosBasicos.codigo, croqui)}" type="application/pdf" width="700px" height="400px" internalinstanceid="4">
                         <p>It appears your Web browser is not configured to display PDF files. 
-                        No worries, just <a href='/PC01/03. Pastas pessoais/Daniele/wildfly-10.0.0.CR4/wildfly-10.0.0.CR4/standalone/data/imagens/01/#{document.pdf}'>click here to download the PDF file.</a></p>
+                        No worries, just <a href='#{comumbean.getPdfPath(ponteBean.model.identificacaoObraDadosBasicos.codigo, croqui)}'>click here to download the PDF file.</a></p>
                     </object>
-                    <h:outputText value="Francis Ford Coppola's legendary..." />
+                    <p:outputLabel value="#{comumbean.getPdfPath(ponteBean.model.identificacaoObraDadosBasicos.codigo, croqui)}"/>
                 </h:panelGrid>
-            </p:tab>
-            <p:tab title="Croqui III">
-                <h:panelGrid columns="2" cellpadding="10">
-                    <p:graphicImage name="/PC01/03. Pastas pessoais/Daniele/wildfly-10.0.0.CR4/wildfly-10.0.0.CR4/standalone/data/imagens/01/Croqui.pdf" />
-                    <h:outputText value="After a break of more than 15 years...." />
-                </h:panelGrid>
-            </p:tab>
-            
-            <p:tab title="Croqui IV">
-                <h:panelGrid columns="2" cellpadding="10">
-                    <h3>PDF</h3>
-                    <object type="application/pdf" data="/Documentos/croqui.pdf" height="300px" width="100%" internalinstanceid="16">
-                        Your browser can't display pdf, <a href="/resources/demo/media/guide.pdf">click</a> to download pdf instead.
-                    </object>
-                </h:panelGrid>
-            </p:tab>
-            
+            </p:tab>            
         </p:accordionPanel>
     </h:body>
 </html>

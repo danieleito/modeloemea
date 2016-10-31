@@ -515,7 +515,7 @@ insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte10VistaGeral.jpg', 'image/j
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte10foto01.jpg', 'image/jpg');
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte11VistaGeral.jpg', 'image/jpg');
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte11foto01.jpg', 'image/jpg');
-insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Croqui.pdf', 'image/pdf');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('croqui.pdf', 'pdf');
 
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto01.jpg', 'image/jpg');
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto02.jpg', 'image/jpg');
@@ -618,7 +618,7 @@ insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NU
 insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (10, 'ponte10foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '21/09/2016', 21);
 insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (11, 'ponte11Geral.jpg', 'Foto', '01', 'Vista geral', 'OAE', '21/09/2016', 22);
 insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (11, 'ponte11foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '21/09/2016', 23);
-insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, 'Croqui.pdf', 'esquema', '01', 'croqui 01', 'OAE', '05/10/2016', 24);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, 'croqui.pdf', 'esquema', '01', 'croqui 01', 'OAE', '05/10/2016', 24);
 
 
 insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '01.jpg', 'Foto', '01', 'foto01', 'INS', '05/08/2012', 25);

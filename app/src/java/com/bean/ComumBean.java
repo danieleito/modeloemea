@@ -124,6 +124,11 @@ public class ComumBean {
     public String getMensagemTabelaVazia() { 
         return "Nenhum registro encontrado";
     }
+    
+    public String getPdfPath(String codigoPonte, String nomePdf) {
+        return System.getProperty("jboss.server.data.dir") + File.separatorChar + 
+                "imagens" + File.separatorChar + codigoPonte + File.separatorChar + nomePdf;
+    }
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Usuario getUsuarioLogado() {
