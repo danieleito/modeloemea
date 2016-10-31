@@ -9,7 +9,8 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
         <title>SGO Gestor</title>
@@ -26,14 +27,20 @@ and open the template in the editor.
 
                 <p:panel style="text-align:center" >
                     <h:panelGrid columns="1" >
-                        <p:imageSwitch effect="wipe" widgetVar="switcher" id="manuelSwitcher" slideshowAuto="false" >
-                            <ui:repeat var="a" value="#{ponteBean.model.arquivosAnexosCadastro}" id="manuelSwitcherImages">
-                                <p:graphicImage value="#{comumbean.getImage()}" style="height: 200px; width: 350px" title="#{image}" alt="Image Description for #{image}" >
-                                    <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{a.imagem.nome}" />
-                                    <f:param name="tipoimagem" value="#{a.imagem.tipoMime}" />
-                                </p:graphicImage>
-                            </ui:repeat>
-                        </p:imageSwitch>
+                        <p:dialog header="Images" widgetVar="dlg#{i.dadosManifestacao.arquivoAnexoManifestacao.id}" modal="true" draggable="false" resizable="false">
+                            <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
+                            <p:outputLabel value="#{pastaInspecao}"/>
+                            <c:set value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{arq.imagem.nome}" var="nome" />
+                            <p:outputLabel value="#{nome}"/>
+                            <p:imageSwitch effect="fade" slideshowAuto="false" widgetVar="switcher#{i.dadosManifestacao.arquivoAnexoManifestacao.id}" id="manuelSwitcher#{i.dadosManifestacao.arquivoAnexoManifestacao.id}" activeIndex="#{ponteBean.model.getIndexArquivoAnexoManifestacao(i.dadosManifestacao.arquivoAnexoManifestacao.id)}">
+                                <ui:repeat value="#{ponteBean.model.arquivosAnexosManifestacoes}" var="image" >
+                                    <p:graphicImage value="#{comumbean.getImage()}" style="height: 200px; width: 350px" title="#{image.imagem.nome}" alt="Image Description for #{image}" >
+                                        <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{image.imagem.nome}" />
+                                        <f:param name="tipoimagem" value="#{image.imagem.tipoMime}" />
+                                    </p:graphicImage>
+                                </ui:repeat>
+                            </p:imageSwitch>
+                        </p:dialog>
 
                         <h:outputText value="Foto: #{i.dadosManifestacao.foto}" />
 

@@ -525,10 +525,10 @@ insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto05.jpg', 'image/jpg');
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto06.jpg', 'image/jpg');
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto01.jpg', 'image/jpg');
 
-insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto01.jpg', 'image/jpg');
-insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto02.jpg', 'image/jpg');
-insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto03.jpg', 'image/jpg');
-insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto04.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto10.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto11.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto12.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto13.jpg', 'image/jpg');
 
 ---------------------------------------------------------------------------
 
@@ -629,10 +629,10 @@ insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR
 insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '06.jpg', 'Foto', '06', 'foto06', 'INS', '05/08/2012', 30);
 insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (6, '01.jpg', 'Foto', '01', 'foto01', 'INS', '05/08/2014', 31);
 
-insert into ARQUIVO_ANEXO_MANIFESTACAO (DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values ('Foto', '01', 'foto01', 'MAN', '26/10/2012', 32);
-insert into ARQUIVO_ANEXO_MANIFESTACAO (DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values ('Foto', '02', 'foto02', 'MAN', '26/10/2012', 33);
-insert into ARQUIVO_ANEXO_MANIFESTACAO (DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values ('Foto', '03', 'foto03', 'MAN', '26/10/2012', 34);
-insert into ARQUIVO_ANEXO_MANIFESTACAO (DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values ('Foto', '04', 'foto04', 'MAN', '26/10/2012', 35);
+insert into ARQUIVO_ANEXO_MANIFESTACAO (DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values ('Foto', '10', 'foto10', 'MAN', '31/10/2012', 32);
+insert into ARQUIVO_ANEXO_MANIFESTACAO (DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values ('Foto', '11', 'foto11', 'MAN', '31/10/2012', 33);
+insert into ARQUIVO_ANEXO_MANIFESTACAO (DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values ('Foto', '12', 'foto12', 'MAN', '31/10/2012', 34);
+insert into ARQUIVO_ANEXO_MANIFESTACAO (DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values ('Foto', '13', 'foto13', 'MAN', '31/10/2012', 35);
 
 
 ---------------------------------------------------------------------------

@@ -8,7 +8,6 @@ package com.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Optional;
 
 /**
  *
@@ -79,12 +78,12 @@ public class Ponte implements Serializable {
      * lista arquivos anexos
      */
     private ArrayList<ArquivoAnexoCadastro> arquivosAnexosCadastro;
-   
+
     /**
      * lista arquivos anexos inspecao
      */
     private ArrayList<ArquivoAnexoInspecao> arquivosAnexosInspecoes;
-    
+ 
     private ArrayList<ArquivoAnexoManifestacao> arquivosAnexosManifestacoes;
     
     /**
@@ -97,7 +96,6 @@ public class Ponte implements Serializable {
      * para exibir na tela que lista o ranking
      */
     private Date dataUltimaInspecao;
-
 
     /**
      * Constructor padrão
@@ -207,7 +205,6 @@ public class Ponte implements Serializable {
         this.identificacaoObraLocalizacao = identificacaoObraLocalizacao;
         this.identificacaoObraResponsaveis = identificacaoObraResponsaveis;
     }
-
 
     /**
      * retorna {@link #id}
@@ -376,7 +373,7 @@ public class Ponte implements Serializable {
     public void setSubstituicao(Substituicao substituicao) {
         this.substituicao = substituicao;
     }
-    
+
     public int getIndexOfArquivoAnexoCadastro(int id) {
         for (int i = 0; i < arquivosAnexosCadastro.size(); i++) {
             if (arquivosAnexosCadastro.get(i).getId() == id) {
@@ -385,10 +382,19 @@ public class Ponte implements Serializable {
         }
         return 0;
     }
-    
+
     public int getIndexArquivoAnexoInspecao(int id) {
         for (int i = 0; i < arquivosAnexosInspecoes.size(); i++) {
             if (arquivosAnexosInspecoes.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public int getIndexArquivoAnexoManifestacao(int id) {
+        for (int  i = 0; i < arquivosAnexosManifestacoes.size(); i++) {
+            if (arquivosAnexosManifestacoes.get(i).getId() == id) {
                 return i;
             }
         }

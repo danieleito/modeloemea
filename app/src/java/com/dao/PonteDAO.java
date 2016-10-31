@@ -326,6 +326,7 @@ public class PonteDAO {
             ArquivoAnexoDAO arquivoAnexoDAO = new ArquivoAnexoDAO();
             ponte.setArquivosAnexosCadastro(arquivoAnexoDAO.buscarCadastros(ponte.getId()));
             ponte.setArquivosAnexosInspecoes(arquivoAnexoDAO.buscarInspecoes(ponte.getId()));
+            ponte.setArquivosAnexosManifestacoes(arquivoAnexoDAO.buscarManifestacoes(ponte.getId()));
 
             InspecaoDAO inspecaoDAO = new InspecaoDAO();
             ponte.setInspecoes(inspecaoDAO.buscarInspecao(ponte.getId()));

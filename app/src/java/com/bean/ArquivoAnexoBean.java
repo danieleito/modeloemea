@@ -8,6 +8,7 @@ package com.bean;
 import com.dao.ArquivoAnexoDAO;
 import com.model.ArquivoAnexoCadastro;
 import com.model.ArquivoAnexoInspecao;
+import com.model.ArquivoAnexoManifestacao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -25,8 +26,10 @@ import javax.faces.bean.SessionScoped;
 public class ArquivoAnexoBean extends ComumBean {
     private ArquivoAnexoDAO databaseC;
     private ArquivoAnexoDAO databaseI;
+    private ArquivoAnexoDAO databaseM;
     private ArrayList<ArquivoAnexoCadastro> arquivosCadastro;
     private ArrayList<ArquivoAnexoInspecao> arquivosInspecao;
+    private ArrayList<ArquivoAnexoManifestacao> arquivosManifestacao;
 
     public ArquivoAnexoDAO getDatabaseC() {
         return databaseC;
@@ -42,6 +45,14 @@ public class ArquivoAnexoBean extends ComumBean {
 
     public void setDatabaseI(ArquivoAnexoDAO databaseI) {
         this.databaseI = databaseI;
+    }
+
+    public ArquivoAnexoDAO getDatabaseM() {
+        return databaseM;
+    }
+
+    public void setDatabaseM(ArquivoAnexoDAO databaseM) {
+        this.databaseM = databaseM;
     }
 
     public ArrayList<ArquivoAnexoCadastro> getArquivosCadastro() {
@@ -60,10 +71,19 @@ public class ArquivoAnexoBean extends ComumBean {
         this.arquivosInspecao = arquivosInspecao;
     }
 
+    public ArrayList<ArquivoAnexoManifestacao> getArquivosManifestacao() {
+        return arquivosManifestacao;
+    }
+
+    public void setArquivosManifestacao(ArrayList<ArquivoAnexoManifestacao> arquivosManifestacao) {
+        this.arquivosManifestacao = arquivosManifestacao;
+    }
+
     @PostConstruct
     public void init() {
         databaseC = new ArquivoAnexoDAO();
         databaseI = new ArquivoAnexoDAO();
+        databaseM = new ArquivoAnexoDAO();
         try {
             arquivosCadastro = databaseC.buscarCadastros(1);
         } catch (SQLException ex) {
@@ -76,6 +96,13 @@ public class ArquivoAnexoBean extends ComumBean {
         } catch (SQLException ex) {
             Logger.getLogger(ArquivoAnexoBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar arquivos anexos de inspeção. " + ex.getMessage());
+        }
+
+        try {
+            arquivosManifestacao = databaseM.buscarManifestacoes(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(ArquivoAnexoBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar arquivos anexos de manifestação. " + ex.getMessage());
         }
     }
 }

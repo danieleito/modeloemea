@@ -89,7 +89,7 @@ public class PonteBean extends ComumBean implements Serializable {
     private ArrayList<Ponte> pontesSelecionadas;
     private ArrayList<Simulacao> simulacoes;
     private Simulacao modelSimulacao;
-    
+
     //aba identificacao obra
     private ArrayList<NaturezaTransposicao> naturezasTransposicoes;
     private ArrayList<TipoEstrutura> tiposEstruturas;
@@ -103,7 +103,7 @@ public class PonteBean extends ComumBean implements Serializable {
 //    private ArrayList<> localizacaoProjeto;
 //    private ArrayList<> localizacaoDocumentosConstrucao;
 //    private ArrayList<> localizacaoDocumentos;
-    
+
     //aba caracteristicas funcionais
     private ArrayList<TipoRegiao> tiposRegioes;
     private ArrayList<TipoTracado> tiposTracados;
@@ -122,7 +122,7 @@ public class PonteBean extends ComumBean implements Serializable {
 
     //aba elementos componente
     private ArrayList<ElementoUfpr> elementosUfpr;
-    
+
     //aba aspectos especiais
     private ArrayList<AspectoEspecial> aspectosEspeciais;
 
@@ -132,29 +132,29 @@ public class PonteBean extends ComumBean implements Serializable {
     //inspecao  
     //aba Manifestacoes
     private ArrayList<ManifestacaoUfpr> manifestacoesUfpr;
-    
+
     //combo numero
     private ArrayList<Numero> numeros;    
-    
+
     //combo foto
     private ArrayList<Foto> fotos;
-    
+
     //extensao relativa
     private ArrayList<ExtensaoRelativa> extensoesRelativa;
-    
+
     //reparo
     private ArrayList<Reparo> reparos;
-    
+
     private Inspecao inspecao;
     private ArrayList<Inspecao> inspecoes;
-    
+
     //mapa
 //    private MapModel draggableModel;
     private Marker marker;
     private String titulo;
     private MapModel rectangleModel;
     private MapModel advancedModel;
-    
+
     @PostConstruct
     public void init() {
         database = new PonteDAO();
@@ -194,24 +194,23 @@ public class PonteBean extends ComumBean implements Serializable {
 
             //aba deficiencias funcionais
             deficienciasFuncionais = new DeficienciaFuncionalDAO().buscar();
-            
+
             //inspecao
             //aba Manifestacoes
             manifestacoesUfpr = new ManifestacaoUfprDAO().buscar();
-            
+
             //combo numero
             numeros = new NumeroDAO().buscar();
-            
+
             //combo foto
             fotos = new FotoDAO().buscar();
-            
+
 //            //extensao relativa
 //            extensoesRelativa = new ExtensaoRelativaDAO().buscar();
 //            
 //            //reparo
 //            reparos = new ReparoDAO().buscar();
-            
-            
+
             //mapa
             database = new PonteDAO();
             model = null;
@@ -267,13 +266,13 @@ public class PonteBean extends ComumBean implements Serializable {
             redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
         }
     }
-    
+
     public void consultarGet(int idSimulacao) {
         try {
             SimulacaoDAO dbSimulacao = new SimulacaoDAO();
             modelSimulacao = dbSimulacao.buscar(idSimulacao);
             pontesSelecionadas = new ArrayList<>();
-            
+
             limparFiltros();
             pontes = database.buscar();
             carregarMapa();
@@ -286,7 +285,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
     }
-    
+
     public void consultarCadastroGet() {
         try {
             limparFiltros();
@@ -298,7 +297,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAECadastro.jsf");
     }
-    
+
     public void consultarInspecaoGet() {
         try {
             limparFiltros();
@@ -310,7 +309,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAEInspecao.jsf");
     }
-    
+
     public void consultarPost() throws SQLException {
         try {
             pontes = database.buscar2(filtroCodigo, filtroIdentificacao,
@@ -327,7 +326,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
     }
-    
+
     public void consultarCadastroPost() throws SQLException {
         try {
             pontes = database.buscar2(filtroCodigo, filtroIdentificacao,
@@ -341,7 +340,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAECadastro.jsf");
     }
-    
+
     public void consultarInspecaoPost() throws SQLException {
         try {
             pontes = database.buscar2(filtroCodigo, filtroIdentificacao,
@@ -355,7 +354,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAEInspecao.jsf");
     }
-    
+
     public void novoRegistro() {
         try {
             redirecionar("/View/Compartilhado/OAE/Inspecao/inspecao.jsf");
@@ -364,7 +363,7 @@ public class PonteBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro. " + ex.getMessage());
         }
     }
-    
+
     public void limparFiltros() {
         filtroCodigo = "";
         filtroIdentificacao = "";
@@ -375,7 +374,7 @@ public class PonteBean extends ComumBean implements Serializable {
         filtroIdSuperintendencia = 0;
         filtroIdUnidadeLocal = 0;
     }
-    
+
     public void exibir(int idPonte) {
         try {
             model = database.buscar(idPonte);
@@ -385,7 +384,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/OAE/exibir.jsf");
     }
-    
+
     public void cadastrar() {
         try {
             model = new Ponte();
@@ -395,7 +394,7 @@ public class PonteBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro ao carregar. " + ex.getMessage());
         }
     }
-    
+
     public void visualizarInspecao(int id) {
         try {
             inspecao = model.getInspecoes().stream().filter(i -> i.getId() == id).findFirst().orElse(new Inspecao());
@@ -405,9 +404,9 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
     }
-    
-    
-    
+
+
+
     //    início métodos para mapa
     public void carregarMapa() {
         advancedModel = new DefaultMapModel();
@@ -424,7 +423,7 @@ public class PonteBean extends ComumBean implements Serializable {
                 grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeGrau());
                 minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeMinuto());
                 Double longitude = minuto/60 + grau;
-                
+
                 //latitude e logitude transformado em valor negativo
                 if (latitude > 0) {
                     latitude *= -1;
@@ -433,7 +432,7 @@ public class PonteBean extends ComumBean implements Serializable {
                     longitude *= -1;
                 }
                 LatLng coord = new LatLng(latitude, longitude);
-                
+
                 //pega maior latitude e longitude
                 if (longitude < maiorLongitude) {
                     maiorLongitude = longitude;
@@ -462,7 +461,7 @@ public class PonteBean extends ComumBean implements Serializable {
                 }
                 DecimalFormat df = new DecimalFormat("#.00");
                 String localVia = String.format("%.2f", pontes.get(i).getIdentificacaoObraLocalizacao().getLocalVia());
-                
+
                 String path = "";
                 int idPonte = pontes.get(i).getId();
                 if (modelSimulacao.getRankings().stream()
@@ -492,15 +491,15 @@ public class PonteBean extends ComumBean implements Serializable {
         String q = w;
         return r;
     }
-    
+
     public MapModel getAdvancedModel() {
         return advancedModel;
     }
-      
+
     public void onMarkerSelect(OverlaySelectEvent event) {
         marker = (Marker) event.getOverlay();
     }
-      
+
     public Marker getMarker() {
         return marker;
     }
@@ -532,9 +531,8 @@ public class PonteBean extends ComumBean implements Serializable {
     }
 
 //    fim métodos para mapa
-    
 
-    
+
 //    busca o numero de pontes que foi pesquisado na tela BuscarPonte
     public int numeroPontesBuscados(ArrayList pontes) {
         int numero = pontes.size();
@@ -549,17 +547,17 @@ public class PonteBean extends ComumBean implements Serializable {
         options.put("contentWidth", "100%");
         options.put("contentHeight", "100%");
         options.put("headerElement", "customheader");
-         
+
         RequestContext.getCurrentInstance().openDialog("viewCars", options, null);
     }
-    
+
 //    retorna o nome da pasta da inspecao
     public String nomePastaInspecao(int idPasta) {   
         String pasta = Integer.toString(idPasta);
         return pasta;
     }
-    
-    
+
+
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
         return filtroCodigo;
@@ -834,5 +832,5 @@ public class PonteBean extends ComumBean implements Serializable {
     }
     // </editor-fold>
 
-    
+
 }

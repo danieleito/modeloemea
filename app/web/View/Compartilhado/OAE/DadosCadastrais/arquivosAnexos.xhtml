@@ -76,7 +76,8 @@ and open the template in the editor.
                                 </p:graphicImage>
                             </ui:repeat>
                         </p:imageSwitch>
-                        <h:outputLabel value="#{arq.imagem.nome}" />
+                        <h:outputLabel value="#{arq.descricao}" />
+                        <h:outputLabel value="#{arq.imagem.nome}" style="text-align: right; float: right" />
                         <p:commandButton type="button" onclick="PF('switcher#{arq.id}').previous();" icon="ui-icon-anterior" id="prev"/>
                         <p:commandButton type="button" onclick="PF('switcher#{arq.id}').next();" icon="ui-icon-proximo" id="next"/>
                     </p:dialog>

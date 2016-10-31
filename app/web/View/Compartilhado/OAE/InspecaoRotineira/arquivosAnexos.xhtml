@@ -72,7 +72,7 @@ and open the template in the editor.
                         <p:outputLabel value="#{pastaInspecao}"/>
                         <c:set value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{arq.imagem.nome}" var="nome" />
                         <p:outputLabel value="#{nome}"/>
-                        <p:imageSwitch effect="fade" slideshowAuto="false" widgetVar="switcher#{arq.id}" id="manuelSwitcher#{arq.id}" activeIndex="#{ponteBean.model.getIndexArquivoAnexoInspecao(arq.id)}">                         
+                        <p:imageSwitch effect="fade" slideshowAuto="false" widgetVar="switcher#{arq.id}" id="manuelSwitcher#{arq.id}" activeIndex="#{ponteBean.model.getIndexArquivoAnexoInspecao(arq.id)}">
                             <ui:repeat value="#{ponteBean.model.arquivosAnexosInspecoes}" var="image" >
                                 <p:graphicImage value="#{comumbean.getImage()}" style="height: 500px; width: 800px" title="#{image.imagem.nome}" alt="Image Description for #{image}" >
                                     <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{image.imagem.nome}" />
@@ -80,9 +80,10 @@ and open the template in the editor.
                                 </p:graphicImage>
                             </ui:repeat>
                         </p:imageSwitch>
-                        <h:outputLabel value="#{arq.imagem.nome}" />
-                        <p:commandButton type="button" onclick="PF('switcher#{arq.id}').previous();" icon="ui-icon-anterior" id="prev"/>
-                        <p:commandButton type="button" onclick="PF('switcher#{arq.id}').next();" icon="ui-icon-proximo" id="next"/>
+                        <h:outputLabel value="#{arq.descricao}" />
+                        <h:outputLabel value="#{arq.imagem.nome}" style="text-align: right; float: right" />
+                        <p:commandButton type="button" onclick="PF('switcher#{arq.id}').previous();" icon="ui-icon-anterior" id="prev" />
+                        <p:commandButton type="button" onclick="PF('switcher#{arq.id}').next();" icon="ui-icon-proximo" id="next" />
                     </p:dialog>
                     
                 </p:column>
