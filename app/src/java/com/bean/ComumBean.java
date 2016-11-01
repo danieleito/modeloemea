@@ -129,6 +129,7 @@ public class ComumBean {
         return System.getProperty("jboss.server.data.dir") + File.separatorChar + 
                 "imagens" + File.separatorChar + codigoPonte + File.separatorChar + nomePdf;
     }
+    
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Usuario getUsuarioLogado() {

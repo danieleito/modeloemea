@@ -254,6 +254,10 @@ public class PonteBean extends ComumBean implements Serializable {
                         qtde++;
                     }
                 }
+                if (qtde > 0) {
+                    SimulacaoDAO dbSimulacao = new SimulacaoDAO();
+                    dbSimulacao.atualizaDataSimulacao(idSimulacao);                    
+                }
                 adicionarMensagemInfo(qtde + " pontes adicionadas das "+pontesSelecionadas.size()+" selecionadas");
 
             } catch (SQLException ex) {

@@ -366,13 +366,13 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     public void excluirRanking(int idRanking, Simulacao simulacao) throws IOException {
         try {
             database.excluirRanking(idRanking);
-            database.atualizaDataSimulacao(simulacao);
+            database.atualizaDataSimulacao(simulacao.getId());
             recarregarSimulacao();
             adicionarMensagemInfo("Ponte removida da simulação com sucesso.");
             //simulacoes = database.buscar();
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao remover ponte da simulação:: " + ex.getMessage());
+            adicionarMensagemErro("Erro ao remover ponte da simulação: " + ex.getMessage());
         }
         redirecionar("/View/Compartilhado/OAE/Simulacao/ranking.jsf");
     }

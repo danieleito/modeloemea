@@ -21,6 +21,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -194,17 +196,16 @@ public class SimulacaoDAO {
         stmt.execute(query);
     }
     
-    public void atualizaDataSimulacao(Simulacao simulacao) throws SQLException {        
+    public void atualizaDataSimulacao(int idSimulacao) throws SQLException {     
         Date dataAtual = new Date();
-        String d = dataAtual.toString();
-        int idSimulacao = simulacao.getId();
-        String query = "update SIMULACAO set DT_DATA = " + d + " where ID_SIMULACAO = " + idSimulacao;
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate = df.format(dataAtual);
+        String query = "update SIMULACAO set DT_DATA = '" + strDate + "' where ID_SIMULACAO = " + idSimulacao;
         
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
-        PreparedStatement stmt;
-        stmt = conn.prepareStatement(query);
-        stmt.setDate(1, new java.sql.Date(simulacao.getData().getTime()));
+        Statement stmt;
+        stmt = conn.createStatement();
         stmt.executeUpdate(query);
     }
     
