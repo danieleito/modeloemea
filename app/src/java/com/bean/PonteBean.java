@@ -561,6 +561,17 @@ public class PonteBean extends ComumBean implements Serializable {
         return pasta;
     }
 
+    public double calculaValorDano() {
+        double beta, capa1, capa2, capa3, capa4;
+        beta = 2;
+        capa1 = 1;
+        capa2 = 1;
+        capa3 = 1;
+        capa4 = 1;
+        double valorDano = beta * capa1 * capa2 * capa3 * capa4;
+        return valorDano;
+    }
+
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {

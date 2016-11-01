@@ -27,7 +27,7 @@ public class DadosManifestacaoDAO {
                 + "DM.ID_MANIFESTACOES_URGENCIA, MU.DS_MANIFESTACOES_URGENCIA, "
                 + "MU.DS_CRITERIO_MANIFESTACOES_URGENCIA, MU.DS_CAPA4, AAM.ID_ARQUIVO_ANEXO_MANIFESTACAO, "
                 + "AAM.DS_TIPO_ARQUIVO, AAM.NR_NUMERO, AAM.DS_DESCRICAO, AAM.DS_REGISTRO, "
-                + "AAM.DT_DATA_ANEXACAO, I.ID_IMAGEM, I.NM_NOME, I.TIPO_MIME "
+                + "AAM.DT_DATA_ANEXACAO, I.ID_IMAGEM, I.NM_NOME, I.TIPO_MIME, DM.DS_VALOR_DANO "
                 
                 + "from DADOS_MANIFESTACAO DM, MANIFESTACOES_EXTENSAO ME, MANIFESTACOES_URGENCIA MU, "
                 + "ARQUIVO_ANEXO_MANIFESTACAO AAM, IMAGEM I "
@@ -53,7 +53,8 @@ public class DadosManifestacaoDAO {
                             rs.getString("DS_CRITERIO_MANIFESTACOES_URGENCIA"), rs.getString("DS_CAPA4")), 
                     new ArquivoAnexoManifestacao(rs.getInt("ID_ARQUIVO_ANEXO_MANIFESTACAO"), rs.getString("DS_TIPO_ARQUIVO"), 
                             rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), rs.getString("DS_REGISTRO"), 
-                            rs.getDate("DT_DATA_ANEXACAO"), new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"))));
+                            rs.getDate("DT_DATA_ANEXACAO"), new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), 
+                                    rs.getString("TIPO_MIME"))), rs.getDouble("DS_VALOR_DANO"));
         }
 
         conexao.closeConnection();

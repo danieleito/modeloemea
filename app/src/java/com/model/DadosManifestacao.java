@@ -19,11 +19,12 @@ public class DadosManifestacao implements Serializable {
     private ManifestacaoExtensao manifestacaoExtensao;
     private ManifestacaoUrgencia manifestacaoUrgencia;
     private ArquivoAnexoManifestacao arquivoAnexoManifestacao;
+    private double valorDano;
 
     public DadosManifestacao() {
     }
 
-    public DadosManifestacao(int id, String foto, String tamanho, String numero, ManifestacaoExtensao manifestacaoExtensao, ManifestacaoUrgencia manifestacaoUrgencia, ArquivoAnexoManifestacao arquivoAnexoManifestacao) {
+    public DadosManifestacao(int id, String foto, String tamanho, String numero, ManifestacaoExtensao manifestacaoExtensao, ManifestacaoUrgencia manifestacaoUrgencia, ArquivoAnexoManifestacao arquivoAnexoManifestacao, double valorDano) {
         this.id = id;
         this.foto = foto;
         this.tamanho = tamanho;
@@ -31,15 +32,17 @@ public class DadosManifestacao implements Serializable {
         this.manifestacaoExtensao = manifestacaoExtensao;
         this.manifestacaoUrgencia = manifestacaoUrgencia;
         this.arquivoAnexoManifestacao = arquivoAnexoManifestacao;
+        this.valorDano = valorDano;
     }
 
-    public DadosManifestacao(String foto, String tamanho, String numero, ManifestacaoExtensao manifestacaoExtensao, ManifestacaoUrgencia manifestacaoUrgencia, ArquivoAnexoManifestacao arquivoAnexoManifestacao) {
+    public DadosManifestacao(String foto, String tamanho, String numero, ManifestacaoExtensao manifestacaoExtensao, ManifestacaoUrgencia manifestacaoUrgencia, ArquivoAnexoManifestacao arquivoAnexoManifestacao, double valorDano) {
         this.foto = foto;
         this.tamanho = tamanho;
         this.numero = numero;
         this.manifestacaoExtensao = manifestacaoExtensao;
         this.manifestacaoUrgencia = manifestacaoUrgencia;
         this.arquivoAnexoManifestacao = arquivoAnexoManifestacao;
+        this.valorDano = valorDano;
     }
 
     public int getId() {
@@ -96,5 +99,13 @@ public class DadosManifestacao implements Serializable {
 
     public void setArquivoAnexoManifestacao(ArquivoAnexoManifestacao arquivoAnexoManifestacao) {
         this.arquivoAnexoManifestacao = arquivoAnexoManifestacao;
+    }
+
+    public double getValorDano() {
+        return valorDano;
+    }
+
+    public void setValorDano(double valorDano) {
+        this.valorDano = valorDano;
     }
 }

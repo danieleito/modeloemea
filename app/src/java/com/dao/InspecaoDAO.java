@@ -171,7 +171,7 @@ public class InspecaoDAO {
                 + "EU.DS_ELEMENTO, EUMU.ID_MANIFESTACAO_UFPR, MU.DS_MANIFESTACAO_UFPR, "
                 + "MU.DS_UNIDADE, AAM.ID_ARQUIVO_ANEXO_MANIFESTACAO, AAM.DS_TIPO_ARQUIVO, "
                 + "AAM.NR_NUMERO, AAM.DS_DESCRICAO, AAM.DS_REGISTRO, AAM.DT_DATA_ANEXACAO, "
-                + "I.ID_IMAGEM, I.NM_NOME, I.TIPO_MIME "
+                + "I.ID_IMAGEM, I.NM_NOME, I.TIPO_MIME, DM.DS_VALOR_DANO "
                 
                 + "from INSPECAO_MANIFESTACAO_ELEMENTO IME, DADOS_MANIFESTACAO DM, "
                 + "ELEMENTO_UFPR_MANIFESTACAO_UFPR EUMU, ELEMENTO_UFPR EU, MANIFESTACAO_UFPR MU, "
@@ -204,7 +204,7 @@ public class InspecaoDAO {
                             new ManifestacaoUrgencia(rs.getInt("ID_MANIFESTACOES_URGENCIA"), rs.getString("DS_MANIFESTACOES_URGENCIA"), null, null), 
                             new ArquivoAnexoManifestacao(rs.getInt("ID_ARQUIVO_ANEXO_MANIFESTACAO"), rs.getString("DS_TIPO_ARQUIVO"), 
                             rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), rs.getString("DS_REGISTRO"), 
-                            rs.getDate("DT_DATA_ANEXACAO"), new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME")))), 
+                            rs.getDate("DT_DATA_ANEXACAO"), new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"))), rs.getDouble("DS_VALOR_DANO")), 
                     new ElementoUfprManifestacaoUfpr(rs.getInt("ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR"), new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), null, rs.getString("DS_ELEMENTO"), null), 
                             new ManifestacaoUfpr(rs.getInt("ID_MANIFESTACAO_UFPR"), null, rs.getString("DS_MANIFESTACAO_UFPR"), null, null)));
             inspecaoManifestacaoElementos.add(inspecaoManifestacaoElemento);

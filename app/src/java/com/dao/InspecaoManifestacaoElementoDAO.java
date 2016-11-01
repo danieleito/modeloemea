@@ -32,7 +32,7 @@ public class InspecaoManifestacaoElementoDAO {
                 + "DM.ID_MANIFESTACOES_URGENCIA, MU.DS_MANIFESTACOES_URGENCIA, MU.DS_CRITERIO_MANIFESTACOES_URGENCIA, MU.DS_CAPA4, "
                 + "DM.ID_ARQUIVO_ANEXO_MANIFESTACAO, AAM.DS_TIPO_ARQUIVO, AAM.NR_NUMERO, AAM.DS_DESCRICAO, AAM.DS_REGISTRO, AAM.DT_DATA_ANEXACAO, "
                 + "AAM.ID_IMAGEM, I.NM_NOME, I.TIPO_MIME, IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR, EUMU.ID_ELEMENTO_UFPR, EU.CD_ELEMENTO, EU.DS_ELEMENTO, EU.DS_CAPA1, "
-                + "EUMU.ID_MANIFESTACAO_UFPR, MUF.CD_MANIFESTACAO_UFPR, MUF.CD_MANIFESTACAO_UFPR, MUF.DS_MANIFESTACAO_UFPR, MUF.DS_UNIDADE, MUF.DS_BETA " 
+                + "EUMU.ID_MANIFESTACAO_UFPR, MUF.CD_MANIFESTACAO_UFPR, MUF.CD_MANIFESTACAO_UFPR, MUF.DS_MANIFESTACAO_UFPR, MUF.DS_UNIDADE, MUF.DS_BETA, DM.DS_VALOR_DANO " 
                 
                 + "from INSPECAO_MANIFESTACAO_ELEMENTO IME, DADOS_MANIFESTACAO DM, MANIFESTACOES_EXTENSAO ME, MANIFESTACOES_URGENCIA MU, "
                 + "ARQUIVO_ANEXO_MANIFESTACAO AAM, IMAGEM I, ELEMENTO_UFPR_MANIFESTACAO_UFPR EUMU, ELEMENTO_UFPR EU, MANIFESTACAO_UFPR MUF "
@@ -66,7 +66,7 @@ public class InspecaoManifestacaoElementoDAO {
                                             rs.getString("DS_MANIFESTACOES_URGENCIA"), rs.getString("DS_CRITERIO_MANIFESTACOES_URGENCIA"), 
                                             rs.getString("DS_CAPA4")), new ArquivoAnexoManifestacao(rs.getInt("ID_ARQUIVO_ANEXO_MANIFESTACAO"), rs.getString("DS_TIPO_ARQUIVO"), 
                             rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), rs.getString("DS_REGISTRO"), 
-                            rs.getDate("DT_DATA_ANEXACAO"), new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME")))), 
+                            rs.getDate("DT_DATA_ANEXACAO"), new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"))), rs.getDouble("DS_VALOR_DANO")), 
                             new ElementoUfprManifestacaoUfpr(rs.getInt("ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR"), new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), 
                                     rs.getString("CD_ELEMENTO"), rs.getString("DS_ELEMENTO"), rs.getString("DS_CAPA1")), 
                                     new ManifestacaoUfpr(rs.getInt("ID_MANIFESTACAO_UFPR"), rs.getString("CD_MANIFESTACAO_UFPR"), 

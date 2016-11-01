@@ -19,13 +19,13 @@ and open the template in the editor.
 
     <h:body>
         <h:form id="form" >
-            <p:dataGrid var="i" value="#{ponteBean.inspecao.inspecaoManifestacaoElemento}" layout="grid" rows="12" paginator="true"  >
+            <p:dataGrid var="i" value="#{ponteBean.inspecao.inspecaoManifestacaoElemento}" layout="grid" rows="12" paginator="true" columns="3" >
 
                 <f:facet name="header">
                     Modelo UFPR
                 </f:facet>
 
-                <p:panel style="text-align:center; height: 450px " >
+                <p:panel style="text-align:center; height: 450px; width: 300px; " >
                     <h:panelGrid columns="1" class="tabela_sem_borda" >
                         <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
                         <c:set var="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{i.dadosManifestacao.arquivoAnexoManifestacao.imagem.nome}" />
@@ -51,6 +51,22 @@ and open the template in the editor.
                         <h:outputText value="Unidade: #{i.elementoUfprManifestacaoUfpr.manifestacaoUfpr.unidade}" />
 
                         <h:outputText value="Reparo: #{i.dadosManifestacao.manifestacaoUrgencia.descricao}" />
+
+                        <c:choose>
+                            <c:when test="${i.dadosManifestacao.valorDano == null}">
+                                <h:outputText value="#{ponteBean.calculaValorDano()}" >
+                                    <f:convertNumber pattern="#0.00" />
+                                </h:outputText>
+                            </c:when>
+                        </c:choose>
+                        
+                        <c:choose>
+                            <c:when test="${i.dadosManifestacao.valorDano != null}">
+                                <h:outputText value="Valor do dano: #{i.dadosManifestacao.valorDano}" class="col-md-10" >
+                                    <f:convertNumber pattern="#0.00" />
+                                </h:outputText>
+                            </c:when>
+                        </c:choose>
 
                     </h:panelGrid>
                 </p:panel>
