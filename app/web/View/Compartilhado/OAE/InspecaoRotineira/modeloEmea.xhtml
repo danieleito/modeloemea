@@ -36,13 +36,13 @@ and open the template in the editor.
                             <f:param name="tipoimagem" value="#{tipo}" />
                         </p:graphicImage>
                         
-                        <p:commandButton type="button" onclick="PF('dlg').show()" icon="ui-icon-visualizar"/>
+<!--                        <p:commandButton type="button" onclick="PF('dlg').show()" icon="ui-icon-visualizar"/>
                         <p:dialog header="Images" widgetVar="dlg" modal="true" draggable="false" resizable="false">
                             <p:graphicImage value="#{comumbean.getImage()}" style="height: 500px; width: 800px" title="#{image.imagem.nome}" alt="Image Description for #{image}" >
                                 <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{i.dadosManifestacao.arquivoAnexoManifestacao.imagem.nome}" />
                                 <f:param name="tipoimagem" value="#{i.dadosManifestacao.arquivoAnexoManifestacao.imagem.tipoMime}" />
                             </p:graphicImage>
-                        </p:dialog>
+                        </p:dialog>-->
                         
 
                         <h:outputText value="Foto: #{i.dadosManifestacao.arquivoAnexoManifestacao.imagem.nome}" />

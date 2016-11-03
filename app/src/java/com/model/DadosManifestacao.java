@@ -13,35 +13,32 @@ import java.io.Serializable;
  */
 public class DadosManifestacao implements Serializable {
     private int id;
-    private String foto;
     private String tamanho;
     private String numero;
     private ManifestacaoExtensao manifestacaoExtensao;
     private ManifestacaoUrgencia manifestacaoUrgencia;
-    private ArquivoAnexoManifestacao arquivoAnexoManifestacao;
+    private ArquivoAnexoInspecao arquivoAnexoInspecao;
     private double valorDano;
 
     public DadosManifestacao() {
     }
 
-    public DadosManifestacao(int id, String foto, String tamanho, String numero, ManifestacaoExtensao manifestacaoExtensao, ManifestacaoUrgencia manifestacaoUrgencia, ArquivoAnexoManifestacao arquivoAnexoManifestacao, double valorDano) {
+    public DadosManifestacao(int id, String tamanho, String numero, ManifestacaoExtensao manifestacaoExtensao, ManifestacaoUrgencia manifestacaoUrgencia, ArquivoAnexoInspecao arquivoAnexoInspecao, double valorDano) {
         this.id = id;
-        this.foto = foto;
         this.tamanho = tamanho;
         this.numero = numero;
         this.manifestacaoExtensao = manifestacaoExtensao;
         this.manifestacaoUrgencia = manifestacaoUrgencia;
-        this.arquivoAnexoManifestacao = arquivoAnexoManifestacao;
+        this.arquivoAnexoInspecao = arquivoAnexoInspecao;
         this.valorDano = valorDano;
     }
 
-    public DadosManifestacao(String foto, String tamanho, String numero, ManifestacaoExtensao manifestacaoExtensao, ManifestacaoUrgencia manifestacaoUrgencia, ArquivoAnexoManifestacao arquivoAnexoManifestacao, double valorDano) {
-        this.foto = foto;
+    public DadosManifestacao(String tamanho, String numero, ManifestacaoExtensao manifestacaoExtensao, ManifestacaoUrgencia manifestacaoUrgencia, ArquivoAnexoInspecao arquivoAnexoInspecao, double valorDano) {
         this.tamanho = tamanho;
         this.numero = numero;
         this.manifestacaoExtensao = manifestacaoExtensao;
         this.manifestacaoUrgencia = manifestacaoUrgencia;
-        this.arquivoAnexoManifestacao = arquivoAnexoManifestacao;
+        this.arquivoAnexoInspecao = arquivoAnexoInspecao;
         this.valorDano = valorDano;
     }
 
@@ -51,14 +48,6 @@ public class DadosManifestacao implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
     }
 
     public String getTamanho() {
@@ -93,12 +82,12 @@ public class DadosManifestacao implements Serializable {
         this.manifestacaoUrgencia = manifestacaoUrgencia;
     }
 
-    public ArquivoAnexoManifestacao getArquivoAnexoManifestacao() {
-        return arquivoAnexoManifestacao;
+    public ArquivoAnexoInspecao getArquivoAnexoManifestacao() {
+        return arquivoAnexoInspecao;
     }
 
-    public void setArquivoAnexoManifestacao(ArquivoAnexoManifestacao arquivoAnexoManifestacao) {
-        this.arquivoAnexoManifestacao = arquivoAnexoManifestacao;
+    public void setArquivoAnexoManifestacao(ArquivoAnexoInspecao arquivoAnexoInspecao) {
+        this.arquivoAnexoInspecao = arquivoAnexoInspecao;
     }
 
     public double getValorDano() {

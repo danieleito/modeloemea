@@ -5,6 +5,7 @@
  */
 package com.dao;
 
+import com.model.ArquivoAnexoInspecao;
 import com.model.ArquivoAnexoManifestacao;
 import com.model.DadosManifestacao;
 import com.model.ElementoUfpr;
@@ -164,19 +165,20 @@ public class InspecaoDAO {
     
     private ArrayList<InspecaoManifestacaoElemento> buscarInspecaoManifestacaoElemento(int idInspecao) throws SQLException {
         String query = "select IME.ID_INSPECAO_MANIFESTACAO_ELEMENTO, IME.ID_INSPECAO, "
-                + "IME.ID_DADOS_MANIFESTACAO, DM.DS_FOTO, DM.DS_NUMERO, DM.DS_TAMANHO, "
+                + "IME.ID_DADOS_MANIFESTACAO, DM.DS_NUMERO, DM.DS_TAMANHO, "
                 + "DM.ID_MANIFESTACOES_EXTENSAO, ME.DS_MANIFESTACOES_EXTENSAO, "
                 + "DM.ID_MANIFESTACOES_URGENCIA, MURG.DS_MANIFESTACOES_URGENCIA, "
-                + "IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR, EUMU.ID_ELEMENTO_UFPR, "
-                + "EU.DS_ELEMENTO, EUMU.ID_MANIFESTACAO_UFPR, MU.DS_MANIFESTACAO_UFPR, "
-                + "MU.DS_UNIDADE, AAM.ID_ARQUIVO_ANEXO_MANIFESTACAO, AAM.DS_TIPO_ARQUIVO, "
-                + "AAM.NR_NUMERO, AAM.DS_DESCRICAO, AAM.DS_REGISTRO, AAM.DT_DATA_ANEXACAO, "
-                + "I.ID_IMAGEM, I.NM_NOME, I.TIPO_MIME, DM.DS_VALOR_DANO "
+                + "DM.ID_ARQUIVO_ANEXO_INSPECAO, AAI.ID_INSPECAO, AAI.DS_ARQUIVO, "
+                + "AAI.DS_TIPO_ARQUIVO, AAI.NR_NUMERO, AAI.DS_DESCRICAO, AAI.DS_REGISTRO, "
+                + "AAI.DT_DATA_ANEXACAO, AAI.ID_IMAGEM, I.NM_NOME, I.TIPO_MIME, "
+                + "DM.DS_VALOR_DANO, IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR, "
+                + "EUMU.ID_ELEMENTO_UFPR, EU.DS_ELEMENTO, EUMU.ID_MANIFESTACAO_UFPR, "
+                + "MU.DS_MANIFESTACAO_UFPR, MU.DS_UNIDADE "
                 
                 + "from INSPECAO_MANIFESTACAO_ELEMENTO IME, DADOS_MANIFESTACAO DM, "
                 + "ELEMENTO_UFPR_MANIFESTACAO_UFPR EUMU, ELEMENTO_UFPR EU, MANIFESTACAO_UFPR MU, "
                 + "MANIFESTACOES_EXTENSAO ME, MANIFESTACOES_URGENCIA MURG, "
-                + "ARQUIVO_ANEXO_MANIFESTACAO AAM, IMAGEM I "
+                + "ARQUIVO_ANEXO_INSPECAO AAI, IMAGEM I "
                 
                 + "where IME.ID_INSPECAO = " + idInspecao + " "
                 + "and IME.ID_DADOS_MANIFESTACAO = DM.ID_DADOS_MANIFESTACAO "
@@ -185,8 +187,8 @@ public class InspecaoDAO {
                 + "and EUMU.ID_MANIFESTACAO_UFPR = MU.ID_MANIFESTACAO_UFPR "
                 + "and DM.ID_MANIFESTACOES_EXTENSAO = ME.ID_MANIFESTACOES_EXTENSAO "
                 + "and DM.ID_MANIFESTACOES_URGENCIA = MURG.ID_MANIFESTACOES_URGENCIA "
-                + "and DM.ID_ARQUIVO_ANEXO_MANIFESTACAO = AAM.ID_ARQUIVO_ANEXO_MANIFESTACAO "
-                + "and AAM.ID_IMAGEM = I.ID_IMAGEM;";
+                + "and DM.ID_ARQUIVO_ANEXO_INSPECAO = AAI.ID_ARQUIVO_ANEXO_INSPECAO "
+                + "and AAI.ID_IMAGEM = I.ID_IMAGEM;";
         
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -199,12 +201,14 @@ public class InspecaoDAO {
         while (rs.next()) {
             InspecaoManifestacaoElemento inspecaoManifestacaoElemento = new InspecaoManifestacaoElemento(rs.getInt("ID_INSPECAO_MANIFESTACAO_ELEMENTO"), 
                     rs.getInt("ID_INSPECAO"), 
-                    new DadosManifestacao(rs.getInt("ID_DADOS_MANIFESTACAO"), rs.getString("DS_FOTO"), rs.getString("DS_TAMANHO"), rs.getString("DS_NUMERO"), 
+                    new DadosManifestacao(rs.getInt("ID_DADOS_MANIFESTACAO"), rs.getString("DS_TAMANHO"), rs.getString("DS_NUMERO"), 
                             new ManifestacaoExtensao(rs.getInt("ID_MANIFESTACOES_EXTENSAO"), rs.getString("DS_MANIFESTACOES_EXTENSAO"), null, null), 
                             new ManifestacaoUrgencia(rs.getInt("ID_MANIFESTACOES_URGENCIA"), rs.getString("DS_MANIFESTACOES_URGENCIA"), null, null), 
-                            new ArquivoAnexoManifestacao(rs.getInt("ID_ARQUIVO_ANEXO_MANIFESTACAO"), rs.getString("DS_TIPO_ARQUIVO"), 
-                            rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), rs.getString("DS_REGISTRO"), 
-                            rs.getDate("DT_DATA_ANEXACAO"), new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"))), rs.getDouble("DS_VALOR_DANO")), 
+                            new ArquivoAnexoInspecao(rs.getInt("ID_ARQUIVO_ANEXO_INSPECAO"), new Inspecao(), rs.getString("DS_ARQUIVO"), 
+                                    rs.getString("DS_TIPO_ARQUIVO"), rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), 
+                                    rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO"), 
+                                    new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"))), 
+                            rs.getDouble("DS_VALOR_DANO")), 
                     new ElementoUfprManifestacaoUfpr(rs.getInt("ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR"), new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), null, rs.getString("DS_ELEMENTO"), null), 
                             new ManifestacaoUfpr(rs.getInt("ID_MANIFESTACAO_UFPR"), null, rs.getString("DS_MANIFESTACAO_UFPR"), null, null)));
             inspecaoManifestacaoElementos.add(inspecaoManifestacaoElemento);

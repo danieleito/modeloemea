@@ -98,11 +98,11 @@ public class ArquivoAnexoBean extends ComumBean {
             adicionarMensagemErro("Erro ao carregar arquivos anexos de inspeção. " + ex.getMessage());
         }
 
-        try {
-            arquivosManifestacao = databaseM.buscarManifestacoes(1);
-        } catch (SQLException ex) {
-            Logger.getLogger(ArquivoAnexoBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao carregar arquivos anexos de manifestação. " + ex.getMessage());
-        }
+//        try {
+//            arquivosManifestacao = databaseM.buscarManifestacoes(1);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ArquivoAnexoBean.class.getName()).log(Level.SEVERE, null, ex);
+//            adicionarMensagemErro("Erro ao carregar arquivos anexos de manifestação. " + ex.getMessage());
+//        }
     }
 }
