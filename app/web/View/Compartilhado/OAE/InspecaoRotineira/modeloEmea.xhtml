@@ -67,22 +67,21 @@ and open the template in the editor.
 
                         <h:outputText value="Reparo: #{i.dadosManifestacao.manifestacaoUrgencia.descricao}" />
 
-                        <c:choose>
-                            <c:when test="${i.dadosManifestacao.valorDano == null}">
-                                <h:outputText value="#{ponteBean.calculaValorDano()}" >
-                                    <f:convertNumber pattern="#0.00" />
-                                </h:outputText>
-                            </c:when>
-                        </c:choose>
                         
-                        <c:choose>
-                            <c:when test="${i.dadosManifestacao.valorDano != null}">
-                                <h:outputText value="Valor do dano: #{i.dadosManifestacao.valorDano}" class="col-md-10" >
-                                    <f:convertNumber pattern="#0.00" />
-                                </h:outputText>
-                            </c:when>
-                        </c:choose>
 
+                        
+                        
+                        <h:panelGroup rendered="#{i.dadosManifestacao.valorDano == null}">
+                            <h:outputText value="#{ponteBean.calculaValorDano()}" class="col-md-10" >
+                                <f:convertNumber pattern="#0.00" />
+                            </h:outputText>
+                        </h:panelGroup>
+                        
+                        <h:panelGroup rendered="#{i.dadosManifestacao.valorDano != null}">
+                            <h:outputText value="Valor do dano: #{i.dadosManifestacao.valorDano}" class="col-md-10" >
+                                <f:convertNumber pattern="#0.00" />
+                            </h:outputText>
+                        </h:panelGroup>
                     </h:panelGrid>
                 </p:panel>
 
