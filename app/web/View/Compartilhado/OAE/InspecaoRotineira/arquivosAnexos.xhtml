@@ -78,8 +78,8 @@ and open the template in the editor.
                     
                     <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-baixar">
                         <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
-                        <c:set value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{image.imagem.nome}" var="nome" />
-                        <p:fileDownload value="#{comumbean.getImage(nome, image.imagem.tipoMime)}" />
+                        <c:set value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" var="nome" />
+                        <p:fileDownload value="#{comumbean.getImage(nome, arq.imagem.tipoMime)}" />
                     </p:commandButton>
                 </p:column>
             </p:dataTable>
