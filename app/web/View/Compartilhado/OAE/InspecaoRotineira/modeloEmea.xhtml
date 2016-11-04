@@ -41,7 +41,6 @@ and open the template in the editor.
                                 <f:param name="tipoimagem" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />
                             </p:graphicImage>
                         </h:commandLink>
-                        <h:outputText value="#{nomeImagem}" />
                         
                         <p:dialog header="Modal Dialog" widgetVar="dlg#{i.id}" modal="true" draggable="false" resizable="false" height="100">
                             <p:graphicImage value="#{comumbean.getImage()}" style="height: 200px" title="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" alt="Image Description for #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" >
