@@ -28,24 +28,30 @@ and open the template in the editor.
                 <p:panel style="text-align:center; height: 500px; width: 320px; " >
                     <h:panelGrid columns="1" class="tabela_sem_borda" >
                         <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
-                        <c:set var="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{i.dadosManifestacao.arquivoAnexoManifestacao.imagem.nome}" />
-                        <c:set var="tipo" value="#{i.dadosManifestacao.arquivoAnexoManifestacao.imagem.tipoMime}" />
-
-                        <p:graphicImage value="#{comumbean.getImage()}" style="height: 200px; " title="#{i.dadosManifestacao.arquivoAnexoManifestacao.imagem.nome}" alt="Image Description for #{i.dadosManifestacao.arquivoAnexoManifestacao.imagem.nome}" >
-                            <f:param name="filename" value="#{filename}" />
-                            <f:param name="tipoimagem" value="#{tipo}" />
-                        </p:graphicImage>
+                        <c:set var="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" />
+                        <c:set var="tipo" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />
                         
-<!--                        <p:commandButton type="button" onclick="PF('dlg').show()" icon="ui-icon-visualizar"/>
-                        <p:dialog header="Images" widgetVar="dlg" modal="true" draggable="false" resizable="false">
-                            <p:graphicImage value="#{comumbean.getImage()}" style="height: 500px; width: 800px" title="#{image.imagem.nome}" alt="Image Description for #{image}" >
-                                <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{i.dadosManifestacao.arquivoAnexoManifestacao.imagem.nome}" />
-                                <f:param name="tipoimagem" value="#{i.dadosManifestacao.arquivoAnexoManifestacao.imagem.tipoMime}" />
+                        <c:set var="id" value="dlg#{i.id}"/>
+                        
+                        <c:set var="nomeImagem" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" />
+                        
+                        <h:commandLink onclick="PF('dlg2').show();">
+                            <p:graphicImage value="#{comumbean.getImage()}" style="height: 200px" title="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" alt="Image Description for #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" >
+                                <f:param name="filename" value="#{nomeImagem}" />
+                                <f:param name="tipoimagem" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />
                             </p:graphicImage>
-                        </p:dialog>-->
+                        </h:commandLink>
+                        
+                        <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+                            <p:graphicImage value="#{comumbean.getImage()}" style="height: 200px" title="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" alt="Image Description for #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" >
+                                <f:param name="filename" value="#{nomeImagem}" />
+                                <f:param name="tipoimagem" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />
+                            </p:graphicImage>
+                        </p:dialog>
+                        
                         
 
-                        <h:outputText value="Foto: #{i.dadosManifestacao.arquivoAnexoManifestacao.imagem.nome}" />
+                        <h:outputText value="Foto: #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" />
 
                         <h:outputText value="Elemento: #{i.elementoUfprManifestacaoUfpr.elementoUfpr.descricao}" />
 

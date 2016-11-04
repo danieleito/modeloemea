@@ -82,11 +82,11 @@ public class DadosManifestacao implements Serializable {
         this.manifestacaoUrgencia = manifestacaoUrgencia;
     }
 
-    public ArquivoAnexoInspecao getArquivoAnexoManifestacao() {
+    public ArquivoAnexoInspecao getArquivoAnexoInspecao() {
         return arquivoAnexoInspecao;
     }
 
-    public void setArquivoAnexoManifestacao(ArquivoAnexoInspecao arquivoAnexoInspecao) {
+    public void setArquivoAnexoInspecao(ArquivoAnexoInspecao arquivoAnexoInspecao) {
         this.arquivoAnexoInspecao = arquivoAnexoInspecao;
     }
 

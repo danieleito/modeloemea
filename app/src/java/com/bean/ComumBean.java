@@ -114,6 +114,11 @@ public class ComumBean {
                 .getExternalContext()
                 .getRequestContextPath() + "/resources/images/" + imageName;
     }
+    
+    public String getImagePath2(String imageName) {
+        return System.getProperty("jboss.server.data.dir") + File.separatorChar + 
+                "imagens" + File.separatorChar + imageName;
+    }
 
     public String dateToString(Date date, String format) {
         DateFormat df = new SimpleDateFormat(format);
