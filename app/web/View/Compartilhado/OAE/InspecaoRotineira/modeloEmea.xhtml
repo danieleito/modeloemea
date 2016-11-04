@@ -35,14 +35,15 @@ and open the template in the editor.
                         
                         <c:set var="nomeImagem" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" />
                         
-                        <h:commandLink onclick="PF('dlg2').show();">
+                        <h:commandLink onclick="PF('dlg#{i.id}').show(); return false;">
                             <p:graphicImage value="#{comumbean.getImage()}" style="height: 200px" title="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" alt="Image Description for #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" >
                                 <f:param name="filename" value="#{nomeImagem}" />
                                 <f:param name="tipoimagem" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />
                             </p:graphicImage>
                         </h:commandLink>
+                        <h:outputText value="#{nomeImagem}" />
                         
-                        <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+                        <p:dialog header="Modal Dialog" widgetVar="dlg#{i.id}" modal="true" draggable="false" resizable="false" height="100">
                             <p:graphicImage value="#{comumbean.getImage()}" style="height: 200px" title="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" alt="Image Description for #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" >
                                 <f:param name="filename" value="#{nomeImagem}" />
                                 <f:param name="tipoimagem" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />

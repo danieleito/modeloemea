@@ -48,25 +48,12 @@ and open the template in the editor.
 
                 <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
                     <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
-                    <p:imageSwitch effect="wipe" widgetVar="switcher" id="manuelSwitchers" slideshowAuto="false">
-                        <ui:repeat value="#{ponteBean.model.arquivosAnexosInspecoes}" var="image" id="manuelSwitcherImagess">
-                            <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
-                                <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
-                                <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
-                            </p:graphicImage>
-                        </ui:repeat>
-                    </p:imageSwitch>
-                </p:column>
-
-                <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                    
-                    <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-baixar">
-                        <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
-                        <c:set value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{image.imagem.nome}" var="nome" />
-                        <p:fileDownload value="#{comumbean.getImage(nome, image.imagem.tipoMime)}" />
-                    </p:commandButton>
-                    
-                    <p:commandButton type="button" onclick="PF('dlg#{arq.id}').show()" icon="ui-icon-visualizar"/>
+                    <h:commandLink onclick="PF('dlg#{arq.id}').show(); return false;">
+                        <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
+                            <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
+                            <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
+                        </p:graphicImage>
+                    </h:commandLink>
                     <p:dialog header="Images" widgetVar="dlg#{arq.id}" modal="true" draggable="false" resizable="false">
                         <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
                         <p:outputLabel value="#{pastaInspecao}"/>
@@ -85,7 +72,15 @@ and open the template in the editor.
                         <p:commandButton type="button" onclick="PF('switcher#{arq.id}').previous();" icon="ui-icon-anterior" id="prev" />
                         <p:commandButton type="button" onclick="PF('switcher#{arq.id}').next();" icon="ui-icon-proximo" id="next" />
                     </p:dialog>
+                </p:column>
+
+                <p:column headerText="Ação" style="width: 150px; text-align: center" >
                     
+                    <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-baixar">
+                        <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
+                        <c:set value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{image.imagem.nome}" var="nome" />
+                        <p:fileDownload value="#{comumbean.getImage(nome, image.imagem.tipoMime)}" />
+                    </p:commandButton>
                 </p:column>
             </p:dataTable>
         </h:panelGrid>
