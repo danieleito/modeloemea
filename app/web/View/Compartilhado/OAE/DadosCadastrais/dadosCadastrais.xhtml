@@ -443,12 +443,16 @@ and open the template in the editor.
                     <tr>
                         <td class="th">
                             <p:dataTable emptyMessage="#{comumbean.getMensagemTabelaVazia()}" var="ele" value="#{ponteBean.model.elementosComponentes}" >
-                                <p:column style="text-align: center" >
+                                <p:column style="text-align: center" headerText="Código" >
                                     <h:outputText value="#{ele.elementoUfpr.codigo}" />
                                 </p:column>
 
-                                <p:column style="text-align: center" >
+                                <p:column style="text-align: center" headerText="Elemento" >
                                     <h:outputText value="#{ele.elementoUfpr.descricao}" />
+                                </p:column>
+                                
+                                <p:column style="text-align: center" headerText="Quantidade" >
+                                    <h:outputText value="#{ele.quantidade}" />
                                 </p:column>
                             </p:dataTable>
                         </td>
@@ -462,9 +466,7 @@ and open the template in the editor.
                     <tr>
                         <td class="th">
                             <p:dataTable emptyMessage="#{comumbean.getMensagemTabelaVazia()}" var="asp" value="#{ponteBean.model.aspectosEspeciais}" >
-                                <p:column style="text-align: center" >
-                                    <h:outputText value="#{asp.aspectoEspecial.id}" />
-                                </p:column>
+                                
 
                                 <p:column style="text-align: center" >
                                     <h:outputText value="#{asp.aspectoEspecial.descricao}" />

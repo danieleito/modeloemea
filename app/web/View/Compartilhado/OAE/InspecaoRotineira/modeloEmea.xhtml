@@ -22,7 +22,7 @@ and open the template in the editor.
             
             <c:forEach var="i" items="#{ponteBean.inspecao.inspecaoManifestacaoElemento}">
 
-                <p:panel style="text-align:center; height: 500px; width: 320px; float: left; margin: 5px; " >
+                <p:panel style="text-align:center; height: 500px; width: 320px; float: left; margin: 3px; " >
                     <h:panelGrid columns="1" class="tabela_sem_borda" >
                         <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
                         <c:set var="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" />
@@ -64,21 +64,16 @@ and open the template in the editor.
 
                         <h:outputText value="Reparo: #{i.dadosManifestacao.manifestacaoUrgencia.descricao}" />
 
+                        <h:outputText value="beta: #{i.elementoUfprManifestacaoUfpr.manifestacaoUfpr.beta}" />
+                        <h:outputText value="capa1: #{i.elementoUfprManifestacaoUfpr.elementoUfpr.capa1}"/>
+                        <c:set var="beta" value="#{i.dadosManifestacao.manifestacaoExtensao.capa2}" />
+                        <h:outputText value="capa2: #{beta}"/>
+                        <h:outputText value="capa4: #{i.dadosManifestacao.manifestacaoUrgencia.capa4}" />
+                        <!--<h:outputText value="Valor do dano: #{i.elementoUfprManifestacaoUfpr.elementoUfpr.capa1}" class="col-md-10" />-->
+<!--                            <f:convertNumber pattern="#0.00" />
+                        </h:outputText>-->
                         
-
                         
-                        
-                        <h:panelGroup rendered="#{i.dadosManifestacao.valorDano == null}">
-                            <h:outputText value="#{ponteBean.calculaValorDano()}" class="col-md-10" >
-                                <f:convertNumber pattern="#0.00" />
-                            </h:outputText>
-                        </h:panelGroup>
-                        
-                        <h:panelGroup rendered="#{i.dadosManifestacao.valorDano != null}">
-                            <h:outputText value="Valor do dano: #{i.dadosManifestacao.valorDano}" class="col-md-10" >
-                                <f:convertNumber pattern="#0.00" />
-                            </h:outputText>
-                        </h:panelGroup>
                     </h:panelGrid>
                 </p:panel>
 

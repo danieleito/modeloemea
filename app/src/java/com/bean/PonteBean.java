@@ -561,14 +561,15 @@ public class PonteBean extends ComumBean implements Serializable {
         return pasta;
     }
 
-    public double calculaValorDano() {
-        double beta, capa1, capa2, capa3, capa4;
-        beta = 2;
-        capa1 = 1;
-        capa2 = 1;
-        capa3 = 1;
-        capa4 = 1;
-        double valorDano = beta * capa1 * capa2 * capa3 * capa4;
+    public double calculaValorDano(String beta, String capa1, String capa2, String capa3, String capa4) {
+        
+        int b = Integer.getInteger(beta);
+        int c1 = Integer.getInteger(capa1);
+        int c2 = Integer.getInteger(capa2);
+        int c3 = Integer.getInteger(capa3);
+        int c4 = Integer .getInteger(capa4);
+        
+        double valorDano = b * c1 * c2 * c3 * c4;
         return valorDano;
     }
 

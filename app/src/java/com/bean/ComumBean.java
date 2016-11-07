@@ -122,7 +122,7 @@ public class ComumBean {
     }
 
     public String getMensagemTabelaVazia() { 
-        return "Nenhum registro encontrado";
+        return "Nenhum registro cadastrado.";
     }
     
     public String getFileManager(String action, String nomeArquivo) {
