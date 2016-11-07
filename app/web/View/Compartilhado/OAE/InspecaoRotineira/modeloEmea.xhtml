@@ -18,14 +18,11 @@ and open the template in the editor.
     </h:head>
 
     <h:body>
-        <h:form id="form" >
-            <p:dataGrid var="i" value="#{ponteBean.inspecao.inspecaoManifestacaoElemento}" layout="grid" rows="12" paginator="true" >
+        <h:form id="form" style="text-align: center;" >
+            
+            <c:forEach var="i" items="#{ponteBean.inspecao.inspecaoManifestacaoElemento}">
 
-                <f:facet name="header">
-                    Modelo UFPR
-                </f:facet>
-
-                <p:panel style="text-align:center; height: 500px; width: 320px; " >
+                <p:panel style="text-align:center; height: 500px; width: 320px; float: left; margin: 5px; " >
                     <h:panelGrid columns="1" class="tabela_sem_borda" >
                         <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
                         <c:set var="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" />
@@ -35,22 +32,22 @@ and open the template in the editor.
                         
                         <c:set var="nomeImagem" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" />
                         
-                        <h:commandLink onclick="PF('dlg#{i.id}').show(); return false;">
-                            <p:graphicImage value="#{comumbean.getImage()}" style="height: 200px" title="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" alt="Image Description for #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" >
-                                <f:param name="filename" value="#{nomeImagem}" />
-                                <f:param name="tipoimagem" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />
-                            </p:graphicImage>
-                        </h:commandLink>
+                        <p:lightBox id="lighbox#{i.id}">
+                            <h:outputLink value="#" title="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome} - #{i.dadosManifestacao.arquivoAnexoInspecao.descricao}">  
+                                <p:graphicImage value="#{comumbean.getImage()}" style="height: 200px" title="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" alt="Image Description for #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" >
+                                    <f:param name="filename" value="#{nomeImagem}" />
+                                    <f:param name="tipoimagem" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />
+                                </p:graphicImage>
+                            </h:outputLink>
+                            
+                            <f:facet name="inline">
+                                <p:graphicImage value="#{comumbean.getImage()}" style="height: 500px" title="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" alt="Image Description for #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" >
+                                    <f:param name="filename" value="#{nomeImagem}" />
+                                    <f:param name="tipoimagem" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />
+                                </p:graphicImage>
+                            </f:facet>
+                        </p:lightBox>
                         
-                        <p:dialog header="Modal Dialog" widgetVar="dlg#{i.id}" modal="true" draggable="false" resizable="false" height="100">
-                            <p:graphicImage value="#{comumbean.getImage()}" style="height: 200px" title="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" alt="Image Description for #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" >
-                                <f:param name="filename" value="#{nomeImagem}" />
-                                <f:param name="tipoimagem" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />
-                            </p:graphicImage>
-                        </p:dialog>
-                        
-                        
-
                         <h:outputText value="Foto: #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" />
 
                         <h:outputText value="Elemento: #{i.elementoUfprManifestacaoUfpr.elementoUfpr.descricao}" />
@@ -85,7 +82,7 @@ and open the template in the editor.
                     </h:panelGrid>
                 </p:panel>
 
-            </p:dataGrid>
+            </c:forEach>
         </h:form>
     </h:body>
 </html>

@@ -18,16 +18,19 @@ and open the template in the editor.
 
     <h:body>
         <p:accordionPanel multiple="true">
-            <p:tab title="Croqui II">
-                <h:panelGrid columns="2" cellpadding="10">
-                    <c:set value="croqui.pdf" var="croqui" />
-                    <object data="#{comumbean.getPdfPath(ponteBean.model.identificacaoObraDadosBasicos.codigo, croqui)}" type="application/pdf" width="700px" height="400px" internalinstanceid="4">
-                        <p>It appears your Web browser is not configured to display PDF files. 
-                        No worries, just <a href='#{comumbean.getPdfPath(ponteBean.model.identificacaoObraDadosBasicos.codigo, croqui)}'>click here to download the PDF file.</a></p>
-                    </object>
-                    <p:outputLabel value="#{comumbean.getPdfPath(ponteBean.model.identificacaoObraDadosBasicos.codigo, croqui)}"/>
-                </h:panelGrid>
-            </p:tab>            
+            <c:forEach var="i" items="#{ponteBean.model.arquivosAnexosCadastro}">
+                <c:set var="esquema" value="esquema" /> 
+                <p:tab title="#{i.imagem.nome}" rendered="#{esquema.equalsIgnoreCase(i.tipoArquivo)}">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <c:set var="codigo" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}" />
+                        <c:set var="barra" value="#{comumbean.getFileSeparator()}" />
+                        <c:set var="nomePdf" value="#{i.imagem.nome}" />
+                        <c:set var="nomeCompleto" value="#{codigo}#{barra}#{nomePdf}" />
+                        <object data="#{comumbean.getFileManager('getPdf', nomeCompleto)}" type="application/pdf" width="700px" height="400px" internalinstanceid="4">
+                        </object>
+                    </h:panelGrid>
+                </p:tab>
+            </c:forEach>       
         </p:accordionPanel>
     </h:body>
 </html>

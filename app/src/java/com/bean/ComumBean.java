@@ -114,11 +114,6 @@ public class ComumBean {
                 .getExternalContext()
                 .getRequestContextPath() + "/resources/images/" + imageName;
     }
-    
-    public String getImagePath2(String imageName) {
-        return System.getProperty("jboss.server.data.dir") + File.separatorChar + 
-                "imagens" + File.separatorChar + imageName;
-    }
 
     public String dateToString(Date date, String format) {
         DateFormat df = new SimpleDateFormat(format);
@@ -130,11 +125,15 @@ public class ComumBean {
         return "Nenhum registro encontrado";
     }
     
-    public String getPdfPath(String codigoPonte, String nomePdf) {
-        return System.getProperty("jboss.server.data.dir") + File.separatorChar + 
-                "imagens" + File.separatorChar + codigoPonte + File.separatorChar + nomePdf;
+    public String getFileManager(String action, String nomeArquivo) {
+        ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+        //return "/FileManager?action=getPdf&amp;nomePdf=" + nomePdf;
+        if (action.equalsIgnoreCase("getPdf")) {
+            return context.getRequestContextPath() + "/FileManager?action=getPdf&nomePdf=" + nomeArquivo;
+        } else {
+            return context.getRequestContextPath() + "/FileManager?action=getImage&nomeImagem=" + nomeArquivo;
+        }
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Usuario getUsuarioLogado() {
