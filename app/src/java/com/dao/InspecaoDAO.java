@@ -173,7 +173,7 @@ public class InspecaoDAO {
                 + "AAI.DT_DATA_ANEXACAO, AAI.ID_IMAGEM, I.NM_NOME, I.TIPO_MIME, "
                 + "DM.DS_VALOR_DANO, IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR, "
                 + "EUMU.ID_ELEMENTO_UFPR, EU.DS_ELEMENTO, EUMU.ID_MANIFESTACAO_UFPR, "
-                + "MU.DS_MANIFESTACAO_UFPR, MU.DS_UNIDADE "
+                + "MU.CD_MANIFESTACAO_UFPR, MU.DS_MANIFESTACAO_UFPR, MU.DS_UNIDADE, MU.DS_BETA "
                 
                 + "from INSPECAO_MANIFESTACAO_ELEMENTO IME, DADOS_MANIFESTACAO DM, "
                 + "ELEMENTO_UFPR_MANIFESTACAO_UFPR EUMU, ELEMENTO_UFPR EU, MANIFESTACAO_UFPR MU, "
@@ -210,7 +210,7 @@ public class InspecaoDAO {
                                     new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"))), 
                             rs.getDouble("DS_VALOR_DANO")), 
                     new ElementoUfprManifestacaoUfpr(rs.getInt("ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR"), new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), null, rs.getString("DS_ELEMENTO"), null), 
-                            new ManifestacaoUfpr(rs.getInt("ID_MANIFESTACAO_UFPR"), null, rs.getString("DS_MANIFESTACAO_UFPR"), null, null)));
+                            new ManifestacaoUfpr(rs.getInt("ID_MANIFESTACAO_UFPR"), rs.getString("CD_MANIFESTACAO_UFPR"), rs.getString("DS_MANIFESTACAO_UFPR"), rs.getString("DS_UNIDADE"), rs.getString("DS_BETA"))));
             inspecaoManifestacaoElementos.add(inspecaoManifestacaoElemento);
         }
         conexao.closeConnection();

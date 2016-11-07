@@ -38,7 +38,6 @@ public class ManifestacaoUfpr implements Serializable {
      * Constructor padrão
      */
     public ManifestacaoUfpr() {
-        
     }
 
     /**
