@@ -47,7 +47,8 @@ public class InspecaoManifestacaoElementoDAO {
                 + "and DM.ID_ARQUIVO_ANEXO_INSPECAO = AAI.ID_ARQUIVO_ANEXO_INSPECAO "
                 + "and EUMU.ID_ELEMENTO_UFPR = EU.ID_ELEMENTO_UFPR "
                 + "and EUMU.ID_MANIFESTACAO_UFPR = MUF.ID_MANIFESTACAO_UFPR "
-                + "and AAI.ID_IMAGEM = I. ID_IMAGEM;";
+                + "and AAI.ID_IMAGEM = I. ID_IMAGEM "
+                + "and IME.ID_INSPECAO = " + idInspecao;
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();

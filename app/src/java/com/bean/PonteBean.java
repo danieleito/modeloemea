@@ -9,6 +9,8 @@ import com.dao.AspectoEspecialDAO;
 import com.dao.DeficienciaFuncionalDAO;
 import com.dao.ElementoUfprDAO;
 import com.dao.FotoDAO;
+import com.dao.InspecaoManifestacaoElementoDAO;
+import com.dao.ManifestacaoRepeticaoDAO;
 import com.dao.ManifestacaoUfprDAO;
 import com.dao.NaturezaTransposicaoDAO;
 import com.dao.NumeroDAO;
@@ -26,11 +28,15 @@ import com.dao.UnidadeLocalDAO;
 import com.dao.ViaDAO;
 import com.model.ArquivoAnexoCadastro;
 import com.model.AspectoEspecial;
+import com.model.DadosManifestacao;
 import com.model.DeficienciaFuncional;
+import com.model.ElementoComponente;
 import com.model.ElementoUfpr;
 import com.model.ExtensaoRelativa;
 import com.model.Foto;
 import com.model.Inspecao;
+import com.model.InspecaoManifestacaoElemento;
+import com.model.ManifestacaoRepeticao;
 import com.model.ManifestacaoUfpr;
 import com.model.NaturezaTransposicao;
 import com.model.Numero;
@@ -562,17 +568,49 @@ public class PonteBean extends ComumBean implements Serializable {
     }
 
     public double calculaValorDano(String beta, String capa1, String capa2, String capa3, String capa4) {
-        
-        int b = Integer.getInteger(beta);
-        int c1 = Integer.getInteger(capa1);
-        int c2 = Integer.getInteger(capa2);
-        int c3 = Integer.getInteger(capa3);
-        int c4 = Integer .getInteger(capa4);
+        double b = Double.parseDouble(beta);
+        double c1 = Double.parseDouble(capa1.replace(",", "."));
+        double c2 = Double.parseDouble(capa2.replace(",", "."));
+        double c3 = Double.parseDouble(capa3.replace(",", "."));
+        double c4 = Double.parseDouble(capa4.replace(",", "."));
         
         double valorDano = b * c1 * c2 * c3 * c4;
         return valorDano;
     }
 
+    public double calculaCapa3(String manifestacao, String elemento, ArrayList elementoComponentes, Inspecao inspecao) throws SQLException {
+        ArrayList<InspecaoManifestacaoElemento> inspManiEle = new InspecaoManifestacaoElementoDAO().buscar(inspecao.getId()); 
+        int count = 0;
+        String quantidade = null;
+        Double capa3 = 0.0;
+        for (int i = 0; i < inspManiEle.size(); i++) {
+            InspecaoManifestacaoElemento ime = inspManiEle.get(i);
+            String m = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
+            String e = ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
+            if (manifestacao.equals(m) && elemento.equals(e)) {
+                count ++;
+            }
+        }
+        for (int i = 0; i < elementoComponentes.size(); i++) {
+            ElementoComponente eleComp = (ElementoComponente) elementoComponentes.get(i);
+            if (eleComp.getElementoUfpr().getDescricao().equals(elemento)) {
+                quantidade = eleComp.getQuantidade();
+            }
+        }
+        int qtd = Integer.parseInt(quantidade);
+        double limiteSuperior = count/qtd;
+
+        if (limiteSuperior >= 0 && limiteSuperior <= 0.1) {
+            capa3 = 0.5;
+        } else if (limiteSuperior > 0.1 && limiteSuperior <= 0.25) {
+            capa3 = 1.0;
+        } else if (limiteSuperior > 0.25 && limiteSuperior <= 0.75) {
+            capa3 = 1.5;
+        } else if (limiteSuperior > 0.75 && limiteSuperior <= 1) {
+            capa3 = 2.0;
+        }
+        return capa3;
+    }
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {

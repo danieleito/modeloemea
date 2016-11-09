@@ -26,7 +26,7 @@ and open the template in the editor.
                         <c:set var="barra" value="#{comumbean.getFileSeparator()}" />
                         <c:set var="nomePdf" value="#{i.imagem.nome}" />
                         <c:set var="nomeCompleto" value="#{codigo}#{barra}#{nomePdf}" />
-                        <object data="#{comumbean.getFileManager('getPdf', nomeCompleto)}" type="application/pdf" width="700px" height="400px" internalinstanceid="4">
+                        <object data="#{comumbean.getFileManager('getPdf', nomeCompleto)}" type="application/pdf" width="1000px" height="800px" internalinstanceid="4">
                         </object>
                     </h:panelGrid>
                 </p:tab>
