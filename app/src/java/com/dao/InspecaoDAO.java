@@ -167,16 +167,16 @@ public class InspecaoDAO {
         String query = "select IME.ID_INSPECAO_MANIFESTACAO_ELEMENTO, IME.ID_INSPECAO, "
                 + "IME.ID_DADOS_MANIFESTACAO, DM.DS_NUMERO, DM.DS_TAMANHO, "
                 + "DM.ID_MANIFESTACOES_EXTENSAO, ME.DS_MANIFESTACOES_EXTENSAO, "
-                + "ME.DS_CRITERIO_MANIFESTACOES_EXTENSAO, ME.DS_CAPA2, "
+                + "ME.DS_CRITERIO_MANIFESTACOES_EXTENSAO, ME.NR_CAPA2, "
                 + "DM.ID_MANIFESTACOES_URGENCIA, MURG.DS_MANIFESTACOES_URGENCIA, "
-                + "MURG.DS_CRITERIO_MANIFESTACOES_URGENCIA, MURG.DS_CAPA4, "
+                + "MURG.DS_CRITERIO_MANIFESTACOES_URGENCIA, MURG.NR_CAPA4, "
                 + "DM.ID_ARQUIVO_ANEXO_INSPECAO, AAI.ID_INSPECAO, AAI.DS_ARQUIVO, "
                 + "AAI.DS_TIPO_ARQUIVO, AAI.NR_NUMERO, AAI.DS_DESCRICAO, AAI.DS_REGISTRO, "
                 + "AAI.DT_DATA_ANEXACAO, AAI.ID_IMAGEM, I.NM_NOME, I.TIPO_MIME, "
                 + "DM.DS_VALOR_DANO, IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR, "
-                + "EUMU.ID_ELEMENTO_UFPR, EU.CD_ELEMENTO, EU.DS_ELEMENTO, EU.DS_CAPA1, "
+                + "EUMU.ID_ELEMENTO_UFPR, EU.CD_ELEMENTO, EU.DS_ELEMENTO, EU.NR_CAPA1, "
                 + "EUMU.ID_MANIFESTACAO_UFPR, MU.CD_MANIFESTACAO_UFPR, MU.DS_MANIFESTACAO_UFPR, "
-                + "MU.DS_UNIDADE, MU.DS_BETA "
+                + "MU.DS_UNIDADE, MU.NR_BETA "
                 
                 + "from INSPECAO_MANIFESTACAO_ELEMENTO IME, DADOS_MANIFESTACAO DM, "
                 + "ELEMENTO_UFPR_MANIFESTACAO_UFPR EUMU, ELEMENTO_UFPR EU, MANIFESTACAO_UFPR MU, "
@@ -206,18 +206,18 @@ public class InspecaoDAO {
                     rs.getInt("ID_INSPECAO"), 
                     new DadosManifestacao(rs.getInt("ID_DADOS_MANIFESTACAO"), rs.getString("DS_TAMANHO"), rs.getString("DS_NUMERO"), 
                             new ManifestacaoExtensao(rs.getInt("ID_MANIFESTACOES_EXTENSAO"), rs.getString("DS_MANIFESTACOES_EXTENSAO"), 
-                                    rs.getString("DS_CRITERIO_MANIFESTACOES_EXTENSAO"), rs.getString("DS_CAPA2")), 
+                                    rs.getString("DS_CRITERIO_MANIFESTACOES_EXTENSAO"), rs.getDouble("NR_CAPA2")), 
                             new ManifestacaoUrgencia(rs.getInt("ID_MANIFESTACOES_URGENCIA"), rs.getString("DS_MANIFESTACOES_URGENCIA"), 
-                                    rs.getString("DS_CRITERIO_MANIFESTACOES_URGENCIA"), rs.getString("DS_CAPA4")), 
+                                    rs.getString("DS_CRITERIO_MANIFESTACOES_URGENCIA"), rs.getDouble("NR_CAPA4")), 
                             new ArquivoAnexoInspecao(rs.getInt("ID_ARQUIVO_ANEXO_INSPECAO"), new Inspecao(), rs.getString("DS_ARQUIVO"), 
                                     rs.getString("DS_TIPO_ARQUIVO"), rs.getString("NR_NUMERO"), rs.getString("DS_DESCRICAO"), 
                                     rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO"), 
                                     new Imagem(rs.getInt("ID_IMAGEM"), rs.getString("NM_NOME"), rs.getString("TIPO_MIME"))), 
                             rs.getDouble("DS_VALOR_DANO")), 
                     new ElementoUfprManifestacaoUfpr(rs.getInt("ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR"), new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), 
-                            rs.getString("CD_ELEMENTO"), rs.getString("DS_ELEMENTO"), rs.getString("DS_CAPA1")), 
+                            rs.getString("CD_ELEMENTO"), rs.getString("DS_ELEMENTO"), rs.getDouble("NR_CAPA1")), 
                             new ManifestacaoUfpr(rs.getInt("ID_MANIFESTACAO_UFPR"), rs.getString("CD_MANIFESTACAO_UFPR"), 
-                                    rs.getString("DS_MANIFESTACAO_UFPR"), rs.getString("DS_UNIDADE"), rs.getString("DS_BETA"))));
+                                    rs.getString("DS_MANIFESTACAO_UFPR"), rs.getString("DS_UNIDADE"), rs.getDouble("NR_BETA"))));
             inspecaoManifestacaoElementos.add(inspecaoManifestacaoElemento);
         }
         conexao.closeConnection();

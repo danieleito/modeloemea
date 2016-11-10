@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ManifestacaoRepeticaoDAO {
     public ArrayList<ManifestacaoRepeticao> buscar() throws SQLException {
         String query = "select MR.ID_MANIFESTACOES_REPETICAO, MR.DS_CRITERIO_MANIFESTACOES_REPETICAO, "
-                + "MR.DS_LIMITESUPERIOR, MR.DS_CAPA3 "
+                + "MR.DS_LIMITESUPERIOR, MR.NR_CAPA3 "
                 + "from MANIFESTACOES_REPETICAO MR;";
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -32,7 +32,7 @@ public class ManifestacaoRepeticaoDAO {
         while (rs.next()) {
             manifestacaoRepeticoes.add(new ManifestacaoRepeticao(rs.getInt("ID_MANIFESTACOES_REPETICAO"), 
                     rs.getString("DS_CRITERIO_MANIFESTACOES_REPETICAO"), rs.getString("DS_LIMITESUPERIOR"), 
-                    rs.getString("DS_CAPA3")));
+                    rs.getDouble("NR_CAPA3")));
         }
 
         conexao.closeConnection();

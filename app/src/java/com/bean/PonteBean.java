@@ -597,7 +597,7 @@ public class PonteBean extends ComumBean implements Serializable {
                 quantidade = eleComp.getQuantidade();
             }
         }
-        int qtd = Integer.parseInt(quantidade);
+        double qtd = Integer.parseInt(quantidade);
         double limiteSuperior = count/qtd;
 
         if (limiteSuperior >= 0 && limiteSuperior <= 0.1) {

@@ -530,7 +530,7 @@ public class PonteDAO {
 
     private ArrayList<ElementoComponente> buscarElementosComponentes(int idPonte) throws SQLException {
         String query = "select EC.ID_ELEMENTO_COMPONENTES, E.CD_ELEMENTO, E.DS_ELEMENTO, "
-                + "E.DS_CAPA1, E.ID_ELEMENTO_UFPR, EC.DS_DETALHE, EC.NR_QUANTIDADE "
+                + "E.NR_CAPA1, E.ID_ELEMENTO_UFPR, EC.DS_DETALHE, EC.NR_QUANTIDADE "
                 + "from ELEMENTO_UFPR E, ELEMENTO_COMPONENTES EC "
                 + "where E.ID_ELEMENTO_UFPR = EC.ID_ELEMENTO_UFPR "
                 + "and EC.ID_PONTE = " + idPonte;
@@ -544,7 +544,7 @@ public class PonteDAO {
         while (rs.next()) {
             elementosComponentes.add(new ElementoComponente(rs.getInt("ID_ELEMENTO_COMPONENTES"), 
                     new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), rs.getString("CD_ELEMENTO"), 
-                    rs.getString("DS_ELEMENTO"), rs.getString("DS_CAPA1")), 
+                    rs.getString("DS_ELEMENTO"), rs.getDouble("NR_CAPA1")), 
                     rs.getString("DS_DETALHE"), rs.getString("NR_QUANTIDADE"))); 
         }
 

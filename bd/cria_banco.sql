@@ -335,7 +335,7 @@ create table MANIFESTACOES_EXTENSAO
 		ID_MANIFESTACOES_EXTENSAO						int							not null identity(1,1),
 		DS_MANIFESTACOES_EXTENSAO						varchar(80),
 		DS_CRITERIO_MANIFESTACOES_EXTENSAO				varchar(200),
-		DS_CAPA2										varchar(10),
+		NR_CAPA2										real,
 
 		CONSTRAINT						pk_manifestacoesextensao		PRIMARY KEY(ID_MANIFESTACOES_EXTENSAO)
 	);
@@ -348,7 +348,7 @@ create table MANIFESTACOES_URGENCIA
 		ID_MANIFESTACOES_URGENCIA						int							not null identity(1,1),
 		DS_MANIFESTACOES_URGENCIA						varchar(80),
 		DS_CRITERIO_MANIFESTACOES_URGENCIA				varchar(200),
-		DS_CAPA4										varchar(10),
+		NR_CAPA4										real,
 
 		CONSTRAINT						pk_manifestacoesurgencia		PRIMARY KEY(ID_MANIFESTACOES_URGENCIA)
 	);
@@ -361,7 +361,7 @@ create table MANIFESTACOES_REPETICAO
 		ID_MANIFESTACOES_REPETICAO						int							not null identity(1,1),
 		DS_CRITERIO_MANIFESTACOES_REPETICAO				varchar(200),
 		DS_LIMITESUPERIOR								varchar(10),
-		DS_CAPA3										varchar(10),
+		NR_CAPA3										real,
 
 		CONSTRAINT						pk_manifestacoesrepeticao		PRIMARY KEY(ID_MANIFESTACOES_REPETICAO)
 	);
@@ -397,7 +397,7 @@ create table ELEMENTO_UFPR
 		ID_ELEMENTO_UFPR		int						not null identity(1,1),
 		CD_ELEMENTO				int,
 		DS_ELEMENTO				varchar(100),
-		DS_CAPA1				varchar(10)				not null,
+		NR_CAPA1				real					not null,
 		CONSTRAINT				pk_elementoufpr		PRIMARY KEY(ID_ELEMENTO_UFPR)
 	);
 
@@ -408,7 +408,7 @@ create table MANIFESTACAO_UFPR
 		CD_MANIFESTACAO_UFPR						int,
 		DS_MANIFESTACAO_UFPR						varchar(100),
 		DS_UNIDADE									varchar(10),
-		DS_BETA										varchar(10),
+		NR_BETA										real,
 
 		CONSTRAINT									pk_manifestacaoufpr				PRIMARY KEY(ID_MANIFESTACAO_UFPR)
 	);

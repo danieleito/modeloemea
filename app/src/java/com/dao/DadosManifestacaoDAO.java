@@ -25,9 +25,9 @@ public class DadosManifestacaoDAO {
     public DadosManifestacao buscar(int idDadosManifestacao) throws SQLException {
         String query = "select DM.ID_DADOS_MANIFESTACAO, DM.DS_TAMANHO, DM.DS_NUMERO, "
                 + "DM.ID_MANIFESTACOES_EXTENSAO, ME.DS_MANIFESTACOES_EXTENSAO, "
-                + "ME.DS_CRITERIO_MANIFESTACOES_EXTENSAO, ME.DS_CAPA2, "
+                + "ME.DS_CRITERIO_MANIFESTACOES_EXTENSAO, ME.NR_CAPA2, "
                 + "DM.ID_MANIFESTACOES_URGENCIA, MU.DS_MANIFESTACOES_URGENCIA, "
-                + "MU.DS_CRITERIO_MANIFESTACOES_URGENCIA, MU.DS_CAPA4, DM.ID_ARQUIVO_ANEXO_INSPECAO, "
+                + "MU.DS_CRITERIO_MANIFESTACOES_URGENCIA, MU.NR_CAPA4, DM.ID_ARQUIVO_ANEXO_INSPECAO, "
                 + "AAI.ID_INSPECAO, AAI.DS_ARQUIVO, AAI.DS_TIPO_ARQUIVO, AAI.NR_NUMERO, "
                 + "AAI.DS_DESCRICAO, AAI.DS_REGISTRO, AAI.DT_DATA_ANEXACAO, "
                 + "I.ID_IMAGEM, I.NM_NOME, I.TIPO_MIME, DM.DS_VALOR_DANO "
@@ -51,9 +51,9 @@ public class DadosManifestacaoDAO {
             dadosManifestacao = new DadosManifestacao(rs.getInt("ID_DADOS_MANIFESTACAO"), rs.getString("DS_TAMANHO"), 
                     rs.getString("DS_NUMERO"), 
                     new ManifestacaoExtensao(rs.getInt("ID_MANIFESTACOES_EXTENSAO"), rs.getString("DS_MANIFESTACOES_EXTENSAO"), 
-                            rs.getString("DS_CRITERIO_MANIFESTACOES_EXTENSAO"), rs.getString("DS_CAPA2")), 
+                            rs.getString("DS_CRITERIO_MANIFESTACOES_EXTENSAO"), rs.getDouble("NR_CAPA2")), 
                     new ManifestacaoUrgencia(rs.getInt("ID_MANIFESTACOES_URGENCIA"), rs.getString("DS_MANIFESTACOES_URGENCIA"), 
-                            rs.getString("DS_CRITERIO_MANIFESTACOES_URGENCIA"), rs.getString("DS_CAPA4")), 
+                            rs.getString("DS_CRITERIO_MANIFESTACOES_URGENCIA"), rs.getDouble("NR_CAPA4")), 
                     new ArquivoAnexoInspecao(rs.getInt("ID_ARQUIVO_ANEXO_INSPECAO"), new Inspecao(rs.getInt("ID_INSPECAO")), 
                             rs.getString("DS_ARQUIVO"), rs.getString("DS_TIPO_ARQUIVO"), rs.getString("NR_NUMERO"), 
                             rs.getString("DS_DESCRICAO"), rs.getString("DS_REGISTRO"), rs.getDate("DT_DATA_ANEXACAO"), 

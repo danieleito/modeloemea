@@ -9,7 +9,6 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
@@ -68,13 +67,12 @@ and open the template in the editor.
                         <c:set var="capa1" value="#{i.elementoUfprManifestacaoUfpr.elementoUfpr.capa1}" />
                         <c:set var="capa2" value="#{i.dadosManifestacao.manifestacaoExtensao.capa2}" />
                         <c:set var="capa4" value="#{i.dadosManifestacao.manifestacaoUrgencia.capa4}" />
-                        
                         <c:set var="capa3" value="#{ponteBean.calculaCapa3(i.elementoUfprManifestacaoUfpr.manifestacaoUfpr.descricao, i.elementoUfprManifestacaoUfpr.elementoUfpr.descricao, ponteBean.model.elementosComponentes, ponteBean.inspecao)}" />
-                        <h:outputText value="capa3: #{capa3}" />
+
                         <h:outputText value="Valor do dano: #{ponteBean.calculaValorDano(beta, capa1, capa2, capa3, capa4)}" class="col-md-10" >
                             <f:convertNumber pattern="#0.00" />
                         </h:outputText>
-
+                        
                     </h:panelGrid>
                 </p:panel>
 

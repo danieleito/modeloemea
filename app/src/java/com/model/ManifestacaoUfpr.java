@@ -31,7 +31,7 @@ public class ManifestacaoUfpr implements Serializable {
     /**
      * beta da manifestação da ufpr 
      */
-    private String beta;
+    private Double beta;
 
 
     /**
@@ -48,7 +48,7 @@ public class ManifestacaoUfpr implements Serializable {
      * @param unidade {@link #unidade}
      * @param beta {@link #beta}
      */
-    public ManifestacaoUfpr(int id, String codigo, String descricao, String unidade, String beta) {
+    public ManifestacaoUfpr(int id, String codigo, String descricao, String unidade, Double beta) {
         this.id = id;
         this.codigo = codigo;
         this.descricao = descricao;
@@ -63,7 +63,7 @@ public class ManifestacaoUfpr implements Serializable {
      * @param unidade {@link #unidade}
      * @param beta {@link #beta}
      */
-    public ManifestacaoUfpr(String codigo, String descricao, String unidade, String beta) {
+    public ManifestacaoUfpr(String codigo, String descricao, String unidade, Double beta) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.unidade = unidade;
@@ -123,11 +123,11 @@ public class ManifestacaoUfpr implements Serializable {
      * retorna {@link #beta}
      * @return {@link #beta}
      */
-    public String getBeta() {
+    public Double getBeta() {
         return beta;
     }
 
-    public void setBeta(String beta) {
+    public void setBeta(Double beta) {
         this.beta = beta;
     }
     
