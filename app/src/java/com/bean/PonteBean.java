@@ -125,6 +125,18 @@ public class PonteBean extends ComumBean implements Serializable {
     private int filtroIdSuperintendencia;
     private int filtroIdUnidadeLocal;
     // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc=" Campos utilizados como filtro na busca avançada por pontes. ">
+    private int filtroIdNaturezaTransposicao;
+    private int filtroIdTipoEstrutura;
+    private int filtroIdSistemaConstrutivo;
+    private String filtroComprimentoInicial;
+    private String filtroComprimentoFinal;
+    private String filtroLarguraInicial;
+    private String filtroLarguraFinal;
+    private int filtroIdAspectosEspeciais;
+    private int filtroIdDeficienciasFuncionais;
+    // </editor-fold>
 
     //aba elementos componente
     private ArrayList<ElementoUfpr> elementosUfpr;
@@ -427,12 +439,12 @@ public class PonteBean extends ComumBean implements Serializable {
 
             for (int i= 0; i < t; i++) {
                 //Shared coordinates
-                Double grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeGrau());
-                Double minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeMinuto());
-                Double latitude = minuto/60 + grau;
+                double grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeGrau());
+                double minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeMinuto());
+                double latitude = minuto/60 + grau;
                 grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeGrau());
                 minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeMinuto());
-                Double longitude = minuto/60 + grau;
+                double longitude = minuto/60 + grau;
 
                 //latitude e logitude transformado em valor negativo
                 if (latitude > 0) {
@@ -567,14 +579,14 @@ public class PonteBean extends ComumBean implements Serializable {
         return pasta;
     }
 
-    public double calculaValorDano(String beta, String capa1, String capa2, String capa3, String capa4) {
-        double b = Double.parseDouble(beta);
-        double c1 = Double.parseDouble(capa1.replace(",", "."));
-        double c2 = Double.parseDouble(capa2.replace(",", "."));
-        double c3 = Double.parseDouble(capa3.replace(",", "."));
-        double c4 = Double.parseDouble(capa4.replace(",", "."));
+    public double calculaValorDano(double beta, double capa1, double capa2, double capa3, double capa4) {
+//        double b = Double.parseDouble(beta);
+//        double c1 = Double.parseDouble(capa1.replace(",", "."));
+//        double c2 = Double.parseDouble(capa2.replace(",", "."));
+//        double c3 = Double.parseDouble(capa3.replace(",", "."));
+//        double c4 = Double.parseDouble(capa4.replace(",", "."));
         
-        double valorDano = b * c1 * c2 * c3 * c4;
+        double valorDano = beta * capa1 * capa2 * capa3 * capa4;
         return valorDano;
     }
 
@@ -582,7 +594,7 @@ public class PonteBean extends ComumBean implements Serializable {
         ArrayList<InspecaoManifestacaoElemento> inspManiEle = new InspecaoManifestacaoElementoDAO().buscar(inspecao.getId()); 
         int count = 0;
         String quantidade = null;
-        Double capa3 = 0.0;
+        double capa3 = 0.0;
         for (int i = 0; i < inspManiEle.size(); i++) {
             InspecaoManifestacaoElemento ime = inspManiEle.get(i);
             String m = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
@@ -610,6 +622,10 @@ public class PonteBean extends ComumBean implements Serializable {
             capa3 = 2.0;
         }
         return capa3;
+    }
+    
+    public double somatorioValorDano() { 
+        return 0.0;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    

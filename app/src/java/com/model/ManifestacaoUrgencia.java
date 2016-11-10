@@ -15,19 +15,19 @@ public class ManifestacaoUrgencia implements Serializable {
     private int id;
     private String descricao;
     private String criterio;
-    private Double capa4;
+    private double capa4;
 
     public ManifestacaoUrgencia() {
     }
 
-    public ManifestacaoUrgencia(int id, String descricao, String criterio, Double capa4) {
+    public ManifestacaoUrgencia(int id, String descricao, String criterio, double capa4) {
         this.id = id;
         this.descricao = descricao;
         this.criterio = criterio;
         this.capa4 = capa4;
     }
 
-    public ManifestacaoUrgencia(String descricao, String criterio, Double capa4) {
+    public ManifestacaoUrgencia(String descricao, String criterio, double capa4) {
         this.descricao = descricao;
         this.criterio = criterio;
         this.capa4 = capa4;
@@ -57,11 +57,11 @@ public class ManifestacaoUrgencia implements Serializable {
         this.criterio = criterio;
     }
 
-    public Double getCapa4() {
+    public double getCapa4() {
         return capa4;
     }
 
-    public void setCapa4(Double capa4) {
+    public void setCapa4(double capa4) {
         this.capa4 = capa4;
     }
     

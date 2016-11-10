@@ -15,19 +15,19 @@ public class ManifestacaoRepeticao implements Serializable {
     private int id;
     private String criterio;
     private String limiteSuperior;
-    private Double capa3;
+    private double capa3;
 
     public ManifestacaoRepeticao() {
     }
 
-    public ManifestacaoRepeticao(int id, String criterio, String limiteSuperior, Double capa3) {
+    public ManifestacaoRepeticao(int id, String criterio, String limiteSuperior, double capa3) {
         this.id = id;
         this.criterio = criterio;
         this.limiteSuperior = limiteSuperior;
         this.capa3 = capa3;
     }
 
-    public ManifestacaoRepeticao(String criterio, String limiteSuperior, Double capa3) {
+    public ManifestacaoRepeticao(String criterio, String limiteSuperior, double capa3) {
         this.criterio = criterio;
         this.limiteSuperior = limiteSuperior;
         this.capa3 = capa3;
@@ -57,11 +57,11 @@ public class ManifestacaoRepeticao implements Serializable {
         this.limiteSuperior = limiteSuperior;
     }
 
-    public Double getCapa3() {
+    public double getCapa3() {
         return capa3;
     }
 
-    public void setCapa3(Double capa3) {
+    public void setCapa3(double capa3) {
         this.capa3 = capa3;
     }
 }
