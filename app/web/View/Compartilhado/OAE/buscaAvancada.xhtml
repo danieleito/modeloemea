@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui" >
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <title>SGO Gestor</title>
@@ -16,31 +17,40 @@ and open the template in the editor.
 
     <h:body>
         <table>
-            <tbody>
+            <tbody>               
                 <tr>
                     <td class="th">
-                        <p:outputLabel value="Natureza transposição" class="col-md-5" />
+                        <p:outputLabel value="Natureza Transposição" class="col-md-5" />
                     </td>
                     <td>
-                        <p:inputText value="#{ponteBean.filtroCodigo}" class="col-md-2" />
+                        <p:selectOneMenu id="naturezaTransposicao" value="#{ponteBean.filtroIdNaturezaTransposicao}" style="width:400px">
+                            <f:selectItem itemLabel="Selecione a Natureza Transposição" itemValue="0"/>
+                            <f:selectItems value="#{ponteBean.naturezasTransposicoes}" var="nt" itemValue="#{nt.id}"/>
+                        </p:selectOneMenu>
                     </td>
                 </tr>
 
                 <tr>
                     <td class="th">
-                        <p:outputLabel value="Tipo estrutura" class="col-md-5" />
+                        <p:outputLabel value="Tipo Estrutura" class="col-md-3" />
                     </td>
                     <td>
-                        <p:inputText value="#{ponteBean.filtroIdentificacao}" class="col-md-5" />
+                        <p:selectOneMenu id="tipoEstrutura" value="#{ponteBean.filtroIdTipoEstrutura}" style="width:400px">
+                            <f:selectItem itemLabel="Selecione o Tipo de Estrutura" itemValue="0"/>
+                            <f:selectItems value="#{ponteBean.tiposEstruturas}" var="te" itemValue="#{te.id}"/>
+                        </p:selectOneMenu>
                     </td>
                 </tr>
 
                 <tr>
                     <td class="th">
-                        <p:outputLabel value="Sistema construtivo" class="col-md-3" />
+                        <p:outputLabel value="Sistema Construtivo" class="col-md-3" />
                     </td>
                     <td>
-                        <p:inputText value="#{ponteBean.filtroIdentificacao}" class="col-md-5" />
+                        <p:selectOneMenu id="sitemaConstrutivo" value="#{ponteBean.filtroIdSistemaConstrutivo}" style="width:400px">
+                            <f:selectItem itemLabel="Selecione o Sistema Construtivo" itemValue="0"/>
+                            <f:selectItems value="#{ponteBean.sistemasConstrutivos}" var="sc" itemValue="#{sc.id}"/>
+                        </p:selectOneMenu>
                     </td>
                 </tr>
 
@@ -52,11 +62,11 @@ and open the template in the editor.
                         <div>
                             <div style="float: left; margin: 0; padding: 0; width: 110px" >
                                 <p:outputLabel value="do km "  />
-                                <p:inputText value="#{ponteBean.filtroKmInicial}" style="width: 50px; margin-left: 5px" />
+                                <p:inputText value="#{ponteBean.filtroComprimentoInicial}" style="width: 50px; margin-left: 5px" />
                             </div>
                             <div style="float: left; margin: 0; padding: 0; width: 110px" >
-                                <p:outputLabel value=" ao km " />
-                                <p:inputText value="#{ponteBean.filtroKmFinal}" style="width: 50px; margin-left: 5px" />
+                                <p:outputLabel value=" ao " />
+                                <p:inputText value="#{ponteBean.filtroComprimentoFinal}" style="width: 50px; margin-left: 5px" />
                             </div>
                         </div>
                     </td>
@@ -70,11 +80,11 @@ and open the template in the editor.
                         <div>
                             <div style="float: left; margin: 0; padding: 0; width: 110px" >
                                 <p:outputLabel value="do km "  />
-                                <p:inputText value="#{ponteBean.filtroKmInicial}" style="width: 50px; margin-left: 5px" />
+                                <p:inputText value="#{ponteBean.filtroLarguraInicial}" style="width: 50px; margin-left: 5px" />
                             </div>
                             <div style="float: left; margin: 0; padding: 0; width: 110px" >
-                                <p:outputLabel value=" ao km " />
-                                <p:inputText value="#{ponteBean.filtroKmFinal}" style="width: 50px; margin-left: 5px" />
+                                <p:outputLabel value=" ao " />
+                                <p:inputText value="#{ponteBean.filtroLarguraFinal}" style="width: 50px; margin-left: 5px" />
                             </div>
                         </div>
                     </td>
@@ -82,19 +92,25 @@ and open the template in the editor.
                 
                 <tr>
                     <td class="th">
-                        <p:outputLabel value="Aspectos especiais" class="col-md-3" />
+                        <p:outputLabel value="Aspectos Especiais" class="col-md-3" />
                     </td>
                     <td>
-                        <p:inputText value="#{ponteBean.filtroIdentificacao}" class="col-md-5" />
+                        <p:selectOneMenu id="aspectoEspecial" value="#{ponteBean.filtroIdAspectosEspeciais}" style="width:400px">
+                            <f:selectItem itemLabel="Selecione o Aspecto Especial" itemValue="0"/>
+                            <f:selectItems value="#{ponteBean.aspectosEspeciais}" var="ae" itemValue="#{ae.id}"/>
+                        </p:selectOneMenu>
                     </td>
                 </tr>
 
                 <tr>
                     <td class="th">
-                        <p:outputLabel value="Deficiências funcionais" class="col-md-6" />
+                        <p:outputLabel value="Deficiência Funcional" class="col-md-5" />
                     </td>
                     <td>
-                        <p:inputText value="#{ponteBean.filtroIdentificacao}" class="col-md-5" />
+                        <p:selectOneMenu id="deficienciaFuncional" value="#{ponteBean.filtroIdDeficienciasFuncionais}" style="width:400px">
+                            <f:selectItem itemLabel="Selecione a DeficiênciaFuncional" itemValue="0"/>
+                            <f:selectItems value="#{ponteBean.deficienciasFuncionais}" var="df" itemValue="#{df.id}"/>
+                        </p:selectOneMenu>
                     </td>
                 </tr>
 
@@ -103,7 +119,10 @@ and open the template in the editor.
                         <p:outputLabel value="Elemento" class="col-md-3" />
                     </td>
                     <td>
-                        <p:inputText value="#{ponteBean.filtroIdentificacao}" class="col-md-5" />
+                        <p:selectOneMenu id="elemento" value="#{ponteBean.filtroIdElementoUfpr}" style="width:400px">
+                            <f:selectItem itemLabel="Selecione o Elemento" itemValue="0"/>
+                            <f:selectItems value="#{ponteBean.elementosUfpr}" var="e" itemValue="#{e.id}"/>
+                        </p:selectOneMenu>
                     </td>
                 </tr>
                 
@@ -112,7 +131,10 @@ and open the template in the editor.
                         <p:outputLabel value="Manifestação" class="col-md-3" />
                     </td>
                     <td>
-                        <p:inputText value="#{ponteBean.filtroIdentificacao}" class="col-md-5" />
+                        <p:selectOneMenu id="manifestacao" value="#{ponteBean.filtroIdManifestacaoUfpr}" style="width:400px">
+                            <f:selectItem itemLabel="Selecione a Manifestação" itemValue="0"/>
+                            <f:selectItems value="#{ponteBean.manifestacoesUfpr}" var="m" itemValue="#{m.id}"/>
+                        </p:selectOneMenu>
                     </td>
                 </tr>
             </tbody>

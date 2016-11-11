@@ -10,7 +10,6 @@ import com.dao.DeficienciaFuncionalDAO;
 import com.dao.ElementoUfprDAO;
 import com.dao.FotoDAO;
 import com.dao.InspecaoManifestacaoElementoDAO;
-import com.dao.ManifestacaoRepeticaoDAO;
 import com.dao.ManifestacaoUfprDAO;
 import com.dao.NaturezaTransposicaoDAO;
 import com.dao.NumeroDAO;
@@ -28,7 +27,6 @@ import com.dao.UnidadeLocalDAO;
 import com.dao.ViaDAO;
 import com.model.ArquivoAnexoCadastro;
 import com.model.AspectoEspecial;
-import com.model.DadosManifestacao;
 import com.model.DeficienciaFuncional;
 import com.model.ElementoComponente;
 import com.model.ElementoUfpr;
@@ -36,7 +34,6 @@ import com.model.ExtensaoRelativa;
 import com.model.Foto;
 import com.model.Inspecao;
 import com.model.InspecaoManifestacaoElemento;
-import com.model.ManifestacaoRepeticao;
 import com.model.ManifestacaoUfpr;
 import com.model.NaturezaTransposicao;
 import com.model.Numero;
@@ -95,7 +92,7 @@ public class PonteBean extends ComumBean implements Serializable {
     private ArrayList<Ponte> pontesSelecionadas;
     private ArrayList<Simulacao> simulacoes;
     private Simulacao modelSimulacao;
-
+        
     //aba identificacao obra
     private ArrayList<NaturezaTransposicao> naturezasTransposicoes;
     private ArrayList<TipoEstrutura> tiposEstruturas;
@@ -136,6 +133,8 @@ public class PonteBean extends ComumBean implements Serializable {
     private String filtroLarguraFinal;
     private int filtroIdAspectosEspeciais;
     private int filtroIdDeficienciasFuncionais;
+    private int filtroIdElementoUfpr;
+    private int filtroIdManifestacaoUfpr;
     // </editor-fold>
 
     //aba elementos componente
@@ -900,7 +899,94 @@ public class PonteBean extends ComumBean implements Serializable {
     public void setInspecoes(ArrayList<Inspecao> inspecoes) {
         this.inspecoes = inspecoes;
     }
+
+    public int getFiltroIdNaturezaTransposicao() {
+        return filtroIdNaturezaTransposicao;
+    }
+
+    public void setFiltroIdNaturezaTransposicao(int filtroIdNaturezaTransposicao) {
+        this.filtroIdNaturezaTransposicao = filtroIdNaturezaTransposicao;
+    }
+
+    public int getFiltroIdTipoEstrutura() {
+        return filtroIdTipoEstrutura;
+    }
+
+    public void setFiltroIdTipoEstrutura(int filtroIdTipoEstrutura) {
+        this.filtroIdTipoEstrutura = filtroIdTipoEstrutura;
+    }
+
+    public int getFiltroIdSistemaConstrutivo() {
+        return filtroIdSistemaConstrutivo;
+    }
+
+    public void setFiltroIdSistemaConstrutivo(int filtroIdSistemaConstrutivo) {
+        this.filtroIdSistemaConstrutivo = filtroIdSistemaConstrutivo;
+    }
+
+    public String getFiltroComprimentoInicial() {
+        return filtroComprimentoInicial;
+    }
+
+    public void setFiltroComprimentoInicial(String filtroComprimentoInicial) {
+        this.filtroComprimentoInicial = filtroComprimentoInicial;
+    }
+
+    public String getFiltroComprimentoFinal() {
+        return filtroComprimentoFinal;
+    }
+
+    public void setFiltroComprimentoFinal(String filtroComprimentoFinal) {
+        this.filtroComprimentoFinal = filtroComprimentoFinal;
+    }
+
+    public String getFiltroLarguraInicial() {
+        return filtroLarguraInicial;
+    }
+
+    public void setFiltroLarguraInicial(String filtroLarguraInicial) {
+        this.filtroLarguraInicial = filtroLarguraInicial;
+    }
+
+    public String getFiltroLarguraFinal() {
+        return filtroLarguraFinal;
+    }
+
+    public void setFiltroLarguraFinal(String filtroLarguraFinal) {
+        this.filtroLarguraFinal = filtroLarguraFinal;
+    }
+
+    public int getFiltroIdAspectosEspeciais() {
+        return filtroIdAspectosEspeciais;
+    }
+
+    public void setFiltroIdAspectosEspeciais(int filtroIdAspectosEspeciais) {
+        this.filtroIdAspectosEspeciais = filtroIdAspectosEspeciais;
+    }
+
+    public int getFiltroIdDeficienciasFuncionais() {
+        return filtroIdDeficienciasFuncionais;
+    }
+
+    public void setFiltroIdDeficienciasFuncionais(int filtroIdDeficienciasFuncionais) {
+        this.filtroIdDeficienciasFuncionais = filtroIdDeficienciasFuncionais;
+    }
+
+    public int getFiltroIdElementoUfpr() {
+        return filtroIdElementoUfpr;
+    }
+
+    public void setFiltroIdElementoUfpr(int filtroIdElementoUfpr) {
+        this.filtroIdElementoUfpr = filtroIdElementoUfpr;
+    }
+
+    public int getFiltroIdManifestacaoUfpr() {
+        return filtroIdManifestacaoUfpr;
+    }
+
+    public void setFiltroIdManifestacaoUfpr(int filtroIdManifestacaoUfpr) {
+        this.filtroIdManifestacaoUfpr = filtroIdManifestacaoUfpr;
+    }
+    
     // </editor-fold>
-
-
 }
