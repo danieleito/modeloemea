@@ -61,7 +61,7 @@ and open the template in the editor.
                     <td>
                         <div>
                             <div style="float: left; margin: 0; padding: 0; width: 110px" >
-                                <p:outputLabel value="do km "  />
+                                <p:outputLabel value="" />
                                 <p:inputText value="#{ponteBean.filtroComprimentoInicial}" style="width: 50px; margin-left: 5px" />
                             </div>
                             <div style="float: left; margin: 0; padding: 0; width: 110px" >
@@ -79,7 +79,7 @@ and open the template in the editor.
                     <td>
                         <div>
                             <div style="float: left; margin: 0; padding: 0; width: 110px" >
-                                <p:outputLabel value="do km "  />
+                                <p:outputLabel  />
                                 <p:inputText value="#{ponteBean.filtroLarguraInicial}" style="width: 50px; margin-left: 5px" />
                             </div>
                             <div style="float: left; margin: 0; padding: 0; width: 110px" >
@@ -139,5 +139,6 @@ and open the template in the editor.
                 </tr>
             </tbody>
         </table>
+        <p:commandButton action='#{ponteBean.consultarAvancadaPost()}' value="Consultar" />
     </h:body>
 </html>

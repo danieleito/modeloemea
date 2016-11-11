@@ -478,6 +478,88 @@ public class PonteDAO {
         conexao.closeConnection();
         return pontes;
     }
+    
+    public ArrayList<Ponte> buscaAvancada(int naturezaTransposicao, int tipoEstrutura, int sistemaConstrutivo, 
+            double comprimentoInicial, double comprimentoFinal, double larguraInicial, double larguraFinal, 
+            int aspectoEspecial, int deficienciaFuncional) throws SQLException {
+
+        String query = "select P.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, "
+                + "DB.CD_CODIGO, DB.CD_CODIGO_INTEGRACAO, DB.DS_STATUS, DB.DS_IDENTIFICACAO, "
+                + "DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO, "
+                + "DB.ID_TIPO_ESTRUTURA, TE.DS_TIPO_ESTRUTURA, DB.ID_SISTEMA_CONSTRUTIVO, "
+                + "SC.DS_SISTEMA_CONSTRUTIVO, DB.DS_COMPRIMENTO, DB.DS_LARGURA, "
+                + "DB.ID_TREM_TIPO, TT.DS_TREM_TIPO, DB.DS_ANO_CONSTRUCAO, "
+                + "L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_UF, U.DS_UF, U.SG_UF, "
+                + "L.ID_VIA, V.DS_VIA, L.DS_LOCAL_VIA, L.DS_CIDADE_MAIS_PROXIMA, "
+                + "L.DS_PNV_ANO, L.DS_PNV_VERSAO, L.DS_PNV_CODIGO, L.DS_PNV_ALTITUDE, "
+                + "L.DS_LATITUDE_GRAU, L.DS_LATITUDE_MINUTO, L.DS_LONGITUDE_GRAU, "
+                + "L.DS_LONGITUDE_MINUTO, L.DS_LONGITUDE_MINUTO "
+
+                + "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, NATUREZA_TRANSPOSICAO NT, "
+                + "TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, IDENTIFICACAO_OBRA_LOCALIZACAO L, "
+                + "UF U, VIA V  "
+                
+                + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
+                + "and DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
+                + "and DB.ID_TIPO_ESTRUTURA = TE.ID_TIPO_ESTRUTURA "
+                + "and DB.ID_SISTEMA_CONSTRUTIVO = SC.ID_SISTEMA_CONSTRUTIVO "
+                + "and DB.ID_TREM_TIPO = TT.ID_TREM_TIPO "
+                + "and L.ID_UF = U.ID_UF "
+                + "and L.ID_VIA = V.ID_VIA";
+        
+        if (naturezaTransposicao != 0) {
+            query += " and DB.ID_NATUREZA_TRANSPOSICAO = " + naturezaTransposicao + " ";
+        }
+        if (tipoEstrutura != 0) {
+            query += " and DB.ID_TIPO_ESTRUTURA = " + tipoEstrutura + " ";
+        }
+        if (sistemaConstrutivo != 0) {
+            query += " and DB.ID_SISTEMA_CONSTRUTIVO = " + sistemaConstrutivo + " ";
+        }
+        if (comprimentoInicial > 0 || comprimentoFinal > 0) {
+            query += " and DB.DS_COMPRIMENTO > " + comprimentoInicial + " ";
+        }
+        if (comprimentoFinal > 0) {
+            query += " and DB.DS_COMPRIMENTO < " + comprimentoFinal + " ";
+        }
+        if (larguraInicial > 0 || larguraFinal > 0) {
+            query += " and DB.DS_LARGURA > " + larguraInicial + " ";
+        }
+        if (larguraFinal > 0) {
+            query += " and DB.DS_LARGURA < " + larguraFinal + " ";
+        }
+        if (naturezaTransposicao != 0) {
+            query += " and DB.ID_NATUREZA_TRANSPOSICAO = " + naturezaTransposicao + " ";
+        }
+        if (naturezaTransposicao != 0) {
+            query += " and DB.ID_NATUREZA_TRANSPOSICAO = " + naturezaTransposicao + " ";
+        }
+        
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        ArrayList<Ponte> pontes = new ArrayList<>();
+        Ponte ponte;
+        while (rs.next()) {
+            ponte = new Ponte(rs.getInt("ID_PONTE"), 
+                    new IdentificacaoObraDadosBasicos(rs.getInt("ID_IDENTIFICACAO_OBRA_DADOS_BASICOS"), rs.getString("CD_CODIGO"), 
+                            rs.getString("CD_CODIGO_INTEGRACAO"), rs.getString("DS_STATUS"), rs.getString("DS_IDENTIFICACAO"), 
+                            new NaturezaTransposicao(rs.getInt("ID_NATUREZA_TRANSPOSICAO"), rs.getString("DS_NATUREZA_TRANSPOSICAO")), 
+                            new TipoEstrutura(rs.getInt("ID_TIPO_ESTRUTURA"), rs.getString("DS_TIPO_ESTRUTURA")), 
+                            new SistemaConstrutivo(rs.getInt("ID_SISTEMA_CONSTRUTIVO"), rs.getString("DS_SISTEMA_CONSTRUTIVO")), 
+                            rs.getString("DS_COMPRIMENTO"), rs.getString("DS_LARGURA"), 
+                            new TremTipo(rs.getInt("ID_TREM_TIPO"), rs.getString("DS_TREM_TIPO")), 
+                            rs.getString("DS_ANO_CONSTRUCAO")), null, null);
+            
+            pontes.add(ponte);
+        }
+        
+        conexao.closeConnection();
+        return pontes;
+    }
 
     public void carregar() {
 

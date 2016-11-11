@@ -376,6 +376,24 @@ public class PonteBean extends ComumBean implements Serializable {
         redirecionar("/View/Compartilhado/OAE/buscarOAEInspecao.jsf");
     }
 
+    public void consultarAvancadaPost() throws SQLException {
+        try {
+            pontes = database.buscaAvancada(filtroIdNaturezaTransposicao, filtroIdTipoEstrutura, filtroIdSistemaConstrutivo, 
+                    filtroComprimentoInicial.isEmpty() ? 0 :Double.parseDouble(filtroComprimentoInicial.replace(",", ".")), 
+                    filtroComprimentoFinal.isEmpty() ? 0 : Double.parseDouble(filtroComprimentoFinal.replace(",", ".")), 
+                    filtroLarguraInicial.isEmpty() ? 0 :Double.parseDouble(filtroLarguraInicial.replace(",", ".")), 
+                    filtroLarguraFinal.isEmpty() ? 0 : Double.parseDouble(filtroLarguraFinal.replace(",", ".")),
+                    filtroIdAspectosEspeciais, filtroIdDeficienciasFuncionais);
+            carregarMapa();
+//            retangulo();
+//            carregarDetalhesPin();
+        } catch(Exception ex) {
+            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
+        }
+        redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
+    }
+
     public void novoRegistro() {
         try {
             redirecionar("/View/Compartilhado/OAE/Inspecao/inspecao.jsf");
