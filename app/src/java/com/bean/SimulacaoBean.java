@@ -333,9 +333,6 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
 
     public void rankingGet(int idSimulacao) throws IOException {
-//        if (usuarioLogado.getId() == simulacao.getUsuario().getId()) {
-//            adicionarMensagemInfo("conferir se usuaáio logado é o mesmo usuário dono da simulação");
-//        }
         try {
             simulacao = database.buscar(idSimulacao);
             createBarModel();
