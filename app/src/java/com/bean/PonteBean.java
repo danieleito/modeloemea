@@ -637,25 +637,73 @@ public class PonteBean extends ComumBean implements Serializable {
     }
     
     public double somatorioValorDano() { 
-        return 0.0;
+        ArrayList<InspecaoManifestacaoElemento> distintos = new ArrayList<>();
+        for (InspecaoManifestacaoElemento ime : inspecao.getInspecaoManifestacaoElemento()) {
+            if (!estaNaLista(ime, distintos)) {
+                distintos.add(ime);
+            }
+//            if (!distintos.stream().filter(p -> 
+//                    p.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao()
+//                    .equals(ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao()) 
+//                    && p.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao()
+//                    .equals(ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao())).findFirst().isPresent()) {
+//                distintos.add(ime);
+//            }
+        } 
+        
+        double somatorio = 0;
+        for (InspecaoManifestacaoElemento ime : distintos) {
+            somatorio += buscaMaiorValorDano(ime, inspecao.getInspecaoManifestacaoElemento());
+        }
+        return somatorio;
     }
 
     private void calculaModeloEmea() throws SQLException {
         for (int i = 0; i < inspecao.getInspecaoManifestacaoElemento().size(); i++) {
             InspecaoManifestacaoElemento ime = inspecao.getInspecaoManifestacaoElemento().get(i);
 
-            ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getBeta();
-            ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getCapa1();
-            ime.getDadosManifestacao().getManifestacaoExtensao().getCapa2();
+            double beta = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getBeta();
+            double capa1 = ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getCapa1();
+            double capa2 = ime.getDadosManifestacao().getManifestacaoExtensao().getCapa2();
             
             String manifestacao = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
             String elemento = ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
             ArrayList<ElementoComponente> elementosComponentes = model.getElementosComponentes();
-            ime.setCapa3(calculaCapa3(manifestacao, elemento, elementosComponentes, inspecao));
-            
-            ime.getDadosManifestacao().getManifestacaoUrgencia().getCapa4();
+            double capa3 = calculaCapa3(manifestacao, elemento, elementosComponentes, inspecao);
+            ime.setCapa3(capa3);
+            double capa4 = ime.getDadosManifestacao().getManifestacaoUrgencia().getCapa4();
+            double valorDano = calculaValorDano(beta, capa1, capa2, ime.getCapa3(), capa4);
+            ime.setValorDano(valorDano);
+        }      
+    }
+    
+    private boolean estaNaLista(InspecaoManifestacaoElemento ime, ArrayList<InspecaoManifestacaoElemento> lista) {
+        for (InspecaoManifestacaoElemento i : lista) {
+            String mI = i.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
+            String mIme = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
+            String eI = i.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
+            String eIme = ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
+            if (mI.equals(mIme) && eI.equals(eIme)) {
+                return true;
+            }
         }
-        
+        return false;
+    }
+    
+    private double buscaMaiorValorDano(InspecaoManifestacaoElemento ime, ArrayList<InspecaoManifestacaoElemento> lista) {
+        double maior = 0;
+        for (InspecaoManifestacaoElemento i : lista) {
+            String mI = i.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
+            String mIme = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
+            String eI = i.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
+            String eIme = ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
+            if (mI.equals(mIme) && eI.equals(eIme)) {
+                if (i.getValorDano() > maior) {
+                    maior = i.getValorDano();
+                }
+            }
+        }
+        return maior;
     }
     
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    

@@ -69,7 +69,7 @@ and open the template in the editor.
                         <c:set var="capa4" value="#{i.dadosManifestacao.manifestacaoUrgencia.capa4}" />
                         <c:set var="capa3" value="#{i.capa3}" />
 
-                        <h:outputText value="Valor do dano: #{ponteBean.calculaValorDano(beta, capa1, capa2, capa3, capa4)}" class="col-md-10" >
+                        <h:outputText value="Valor do dano: #{i.valorDano}" class="col-md-10" >
                             <f:convertNumber pattern="#0.00" />
                         </h:outputText>
                         
@@ -78,7 +78,7 @@ and open the template in the editor.
 
             </c:forEach>
             
-            <h:outputText value="Índice de Performance Absoluto: #{ponteBean.somatorioValorDano()}" class="col-md-10" />
+            <h:outputText value="Índice de Performance Absoluto: #{ponteBean.somatorioValorDano()}" class="col-md-12 row" />
         </h:form>
     </h:body>
 </html>
