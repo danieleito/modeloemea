@@ -437,6 +437,7 @@ public class PonteBean extends ComumBean implements Serializable {
     public void visualizarInspecao(int id) {
         try {
             inspecao = model.getInspecoes().stream().filter(i -> i.getId() == id).findFirst().orElse(new Inspecao());
+            calculaModeloEmea();
         } catch (Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar inspeção. " + ex.getMessage());
@@ -597,12 +598,6 @@ public class PonteBean extends ComumBean implements Serializable {
     }
 
     public double calculaValorDano(double beta, double capa1, double capa2, double capa3, double capa4) {
-//        double b = Double.parseDouble(beta);
-//        double c1 = Double.parseDouble(capa1.replace(",", "."));
-//        double c2 = Double.parseDouble(capa2.replace(",", "."));
-//        double c3 = Double.parseDouble(capa3.replace(",", "."));
-//        double c4 = Double.parseDouble(capa4.replace(",", "."));
-        
         double valorDano = beta * capa1 * capa2 * capa3 * capa4;
         return valorDano;
     }
@@ -645,6 +640,24 @@ public class PonteBean extends ComumBean implements Serializable {
         return 0.0;
     }
 
+    private void calculaModeloEmea() throws SQLException {
+        for (int i = 0; i < inspecao.getInspecaoManifestacaoElemento().size(); i++) {
+            InspecaoManifestacaoElemento ime = inspecao.getInspecaoManifestacaoElemento().get(i);
+
+            ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getBeta();
+            ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getCapa1();
+            ime.getDadosManifestacao().getManifestacaoExtensao().getCapa2();
+            
+            String manifestacao = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
+            String elemento = ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
+            ArrayList<ElementoComponente> elementosComponentes = model.getElementosComponentes();
+            ime.setCapa3(calculaCapa3(manifestacao, elemento, elementosComponentes, inspecao));
+            
+            ime.getDadosManifestacao().getManifestacaoUrgencia().getCapa4();
+        }
+        
+    }
+    
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
         return filtroCodigo;
@@ -1007,4 +1020,6 @@ public class PonteBean extends ComumBean implements Serializable {
     }
     
     // </editor-fold>
+
+
 }

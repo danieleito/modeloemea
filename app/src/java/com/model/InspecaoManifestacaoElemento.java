@@ -16,6 +16,7 @@ public class InspecaoManifestacaoElemento implements Serializable {
     private int idInspecao;
     private DadosManifestacao dadosManifestacao;
     private ElementoUfprManifestacaoUfpr elementoUfprManifestacaoUfpr;
+    private double capa3;
 
     public InspecaoManifestacaoElemento() {
     }
@@ -63,5 +64,13 @@ public class InspecaoManifestacaoElemento implements Serializable {
 
     public void setElementoUfprManifestacaoUfpr(ElementoUfprManifestacaoUfpr elementoUfprManifestacaoUfpr) {
         this.elementoUfprManifestacaoUfpr = elementoUfprManifestacaoUfpr;
+    }
+
+    public double getCapa3() {
+        return capa3;
+    }
+
+    public void setCapa3(double capa3) {
+        this.capa3 = capa3;
     }
 }
