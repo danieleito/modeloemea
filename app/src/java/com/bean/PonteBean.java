@@ -92,7 +92,7 @@ public class PonteBean extends ComumBean implements Serializable {
     private ArrayList<Ponte> pontesSelecionadas;
     private ArrayList<Simulacao> simulacoes;
     private Simulacao modelSimulacao;
-        
+
     //aba identificacao obra
     private ArrayList<NaturezaTransposicao> naturezasTransposicoes;
     private ArrayList<TipoEstrutura> tiposEstruturas;
@@ -383,7 +383,7 @@ public class PonteBean extends ComumBean implements Serializable {
                     filtroComprimentoFinal.isEmpty() ? 0 : Double.parseDouble(filtroComprimentoFinal.replace(",", ".")), 
                     filtroLarguraInicial.isEmpty() ? 0 :Double.parseDouble(filtroLarguraInicial.replace(",", ".")), 
                     filtroLarguraFinal.isEmpty() ? 0 : Double.parseDouble(filtroLarguraFinal.replace(",", ".")),
-                    filtroIdAspectosEspeciais, filtroIdDeficienciasFuncionais);
+                    filtroIdAspectosEspeciais, filtroIdDeficienciasFuncionais, filtroIdElementoUfpr, filtroIdManifestacaoUfpr);
             carregarMapa();
 //            retangulo();
 //            carregarDetalhesPin();
@@ -599,6 +599,10 @@ public class PonteBean extends ComumBean implements Serializable {
 
     public double calculaValorDano(double beta, double capa1, double capa2, double capa3, double capa4) {
         double valorDano = beta * capa1 * capa2 * capa3 * capa4;
+
+//        formata valorDano #.##
+//        DecimalFormat formato = new DecimalFormat("#.##");      
+//        valorDano = Double.valueOf(formato.format(valorDano));
         return valorDano;
     }
 
@@ -635,7 +639,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         return capa3;
     }
-    
+
     public double somatorioValorDano() { 
         ArrayList<InspecaoManifestacaoElemento> distintos = new ArrayList<>();
         for (InspecaoManifestacaoElemento ime : inspecao.getInspecaoManifestacaoElemento()) {
@@ -649,12 +653,15 @@ public class PonteBean extends ComumBean implements Serializable {
 //                    .equals(ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao())).findFirst().isPresent()) {
 //                distintos.add(ime);
 //            }
-        } 
-        
+        }
+
         double somatorio = 0;
         for (InspecaoManifestacaoElemento ime : distintos) {
             somatorio += buscaMaiorValorDano(ime, inspecao.getInspecaoManifestacaoElemento());
         }
+//        DecimalFormat formato = new DecimalFormat("#.##");      
+//        somatorio = Double.valueOf(formato.format(somatorio));
+
         return somatorio;
     }
 
@@ -665,7 +672,7 @@ public class PonteBean extends ComumBean implements Serializable {
             double beta = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getBeta();
             double capa1 = ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getCapa1();
             double capa2 = ime.getDadosManifestacao().getManifestacaoExtensao().getCapa2();
-            
+
             String manifestacao = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
             String elemento = ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
             ArrayList<ElementoComponente> elementosComponentes = model.getElementosComponentes();
@@ -673,10 +680,11 @@ public class PonteBean extends ComumBean implements Serializable {
             ime.setCapa3(capa3);
             double capa4 = ime.getDadosManifestacao().getManifestacaoUrgencia().getCapa4();
             double valorDano = calculaValorDano(beta, capa1, capa2, ime.getCapa3(), capa4);
+
             ime.setValorDano(valorDano);
         }      
     }
-    
+
     private boolean estaNaLista(InspecaoManifestacaoElemento ime, ArrayList<InspecaoManifestacaoElemento> lista) {
         for (InspecaoManifestacaoElemento i : lista) {
             String mI = i.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
@@ -689,7 +697,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         return false;
     }
-    
+
     private double buscaMaiorValorDano(InspecaoManifestacaoElemento ime, ArrayList<InspecaoManifestacaoElemento> lista) {
         double maior = 0;
         for (InspecaoManifestacaoElemento i : lista) {
@@ -705,7 +713,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         return maior;
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
         return filtroCodigo;

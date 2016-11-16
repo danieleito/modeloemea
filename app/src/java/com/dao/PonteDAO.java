@@ -481,7 +481,7 @@ public class PonteDAO {
     
     public ArrayList<Ponte> buscaAvancada(int naturezaTransposicao, int tipoEstrutura, int sistemaConstrutivo, 
             double comprimentoInicial, double comprimentoFinal, double larguraInicial, double larguraFinal, 
-            int aspectoEspecial, int deficienciaFuncional) throws SQLException {
+            int aspectoEspecial, int deficienciaFuncional, int elemento, int manifestacao) throws SQLException {
 
         String query = "select P.ID_PONTE, P.DS_INDICE_PERFORMANCE_RELATIVO, "
                 + "P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, "
@@ -499,8 +499,9 @@ public class PonteDAO {
 
                 + "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, NATUREZA_TRANSPOSICAO NT, "
                 + "TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, IDENTIFICACAO_OBRA_LOCALIZACAO L, "
-                + "UF U, VIA V, CADASTRO_ASPECTOS_ESPECIAIS CAE, ASPECTOS_ESPECIAIS AE "
-                
+                + "UF U, VIA V, CADASTRO_ASPECTOS_ESPECIAIS CAE, ASPECTOS_ESPECIAIS AE, ELEMENTO_COMPONENTES EC, "
+                + "ELEMENTO_UFPR EU, ELEMENTO_UFPR_MANIFESTACAO_UFPR EUMU, MANIFESTACAO_UFPR MU "
+
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
                 + "and DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
                 + "and DB.ID_TIPO_ESTRUTURA = TE.ID_TIPO_ESTRUTURA "
@@ -510,8 +511,12 @@ public class PonteDAO {
                 + "and L.ID_UF = U.ID_UF "
                 + "and L.ID_VIA = V.ID_VIA "
                 + "and P.ID_PONTE = CAE.ID_PONTE "
-                + "and CAE.ID_ASPECTOS_ESPECIAIS = AE.ID_ASPECTOS_ESPECIAIS";
-        
+                + "and CAE.ID_ASPECTOS_ESPECIAIS = AE.ID_ASPECTOS_ESPECIAIS "
+                + "and P.ID_PONTE = EC.ID_PONTE "
+                + "and EC.ID_ELEMENTO_UFPR = EU.ID_ELEMENTO_UFPR "
+                + "and EU.ID_ELEMENTO_UFPR = EUMU.ID_ELEMENTO_UFPR "
+                + "and EUMU.ID_MANIFESTACAO_UFPR = MU.ID_MANIFESTACAO_UFPR";
+
         if (naturezaTransposicao != 0) {
             query += " and DB.ID_NATUREZA_TRANSPOSICAO = " + naturezaTransposicao + " ";
         }
@@ -539,8 +544,7 @@ public class PonteDAO {
         if (naturezaTransposicao != 0) {
             query += " and DB.ID_NATUREZA_TRANSPOSICAO = " + naturezaTransposicao + " ";
         }
-        
-        
+
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
         Statement stmt;
