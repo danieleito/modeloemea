@@ -10,7 +10,7 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-projeto_netbeans/nbproject/private/private.properties
+projeto_netbeans/nbproject/
 *.properties
 projeto_netbeans/nbproject/private/private.properties
 /projeto_netbeans/dist/

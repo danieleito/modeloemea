@@ -293,7 +293,8 @@ public class Ponte implements Serializable {
     public void setCaracteristicasFuncionaisDimensoes(CaracteristicasFuncionaisDimensoes caracteristicasFuncionaisDimensoes) {
         this.caracteristicasFuncionaisDimensoes = caracteristicasFuncionaisDimensoes;
     }
-
+    
+   //Na verdade é só uma rota
     public RotasAlternativas getRotasAlternativas() {
         return rotasAlternativas;
     }
