@@ -19,6 +19,7 @@ package com.relatorio;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Shape;
@@ -52,9 +53,11 @@ import org.apache.pdfbox.util.Vector;
  *
  * @author John Hewson
  */
-public class PdfGenerator 
+public class RelatorioGenerator 
 {
-   public static void main(String[] args) throws IOException {
+    
+    
+  /* public static void main(String[] args) throws IOException {
     PDDocument doc = new PDDocument();
     PDPage page = new PDPage();
     doc.addPage( page );
@@ -66,88 +69,71 @@ public class PdfGenerator
         {"Samsung Tab2","05:30"}
     } ;
     
-     final float width = page.getCropBox().getWidth()/2 ;
-    drawSection(page, contentStream, 792, 10, width,"1. IDENTIFICAÇÃO DA OBRA", content);
+    //PAGE INFO
+     final float marginX = 10;
+     final float halfContentWidth = page.getCropBox().getWidth() - 2*marginX;
+     final float topY = page.getCropBox().getHeight() - 20;
+     
+    final float primeiraSecaoWidth = (float) (halfContentWidth * 0.5);
+    drawSection(page, contentStream, topY, marginX , primeiraSecaoWidth ,"1. IDENTIFICAÇÃO DA OBRA", content, false);
 
+    final  float segundaSecaoWidth = primeiraSecaoWidth;
+    drawSection(page, contentStream, topY, marginX + primeiraSecaoWidth, segundaSecaoWidth ,"", content, true);
+    
     contentStream.close();
-    doc.save("C:\\Users\\Usuario\\Documents\\test.pdf" );
+    final String path = "C:\\Users\\Usuario\\Documents\\test.pdf";
+    doc.save(path);
+    
+    //OPEN FILE
+    if (Desktop.isDesktopSupported()) {
+    try {
+        File myFile = new File(path);
+        Desktop.getDesktop().open(myFile);
+    } catch (IOException ex) {
+        // no application registered for PDFs
+    }
+}
 } 
 
+*/
+   public static float drawSection(PDPage page, PDPageContentStream contentStream,
+            float y, float x, float width,
+            String title, String[][] content, boolean lineLeft) throws IOException {
 
-   
- public static void drawSection(PDPage page, PDPageContentStream contentStream,
-                             float y, float x,float width,
-                             String title, String[][] content) throws IOException{
-     
-    
-     
-      
-        StringPDFbox titlePDFbox = new StringPDFbox(title, PDType1Font.HELVETICA_BOLD, 12);
-        float titlex = x+10;
-        float titley = y-15;
+        //DRAW TITTLE
+        StringPDFbox titlePDFbox = new StringPDFbox(title, PDType1Font.HELVETICA_BOLD, 7);
+        final float titlex = x;
+        final float titley = y;
         titlePDFbox.draw(contentStream, titlex, titley);
-    
-        
-       
-        
-        contentStream.moveTo(titlex, titley-5f);
-        contentStream.lineTo(titlex+width, titley-5f);
+        //DRAW TITLE LINE
+        final float titleLineY = titley - 5f;
+        contentStream.moveTo(titlex, titleLineY);
+        contentStream.lineTo(titlex + width, titleLineY);
         contentStream.stroke();
-         
-     
- }
- 
 
- public static void drawTable(PDPage page, PDPageContentStream contentStream,
-                             float y, float margin,
-                             String[][] content) throws IOException {
-                  
-        final int rows = content.length;
-        
-        if(rows == 0)
-            return;                 
-        final int cols = content[0].length;
-        final float rowHeight = 20f;
-        final float tableWidth = page.getCropBox().getWidth() - margin - margin;
-        final float tableHeight = rowHeight * rows;
-        final float colWidth = tableWidth/(float)cols;
-        final float cellMargin=5f;
+        //DRAW CONTENT
+        final float marginContentLeft = lineLeft ? 5 : 0;
+        final float marginContentTop = 10;
+        final float marginContentRight = 100;
+        final float topicTitleX = x + marginContentLeft;
+        final float topicContentX = topicTitleX + marginContentRight;
+        for (int i = 0; i < content.length; ++i) {
+            StringPDFbox topicTitle = new StringPDFbox(content[i][0], PDType1Font.HELVETICA_BOLD, 5);
+            StringPDFbox topicContent = new StringPDFbox(content[i][1], PDType1Font.HELVETICA_BOLD, 5);
 
-        //draw the rows
-        float nexty = y ;
-        for (int i = 0; i <= rows; i++) {
-            contentStream.moveTo(margin, nexty);
-            contentStream.lineTo(margin+tableWidth, nexty);
+            //TODO: Descer texto conforme não tem mais espaço na linha
+            final float topicY = titleLineY - ((i + 1) * marginContentTop);
+            topicTitle.draw(contentStream, topicTitleX, topicY);
+            topicContent.draw(contentStream, topicContentX, topicY);
+        }
+
+        final float endY = titleLineY - (content.length * marginContentTop) - 10;
+        if (lineLeft) {
+            contentStream.moveTo(titlex, titleLineY);
+            contentStream.lineTo(titlex, endY);
             contentStream.stroke();
-            nexty-= rowHeight;
         }
-
-        //draw the columns
-        float nextx = margin;
-        for (int i = 0; i <= cols; i++) {
-            contentStream.moveTo(nextx, y);
-            contentStream.lineTo(nextx, y-tableHeight);
-            contentStream.stroke();
-            nextx += colWidth;
-        }
-
-        //now add the text
-        contentStream.setFont( PDType1Font.HELVETICA_BOLD , 12 );
-
-        float textx = margin+cellMargin;
-        float texty = y-15;
-        for(int i = 0; i < content.length; i++){
-            for(int j = 0 ; j < content[i].length; j++){
-                String text = content[i][j];
-                contentStream.beginText();
-                contentStream.newLineAtOffset(textx,texty);
-                contentStream.showText(text);
-                contentStream.endText();
-                textx += colWidth;
-            }
-            texty-=rowHeight;
-            textx = margin+cellMargin;
-        }
+        return endY;
     }
 }
  

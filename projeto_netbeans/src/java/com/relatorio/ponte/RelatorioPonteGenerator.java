@@ -17,8 +17,7 @@ import com.model.IdentificacaoObraInspecao;
 import com.model.IdentificacaoObraLocalizacao;
 import com.model.IdentificacaoObraResponsaveis;
 import com.model.Ponte;
-import com.relatorio.PdfGenerator;
-import static com.relatorio.PdfGenerator.drawSection;
+import com.relatorio.RelatorioGenerator;
 import com.relatorio.StringPDFbox;
 import java.awt.Desktop;
 import java.io.File;
@@ -36,7 +35,7 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
  *
  * @author Usuario
  */
-public class RelatorioPonteGenerator {
+public class RelatorioPonteGenerator  extends RelatorioGenerator{
 
     public static void main(String[] args) {
         PonteDAO ponteDao = new PonteDAO();
@@ -125,14 +124,14 @@ public class RelatorioPonteGenerator {
 
         drawSection(page1, contentStream, secaoDadosBasicosEndY, marginX + halfContentWidth, halfContentWidth, "", contentSecao4, true);
 
-
+        //TODO: colocar caracteristicasFuncionaisSecao1 no relatório
         String[][] caracteristicasFuncionaisSecao1 = {
             /**
              * CARACTERÍSTICAS FUNCIONAIS
              */
             {"Região", caracteristicasFuncionaisCaracteristicas.getTipoRegiao().toString()},
-            //TODO: Somente se a ponte for curva existe o raio
-            {"Traçada/Raio(m)", "ARRUMAR"},
+            //TODO: Descobrir se mostra ou não o raio se for nulo
+            {"Traçada/Raio(m)", caracteristicasFuncionaisCaracteristicas.getRaioCurva() == null ? "Não possui" : caracteristicasFuncionaisCaracteristicas.getRaioCurva()},
             {"Rampa Maxíma", caracteristicasFuncionaisCaracteristicas.getRampaMaxima()},
             {"VMD", caracteristicasFuncionaisCaracteristicas.getVmd()},
             {"N° de Vãos", caracteristicasFuncionaisDimensoes.getNumeroVaos()},
@@ -172,7 +171,7 @@ public class RelatorioPonteGenerator {
             
         }
        
-        //TODO: Testar aspectos especiais
+        //TODO: Testar aspectos 
         final float aspectosEspeciaisTopY = elementosComponentesEndY - 20;
         float aspectosEspeciaisEndY = elementosComponentesEndY;
         if (ponte.getAspectosEspeciais().size() > 0) {
@@ -266,44 +265,6 @@ public class RelatorioPonteGenerator {
         }
     }
 
-    public static float drawSection(PDPage page, PDPageContentStream contentStream,
-            float y, float x, float width,
-            String title, String[][] content, boolean lineLeft) throws IOException {
-
-        //DRAW TITTLE
-        StringPDFbox titlePDFbox = new StringPDFbox(title, PDType1Font.HELVETICA_BOLD, 7);
-        final float titlex = x;
-        final float titley = y;
-        titlePDFbox.draw(contentStream, titlex, titley);
-        //DRAW TITLE LINE
-        final float titleLineY = titley - 5f;
-        contentStream.moveTo(titlex, titleLineY);
-        contentStream.lineTo(titlex + width, titleLineY);
-        contentStream.stroke();
-
-        //DRAW CONTENT
-        final float marginContentLeft = lineLeft ? 5 : 0;
-        final float marginContentTop = 10;
-        final float marginContentRight = 100;
-        final float topicTitleX = x + marginContentLeft;
-        final float topicContentX = topicTitleX + marginContentRight;
-        for (int i = 0; i < content.length; ++i) {
-            StringPDFbox topicTitle = new StringPDFbox(content[i][0], PDType1Font.HELVETICA_BOLD, 5);
-            StringPDFbox topicContent = new StringPDFbox(content[i][1], PDType1Font.HELVETICA_BOLD, 5);
-
-            //TODO: Descer texto conforme não tem mais espaço na linha
-            final float topicY = titleLineY - ((i + 1) * marginContentTop);
-            topicTitle.draw(contentStream, topicTitleX, topicY);
-            topicContent.draw(contentStream, topicContentX, topicY);
-        }
-
-        final float endY = titleLineY - (content.length * marginContentTop) - 10;
-        if (lineLeft) {
-            contentStream.moveTo(titlex, titleLineY);
-            contentStream.lineTo(titlex, endY);
-            contentStream.stroke();
-        }
-        return endY;
-    }
+   
 
 }
