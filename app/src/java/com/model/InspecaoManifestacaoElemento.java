@@ -16,10 +16,15 @@ public class InspecaoManifestacaoElemento implements Serializable {
     private int idInspecao;
     private DadosManifestacao dadosManifestacao;
     private ElementoUfprManifestacaoUfpr elementoUfprManifestacaoUfpr;
+    
+    //campos utilizados apenas para exibir dados na view
     private double capa3;
     private double valorDano;
+    //utilizado para saber se elemento entrou na soma, para que ele seja colorido na aba Modelo EMEA
+    private boolean somou;
 
     public InspecaoManifestacaoElemento() {
+        somou = false;
     }
 
     public InspecaoManifestacaoElemento(int id, int idInspecao, DadosManifestacao dadosManifestacao, ElementoUfprManifestacaoUfpr elementoUfprManifestacaoUfpr) {
@@ -27,12 +32,14 @@ public class InspecaoManifestacaoElemento implements Serializable {
         this.idInspecao = idInspecao;
         this.dadosManifestacao = dadosManifestacao;
         this.elementoUfprManifestacaoUfpr = elementoUfprManifestacaoUfpr;
+        somou = false;
     }
 
     public InspecaoManifestacaoElemento(int idInspecao, DadosManifestacao dadosManifestacao, ElementoUfprManifestacaoUfpr elementoUfprManifestacaoUfpr) {
         this.idInspecao = idInspecao;
         this.dadosManifestacao = dadosManifestacao;
         this.elementoUfprManifestacaoUfpr = elementoUfprManifestacaoUfpr;
+        somou = false;
     }
 
     public int getId() {
@@ -81,5 +88,13 @@ public class InspecaoManifestacaoElemento implements Serializable {
 
     public void setValorDano(double valorDano) {
         this.valorDano = valorDano;
+    }
+
+    public boolean isSomou() {
+        return somou;
+    }
+
+    public void setSomou(boolean somou) {
+        this.somou = somou;
     }
 }

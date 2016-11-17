@@ -66,6 +66,9 @@ public class Inspecao implements Serializable {
     
     private int idPonte;
     private ArrayList<InspecaoManifestacaoElemento> inspecaoManifestacaoElemento;
+    
+    //utilizado apenas para exibir na tela Modelo EMEA
+    private double somatorioValorDano;
 
 
     /**
@@ -236,5 +239,13 @@ public class Inspecao implements Serializable {
 
     public void setInspecaoManifestacaoElemento(ArrayList<InspecaoManifestacaoElemento> inspecaoManifestacaoElemento) {
         this.inspecaoManifestacaoElemento = inspecaoManifestacaoElemento;
-    }    
+    }
+
+    public double getSomatorioValorDano() {
+        return somatorioValorDano;
+    }
+
+    public void setSomatorioValorDano(double somatorioValorDano) {
+        this.somatorioValorDano = somatorioValorDano;
+    }
 }

@@ -646,22 +646,12 @@ public class PonteBean extends ComumBean implements Serializable {
             if (!estaNaLista(ime, distintos)) {
                 distintos.add(ime);
             }
-//            if (!distintos.stream().filter(p -> 
-//                    p.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao()
-//                    .equals(ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao()) 
-//                    && p.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao()
-//                    .equals(ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao())).findFirst().isPresent()) {
-//                distintos.add(ime);
-//            }
         }
 
         double somatorio = 0;
         for (InspecaoManifestacaoElemento ime : distintos) {
             somatorio += buscaMaiorValorDano(ime, inspecao.getInspecaoManifestacaoElemento());
         }
-//        DecimalFormat formato = new DecimalFormat("#.##");      
-//        somatorio = Double.valueOf(formato.format(somatorio));
-
         return somatorio;
     }
 
@@ -680,9 +670,10 @@ public class PonteBean extends ComumBean implements Serializable {
             ime.setCapa3(capa3);
             double capa4 = ime.getDadosManifestacao().getManifestacaoUrgencia().getCapa4();
             double valorDano = calculaValorDano(beta, capa1, capa2, ime.getCapa3(), capa4);
-
             ime.setValorDano(valorDano);
-        }      
+        }
+        
+        inspecao.setSomatorioValorDano(somatorioValorDano());
     }
 
     private boolean estaNaLista(InspecaoManifestacaoElemento ime, ArrayList<InspecaoManifestacaoElemento> lista) {
@@ -699,7 +690,8 @@ public class PonteBean extends ComumBean implements Serializable {
     }
 
     private double buscaMaiorValorDano(InspecaoManifestacaoElemento ime, ArrayList<InspecaoManifestacaoElemento> lista) {
-        double maior = 0;
+        double maior = -1;
+        InspecaoManifestacaoElemento m = null;
         for (InspecaoManifestacaoElemento i : lista) {
             String mI = i.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
             String mIme = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
@@ -708,8 +700,12 @@ public class PonteBean extends ComumBean implements Serializable {
             if (mI.equals(mIme) && eI.equals(eIme)) {
                 if (i.getValorDano() > maior) {
                     maior = i.getValorDano();
+                    m = i;
                 }
             }
+        }
+        if (m != null) {
+            m.setSomou(true);
         }
         return maior;
     }

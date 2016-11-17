@@ -20,9 +20,15 @@ and open the template in the editor.
         <h:form id="form" style="text-align: center;" >
             
             <c:forEach var="i" items="#{ponteBean.inspecao.inspecaoManifestacaoElemento}">
-
-                <p:panel style="text-align:center; height: 500px; width: 320px; float: left; margin: 3px; " >
-                    <h:panelGrid columns="1" class="tabela_sem_borda" >
+                <c:set var="classe" value="painel_nao_somou" />
+                <c:choose>
+                    <c:when test="#{i.somou}">
+                        <c:set var="classe" value="painel_somou" />
+                    </c:when>
+                </c:choose>
+                
+                <div class="#{classe}" style="text-align:center; height: 500px; width: 320px; float: left; margin: 3px;">
+                    <h:panelGrid columns="1" class="tabela_sem_borda">
                         <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
                         <c:set var="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" />
                         <c:set var="tipo" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />
@@ -69,22 +75,19 @@ and open the template in the editor.
                         <c:set var="capa4" value="#{i.dadosManifestacao.manifestacaoUrgencia.capa4}" />
                         <c:set var="capa3" value="#{i.capa3}" />
                         
-                        <h:outputText value="beta: #{beta}" class="col-md-10" >
-                            <f:convertNumber minFractionDigits="2" />
-                        </h:outputText>
-                        
-                        <h:outputText value="Valor do dano: #{i.valorDano}" class="col-md-10" >
-                            <f:convertNumber pattern="#0.00" />
-                        </h:outputText>
-                        
+                        <c:set var="dano" value="#{comumbean.getValorFormatado(i.valorDano)}" />
+                        <h:outputText value="Valor do dano: #{dano}" />
                     </h:panelGrid>
-                </p:panel>
+                </div>
 
             </c:forEach>
             
-            <h:outputText value="Índice de Performance Absoluto: #{ponteBean.somatorioValorDano()}" class="col-md-12 row" >
-                <f:convertNumber pattern="#0.00" />
-            </h:outputText>
+            <div class="col-md-10 row" style="margin-top: 10px; font-weight: bold">
+                <h:outputText value="Índice de Performance Absoluto:&#160;" style="float: left"/>
+                <h:outputText value="#{ponteBean.inspecao.somatorioValorDano}" style="float: left" >
+                    <f:convertNumber pattern="#0.00" />
+                </h:outputText>
+            </div>           
         </h:form>
     </h:body>
 </html>

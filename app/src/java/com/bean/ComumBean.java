@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -133,6 +134,11 @@ public class ComumBean {
         } else {
             return context.getRequestContextPath() + "/FileManager?action=getImage&nomeImagem=" + nomeArquivo;
         }
+    }
+    
+    public String getValorFormatado(double valor) {
+        DecimalFormat df = new DecimalFormat("#0.00");
+        return df.format(valor);
     }
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
