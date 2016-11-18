@@ -430,26 +430,19 @@ public class PonteDAO {
             double comprimentoInicial, double comprimentoFinal, double larguraInicial, double larguraFinal, 
             int aspectoEspecial, int deficienciaFuncional, int elemento, int manifestacao) throws SQLException {
 
-        String query = "select P.ID_PONTE, P.DS_INDICE_PERFORMANCE_RELATIVO, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, "
-                + "DB.CD_CODIGO, DB.CD_CODIGO_INTEGRACAO, DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, "
-                + "NT.DS_NATUREZA_TRANSPOSICAO, DB.ID_TIPO_ESTRUTURA, TE.DS_TIPO_ESTRUTURA, DB.ID_SISTEMA_CONSTRUTIVO, "
-                + "SC.DS_SISTEMA_CONSTRUTIVO, DB.NR_COMPRIMENTO, DB.NR_LARGURA, DB.ID_TREM_TIPO, TT.DS_TREM_TIPO, "
-                + "DB.DS_ANO_CONSTRUCAO, CAE.ID_CADASTRO_ASPECTOS_ESPECIAIS, CAE.ID_ASPECTOS_ESPECIAIS, AE.DS_ASPECTOS_ESPECIAIS, "
-                + "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_UF, U.DS_UF, U.SG_UF, L.ID_VIA, V.DS_VIA, L.NR_LOCAL_VIA, "
-                + "L.DS_CIDADE_MAIS_PROXIMA, L.DS_PNV_ANO, L.DS_PNV_VERSAO, L.DS_PNV_CODIGO, L.DS_PNV_ALTITUDE, L.DS_LATITUDE_GRAU, "
-                + "L.DS_LATITUDE_MINUTO, L.DS_LONGITUDE_GRAU, L.DS_LONGITUDE_MINUTO "
-                
-                + "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, "
-                + "SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, CADASTRO_ASPECTOS_ESPECIAIS CAE, ASPECTOS_ESPECIAIS AE, "
+        String query = "select P.ID_PONTE, P.DS_INDICE_PERFORMANCE_RELATIVO, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, DB.CD_CODIGO, DB.CD_CODIGO_INTEGRACAO, "
+                + "DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO, DB.ID_TIPO_ESTRUTURA, TE.DS_TIPO_ESTRUTURA, "
+                + "DB.ID_SISTEMA_CONSTRUTIVO, SC.DS_SISTEMA_CONSTRUTIVO, DB.NR_COMPRIMENTO, DB.NR_LARGURA, DB.ID_TREM_TIPO, TT.DS_TREM_TIPO, "
+                + "DB.DS_ANO_CONSTRUCAO, P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_UF, U.DS_UF, U.SG_UF, L.ID_VIA, V.DS_VIA, L.NR_LOCAL_VIA, "
+                + "L.DS_CIDADE_MAIS_PROXIMA, L.DS_PNV_ANO, L.DS_PNV_VERSAO, L.DS_PNV_CODIGO, L.DS_PNV_ALTITUDE, L.DS_LATITUDE_GRAU, L.DS_LATITUDE_MINUTO, "
+                + "L.DS_LONGITUDE_GRAU, L.DS_LONGITUDE_MINUTO "
+                + "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, "
                 + "IDENTIFICACAO_OBRA_LOCALIZACAO L, UF U, VIA V "
-                
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
                 + "and DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
                 + "and DB.ID_TIPO_ESTRUTURA = TE.ID_TIPO_ESTRUTURA "
                 + "and DB.ID_SISTEMA_CONSTRUTIVO = SC.ID_SISTEMA_CONSTRUTIVO "
                 + "and DB.ID_TREM_TIPO = TT.ID_TREM_TIPO "
-                + "and CAE.ID_PONTE = P.ID_PONTE "
-                + "and CAE.ID_ASPECTOS_ESPECIAIS = AE.ID_ASPECTOS_ESPECIAIS "
                 + "and P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
                 + "and L.ID_UF = U.ID_UF "
                 + "and L.ID_VIA = V.ID_VIA";
@@ -476,9 +469,18 @@ public class PonteDAO {
         if (larguraFinal > 0) {
             query += " and DB.NR_LARGURA < " + larguraFinal + " ";
         }
-        if (aspectoEspecial != 0) {
-            query += " and AE.ID_ASPECTOS_ESPECIAIS = " + aspectoEspecial + " ";
-        }
+//        if (aspectoEspecial != 0) {
+//            query += " and AE.ID_ASPECTOS_ESPECIAIS = " + aspectoEspecial + " ";
+//        }
+//        if (deficienciaFuncional != 0) {
+//            query += " ";
+//        }
+//        if (elemento != 0) {
+//            query += " and E.ID_ELEMENTO_UFPR = " + elemento + " ";
+//        }
+//        if (manifestacao != 0) {
+//            query += " and M.ID_MANIFESTACAO_UFPR = " + manifestacao + " ";
+//        }
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
