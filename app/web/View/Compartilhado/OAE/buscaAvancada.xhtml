@@ -8,7 +8,7 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui" 
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
 
     <h:head>
         <title>SGO Gestor</title>
@@ -108,9 +108,25 @@ and open the template in the editor.
                     </td>
                     <td>
                         <p:selectOneMenu id="deficienciaFuncional" value="#{ponteBean.filtroIdDeficienciasFuncionais}" style="width:400px">
-                            <f:selectItem itemLabel="Selecione a DeficiênciaFuncional" itemValue="0"/>
+                            <f:selectItem itemLabel="Selecione a Deficiência Funcional" itemValue="0"/>
                             <f:selectItems value="#{ponteBean.deficienciasFuncionais}" var="df" itemValue="#{df.id}"/>
                         </p:selectOneMenu>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="th">
+                        <p:outputLabel value="Morfologia" class="col-md-10" />
+                    </td>
+                    <td>
+                        <p:selectOneMenu id="morfologia" value="#{ponteBean.filtroIdMorfologia}" style="width:400px">
+                            <f:selectItem itemLabel="Selecione a Morfologia" itemValue="0"/>
+                            <f:selectItems value="#{ponteBean.morfologias}" var="m" itemValue="#{m.id}"/>
+                        </p:selectOneMenu>
+                    </td>
+                    <td>
+                        <p:commandButton icon="ui-icon-plus" action="#{simulacaoBean.rankingGet(sim.id)}" />
+                        <p:commandButton icon="ui-icon-minus" action="#{simulacaoBean.rankingGet(sim.id)}" />
                     </td>
                 </tr>
 

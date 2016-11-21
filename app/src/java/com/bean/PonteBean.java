@@ -133,10 +133,12 @@ public class PonteBean extends ComumBean implements Serializable {
     private String filtroLarguraFinal;
     private int filtroIdAspectosEspeciais;
     private int filtroIdDeficienciasFuncionais;
+    private int filtroIdMorfologia;
     private int filtroIdElementoUfpr;
     private int filtroIdManifestacaoUfpr;
     // </editor-fold>
 
+    private ArrayList<ElementoUfpr> morfologias; 
     //aba elementos componente
     private ArrayList<ElementoUfpr> elementosUfpr;
 
@@ -202,6 +204,8 @@ public class PonteBean extends ComumBean implements Serializable {
             tiposTracados = new TipoTracadoDAO().buscar();
 //            numeroFaixas;
 //            LarguraFaixas;
+
+            morfologias = new ElementoUfprDAO().buscar();
 
             //aba elementos componentes
             elementosUfpr = new ElementoUfprDAO().buscar();
@@ -383,10 +387,11 @@ public class PonteBean extends ComumBean implements Serializable {
                     filtroComprimentoFinal.isEmpty() ? 0 : Double.parseDouble(filtroComprimentoFinal.replace(",", ".")), 
                     filtroLarguraInicial.isEmpty() ? 0 :Double.parseDouble(filtroLarguraInicial.replace(",", ".")), 
                     filtroLarguraFinal.isEmpty() ? 0 : Double.parseDouble(filtroLarguraFinal.replace(",", ".")),
-                    filtroIdAspectosEspeciais, filtroIdDeficienciasFuncionais, filtroIdElementoUfpr, filtroIdManifestacaoUfpr);
+                    filtroIdAspectosEspeciais, filtroIdDeficienciasFuncionais, filtroIdMorfologia, filtroIdElementoUfpr, filtroIdManifestacaoUfpr);
             carregarMapa();
 //            retangulo();
 //            carregarDetalhesPin();
+            
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
@@ -709,6 +714,31 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         return maior;
     }
+    
+    
+//    public void onTabChange(TabChangeEvent event) {
+//
+//
+//	String activeTab = event.getTab().getId();
+//
+//	int activeTabIndex = 0;
+//
+//	//Realiza um loop para identificar qual é a tab que foi selecionada.
+//	//Obs.: As tabs filhas devem ter um id definido, para que seja facilitada a busca
+//	//e o entendimento pois o JSF por padrão coloca IDs com nomes que ele mesmo escolhe 
+//	//para as tabs.
+//	for (UIComponent comp : event.getTab().getParent().getChildren()) {
+//		if (comp.getId().equals(activeTab)) {
+//			break;
+//		}
+//		activeTabIndex++;
+//	}
+//
+//	System.out.println("ID da Tab Atual: " + event.getTab().getId());
+//	System.out.println("Index da Tab Atual: " + activeTabIndex);
+//
+//	setTabAtual(activeTabIndex);
+//    }
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
@@ -877,6 +907,14 @@ public class PonteBean extends ComumBean implements Serializable {
 
     public void setTiposTracados(ArrayList<TipoTracado> tiposTracados) {
         this.tiposTracados = tiposTracados;
+    }
+
+    public ArrayList<ElementoUfpr> getMorfologias() {
+        return morfologias;
+    }
+
+    public void setMorfologias(ArrayList<ElementoUfpr> morfologias) {
+        this.morfologias = morfologias;
     }
 
     public ArrayList<ElementoUfpr> getElementosUfpr() {
@@ -1053,6 +1091,14 @@ public class PonteBean extends ComumBean implements Serializable {
 
     public void setFiltroIdDeficienciasFuncionais(int filtroIdDeficienciasFuncionais) {
         this.filtroIdDeficienciasFuncionais = filtroIdDeficienciasFuncionais;
+    }
+
+    public int getFiltroIdMorfologia() {
+        return filtroIdMorfologia;
+    }
+
+    public void setFiltroIdMorfologia(int filtroIdMorfologia) {
+        this.filtroIdMorfologia = filtroIdMorfologia;
     }
 
     public int getFiltroIdElementoUfpr() {

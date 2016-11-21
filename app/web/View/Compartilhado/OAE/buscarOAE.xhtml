@@ -26,7 +26,7 @@ and open the template in the editor.
                         <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
                         <p:menuitem value="Simulação" action="#{simulacaoBean.listarGet()}" />
                         <p:menuitem value="Ranqueamento" url="/View/Compartilhado/OAE/Simulacao/ranking.jsf" />
-                        <p:menuitem value="Consulta" url="/View/Compartilhado/OAE/buscarOAE.jsf" />
+                        <p:menuitem value="Consulta" action="#{ponteBean.consultarGet(simulacaoBean.simulacao.id)}" />
                     </p:breadCrumb>
 
                     <br/>
@@ -115,14 +115,14 @@ and open the template in the editor.
                     <p:separator />
                     <h2>Obras de Arte Especiais</h2>
 
-                    <p:tabView>
-                        <p:tab title="Busca">
+                    <p:tabView >
+                        <p:tab title="Busca" >
                             <div style="display: table; width: 100%">
                                 <ui:include src="/View/Compartilhado/OAE/busca.xhtml" />
                             </div>
                         </p:tab>
 
-                        <p:tab title="Busca avançada">
+                        <p:tab title="Busca avançada" >
                             <div style="display: table; width: 100%">
                                 <ui:include src="/View/Compartilhado/OAE/buscaAvancada.xhtml" />
                             </div>
