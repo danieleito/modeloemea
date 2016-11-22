@@ -510,10 +510,14 @@ public class PonteDAO {
 //            query += " and P.ID_PONTE in (select ID_PONTE from CADASTRO_ASPECTOS_ESPECIAIS where ID_ASPECTOS_ESPECIAIS = " + aspectoEspecial + ") ";
 //        }
         if (morfologia != 0) {
-            query += " and P.ID_PONTE in (select ID_PONTE from ELEMENTO_COMPONENTES where ID_ELEMENTO_UFPR = " + elemento + ") ";
+            query += " and P.ID_PONTE in (select ID_PONTE from ELEMENTO_COMPONENTES where ID_ELEMENTO_UFPR = " + morfologia + ") ";
         }
         if (elemento != 0) {
-            query += " and P.ID_PONTE in (select ID_PONTE from ELEMENTO_COMPONENTES where ID_ELEMENTO_UFPR = " + elemento + ") ";
+            query += " and P.ID_PONTE in (select ID_PONTE from INSPECAO I, INSPECAO_MANIFESTACAO_ELEMENTO IME, "
+                    + "ELEMENTO_UFPR_MANIFESTACAO_UFPR EUMU "
+                    + "where I.ID_INSPECAO = IME.ID_INSPECAO "
+                    + "and IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR = EUMU.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR "
+                    + "and EUMU.ID_ELEMENTO_UFPR = " + elemento + ") ";
         }
         if (manifestacao != 0) {
             query += " and P.ID_PONTE in (select ID_PONTE from INSPECAO I, INSPECAO_MANIFESTACAO_ELEMENTO IME, "

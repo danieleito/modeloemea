@@ -115,21 +115,20 @@ and open the template in the editor.
                     <p:separator />
                     <h2>Obras de Arte Especiais</h2>
 
-                    <p:tabView >
-                        <p:tab title="Busca" >
+                    <p:tabView activeIndex="#{ponteBean.tab}">
+                        <p:tab title="Busca" id="busca" >
                             <div style="display: table; width: 100%">
                                 <ui:include src="/View/Compartilhado/OAE/busca.xhtml" />
                             </div>
                         </p:tab>
 
-                        <p:tab title="Busca avançada" >
+                        <p:tab title="Busca avançada" id="buscaAvancada" >
                             <div style="display: table; width: 100%">
                                 <ui:include src="/View/Compartilhado/OAE/buscaAvancada.xhtml" />
                             </div>
                         </p:tab>
                     </p:tabView>
-
-                    <p:commandButton action="#{ponteBean.cancelar()}" value="Cancelar" />
+                    <br/>
 
                     <p:dataTable id="checkboxDT" var="p" value="#{ponteBean.pontes}" rowKey="#{p.id}" selection="#{ponteBean.pontesSelecionadas}" style="margin-bottom: 0" paginator="true" rows="15" reflow="true" >     
                         <f:facet name="header" >

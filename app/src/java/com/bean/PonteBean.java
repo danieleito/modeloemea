@@ -173,6 +173,9 @@ public class PonteBean extends ComumBean implements Serializable {
     private String titulo;
     private MapModel rectangleModel;
     private MapModel advancedModel;
+    
+//    para mudar a aba da busca
+    private int tab = 0;
 
     @PostConstruct
     public void init() {
@@ -303,6 +306,7 @@ public class PonteBean extends ComumBean implements Serializable {
             carregarMapa();
             retangulo();
 //            carregarDetalhesPin();
+            tab = 0;
         } catch (SQLException ex) {
             pontes = new ArrayList<>();
             adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
@@ -345,6 +349,7 @@ public class PonteBean extends ComumBean implements Serializable {
             carregarMapa();
             retangulo();
 //            carregarDetalhesPin();
+            tab = 0;
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
@@ -388,9 +393,11 @@ public class PonteBean extends ComumBean implements Serializable {
                     filtroLarguraInicial.isEmpty() ? 0 :Double.parseDouble(filtroLarguraInicial.replace(",", ".")), 
                     filtroLarguraFinal.isEmpty() ? 0 : Double.parseDouble(filtroLarguraFinal.replace(",", ".")),
                     filtroIdAspectosEspeciais, filtroIdDeficienciasFuncionais, filtroIdMorfologia, filtroIdElementoUfpr, filtroIdManifestacaoUfpr);
+            
             carregarMapa();
 //            retangulo();
 //            carregarDetalhesPin();
+            tab = 1;
             
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -417,6 +424,18 @@ public class PonteBean extends ComumBean implements Serializable {
         filtroKmFinal = "";
         filtroIdSuperintendencia = 0;
         filtroIdUnidadeLocal = 0;
+        filtroIdNaturezaTransposicao = 0;
+        filtroIdTipoEstrutura = 0;
+        filtroIdSistemaConstrutivo = 0;
+        filtroComprimentoInicial = "";
+        filtroComprimentoFinal = "";
+        filtroLarguraInicial = "";
+        filtroLarguraFinal = "";
+        filtroIdAspectosEspeciais = 0;
+        filtroIdDeficienciasFuncionais = 0;
+        filtroIdMorfologia = 0;
+        filtroIdElementoUfpr = 0;
+        filtroIdManifestacaoUfpr = 0;
     }
 
     public void exibir(int idPonte) {
@@ -739,7 +758,7 @@ public class PonteBean extends ComumBean implements Serializable {
 //
 //	setTabAtual(activeTabIndex);
 //    }
-
+    
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
         return filtroCodigo;
@@ -1116,8 +1135,13 @@ public class PonteBean extends ComumBean implements Serializable {
     public void setFiltroIdManifestacaoUfpr(int filtroIdManifestacaoUfpr) {
         this.filtroIdManifestacaoUfpr = filtroIdManifestacaoUfpr;
     }
-    
+
+    public int getTab() {
+        return tab;
+    }
+
+    public void setTab(int tab) {
+        this.tab = tab;
+    }
     // </editor-fold>
-
-
 }
