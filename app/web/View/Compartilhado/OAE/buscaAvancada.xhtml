@@ -121,12 +121,14 @@ and open the template in the editor.
                     <td>
                         <p:selectOneMenu id="morfologia" value="#{ponteBean.filtroIdMorfologia}" style="width:400px">
                             <f:selectItem itemLabel="Selecione a Morfologia" itemValue="0"/>
-                            <f:selectItems value="#{ponteBean.morfologias}" var="m" itemValue="#{m.id}"/>
+                            <f:selectItems value="#{ponteBean.elementosUfpr}" var="m" itemValue="#{m.id}"/>
                         </p:selectOneMenu>
-                    </td>
-                    <td>
-                        <p:commandButton icon="ui-icon-plus" action="#{simulacaoBean.rankingGet(sim.id)}" />
-                        <p:commandButton icon="ui-icon-minus" action="#{simulacaoBean.rankingGet(sim.id)}" />
+                        <p:commandButton icon="ui-icon-plus" action="#{ponteBean.adicionarMorfologiaBusca(m)}" />
+                        <p:commandButton icon="ui-icon-minus" action="#{ponteBean.excluirMorfologiaBusca()}" />
+                        
+                        <p:dataList emptyMessage="#{comumbean.getMensagemTabelaVazia()}" value="#{ponteBean.morfologias}" var="morf" type="ordered">
+                            #{morf.descricao}
+                        </p:dataList>
                     </td>
                 </tr>
 

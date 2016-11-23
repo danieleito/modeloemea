@@ -138,7 +138,7 @@ public class PonteBean extends ComumBean implements Serializable {
     private int filtroIdManifestacaoUfpr;
     // </editor-fold>
 
-    private ArrayList<ElementoUfpr> morfologias; 
+    private ArrayList<String> morfologias; 
     //aba elementos componente
     private ArrayList<ElementoUfpr> elementosUfpr;
 
@@ -207,8 +207,8 @@ public class PonteBean extends ComumBean implements Serializable {
             tiposTracados = new TipoTracadoDAO().buscar();
 //            numeroFaixas;
 //            LarguraFaixas;
-
-            morfologias = new ElementoUfprDAO().buscar();
+//
+//            morfologias = new ElementoUfprDAO().buscar();
 
             //aba elementos componentes
             elementosUfpr = new ElementoUfprDAO().buscar();
@@ -758,6 +758,32 @@ public class PonteBean extends ComumBean implements Serializable {
 //
 //	setTabAtual(activeTabIndex);
 //    }
+
+    public void adicionarMorfologiaBusca(String elemento) {
+        int count = 0;
+//      se não foi selecionado nenhum item do combobox
+        if (filtroIdMorfologia != 0) {
+//          se o ArrayList morfologias está vazio pode add o item com certeza, 
+//          senão verificar se morfologias já possui o item, caso possua não add
+            if (morfologias.isEmpty()) {
+                morfologias.add(elemento);
+            } else {
+                for (int i = 0; i < morfologias.size(); i++) {
+//                    if (morfologias.get(i)) {
+//                        count++;
+//                    }
+                }
+                if (count == 0) {
+                    morfologias.add(elemento);
+                }
+            }
+        }
+
+    }
+    
+    public void excluirMorfologiaBusca() {
+        
+    }
     
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
@@ -928,11 +954,11 @@ public class PonteBean extends ComumBean implements Serializable {
         this.tiposTracados = tiposTracados;
     }
 
-    public ArrayList<ElementoUfpr> getMorfologias() {
+    public ArrayList<String> getMorfologias() {
         return morfologias;
     }
 
-    public void setMorfologias(ArrayList<ElementoUfpr> morfologias) {
+    public void setMorfologias(ArrayList<String> morfologias) {
         this.morfologias = morfologias;
     }
 
