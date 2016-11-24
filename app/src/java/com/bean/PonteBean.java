@@ -138,7 +138,7 @@ public class PonteBean extends ComumBean implements Serializable {
     private int filtroIdManifestacaoUfpr;
     // </editor-fold>
 
-    private ArrayList<String> morfologias; 
+    private ArrayList<ElementoUfpr> morfologias; 
     //aba elementos componente
     private ArrayList<ElementoUfpr> elementosUfpr;
 
@@ -392,7 +392,8 @@ public class PonteBean extends ComumBean implements Serializable {
                     filtroComprimentoFinal.isEmpty() ? 0 : Double.parseDouble(filtroComprimentoFinal.replace(",", ".")), 
                     filtroLarguraInicial.isEmpty() ? 0 :Double.parseDouble(filtroLarguraInicial.replace(",", ".")), 
                     filtroLarguraFinal.isEmpty() ? 0 : Double.parseDouble(filtroLarguraFinal.replace(",", ".")),
-                    filtroIdAspectosEspeciais, filtroIdDeficienciasFuncionais, filtroIdMorfologia, filtroIdElementoUfpr, filtroIdManifestacaoUfpr);
+                    filtroIdAspectosEspeciais, filtroIdDeficienciasFuncionais, filtroIdMorfologia, filtroIdElementoUfpr, 
+                    filtroIdManifestacaoUfpr, morfologias);
             
             carregarMapa();
 //            retangulo();
@@ -436,6 +437,7 @@ public class PonteBean extends ComumBean implements Serializable {
         filtroIdMorfologia = 0;
         filtroIdElementoUfpr = 0;
         filtroIdManifestacaoUfpr = 0;
+        morfologias = new ArrayList<>();
     }
 
     public void exibir(int idPonte) {
@@ -759,26 +761,22 @@ public class PonteBean extends ComumBean implements Serializable {
 //	setTabAtual(activeTabIndex);
 //    }
 
-    public void adicionarMorfologiaBusca(String elemento) {
-        int count = 0;
-//      se não foi selecionado nenhum item do combobox
-        if (filtroIdMorfologia != 0) {
-//          se o ArrayList morfologias está vazio pode add o item com certeza, 
-//          senão verificar se morfologias já possui o item, caso possua não add
-            if (morfologias.isEmpty()) {
-                morfologias.add(elemento);
-            } else {
-                for (int i = 0; i < morfologias.size(); i++) {
-//                    if (morfologias.get(i)) {
-//                        count++;
-//                    }
-                }
-                if (count == 0) {
-                    morfologias.add(elemento);
-                }
-            }
+    public void adicionarMorfologiaBusca() {
+        // se nao foi selecionado nenhum item nao faz nada
+        if (filtroIdMorfologia == 0) {
+            return;
         }
-
+        // se item ja esta na lista, nao add
+        if (morfologias.stream().filter(p -> p.getId() == filtroIdMorfologia).findFirst().isPresent()) {
+            return;
+        }
+        
+        Optional<ElementoUfpr> o = elementosUfpr.stream().filter(p -> p.getId() == filtroIdMorfologia).findFirst();
+        if (o.isPresent()) {
+            morfologias.add(o.get());
+        }
+        tab = 1;
+        redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
     }
     
     public void excluirMorfologiaBusca() {
@@ -954,11 +952,11 @@ public class PonteBean extends ComumBean implements Serializable {
         this.tiposTracados = tiposTracados;
     }
 
-    public ArrayList<String> getMorfologias() {
+    public ArrayList<ElementoUfpr> getMorfologias() {
         return morfologias;
     }
 
-    public void setMorfologias(ArrayList<String> morfologias) {
+    public void setMorfologias(ArrayList<ElementoUfpr> morfologias) {
         this.morfologias = morfologias;
     }
 

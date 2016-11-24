@@ -123,7 +123,7 @@ and open the template in the editor.
                             <f:selectItem itemLabel="Selecione a Morfologia" itemValue="0"/>
                             <f:selectItems value="#{ponteBean.elementosUfpr}" var="m" itemValue="#{m.id}"/>
                         </p:selectOneMenu>
-                        <p:commandButton icon="ui-icon-plus" action="#{ponteBean.adicionarMorfologiaBusca(m)}" />
+                        <p:commandButton icon="ui-icon-plus" action="#{ponteBean.adicionarMorfologiaBusca()}" />
                         <p:commandButton icon="ui-icon-minus" action="#{ponteBean.excluirMorfologiaBusca()}" />
                         
                         <p:dataList emptyMessage="#{comumbean.getMensagemTabelaVazia()}" value="#{ponteBean.morfologias}" var="morf" type="ordered">

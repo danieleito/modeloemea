@@ -428,7 +428,8 @@ public class PonteDAO {
     
     public ArrayList<Ponte> buscaAvancada(int naturezaTransposicao, int tipoEstrutura, int sistemaConstrutivo, 
             double comprimentoInicial, double comprimentoFinal, double larguraInicial, double larguraFinal, 
-            int aspectoEspecial, int deficienciaFuncional, int morfologia, int elemento, int manifestacao) throws SQLException {
+            int aspectoEspecial, int deficienciaFuncional, int morfologia, int elemento, int manifestacao, 
+            ArrayList morfologias) throws SQLException {
 
         String query = "select P.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, DB.CD_CODIGO, DB.CD_CODIGO_INTEGRACAO, "
                 + "DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO, "
@@ -510,7 +511,9 @@ public class PonteDAO {
 //            query += " and P.ID_PONTE in (select ID_PONTE from CADASTRO_ASPECTOS_ESPECIAIS where ID_ASPECTOS_ESPECIAIS = " + aspectoEspecial + ") ";
 //        }
         if (morfologia != 0) {
-            query += " and P.ID_PONTE in (select ID_PONTE from ELEMENTO_COMPONENTES where ID_ELEMENTO_UFPR = " + morfologia + ") ";
+            for (int i = 0; i < morfologias.size(); i++) {
+                query += " and P.ID_PONTE in (select ID_PONTE from ELEMENTO_COMPONENTES where ID_ELEMENTO_UFPR = " + morfologias.get(i) + ") ";
+            }
         }
         if (elemento != 0) {
             query += " and P.ID_PONTE in (select ID_PONTE from INSPECAO I, INSPECAO_MANIFESTACAO_ELEMENTO IME, "
