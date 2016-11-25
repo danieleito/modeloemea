@@ -485,12 +485,23 @@ public class PonteBean extends ComumBean implements Serializable {
                 //Shared coordinates
                 double grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeGrau());
                 double minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeMinuto());
-                double latitude = minuto/60 + grau;
+                double latitude;
+                if (grau < 0) {
+                    latitude = minuto/60 - grau;
+                } else {
+                    latitude = minuto/60 + grau;
+                }
+                
                 grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeGrau());
                 minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeMinuto());
-                double longitude = minuto/60 + grau;
+                double longitude;
+                if (grau < 0) {
+                    longitude = minuto/60 - grau;
+                } else {
+                    longitude = minuto/60 + grau;
+                }
 
-                //latitude e logitude transformado em valor negativo
+//                latitude e logitude transformado em valor negativo
                 if (latitude > 0) {
                     latitude *= -1;
                 }
