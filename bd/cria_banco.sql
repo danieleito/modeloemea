@@ -607,7 +607,7 @@ create table ARQUIVO_ANEXO_CADASTRO
 	(
 		ID_ARQUIVO_ANEXO_CADASTRO		int								not null identity(1,1),
 		ID_PONTE						int								not null,
-		DS_ARQUIVO						varchar(20)						not null,
+		DS_ARQUIVO						varchar(50)						not null,
 		DS_TIPO_ARQUIVO					varchar(10)						not null,
 		NR_NUMERO						varchar(10)						not null,
 		DS_DESCRICAO					varchar(50)						not null,

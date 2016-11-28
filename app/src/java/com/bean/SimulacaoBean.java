@@ -226,10 +226,22 @@ public class SimulacaoBean extends ComumBean implements Serializable {
                     //Shared coordinates
                     Double grau = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLatitudeGrau());
                     Double minuto = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLatitudeMinuto());
-                    Double latitude = minuto/60 + grau;
+                    double latitude;
+                    if (grau < 0) {
+                        latitude = minuto/60 - grau;
+                    } else {
+                        latitude = minuto/60 + grau;
+                    }
+
                     grau = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLongitudeGrau());
                     minuto = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLongitudeMinuto());
-                    Double longitude = minuto/60 + grau;
+                    double longitude;
+                    if (grau < 0) {
+                        longitude = minuto/60 - grau;
+                    } else {
+                        longitude = minuto/60 + grau;
+                    }
+
                     if (latitude > 0) {
                         latitude *= -1;
                     }
