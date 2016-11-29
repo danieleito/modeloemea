@@ -129,18 +129,7 @@ and open the template in the editor.
 <!--                        <p:orderList value="#{ponteBean.morfologias}" var="morf" controlsLocation="none" itemLabel="#{morf}" itemValue="#{morf}" />-->
                         
                         
-                        <p:dataTable id="multipleDT" var="morf" value="#{ponteBean.morfologias}" selectionMode="multiple" selection="#{dtSelectionView.selectedCars}" rowKey="#{morf.id}">
-                            <f:facet name="header">
-                                Multiple with Meta and Shift keys
-                            </f:facet>
-                            <p:column headerText="Descrição">
-                                <h:outputText value="#{morf.descricao}" />
-                            </p:column>
-                            
-                            <f:facet name="footer">
-                                <p:commandButton process="multipleDT" update=":form:multiCarDetail" icon="ui-icon-search" value="View" oncomplete="PF('multiCarDialog').show()" />
-                            </f:facet>
-                        </p:dataTable>
+                        
                         
                         
                         <p:dataList emptyMessage="#{comumbean.getMensagemTabelaVazia()}" value="#{ponteBean.morfologias}" var="morf" type="ordered">
