@@ -48,7 +48,8 @@ and open the template in the editor.
 
                 <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
                     <c:set var="esquema" value="esquema"/>
-                    <h:panelGroup rendered="#{!arq.tipoArquivo.equalsIgnoreCase(esquema)}">
+                    <c:set var="foto" value="foto"/>
+                    <h:panelGroup rendered="#{arq.tipoArquivo.equalsIgnoreCase(foto)}">
                         <h:commandLink onclick="PF('dlg#{arq.id}').show(); return false;">
                             <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image.imagem.nome}" alt="Image Description for #{image}" >
                                 <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
