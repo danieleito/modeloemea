@@ -63,7 +63,7 @@ and open the template in the editor.
                             <p:outputLabel value="#{nome}"/>
                             <p:imageSwitch effect="fade" slideshowAuto="false" widgetVar="switcher#{arq.id}" id="manuelSwitcher#{arq.id}" activeIndex="#{ponteBean.model.getIndexArquivoAnexoInspecao(arq.id)}">
                                 <ui:repeat value="#{ponteBean.model.arquivosAnexosInspecoes}" var="image" >
-                                    <p:graphicImage value="#{comumbean.getImage()}" style="height: 500px;" title="#{image.imagem.nome}" alt="Image Description for #{image}" >
+                                    <p:graphicImage value="#{comumbean.getImage()}" style="height: 500px; width: 800px" title="#{image.imagem.nome}" alt="Image Description for #{image}" >
                                         <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{image.imagem.nome}" />
                                         <f:param name="tipoimagem" value="#{image.imagem.tipoMime}" />
                                     </p:graphicImage>
