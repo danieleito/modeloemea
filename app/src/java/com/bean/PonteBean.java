@@ -56,6 +56,7 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -65,6 +66,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.Tuple;
+import javax.persistence.TupleElement;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
@@ -139,6 +142,46 @@ public class PonteBean extends ComumBean implements Serializable {
     // </editor-fold>
 
     private ArrayList<ElementoUfpr> morfologias; 
+    private ArrayList<ElementoUfpr> elementos;
+    private ArrayList<ManifestacaoUfpr> manifestacoes;
+//    private Tuple tupla;
+//    tupla = new Tuple() {
+//        @Override
+//        public <X> X get(TupleElement<X> tupleElement) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        public <X> X get(String alias, Class<X> type) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        public Object get(String alias) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        public <X> X get(int i, Class<X> type) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        public Object get(int i) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        public Object[] toArray() {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        public List<TupleElement<?>> getElements() {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//    };
+
     //aba elementos componente
     private ArrayList<ElementoUfpr> elementosUfpr;
 
@@ -746,34 +789,9 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         return maior;
     }
-    
-    
-//    public void onTabChange(TabChangeEvent event) {
-//
-//
-//	String activeTab = event.getTab().getId();
-//
-//	int activeTabIndex = 0;
-//
-//	//Realiza um loop para identificar qual é a tab que foi selecionada.
-//	//Obs.: As tabs filhas devem ter um id definido, para que seja facilitada a busca
-//	//e o entendimento pois o JSF por padrão coloca IDs com nomes que ele mesmo escolhe 
-//	//para as tabs.
-//	for (UIComponent comp : event.getTab().getParent().getChildren()) {
-//		if (comp.getId().equals(activeTab)) {
-//			break;
-//		}
-//		activeTabIndex++;
-//	}
-//
-//	System.out.println("ID da Tab Atual: " + event.getTab().getId());
-//	System.out.println("Index da Tab Atual: " + activeTabIndex);
-//
-//	setTabAtual(activeTabIndex);
-//    }
 
     public void adicionarMorfologiaBusca() {
-        // se nao foi selecionado nenhum item nao faz nada
+        // se nao foi selecionado nenhum item, nao faz nada
         if (filtroIdMorfologia == 0) {
             return;
         }
@@ -791,6 +809,25 @@ public class PonteBean extends ComumBean implements Serializable {
     }
     
     public void excluirMorfologiaBusca() {
+        
+    }
+    
+    public void adicionarElementoMorfologiaBusca() {
+//        // se nao foi selecionado nenhum item em elementoUfpr e nenhum item em manifestacaoUfpr, nao faz nada
+//        if (filtroIdElementoUfpr == 0 && filtroIdManifestacaoUfpr == 0) {
+//            return;
+//        }
+//        // se os itens de elementoUfpr e manifestacaoUfpr ja estao na lista, nao add
+//        if (elementosUfpr.stream().filter(p -> p.getId() == filtroIdElementoUfpr).findFirst().isPresent() && 
+//                manifestacoesUfpr.stream().filter(p -> p.getId() == filtroIdManifestacaoUfpr).findFirst().isPresent()) {
+//            return;
+//        }
+//        
+//        Optional<ElementoUfpr> e = elementosUfpr.stream().filter(p -> p.getId() == filtroIdElementoUfpr).findFirst();
+//        Optional<ManifestacaoUfpr> m = manifestacoesUfpr.stream().filter(p -> p.getId() == filtroIdManifestacaoUfpr).findFirst();
+//        if (e.isPresent() && m.isPresent()) {
+//            
+//        }
         
     }
     
@@ -969,6 +1006,22 @@ public class PonteBean extends ComumBean implements Serializable {
 
     public void setMorfologias(ArrayList<ElementoUfpr> morfologias) {
         this.morfologias = morfologias;
+    }
+
+    public ArrayList<ElementoUfpr> getElementos() {
+        return elementos;
+    }
+
+    public void setElementos(ArrayList<ElementoUfpr> elementos) {
+        this.elementos = elementos;
+    }
+
+    public ArrayList<ManifestacaoUfpr> getManifestacoes() {
+        return manifestacoes;
+    }
+
+    public void setManifestacoes(ArrayList<ManifestacaoUfpr> manifestacoes) {
+        this.manifestacoes = manifestacoes;
     }
 
     public ArrayList<ElementoUfpr> getElementosUfpr() {

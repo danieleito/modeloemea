@@ -171,7 +171,7 @@ create table IDENTIFICACAO_OBRA_DADOS_BASICOS
 		CD_CODIGO								varchar(20),
 		CD_CODIGO_INTEGRACAO					varchar(20),
 		DS_STATUS								varchar(20),
-		DS_IDENTIFICACAO						varchar(50)												not null,
+		DS_IDENTIFICACAO						varchar(100)												not null,
 		ID_NATUREZA_TRANSPOSICAO				int,	
 		ID_TIPO_ESTRUTURA						int,
 		ID_SISTEMA_CONSTRUTIVO					int,

@@ -125,13 +125,9 @@ and open the template in the editor.
                         </p:selectOneMenu>
                         <p:commandButton icon="ui-icon-plus" action="#{ponteBean.adicionarMorfologiaBusca()}" />
                         <p:commandButton icon="ui-icon-minus" action="#{ponteBean.excluirMorfologiaBusca()}" />
-                        
+
 <!--                        <p:orderList value="#{ponteBean.morfologias}" var="morf" controlsLocation="none" itemLabel="#{morf}" itemValue="#{morf}" />-->
-                        
-                        
-                        
-                        
-                        
+
                         <p:dataList emptyMessage="#{comumbean.getMensagemTabelaVazia()}" value="#{ponteBean.morfologias}" var="morf" type="ordered">
                             #{morf.descricao}
                         </p:dataList>
@@ -148,9 +144,7 @@ and open the template in the editor.
                             <f:selectItems value="#{ponteBean.elementosUfpr}" var="e" itemValue="#{e.id}"/>
                         </p:selectOneMenu>
                     </td>
-                </tr>
-                
-                <tr>
+
                     <td class="th">
                         <p:outputLabel value="Manifestação" class="col-md-10" />
                     </td>
@@ -159,6 +153,16 @@ and open the template in the editor.
                             <f:selectItem itemLabel="Selecione a Manifestação" itemValue="0"/>
                             <f:selectItems value="#{ponteBean.manifestacoesUfpr}" var="m" itemValue="#{m.id}"/>
                         </p:selectOneMenu>
+                        
+                        <p:commandButton icon="ui-icon-plus" action="#{ponteBean.adicionarElementoMorfologiaBusca()}" />
+                        <p:commandButton icon="ui-icon-minus" action="#{ponteBean.excluirMorfologiaBusca()}" />
+                        
+                        
+                    </td>
+                    <td>
+                        <p:dataList emptyMessage="#{comumbean.getMensagemTabelaVazia()}" value="#{ponteBean.inspecao.inspecaoManifestacaoElemento}" var="ele" type="ordered">
+                            #{ele.elementoUfprManifestacaoUfpr.elementoUfpr.descricao}, #{ele.elementoUfprManifestacaoUfpr.manifestacaoUfpr.descricao}
+                        </p:dataList>
                     </td>
                 </tr>
             </tbody>
