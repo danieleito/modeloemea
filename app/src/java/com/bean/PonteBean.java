@@ -69,6 +69,7 @@ import javax.faces.context.FacesContext;
 import javax.persistence.Tuple;
 import javax.persistence.TupleElement;
 import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -830,6 +831,7 @@ public class PonteBean extends ComumBean implements Serializable {
 //        }
         
     }
+    
     
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {

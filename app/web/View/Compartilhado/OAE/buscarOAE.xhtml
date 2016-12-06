@@ -130,7 +130,12 @@ and open the template in the editor.
                     </p:tabView>
                     <br/>
 
-                    <p:dataTable emptyMessage="Nenhum registro encontrado." id="checkboxDT" var="p" value="#{ponteBean.pontes}" rowKey="#{p.id}" selection="#{ponteBean.pontesSelecionadas}" style="margin-bottom: 0" paginator="true" rows="15" reflow="true" >     
+                    <c:set var="todos" value="#{ponteBean.pontes.size()}" />
+                    <p:dataTable emptyMessage="Nenhum registro encontrado." id="checkboxDT" var="p" value="#{ponteBean.pontes}" rowKey="#{p.id}" 
+                                 selection="#{ponteBean.pontesSelecionadas}" style="margin-bottom: 0" paginator="true" rows="15" reflow="true" 
+                                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+                                 rowsPerPageTemplate="15, 30, 45, 60, 75, 100, #{todos}" lazy="true"> 
+                        
                         <f:facet name="header" >
                             <h:outputText value="Registros encontrados: #{ponteBean.numeroPontesBuscados(ponteBean.pontes)}" style="text-align: right;" />
                         </f:facet>
