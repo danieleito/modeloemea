@@ -11,10 +11,12 @@ and open the template in the editor.
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
     <h:head>
-        <title>TODO supply a title</title>
+        <title>SGO Gestor</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
+
     <h:body>
         <ui:composition template="/View/Compartilhado/template.xhtml">
             <ui:define name="content">
@@ -24,7 +26,7 @@ and open the template in the editor.
                         <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
                         <p:menuitem value="Simulação" action="#{simulacaoBean.listarGet()}" />
                         <p:menuitem value="Ranqueamento" url="/View/Compartilhado/OAE/Simulacao/ranking.jsf" />
-                        <p:menuitem value="Consulta" url="/View/Compartilhado/OAE/buscarOAE.jsf" />
+                        <p:menuitem value="Consulta" action="#{ponteBean.consultarGet(simulacaoBean.simulacao.id)}" />
                     </p:breadCrumb>
 
                     <br/>
@@ -113,100 +115,28 @@ and open the template in the editor.
                     <p:separator />
                     <h2>Obras de Arte Especiais</h2>
 
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td class="th">
-                                    <p:outputLabel value="Código" class="col-md-5" />
-                                </td>
-                                <td>
-                                    <p:inputText value="#{ponteBean.filtroCodigo}" class="col-md-2" />
-                                </td>
-                            </tr>
+                    <p:tabView activeIndex="#{ponteBean.tab}">
+                        <p:tab title="Busca" id="busca" >
+                            <div style="display: table; width: 100%">
+                                <ui:include src="/View/Compartilhado/OAE/busca.xhtml" />
+                            </div>
+                        </p:tab>
 
-                            <tr>
-                                <td class="th">
-                                    <p:outputLabel value="Identificação" class="col-md-5" />
-                                </td>
-                                <td>
-                                    <p:inputText value="#{ponteBean.filtroIdentificacao}" class="col-md-5" />
-                                </td>
-                            </tr>
+                        <p:tab title="Busca avançada" id="buscaAvancada" >
+                            <div style="display: table; width: 100%">
+                                <ui:include src="/View/Compartilhado/OAE/buscaAvancada.xhtml" />
+                            </div>
+                        </p:tab>
+                    </p:tabView>
+                    <br/>
 
-                            <tr>
-                                <td class="th">
-                                    <p:outputLabel value="UF" class="col-md-3" />
-                                </td>
-                                <td>
-                                    <p:selectOneMenu id="uf" value="#{ponteBean.filtroIdUf}" style="width:150px">
-                                        <f:selectItem itemLabel="Selecione o UF" itemValue="0"/>
-                                        <f:selectItems value="#{ponteBean.ufs}" var="u" itemValue="#{u.id}"/>
-                                    </p:selectOneMenu>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="th">
-                                    <p:outputLabel value="Via" class="col-md-3" />
-                                </td>
-                                <td>
-                                    <p:selectOneMenu id="via" value="#{ponteBean.filtroIdVia}" style="width: 150px">
-                                        <f:selectItem itemLabel="Selecione a Via" itemValue="0" />
-                                        <f:selectItems value="#{ponteBean.vias}" var="v" itemValue="#{v.id}" />
-                                    </p:selectOneMenu>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="th">
-                                    <p:outputLabel value="Local na Via (km)" class="col-md-5" />
-                                </td>
-                                <td>
-                                    <div>
-                                        <div style="float: left; margin: 0; padding: 0; width: 110px" >
-                                            <p:outputLabel value="do km "  />
-                                            <p:inputText value="#{ponteBean.filtroKmInicial}" style="width: 50px; margin-left: 5px" />
-                                        </div>
-                                        <div style="float: left; margin: 0; padding: 0; width: 110px" >
-                                            <p:outputLabel value=" ao km " />
-                                            <p:inputText value="#{ponteBean.filtroKmFinal}" style="width: 50px; margin-left: 5px" />
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="th">
-                                    <p:outputLabel value="Superintendência Regional" class="col-md-6" />
-                                </td>
-                                <td>
-                                    <p:selectOneMenu id="superintendenciaRegional" value="#{ponteBean.filtroIdSuperintendencia}" style="width: 620px">
-                                        <f:selectItem itemLabel="Selecione a Superintendência Regional" itemValue="0" />
-                                        <f:selectItems value="#{ponteBean.superintendenciasRegionais}" var="s" itemValue="#{s.id}" />
-                                    </p:selectOneMenu>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="th">
-                                    <p:outputLabel value="Unidade Local" class="col-md-3" />
-                                </td>
-                                <td>
-                                    <p:selectOneMenu id="unidadeLocal" value="#{ponteBean.filtroIdUnidadeLocal}" style="width: 420px">
-                                        <f:selectItem itemLabel="Selecione a Unidade Local" itemValue="0" />
-                                        <f:selectItems value="#{ponteBean.unidadesLocais}" var="u" itemValue="#{u.id}" />
-                                    </p:selectOneMenu>
-                                </td>
-                            </tr> 
-                        </tbody>
-                    </table>
-
-                    <p:commandButton action='#{ponteBean.consultarPost()}' value="Consultar" />
-                    <p:commandButton action="#{ponteBean.cancelar()}" value="Cancelar" />
-
-                    <p:dataTable id="checkboxDT" var="p" value="#{ponteBean.pontes}" rowKey="#{p.id}" selection="#{ponteBean.pontesSelecionadas}" style="margin-bottom: 0" paginator="true" rows="15" reflow="true" >     
+                    <c:set var="todos" value="#{ponteBean.pontes.size()}" />
+                    <p:dataTable emptyMessage="Nenhum registro encontrado." id="checkboxDT" var="p" value="#{ponteBean.pontes}" rowKey="#{p.id}" 
+                                 selection="#{ponteBean.pontesSelecionadas}" style="margin-bottom: 0" paginator="true" rows="15" reflow="true" 
+                                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+                                 rowsPerPageTemplate="15, 30, 45, 60, 75, 100, #{todos}" lazy="true"> 
+                        
                         <f:facet name="header" >
-<!--                            OAEs-->
                             <h:outputText value="Registros encontrados: #{ponteBean.numeroPontesBuscados(ponteBean.pontes)}" style="text-align: right;" />
                         </f:facet>
                         
@@ -238,7 +168,7 @@ and open the template in the editor.
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
+                            <p:commandButton icon="ui-icon-visualizar" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
                         </p:column>
                         <f:facet name="footer" >
                             <p:commandButton process="checkboxDT" icon="ui-icon-check" value="Carregar" action="#{simulacaoBean.recarregarSimulacao()}" actionListener="#{ponteBean.carregar(simulacaoBean.simulacao.id)}" />
@@ -249,17 +179,3 @@ and open the template in the editor.
         </ui:composition> 
     </h:body>
 </html>
-
-<!--<script type="text/javascript" >
-    function myScript() {
-        if (GBrowserIsCompatible()) {
-            var map = new GMap2(document.getElementById("map"));
-            var markerBounds = new GLatLngBounds();
-            
-
-             map.setCenter(markerBounds.getCenter(), 
-                           map.getBoundsZoomLevel(markerBounds));
-        }
-    }  
-
-</script>-->

@@ -226,10 +226,22 @@ public class SimulacaoBean extends ComumBean implements Serializable {
                     //Shared coordinates
                     Double grau = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLatitudeGrau());
                     Double minuto = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLatitudeMinuto());
-                    Double latitude = minuto/60 + grau;
+                    double latitude;
+                    if (grau < 0) {
+                        latitude = minuto/60 - grau;
+                    } else {
+                        latitude = minuto/60 + grau;
+                    }
+
                     grau = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLongitudeGrau());
                     minuto = Double.parseDouble(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLongitudeMinuto());
-                    Double longitude = minuto/60 + grau;
+                    double longitude;
+                    if (grau < 0) {
+                        longitude = minuto/60 - grau;
+                    } else {
+                        longitude = minuto/60 + grau;
+                    }
+
                     if (latitude > 0) {
                         latitude *= -1;
                     }
@@ -308,12 +320,10 @@ public class SimulacaoBean extends ComumBean implements Serializable {
 
             simulacao.setUsuario(usuarioLogado);
             simulacao.setData(new Date());
-//            else {
-                database.inserir(simulacao);
-                simulacoes = database.buscar();
-                adicionarMensagemInfo("Simulação cadastrada com sucesso.");
-                simulacao.setNomeSimulacao("");//
-//            }
+            database.inserir(simulacao);
+            simulacoes = database.buscar();
+            adicionarMensagemInfo("Simulação cadastrada com sucesso.");
+            simulacao.setNomeSimulacao("");
         } catch (SQLException ex) {
             Logger.getLogger(SimulacaoBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao cadastrar simulação: " + ex.getMessage());
@@ -335,9 +345,6 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
 
     public void rankingGet(int idSimulacao) throws IOException {
-//        if (usuarioLogado.getId() == simulacao.getUsuario().getId()) {
-//            adicionarMensagemInfo("conferir se usuaáio logado é o mesmo usuário dono da simulação");
-//        }
         try {
             simulacao = database.buscar(idSimulacao);
             createBarModel();
@@ -364,10 +371,11 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         }
     }
 
-    //remove a ponte da simulação
-    public void excluirRanking(int idRanking) throws IOException {
+    //remove a ponte da simulação e atualiza data de edicao da simulacao
+    public void excluirRanking(int idRanking, Simulacao simulacao) throws IOException {
         try {
             database.excluirRanking(idRanking);
+            database.atualizaDataSimulacao(simulacao.getId());
             recarregarSimulacao();
             adicionarMensagemInfo("Ponte removida da simulação com sucesso.");
             //simulacoes = database.buscar();
@@ -389,6 +397,10 @@ public class SimulacaoBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro ao remover simulação: " + ex.getMessage());
         }
         redirecionar("/View/Compartilhado/OAE/Simulacao/listar.jsf");
+    }
+    
+    public int numeroOaesSimulacao(ArrayList simulacao) {
+        return simulacao.size();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
@@ -435,25 +447,4 @@ public class SimulacaoBean extends ComumBean implements Serializable {
         this.lgt = lgt;
     }
     // </editor-fold>
-
-    private void maiorLatitudeLongitude() {
-//        int t = simulacao.getRankings().size();
-//        int maiorLatitude = 0;
-//        int maiorLongitude = 0;
-//        int menorLatitude = 34;
-//        int menorLongitude = 8;
-//        for (int i = 0; i < t; i++) {
-//            lat = Integer.parseInt(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLatitudeGrau());
-//            if (maiorLatitude < lat) {
-//                maiorLatitude = lat;
-//            }
-//            if (menorLatitude > latitude) {
-//                latitude
-//            }
-//            lgt = Integer.parseInt(simulacao.getRankings().get(i).getPonte().getIdentificacaoObraLocalizacao().getLongitudeGrau());
-//            if (maiorLongitude < lgt) {
-//                maiorLongitude = lgt;
-//            }
-//        }
-    }
 }

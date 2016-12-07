@@ -9,10 +9,12 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
+
     <h:head>
-        <title>TODO supply a title</title>
+        <title>SGO Gestor</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
+
     <h:body>
         <ui:composition template="/View/Compartilhado/template.xhtml">
             <ui:define name="content">
@@ -22,32 +24,32 @@ and open the template in the editor.
                         <p:menuitem value="Início" url="/View/Compartilhado/inicio.jsf" />
                         <p:menuitem value="Simulação" action="#{simulacaoBean.listarGet()}" />
                         <p:menuitem value="Ranqueamento" url="/View/Compartilhado/OAE/Simulacao/ranking.jsf" />
+                        <p:menuitem value="Consulta" action="#{ponteBean.consultarGet(simulacaoBean.simulacao.id)}" />
+                        <p:menuitem value="Cadastro" url="/View/Compartilhado/OAE/exibir.jsf" />
                         <p:menuitem value="Inspeção" url="/View/Compartilhado/visualizarInspecao.jsf" />
                     </p:breadCrumb>
                     
                     <p:tabView>
                         <p:tab title="Inspeção rotineira">
-                            <h:panelGrid columns="2" cellpadding="10">
+                            <div style="display: table">
                                 <ui:include src="/View/Compartilhado/OAE/InspecaoRotineira/inspecaoRotineira.xhtml" />
-                            </h:panelGrid>
+                            </div>
                         </p:tab>
                     
                         <p:tab title="Modelo UFPR">
-                            <h:panelGrid columns="2" cellpadding="10">
+                            <div style="display: table; width: 100%">
                                 <ui:include src="/View/Compartilhado/OAE/InspecaoRotineira/modeloEmea.xhtml" />
-                            </h:panelGrid>
+                            </div>
                         </p:tab>
                     
                         <p:tab title="Arquivos Anexos">
-                            <h:panelGrid columns="2" cellpadding="10">
+                            <div style="display: table">
                                 <ui:include src="/View/Compartilhado/OAE/InspecaoRotineira/arquivosAnexos.xhtml" />
-                            </h:panelGrid>
+                            </div>
                         </p:tab>
                     </p:tabView>
                 </h:form>
             </ui:define>
         </ui:composition>
-        
     </h:body>
 </html>
-

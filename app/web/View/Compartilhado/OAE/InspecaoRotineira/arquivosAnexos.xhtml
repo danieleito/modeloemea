@@ -8,15 +8,18 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
     <h:head>
-        <title>TODO supply a title</title>
+        <title>SGO Gestor</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
+
     <h:body>
         <h:panelGrid columns="2" cellpadding="10">
-            <p:dataTable var="arq" value="#{ponteBean.inspecao.arquivosAnexosInspecao}" paginator="true" rows="15" >
+            <p:dataTable emptyMessage="#{comumbean.getMensagemTabelaVazia()}" var="arq" value="#{ponteBean.inspecao.arquivosAnexosInspecao}" paginator="true" rows="15" >
                 <p:column headerText="Arquivo" style="text-align: center" >
                     <h:outputText value="#{arq.arquivo}" />
                 </p:column>
@@ -44,19 +47,42 @@ and open the template in the editor.
                 </p:column>
 
                 <p:column headerText="Miniatura" style="width: 150px; text-align: center" >
-                    <p:lightBox styleClass="imagebox" id="lighbox1">
-                        <h:outputLink value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" title="#{arq.imagem.nome}">
+                    <c:set var="foto" value="foto"/>
+                    <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
+                   <h:panelGroup rendered="#{arq.tipoArquivo.equalsIgnoreCase(foto)}">
+                        <h:commandLink onclick="PF('dlg#{arq.id}').show(); return false;">
                             <p:graphicImage value="#{comumbean.getImage()}" style="height: 150px; width: 200px" title="#{image}" alt="Image Description for #{image}" >
-                                <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
+                                <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" />
                                 <f:param name="tipoimagem" value="#{arq.imagem.tipoMime}" />
                             </p:graphicImage>
-                        </h:outputLink>
-                    </p:lightBox>
+                        </h:commandLink>
+                        <p:dialog header="Images" widgetVar="dlg#{arq.id}" modal="true" draggable="false" resizable="false">
+                            <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
+                            <p:outputLabel value="#{pastaInspecao}"/>
+                            <c:set value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{arq.imagem.nome}" var="nome" />
+                            <p:outputLabel value="#{nome}"/>
+                            <p:imageSwitch effect="fade" slideshowAuto="false" widgetVar="switcher#{arq.id}" id="manuelSwitcher#{arq.id}" activeIndex="#{ponteBean.model.getIndexArquivoAnexoInspecao(arq.id)}">
+                                <ui:repeat value="#{ponteBean.model.arquivosAnexosInspecoes}" var="image" >
+                                    <p:graphicImage value="#{comumbean.getImage()}" style="height: 500px; width: 800px" title="#{image.imagem.nome}" alt="Image Description for #{image}" >
+                                        <f:param name="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{image.imagem.nome}" />
+                                        <f:param name="tipoimagem" value="#{image.imagem.tipoMime}" />
+                                    </p:graphicImage>
+                                </ui:repeat>
+                            </p:imageSwitch>
+                            <h:outputLabel value="#{arq.descricao}" />
+                            <h:outputLabel value="#{arq.imagem.nome}" style="text-align: right; float: right" />
+                            <p:commandButton type="button" onclick="PF('switcher#{arq.id}').previous();" icon="ui-icon-anterior" id="prev" />
+                            <p:commandButton type="button" onclick="PF('switcher#{arq.id}').next();" icon="ui-icon-proximo" id="next" />
+                        </p:dialog>
+                    </h:panelGroup>
                 </p:column>
 
                 <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                    <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthickstop-1-s">
-                        <p:fileDownload value="#{comumbean.getImage(arq.imagem.nome, arq.imagem.tipoMime)}" />
+                    
+                    <p:commandButton ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-baixar">
+                        <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
+                        <c:set value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{arq.imagem.nome}" var="nome" />
+                        <p:fileDownload value="#{comumbean.getImage(nome, arq.imagem.tipoMime)}" />
                     </p:commandButton>
                 </p:column>
             </p:dataTable>

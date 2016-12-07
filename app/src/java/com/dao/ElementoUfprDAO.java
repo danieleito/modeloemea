@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class ElementoUfprDAO {
     public ArrayList<ElementoUfpr> buscar() throws SQLException {
-        String query = "select ID_ELEMENTO_UFPR, CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1 from ELEMENTO_UFPR; ";
+        String query = "select ID_ELEMENTO_UFPR, CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1 from ELEMENTO_UFPR; ";
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
         Statement stmt;
@@ -29,7 +29,7 @@ public class ElementoUfprDAO {
 
         while (rs.next()) {
             elementoUfpr.add(new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), rs.getString("CD_ELEMENTO"), 
-                    rs.getString("DS_ELEMENTO"), rs.getString("DS_CAPA1")));
+                    rs.getString("DS_ELEMENTO"), rs.getDouble("NR_CAPA1")));
         }
 
         conexao.closeConnection();

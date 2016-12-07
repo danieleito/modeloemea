@@ -47,11 +47,11 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
     /**
      * comprimento da ponte
      */
-    private String comprimento;
+    private double comprimento;
     /**
      * largura da ponte
      */
-    private String largura;
+    private double largura;
     /**
      * identificadot do trem-tipo
      */
@@ -87,7 +87,10 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
      * @param tremTipo {@link #tremTipo}
      * @param anoConstrucao {@link #anoConstrucao}
      */
-    public IdentificacaoObraDadosBasicos(int id, String codigo, String codigoIntegracao, String status, String identificacao, NaturezaTransposicao naturezaTransposicao, TipoEstrutura tipoEstrutura, SistemaConstrutivo sistemaConstrutivo, String comprimento, String largura, TremTipo tremTipo, String anoConstrucao) {
+    public IdentificacaoObraDadosBasicos(int id, String codigo, String codigoIntegracao, 
+            String status, String identificacao, NaturezaTransposicao naturezaTransposicao, 
+            TipoEstrutura tipoEstrutura, SistemaConstrutivo sistemaConstrutivo, 
+            double comprimento, double largura, TremTipo tremTipo, String anoConstrucao) {
         this.id = id;
         this.codigo = codigo;
         this.codigoIntegracao = codigoIntegracao;
@@ -116,7 +119,10 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
      * @param tremTipo {@link #tremTipo}
      * @param anoConstrucao {@link #anoConstrucao}
      */
-    public IdentificacaoObraDadosBasicos(String codigo, String codigoIntegracao, String status, String identificacao, NaturezaTransposicao naturezaTransposicao, TipoEstrutura tipoEstrutura, SistemaConstrutivo sistemaConstrutivo, String comprimento, String largura, TremTipo tremTipo, String anoConstrucao) {
+    public IdentificacaoObraDadosBasicos(String codigo, String codigoIntegracao, String status, 
+            String identificacao, NaturezaTransposicao naturezaTransposicao, TipoEstrutura tipoEstrutura, 
+            SistemaConstrutivo sistemaConstrutivo, double comprimento, double largura, TremTipo tremTipo, 
+            String anoConstrucao) {
         this.codigo = codigo;
         this.codigoIntegracao = codigoIntegracao;
         this.status = status;
@@ -243,11 +249,11 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
      * retorna {@link #comprimento}
      * @return {@link #comprimento}
      */
-    public String getComprimento() {
+    public double getComprimento() {
         return comprimento;
     }
 
-    public void setComprimento(String comprimento) {
+    public void setComprimento(double comprimento) {
         this.comprimento = comprimento;
     }
 
@@ -255,7 +261,7 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
      * retorna {@link #largura}
      * @return {@link #largura}
      */
-    public String getLargura() {
+    public double getLargura() {
         return largura;
     }
 
@@ -263,7 +269,7 @@ public class IdentificacaoObraDadosBasicos implements Serializable {
      * 
      * @param largura 
      */
-    public void setLargura(String largura) {
+    public void setLargura(double largura) {
         this.largura = largura;
     }
 

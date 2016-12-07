@@ -4,9 +4,10 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
+
     <h:head>
     </h:head>
- 
+
     <h:body>
         <div class="topo">
             <h:graphicImage  library="images" name="header_logo-dnit.png" style="float:left" />
@@ -18,7 +19,7 @@
                     <br/><br/><br/><br/>
                     <ui:include src="/View/Compartilhado/cabecalho.xhtml" />
                 </div>
-                <div class="row">
+                <div style="width: 100%; margin-top: 30px">
                     <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                 </div>
                 <div class="content">
@@ -33,4 +34,3 @@
         </div>
     </h:body>
 </html>
-

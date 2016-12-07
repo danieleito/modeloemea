@@ -46,12 +46,13 @@ public class PonteDAO {
         String query = "select P.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, DB.CD_CODIGO, DB.CD_CODIGO_INTEGRACAO, "
                 + "DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO, "
                 + "DB.ID_TIPO_ESTRUTURA, TE.DS_TIPO_ESTRUTURA, DB.ID_SISTEMA_CONSTRUTIVO, SC.DS_SISTEMA_CONSTRUTIVO, "
-                + "DB.DS_COMPRIMENTO, DB.DS_LARGURA, DB.ID_TREM_TIPO, TT.DS_TREM_TIPO, DB.DS_ANO_CONSTRUCAO, "
-                + "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, U.SG_UF, L.DS_LOCAL_VIA, "
+                + "DB.NR_COMPRIMENTO, DB.NR_LARGURA, DB.ID_TREM_TIPO, TT.DS_TREM_TIPO, DB.DS_ANO_CONSTRUCAO, "
+                + "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, U.SG_UF, L.NR_LOCAL_VIA, "
                 + "L.DS_CIDADE_MAIS_PROXIMA, L.DS_PNV_ANO, L.DS_PNV_VERSAO, L.DS_PNV_CODIGO, L.DS_PNV_ALTITUDE, "
                 + "L.DS_LATITUDE_GRAU, L.DS_LATITUDE_MINUTO, L.DS_LONGITUDE_GRAU, L.DS_LONGITUDE_MINUTO, "
-                + "P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, UL.ID_SUPERINTENDENCIA_REGIONAL, SR.DS_SUPERINTENDENCIA_REGIONAL, "
-                + "R.ID_UNIDADE_LOCAL, UL.DS_UNIDADE_LOCAL, R.ID_TIPO_ADMINISTRACAO, TA.DS_TIPO_ADMINISTRACAO, "
+                + "P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, R.ID_UNIDADE_LOCAL, UL.DS_UNIDADE_LOCAL, UL.ID_SUPERINTENDENCIA_REGIONAL, "
+                + "SR.DS_SUPERINTENDENCIA_REGIONAL, SR.ID_UF, U2.DS_UF, U2.SG_UF, "
+                + "R.ID_TIPO_ADMINISTRACAO, TA.DS_TIPO_ADMINISTRACAO, "
                 + "R.DS_ADMINISTRADOR, R.DS_PROJETISTA_ORIGEM, R.DS_PROJETISTA_PROJETISTA, R.DS_CONSTRUTOR_ORIGEM, "
                 + "R.DS_CONSTRUTOR_CONSTRUTOR, R.DS_LOCALIZACAO_PROJETO, R.DS_LOCALIZACAO_DOCUMENTOS_CONSTRUCAO, "
                 + "R.DS_LOCALIZACAO_DOCUMENTOS_DIVERSOS, P.DS_INDICE_PERFORMANCE_RELATIVO, "
@@ -61,39 +62,37 @@ public class PonteDAO {
                 + "D.DS_NUMERO_FAIXAS, D.DS_LARGURA_FAIXA, D.DS_ACOSTAMENTO_DIREITO, D.DS_ACOSTAMENTO_ESQUERDO, D.DS_CALCADA_DIREITA, "
                 + "D.DS_CALCADA_ESQUERDA, D.DS_LARGURA_TOTAL_PISTA, D.DS_GABARITO_HORIZONTAL, D.DS_GABARITO_VERTICAL, D.DS_NUMERO_VAOS, "
                 + "D.DS_DESCRICAO_VAOS, P.ID_ROTAS_ALTERNATIVAS, RA.DS_IDENTIFICACAO, RA.DS_ROTA_ALTERNATIVA, RA.DS_ACRESCIMO_KM, "
-                + "P.ID_OBSERVACOES, O.DS_IDENTIFICACAO, O.DS_OBSERVACOES, P.ID_SUBSTITUICAO, SUB.DS_IDENTIFICACAO, "
-                + "SUB.DS_EXISTE_PROJETO_SUBSTITUICAO, SUB.DS_CUSTO_ESTIMADO, SUB.DS_OBSERVACOES, "
+                + "P.ID_OBSERVACOES, O.DS_IDENTIFICACAO, O.DS_OBSERVACOES, P.ID_SUBSTITUICAO, S.DS_IDENTIFICACAO, "
+                + "S.DS_EXISTE_PROJETO_SUBSTITUICAO, S.DS_CUSTO_ESTIMADO, S.DS_OBSERVACOES, "
                 + "U2.ID_UF as ID_UF_2, U2.DS_UF as DS_UF_2, U2.SG_UF as SG_UF_2, "
                 + "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA "
-
-                + "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, IDENTIFICACAO_OBRA_LOCALIZACAO L, "
-                + "IDENTIFICACAO_OBRA_RESPONSAVEIS R, IDENTIFICACAO_OBRA_INSPECAO I, UF U, UF U2, VIA V, SUPERINTENDENCIA_REGIONAL SR, "
-                + "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, "
-                + "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
-                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB, "
-                + "NUMERO N, FOTO F "
-
+                
+                + "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, IDENTIFICACAO_OBRA_LOCALIZACAO L, IDENTIFICACAO_OBRA_RESPONSAVEIS R, "
+                + "IDENTIFICACAO_OBRA_INSPECAO I, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, "
+                + "ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO S, TIPO_REGIAO TR, TIPO_TRACADO T, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, "
+                + "SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, UF U, VIA V, UNIDADE_LOCAL UL, TIPO_ADMINISTRACAO TA, SUPERINTENDENCIA_REGIONAL SR, UF U2 "
+                
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
-                + "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
-                + "AND P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS = R.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS "
-                + "AND P.ID_IDENTIFICACAO_OBRA_INSPECAO = I.ID_IDENTIFICACAO_OBRA_INSPECAO "
-                + "AND P.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS = C.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS "
-                + "AND P.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES = D.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES "
-                + "AND P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
-                + "AND P.ID_OBSERVACOES = O.ID_OBSERVACOES "
-                + "AND P.ID_SUBSTITUICAO = SUB.ID_SUBSTITUICAO "
-                + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
-                + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
-                + "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
-                + "AND DB.ID_TIPO_ESTRUTURA = TE.ID_TIPO_ESTRUTURA "
-                + "AND DB.ID_SISTEMA_CONSTRUTIVO = SC.ID_SISTEMA_CONSTRUTIVO "
-                + "AND DB.ID_TREM_TIPO = TT.ID_TREM_TIPO "
-                + "AND L.ID_UF = U.ID_UF "
-                + "AND L.ID_VIA = V.ID_VIA "
-                + "AND UL.ID_SUPERINTENDENCIA_REGIONAL = SR.ID_SUPERINTENDENCIA_REGIONAL "
-                + "AND R.ID_TIPO_ADMINISTRACAO = TA.ID_TIPO_ADMINISTRACAO "
-                + "AND R.ID_UNIDADE_LOCAL = UL.ID_UNIDADE_LOCAL "
-                + "AND SR.ID_UF = U2.ID_UF";
+                + "and P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
+                + "and P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS = R.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS "
+                + "and P.ID_IDENTIFICACAO_OBRA_INSPECAO = I.ID_IDENTIFICACAO_OBRA_INSPECAO "
+                + "and P.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS = C.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS "
+                + "and P.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES = D.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES "
+                + "and P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
+                + "and P.ID_OBSERVACOES = O.ID_OBSERVACOES "
+                + "and P.ID_SUBSTITUICAO = S.ID_SUBSTITUICAO "
+                + "and C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
+                + "and C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
+                + "and DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
+                + "and DB.ID_TIPO_ESTRUTURA = TE.ID_TIPO_ESTRUTURA "
+                + "and DB.ID_SISTEMA_CONSTRUTIVO = SC.ID_SISTEMA_CONSTRUTIVO "
+                + "and DB.ID_TREM_TIPO = TT.ID_TREM_TIPO "
+                + "and L.ID_UF = U.ID_UF "
+                + "and L.ID_VIA = V.ID_VIA "
+                + "and R.ID_UNIDADE_LOCAL = UL.ID_UNIDADE_LOCAL "
+                + "and UL.ID_SUPERINTENDENCIA_REGIONAL = SR.ID_SUPERINTENDENCIA_REGIONAL "
+                + "and R.ID_TIPO_ADMINISTRACAO = TA.ID_TIPO_ADMINISTRACAO "
+                + "and SR.ID_UF = U2.ID_UF;";
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -114,12 +113,12 @@ public class PonteDAO {
                             rs.getString("DS_NATUREZA_TRANSPOSICAO")), 
                             new TipoEstrutura(rs.getInt("ID_TIPO_ESTRUTURA"), rs.getString("DS_TIPO_ESTRUTURA")), 
                             new SistemaConstrutivo(rs.getInt("ID_SISTEMA_CONSTRUTIVO"), rs.getString("DS_SISTEMA_CONSTRUTIVO")), 
-                            rs.getString("DS_COMPRIMENTO"), rs.getString("DS_LARGURA"), 
+                            rs.getDouble("NR_COMPRIMENTO"), rs.getDouble("NR_LARGURA"), 
                             new TremTipo(rs.getInt("ID_TREM_TIPO"), rs.getString("DS_TREM_TIPO")), 
                             rs.getString("DS_ANO_CONSTRUCAO")), 
                     new IdentificacaoObraLocalizacao(rs.getInt("ID_IDENTIFICACAO_OBRA_LOCALIZACAO"), 
                             new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"), rs.getString("SG_UF")), 
-                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getDouble("DS_LOCAL_VIA"), 
+                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getDouble("NR_LOCAL_VIA"), 
                             rs.getString("DS_CIDADE_MAIS_PROXIMA"), rs.getString("DS_PNV_ANO"), 
                             rs.getString("DS_PNV_VERSAO"), rs.getString("DS_PNV_CODIGO"), rs.getString("DS_PNV_ALTITUDE"), 
                             rs.getString("DS_LATITUDE_GRAU"), rs.getString("DS_LATITUDE_MINUTO"), 
@@ -166,8 +165,8 @@ public class PonteDAO {
         query += "select P.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, DB.CD_CODIGO, DB.CD_CODIGO_INTEGRACAO, "
                 + "DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO, "
                 + "DB.ID_TIPO_ESTRUTURA, TE.DS_TIPO_ESTRUTURA, DB.ID_SISTEMA_CONSTRUTIVO, SC.DS_SISTEMA_CONSTRUTIVO, "
-                + "DB.DS_COMPRIMENTO, DB.DS_LARGURA, DB.ID_TREM_TIPO, TT.DS_TREM_TIPO, DB.DS_ANO_CONSTRUCAO, "
-                + "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, U.SG_UF, L.DS_LOCAL_VIA, "
+                + "DB.NR_COMPRIMENTO, DB.NR_LARGURA, DB.ID_TREM_TIPO, TT.DS_TREM_TIPO, DB.DS_ANO_CONSTRUCAO, "
+                + "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, U.SG_UF, L.NR_LOCAL_VIA, "
                 + "L.DS_CIDADE_MAIS_PROXIMA, L.DS_PNV_ANO, L.DS_PNV_VERSAO, L.DS_PNV_CODIGO, L.DS_PNV_ALTITUDE, "
                 + "L.DS_LATITUDE_GRAU, L.DS_LATITUDE_MINUTO, L.DS_LONGITUDE_GRAU, L.DS_LONGITUDE_MINUTO, "
                 + "P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, SR.ID_SUPERINTENDENCIA_REGIONAL, SR.DS_SUPERINTENDENCIA_REGIONAL, "
@@ -232,11 +231,11 @@ public class PonteDAO {
                             rs.getString("DS_NATUREZA_TRANSPOSICAO")), 
                             new TipoEstrutura(rs.getInt("ID_TIPO_ESTRUTURA"), rs.getString("DS_TIPO_ESTRUTURA")), 
                             new SistemaConstrutivo(rs.getInt("ID_SISTEMA_CONSTRUTIVO"), rs.getString("DS_SISTEMA_CONSTRUTIVO")), 
-                            rs.getString("DS_COMPRIMENTO"), rs.getString("DS_LARGURA"), 
+                            rs.getDouble("NR_COMPRIMENTO"), rs.getDouble("NR_LARGURA"), 
                             new TremTipo(rs.getInt("ID_TREM_TIPO"), rs.getString("DS_TREM_TIPO")), 
                             rs.getString("DS_ANO_CONSTRUCAO")), 
                     new IdentificacaoObraLocalizacao(rs.getInt("ID_IDENTIFICACAO_OBRA_LOCALIZACAO"), uf, 
-                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getDouble("DS_LOCAL_VIA"), 
+                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getDouble("NR_LOCAL_VIA"), 
                             rs.getString("DS_CIDADE_MAIS_PROXIMA"), rs.getString("DS_PNV_ANO"), 
                             rs.getString("DS_PNV_VERSAO"), rs.getString("DS_PNV_CODIGO"), rs.getString("DS_PNV_ALTITUDE"), 
                             rs.getString("DS_LATITUDE_GRAU"), rs.getString("DS_LATITUDE_MINUTO"), 
@@ -270,9 +269,11 @@ public class PonteDAO {
             ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
             ponte.setElementosComponentes(buscarElementosComponentes(ponte.getId()));
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
-
+            
             ArquivoAnexoDAO arquivoAnexoDAO = new ArquivoAnexoDAO();
             ponte.setArquivosAnexosCadastro(arquivoAnexoDAO.buscarCadastros(ponte.getId()));
+            ponte.setArquivosAnexosInspecoes(arquivoAnexoDAO.buscarInspecoes(ponte.getId()));
+            //ponte.setArquivosAnexosManifestacoes(arquivoAnexoDAO.buscarManifestacoes(ponte.getId()));
 
             InspecaoDAO inspecaoDAO = new InspecaoDAO();
             ponte.setInspecoes(inspecaoDAO.buscarInspecao(ponte.getId()));
@@ -287,12 +288,13 @@ public class PonteDAO {
         String query = "select P.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, DB.CD_CODIGO, DB.CD_CODIGO_INTEGRACAO, "
                 + "DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO, "
                 + "DB.ID_TIPO_ESTRUTURA, TE.DS_TIPO_ESTRUTURA, DB.ID_SISTEMA_CONSTRUTIVO, SC.DS_SISTEMA_CONSTRUTIVO, "
-                + "DB.DS_COMPRIMENTO, DB.DS_LARGURA, DB.ID_TREM_TIPO, TT.DS_TREM_TIPO, DB.DS_ANO_CONSTRUCAO, "
-                + "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, U.SG_UF, L.DS_LOCAL_VIA, "
+                + "DB.NR_COMPRIMENTO, DB.NR_LARGURA, DB.ID_TREM_TIPO, TT.DS_TREM_TIPO, DB.DS_ANO_CONSTRUCAO, "
+                + "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, U.SG_UF, L.NR_LOCAL_VIA, "
                 + "L.DS_CIDADE_MAIS_PROXIMA, L.DS_PNV_ANO, L.DS_PNV_VERSAO, L.DS_PNV_CODIGO, L.DS_PNV_ALTITUDE, "
                 + "L.DS_LATITUDE_GRAU, L.DS_LATITUDE_MINUTO, L.DS_LONGITUDE_GRAU, L.DS_LONGITUDE_MINUTO, "
-                + "P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, UL.ID_SUPERINTENDENCIA_REGIONAL, SR.DS_SUPERINTENDENCIA_REGIONAL, "
-                + "R.ID_UNIDADE_LOCAL, UL.DS_UNIDADE_LOCAL, R.ID_TIPO_ADMINISTRACAO, TA.DS_TIPO_ADMINISTRACAO, "
+                + "P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, R.ID_UNIDADE_LOCAL, UL.DS_UNIDADE_LOCAL, UL.ID_SUPERINTENDENCIA_REGIONAL, "
+                + "SR.DS_SUPERINTENDENCIA_REGIONAL, SR.ID_UF, U2.DS_UF, U2.SG_UF, "
+                + "R.ID_TIPO_ADMINISTRACAO, TA.DS_TIPO_ADMINISTRACAO, "
                 + "R.DS_ADMINISTRADOR, R.DS_PROJETISTA_ORIGEM, R.DS_PROJETISTA_PROJETISTA, R.DS_CONSTRUTOR_ORIGEM, "
                 + "R.DS_CONSTRUTOR_CONSTRUTOR, R.DS_LOCALIZACAO_PROJETO, R.DS_LOCALIZACAO_DOCUMENTOS_CONSTRUCAO, "
                 + "R.DS_LOCALIZACAO_DOCUMENTOS_DIVERSOS, P.DS_INDICE_PERFORMANCE_RELATIVO, "
@@ -302,39 +304,37 @@ public class PonteDAO {
                 + "D.DS_NUMERO_FAIXAS, D.DS_LARGURA_FAIXA, D.DS_ACOSTAMENTO_DIREITO, D.DS_ACOSTAMENTO_ESQUERDO, D.DS_CALCADA_DIREITA, "
                 + "D.DS_CALCADA_ESQUERDA, D.DS_LARGURA_TOTAL_PISTA, D.DS_GABARITO_HORIZONTAL, D.DS_GABARITO_VERTICAL, D.DS_NUMERO_VAOS, "
                 + "D.DS_DESCRICAO_VAOS, P.ID_ROTAS_ALTERNATIVAS, RA.DS_IDENTIFICACAO, RA.DS_ROTA_ALTERNATIVA, RA.DS_ACRESCIMO_KM, "
-                + "P.ID_OBSERVACOES, O.DS_IDENTIFICACAO, O.DS_OBSERVACOES, P.ID_SUBSTITUICAO, SUB.DS_IDENTIFICACAO, "
-                + "SUB.DS_EXISTE_PROJETO_SUBSTITUICAO, SUB.DS_CUSTO_ESTIMADO, SUB.DS_OBSERVACOES, "
+                + "P.ID_OBSERVACOES, O.DS_IDENTIFICACAO, O.DS_OBSERVACOES, P.ID_SUBSTITUICAO, S.DS_IDENTIFICACAO, "
+                + "S.DS_EXISTE_PROJETO_SUBSTITUICAO, S.DS_CUSTO_ESTIMADO, S.DS_OBSERVACOES, "
                 + "U2.ID_UF as ID_UF_2, U2.DS_UF as DS_UF_2, U2.SG_UF as SG_UF_2, "
                 + "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA "
-
-                + "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, IDENTIFICACAO_OBRA_LOCALIZACAO L, "
-                + "IDENTIFICACAO_OBRA_RESPONSAVEIS R, IDENTIFICACAO_OBRA_INSPECAO I, UF U, UF U2, VIA V, SUPERINTENDENCIA_REGIONAL SR, "
-                + "UNIDADE_LOCAL UL, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, "
-                + "TIPO_ADMINISTRACAO TA, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, TIPO_REGIAO TR, TIPO_TRACADO T, "
-                + "CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO SUB, "
-                + "NUMERO N, FOTO F "
-
+                
+                + "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, IDENTIFICACAO_OBRA_LOCALIZACAO L, IDENTIFICACAO_OBRA_RESPONSAVEIS R, "
+                + "IDENTIFICACAO_OBRA_INSPECAO I, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, "
+                + "ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO S, TIPO_REGIAO TR, TIPO_TRACADO T, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, "
+                + "SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, UF U, VIA V, UNIDADE_LOCAL UL, TIPO_ADMINISTRACAO TA, SUPERINTENDENCIA_REGIONAL SR, UF U2 "
+                
                 + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
-                + "AND P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
-                + "AND P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS = R.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS "
-                + "AND P.ID_IDENTIFICACAO_OBRA_INSPECAO = I.ID_IDENTIFICACAO_OBRA_INSPECAO "
-                + "AND P.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS = C.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS "
-                + "AND P.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES = D.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES "
-                + "AND P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
-                + "AND P.ID_OBSERVACOES = O.ID_OBSERVACOES "
-                + "AND P.ID_SUBSTITUICAO = SUB.ID_SUBSTITUICAO "
-                + "AND C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
-                + "AND C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
-                + "AND DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
-                + "AND DB.ID_TIPO_ESTRUTURA = TE.ID_TIPO_ESTRUTURA "
-                + "AND DB.ID_SISTEMA_CONSTRUTIVO = SC.ID_SISTEMA_CONSTRUTIVO "
-                + "AND DB.ID_TREM_TIPO = TT.ID_TREM_TIPO "
-                + "AND L.ID_UF = U.ID_UF "
-                + "AND L.ID_VIA = V.ID_VIA "
-                + "AND UL.ID_SUPERINTENDENCIA_REGIONAL = SR.ID_SUPERINTENDENCIA_REGIONAL "
-                + "AND R.ID_TIPO_ADMINISTRACAO = TA.ID_TIPO_ADMINISTRACAO "
-                + "AND R.ID_UNIDADE_LOCAL = UL.ID_UNIDADE_LOCAL "
-                + "AND SR.ID_UF = U2.ID_UF ";
+                + "and P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
+                + "and P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS = R.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS "
+                + "and P.ID_IDENTIFICACAO_OBRA_INSPECAO = I.ID_IDENTIFICACAO_OBRA_INSPECAO "
+                + "and P.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS = C.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS "
+                + "and P.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES = D.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES "
+                + "and P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
+                + "and P.ID_OBSERVACOES = O.ID_OBSERVACOES "
+                + "and P.ID_SUBSTITUICAO = S.ID_SUBSTITUICAO "
+                + "and C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
+                + "and C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
+                + "and DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
+                + "and DB.ID_TIPO_ESTRUTURA = TE.ID_TIPO_ESTRUTURA "
+                + "and DB.ID_SISTEMA_CONSTRUTIVO = SC.ID_SISTEMA_CONSTRUTIVO "
+                + "and DB.ID_TREM_TIPO = TT.ID_TREM_TIPO "
+                + "and L.ID_UF = U.ID_UF "
+                + "and L.ID_VIA = V.ID_VIA "
+                + "and R.ID_UNIDADE_LOCAL = UL.ID_UNIDADE_LOCAL "
+                + "and UL.ID_SUPERINTENDENCIA_REGIONAL = SR.ID_SUPERINTENDENCIA_REGIONAL "
+                + "and R.ID_TIPO_ADMINISTRACAO = TA.ID_TIPO_ADMINISTRACAO "
+                + "and SR.ID_UF = U2.ID_UF";
 
         if (codigo != null && !codigo.isEmpty()) {
             query += " and DB.CD_CODIGO like '%" + codigo + "%' ";
@@ -348,11 +348,11 @@ public class PonteDAO {
         if (via != 0) {
             query += " and L.ID_VIA = " + via + " ";
         }
-        if (kmInicial > 0 || kmFinal > 0) {
-            query += " and L.DS_LOCAL_VIA > " + kmInicial + " ";
+        if (kmInicial > 0) {
+            query += " and L.NR_LOCAL_VIA > " + kmInicial + " ";
         }
         if (kmFinal > 0) {
-            query += " and L.DS_LOCAL_VIA < " + kmFinal + " ";
+            query += " and L.NR_LOCAL_VIA < " + kmFinal + " ";
         }
         if (superintendenciaRegional != 0) {
             query += " and UL.ID_SUPERINTENDENCIA_REGIONAL = " + superintendenciaRegional
@@ -380,12 +380,12 @@ public class PonteDAO {
                             rs.getString("DS_NATUREZA_TRANSPOSICAO")), 
                             new TipoEstrutura(rs.getInt("ID_TIPO_ESTRUTURA"), rs.getString("DS_TIPO_ESTRUTURA")), 
                             new SistemaConstrutivo(rs.getInt("ID_SISTEMA_CONSTRUTIVO"), rs.getString("DS_SISTEMA_CONSTRUTIVO")), 
-                            rs.getString("DS_COMPRIMENTO"), rs.getString("DS_LARGURA"), 
+                            rs.getDouble("NR_COMPRIMENTO"), rs.getDouble("NR_LARGURA"), 
                             new TremTipo(rs.getInt("ID_TREM_TIPO"), rs.getString("DS_TREM_TIPO")), 
                             rs.getString("DS_ANO_CONSTRUCAO")), 
                     new IdentificacaoObraLocalizacao(rs.getInt("ID_IDENTIFICACAO_OBRA_LOCALIZACAO"), 
                             new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"), rs.getString("SG_UF")), 
-                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getDouble("DS_LOCAL_VIA"), 
+                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getDouble("NR_LOCAL_VIA"), 
                             rs.getString("DS_CIDADE_MAIS_PROXIMA"), rs.getString("DS_PNV_ANO"), 
                             rs.getString("DS_PNV_VERSAO"), rs.getString("DS_PNV_CODIGO"), rs.getString("DS_PNV_ALTITUDE"), 
                             rs.getString("DS_LATITUDE_GRAU"), rs.getString("DS_LATITUDE_MINUTO"), 
@@ -422,6 +422,142 @@ public class PonteDAO {
 
             pontes.add(ponte);
         }
+        conexao.closeConnection();
+        return pontes;
+    }
+    
+    public ArrayList<Ponte> buscaAvancada(int naturezaTransposicao, int tipoEstrutura, int sistemaConstrutivo, 
+            double comprimentoInicial, double comprimentoFinal, double larguraInicial, double larguraFinal, 
+            int aspectoEspecial, int deficienciaFuncional, int morfologia, int elemento, int manifestacao, 
+            ArrayList<ElementoUfpr> morfologias) throws SQLException {
+
+        String query = "select P.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, DB.CD_CODIGO, DB.CD_CODIGO_INTEGRACAO, "
+                + "DB.DS_STATUS, DB.DS_IDENTIFICACAO, DB.ID_NATUREZA_TRANSPOSICAO, NT.DS_NATUREZA_TRANSPOSICAO, "
+                + "DB.ID_TIPO_ESTRUTURA, TE.DS_TIPO_ESTRUTURA, DB.ID_SISTEMA_CONSTRUTIVO, SC.DS_SISTEMA_CONSTRUTIVO, "
+                + "DB.NR_COMPRIMENTO, DB.NR_LARGURA, DB.ID_TREM_TIPO, TT.DS_TREM_TIPO, DB.DS_ANO_CONSTRUCAO, "
+                + "P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, L.ID_VIA, V.DS_VIA, L.ID_UF, U.DS_UF, U.SG_UF, L.NR_LOCAL_VIA, "
+                + "L.DS_CIDADE_MAIS_PROXIMA, L.DS_PNV_ANO, L.DS_PNV_VERSAO, L.DS_PNV_CODIGO, L.DS_PNV_ALTITUDE, "
+                + "L.DS_LATITUDE_GRAU, L.DS_LATITUDE_MINUTO, L.DS_LONGITUDE_GRAU, L.DS_LONGITUDE_MINUTO, "
+                + "P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS, R.ID_UNIDADE_LOCAL, UL.DS_UNIDADE_LOCAL, UL.ID_SUPERINTENDENCIA_REGIONAL, "
+                + "SR.DS_SUPERINTENDENCIA_REGIONAL, SR.ID_UF, U2.DS_UF, U2.SG_UF, "
+                + "R.ID_TIPO_ADMINISTRACAO, TA.DS_TIPO_ADMINISTRACAO, "
+                + "R.DS_ADMINISTRADOR, R.DS_PROJETISTA_ORIGEM, R.DS_PROJETISTA_PROJETISTA, R.DS_CONSTRUTOR_ORIGEM, "
+                + "R.DS_CONSTRUTOR_CONSTRUTOR, R.DS_LOCALIZACAO_PROJETO, R.DS_LOCALIZACAO_DOCUMENTOS_CONSTRUCAO, "
+                + "R.DS_LOCALIZACAO_DOCUMENTOS_DIVERSOS, P.DS_INDICE_PERFORMANCE_RELATIVO, "
+                + "P.ID_IDENTIFICACAO_OBRA_INSPECAO, I.DS_PERIODO, I.DS_EQUIPAMENTO_NECESSARIO, I.DS_MELHOR_EPOCA, "
+                + "P.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS, C.ID_TIPO_REGIAO, TR.DS_TIPO_REGIAO, C.ID_TIPO_TRACADO, "
+                + "T.DS_TIPO_TRACADO, C.DS_RAMPA_MAXIMA, C.DS_RAIO_CURVA, C.DS_VMD, P.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES, "
+                + "D.DS_NUMERO_FAIXAS, D.DS_LARGURA_FAIXA, D.DS_ACOSTAMENTO_DIREITO, D.DS_ACOSTAMENTO_ESQUERDO, D.DS_CALCADA_DIREITA, "
+                + "D.DS_CALCADA_ESQUERDA, D.DS_LARGURA_TOTAL_PISTA, D.DS_GABARITO_HORIZONTAL, D.DS_GABARITO_VERTICAL, D.DS_NUMERO_VAOS, "
+                + "D.DS_DESCRICAO_VAOS, P.ID_ROTAS_ALTERNATIVAS, RA.DS_IDENTIFICACAO, RA.DS_ROTA_ALTERNATIVA, RA.DS_ACRESCIMO_KM, "
+                + "P.ID_OBSERVACOES, O.DS_IDENTIFICACAO, O.DS_OBSERVACOES, P.ID_SUBSTITUICAO, S.DS_IDENTIFICACAO, "
+                + "S.DS_EXISTE_PROJETO_SUBSTITUICAO, S.DS_CUSTO_ESTIMADO, S.DS_OBSERVACOES, "
+                + "U2.ID_UF as ID_UF_2, U2.DS_UF as DS_UF_2, U2.SG_UF as SG_UF_2, "
+                + "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA "
+                
+                + "from PONTE P, IDENTIFICACAO_OBRA_DADOS_BASICOS DB, IDENTIFICACAO_OBRA_LOCALIZACAO L, IDENTIFICACAO_OBRA_RESPONSAVEIS R, "
+                + "IDENTIFICACAO_OBRA_INSPECAO I, CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS C, CARACTERISTICAS_FUNCIONAIS_DIMENSOES D, "
+                + "ROTAS_ALTERNATIVAS RA, OBSERVACOES O, SUBSTITUICAO S, TIPO_REGIAO TR, TIPO_TRACADO T, NATUREZA_TRANSPOSICAO NT, TIPO_ESTRUTURA TE, "
+                + "SISTEMA_CONSTRUTIVO SC, TREM_TIPO TT, UF U, VIA V, UNIDADE_LOCAL UL, TIPO_ADMINISTRACAO TA, SUPERINTENDENCIA_REGIONAL SR, UF U2 "
+                
+                + "where P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS = DB.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS "
+                + "and P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO = L.ID_IDENTIFICACAO_OBRA_LOCALIZACAO "
+                + "and P.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS = R.ID_IDENTIFICACAO_OBRA_RESPONSAVEIS "
+                + "and P.ID_IDENTIFICACAO_OBRA_INSPECAO = I.ID_IDENTIFICACAO_OBRA_INSPECAO "
+                + "and P.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS = C.ID_CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS "
+                + "and P.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES = D.ID_CARACTERISTICAS_FUNCIONAIS_DIMENSOES "
+                + "and P.ID_ROTAS_ALTERNATIVAS = RA.ID_ROTAS_ALTERNATIVAS "
+                + "and P.ID_OBSERVACOES = O.ID_OBSERVACOES "
+                + "and P.ID_SUBSTITUICAO = S.ID_SUBSTITUICAO "
+                + "and C.ID_TIPO_REGIAO = TR.ID_TIPO_REGIAO "
+                + "and C.ID_TIPO_TRACADO = T.ID_TIPO_TRACADO "
+                + "and DB.ID_NATUREZA_TRANSPOSICAO = NT.ID_NATUREZA_TRANSPOSICAO "
+                + "and DB.ID_TIPO_ESTRUTURA = TE.ID_TIPO_ESTRUTURA "
+                + "and DB.ID_SISTEMA_CONSTRUTIVO = SC.ID_SISTEMA_CONSTRUTIVO "
+                + "and DB.ID_TREM_TIPO = TT.ID_TREM_TIPO "
+                + "and L.ID_UF = U.ID_UF "
+                + "and L.ID_VIA = V.ID_VIA "
+                + "and R.ID_UNIDADE_LOCAL = UL.ID_UNIDADE_LOCAL "
+                + "and UL.ID_SUPERINTENDENCIA_REGIONAL = SR.ID_SUPERINTENDENCIA_REGIONAL "
+                + "and R.ID_TIPO_ADMINISTRACAO = TA.ID_TIPO_ADMINISTRACAO "
+                + "and SR.ID_UF = U2.ID_UF";
+
+
+        if (naturezaTransposicao != 0) {
+            query += " and NT.ID_NATUREZA_TRANSPOSICAO = " + naturezaTransposicao + " ";
+        }
+        if (tipoEstrutura != 0) {
+            query += " and DB.ID_TIPO_ESTRUTURA = " + tipoEstrutura + " ";
+        }
+        if (sistemaConstrutivo != 0) {
+            query += " and DB.ID_SISTEMA_CONSTRUTIVO = " + sistemaConstrutivo + " ";
+        }
+        if (comprimentoInicial > 0) {
+            query += " and DB.NR_COMPRIMENTO > " + comprimentoInicial + " ";
+        }
+        if (comprimentoFinal > 0) {
+            query += " and DB.NR_COMPRIMENTO < " + comprimentoFinal + " ";
+        }
+        if (larguraInicial > 0) {
+            query += " and DB.NR_LARGURA > " + larguraInicial + " ";
+        }
+        if (larguraFinal > 0) {
+            query += " and DB.NR_LARGURA < " + larguraFinal + " ";
+        }
+        if (aspectoEspecial != 0) {
+            query += " and P.ID_PONTE in (select ID_PONTE from CADASTRO_ASPECTOS_ESPECIAIS where ID_ASPECTOS_ESPECIAIS = " + aspectoEspecial + ") ";
+        }
+//        if (deficienciaFuncional != 0) {
+//            query += " and P.ID_PONTE in (select ID_PONTE from CADASTRO_ASPECTOS_ESPECIAIS where ID_ASPECTOS_ESPECIAIS = " + aspectoEspecial + ") ";
+//        }
+        if (morfologias != null) {
+            for (int i = 0; i < morfologias.size(); i++) {
+                query += " and P.ID_PONTE in (select ID_PONTE from ELEMENTO_COMPONENTES where ID_ELEMENTO_UFPR = " + morfologias.get(i).getId() + ") ";
+            }
+        }
+        if (elemento != 0) {
+            query += " and P.ID_PONTE in (select ID_PONTE from INSPECAO I, INSPECAO_MANIFESTACAO_ELEMENTO IME, "
+                    + "ELEMENTO_UFPR_MANIFESTACAO_UFPR EUMU "
+                    + "where I.ID_INSPECAO = IME.ID_INSPECAO "
+                    + "and IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR = EUMU.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR "
+                    + "and EUMU.ID_ELEMENTO_UFPR = " + elemento + ") ";
+        }
+        if (manifestacao != 0) {
+            query += " and P.ID_PONTE in (select ID_PONTE from INSPECAO I, INSPECAO_MANIFESTACAO_ELEMENTO IME, "
+                    + "ELEMENTO_UFPR_MANIFESTACAO_UFPR EUMU "
+                    + "where I.ID_INSPECAO = IME.ID_INSPECAO "
+                    + "and IME.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR = EUMU.ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR "
+                    + "and EUMU.ID_MANIFESTACAO_UFPR = " + manifestacao + ") ";
+        }
+
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        ArrayList<Ponte> pontes = new ArrayList<>();
+        Ponte ponte;
+        while (rs.next()) {
+            ponte = new Ponte(rs.getInt("ID_PONTE"), rs.getDouble("DS_INDICE_PERFORMANCE_RELATIVO"), 
+                    new IdentificacaoObraDadosBasicos(rs.getInt("ID_IDENTIFICACAO_OBRA_DADOS_BASICOS"), 
+                            rs.getString("CD_CODIGO"), rs.getString("CD_CODIGO_INTEGRACAO"), 
+                            rs.getString("DS_STATUS"), rs.getString("DS_IDENTIFICACAO"), 
+                            new NaturezaTransposicao(rs.getInt("ID_NATUREZA_TRANSPOSICAO"), rs.getString("DS_NATUREZA_TRANSPOSICAO")), 
+                            new TipoEstrutura(rs.getInt("ID_TIPO_ESTRUTURA"), rs.getString("DS_TIPO_ESTRUTURA")), 
+                            new SistemaConstrutivo(rs.getInt("ID_SISTEMA_CONSTRUTIVO"), rs.getString("DS_SISTEMA_CONSTRUTIVO")), 
+                            rs.getDouble("NR_COMPRIMENTO"), rs.getDouble("NR_LARGURA"), new TremTipo(rs.getInt("ID_TREM_TIPO"), 
+                                    rs.getString("DS_TREM_TIPO")), rs.getString("DS_ANO_CONSTRUCAO")), 
+                    new IdentificacaoObraLocalizacao(rs.getInt("ID_IDENTIFICACAO_OBRA_LOCALIZACAO"), 
+                            new Uf(rs.getInt("ID_UF"), rs.getString("DS_UF"), rs.getString("SG_UF")), 
+                            new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")), rs.getDouble("NR_LOCAL_VIA"), 
+                            rs.getString("DS_CIDADE_MAIS_PROXIMA"), rs.getString("DS_PNV_ANO"), rs.getString("DS_PNV_VERSAO"), 
+                            rs.getString("DS_PNV_CODIGO"), rs.getString("DS_PNV_ALTITUDE"), rs.getString("DS_LATITUDE_GRAU"), 
+                            rs.getString("DS_LATITUDE_MINUTO"), rs.getString("DS_LONGITUDE_GRAU"), rs.getString("DS_LONGITUDE_MINUTO")), 
+                    null, null, null, null, null, null, null);
+            ponte.setAspectosEspeciais(buscarAspectosEspeciais(ponte.getId()));
+            pontes.add(ponte);
+        }
+        
         conexao.closeConnection();
         return pontes;
     }
@@ -477,7 +613,7 @@ public class PonteDAO {
 
     private ArrayList<ElementoComponente> buscarElementosComponentes(int idPonte) throws SQLException {
         String query = "select EC.ID_ELEMENTO_COMPONENTES, E.CD_ELEMENTO, E.DS_ELEMENTO, "
-                + "E.DS_CAPA1, E.ID_ELEMENTO_UFPR, EC.DS_DETALHE, EC.NR_QUANTIDADE "
+                + "E.NR_CAPA1, E.ID_ELEMENTO_UFPR, EC.DS_DETALHE, EC.NR_QUANTIDADE "
                 + "from ELEMENTO_UFPR E, ELEMENTO_COMPONENTES EC "
                 + "where E.ID_ELEMENTO_UFPR = EC.ID_ELEMENTO_UFPR "
                 + "and EC.ID_PONTE = " + idPonte;
@@ -491,7 +627,7 @@ public class PonteDAO {
         while (rs.next()) {
             elementosComponentes.add(new ElementoComponente(rs.getInt("ID_ELEMENTO_COMPONENTES"), 
                     new ElementoUfpr(rs.getInt("ID_ELEMENTO_UFPR"), rs.getString("CD_ELEMENTO"), 
-                    rs.getString("DS_ELEMENTO"), rs.getString("DS_CAPA1")), 
+                    rs.getString("DS_ELEMENTO"), rs.getDouble("NR_CAPA1")), 
                     rs.getString("DS_DETALHE"), rs.getString("NR_QUANTIDADE"))); 
         }
 

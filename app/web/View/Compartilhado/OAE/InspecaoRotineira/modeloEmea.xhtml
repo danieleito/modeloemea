@@ -8,30 +8,92 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
     <h:head>
-        <title>TODO supply a title</title>
+        <title>SGO Gestor</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
+
     <h:body>
-        <h:form id="form">
-            <p:dataGrid var="i" value="#{ponteBean.inspecao.inspecaoManifestacaoElemento}" columns="3" layout="grid" rows="12" paginator="true" >
+        <h:form id="form" style="text-align: center;" >
+            
+            <c:forEach var="i" items="#{ponteBean.inspecao.inspecaoManifestacaoElemento}">
+                <c:set var="classe" value="painel_nao_somou" />
+                <c:choose>
+                    <c:when test="#{i.somou}">
+                        <c:set var="classe" value="painel_somou" />
+                    </c:when>
+                </c:choose>
+                
+                <div class="#{classe}" style="text-align:center; height: 500px; width: 320px; float: left; margin: 3px;">
+                    <h:panelGrid columns="1" class="tabela_sem_borda">
+                        <c:set var="pastaInspecao" value="#{comumbean.dateToString(ponteBean.inspecao.data, 'ddMMyyyy')}"/>
+                        <c:set var="filename" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" />
+                        <c:set var="tipo" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />
+                        
+                        <c:set var="id" value="dlg#{i.id}"/>
+                        
+                        <c:set var="nomeImagem" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}#{comumbean.getFileSeparator()}#{pastaInspecao}#{comumbean.getFileSeparator()}#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" />
+                        
+                        <p:lightBox id="lighbox#{i.id}">
+                            <h:outputLink value="#" title="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome} - #{i.dadosManifestacao.arquivoAnexoInspecao.descricao}">  
+                                <p:graphicImage value="#{comumbean.getImage()}" style="height: 200px" title="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" alt="Image Description for #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" >
+                                    <f:param name="filename" value="#{nomeImagem}" />
+                                    <f:param name="tipoimagem" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />
+                                </p:graphicImage>
+                            </h:outputLink>
+                            
+                            <f:facet name="inline">
+                                <p:graphicImage value="#{comumbean.getImage()}" style="height: 500px" title="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" alt="Image Description for #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" >
+                                    <f:param name="filename" value="#{nomeImagem}" />
+                                    <f:param name="tipoimagem" value="#{i.dadosManifestacao.arquivoAnexoInspecao.imagem.tipoMime}" />
+                                </p:graphicImage>
+                            </f:facet>
+                        </p:lightBox>
+                        
+                        <h:outputText value="Foto: #{i.dadosManifestacao.arquivoAnexoInspecao.imagem.nome}" />
 
-                <f:facet name="header">
-                    Modelo UFPR
-                </f:facet>
+                        <h:outputText value="Elemento: #{i.elementoUfprManifestacaoUfpr.elementoUfpr.descricao}" />
 
-                <p:panel header="" style="text-align:center">
-                    <h:panelGrid columns="1" style="width:100%">
-                        <!--foto-->
-                        <h:outputLabel value="ola" />
-                        <!--<p:outputLabel value="oi" />-->
-                        <h:outputText value="#{i.dadosManifestacao.manifestacaoExtensao.descricao}" />
+                        <h:outputText value="Número: #{i.dadosManifestacao.numero}" />
 
+                        <h:outputText value="Manifestação: #{i.elementoUfprManifestacaoUfpr.manifestacaoUfpr.descricao}" />
+
+                        <h:outputText value="Dimensão: #{i.dadosManifestacao.manifestacaoExtensao.descricao}" />
+
+                        <h:outputText value="Tamanho: #{i.dadosManifestacao.tamanho}" />
+
+                        <h:outputText value="Unidade: #{i.elementoUfprManifestacaoUfpr.manifestacaoUfpr.unidade}" />
+
+                        <h:outputText value="Reparo: #{i.dadosManifestacao.manifestacaoUrgencia.descricao}" />
+
+                        <c:set var="beta" value="#{i.elementoUfprManifestacaoUfpr.manifestacaoUfpr.beta}" />
+                        <c:set var="capa1" value="#{i.elementoUfprManifestacaoUfpr.elementoUfpr.capa1}" />
+                        <c:set var="capa2" value="#{i.dadosManifestacao.manifestacaoExtensao.capa2}" />
+                        <c:set var="capa4" value="#{i.dadosManifestacao.manifestacaoUrgencia.capa4}" />
+                        <c:set var="capa3" value="#{i.capa3}" />
+                        
+<!--                        <h:outputText value="beta #{beta}" />
+                        <h:outputText value="capa1 #{capa1}" />
+                        <h:outputText value="capa2 #{capa2}" />
+                        <h:outputText value="capa3 #{capa3}" />
+                        <h:outputText value="capa4 #{capa4}" />-->
+                        
+                        <c:set var="dano" value="#{comumbean.getValorFormatado(i.valorDano)}" />
+                        <h:outputText value="Valor do dano: #{dano}" />
                     </h:panelGrid>
-                </p:panel>
+                </div>
 
-            </p:dataGrid>
+            </c:forEach>
+            
+            <div class="col-md-10 row" style="margin-top: 10px; font-weight: bold">
+                <h:outputText value="Índice de Performance Absoluto:&#160;" style="float: left"/>
+                <h:outputText value="#{ponteBean.inspecao.somatorioValorDano}" style="float: left" >
+                    <f:convertNumber pattern="#0.00" />
+                </h:outputText>
+            </div>           
         </h:form>
     </h:body>
 </html>

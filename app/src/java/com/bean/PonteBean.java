@@ -9,6 +9,7 @@ import com.dao.AspectoEspecialDAO;
 import com.dao.DeficienciaFuncionalDAO;
 import com.dao.ElementoUfprDAO;
 import com.dao.FotoDAO;
+import com.dao.InspecaoManifestacaoElementoDAO;
 import com.dao.ManifestacaoUfprDAO;
 import com.dao.NaturezaTransposicaoDAO;
 import com.dao.NumeroDAO;
@@ -27,6 +28,7 @@ import com.dao.ViaDAO;
 import com.model.ArquivoAnexoCadastro;
 import com.model.AspectoEspecial;
 import com.model.DeficienciaFuncional;
+import com.model.ElementoComponente;
 import com.model.ElementoUfpr;
 import com.model.ExtensaoRelativa;
 import com.model.Foto;
@@ -53,6 +55,9 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,6 +66,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.Tuple;
+import javax.persistence.TupleElement;
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
 import org.primefaces.model.map.LatLng;
@@ -87,7 +96,7 @@ public class PonteBean extends ComumBean implements Serializable {
     private ArrayList<Ponte> pontesSelecionadas;
     private ArrayList<Simulacao> simulacoes;
     private Simulacao modelSimulacao;
-    
+
     //aba identificacao obra
     private ArrayList<NaturezaTransposicao> naturezasTransposicoes;
     private ArrayList<TipoEstrutura> tiposEstruturas;
@@ -101,7 +110,7 @@ public class PonteBean extends ComumBean implements Serializable {
 //    private ArrayList<> localizacaoProjeto;
 //    private ArrayList<> localizacaoDocumentosConstrucao;
 //    private ArrayList<> localizacaoDocumentos;
-    
+
     //aba caracteristicas funcionais
     private ArrayList<TipoRegiao> tiposRegioes;
     private ArrayList<TipoTracado> tiposTracados;
@@ -117,10 +126,66 @@ public class PonteBean extends ComumBean implements Serializable {
     private int filtroIdSuperintendencia;
     private int filtroIdUnidadeLocal;
     // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc=" Campos utilizados como filtro na busca avançada por pontes. ">
+    private int filtroIdNaturezaTransposicao;
+    private int filtroIdTipoEstrutura;
+    private int filtroIdSistemaConstrutivo;
+    private String filtroComprimentoInicial;
+    private String filtroComprimentoFinal;
+    private String filtroLarguraInicial;
+    private String filtroLarguraFinal;
+    private int filtroIdAspectosEspeciais;
+    private int filtroIdDeficienciasFuncionais;
+    private int filtroIdMorfologia;
+    private int filtroIdElementoUfpr;
+    private int filtroIdManifestacaoUfpr;
+    // </editor-fold>
+
+    private ArrayList<ElementoUfpr> morfologias; 
+    private ArrayList<ElementoUfpr> elementos;
+    private ArrayList<ManifestacaoUfpr> manifestacoes;
+//    private Tuple tupla;
+//    tupla = new Tuple() {
+//        @Override
+//        public <X> X get(TupleElement<X> tupleElement) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        public <X> X get(String alias, Class<X> type) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        public Object get(String alias) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        public <X> X get(int i, Class<X> type) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        public Object get(int i) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        public Object[] toArray() {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        public List<TupleElement<?>> getElements() {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//    };
 
     //aba elementos componente
     private ArrayList<ElementoUfpr> elementosUfpr;
-    
+
     //aba aspectos especiais
     private ArrayList<AspectoEspecial> aspectosEspeciais;
 
@@ -130,22 +195,22 @@ public class PonteBean extends ComumBean implements Serializable {
     //inspecao  
     //aba Manifestacoes
     private ArrayList<ManifestacaoUfpr> manifestacoesUfpr;
-    
+
     //combo numero
     private ArrayList<Numero> numeros;    
-    
+
     //combo foto
     private ArrayList<Foto> fotos;
-    
+
     //extensao relativa
     private ArrayList<ExtensaoRelativa> extensoesRelativa;
-    
+
     //reparo
     private ArrayList<Reparo> reparos;
-    
+
     private Inspecao inspecao;
     private ArrayList<Inspecao> inspecoes;
-    
+
     //mapa
 //    private MapModel draggableModel;
     private Marker marker;
@@ -153,6 +218,9 @@ public class PonteBean extends ComumBean implements Serializable {
     private MapModel rectangleModel;
     private MapModel advancedModel;
     
+//    para mudar a aba da busca
+    private int tab = 0;
+
     @PostConstruct
     public void init() {
         database = new PonteDAO();
@@ -183,6 +251,8 @@ public class PonteBean extends ComumBean implements Serializable {
             tiposTracados = new TipoTracadoDAO().buscar();
 //            numeroFaixas;
 //            LarguraFaixas;
+//
+//            morfologias = new ElementoUfprDAO().buscar();
 
             //aba elementos componentes
             elementosUfpr = new ElementoUfprDAO().buscar();
@@ -192,24 +262,23 @@ public class PonteBean extends ComumBean implements Serializable {
 
             //aba deficiencias funcionais
             deficienciasFuncionais = new DeficienciaFuncionalDAO().buscar();
-            
+
             //inspecao
             //aba Manifestacoes
             manifestacoesUfpr = new ManifestacaoUfprDAO().buscar();
-            
+
             //combo numero
             numeros = new NumeroDAO().buscar();
-            
+
             //combo foto
             fotos = new FotoDAO().buscar();
-            
+
 //            //extensao relativa
 //            extensoesRelativa = new ExtensaoRelativaDAO().buscar();
 //            
 //            //reparo
 //            reparos = new ReparoDAO().buscar();
-            
-            
+
             //mapa
             database = new PonteDAO();
             model = null;
@@ -253,6 +322,10 @@ public class PonteBean extends ComumBean implements Serializable {
                         qtde++;
                     }
                 }
+                if (qtde > 0) {
+                    SimulacaoDAO dbSimulacao = new SimulacaoDAO();
+                    dbSimulacao.atualizaDataSimulacao(idSimulacao);                    
+                }
                 adicionarMensagemInfo(qtde + " pontes adicionadas das "+pontesSelecionadas.size()+" selecionadas");
 
             } catch (SQLException ex) {
@@ -265,26 +338,27 @@ public class PonteBean extends ComumBean implements Serializable {
             redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
         }
     }
-    
+
     public void consultarGet(int idSimulacao) {
         try {
             SimulacaoDAO dbSimulacao = new SimulacaoDAO();
             modelSimulacao = dbSimulacao.buscar(idSimulacao);
             pontesSelecionadas = new ArrayList<>();
-            
+
             limparFiltros();
             pontes = database.buscar();
             carregarMapa();
             retangulo();
 //            carregarDetalhesPin();
+            tab = 0;
         } catch (SQLException ex) {
             pontes = new ArrayList<>();
-            adicionarMensagemErro("Erro ao carregar pontess. " + ex.getMessage());
+            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
     }
-    
+
     public void consultarCadastroGet() {
         try {
             limparFiltros();
@@ -296,7 +370,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAECadastro.jsf");
     }
-    
+
     public void consultarInspecaoGet() {
         try {
             limparFiltros();
@@ -308,7 +382,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAEInspecao.jsf");
     }
-    
+
     public void consultarPost() throws SQLException {
         try {
             pontes = database.buscar2(filtroCodigo, filtroIdentificacao,
@@ -319,13 +393,14 @@ public class PonteBean extends ComumBean implements Serializable {
             carregarMapa();
             retangulo();
 //            carregarDetalhesPin();
+            tab = 0;
         } catch(Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
     }
-    
+
     public void consultarCadastroPost() throws SQLException {
         try {
             pontes = database.buscar2(filtroCodigo, filtroIdentificacao,
@@ -339,7 +414,7 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAECadastro.jsf");
     }
-    
+
     public void consultarInspecaoPost() throws SQLException {
         try {
             pontes = database.buscar2(filtroCodigo, filtroIdentificacao,
@@ -353,7 +428,29 @@ public class PonteBean extends ComumBean implements Serializable {
         }
         redirecionar("/View/Compartilhado/OAE/buscarOAEInspecao.jsf");
     }
-    
+
+    public void consultarAvancadaPost() throws SQLException {
+        try {
+            pontes = database.buscaAvancada(filtroIdNaturezaTransposicao, filtroIdTipoEstrutura, filtroIdSistemaConstrutivo, 
+                    filtroComprimentoInicial.isEmpty() ? 0 :Double.parseDouble(filtroComprimentoInicial.replace(",", ".")), 
+                    filtroComprimentoFinal.isEmpty() ? 0 : Double.parseDouble(filtroComprimentoFinal.replace(",", ".")), 
+                    filtroLarguraInicial.isEmpty() ? 0 :Double.parseDouble(filtroLarguraInicial.replace(",", ".")), 
+                    filtroLarguraFinal.isEmpty() ? 0 : Double.parseDouble(filtroLarguraFinal.replace(",", ".")),
+                    filtroIdAspectosEspeciais, filtroIdDeficienciasFuncionais, filtroIdMorfologia, filtroIdElementoUfpr, 
+                    filtroIdManifestacaoUfpr, morfologias);
+            
+            carregarMapa();
+//            retangulo();
+//            carregarDetalhesPin();
+            tab = 1;
+            
+        } catch(Exception ex) {
+            Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
+            adicionarMensagemErro("Erro ao carregar pontes. " + ex.getMessage());
+        }
+        redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
+    }
+
     public void novoRegistro() {
         try {
             redirecionar("/View/Compartilhado/OAE/Inspecao/inspecao.jsf");
@@ -362,7 +459,7 @@ public class PonteBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro. " + ex.getMessage());
         }
     }
-    
+
     public void limparFiltros() {
         filtroCodigo = "";
         filtroIdentificacao = "";
@@ -372,18 +469,31 @@ public class PonteBean extends ComumBean implements Serializable {
         filtroKmFinal = "";
         filtroIdSuperintendencia = 0;
         filtroIdUnidadeLocal = 0;
+        filtroIdNaturezaTransposicao = 0;
+        filtroIdTipoEstrutura = 0;
+        filtroIdSistemaConstrutivo = 0;
+        filtroComprimentoInicial = "";
+        filtroComprimentoFinal = "";
+        filtroLarguraInicial = "";
+        filtroLarguraFinal = "";
+        filtroIdAspectosEspeciais = 0;
+        filtroIdDeficienciasFuncionais = 0;
+        filtroIdMorfologia = 0;
+        filtroIdElementoUfpr = 0;
+        filtroIdManifestacaoUfpr = 0;
+        morfologias = new ArrayList<>();
     }
-    
+
     public void exibir(int idPonte) {
         try {
             model = database.buscar(idPonte);
         } catch (Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
-            adicionarMensagemErro("Erro ao carregar ponte. " + ex.getMessage());
+            adicionarMensagemErro("Erro ao carregar ponte: " + ex.getMessage());
         }
         redirecionar("/View/Compartilhado/OAE/exibir.jsf");
     }
-    
+
     public void cadastrar() {
         try {
             model = new Ponte();
@@ -393,19 +503,20 @@ public class PonteBean extends ComumBean implements Serializable {
             adicionarMensagemErro("Erro ao carregar. " + ex.getMessage());
         }
     }
-    
+
     public void visualizarInspecao(int id) {
         try {
             inspecao = model.getInspecoes().stream().filter(i -> i.getId() == id).findFirst().orElse(new Inspecao());
+            calculaModeloEmea();
         } catch (Exception ex) {
             Logger.getLogger(PonteBean.class.getName()).log(Level.SEVERE, null, ex);
             adicionarMensagemErro("Erro ao carregar inspeção. " + ex.getMessage());
         }
         redirecionar("/View/Compartilhado/visualizarInspecao.jsf");
     }
-    
-    
-    
+
+
+
     //    início métodos para mapa
     public void carregarMapa() {
         advancedModel = new DefaultMapModel();
@@ -416,14 +527,25 @@ public class PonteBean extends ComumBean implements Serializable {
 
             for (int i= 0; i < t; i++) {
                 //Shared coordinates
-                Double grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeGrau());
-                Double minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeMinuto());
-                Double latitude = minuto/60 + grau;
+                double grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeGrau());
+                double minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLatitudeMinuto());
+                double latitude;
+                if (grau < 0) {
+                    latitude = minuto/60 - grau;
+                } else {
+                    latitude = minuto/60 + grau;
+                }
+                
                 grau = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeGrau());
                 minuto = Double.parseDouble(pontes.get(i).getIdentificacaoObraLocalizacao().getLongitudeMinuto());
-                Double longitude = minuto/60 + grau;
-                
-                //latitude e logitude transformado em valor negativo
+                double longitude;
+                if (grau < 0) {
+                    longitude = minuto/60 - grau;
+                } else {
+                    longitude = minuto/60 + grau;
+                }
+
+//                latitude e logitude transformado em valor negativo
                 if (latitude > 0) {
                     latitude *= -1;
                 }
@@ -431,7 +553,7 @@ public class PonteBean extends ComumBean implements Serializable {
                     longitude *= -1;
                 }
                 LatLng coord = new LatLng(latitude, longitude);
-                
+
                 //pega maior latitude e longitude
                 if (longitude < maiorLongitude) {
                     maiorLongitude = longitude;
@@ -460,7 +582,7 @@ public class PonteBean extends ComumBean implements Serializable {
                 }
                 DecimalFormat df = new DecimalFormat("#.00");
                 String localVia = String.format("%.2f", pontes.get(i).getIdentificacaoObraLocalizacao().getLocalVia());
-                
+
                 String path = "";
                 int idPonte = pontes.get(i).getId();
                 if (modelSimulacao.getRankings().stream()
@@ -469,7 +591,7 @@ public class PonteBean extends ComumBean implements Serializable {
                         .isPresent()) {
                     path = getImagePath("pin_sgo_hardblue.png");
                 } else {
-                    path = getImagePath("pin_sgo_white.png");
+                    path = getImagePath("pin_sgo_hardred.png");
                 }
                 advancedModel.addOverlay(new Marker(coord, nome, new String [] {nome, codigo, via, uf, localVia, imagem}, path)); //pode ser o quarto de ultimo parametro, serve para mudar a cor do pin, "http://maps.google.com/mapfiles/ms/micons/blue-dot.png"
             }
@@ -490,15 +612,15 @@ public class PonteBean extends ComumBean implements Serializable {
         String q = w;
         return r;
     }
-    
+
     public MapModel getAdvancedModel() {
         return advancedModel;
     }
-      
+
     public void onMarkerSelect(OverlaySelectEvent event) {
         marker = (Marker) event.getOverlay();
     }
-      
+
     public Marker getMarker() {
         return marker;
     }
@@ -530,38 +652,186 @@ public class PonteBean extends ComumBean implements Serializable {
     }
 
 //    fim métodos para mapa
-    
 
-    
+
 //    busca o numero de pontes que foi pesquisado na tela BuscarPonte
     public int numeroPontesBuscados(ArrayList pontes) {
         int numero = pontes.size();
         return numero;
     }
 
-    ////////////////////////////////////// modelo emea
-    private ArrayList<InspecaoManifestacaoElemento> inspecaoManifestacaoElementos;
-     
-    private InspecaoManifestacaoElemento inspecaoManifestacaoElemento;
-     
-//    @ManagedProperty("#{carService}")
-//    private CarService service;
+    public void visualizarFoto() {
+        Map<String,Object> options = new HashMap<String, Object>();
+        options.put("modal", true);
+        options.put("width", 640);
+        options.put("height", 340);
+        options.put("contentWidth", "100%");
+        options.put("contentHeight", "100%");
+        options.put("headerElement", "customheader");
 
-    public ArrayList<InspecaoManifestacaoElemento> getCars() {
-        return inspecaoManifestacaoElementos;
+        RequestContext.getCurrentInstance().openDialog("viewCars", options, null);
     }
- 
-//    public void setService(CarService service) {
-//        this.service = service;
-//    }
- 
-    public InspecaoManifestacaoElemento getInspecaoManifestacaoElemento() {
-        return inspecaoManifestacaoElemento;
+
+//    retorna o nome da pasta da inspecao
+    public String nomePastaInspecao(int idPasta) {   
+        String pasta = Integer.toString(idPasta);
+        return pasta;
     }
- 
-    public void setSelectedCar(InspecaoManifestacaoElemento inspecaoManifestacaoElemento) {
-        this.inspecaoManifestacaoElemento = inspecaoManifestacaoElemento;
+
+    public double calculaValorDano(double beta, double capa1, double capa2, double capa3, double capa4) {
+        double valorDano = beta * capa1 * capa2 * capa3 * capa4;
+
+//        formata valorDano #.##
+//        DecimalFormat formato = new DecimalFormat("#.##");      
+//        valorDano = Double.valueOf(formato.format(valorDano));
+        return valorDano;
     }
+
+    public double calculaCapa3(String manifestacao, String elemento, ArrayList elementoComponentes, Inspecao inspecao) throws SQLException {
+        ArrayList<InspecaoManifestacaoElemento> inspManiEle = new InspecaoManifestacaoElementoDAO().buscar(inspecao.getId()); 
+        int count = 0;
+        String quantidade = null;
+        double capa3 = 0.0;
+        for (int i = 0; i < inspManiEle.size(); i++) {
+            InspecaoManifestacaoElemento ime = inspManiEle.get(i);
+            String m = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
+            String e = ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
+            if (manifestacao.equals(m) && elemento.equals(e)) {
+                count ++;
+            }
+        }
+        for (int i = 0; i < elementoComponentes.size(); i++) {
+            ElementoComponente eleComp = (ElementoComponente) elementoComponentes.get(i);
+            if (eleComp.getElementoUfpr().getDescricao().equals(elemento)) {
+                quantidade = eleComp.getQuantidade();
+            }
+        }
+        double qtd = Integer.parseInt(quantidade);
+        double limiteSuperior = count/qtd;
+
+        if (limiteSuperior >= 0 && limiteSuperior <= 0.1) {
+            capa3 = 0.5;
+        } else if (limiteSuperior > 0.1 && limiteSuperior <= 0.25) {
+            capa3 = 1.0;
+        } else if (limiteSuperior > 0.25 && limiteSuperior <= 0.75) {
+            capa3 = 1.5;
+        } else if (limiteSuperior > 0.75 && limiteSuperior <= 1) {
+            capa3 = 2.0;
+        }
+        return capa3;
+    }
+
+    public double somatorioValorDano() { 
+        ArrayList<InspecaoManifestacaoElemento> distintos = new ArrayList<>();
+        for (InspecaoManifestacaoElemento ime : inspecao.getInspecaoManifestacaoElemento()) {
+            if (!estaNaLista(ime, distintos)) {
+                distintos.add(ime);
+            }
+        }
+
+        double somatorio = 0;
+        for (InspecaoManifestacaoElemento ime : distintos) {
+            somatorio += buscaMaiorValorDano(ime, inspecao.getInspecaoManifestacaoElemento());
+        }
+        return somatorio;
+    }
+
+    private void calculaModeloEmea() throws SQLException {
+        for (int i = 0; i < inspecao.getInspecaoManifestacaoElemento().size(); i++) {
+            InspecaoManifestacaoElemento ime = inspecao.getInspecaoManifestacaoElemento().get(i);
+
+            double beta = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getBeta();
+            double capa1 = ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getCapa1();
+            double capa2 = ime.getDadosManifestacao().getManifestacaoExtensao().getCapa2();
+
+            String manifestacao = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
+            String elemento = ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
+            ArrayList<ElementoComponente> elementosComponentes = model.getElementosComponentes();
+            double capa3 = calculaCapa3(manifestacao, elemento, elementosComponentes, inspecao);
+            ime.setCapa3(capa3);
+            double capa4 = ime.getDadosManifestacao().getManifestacaoUrgencia().getCapa4();
+            double valorDano = calculaValorDano(beta, capa1, capa2, ime.getCapa3(), capa4);
+            ime.setValorDano(valorDano);
+        }
+        
+        inspecao.setSomatorioValorDano(somatorioValorDano());
+    }
+
+    private boolean estaNaLista(InspecaoManifestacaoElemento ime, ArrayList<InspecaoManifestacaoElemento> lista) {
+        for (InspecaoManifestacaoElemento i : lista) {
+            String mI = i.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
+            String mIme = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
+            String eI = i.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
+            String eIme = ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
+            if (mI.equals(mIme) && eI.equals(eIme)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private double buscaMaiorValorDano(InspecaoManifestacaoElemento ime, ArrayList<InspecaoManifestacaoElemento> lista) {
+        double maior = -1;
+        InspecaoManifestacaoElemento m = null;
+        for (InspecaoManifestacaoElemento i : lista) {
+            String mI = i.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
+            String mIme = ime.getElementoUfprManifestacaoUfpr().getManifestacaoUfpr().getDescricao();
+            String eI = i.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
+            String eIme = ime.getElementoUfprManifestacaoUfpr().getElementoUfpr().getDescricao();
+            if (mI.equals(mIme) && eI.equals(eIme)) {
+                if (i.getValorDano() > maior) {
+                    maior = i.getValorDano();
+                    m = i;
+                }
+            }
+        }
+        if (m != null) {
+            m.setSomou(true);
+        }
+        return maior;
+    }
+
+    public void adicionarMorfologiaBusca() {
+        // se nao foi selecionado nenhum item, nao faz nada
+        if (filtroIdMorfologia == 0) {
+            return;
+        }
+        // se item ja esta na lista, nao add
+        if (morfologias.stream().filter(p -> p.getId() == filtroIdMorfologia).findFirst().isPresent()) {
+            return;
+        }
+        
+        Optional<ElementoUfpr> o = elementosUfpr.stream().filter(p -> p.getId() == filtroIdMorfologia).findFirst();
+        if (o.isPresent()) {
+            morfologias.add(o.get());
+        }
+        tab = 1;
+        redirecionar("/View/Compartilhado/OAE/buscarOAE.jsf");
+    }
+    
+    public void excluirMorfologiaBusca() {
+        
+    }
+    
+    public void adicionarElementoMorfologiaBusca() {
+//        // se nao foi selecionado nenhum item em elementoUfpr e nenhum item em manifestacaoUfpr, nao faz nada
+//        if (filtroIdElementoUfpr == 0 && filtroIdManifestacaoUfpr == 0) {
+//            return;
+//        }
+//        // se os itens de elementoUfpr e manifestacaoUfpr ja estao na lista, nao add
+//        if (elementosUfpr.stream().filter(p -> p.getId() == filtroIdElementoUfpr).findFirst().isPresent() && 
+//                manifestacoesUfpr.stream().filter(p -> p.getId() == filtroIdManifestacaoUfpr).findFirst().isPresent()) {
+//            return;
+//        }
+//        
+//        Optional<ElementoUfpr> e = elementosUfpr.stream().filter(p -> p.getId() == filtroIdElementoUfpr).findFirst();
+//        Optional<ManifestacaoUfpr> m = manifestacoesUfpr.stream().filter(p -> p.getId() == filtroIdManifestacaoUfpr).findFirst();
+//        if (e.isPresent() && m.isPresent()) {
+//            
+//        }
+        
+    }
+    
     
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">    
     public String getFiltroCodigo() {
@@ -732,6 +1002,30 @@ public class PonteBean extends ComumBean implements Serializable {
         this.tiposTracados = tiposTracados;
     }
 
+    public ArrayList<ElementoUfpr> getMorfologias() {
+        return morfologias;
+    }
+
+    public void setMorfologias(ArrayList<ElementoUfpr> morfologias) {
+        this.morfologias = morfologias;
+    }
+
+    public ArrayList<ElementoUfpr> getElementos() {
+        return elementos;
+    }
+
+    public void setElementos(ArrayList<ElementoUfpr> elementos) {
+        this.elementos = elementos;
+    }
+
+    public ArrayList<ManifestacaoUfpr> getManifestacoes() {
+        return manifestacoes;
+    }
+
+    public void setManifestacoes(ArrayList<ManifestacaoUfpr> manifestacoes) {
+        this.manifestacoes = manifestacoes;
+    }
+
     public ArrayList<ElementoUfpr> getElementosUfpr() {
         return elementosUfpr;
     }
@@ -835,7 +1129,109 @@ public class PonteBean extends ComumBean implements Serializable {
     public void setInspecoes(ArrayList<Inspecao> inspecoes) {
         this.inspecoes = inspecoes;
     }
-    // </editor-fold>
 
-    
+    public int getFiltroIdNaturezaTransposicao() {
+        return filtroIdNaturezaTransposicao;
+    }
+
+    public void setFiltroIdNaturezaTransposicao(int filtroIdNaturezaTransposicao) {
+        this.filtroIdNaturezaTransposicao = filtroIdNaturezaTransposicao;
+    }
+
+    public int getFiltroIdTipoEstrutura() {
+        return filtroIdTipoEstrutura;
+    }
+
+    public void setFiltroIdTipoEstrutura(int filtroIdTipoEstrutura) {
+        this.filtroIdTipoEstrutura = filtroIdTipoEstrutura;
+    }
+
+    public int getFiltroIdSistemaConstrutivo() {
+        return filtroIdSistemaConstrutivo;
+    }
+
+    public void setFiltroIdSistemaConstrutivo(int filtroIdSistemaConstrutivo) {
+        this.filtroIdSistemaConstrutivo = filtroIdSistemaConstrutivo;
+    }
+
+    public String getFiltroComprimentoInicial() {
+        return filtroComprimentoInicial;
+    }
+
+    public void setFiltroComprimentoInicial(String filtroComprimentoInicial) {
+        this.filtroComprimentoInicial = filtroComprimentoInicial;
+    }
+
+    public String getFiltroComprimentoFinal() {
+        return filtroComprimentoFinal;
+    }
+
+    public void setFiltroComprimentoFinal(String filtroComprimentoFinal) {
+        this.filtroComprimentoFinal = filtroComprimentoFinal;
+    }
+
+    public String getFiltroLarguraInicial() {
+        return filtroLarguraInicial;
+    }
+
+    public void setFiltroLarguraInicial(String filtroLarguraInicial) {
+        this.filtroLarguraInicial = filtroLarguraInicial;
+    }
+
+    public String getFiltroLarguraFinal() {
+        return filtroLarguraFinal;
+    }
+
+    public void setFiltroLarguraFinal(String filtroLarguraFinal) {
+        this.filtroLarguraFinal = filtroLarguraFinal;
+    }
+
+    public int getFiltroIdAspectosEspeciais() {
+        return filtroIdAspectosEspeciais;
+    }
+
+    public void setFiltroIdAspectosEspeciais(int filtroIdAspectosEspeciais) {
+        this.filtroIdAspectosEspeciais = filtroIdAspectosEspeciais;
+    }
+
+    public int getFiltroIdDeficienciasFuncionais() {
+        return filtroIdDeficienciasFuncionais;
+    }
+
+    public void setFiltroIdDeficienciasFuncionais(int filtroIdDeficienciasFuncionais) {
+        this.filtroIdDeficienciasFuncionais = filtroIdDeficienciasFuncionais;
+    }
+
+    public int getFiltroIdMorfologia() {
+        return filtroIdMorfologia;
+    }
+
+    public void setFiltroIdMorfologia(int filtroIdMorfologia) {
+        this.filtroIdMorfologia = filtroIdMorfologia;
+    }
+
+    public int getFiltroIdElementoUfpr() {
+        return filtroIdElementoUfpr;
+    }
+
+    public void setFiltroIdElementoUfpr(int filtroIdElementoUfpr) {
+        this.filtroIdElementoUfpr = filtroIdElementoUfpr;
+    }
+
+    public int getFiltroIdManifestacaoUfpr() {
+        return filtroIdManifestacaoUfpr;
+    }
+
+    public void setFiltroIdManifestacaoUfpr(int filtroIdManifestacaoUfpr) {
+        this.filtroIdManifestacaoUfpr = filtroIdManifestacaoUfpr;
+    }
+
+    public int getTab() {
+        return tab;
+    }
+
+    public void setTab(int tab) {
+        this.tab = tab;
+    }
+    // </editor-fold>
 }

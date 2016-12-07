@@ -21,7 +21,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -125,7 +128,7 @@ public class SimulacaoDAO {
     private ArrayList<Ranking> buscarRankings(int idSimulacao) throws SQLException {
         String query = "select R.ID_RANKING, R.ID_PONTE, P.ID_IDENTIFICACAO_OBRA_DADOS_BASICOS, "
                 + "DB.CD_CODIGO, DB.DS_IDENTIFICACAO, P.ID_IDENTIFICACAO_OBRA_LOCALIZACAO, "
-                + "L.ID_UF, U.SG_UF, L.ID_VIA, V.DS_VIA, L.DS_LOCAL_VIA, L.DS_LATITUDE_GRAU, "
+                + "L.ID_UF, U.SG_UF, L.ID_VIA, V.DS_VIA, L.NR_LOCAL_VIA, L.DS_LATITUDE_GRAU, "
                 + "L.DS_LATITUDE_MINUTO, L.DS_LONGITUDE_GRAU, L.DS_LONGITUDE_MINUTO, "
                 + "P.DS_INDICE_PERFORMANCE_RELATIVO, "
                 + "(select max(DT_DATA) from INSPECAO, PONTE P2 where P2.ID_PONTE = INSPECAO.ID_PONTE and P2.ID_PONTE = P.ID_PONTE) as DATA "
@@ -158,7 +161,7 @@ public class SimulacaoDAO {
             dadosBasicos.setIdentificacao(rs.getString("DS_IDENTIFICACAO"));
             localizacao.setUf(new Uf(rs.getInt("ID_UF"), null, rs.getString("SG_UF")));
             localizacao.setVia(new Via(rs.getInt("ID_VIA"), rs.getString("DS_VIA")));
-            localizacao.setLocalVia(rs.getDouble("DS_LOCAL_VIA"));
+            localizacao.setLocalVia(rs.getDouble("NR_LOCAL_VIA"));
             localizacao.setLatitudeGrau(rs.getString("DS_LATITUDE_GRAU"));
             localizacao.setLatitudeMinuto(rs.getString("DS_LATITUDE_MINUTO"));
             localizacao.setLongitudeGrau(rs.getString("DS_LONGITUDE_GRAU"));
@@ -172,7 +175,8 @@ public class SimulacaoDAO {
             ponte.setDataUltimaInspecao(rs.getDate("DATA"));
             ArquivoAnexoDAO dbArquivoAnexo = new ArquivoAnexoDAO();
             ponte.setArquivosAnexosCadastro(dbArquivoAnexo.buscarCadastros(rs.getInt("ID_PONTE")));
-
+            
+            
             Ranking ranking = new Ranking(rs.getInt("ID_RANKING"), ponte);
             rankings.add(ranking);
         }
@@ -181,8 +185,8 @@ public class SimulacaoDAO {
         return rankings;
     }
     
-    public void excluirRanking(int id) throws SQLException {
-        String query = "delete from RANKING where ID_RANKING = " + id;
+    public void excluirRanking(int idRanking) throws SQLException {
+        String query = "delete from RANKING where ID_RANKING = " + idRanking;
 
         Conexao conexao = new Conexao();
         Connection conn = conexao.getConnection();
@@ -190,6 +194,19 @@ public class SimulacaoDAO {
         Statement stmt;
         stmt = conn.createStatement();
         stmt.execute(query);
+    }
+    
+    public void atualizaDataSimulacao(int idSimulacao) throws SQLException {     
+        Date dataAtual = new Date();
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate = df.format(dataAtual);
+        String query = "update SIMULACAO set DT_DATA = '" + strDate + "' where ID_SIMULACAO = " + idSimulacao;
+        
+        Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+        Statement stmt;
+        stmt = conn.createStatement();
+        stmt.executeUpdate(query);
     }
     
     public int buscarIndicePerformanceRelativo(int idSimulacao) throws SQLException {

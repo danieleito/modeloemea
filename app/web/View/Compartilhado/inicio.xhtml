@@ -5,13 +5,12 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-   
+
     <h:body>
         <ui:composition template="/View/Compartilhado/template.xhtml">
             <ui:define name="content">
 
             <h:form id="form">
-
                 <p:menu style="width: 350px; margin: auto;" >
                     <c:choose>
                         <c:when test="${login.usuarioLogado.tipoUsuario.id == 1 || login.usuarioLogado.tipoUsuario.id == 2 }" >
@@ -30,6 +29,13 @@
                         </c:when>
                     </c:choose>  
                 </p:menu>
+              
+<!--                <h3 style="margin-top:0">Client</h3>
+                <p:clock />
+
+                <h3>Server</h3>
+                <p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" />-->
+
             </h:form>
             </ui:define>
         </ui:composition>

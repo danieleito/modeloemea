@@ -5,13 +5,14 @@
  */
 package com.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Daniele Harumi Ito
  */
-public class ArquivoAnexoInspecao {
+public class ArquivoAnexoInspecao implements Serializable {
     /**
      * identificador do ArquivoAnexoCadastro no Banco de Dados
      */
@@ -120,8 +121,8 @@ public class ArquivoAnexoInspecao {
     }
 
     /**
-     * retorna {@link #ponte}
-     * @return {@link #ponte}
+     * retorna {@link #inspecao}
+     * @return {@link #inspecao}
      */
     public Inspecao getInspecao() {
         return inspecao;

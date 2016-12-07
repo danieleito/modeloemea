@@ -27,7 +27,7 @@ public class ElementoUfpr implements Serializable {
     /**
      * capa do elemento da ufpr
      */
-    private String capa1;
+    private double capa1;
 
 
     /**
@@ -43,7 +43,7 @@ public class ElementoUfpr implements Serializable {
      * @param descricao {@link #descricao}
      * @param capa1 {@link #capa1}
      */
-    public ElementoUfpr(int id, String codigo, String descricao, String capa1) {
+    public ElementoUfpr(int id, String codigo, String descricao, double capa1) {
         this.id = id;
         this.codigo = codigo;
         this.descricao = descricao;
@@ -56,7 +56,7 @@ public class ElementoUfpr implements Serializable {
      * @param descricao {@link #descricao}
      * @param capa1 {@link #capa1}
      */
-    public ElementoUfpr(String codigo, String descricao, String capa1) {
+    public ElementoUfpr(String codigo, String descricao, double capa1) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.capa1 = capa1;
@@ -103,11 +103,11 @@ public class ElementoUfpr implements Serializable {
      * retorna {@link #capa}
      * @return {@link #capa}
      */
-    public String getCapa1() {
+    public double getCapa1() {
         return capa1;
     }
 
-    public void setCapa1(String capa1) {
+    public void setCapa1(double capa1) {
         this.capa1 = capa1;
     }
     

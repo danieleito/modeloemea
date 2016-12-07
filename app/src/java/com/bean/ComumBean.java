@@ -10,6 +10,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
@@ -28,7 +32,7 @@ import org.primefaces.model.StreamedContent;
 @ManagedBean(name = "comumbean")
 @SessionScoped
 public class ComumBean {
-    
+
     public static Usuario usuarioLogado;
 
     protected void redirecionar(String url) {
@@ -41,34 +45,32 @@ public class ComumBean {
             Logger.getLogger(ComumBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     protected void erro(String exception) {
         //montra o treco e coloca a mensagem dentro
         redirecionar("erro.jsf");
     }
-    
+
     protected void adicionarMensagemInfo(String mensagem) {
         adicionarMensagem(FacesMessage.SEVERITY_INFO, "Aviso", mensagem);
     }
-    
+
     protected void adicionarMensagemWarning(String mensagem) {
         adicionarMensagem(FacesMessage.SEVERITY_WARN, "Aviso", mensagem);
     }
-    
+
     protected void adicionarMensagemErro(String mensagem) {
         adicionarMensagem(FacesMessage.SEVERITY_ERROR, "Erro", mensagem);
     }
-    
+
     protected void adicionarMensagemFatal(String mensagem) {
         adicionarMensagem(FacesMessage.SEVERITY_FATAL, "Erro", mensagem);
     }
-    
+
     private void adicionarMensagem(FacesMessage.Severity severity, String titulo, String mensagem) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, titulo, mensagem));
     }
-    
-    
-    
+
     public StreamedContent getImage() throws FileNotFoundException {
        FacesContext context = FacesContext.getCurrentInstance();
 
@@ -80,27 +82,14 @@ public class ComumBean {
            // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
            String filename = context.getExternalContext().getRequestParameterMap().get("filename");
            String tipoImagem = context.getExternalContext().getRequestParameterMap().get("tipoimagem");
-           
+
            File imagens_dir = new File(System.getProperty("jboss.server.data.dir")+File.separatorChar+ "imagens");
-//           File imagens_dir = new File("C:\\wildfly-10.0.0.CR4\\Imagens");
            StreamedContent sc = new DefaultStreamedContent(new FileInputStream(new File(imagens_dir, filename)), tipoImagem, filename);
-           
+
            return sc;
        }
-       
-       
-       
-//        else {
-//           // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
-//           String filename = context.getExternalContext().getRequestParameterMap().get("filename");
-//           StreamedContent sc = new DefaultStreamedContent(new FileInputStream(new File("C:\\wildfly-10.0.0.CR4\\Imagens", filename)));
-//           StreamedContent sc = new DefaultStreamedContent(new FileInputStream(new File("C:\\Users\\Usuario\\Desktop\\Pasta Compartilhada na Rede\\03. Pastas pessoais\\Daniele\\wildfly-10.0.0.CR4\\wildfly-10.0.0.CR4\\Imagens", filename)));
-//           return sc;
-//       }
     }
-    
-    
-    
+
     public StreamedContent getImage(String filename, String tipoImagem) throws FileNotFoundException {
        FacesContext context = FacesContext.getCurrentInstance();
 
@@ -110,8 +99,7 @@ public class ComumBean {
        }
        else {
            // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
-           File imagens_dir = new File(System.getProperty("jboss.server.data.dir")+File.separatorChar+ "imagens");
-//           File imagens_dir = new File("C:\\wildfly-10.0.0.CR4\\Imagens");
+           File imagens_dir = new File(System.getProperty("jboss.server.data.dir") + File.separatorChar + "imagens");
            StreamedContent sc = new DefaultStreamedContent(new FileInputStream(new File(imagens_dir, filename)), tipoImagem, filename);
            return sc;
        }
@@ -120,14 +108,39 @@ public class ComumBean {
     public char getFileSeparator() {
         return File.separatorChar;
     }
-    
+
     protected String getImagePath(String imageName) {
         return FacesContext
                 .getCurrentInstance()
                 .getExternalContext()
                 .getRequestContextPath() + "/resources/images/" + imageName;
     }
+
+    public String dateToString(Date date, String format) {
+        DateFormat df = new SimpleDateFormat(format);
+        String strDate = df.format(date);
+        return strDate;
+    }
+
+    public String getMensagemTabelaVazia() { 
+        return "Nenhum registro cadastrado.";
+    }
     
+    public String getFileManager(String action, String nomeArquivo) {
+        ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+        //return "/FileManager?action=getPdf&amp;nomePdf=" + nomePdf;
+        if (action.equalsIgnoreCase("getPdf")) {
+            return context.getRequestContextPath() + "/FileManager?action=getPdf&nomePdf=" + nomeArquivo;
+        } else {
+            return context.getRequestContextPath() + "/FileManager?action=getImage&nomeImagem=" + nomeArquivo;
+        }
+    }
+    
+    public String getValorFormatado(double valor) {
+        DecimalFormat df = new DecimalFormat("#0.00");
+        return df.format(valor);
+    }
+
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Usuario getUsuarioLogado() {
         return usuarioLogado;

@@ -171,12 +171,12 @@ create table IDENTIFICACAO_OBRA_DADOS_BASICOS
 		CD_CODIGO								varchar(20),
 		CD_CODIGO_INTEGRACAO					varchar(20),
 		DS_STATUS								varchar(20),
-		DS_IDENTIFICACAO						varchar(50)												not null,
+		DS_IDENTIFICACAO						varchar(100)												not null,
 		ID_NATUREZA_TRANSPOSICAO				int,	
 		ID_TIPO_ESTRUTURA						int,
 		ID_SISTEMA_CONSTRUTIVO					int,
-		DS_COMPRIMENTO							varchar(20)												not null,
-		DS_LARGURA								varchar(20)												not null,
+		NR_COMPRIMENTO							real													not null,
+		NR_LARGURA								real													not null,
 		ID_TREM_TIPO							int,
 		DS_ANO_CONSTRUCAO						varchar(20),
 		CONSTRAINT								pk_identificacaoobradadosbasicos						PRIMARY KEY(ID_IDENTIFICACAO_OBRA_DADOS_BASICOS),
@@ -192,7 +192,7 @@ create table IDENTIFICACAO_OBRA_LOCALIZACAO
 		ID_IDENTIFICACAO_OBRA_LOCALIZACAO		int										not null identity(1,1),
 		ID_UF									int										not null,
 		ID_VIA									int										not null,
-		DS_LOCAL_VIA							real,
+		NR_LOCAL_VIA							real,
 		DS_CIDADE_MAIS_PROXIMA					varchar(40)								not null,
 		DS_PNV_ANO								varchar(20)								not null,
 		DS_PNV_VERSAO							varchar(20)								not null,
@@ -272,13 +272,7 @@ create table CARACTERISTICAS_FUNCIONAIS_DIMENSOES
 
 ---------------------------------------------------------------------------
 
--- foto
-create table FOTO
-	(
-		ID_FOTO			int				not null identity(1,1),
-		DS_FOTO			varchar(30)		not null,
-		CONSTRAINT		pk_foto			PRIMARY KEY(ID_FOTO)
-	);
+
 
 --extensao relativa retirar
 --create table EXTENSAO_RELATIVA
@@ -296,13 +290,6 @@ create table FOTO
 --		CONSTRAINT		pk_reparo		PRIMARY KEY(ID_REPARO)
 --	);
 
---numero
-create table NUMERO
-	(
-		ID_NUMERO		int				not null identity(1,1),
-		DS_NUMERO		varchar(10)		not null,
-		CONSTRAINT		pk_numero		PRIMARY KEY(ID_NUMERO)
-	);
 
 ---------------------------------------------------------------------------
 
@@ -348,7 +335,7 @@ create table MANIFESTACOES_EXTENSAO
 		ID_MANIFESTACOES_EXTENSAO						int							not null identity(1,1),
 		DS_MANIFESTACOES_EXTENSAO						varchar(80),
 		DS_CRITERIO_MANIFESTACOES_EXTENSAO				varchar(200),
-		DS_CAPA2										varchar(10),
+		NR_CAPA2										real,
 
 		CONSTRAINT						pk_manifestacoesextensao		PRIMARY KEY(ID_MANIFESTACOES_EXTENSAO)
 	);
@@ -361,7 +348,7 @@ create table MANIFESTACOES_URGENCIA
 		ID_MANIFESTACOES_URGENCIA						int							not null identity(1,1),
 		DS_MANIFESTACOES_URGENCIA						varchar(80),
 		DS_CRITERIO_MANIFESTACOES_URGENCIA				varchar(200),
-		DS_CAPA4										varchar(10),
+		NR_CAPA4										real,
 
 		CONSTRAINT						pk_manifestacoesurgencia		PRIMARY KEY(ID_MANIFESTACOES_URGENCIA)
 	);
@@ -374,7 +361,7 @@ create table MANIFESTACOES_REPETICAO
 		ID_MANIFESTACOES_REPETICAO						int							not null identity(1,1),
 		DS_CRITERIO_MANIFESTACOES_REPETICAO				varchar(200),
 		DS_LIMITESUPERIOR								varchar(10),
-		DS_CAPA3										varchar(10),
+		NR_CAPA3										real,
 
 		CONSTRAINT						pk_manifestacoesrepeticao		PRIMARY KEY(ID_MANIFESTACOES_REPETICAO)
 	);
@@ -410,7 +397,7 @@ create table ELEMENTO_UFPR
 		ID_ELEMENTO_UFPR		int						not null identity(1,1),
 		CD_ELEMENTO				int,
 		DS_ELEMENTO				varchar(100),
-		DS_CAPA1				varchar(10)				not null,
+		NR_CAPA1				real					not null,
 		CONSTRAINT				pk_elementoufpr		PRIMARY KEY(ID_ELEMENTO_UFPR)
 	);
 
@@ -421,7 +408,7 @@ create table MANIFESTACAO_UFPR
 		CD_MANIFESTACAO_UFPR						int,
 		DS_MANIFESTACAO_UFPR						varchar(100),
 		DS_UNIDADE									varchar(10),
-		DS_BETA										varchar(10),
+		NR_BETA										real,
 
 		CONSTRAINT									pk_manifestacaoufpr				PRIMARY KEY(ID_MANIFESTACAO_UFPR)
 	);
@@ -620,10 +607,10 @@ create table ARQUIVO_ANEXO_CADASTRO
 	(
 		ID_ARQUIVO_ANEXO_CADASTRO		int								not null identity(1,1),
 		ID_PONTE						int								not null,
-		DS_ARQUIVO						varchar(20)						not null,
-		DS_TIPO_ARQUIVO					varchar(10)						not null,
-		NR_NUMERO						varchar(3)						not null,
-		DS_DESCRICAO					varchar(20)						not null,
+		DS_ARQUIVO						varchar(100)					not null,
+		DS_TIPO_ARQUIVO					varchar(20)						not null,
+		NR_NUMERO						varchar(10)						not null,
+		DS_DESCRICAO					varchar(100)					not null,
 		DS_REGISTRO						varchar(10)						not null,
 		DT_DATA_ANEXACAO				date							not null,
 		ID_IMAGEM						int,					
@@ -637,10 +624,10 @@ create table ARQUIVO_ANEXO_INSPECAO
 	(
 		ID_ARQUIVO_ANEXO_INSPECAO		int				not null identity(1,1),
 		ID_INSPECAO						int				not null,
-		DS_ARQUIVO						varchar(20)		not null,
-		DS_TIPO_ARQUIVO					varchar(10)		not null,
-		NR_NUMERO						varchar(3)		not null,
-		DS_DESCRICAO					varchar(20)		not null,
+		DS_ARQUIVO						varchar(100)	not null,
+		DS_TIPO_ARQUIVO					varchar(20)		not null,
+		NR_NUMERO						varchar(10)		not null,
+		DS_DESCRICAO					varchar(100)	not null,
 		DS_REGISTRO						varchar(10)		not null,
 		DT_DATA_ANEXACAO				date			not null,
 		--DS_MINIATURA
@@ -649,6 +636,21 @@ create table ARQUIVO_ANEXO_INSPECAO
 		CONSTRAINT						fk_arquivoanexoinspecao_inspecao	FOREIGN KEY(ID_INSPECAO) REFERENCES INSPECAO(ID_INSPECAO),
 		CONSTRAINT						fk_arquivoanexoinspecao_imagem		FOREIGN KEY(ID_IMAGEM) REFERENCES IMAGEM(ID_IMAGEM)
 	);
+
+--Arquivos anexos manifestacao
+--create table ARQUIVO_ANEXO_MANIFESTACAO
+--	(
+--		ID_ARQUIVO_ANEXO_MANIFESTACAO	int				not null identity(1,1),
+		
+--		DS_TIPO_ARQUIVO					varchar(10)		not null,
+--		NR_NUMERO						varchar(3)		not null,
+--		DS_DESCRICAO					varchar(50)		not null,
+--		DS_REGISTRO						varchar(10)		not null,
+--		DT_DATA_ANEXACAO				date			not null,
+--		ID_IMAGEM						int				not null,
+--		CONSTRAINT						pk_arquivoanexomanifestacao			PRIMARY KEY(ID_ARQUIVO_ANEXO_MANIFESTACAO),
+--		CONSTRAINT						fk_arquivoanexomanifestacao_imagem	FOREIGN KEY(ID_IMAGEM) REFERENCES IMAGEM(ID_IMAGEM)
+--	);
 
 ---------------------------------------------------------------------------
 
@@ -664,14 +666,16 @@ create table ARQUIVO_ANEXO_INSPECAO
 create table DADOS_MANIFESTACAO
 	(
 		ID_DADOS_MANIFESTACAO			int												not null identity(1,1),
-		DS_FOTO							varchar(10),
 		DS_TAMANHO						varchar(10),
 		DS_NUMERO						varchar(20),
 		ID_MANIFESTACOES_EXTENSAO		int,
 		ID_MANIFESTACOES_URGENCIA		int,
+		ID_ARQUIVO_ANEXO_INSPECAO		int,
+		DS_VALOR_DANO					real,
 		CONSTRAINT						pk_dadosmanifestacao							PRIMARY KEY(ID_DADOS_MANIFESTACAO),
-		CONSTRAINT						fk_dadosmanifestacao_manifestacoes_extensao		FOREIGN KEY(ID_MANIFESTACOES_EXTENSAO) REFERENCES MANIFESTACOES_EXTENSAO(ID_MANIFESTACOES_EXTENSAO),
-		CONSTRAINT						fk_dadosmanifestacao_manifestacoes_urgencia		FOREIGN KEY(ID_MANIFESTACOES_URGENCIA) REFERENCES MANIFESTACOES_URGENCIA(ID_MANIFESTACOES_URGENCIA)
+		CONSTRAINT						fk_dadosmanifestacao_manifestacoesextensao		FOREIGN KEY(ID_MANIFESTACOES_EXTENSAO) REFERENCES MANIFESTACOES_EXTENSAO(ID_MANIFESTACOES_EXTENSAO),
+		CONSTRAINT						fk_dadosmanifestacao_manifestacoesurgencia		FOREIGN KEY(ID_MANIFESTACOES_URGENCIA) REFERENCES MANIFESTACOES_URGENCIA(ID_MANIFESTACOES_URGENCIA),
+		CONSTRAINT						fk_dadosmanifestacao_arquivoanexoinspecao		FOREIGN KEY(ID_ARQUIVO_ANEXO_INSPECAO) REFERENCES ARQUIVO_ANEXO_INSPECAO(ID_ARQUIVO_ANEXO_INSPECAO)
 	);
 
 create table ELEMENTO_UFPR_MANIFESTACAO_UFPR
@@ -732,3 +736,18 @@ create table INSUFICIENCIAS_ESTRUTURAIS_ELEMENTOS_SGO
 	);
 
 ---------------------------------------------------------------------------
+--numero
+create table NUMERO
+	(
+		ID_NUMERO		int				not null identity(1,1),
+		DS_NUMERO		varchar(10)		not null,
+		CONSTRAINT		pk_numero		PRIMARY KEY(ID_NUMERO)
+	);
+
+-- foto
+create table FOTO
+	(
+		ID_FOTO			int				not null identity(1,1),
+		DS_FOTO			varchar(30)		not null,
+		CONSTRAINT		pk_foto			PRIMARY KEY(ID_FOTO)
+	);

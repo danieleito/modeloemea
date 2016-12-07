@@ -203,50 +203,50 @@ insert into TIPO_ADMINISTRACAO	 (DS_TIPO_ADMINISTRACAO) values ('Administração
 
 --------------------------------CADASTRO-----------------------------------
 
-insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, DS_COMPRIMENTO, DS_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
-values ('01', '11', '55', 'Ponte 01', 1, 1, 3, '01', '01', 1, '01');
-insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, DS_COMPRIMENTO, DS_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
-values ('02', '22', '66', 'Ponte 02', 2, 3, 2, '00', '00', 2, '00');
-insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, DS_COMPRIMENTO, DS_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
-values ('03', '33', '77', 'Ponte 03', 3, 2, 5, '00', '00', 3, '00');
-insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, DS_COMPRIMENTO, DS_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
-values ('04', '44', '88', 'Ponte 04', 4, 5, 3, '00', '00', 2, '00');
-insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, DS_COMPRIMENTO, DS_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
-values ('05', '55', '99', 'Ponte 05', 5, 4, 1, '00', '00', 4, '00');
-insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, DS_COMPRIMENTO, DS_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
-values ('06', '66', '11', 'Ponte 06', 1, 6, 10, '06', '06', 1, '06');
-insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, DS_COMPRIMENTO, DS_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
-values ('07', '77', '22', 'Ponte 07', 2, 7, 6, '07', '07', 2, '00');
-insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, DS_COMPRIMENTO, DS_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
-values ('08', '88', '33', 'Ponte 08', 3, 8, 9, '08', '08', 3, '00');
-insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, DS_COMPRIMENTO, DS_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
-values ('09', '99', '44', 'Ponte 09', 4, 9, 7, '09', '09', 2, '00');
-insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, DS_COMPRIMENTO, DS_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
-values ('10', '10', '10', 'Ponte 10', 5, 10, 8, '10', '10', 4, '00');
-insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, DS_COMPRIMENTO, DS_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
-values ('11', '11', '11', 'Ponte 11', 5, 10, 8, '11', '11', 4, '00');
+insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, NR_COMPRIMENTO, NR_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
+values ('01', '11', '55', 'Ponte 01', 1, 1, 3, 10.8, 10.1, 1, '01');
+insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, NR_COMPRIMENTO, NR_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
+values ('02', '22', '66', 'Ponte 02', 2, 3, 2, 10.2, 10.2, 2, '00');
+insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, NR_COMPRIMENTO, NR_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
+values ('03', '33', '77', 'Ponte 03', 3, 2, 5, 10.3, 10.3, 3, '00');
+insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, NR_COMPRIMENTO, NR_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
+values ('04', '44', '88', 'Ponte 04', 4, 5, 3, 110.4, 110.4, 2, '00');
+insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, NR_COMPRIMENTO, NR_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
+values ('05', '55', '99', 'Ponte 05', 5, 4, 1, 10.5, 10.5, 4, '00');
+insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, NR_COMPRIMENTO, NR_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
+values ('06', '66', '11', 'Ponte 06', 1, 6, 10, 110.6, 110.6, 1, '06');
+insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, NR_COMPRIMENTO, NR_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
+values ('07', '77', '22', 'Ponte 07', 2, 7, 6, 110.7, 110.7, 2, '00');
+insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, NR_COMPRIMENTO, NR_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
+values ('08', '88', '33', 'Ponte 08', 3, 8, 9, 10.1, 10.1, 3, '00');
+insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, NR_COMPRIMENTO, NR_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
+values ('09', '99', '44', 'Ponte 09', 4, 9, 7, 110.2, 10.2, 2, '00');
+insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, NR_COMPRIMENTO, NR_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
+values ('10', '10', '10', 'Ponte 10', 5, 10, 8, 10.3, 10.3, 4, '00');
+insert into IDENTIFICACAO_OBRA_DADOS_BASICOS (CD_CODIGO, CD_CODIGO_INTEGRACAO, DS_STATUS, DS_IDENTIFICACAO, ID_NATUREZA_TRANSPOSICAO, ID_TIPO_ESTRUTURA, ID_SISTEMA_CONSTRUTIVO, NR_COMPRIMENTO, NR_LARGURA, ID_TREM_TIPO, DS_ANO_CONSTRUCAO) 
+values ('11', '11', '11', 'Ponte 11', 5, 10, 8, 0.4, 0.4, 4, '00');
 
-insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, DS_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
+insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, NR_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
 values (16, 3, 10.5, '00', '00', '00', '00', '00', '25', '33.347', '49', '20.542');
-insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, DS_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
+insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, NR_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
 values (16, 3, 66.4, '00', '00', '00', '00', '00', '23', '29.985', '50', '6.535');
-insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, DS_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
+insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, NR_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
 values (24, 1, 304.1, '00', '00', '00', '00', '00', '28', '30.426', '49', '02.980');
-insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, DS_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
+insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, NR_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
 values (16, 3, 308.5, '00', '00', '00', '00', '00', '25', '16.693', '50', '38.373');
-insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, DS_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
+insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, NR_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
 values (24, 9, 128.3, '00', '00', '00', '00', '00', '27', '48.231', '49', '29.434000');
-insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, DS_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
+insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, NR_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
 values (16, 3, 351, '00', '00', '00', '00', '00', '25', '37.242', '50', '42.374');
-insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, DS_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
+insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, NR_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
 values (16, 3, 428.1, '00', '00', '00', '00', '00', '26', '10.899', '50', '55.565');
-insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, DS_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
+insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, NR_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
 values (24, 1, 391, '00', '00', '00', '00', '00', '28', '48.066', '49', '21.867');
-insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, DS_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
+insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, NR_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
 values (16, 3, 145.5, '00', '00', '00', '00', '00', '24', '7.678', '50', '14.180');
-insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, DS_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
+insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, NR_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
 values (24, 1, 408.6, '00', '00', '00', '00', '00', '28', '54.887', '49', '29.187');
-insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, DS_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
+insert into IDENTIFICACAO_OBRA_LOCALIZACAO (ID_UF, ID_VIA, NR_LOCAL_VIA, DS_CIDADE_MAIS_PROXIMA, DS_PNV_ANO, DS_PNV_VERSAO, DS_PNV_CODIGO, DS_PNV_ALTITUDE, DS_LATITUDE_GRAU, DS_LATITUDE_MINUTO, DS_LONGITUDE_GRAU, DS_LONGITUDE_MINUTO) 
 values (24, 1, 454.9, '00', '00', '00', '00', '00', '29', '12.841', '49', '45.502');
 
 insert into IDENTIFICACAO_OBRA_RESPONSAVEIS (ID_UNIDADE_LOCAL, ID_TIPO_ADMINISTRACAO, DS_ADMINISTRADOR, DS_PROJETISTA_ORIGEM, DS_PROJETISTA_PROJETISTA, DS_CONSTRUTOR_ORIGEM, DS_CONSTRUTOR_CONSTRUTOR, DS_LOCALIZACAO_PROJETO, DS_LOCALIZACAO_DOCUMENTOS_CONSTRUCAO, DS_LOCALIZACAO_DOCUMENTOS_DIVERSOS) 
@@ -288,10 +288,11 @@ insert into IDENTIFICACAO_OBRA_INSPECAO (DS_PERIODO, DS_EQUIPAMENTO_NECESSARIO, 
 
 insert into CARACTERISTICAS_FUNCIONAIS_CARACTERISTICAS (ID_TIPO_REGIAO, ID_TIPO_TRACADO, DS_RAMPA_MAXIMA, DS_RAIO_CURVA, DS_VMD) values (1, 1, '00', '0', '00');
 
-insert into CARACTERISTICAS_FUNCIONAIS_DIMENSOES (DS_NUMERO_FAIXAS, DS_LARGURA_FAIXA, DS_LARGURA_TOTAL_PISTA, DS_NUMERO_VAOS, DS_DESCRICAO_VAOS) 
-values ('00', '00', '00', '00', '00');
+insert into CARACTERISTICAS_FUNCIONAIS_DIMENSOES (DS_NUMERO_FAIXAS, DS_LARGURA_FAIXA, DS_ACOSTAMENTO_DIREITO, DS_ACOSTAMENTO_ESQUERDO, DS_CALCADA_DIREITA, DS_CALCADA_ESQUERDA, 
+DS_LARGURA_TOTAL_PISTA, DS_GABARITO_HORIZONTAL, DS_GABARITO_VERTICAL, DS_NUMERO_VAOS, DS_DESCRICAO_VAOS) 
+values ('NF 10', 'LF 20', 'AD 30', 'AE 40', 'CD 50', 'CE 60', 'LTP 70', 'GH 80', 'GV 90', 'NV 10', 'DV 20');
 
----------------------------------------------------------------------------
+--------------------------------------------------------------------------- 
 
 insert into FOTO (DS_FOTO) values ('foto');
 
@@ -310,25 +311,25 @@ insert into OBSERVACOES (DS_IDENTIFICACAO, DS_OBSERVACOES) values ('00', '00');
 
 ---------------------------------------------------------------------------
 
-insert into MANIFESTACOES_EXTENSAO (DS_MANIFESTACOES_EXTENSAO, DS_CRITERIO_MANIFESTACOES_EXTENSAO,DS_CAPA2) values ('Insignificante','Dano irrelevante','0');
-insert into MANIFESTACOES_EXTENSAO (DS_MANIFESTACOES_EXTENSAO, DS_CRITERIO_MANIFESTACOES_EXTENSAO,DS_CAPA2) values ('Pequena','Dano de tamanho pequeno, em menos de 10% da área','0,5');
-insert into MANIFESTACOES_EXTENSAO (DS_MANIFESTACOES_EXTENSAO, DS_CRITERIO_MANIFESTACOES_EXTENSAO,DS_CAPA2) values ('Média ','Dano de tamanho médio, confinado em uma área pequena 10% a 25% da área total do elemento','1');
-insert into MANIFESTACOES_EXTENSAO (DS_MANIFESTACOES_EXTENSAO, DS_CRITERIO_MANIFESTACOES_EXTENSAO,DS_CAPA2) values ('Grande','Dano em área grande de 25% a 75%, ou em muitos lugares de um elemento estrutural','1,5');
-insert into MANIFESTACOES_EXTENSAO (DS_MANIFESTACOES_EXTENSAO, DS_CRITERIO_MANIFESTACOES_EXTENSAO,DS_CAPA2) values ('Imensa','Danos muito grandes na maior parte da área de um elemento, mais de 75%','2');
+insert into MANIFESTACOES_EXTENSAO (DS_MANIFESTACOES_EXTENSAO, DS_CRITERIO_MANIFESTACOES_EXTENSAO, NR_CAPA2) values ('Insignificante','Dano irrelevante', 0);
+insert into MANIFESTACOES_EXTENSAO (DS_MANIFESTACOES_EXTENSAO, DS_CRITERIO_MANIFESTACOES_EXTENSAO, NR_CAPA2) values ('Pequena','Dano de tamanho pequeno, em menos de 10% da área', 0.5);
+insert into MANIFESTACOES_EXTENSAO (DS_MANIFESTACOES_EXTENSAO, DS_CRITERIO_MANIFESTACOES_EXTENSAO, NR_CAPA2) values ('Média ','Dano de tamanho médio, confinado em uma área pequena 10% a 25% da área total do elemento', 1);
+insert into MANIFESTACOES_EXTENSAO (DS_MANIFESTACOES_EXTENSAO, DS_CRITERIO_MANIFESTACOES_EXTENSAO, NR_CAPA2) values ('Grande','Dano em área grande de 25% a 75%, ou em muitos lugares de um elemento estrutural', 1.5);
+insert into MANIFESTACOES_EXTENSAO (DS_MANIFESTACOES_EXTENSAO, DS_CRITERIO_MANIFESTACOES_EXTENSAO, NR_CAPA2) values ('Imensa','Danos muito grandes na maior parte da área de um elemento, mais de 75%', 2);
 
 ---------------------------------------------------------------------------
 
-insert into MANIFESTACOES_URGENCIA (DS_MANIFESTACOES_URGENCIA, DS_CRITERIO_MANIFESTACOES_URGENCIA,DS_CAPA4) values ('Não urgente','Intervenção não é urgente pois o dano não interfere na utilização e capacidade da ponte, e também não altera a sua durabilidade','1');
-insert into MANIFESTACOES_URGENCIA (DS_MANIFESTACOES_URGENCIA, DS_CRITERIO_MANIFESTACOES_URGENCIA,DS_CAPA4) values ('Dano à reparar','Dano deve ser reparado em período não maior que 5 anos, para garantir a servicibilidade e não comprometer a durabilidade da OAE','2,5');
-insert into MANIFESTACOES_URGENCIA (DS_MANIFESTACOES_URGENCIA, DS_CRITERIO_MANIFESTACOES_URGENCIA,DS_CAPA4) values ('Reparo imediato','Reparo imediato, pois o dano já está comprometendo a utilização da OAE, com risco ás pessoas','4');
-insert into MANIFESTACOES_URGENCIA (DS_MANIFESTACOES_URGENCIA, DS_CRITERIO_MANIFESTACOES_URGENCIA,DS_CAPA4) values ('Limitação de carga','Limitação de carga, interrupção de tráfego e escoramento imediato deve ser feito, além do reparo','5');
+insert into MANIFESTACOES_URGENCIA (DS_MANIFESTACOES_URGENCIA, DS_CRITERIO_MANIFESTACOES_URGENCIA, NR_CAPA4) values ('Não urgente','Intervenção não é urgente pois o dano não interfere na utilização e capacidade da ponte, e também não altera a sua durabilidade', 1);
+insert into MANIFESTACOES_URGENCIA (DS_MANIFESTACOES_URGENCIA, DS_CRITERIO_MANIFESTACOES_URGENCIA, NR_CAPA4) values ('Dano à reparar','Dano deve ser reparado em período não maior que 5 anos, para garantir a servicibilidade e não comprometer a durabilidade da OAE', 2.5);
+insert into MANIFESTACOES_URGENCIA (DS_MANIFESTACOES_URGENCIA, DS_CRITERIO_MANIFESTACOES_URGENCIA, NR_CAPA4) values ('Reparo imediato','Reparo imediato, pois o dano já está comprometendo a utilização da OAE, com risco ás pessoas', 4);
+insert into MANIFESTACOES_URGENCIA (DS_MANIFESTACOES_URGENCIA, DS_CRITERIO_MANIFESTACOES_URGENCIA, NR_CAPA4) values ('Limitação de carga','Limitação de carga, interrupção de tráfego e escoramento imediato deve ser feito, além do reparo', 5);
 
 ---------------------------------------------------------------------------
 
-insert into MANIFESTACOES_REPETICAO (DS_CRITERIO_MANIFESTACOES_REPETICAO, DS_LIMITESUPERIOR, DS_CAPA3) values ('Dano é aparece em menos de 10% dos elementos estruturais da OAE','0,1','0,5');
-insert into MANIFESTACOES_REPETICAO (DS_CRITERIO_MANIFESTACOES_REPETICAO, DS_LIMITESUPERIOR, DS_CAPA3) values ('Dano aparece entre 10% e 25% dos elementos estruturais da OAE','0,25','1');
-insert into MANIFESTACOES_REPETICAO (DS_CRITERIO_MANIFESTACOES_REPETICAO, DS_LIMITESUPERIOR, DS_CAPA3) values ('Dano aparece entre 25% e 75% dos elementos estruturais da OAE','0,75','1,5');
-insert into MANIFESTACOES_REPETICAO (DS_CRITERIO_MANIFESTACOES_REPETICAO, DS_LIMITESUPERIOR, DS_CAPA3) values ('Dano aparece entre 75% e 100% dos elementos estruturais da OAE','1','2');
+insert into MANIFESTACOES_REPETICAO (DS_CRITERIO_MANIFESTACOES_REPETICAO, DS_LIMITESUPERIOR, NR_CAPA3) values ('Dano é aparece em menos de 10% dos elementos estruturais da OAE','0,1', 0.5);
+insert into MANIFESTACOES_REPETICAO (DS_CRITERIO_MANIFESTACOES_REPETICAO, DS_LIMITESUPERIOR, NR_CAPA3) values ('Dano aparece entre 10% e 25% dos elementos estruturais da OAE','0,25', 1);
+insert into MANIFESTACOES_REPETICAO (DS_CRITERIO_MANIFESTACOES_REPETICAO, DS_LIMITESUPERIOR, NR_CAPA3) values ('Dano aparece entre 25% e 75% dos elementos estruturais da OAE','0,75', 1.5);
+insert into MANIFESTACOES_REPETICAO (DS_CRITERIO_MANIFESTACOES_REPETICAO, DS_LIMITESUPERIOR, NR_CAPA3) values ('Dano aparece entre 75% e 100% dos elementos estruturais da OAE','1', 2);
 
 ---------------------------------------------------------------------------
 
@@ -361,115 +362,115 @@ insert into DEFICIENCIAS_FUNCIONAIS (CD_DEFICIENCIA_FUNCIONAL,DS_DEFICIENCIA_FUN
 
 ---------------------------------------------------------------------------
 
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '1', 'Laje de concreto armado','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '2', 'Laje de Concreto Protendido','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '3', 'Laje Metálica Ortotrópica','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '4', 'Laje Metálica de Chapa Corrugada','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '7', 'Laje em Pranchão de Madeira','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '5', 'Ponte em Laje de Concreto Armado','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '6', 'Ponte em Laje de Concreto Protendido','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '204', 'Travessa de apoio de concreto armado','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '205', 'Travessa de apoio de concreto protendido','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '104', 'Viga T ou I de concreto armado','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '105', 'Viga T ou I de concreto protendido','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '106', 'Viga I metálica','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '101', 'Viga Caixão de Concreto Armado','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '102', 'Viga Caixão de Concreto Protendido','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '103', 'Viga Caixão Metálica','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '206', 'Viga de contraventamento de pilar de concreto armado','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '109', 'Transversina Portante de Concreto Armado','0,3');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '110', 'Transversina Portante de Concreto Protendido','0,3');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '111', 'Transversina Portante Metálica','0,3');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '112', 'Transversina de Ligação de Concreto Armado','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '113', 'Transversina de Ligação de Concreto Protendido','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '114', 'Transversina de Ligação Metálica','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '202', 'Pilar em Colunas de Concreto Armado','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '201', 'Pilar Parede de Concreto Armado','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '203', 'Pilar Vazado de Concreto Armado','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '200', 'Pilar Parede de Alvenaria de Pedra','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '207', 'Parede de contraventamento de pilar de concreto armado','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '301', 'Aparelho de Apoio de Neoprene Fretado','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '302', 'Aparelho de Apoio de Teflon','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '303', 'Aparelho de Apoio de Rolo Metálico','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '304', 'Aparelho de Apoio de Placa de Chumbo','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '305', 'Aparelho de Apoio Pot Bearing Fixo','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '306', 'Aparelho de Apoio Pot Bearing Directional','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '307', 'Aparelho de Apoio Freyssinet','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '308', 'Aparelho de Apoio Pêndulo','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '309', 'Articulação Metálica','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '107', 'Dente Gerber de Concreto Armado','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '108', 'Dente Gerber de concreto armado com protensão','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '118', 'Dente Gerber Metálico','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '252', 'Encontro de alvenaria de pedra','0,1');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '251', 'Encontro - Parede frontal portante de concreto armado','0,1');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '253', 'Encontro - Parede Lateral e Vigas de Concreto Armado','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '256', 'Encontro - Paredes e Vigas Secundárias de Concreto','0,1');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '254', 'Encontro - Laje de Concreto Armado','0,1');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '255', 'Encontro - Cortina de Concreto Armado','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '816', 'Muro de Arrimo de Concreto','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '818', 'Muro de Terra Armada','0,3');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '817', 'Revestimento de talude em concreto','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '504', 'Estaca de Concreto Armado','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '505', 'Estaca Metálica','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '506', 'Estaca de Madeira','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '501', 'Bloco ou Sapata de concreto armado','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '502', 'Tubulão ou estacão de concreto armado','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '503', 'Camisa Metálica de Revestimento para Estaca','0,3');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '813', 'Junta elastomérica de dilatação','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '815', 'Junta metálica de dilatação','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '801', 'Pavimento Asfáltico','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '802', 'Pavimento de Concreto','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '808', 'Calçada para pedestres de concreto armado','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '809', 'Calçada para pedestres metálica','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '803', 'Barreira new jersey','0,1');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '805', 'Guarda rodas qualquer','0,1');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '806', 'Guarda Corpo de Concreto Armado','0,1');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '807', 'Guarda Corpo Metálico','0,1');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '703', 'Reforço viga I - Encamisamento de viga','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '704', 'Reforço viga II - Armadura principal passiva','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '705', 'Reforço viga III - Cabo de protensão externo','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '706', 'Reforço viga IV - Bloqueio de articulação Gerber','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '701', 'Reforço laje I - Sobrelaje de concreto armado','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '702', 'Reforço de Laje II - Infradorso laje em Concreto Armado','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '707', 'Reforço de pilar - Encamisamento de pilar','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '708', 'Reforço estaca - Encamisamento de trecho livre','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '811', 'Aterro de Acesso','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '810', 'Laje de Aproximação','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '601', 'Torre de Concreto Armado para Estaiamento','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '603', 'Ancoragens de estais','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '451', 'Treliça de Concreto Armado','0,5');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '452', 'Treliça Metálica','0,5');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '401', 'Arco de Concreto Armado','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '402', 'Arco de Concreto Protendido','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '403', 'Arco Metálico','0,6');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '806', 'Guarda rodas antigo do DNER','0,1');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '812', 'Berço para junta de dilatação','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '814', 'Junta de dilatação','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '115', 'Cortina de concreto armado','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '116', 'Longarina de enrigecimento de laje','0,4');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '1000', 'Operação','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '1001', 'Drenagem','0,2');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '1002', 'Sinalização','0,1');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '820', 'Defensa Metálica','0,1');
-insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, DS_CAPA1) values ( '819', 'Muro de gabião','0,4');
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '1', 'Laje de concreto armado', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '2', 'Laje de Concreto Protendido', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '3', 'Laje Metálica Ortotrópica', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '4', 'Laje Metálica de Chapa Corrugada', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '7', 'Laje em Pranchão de Madeira', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '5', 'Ponte em Laje de Concreto Armado', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '6', 'Ponte em Laje de Concreto Protendido', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '204', 'Travessa de apoio de concreto armado', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '205', 'Travessa de apoio de concreto protendido', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '104', 'Viga T ou I de concreto armado', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '105', 'Viga T ou I de concreto protendido', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '106', 'Viga I metálica', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '101', 'Viga Caixão de Concreto Armado', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '102', 'Viga Caixão de Concreto Protendido', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '103', 'Viga Caixão Metálica', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '206', 'Viga de contraventamento de pilar de concreto armado', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '109', 'Transversina Portante de Concreto Armado', 0.3);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '110', 'Transversina Portante de Concreto Protendido', 0.3);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '111', 'Transversina Portante Metálica', 0.3);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '112', 'Transversina de Ligação de Concreto Armado', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '113', 'Transversina de Ligação de Concreto Protendido', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '114', 'Transversina de Ligação Metálica', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '202', 'Pilar em Colunas de Concreto Armado', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '201', 'Pilar Parede de Concreto Armado', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '203', 'Pilar Vazado de Concreto Armado', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '200', 'Pilar Parede de Alvenaria de Pedra', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '207', 'Parede de contraventamento de pilar de concreto armado', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '301', 'Aparelho de Apoio de Neoprene Fretado', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '302', 'Aparelho de Apoio de Teflon', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '303', 'Aparelho de Apoio de Rolo Metálico', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '304', 'Aparelho de Apoio de Placa de Chumbo', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '305', 'Aparelho de Apoio Pot Bearing Fixo', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '306', 'Aparelho de Apoio Pot Bearing Directional', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '307', 'Aparelho de Apoio Freyssinet', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '308', 'Aparelho de Apoio Pêndulo', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '309', 'Articulação Metálica', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '107', 'Dente Gerber de Concreto Armado', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '108', 'Dente Gerber de concreto armado com protensão', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '118', 'Dente Gerber Metálico', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '252', 'Encontro de alvenaria de pedra', 0.1);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '251', 'Encontro - Parede frontal portante de concreto armado', 0.1);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '253', 'Encontro - Parede Lateral e Vigas de Concreto Armado', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '256', 'Encontro - Paredes e Vigas Secundárias de Concreto', 0.1);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '254', 'Encontro - Laje de Concreto Armado', 0.1);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '255', 'Encontro - Cortina de Concreto Armado', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '816', 'Muro de Arrimo de Concreto', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '818', 'Muro de Terra Armada', 0.3);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '817', 'Revestimento de talude em concreto', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '504', 'Estaca de Concreto Armado', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '505', 'Estaca Metálica', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '506', 'Estaca de Madeira', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '501', 'Bloco ou Sapata de concreto armado', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '502', 'Tubulão ou estacão de concreto armado', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '503', 'Camisa Metálica de Revestimento para Estaca', 0.3);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '813', 'Junta elastomérica de dilatação', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '815', 'Junta metálica de dilatação', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '801', 'Pavimento Asfáltico', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '802', 'Pavimento de Concreto', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '808', 'Calçada para pedestres de concreto armado', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '809', 'Calçada para pedestres metálica', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '803', 'Barreira new jersey', 0.1);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '805', 'Guarda rodas qualquer', 0.1);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '806', 'Guarda Corpo de Concreto Armado', 0.1);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '807', 'Guarda Corpo Metálico', 0.1);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '703', 'Reforço viga I - Encamisamento de viga', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '704', 'Reforço viga II - Armadura principal passiva', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '705', 'Reforço viga III - Cabo de protensão externo', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '706', 'Reforço viga IV - Bloqueio de articulação Gerber', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '701', 'Reforço laje I - Sobrelaje de concreto armado', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '702', 'Reforço de Laje II - Infradorso laje em Concreto Armado', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '707', 'Reforço de pilar - Encamisamento de pilar', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '708', 'Reforço estaca - Encamisamento de trecho livre', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '811', 'Aterro de Acesso', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '810', 'Laje de Aproximação', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '601', 'Torre de Concreto Armado para Estaiamento', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '603', 'Ancoragens de estais', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '451', 'Treliça de Concreto Armado', 0.5);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '452', 'Treliça Metálica', 0.5);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '401', 'Arco de Concreto Armado', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '402', 'Arco de Concreto Protendido', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '403', 'Arco Metálico', 0.6);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '806', 'Guarda rodas antigo do DNER', 0.1);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '812', 'Berço para junta de dilatação', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '814', 'Junta de dilatação', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '115', 'Cortina de concreto armado', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '116', 'Longarina de enrigecimento de laje', 0.4);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '1000', 'Operação', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '1001', 'Drenagem', 0.2);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '1002', 'Sinalização', 0.1);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '820', 'Defensa Metálica', 0.1);
+insert into ELEMENTO_UFPR (CD_ELEMENTO, DS_ELEMENTO, NR_CAPA1) values ( '819', 'Muro de gabião', 0.4);
 
 ---------------------------------------------------------------------------
 
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('00','Corrosão','00','00');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('01','Nicho','01','01');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('02','Desplacamento','02','02');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('03','Manchas de umidade','03','03');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('04','Fissura','04','04');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('05','Eflorescência','05','05');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('06','Nicho de concretagem','06','06');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('07','Buraco','07','07');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('08','Manchas','08','08');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('09','Fissura em linha','09','09');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('10','Corrosão da armadura','10','10');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('11','Manchas de fogo','11','11');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('12','Dano','12','12');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('13','Desalinhamento','13','13');
-insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, DS_BETA) values ('14','Deformação','14','14');
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('00', 'Corrosão','00', 0.1);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('01', 'Nicho','01', 0.2);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('02', 'Desplacamento','02', 0.3);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('03', 'Manchas de umidade','03', 0.4);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('04', 'Fissura','04', 0.5);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('05', 'Eflorescência', '05', 0.6);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('06', 'Nicho de concretagem', '06', 0.7);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('07', 'Buraco', '07', 0.8);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('08', 'Manchas', '08', 0.9);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('09', 'Fissura em linha', '09', 1.0);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('10', 'Corrosão da armadura', '10', 1.1);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('11', 'Manchas de fogo', '11', 1.2);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('12', 'Dano', '12', 1.3);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('13', 'Desalinhamento', '13',1.4);
+insert into MANIFESTACAO_UFPR (CD_MANIFESTACAO_UFPR, DS_MANIFESTACAO_UFPR, DS_UNIDADE, NR_BETA) values ('14', 'Deformação', '14', 1.5);
 
 ---------------------------------------------------------------------------
 
@@ -514,6 +515,21 @@ insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte10VistaGeral.jpg', 'image/j
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte10foto01.jpg', 'image/jpg');
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte11VistaGeral.jpg', 'image/jpg');
 insert into IMAGEM(NM_NOME, TIPO_MIME) values ('Ponte11foto01.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('croqui.pdf', 'pdf');
+
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto01.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto02.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto03.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto04.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto05.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto06.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto01.jpg', 'image/jpg');
+
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto10.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto11.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto12.jpg', 'image/jpg');
+insert into IMAGEM(NM_NOME, TIPO_MIME) values ('foto13.jpg', 'image/jpg');
+
 ---------------------------------------------------------------------------
 
 insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Meio ambiente agressivo');
@@ -524,6 +540,12 @@ insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Frequência elev
 insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Desnível elevado entre greide e terreno');
 insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Rio com lâmina dágua normal profunda');
 insert into ASPECTOS_ESPECIAIS (DS_ASPECTOS_ESPECIAIS) values ('Grande variação do NA do rio na cheia');
+
+insert into CADASTRO_ASPECTOS_ESPECIAIS (ID_PONTE, ID_ASPECTOS_ESPECIAIS) values (1, 1);
+insert into CADASTRO_ASPECTOS_ESPECIAIS (ID_PONTE, ID_ASPECTOS_ESPECIAIS) values (1, 4);
+insert into CADASTRO_ASPECTOS_ESPECIAIS (ID_PONTE, ID_ASPECTOS_ESPECIAIS) values (2, 3);
+insert into CADASTRO_ASPECTOS_ESPECIAIS (ID_PONTE, ID_ASPECTOS_ESPECIAIS) values (2, 4);
+
 
 ---------------------------------------------------------------------------
 
@@ -540,27 +562,52 @@ insert into RANKING (ID_PONTE, ID_SIMULACAO) values (2, 4);
 
 ---------------------------------------------------------------------------
 
-insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 1, '00', '00');
+insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 1, '00', '2');
+insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 2, '00', '1');
+insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 3, '00', '3');
+insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 4, '00', '1');
+insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 5, '00', '2');
+insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 6, '00', '3');
+insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 7, '00', '2');
+insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 8, '00', '1');
+insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 9, '00', '2');
+insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 10, '00', '3');
+insert into ELEMENTO_COMPONENTES (ID_PONTE, ID_ELEMENTO_UFPR, DS_DETALHE, NR_QUANTIDADE) values (1, 11, '00', '2');
 
 ---------------------------------------------------------------------------
 
-insert into IDENTIFICACAO_OBRA_SGO values (1, '04/08/2016', 'inspetor');
+insert into IDENTIFICACAO_OBRA_SGO values (1, '04/08/2016', 'inspetor1');
+insert into IDENTIFICACAO_OBRA_SGO values (2, '10/08/2016', 'inspetor2');
+insert into IDENTIFICACAO_OBRA_SGO values (3, '29/08/2016', 'inspetor3');
 
-insert into CONDICOES_SGO values ('cond estabilidade', 'cond conservacao', 'observacoes', 'nota técnica');
+insert into CONDICOES_SGO values ('cond estabilidade1', 'cond conservacao1', 'observacoes1', 'nota técnica1');
+insert into CONDICOES_SGO values ('cond estabilidade2', 'cond conservacao2', 'observacoes2', 'nota técnica2');
+insert into CONDICOES_SGO values ('cond estabilidade3', 'cond conservacao3', 'observacoes3', 'nota técnica3');
 
-insert into LAUDO_ESPECIALIZADO_SGO values ('04/08/2016', 'consultor', 'observações');
 
-insert into MONITORAMENTO_SGO values ('período', 'tipo monitoramento', 'executor', 'custo', 'objeto', 'técnicas');
+insert into LAUDO_ESPECIALIZADO_SGO values ('04/08/2016', 'consultor1', 'observações1');
+insert into LAUDO_ESPECIALIZADO_SGO values ('10/08/2016', 'consultor2', 'observações2');
+insert into LAUDO_ESPECIALIZADO_SGO values ('29/08/2016', 'consultor3', 'observações3');
+
+insert into MONITORAMENTO_SGO values ('período1', 'tipo monitoramento1', 'executor1', 'custo1', 'objeto1', 'técnicas1');
+insert into MONITORAMENTO_SGO values ('período2', 'tipo monitoramento2', 'executor2', 'custo2', 'objeto2', 'técnicas2');
+insert into MONITORAMENTO_SGO values ('período3', 'tipo monitoramento3', 'executor3', 'custo3', 'objeto3', 'técnicas3');
 
 ---------------------------------------------------------------------------
 
 insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('05/08/2012', 1, 1, 1, 1, 1, 1, 1, 'relatórios1');
-insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('08/02/2016', 1, 2, 1, 1, 1, 1, 1, 'relatórios2');
-insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('08/03/2016', 1, 3, 1, 1, 1, 1, 1, 'relatórios3');
-insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('08/04/2016', 1, 4, 1, 1, 1, 1, 1, 'relatórios4');
-insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('08/05/2016', 1, 5, 1, 1, 1, 1, 1, 'relatórios5');
-insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('05/08/2014', 1, 1, 1, 1, 1, 1, 1, 'relatórios6');
-insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('05/08/2016', 1, 1, 1, 1, 1, 1, 1, 'relatórios7');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('08/02/2016', 1, 2, 1, 2, 2, 2, 2, 'relatórios2');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('08/03/2016', 1, 3, 1, 3, 3, 3, 3, 'relatórios3');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('08/04/2016', 1, 4, 1, 1, 2, 3, 1, 'relatórios4');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('08/05/2016', 1, 5, 1, 3, 3, 2, 1, 'relatórios5');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('05/08/2014', 1, 1, 1, 2, 1, 1, 3, 'relatórios6');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('05/08/2016', 1, 1, 1, 3, 2, 1, 2, 'relatórios7');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('05/08/2012', 1, 6, 1, 1, 1, 1, 1, 'relatórios8');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('08/02/2016', 1, 7, 1, 2, 2, 2, 2, 'relatórios9');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('08/03/2016', 1, 8, 1, 3, 3, 3, 3, 'relatórios10');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('08/04/2016', 1, 9, 1, 1, 2, 3, 2, 'relatórios11');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('08/05/2016', 1, 10, 1, 3, 3, 2, 1, 'relatórios12');
+insert into INSPECAO (DT_DATA, ID_USUARIO, ID_PONTE, ID_MODELO, ID_IDENTIFICACAO_OBRA_SGO, ID_CONDICOES_SGO, ID_LAUDO_ESPECIALIZADO_SGO, ID_MONITORAMENTO_SGO, DS_RELATORIO) values ('20/08/2014', 1, 11, 1, 2, 1, 1, 3, 'relatórios13');
 																																																		  
 ---------------------------------------------------------------------------																																  
 
@@ -587,52 +634,76 @@ insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NU
 insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (10, 'ponte10foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '21/09/2016', 21);
 insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (11, 'ponte11Geral.jpg', 'Foto', '01', 'Vista geral', 'OAE', '21/09/2016', 22);
 insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (11, 'ponte11foto01.jpg', 'Foto', '02', 'foto 01', 'OAE', '21/09/2016', 23);
+insert into ARQUIVO_ANEXO_CADASTRO (ID_PONTE, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, 'croqui.pdf', 'esquema', '01', 'croqui 01', 'OAE', '05/10/2016', 24); 
 
 
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '01.jpg', 'Foto', '01', 'Vista geral', 'INS', '05/08/2016', 2);
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '02.jpg', 'Foto', '02', 'Pista rolamento', 'INS', '05/08/2016', 3);
-insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '03.jpg', 'Foto', '03', 'Vista geral', 'INS', '05/08/2016', 1);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '01.jpg', 'Foto', '01', 'foto01', 'INS', '05/08/2012', 25);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '02.jpg', 'Foto', '02', 'foto02', 'INS', '05/08/2012', 26);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '03.jpg', 'Foto', '03', 'foto03', 'INS', '05/08/2012', 27);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '04.jpg', 'Foto', '04', 'foto04', 'INS', '05/08/2012', 28);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '05.jpg', 'Foto', '05', 'foto05', 'INS', '05/08/2012', 29);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '06.jpg', 'Foto', '06', 'foto06', 'INS', '05/08/2012', 30);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (6, '01.jpg', 'Foto', '01', 'foto01', 'INS', '05/08/2014', 31);
+
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '10.jpg', 'Foto', '10', 'foto10', 'MAN', '31/10/2012', 32);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '11.jpg', 'Foto', '11', 'foto11', 'MAN', '31/10/2012', 33);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '12.jpg', 'Foto', '12', 'foto12', 'MAN', '31/10/2012', 34);
+insert into ARQUIVO_ANEXO_INSPECAO (ID_INSPECAO, DS_ARQUIVO, DS_TIPO_ARQUIVO, NR_NUMERO, DS_DESCRICAO, DS_REGISTRO, DT_DATA_ANEXACAO, ID_IMAGEM) values (1, '13.jpg', 'Foto', '13', 'foto13', 'MAN', '31/10/2012', 35);
+
 
 ---------------------------------------------------------------------------
 
 --insert into DADOS_ELEMENTO (DS_NUMERO, DS_FOTO, DS_TAMANHO) values ('num', 'foto', 'tam');
 
-insert into DADOS_MANIFESTACAO (DS_FOTO, DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA) values ('foto', 'tam', 1, 1);
-insert into DADOS_MANIFESTACAO (DS_FOTO, DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA) values ('foto 2', 'tam 2', 1, 1);
-insert into DADOS_MANIFESTACAO (DS_FOTO, DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA) values ('foto 3', 'tam 3', 1, 1);
-insert into DADOS_MANIFESTACAO (DS_FOTO, DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA) values ('foto 4', 'tam 4', 1, 1);
-insert into DADOS_MANIFESTACAO (DS_FOTO, DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA) values ('foto 5', 'tam 5', 1, 1);
+insert into DADOS_MANIFESTACAO (DS_TAMANHO, DS_NUMERO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA, ID_ARQUIVO_ANEXO_INSPECAO) values ('tam 1', 'NUM', 1, 1, 8);
+insert into DADOS_MANIFESTACAO (DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA, ID_ARQUIVO_ANEXO_INSPECAO, DS_VALOR_DANO) values ('tam 2', 2, 2, 9, '0.2');
+insert into DADOS_MANIFESTACAO (DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA, ID_ARQUIVO_ANEXO_INSPECAO) values ('tam 3', 3, 3, 10);
+insert into DADOS_MANIFESTACAO (DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA, ID_ARQUIVO_ANEXO_INSPECAO, DS_VALOR_DANO) values ('tam 4', 4, 4, 11, '0.4');
+insert into DADOS_MANIFESTACAO (DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA, DS_VALOR_DANO) values ('tam 5', 5, 2, '0.5');
+insert into DADOS_MANIFESTACAO (DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA, DS_VALOR_DANO) values ('tam 6', 1, 1, '0.6');
+insert into DADOS_MANIFESTACAO (DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA, DS_VALOR_DANO) values ('tam 7', 3, 1, '0.7');
+insert into DADOS_MANIFESTACAO (DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA, DS_VALOR_DANO) values ('tam 8', 2, 2, '0.8');
+insert into DADOS_MANIFESTACAO (DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA, DS_VALOR_DANO) values ('tam 9', 5, 3, '0.9');
+insert into DADOS_MANIFESTACAO (DS_TAMANHO, ID_MANIFESTACOES_EXTENSAO, ID_MANIFESTACOES_URGENCIA, DS_VALOR_DANO) values ('tam 10', 4, 4, '1.0');
 
 insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (1, 1);
-insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (1, 2);
-insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (1, 3);
-insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (1, 4);
-insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (1, 5);
-insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (1, 6);
-insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (1, 7);
-insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (1, 8);
-insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (1, 9);
-insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (1, 10);
-insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (1, 11);
-insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (1, 12);
+insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (2, 2);
+insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (3, 3);
+insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (4, 4);
+insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (5, 5);
+insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (6, 6);
+insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (7, 7);
+insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (8, 8);
+insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (9, 9);
+insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (10, 10);
+insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (11, 11);
+insert into ELEMENTO_UFPR_MANIFESTACAO_UFPR (ID_ELEMENTO_UFPR, ID_MANIFESTACAO_UFPR) values (12, 12);
 
 ---------------------------------------------------------------------------
 
 insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (1, 1, 1);
 insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (1, 2, 2);
-insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (2, 3, 1);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (2, 2, 1);
 insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (3, 4, 1);
 insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (2, 5, 3);
-insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (1, 1, 4);
-insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (1, 2, 6);
-insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (2, 3, 5);
-insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (3, 4, 7);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (1, 3, 4);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (1, 4, 6);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (2, 1, 5);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (3, 3, 7);
 insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (2, 5, 9);
-insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (1, 1, 8);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (1, 5, 8);
 insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (1, 2, 10);
 insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (2, 3, 11);
-insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (3, 4, 10);
-insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (2, 5, 12);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (3, 5, 10);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (2, 4, 12);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (4, 1, 1);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (5, 2, 2);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (6, 2, 1);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (7, 4, 1);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (8, 5, 3);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (9, 3, 4);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (10, 4, 6);
+insert into INSPECAO_MANIFESTACAO_ELEMENTO (ID_INSPECAO, ID_DADOS_MANIFESTACAO, ID_ELEMENTO_UFPR_MANIFESTACAO_UFPR) values (11, 1, 5);
 
 ---------------------------------------------------------------------------
 

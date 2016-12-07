@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <title>SGO Gestor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+
+    <h:body>
+        <p:accordionPanel multiple="true">
+            <c:forEach var="i" items="#{ponteBean.model.arquivosAnexosCadastro}">
+                <c:set var="esquema" value="esquema" /> 
+                <p:tab title="#{i.imagem.nome}" rendered="#{esquema.equalsIgnoreCase(i.tipoArquivo)}">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <c:set var="codigo" value="#{ponteBean.model.identificacaoObraDadosBasicos.codigo}" />
+                        <c:set var="barra" value="#{comumbean.getFileSeparator()}" />
+                        <c:set var="nomePdf" value="#{i.imagem.nome}" />
+                        <c:set var="nomeCompleto" value="#{codigo}#{barra}#{nomePdf}" />
+                        <object data="#{comumbean.getFileManager('getPdf', nomeCompleto)}" type="application/pdf" width="1000px" height="800px" internalinstanceid="4">
+                        </object>
+                    </h:panelGrid>
+                </p:tab>
+            </c:forEach>       
+        </p:accordionPanel>
+    </h:body>
+</html>

@@ -78,7 +78,14 @@ public class Ponte implements Serializable {
      * lista arquivos anexos
      */
     private ArrayList<ArquivoAnexoCadastro> arquivosAnexosCadastro;
-   
+
+    /**
+     * lista arquivos anexos inspecao
+     */
+    private ArrayList<ArquivoAnexoInspecao> arquivosAnexosInspecoes;
+ 
+    private ArrayList<ArquivoAnexoManifestacao> arquivosAnexosManifestacoes;
+    
     /**
      * lista inspeção
      */
@@ -89,7 +96,6 @@ public class Ponte implements Serializable {
      * para exibir na tela que lista o ranking
      */
     private Date dataUltimaInspecao;
-
 
     /**
      * Constructor padrão
@@ -109,6 +115,8 @@ public class Ponte implements Serializable {
         substituicao = new Substituicao();
 //        cadastroManifestacao = new CadastroManifestacao();
         arquivosAnexosCadastro = new ArrayList<>();
+        arquivosAnexosInspecoes = new ArrayList<>();
+        arquivosAnexosManifestacoes = new ArrayList<>();
         inspecoes = new ArrayList<>();
     }
 
@@ -197,7 +205,6 @@ public class Ponte implements Serializable {
         this.identificacaoObraLocalizacao = identificacaoObraLocalizacao;
         this.identificacaoObraResponsaveis = identificacaoObraResponsaveis;
     }
-
 
     /**
      * retorna {@link #id}
@@ -327,6 +334,22 @@ public class Ponte implements Serializable {
         this.arquivosAnexosCadastro = arquivosAnexosCadastro;
     }
 
+    public ArrayList<ArquivoAnexoInspecao> getArquivosAnexosInspecoes() {
+        return arquivosAnexosInspecoes;
+    }
+
+    public void setArquivosAnexosInspecoes(ArrayList<ArquivoAnexoInspecao> arquivosAnexosInspecoes) {
+        this.arquivosAnexosInspecoes = arquivosAnexosInspecoes;
+    }
+
+    public ArrayList<ArquivoAnexoManifestacao> getArquivosAnexosManifestacoes() {
+        return arquivosAnexosManifestacoes;
+    }
+
+    public void setArquivosAnexosManifestacoes(ArrayList<ArquivoAnexoManifestacao> arquivosAnexosManifestacoes) {
+        this.arquivosAnexosManifestacoes = arquivosAnexosManifestacoes;
+    }
+
     public ArrayList<Inspecao> getInspecoes() {
         return inspecoes;
     }
@@ -349,6 +372,33 @@ public class Ponte implements Serializable {
 
     public void setSubstituicao(Substituicao substituicao) {
         this.substituicao = substituicao;
+    }
+
+    public int getIndexOfArquivoAnexoCadastro(int id) {
+        for (int i = 0; i < arquivosAnexosCadastro.size(); i++) {
+            if (arquivosAnexosCadastro.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public int getIndexArquivoAnexoInspecao(int id) {
+        for (int i = 0; i < arquivosAnexosInspecoes.size(); i++) {
+            if (arquivosAnexosInspecoes.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    public int getIndexArquivoAnexoManifestacao(int id) {
+        for (int  i = 0; i < arquivosAnexosManifestacoes.size(); i++) {
+            if (arquivosAnexosManifestacoes.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return 0;
     }
 
 //    public CadastroManifestacao getCadastroManifestacao() {

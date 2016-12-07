@@ -16,8 +16,15 @@ public class InspecaoManifestacaoElemento implements Serializable {
     private int idInspecao;
     private DadosManifestacao dadosManifestacao;
     private ElementoUfprManifestacaoUfpr elementoUfprManifestacaoUfpr;
+    
+    //campos utilizados apenas para exibir dados na view
+    private double capa3;
+    private double valorDano;
+    //utilizado para saber se elemento entrou na soma, para que ele seja colorido na aba Modelo EMEA
+    private boolean somou;
 
     public InspecaoManifestacaoElemento() {
+        somou = false;
     }
 
     public InspecaoManifestacaoElemento(int id, int idInspecao, DadosManifestacao dadosManifestacao, ElementoUfprManifestacaoUfpr elementoUfprManifestacaoUfpr) {
@@ -25,12 +32,14 @@ public class InspecaoManifestacaoElemento implements Serializable {
         this.idInspecao = idInspecao;
         this.dadosManifestacao = dadosManifestacao;
         this.elementoUfprManifestacaoUfpr = elementoUfprManifestacaoUfpr;
+        somou = false;
     }
 
     public InspecaoManifestacaoElemento(int idInspecao, DadosManifestacao dadosManifestacao, ElementoUfprManifestacaoUfpr elementoUfprManifestacaoUfpr) {
         this.idInspecao = idInspecao;
         this.dadosManifestacao = dadosManifestacao;
         this.elementoUfprManifestacaoUfpr = elementoUfprManifestacaoUfpr;
+        somou = false;
     }
 
     public int getId() {
@@ -63,5 +72,29 @@ public class InspecaoManifestacaoElemento implements Serializable {
 
     public void setElementoUfprManifestacaoUfpr(ElementoUfprManifestacaoUfpr elementoUfprManifestacaoUfpr) {
         this.elementoUfprManifestacaoUfpr = elementoUfprManifestacaoUfpr;
+    }
+
+    public double getCapa3() {
+        return capa3;
+    }
+
+    public void setCapa3(double capa3) {
+        this.capa3 = capa3;
+    }
+
+    public double getValorDano() {
+        return valorDano;
+    }
+
+    public void setValorDano(double valorDano) {
+        this.valorDano = valorDano;
+    }
+
+    public boolean isSomou() {
+        return somou;
+    }
+
+    public void setSomou(boolean somou) {
+        this.somou = somou;
     }
 }

@@ -15,19 +15,19 @@ public class ManifestacaoExtensao implements Serializable {
     private int id;
     private String descricao;
     private String criterio;
-    private String capa2;
+    private double capa2;
 
     public ManifestacaoExtensao() {
     }
 
-    public ManifestacaoExtensao(int id, String descricao, String criterio, String capa2) {
+    public ManifestacaoExtensao(int id, String descricao, String criterio, double capa2) {
         this.id = id;
         this.descricao = descricao;
         this.criterio = criterio;
         this.capa2 = capa2;
     }
 
-    public ManifestacaoExtensao(String descricao, String criterio, String capa2) {
+    public ManifestacaoExtensao(String descricao, String criterio, double capa2) {
         this.descricao = descricao;
         this.criterio = criterio;
         this.capa2 = capa2;
@@ -57,11 +57,11 @@ public class ManifestacaoExtensao implements Serializable {
         this.criterio = criterio;
     }
 
-    public String getCapa2() {
+    public double getCapa2() {
         return capa2;
     }
 
-    public void setCapa2(String capa2) {
+    public void setCapa2(double capa2) {
         this.capa2 = capa2;
     }
 
