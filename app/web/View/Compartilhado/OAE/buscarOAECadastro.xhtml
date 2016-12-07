@@ -118,7 +118,7 @@ and open the template in the editor.
                     </table>
 
                     <p:commandButton action='#{ponteBean.consultarInspecaoPost()}' value="Consultar" />
-                    <p:commandButton action="#{ponteBean.cadastrar()}" value="Novo registro" />
+                    <!--<p:commandButton action="#{ponteBean.cadastrar()}" value="Novo registro" />-->
                     <p:commandButton action="#{ponteBean.cancelar()}" value="Cancelar" />
 
                     <p:dataTable var="p" value="#{ponteBean.pontes}" paginator="true" rows="15" >                      
@@ -145,8 +145,8 @@ and open the template in the editor.
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 150px; text-align: center" >
-                            <p:commandButton icon="ui-icon-search" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
-                            <p:commandButton icon="ui-icon-pencil" title="Editar" action="#{ponteBean.cadastrar()}" />
+                            <p:commandButton icon="ui-icon-visualizar" title="Visualizar" action="#{ponteBean.exibir(p.id)}" />
+                            <p:commandButton icon="ui-icon-editar" title="Editar" action="#{ponteBean.cadastrar()}" />
                         </p:column>
                     </p:dataTable>
                 </h:form>
