@@ -16,13 +16,13 @@ and open the template in the editor.
     </h:head>
 
     <h:body>
-        <table>
+        <table class="tabela_buscas">
             <tbody>               
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Natureza Transposição" class="col-md-10" />
-                    </td>
-                    <td>
+                    <th>
+                        <p:outputLabel value="Natureza Transposição" />
+                    </th>
+                    <td colspan="3">
                         <p:selectOneMenu id="naturezaTransposicao" value="#{ponteBean.filtroIdNaturezaTransposicao}" style="width:400px">
                             <f:selectItem itemLabel="Selecione a Natureza Transposição" itemValue="0"/>
                             <f:selectItems value="#{ponteBean.naturezasTransposicoes}" var="nt" itemValue="#{nt.id}"/>
@@ -31,10 +31,10 @@ and open the template in the editor.
                 </tr>
 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Tipo Estrutura" class="col-md-10" />
-                    </td>
-                    <td>
+                    <th>
+                        <p:outputLabel value="Tipo Estrutura" />
+                    </th>
+                    <td colspan="3">
                         <p:selectOneMenu id="tipoEstrutura" value="#{ponteBean.filtroIdTipoEstrutura}" style="width:400px">
                             <f:selectItem itemLabel="Selecione o Tipo de Estrutura" itemValue="0"/>
                             <f:selectItems value="#{ponteBean.tiposEstruturas}" var="te" itemValue="#{te.id}"/>
@@ -43,10 +43,10 @@ and open the template in the editor.
                 </tr>
 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Sistema Construtivo" class="col-md-10" />
-                    </td>
-                    <td>
+                    <th>
+                        <p:outputLabel value="Sistema Construtivo" />
+                    </th>
+                    <td colspan="3">
                         <p:selectOneMenu id="sitemaConstrutivo" value="#{ponteBean.filtroIdSistemaConstrutivo}" style="width:400px">
                             <f:selectItem itemLabel="Selecione o Sistema Construtivo" itemValue="0"/>
                             <f:selectItems value="#{ponteBean.sistemasConstrutivos}" var="sc" itemValue="#{sc.id}"/>
@@ -55,10 +55,10 @@ and open the template in the editor.
                 </tr>
 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Comprimento da OAE" class="col-md-10" />
-                    </td>
-                    <td>
+                    <th>
+                        <p:outputLabel value="Comprimento da OAE" />
+                    </th>
+                    <td colspan="3">
                         <div>
                             <div style="float: left; margin: 0; padding: 0; width: 110px" >
                                 <p:outputLabel value="" />
@@ -73,10 +73,10 @@ and open the template in the editor.
                 </tr>
                 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Largura da OAE" class="col-md-10" />
-                    </td>
-                    <td>
+                    <th>
+                        <p:outputLabel value="Largura da OAE" />
+                    </th>
+                    <td colspan="3">
                         <div>
                             <div style="float: left; margin: 0; padding: 0; width: 110px" >
                                 <p:outputLabel  />
@@ -91,10 +91,10 @@ and open the template in the editor.
                 </tr>
                 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Aspectos Especiais" class="col-md-10" />
-                    </td>
-                    <td>
+                    <th>
+                        <p:outputLabel value="Aspectos Especiais" />
+                    </th>
+                    <td colspan="3">
                         <p:selectOneMenu id="aspectoEspecial" value="#{ponteBean.filtroIdAspectosEspeciais}" style="width:400px">
                             <f:selectItem itemLabel="Selecione o Aspecto Especial" itemValue="0"/>
                             <f:selectItems value="#{ponteBean.aspectosEspeciais}" var="ae" itemValue="#{ae.id}"/>
@@ -103,10 +103,10 @@ and open the template in the editor.
                 </tr>
 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Deficiência Funcional" class="col-md-10" />
-                    </td>
-                    <td>
+                    <th>
+                        <p:outputLabel value="Deficiência Funcional" />
+                    </th>
+                    <td colspan="3">
                         <p:selectOneMenu id="deficienciaFuncional" value="#{ponteBean.filtroIdDeficienciasFuncionais}" style="width:400px">
                             <f:selectItem itemLabel="Selecione a Deficiência Funcional" itemValue="0"/>
                             <f:selectItems value="#{ponteBean.deficienciasFuncionais}" var="df" itemValue="#{df.id}"/>
@@ -115,54 +115,59 @@ and open the template in the editor.
                 </tr>
 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Morfologia" class="col-md-10" />
+                    <th rowspan="2" style="vertical-align: top">
+                        <p:outputLabel value="Morfologia" />
+                    </th>
+                    <td colspan="3" style="border-bottom: none;">
+                        <div class="col-md-10">
+                            <p:selectOneMenu id="morfologia" value="#{ponteBean.filtroIdMorfologia}" style="width:400px">
+                                <f:selectItem itemLabel="Selecione a Morfologia" itemValue="0"/>
+                                <f:selectItems value="#{ponteBean.elementosUfpr}" var="m" itemValue="#{m.id}"/>
+                            </p:selectOneMenu>
+                        </div>
                     </td>
-                    <td>
-                        <p:selectOneMenu id="morfologia" value="#{ponteBean.filtroIdMorfologia}" style="width:400px">
-                            <f:selectItem itemLabel="Selecione a Morfologia" itemValue="0"/>
-                            <f:selectItems value="#{ponteBean.elementosUfpr}" var="m" itemValue="#{m.id}"/>
-                        </p:selectOneMenu>
-                        <p:commandButton icon="ui-icon-plus" action="#{ponteBean.adicionarMorfologiaBusca()}" />
-                        <p:commandButton icon="ui-icon-minus" action="#{ponteBean.excluirMorfologiaBusca()}" />
-
-<!--                        <p:orderList value="#{ponteBean.morfologias}" var="morf" controlsLocation="none" itemLabel="#{morf}" itemValue="#{morf}" />-->
-
+                </tr>
+                <tr>
+                    <td colspan="2" style="border-top: none; border-right: none;">
                         <p:dataList emptyMessage="#{comumbean.getMensagemTabelaVazia()}" value="#{ponteBean.morfologias}" var="morf" type="ordered">
                             #{morf.descricao}
                         </p:dataList>
                     </td>
+                    <td style="border-left: none; border-top: none;">
+                        <p:commandButton icon="ui-icon-plus" action="#{ponteBean.adicionarMorfologiaBusca()}" style="margin: 0; float: left" />
+                        <p:commandButton icon="ui-icon-minus" action="#{ponteBean.excluirMorfologiaBusca()}" style="margin: 0; float: left" />
+                    </td>
                 </tr>
 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Elemento" class="col-md-10" />
-                    </td>
-                    <td>
-                        <p:selectOneMenu id="elemento" value="#{ponteBean.filtroIdElementoUfpr}" style="width:400px">
+                    <th rowspan="2" style="vertical-align: top;">
+                        <p:outputLabel value="Elemento" />
+                    </th>
+                    <td class="col-md-3" style="border-bottom: none;">
+                        <p:selectOneMenu id="elemento" value="#{ponteBean.filtroIdElementoUfpr}" class="col-md-9">
                             <f:selectItem itemLabel="Selecione o Elemento" itemValue="0"/>
                             <f:selectItems value="#{ponteBean.elementosUfpr}" var="e" itemValue="#{e.id}"/>
                         </p:selectOneMenu>
                     </td>
-
-                    <td class="th">
-                        <p:outputLabel value="Manifestação" class="col-md-10" />
-                    </td>
-                    <td>
-                        <p:selectOneMenu id="manifestacao" value="#{ponteBean.filtroIdManifestacaoUfpr}" style="width:400px">
+                    <th style="border-bottom: none;">
+                        <p:outputLabel value="Manifestação" />
+                    </th>
+                    <td class="col-md-3" style="border-bottom: none;">
+                        <p:selectOneMenu id="manifestacao" value="#{ponteBean.filtroIdManifestacaoUfpr}" class="col-md-9">
                             <f:selectItem itemLabel="Selecione a Manifestação" itemValue="0"/>
                             <f:selectItems value="#{ponteBean.manifestacoesUfpr}" var="m" itemValue="#{m.id}"/>
                         </p:selectOneMenu>
-                        
-                        <p:commandButton icon="ui-icon-plus" action="#{ponteBean.adicionarElementoMorfologiaBusca()}" />
-                        <p:commandButton icon="ui-icon-minus" action="#{ponteBean.excluirMorfologiaBusca()}" />
-                        
-                        
                     </td>
-                    <td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="border-top: none; border-right: none">
                         <p:dataList emptyMessage="#{comumbean.getMensagemTabelaVazia()}" value="#{ponteBean.inspecao.inspecaoManifestacaoElemento}" var="ele" type="ordered">
                             #{ele.elementoUfprManifestacaoUfpr.elementoUfpr.descricao}, #{ele.elementoUfprManifestacaoUfpr.manifestacaoUfpr.descricao}
                         </p:dataList>
+                    </td>
+                    <td style="border-left: none; border-top: none;">
+                        <p:commandButton icon="ui-icon-plus" action="#{ponteBean.adicionarElementoMorfologiaBusca()}" />
+                        <p:commandButton icon="ui-icon-minus" action="#{ponteBean.excluirMorfologiaBusca()}" />
                     </td>
                 </tr>
             </tbody>

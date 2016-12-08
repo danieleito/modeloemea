@@ -16,30 +16,30 @@ and open the template in the editor.
     </h:head>
 
     <h:body>
-        <table >
+        <table class="tabela_buscas">
             <tbody>
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Código" class="col-md-10" />
-                    </td>
+                    <th>
+                        <p:outputLabel value="Código" />
+                    </th>
                     <td>
                         <p:inputText value="#{ponteBean.filtroCodigo}" class="col-md-2" />
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Identificação" class="col-md-10" />
-                    </td>
+                    <th>
+                        <p:outputLabel value="Identificação" />
+                    </th>
                     <td>
                         <p:inputText value="#{ponteBean.filtroIdentificacao}" class="col-md-5" />
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="UF" class="col-md-10" />
-                    </td>
+                    <th>
+                        <p:outputLabel value="UF" />
+                    </th>
                     <td>
                         <p:selectOneMenu id="uf" value="#{ponteBean.filtroIdUf}" style="width:150px">
                             <f:selectItem itemLabel="Selecione o UF" itemValue="0"/>
@@ -49,9 +49,9 @@ and open the template in the editor.
                 </tr>
 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Via" class="col-md-10" />
-                    </td>
+                    <th>
+                        <p:outputLabel value="Via" />
+                    </th>
                     <td>
                         <p:selectOneMenu id="via" value="#{ponteBean.filtroIdVia}" style="width: 150px">
                             <f:selectItem itemLabel="Selecione a Via" itemValue="0" />
@@ -61,9 +61,9 @@ and open the template in the editor.
                 </tr>
 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Local na Via (km)" class="col-md-10" />
-                    </td>
+                    <th>
+                        <p:outputLabel value="Local na Via (km)" />
+                    </th>
                     <td>
                         <div>
                             <div style="float: left; margin: 0; padding: 0; width: 110px" >
@@ -79,9 +79,9 @@ and open the template in the editor.
                 </tr>
 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Superintendência Regional" class="col-md-10" />
-                    </td>
+                    <th>
+                        <p:outputLabel value="Superintendência Regional" />
+                    </th>
                     <td>
                         <p:selectOneMenu id="superintendenciaRegional" value="#{ponteBean.filtroIdSuperintendencia}" style="width: 620px">
                             <f:selectItem itemLabel="Selecione a Superintendência Regional" itemValue="0" />
@@ -91,9 +91,9 @@ and open the template in the editor.
                 </tr>
 
                 <tr>
-                    <td class="th">
-                        <p:outputLabel value="Unidade Local" class="col-md-10" />
-                    </td>
+                    <th>
+                        <p:outputLabel value="Unidade Local" />
+                    </th>
                     <td>
                         <p:selectOneMenu id="unidadeLocal" value="#{ponteBean.filtroIdUnidadeLocal}" style="width: 420px">
                             <f:selectItem itemLabel="Selecione a Unidade Local" itemValue="0" />
