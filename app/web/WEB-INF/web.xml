@@ -4,25 +4,27 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
+
 <!--    <context-param>
         <param-name>primefaces.THEME</param-name>
         <param-value>emeatheme</param-value>
     </context-param>-->
-    <servlet>
-        <servlet-name>Faces Servlet</servlet-name>
-        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>*.jsf</url-pattern>
-    </servlet-mapping>
-    <session-config>
+   <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.jsf</url-pattern>
+</servlet-mapping>
+    <!-- <session-config>
         <tracking-mode>COOKIE</tracking-mode>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    -->
     <welcome-file-list>
         <welcome-file>View/Compartilhado/login.jsf</welcome-file>
     </welcome-file-list>
@@ -52,4 +54,5 @@
         <filter-name>AdministradorFilter</filter-name>
         <url-pattern>/View/Administrador/*</url-pattern>
     </filter-mapping>
+    
 </web-app>

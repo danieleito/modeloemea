@@ -22,6 +22,7 @@ import com.relatorio.StringPDFbox;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -46,13 +47,13 @@ public class RelatorioPonteGenerator  extends RelatorioGenerator{
             Logger.getLogger(RelatorioPonteGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            RelatorioPonteGenerator.generatePdf(ponte);
+            RelatorioPonteGenerator.generatePdf(ponte,"C:\\\\Users\\\\Usuario\\\\Documents\\\\test.pdf" );
         } catch (IOException ex) {
             Logger.getLogger(RelatorioPonteGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static void generatePdf(Ponte ponte) throws IOException {
+    public static void generatePdf(Ponte ponte, String path) throws IOException {
         PDDocument doc = new PDDocument();
         PDPage page1 = new PDPage();
         doc.addPage(page1);
@@ -251,7 +252,7 @@ public class RelatorioPonteGenerator  extends RelatorioGenerator{
          * contentStream4.close(); }
          *
          */
-        final String path = "C:\\Users\\Usuario\\Documents\\test.pdf";
+        //final String path = "C:\\Users\\Usuario\\Documents\\test.pdf";
         doc.save(path);
         //OPEN FILE
         if (Desktop.isDesktopSupported()) {
