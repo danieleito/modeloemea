@@ -52,14 +52,14 @@ public class RelatorioInspecaoRotineiraGenerator  extends RelatorioGenerator{
         final float sixthContentWidth = (float) (fullContentWidth * 1.666666);
         final float topY = page.getCropBox().getHeight() - 20;
         
-        //TODO: Descobrir a diferenÃ§a entre a inspecao.getData() e inspecao.getIdentificacaoObraSgo().getDataInspecao()
+        //TODO: Descobrir a diferença entre a inspecao.getData() e inspecao.getIdentificacaoObraSgo().getDataInspecao()
         String[][] contentPrimeiraSecaoIdentificacao = {
-            {"CÃ³digo:", inspecao.getRelatorio()},
-           // {"Data da InspeÃ§Ã£o:", inspecao.getIdentificacaoObraSgo().getDataInspecao().toString()}
+            {"Código:", inspecao.getRelatorio()},
+           // {"Data da Inspeção:", inspecao.getIdentificacaoObraSgo().getDataInspecao().toString()}
         };
 
         String[][] contentSegundaSecaoIdentificacao = {
-            {"QUE CAMPO Ã‰ ESSE?",""},
+            {"QUE CAMPO É ESSE?",""},
             {"Inspetor:",inspecao.getIdentificacaoObraSgo().getNomeInspetor()}
         };
         

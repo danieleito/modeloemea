@@ -123,8 +123,8 @@ and open the template in the editor.
                                 </p:column>
 
                                 <p:column headerText="Ação" style="width: 90px; text-align: center" >
-                                    <p:commandButton icon="ui-icon-visualizar" title="Visualizar" action="#{ponteBean.exibir(r.ponte.id)}" />
-                                     <p:commandButton icon="fa-file-pdf-o" title="Gerar relaório"  action="#{ponteBean.exibir(r.ponte.id)}" />
+                                    <p:commandButton icon="ui-icon-visualizar" title="Visualizar"  action="#{ponteBean.exibir(r.ponte.id)}" />
+                                     <p:commandButton icon="fa fa-fw fa-file-pdf-o" title="Gerar relaório"  action="#{relatorioBean.setPonte(r.ponte)}" onclick="PF('relatorio').show();" />
                                 </p:column>
                             </p:dataTable>
                         </p:tab>
@@ -133,7 +133,33 @@ and open the template in the editor.
                         </p:tab>
                     </p:tabView>
                 </h:form>
+                       
+        <p:dialog header="Relatório" widgetVar="relatorio" modal="true" height="350" width="400">
+	        <h:form>
+	   			 <p:selectBooleanCheckbox  itemLabel="Cadastro" value="#{relatorioBean.cadastro}" /> 
+	   			 <br/>
+	   			 <p:selectBooleanCheckbox itemLabel="Fotos cadastrais" value="#{relatorioBean.fotos_cadastrais}" />
+	   			 <br/>
+	   			  <br/>
+	   			Inspeções rotineira
+	   			 <h:selectOneRadio value="#{relatorioBean.inspecao}">
+	   				<f:selectItem itemValue="nenhuma" itemLabel="Nenhuma" />
+			   		<f:selectItem itemValue="ultima" itemLabel="Última" />
+				   	<f:selectItem itemValue="todas" itemLabel="Todas" />
+				</h:selectOneRadio>
+	   			  <br/>
+	   			Fotos da inspeção rotineira
+	   			<h:selectOneRadio value="#{relatorioBean.fotos_inspecao}">
+	   				<f:selectItem itemValue="nenhuma" itemLabel="Nenhuma" />
+			   		<f:selectItem itemValue="ultima" itemLabel="Última" />
+				   	<f:selectItem itemValue="todas" itemLabel="Todas" />
+				</h:selectOneRadio>
+				<p:commandButton title="Gerar relaório" action="#{relatorioBean.gerarCadastroInspecao()}"  value="Gerar" />
+	   		</h:form>
+		</p:dialog>   
             </ui:define>
         </ui:composition>
+ 
+ 
     </h:body>
 </html>

@@ -29,6 +29,8 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
+
 import javax.imageio.ImageIO;
 import org.apache.pdfbox.contentstream.PDFGraphicsStreamEngine;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -96,6 +98,11 @@ public class RelatorioGenerator
 } 
 
 */
+	
+	public static String getUniqueFileName(){
+		UUID uuid = UUID.randomUUID();
+		return uuid.toString();
+	}
    public static float drawSection(PDPage page, PDPageContentStream contentStream,
             float y, float x, float width,
             String title, String[][] content, boolean lineLeft) throws IOException {
@@ -135,5 +142,7 @@ public class RelatorioGenerator
         }
         return endY;
     }
+   
+   
 }
  

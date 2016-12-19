@@ -79,36 +79,36 @@ public class RelatorioPonteGenerator  extends RelatorioGenerator{
             /**
              * IDENTIFICACAO DA OBRA
              */
-            {"Dados BÃ¡sicos", "-----"},
-            {"CÃ³digo", dadosBasicos.getCodigo()},
-            {"IdentificaÃ§Ã£o", dadosBasicos.getIdentificacao()},
+            {"Dados Básicos", "-----"},
+            {"Código", dadosBasicos.getCodigo()},
+            {"Identificação", dadosBasicos.getIdentificacao()},
             //TODO: Formatar data
-            {"Ãšlt. AtualizaÃ§Ã£o", ponte.getDataUltimaInspecao().toString()},
-            {"Nat. TransposiÃ§Ã£o", dadosBasicos.getNaturezaTransposicao().toString()},
+            {"Últ. Atualização", ponte.getDataUltimaInspecao().toString()},
+            {"Nat. Transposição", dadosBasicos.getNaturezaTransposicao().toString()},
             {"Sistema Construtivo", dadosBasicos.getSistemaConstrutivo().toString()},
             {"Comp/Larg(m)", dadosBasicos.getComprimento() + "/" + dadosBasicos.getLargura()},
             {"Trem-Tipo", dadosBasicos.getTremTipo().toString()},
-            {"ConstruÃ§Ã£o", dadosBasicos.getAnoConstrucao().toString()},};
-        String[][] contentSecaoLocalizacao = {{"LocalizaÃ§Ã£o", "-----"},
+            {"Construção", dadosBasicos.getAnoConstrucao().toString()},};
+        String[][] contentSecaoLocalizacao = {{"Localização", "-----"},
         {"Via/UF/Km", localizacao.getVia() + "/" + localizacao.getUf() + "/" + localizacao.getLocalVia()},
         {"Trecho", localizacao.getPnvCodigo() + "/" + localizacao.getPnvAno() + "/" + localizacao.getPnvVersao()},
         {"Cidade Prox.", localizacao.getCidadeMaisProxima()},
         {"Alt./Lat/Long", localizacao.getPnvAltitude() + "/" + localizacao.getLatitudeGrau() + " " + localizacao.getLatitudeMinuto() + "/" + localizacao.getLongitudeGrau() + " " + localizacao.getLongitudeMinuto()},
-        {"InspeÃ§Ãµes", "-----"},
-        {"PerÃ­odo(anos)", inspecao.getPeriodo()},
-        {"Equip. NecessÃ¡rio", inspecao.getEquipamentoNecessario()},
-        {"Melhor Ã‰poca", inspecao.getMelhorEpoca()},};
+        {"Inspeções", "-----"},
+        {"Período(anos)", inspecao.getPeriodo()},
+        {"Equip. Necessário", inspecao.getEquipamentoNecessario()},
+        {"Melhor Época", inspecao.getMelhorEpoca()},};
 
         String[][] contentSecaoResponsaveis = {
-            {"ResponsÃ¡veis", "-----"},
+            {"Responsáveis", "-----"},
             {"Superint. Regional", responsaveis.getUnidadeLocal().getSuperintendenciaRegional().toString()},
             {"Unidade Local", responsaveis.getUnidadeLocal().toString()},
-            {"Tp. AdministraÃ§Ã£o", responsaveis.getTipoAdministracao().toString()},
+            {"Tp. Administração", responsaveis.getTipoAdministracao().toString()},
             {"Administrador", responsaveis.getAdministrador()},
             {"Projetista", responsaveis.getProjetistaProjetista()},
             {"Construtor", responsaveis.getConstrutorConstrutor()},
-            {"ObservaÃ§Ãµes", ponte.getObservacao().toString()},};
-        String[][] contentSecao4 = {//TODO: Descobrir quais sÃ£o os campos abaixo
+            {"Observações", ponte.getObservacao().toString()},};
+        String[][] contentSecao4 = {//TODO: Descobrir quais são os campos abaixo
             {"Loc. Projeto", ""},
             {"Loc. Doc. Constr", ""},
             {"Loc. Doc. Diversos", ""},};
@@ -117,7 +117,7 @@ public class RelatorioPonteGenerator  extends RelatorioGenerator{
 
         
 
-        float secaoDadosBasicosEndY = drawSection(page1, contentStream, topY, marginX, halfContentWidth, "1. IDENTIFICAÃ‡ÃƒO DA OBRA", contentSecaoDadosBasicos, false);
+        float secaoDadosBasicosEndY = drawSection(page1, contentStream, topY, marginX, halfContentWidth, "1. IDENTIFICAÇÃO DA OBRA", contentSecaoDadosBasicos, false);
 
         drawSection(page1, contentStream, topY, marginX + halfContentWidth, halfContentWidth, "", contentSecaoLocalizacao, true);
 
@@ -125,24 +125,24 @@ public class RelatorioPonteGenerator  extends RelatorioGenerator{
 
         drawSection(page1, contentStream, secaoDadosBasicosEndY, marginX + halfContentWidth, halfContentWidth, "", contentSecao4, true);
 
-        //TODO: colocar caracteristicasFuncionaisSecao1 no relatÃ³rio
+        //TODO: colocar caracteristicasFuncionaisSecao1 no relatório
         String[][] caracteristicasFuncionaisSecao1 = {
             /**
-             * CARACTERÃSTICAS FUNCIONAIS
+             * CARACTERÍSTICAS FUNCIONAIS
              */
-            {"RegiÃ£o", caracteristicasFuncionaisCaracteristicas.getTipoRegiao().toString()},
-            //TODO: Descobrir se mostra ou nÃ£o o raio se for nulo
-            {"TraÃ§ada/Raio(m)", caracteristicasFuncionaisCaracteristicas.getRaioCurva() == null ? "NÃ£o possui" : caracteristicasFuncionaisCaracteristicas.getRaioCurva()},
-            {"Rampa MaxÃ­ma", caracteristicasFuncionaisCaracteristicas.getRampaMaxima()},
+            {"Região", caracteristicasFuncionaisCaracteristicas.getTipoRegiao().toString()},
+            //TODO: Descobrir se mostra ou não o raio se for nulo
+            {"Traçada/Raio(m)", caracteristicasFuncionaisCaracteristicas.getRaioCurva() == null ? "Não possui" : caracteristicasFuncionaisCaracteristicas.getRaioCurva()},
+            {"Rampa Maxíma", caracteristicasFuncionaisCaracteristicas.getRampaMaxima()},
             {"VMD", caracteristicasFuncionaisCaracteristicas.getVmd()},
-            {"NÂ° de VÃ£os", caracteristicasFuncionaisDimensoes.getNumeroVaos()},
-            {"Descr. dos VÃ£os", caracteristicasFuncionaisDimensoes.getDescricaoVaos()}
+            {"N° de Vãos", caracteristicasFuncionaisDimensoes.getNumeroVaos()},
+            {"Descr. dos Vãos", caracteristicasFuncionaisDimensoes.getDescricaoVaos()}
         };
         String[][] caracteristicasFuncionaisSecao2 = {
             {"Largura total da pista(m)", caracteristicasFuncionaisDimensoes.getLarguraTotalPista()},
-            {"NÂ° de Faixas/Larg. Faixa(m)", caracteristicasFuncionaisDimensoes.getNumeroFaixas() + "/" + caracteristicasFuncionaisDimensoes.getLarguraFaixa()},
+            {"N° de Faixas/Larg. Faixa(m)", caracteristicasFuncionaisDimensoes.getNumeroFaixas() + "/" + caracteristicasFuncionaisDimensoes.getLarguraFaixa()},
             {"Larg. Acost. Dir/Esq", caracteristicasFuncionaisDimensoes.getAcostamentoDireito() + "/" + caracteristicasFuncionaisDimensoes.getAcostamentoEsquerdo()},
-            {"Larg. CalÃ§ada Dir/Esqauerda", caracteristicasFuncionaisDimensoes.getCalcadaDireita() + "/" + caracteristicasFuncionaisDimensoes.getCalcadaEsquerda()},
+            {"Larg. Calçada Dir/Esqauerda", caracteristicasFuncionaisDimensoes.getCalcadaDireita() + "/" + caracteristicasFuncionaisDimensoes.getCalcadaEsquerda()},
             {"Gabarito Horiz/Vertical(m)", caracteristicasFuncionaisDimensoes.getGabaritoHorizontal() + "/" + caracteristicasFuncionaisDimensoes.getGabaritoVertical()}
         };
 
@@ -181,23 +181,23 @@ public class RelatorioPonteGenerator  extends RelatorioGenerator{
   
             int i = 0;
             for (CadastroAspectoEspecial ae : ponte.getAspectosEspeciais()) {
-                //TODO: Descobir qual Ã© o valor real da primeira coluna
+                //TODO: Descobir qual é o valor real da primeira coluna
                 contentAspectosEspeciais[i][0] = Integer.toString(ae.getAspectoEspecial().getId());
                 contentAspectosEspeciais[i][1] = ae.getAspectoEspecial().getDescricao();
                 ++i;
             }
 
             
-            aspectosEspeciaisEndY = drawSection(page1, contentStream, elementosComponentesTopY, marginX, fullContentWidth, ++contSection + ". ASPECTOS ESPECIAIS", contentAspectosEspeciais, false);
+            aspectosEspeciaisEndY = drawSection(page1, contentStream, aspectosEspeciaisTopY, marginX, fullContentWidth, ++contSection + ". ASPECTOS ESPECIAIS", contentAspectosEspeciais, false);
             
         }
        
 
         /**
-         * PÃGINA 5
+         * PÁGINA 5
          */
         /*
-     TODO: Consertar NULLPOINT do deficiÃªncias funcionais
+     TODO: Consertar NULLPOINT do deficiências funcionais
     if(ponte.getDeficienciasFuncionais().size() > 0){
         String[][] contentP5 = new String[ponte.getDeficienciasFuncionais().size()][2];
 
@@ -224,24 +224,24 @@ public class RelatorioPonteGenerator  extends RelatorioGenerator{
            {"Rota:", ponte.getRotasAlternativas().getIdentificacao()}
        };
         String[][]  contentAcrescimoRota = {
-           {"AcrÃ©scimo de Km:", ponte.getRotasAlternativas().getAcrescimoKm()}
+           {"Acréscimo de Km:", ponte.getRotasAlternativas().getAcrescimoKm()}
         };
         
         drawSection(page1, contentStream, rotasAlternativasTopY, marginX, halfContentWidth, ++contSection + ". ROTAS ALTERNATIVAS", contentRotaRotas, false);
         drawSection(page1, contentStream, rotasAlternativasTopY, marginX + halfContentWidth , halfContentWidth, "", contentAcrescimoRota, false);
         contentStream.close();
         /**
-         * PÃGINA 5
+         * PÁGINA 5
          */
         /**
-         * TODO: Descobrir se pode apenas ter uma Ãºnica rota alternativa
+         * TODO: Descobrir se pode apenas ter uma única rota alternativa
          * if(ponte.getRotasAlternativas().size() > 0){ String[][] contentP4 =
          * new String[ponte.getAspectosEspeciais().size()+1][2];
          *
          * contentP4[0][0] = "4"; contentP4[0][1] = "Aspectos Especiais";
          *
          * int i=1; for (CadastroAspectoEspecial ae:
-         * ponte.getAspectosEspeciais()) { //TODO: Descobir qual Ã© o valor real
+         * ponte.getAspectosEspeciais()) { //TODO: Descobir qual é o valor real
          * da primeira coluna contentP4[i][0] =
          * Integer.toString(ae.getAspectoEspecial().getId()); contentP4[i][1] =
          * ae.getAspectoEspecial().getDescricao(); ++i; }
@@ -255,15 +255,6 @@ public class RelatorioPonteGenerator  extends RelatorioGenerator{
         //final String path = "C:\\Users\\Usuario\\Documents\\test.pdf";
         doc.save(path);
         //OPEN FILE
-        if (Desktop.isDesktopSupported()) {
-            try {
-                File myFile = new File(path);
-                Desktop.getDesktop().open(myFile);
-            } catch (IOException ex) {
-                // no application registered for PDFs
-            }
-
-        }
     }
 
    
