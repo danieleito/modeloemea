@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
         <title>Simulação</title>
@@ -25,7 +26,15 @@
                     <p:inputText class="col-md-2" id="nova_simulacao" value="#{simulacaoBean.simulacao.nomeSimulacao}" />
                     <p:commandButton style="margin: 0 0 20px 20px; width: 160px;" value="Nova simulação" action="#{simulacaoBean.salvar()}" />
                     
-                    <p:dataTable var="sim" value="#{simulacaoBean.simulacoes}" paginator="true" rows="15" >
+                    <p:dataTable id="checkboxDT" var="sim" rowKey="#{sim.id}" value="#{simulacaoBean.simulacoes}" 
+                                 paginator="true" rows="15" selection="#{simulacaoBean.simulacoesSelecionadas}" 
+                                 reflow="true" lazy="true">
+
+<!--                        <c:set value="#{sim.usuario.id == login.usuarioLogado.id}" var="r" />
+                        <p:column rendered="#{r == false}" style="width:16px; text-align:center" />
+                        <p:column rendered="#{r == true}" selectionMode="multiple" style="width:16px; text-align:center" />-->
+                        <p:column selectionMode="multiple" style="width:16px; text-align:center" />
+
                         <p:column headerText="Simulação" style="text-align: center" >
                             <h:outputText value="#{sim.nomeSimulacao}" />
                         </p:column>
@@ -41,21 +50,28 @@
                         </p:column>
 
                         <p:column headerText="Ação" style="width: 200px; text-align: center" >
+                            <!--visualizar-->
                             <p:commandButton icon="ui-icon-visualizar" title="Visualizar" actionListener="#{simulacaoBean.visualizar(sim.id)}"  />
 
                             <h:panelGroup rendered="#{login.usuarioLogado.id == sim.usuario.id}">
+                                <!--editar-->
                                 <p:commandButton icon="ui-icon-editar" action="#{simulacaoBean.rankingGet(sim.id)}" />
-                                    <p:growl id="message" showDetail="true" />
-                                    <p:commandButton icon="ui-icon-excluir" title="Deletar" actionListener="#{simulacaoBean.excluir(sim.id)}" update="message">
-                                        <p:confirm header="Confirmação" message="Tem certeza que deseja excluir a simulação permanentemente?" icon="ui-icon-alert" />
-                                    </p:commandButton>
-                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                                    </p:confirmDialog>
                             </h:panelGroup>
-
                         </p:column>
+                        
+                        <f:facet name="footer" >
+                            <!--excluir-->
+                            <!--<p:commandButton process="checkboxDT11" icon="ui-icon-excluir" value="Deletar" action="{simulacaoBean.recarregarSimulacao()}" actionListener="{ponteBean.carregar(simulacaoBean.simulacao.id)}" />-->
+                            
+                            <p:growl id="message" showDetail="true" />
+                                <p:commandButton process="checkboxDT" icon="ui-icon-excluir" value="Deletar" title="Deletar" actionListener="#{simulacaoBean.excluir(sim.id)}" update="message">
+                                    <p:confirm header="Confirmação" message="Tem certeza que deseja excluir a simulação permanentemente?" icon="ui-icon-alert" />
+                                </p:commandButton>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
+                        </f:facet>
                     </p:dataTable>
                 </h:form>
             </ui:define>

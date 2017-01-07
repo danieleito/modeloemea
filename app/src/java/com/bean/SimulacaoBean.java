@@ -11,6 +11,7 @@ import com.model.GraficoManifestacao;
 import com.model.GraficoSistemaConstrutivo;
 import com.model.GraficoTipoEstrutura;
 import com.model.Simulacao;
+import com.model.Usuario;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -52,6 +53,9 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     private MapModel advancedModel;
     private int lat;
     private int lgt;
+
+    private ArrayList<Simulacao> simulacoesSelecionadas;
+    private Usuario usuario;
 
     @PostConstruct
     public void init() {
@@ -387,9 +391,11 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     }
 
     //excluir simulação do banco
-    public void excluir(int id) {
+    public void excluir() {
         try {
-            database.excluir(id);
+            for (int i= 0; i < simulacoesSelecionadas.size(); i++) {
+                database.excluir(simulacoesSelecionadas.get(i).getId());
+            }
             adicionarMensagemInfo("Simulação removida com sucesso.");
             simulacoes = database.buscar();
         } catch (SQLException ex) {
@@ -402,7 +408,7 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     public int numeroOaesSimulacao(ArrayList simulacao) {
         return simulacao.size();
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc=" Métodos getter e setter. ">
     public Simulacao getSimulacao() {
         return simulacao;
@@ -446,5 +452,15 @@ public class SimulacaoBean extends ComumBean implements Serializable {
     public void setLgt(int lgt) {
         this.lgt = lgt;
     }
+
+    public ArrayList<Simulacao> getSimulacoesSelecionadas() {
+        return simulacoesSelecionadas;
+    }
+
+    public void setSimulacoesSelecionadas(ArrayList<Simulacao> simulacoesSelecionadas) {
+        this.simulacoesSelecionadas = simulacoesSelecionadas;
+    }
+    
     // </editor-fold>
+
 }

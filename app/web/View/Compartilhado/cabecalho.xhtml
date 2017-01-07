@@ -26,7 +26,40 @@
                 <p:menuitem value="Sair" action="#{login.sair()}"/>
             </p:menubar>
         </h:form>
+        
         <div class="info_usuario_logado">
+
+            <!--cronometro-->
+            <div style="float: left" id="cronometro_div">Sua sessão expirará em: <span id="cronometro"></span></div>
+            <Script language="javascript">
+                var minutos= 30;
+                var seconds=00;
+                var campo = document.getElementById("cronometro");
+                var campo_div = document.getElementById("cronometro_div");
+                function startCountdown()
+                {
+                        if (seconds &lt;= 0){  
+                                seconds=60;
+                                minutos-=1;
+                         } 
+                         if (minutos &lt;= -1){ 
+                                seconds=0;
+                                seconds+=1;
+                                campo.innerHTML="";
+                                campo_div.innerHTML="Sessão expirada!";
+                         } else{ 
+                                seconds-=1;
+                                if(seconds &lt; 10) {
+                                        seconds = "0" + seconds;
+                                } 
+                                campo.innerHTML = " " + minutos+"min"+seconds;
+                                setTimeout("startCountdown()",1000); 
+                        }  
+                }		 
+                startCountdown();
+            </Script>
+            
+            <!--nome de usuario logado-->
             <h:outputText value="Nome usuário: ${login.usuarioLogado.nome}" />
         </div>
     </h:body>

@@ -608,8 +608,6 @@ public class PonteBean extends ComumBean implements Serializable {
                         .isPresent() 
                 ? 0 
                 : 1;
-        String w = "";
-        String q = w;
         return r;
     }
 
